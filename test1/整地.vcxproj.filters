@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="sprite.cpp">
+      <Filter>配布</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>配布</Filter>
+    </ClCompile>
+    <ClCompile Include="sound.cpp">
+      <Filter>配布</Filter>
+    </ClCompile>
+    <ClCompile Include="bggame.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="bgresult.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="bgtitle.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="bullet.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="collision.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="explosion.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="result.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="resulttext.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="title.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="titletext.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="renderer.cpp">
+      <Filter>配布</Filter>
+    </ClCompile>
+    <ClCompile Include="polygon.cpp">
+      <Filter>配布</Filter>
+    </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>配布</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="texture.h">
+      <Filter>配布</Filter>
+    </ClInclude>
+    <ClInclude Include="sprite.h">
+      <Filter>配布</Filter>
+    </ClInclude>
+    <ClInclude Include="sound.h">
+      <Filter>配布</Filter>
+    </ClInclude>
+    <ClInclude Include="bggame.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="bgresult.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="bgtitle.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="bullet.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="collision.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="explosion.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="result.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="resulttext.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="scene.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="title.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="titletext.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="renderer.h">
+      <Filter>配布</Filter>
+    </ClInclude>
+    <ClInclude Include="polygon.h">
+      <Filter>配布</Filter>
+    </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>配布</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="配布">
+      <UniqueIdentifier>{80eb69df-7954-49db-a020-6f288f37b388}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル">
+      <UniqueIdentifier>{d5fba0b9-7cb5-4d80-b1da-ba6df1c99273}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
