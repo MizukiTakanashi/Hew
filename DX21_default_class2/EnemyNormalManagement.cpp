@@ -32,11 +32,11 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 	//時間が来たら敵を配置
 	if (m_count++ > APPEARANCE_TIME && m_enemy_num != MAX_NUM) {
 		//ランダムで出現位置を決める
-		float y = rand() % (SCREEN_HEIGHT - (int)EnemyNormal::SIZE_Y / 2) + EnemyNormal::SIZE_Y / 2;
+		float x = rand() % (SCREEN_WIDTH - (int)EnemyNormal::SIZE_X / 2) + EnemyNormal::SIZE_X / 2;
 
 		//フラグに応じて敵を作る
-		if (m_pEnemySetPos.SetEnemy(D3DXVECTOR2(EnemyNormal::STOP_POS_X, y), D3DXVECTOR2(EnemyNormal::SIZE_X, EnemyNormal::SIZE_Y))) {
-			EnemyNormal temp(m_pDrawObjectEnemy, D3DXVECTOR2(SCREEN_WIDTH + EnemyNormal::SIZE_X / 2, y));
+		if (m_pEnemySetPos.SetEnemy(D3DXVECTOR2(x, EnemyNormal::STOP_POS_Y), D3DXVECTOR2(EnemyNormal::SIZE_X, EnemyNormal::SIZE_Y))) {
+			EnemyNormal temp(m_pDrawObjectEnemy, D3DXVECTOR2(x, -EnemyNormal::SIZE_Y / 2));
 			m_pEnemyNormal[m_enemy_num] = temp;
 			m_enemy_num++;
 		}

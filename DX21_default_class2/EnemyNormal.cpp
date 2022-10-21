@@ -10,7 +10,7 @@
 //==========================
 const float EnemyNormal::SIZE_X = 50.0f;
 const float EnemyNormal::SIZE_Y = 50.0f;
-const float EnemyNormal::STOP_POS_X = 800.0f;
+const float EnemyNormal::STOP_POS_Y = 100.0f;
 
 const float EnemyNormal::SPEED = 1.5f;
 
@@ -20,8 +20,8 @@ const float EnemyNormal::SPEED = 1.5f;
 void EnemyNormal::Update(void)
 {
 	//Ž~‚Ü‚éêŠ‚Ü‚ÅˆÚ“®‚·‚é
-	if (GameObject::GetPos().x > STOP_POS_X) {
-		GameObject::MovePos(D3DXVECTOR2(-SPEED, 0.0f));
+	if (GameObject::GetPos().y > STOP_POS_Y) {
+		GameObject::MovePos(D3DXVECTOR2(0.0f, SPEED));
 	}
 
 	//ŽžŠÔ‚ª—ˆ‚½‚ç’e‚ðì‚é

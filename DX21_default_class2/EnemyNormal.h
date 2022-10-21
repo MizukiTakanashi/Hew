@@ -20,7 +20,7 @@ public:
 	//cppで初期化
 	static const float SIZE_X;			//サイズX
 	static const float SIZE_Y;			//サイズY
-	static const float STOP_POS_X;		//敵が止まる場所
+	static const float STOP_POS_Y;		//敵が止まる場所
 
 private:
 	//ここで初期化
