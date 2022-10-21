@@ -1,2 +1,3 @@
 C:\Users\hal10340\Source\Repos\Hew\DX21_default_class2\x64\Debug\sample.exe
 C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\x64\Debug\sample.exe
+C:\Users\zatsu\Source\Repos\MizukiTakanashi\Hew\DX21_default_class2\x64\Debug\sample.exe

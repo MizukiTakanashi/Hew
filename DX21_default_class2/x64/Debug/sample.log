@@ -1,2 +1,8 @@
-﻿  EnemyNormal.cpp
-  sample.vcxproj -> C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\x64\Debug\sample.exe
+﻿  EnemyNormalManagement.cpp
+C:\Users\zatsu\Source\Repos\MizukiTakanashi\Hew\DX21_default_class2\EnemyNormalManagement.cpp(59,18): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
+  PlayerEnemyNormalCollision.cpp
+  game.cpp
+  player.cpp
+  scene.cpp
+  コードを生成中...
+  sample.vcxproj -> C:\Users\zatsu\source\repos\MizukiTakanashi\Hew\DX21_default_class2\x64\Debug\sample.exe
