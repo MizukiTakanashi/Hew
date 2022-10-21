@@ -23,5 +23,5 @@ void BG::DrawBG()const
 		GetTexture(m_tex_num));
 
 	Sprite::DrawSpriteUVStart(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2,
-		SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), m_start_uv_x, 0.0f, 1.0f, 1.0f);
+		SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f, D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), 0.0f, m_start_uv_y, 1.0f, 1.0f);
 }

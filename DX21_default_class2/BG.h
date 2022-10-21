@@ -21,7 +21,7 @@ public:
 
 private:
 	int m_tex_num = 0;
-	float m_start_uv_x = 0.0f;
+	float m_start_uv_y = 0.0f;
 
 public:
 	BG() {}		//デフォルトコンストラクタ
@@ -32,7 +32,7 @@ public:
 	~BG() {}	//デストラクタ
 
 	//更新処理
-	void Update() { m_start_uv_x += UV_SPEED; }
+	void Update() { m_start_uv_y -= UV_SPEED; }
 
 	//描画処理
 	void DrawBG()const;
