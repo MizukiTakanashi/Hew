@@ -20,7 +20,7 @@ const float EnemyNormal::SPEED = 1.5f;
 void EnemyNormal::Update(void)
 {
 	//Ž~‚Ü‚éêŠ‚Ü‚ÅˆÚ“®‚·‚é
-	if (GameObject::GetPos().y > STOP_POS_Y) {
+	if (GameObject::GetPos().y < STOP_POS_Y) {
 		GameObject::MovePos(D3DXVECTOR2(0.0f, SPEED));
 	}
 
