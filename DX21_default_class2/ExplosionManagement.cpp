@@ -54,4 +54,5 @@ void ExplosionManagement::SetExplosion(const D3DXVECTOR2& pos)
 	m_ExplosionNum++;
 
 	PlaySound(m_SE, 0);
+	SetVolume(m_SE, 0.1f);
 }

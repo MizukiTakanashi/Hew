@@ -21,6 +21,7 @@ Game::Game()
 {
 	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);	//BGM再生
+	SetVolume(m_BGM, 0.1f);
 
 	m_pTexUseful = new TextureUseful[10];
 	m_pDrawObject = new DrawObject[10];
@@ -77,6 +78,7 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 {
 	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);	//BGM再生
+	SetVolume(m_BGM, 0.1f);
 
 	m_pTexUseful = new TextureUseful[10];
 	m_pDrawObject = new DrawObject[10];

@@ -53,6 +53,7 @@ void	InitTitle()
 	TitleObject.Rotate = 0.0;
 
 	PlaySound(g_TitleSoundNo, -1);	//BGMçƒê∂
+	SetVolume(g_TitleSoundNo, 0.1f);
 
 	g_p1Sprite = new Sprite;
 }

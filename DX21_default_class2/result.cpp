@@ -21,6 +21,7 @@ Result::Result()
 {
 	m_BGM = LoadSound((char*)"data\\BGM\\silky_sky_away (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);
+	SetVolume(m_BGM, 0.05f);
 
 	m_pTexUse = new TextureUseful((char*)"data\\texture\\result.png");
 	m_pDrawOb = new DrawObject(*m_pTexUse);
@@ -34,6 +35,8 @@ Result::Result(Number * pNumber):m_pNumber(pNumber)
 {
 	m_BGM = LoadSound((char*)"data\\BGM\\silky_sky_away (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);
+	SetVolume(m_BGM, 0.05f);
+
 
 	m_pTexUse = new TextureUseful((char*)"data\\texture\\result.png");
 	m_pDrawOb = new DrawObject(*m_pTexUse);
