@@ -160,6 +160,7 @@
     <ClInclude Include="bullet.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="DrawObject.h" />
+    <ClInclude Include="enemyitem.h" />
     <ClInclude Include="EnemyNormal.h" />
     <ClInclude Include="EnemyNormalManagement.h" />
     <ClInclude Include="EnemySetPos.h" />
@@ -174,6 +175,8 @@
     <ClInclude Include="BG.h" />
     <ClInclude Include="PlayerEnemyNormalCollision.h" />
     <ClInclude Include="PlayerHP.h" />
+    <ClInclude Include="playerleft.h" />
+    <ClInclude Include="playerright.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="result.h" />
     <ClInclude Include="scene.h" />
