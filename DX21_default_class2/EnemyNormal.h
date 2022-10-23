@@ -34,6 +34,7 @@ private:
 	//メンバ変数
 	int m_bullet_count = 0;		//弾を発射するまでのカウント
 	bool m_bullet_make = false;	//弾を作るか否か
+	bool m_enemyitem_make = false;	//アイテムを作るか否か
 
 public:
 	EnemyNormal(){}		//デフォルトコンストラクタ
@@ -51,6 +52,12 @@ public:
 
 	//弾を作った
 	void BulletMake() { m_bullet_make = false; }
+
+	//敵のアイテムを作るか否かのフラグを返す
+	bool GetFlagEnemyItemMake()const { return m_enemyitem_make; }
+
+	//敵のアイテムを作った
+	void EnemyItemMake() { m_enemyitem_make = false; }
 };
 
 #endif // !_ENEMY_NORMAL_H_

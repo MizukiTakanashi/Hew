@@ -17,11 +17,12 @@ const float EnemyNormalManagement::BULLET_SPEED = 2.5f;
 //=========================
 // 引数付きコンストラクタ
 //=========================
-EnemyNormalManagement::EnemyNormalManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, EnemySetPos& pEnemySetPos)
-	:m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
+EnemyNormalManagement::EnemyNormalManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, DrawObject& pDrawObject3, EnemySetPos& pEnemySetPos)
+	:m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2), m_pDrawObjectEnemyItem(pDrawObject3), m_pEnemySetPos(pEnemySetPos)
 {
 	m_pEnemyNormal = new EnemyNormal[MAX_NUM];
 	m_pBullet = new Bullet[MAX_NUM];
+	m_pEnemyItem = new EnemyItem[MAX_NUM];
 }
 
 //======================

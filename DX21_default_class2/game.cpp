@@ -45,7 +45,7 @@ Game::Game()
 	m_pTexUseful[1].SetTextureName((char*)"data\\texture\\eilian.png");
 	m_pDrawObject[1].SetDrawObject(m_pTexUseful[1]);
 
-	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[1], m_pDrawObject[2],
+	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[1], m_pDrawObject[2],  m_pDrawObject[3],
 		*m_pEnemySetPos);
 
 	//プレイヤーのHP
@@ -102,7 +102,7 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	m_pTexUseful[1].SetTextureName((char*)"data\\texture\\eilian.png");
 	m_pDrawObject[1].SetDrawObject(m_pTexUseful[1]);
 
-	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[1], m_pDrawObject[2],
+	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[1], m_pDrawObject[2], m_pDrawObject[3],
 		*m_pEnemySetPos);
 
 	//プレイヤーのHP
