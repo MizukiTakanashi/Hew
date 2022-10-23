@@ -27,7 +27,7 @@ Game::Game()
 	m_pDrawObject = new DrawObject[10];
 
 	//”wŒi‚Ì‰Šú‰»ˆ—
-	m_pBG = new BG((char*)"data\\texture\\game_BG.jpg");	
+	m_pBG = new BG((char*)"data\\texture\\bg_uchu_space.jpg");	
 
 	//’e
 	m_pTexUseful[2].SetTextureName((char*)"data\\texture\\bullet00.png");
@@ -84,7 +84,7 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	m_pDrawObject = new DrawObject[10];
 
 	//”wŒi‚Ì‰Šú‰»ˆ—
-	m_pBG = new BG((char*)"data\\texture\\game_BG.jpg");
+	m_pBG = new BG((char*)"data\\texture\\bg_uchu_space.jpg");
 
 	//’e
 	m_pTexUseful[2].SetTextureName((char*)"data\\texture\\bullet00.png");
