@@ -34,7 +34,7 @@ Game::Game()
 	m_pDrawObject[2].SetDrawObject(m_pTexUseful[2]);
 
 	//プレイヤー
-	m_pTexUseful[0].SetTextureName((char*)"data\\texture\\player.png");
+	m_pTexUseful[0].SetTextureName((char*)"data\\texture\\player2.png");
 	m_pDrawObject[0].SetDrawObject(m_pTexUseful[0]);
 	m_pPlayer = new Player(m_pDrawObject[0], m_pDrawObject[2]);
 
@@ -91,7 +91,7 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	m_pDrawObject[2].SetDrawObject(m_pTexUseful[2]);
 
 	//プレイヤー
-	m_pTexUseful[0].SetTextureName((char*)"data\\texture\\player.png");
+	m_pTexUseful[0].SetTextureName((char*)"data\\texture\\player2.png");
 	m_pDrawObject[0].SetDrawObject(m_pTexUseful[0]);
 	m_pPlayer = new Player(m_pDrawObject[0], m_pDrawObject[2]);
 
