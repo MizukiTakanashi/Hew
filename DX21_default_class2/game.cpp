@@ -42,7 +42,7 @@ Game::Game()
 	m_pEnemySetPos = new EnemySetPos;
 
 	//ïÅí ÇÃìG
-	m_pTexUseful[1].SetTextureName((char*)"data\\texture\\enemy.png");
+	m_pTexUseful[1].SetTextureName((char*)"data\\texture\\eilian.png");
 	m_pDrawObject[1].SetDrawObject(m_pTexUseful[1]);
 
 	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[1], m_pDrawObject[2],
@@ -99,7 +99,7 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	m_pEnemySetPos = new EnemySetPos;
 
 	//ïÅí ÇÃìG
-	m_pTexUseful[1].SetTextureName((char*)"data\\texture\\enemy.png");
+	m_pTexUseful[1].SetTextureName((char*)"data\\texture\\eilian.png");
 	m_pDrawObject[1].SetDrawObject(m_pTexUseful[1]);
 
 	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[1], m_pDrawObject[2],
