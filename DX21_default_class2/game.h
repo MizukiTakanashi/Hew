@@ -52,8 +52,8 @@ private:
 
 	PlayerEnemyNormalCollision* m_pPlayerEnemyNormalCol = nullptr;
 
-	PlayerLeft* m_pplayerleft = nullptr;
-	PlayerRight* m_pplayerright = nullptr;
+	PlayerLeft* m_pPlayerLeft = nullptr;
+	PlayerRight* m_pPlayerRight = nullptr;
 
 public:
 	Game();	//デフォルトコンストラクタ
