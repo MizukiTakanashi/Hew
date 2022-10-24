@@ -14,6 +14,7 @@
 #include "player.h"
 #include "enemyitem.h"
 #include "EnemySetPos.h"
+
 class EnemyItemManagement
 {
 	//定数
@@ -23,8 +24,8 @@ private:
 	static const int MAX_NUM = 10;			//敵の最大数
 	//cppで初期化
 	//敵のアイテム
-	static const float ENEMYITEM_SIZE_X;		//サイズX
-	static const float ENEMYITEM_SIZE_Y;		//サイズY
+	static const float ENEMYITEM_SIZE_X;	//サイズX
+	static const float ENEMYITEM_SIZE_Y;	//サイズY
 	static const float ENEMYITEM_SPEED;		//スピード
 
 	//メンバ変数
@@ -32,11 +33,11 @@ private:
 	DrawObject m_pDrawObjectEnemyItem;
 	EnemySetPos m_pEnemySetPos;
 
-	int m_enemy_num = 0;	//敵の数
-	int m_bullet_num = 0;	//弾の数
+	int m_enemy_num = 0;		//敵の数
+	int m_bullet_num = 0;		//弾の数
 	int m_enemyitem_num = 0;	//敵のアイテムの数
 
-	int m_count = 0;		//敵の出現速度
+	int m_count = 0;			//敵の出現速度
 
 public:
 	//デフォルトコンストラクタ
