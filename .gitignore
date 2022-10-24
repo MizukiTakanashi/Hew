@@ -2,8 +2,8 @@
 *.d
 
 *.vs/
-*.suo
-*.db
+*.suo/
+*.db/
 
 # Compiled Object files
 *.slo
