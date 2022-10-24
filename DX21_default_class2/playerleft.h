@@ -21,13 +21,13 @@ public:
 
 	//引数付きコンストラクタ
 	PlayerLeft(DrawObject& pDrawObject, const D3DXVECTOR2& pos, float rot)
-		:GameObject(pDrawObject, pos, D3DXVECTOR2(3.0f, 50.0f), rot) {}
+		:GameObject(pDrawObject, pos, D3DXVECTOR2(30.0f, 50.0f), rot) {}
 
 	virtual ~PlayerLeft() {}	//デストラクタ
 
 
 	//更新処理
-	void Update(D3DXVECTOR2 pos) {  }
+	void Update(D3DXVECTOR2 pos) { SetPos(pos - D3DXVECTOR2(30.0f, 0.0f)); }
 
 };
 

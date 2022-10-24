@@ -27,7 +27,7 @@ public:
 
 
 	//XVˆ—
-	void Update(D3DXVECTOR2 pos) {  }
+	void Update(D3DXVECTOR2 pos) { SetPos(pos + D3DXVECTOR2(30.0f, 0.0f)); }
 
 };
 
