@@ -10,8 +10,8 @@
 //==========================
 // ’è”‚Ì‰Šú‰»
 //==========================
-const float Player::BOX_W = 50.0f;
-const float Player::BOX_H = 50.0f;
+const float Player::BOX_W = 75.0f;
+const float Player::BOX_H = 75.0f;
 const float Player::START_POS_X = (SCREEN_WIDTH / 2);
 const float Player::START_POS_Y = (SCREEN_HEIGHT / 2);
 const float Player::SPEED_X = 20.0f;
