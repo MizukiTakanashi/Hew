@@ -19,7 +19,7 @@ const float Player::SPEED_Y = 20.0f;
 const float Player::SPEED = 10.0f;
 const float Player::BULLET_SIZE_X = 40.0f;
 const float Player::BULLET_SIZE_Y = 40.0f;
-const float Player::BULLET_SPEED_X = -10.5f;
+const float Player::BULLET_SPEED_X = 0.0f;
 const float Player::BULLET_SPEED_Y = -10.5f;
 
 //======================
