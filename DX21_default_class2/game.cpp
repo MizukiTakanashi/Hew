@@ -38,6 +38,15 @@ Game::Game()
 	m_pDrawObject[0].SetDrawObject(m_pTexUseful[0]);
 	m_pPlayer = new Player(m_pDrawObject[0], m_pDrawObject[2]);
 
+	//プレイヤーの左右
+	m_pTexUseful[5].SetTextureName((char*)"data\\texture\\player2.png");
+	m_pDrawObject[6].SetDrawObject(m_pTexUseful[5]);
+	m_pplayerleft = new PlayerLeft();
+
+	m_pTexUseful[6].SetTextureName((char*)"data\\texture\\player2.png");
+	m_pDrawObject[7].SetDrawObject(m_pTexUseful[6]);
+	m_pplayerright = new PlayerRight();
+
 	//敵の配置場所
 	m_pEnemySetPos = new EnemySetPos;
 
@@ -95,6 +104,16 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	m_pDrawObject[0].SetDrawObject(m_pTexUseful[0]);
 	m_pPlayer = new Player(m_pDrawObject[0], m_pDrawObject[2]);
 
+	//プレイヤーの左右
+	m_pTexUseful[5].SetTextureName((char*)"data\\texture\\player2.png");
+	m_pDrawObject[6].SetDrawObject(m_pTexUseful[5]);
+	m_pplayerleft = new PlayerLeft();
+
+	m_pTexUseful[6].SetTextureName((char*)"data\\texture\\player2.png");
+	m_pDrawObject[7].SetDrawObject(m_pTexUseful[6]);
+	m_pplayerright = new PlayerRight();
+
+
 	//敵の配置場所
 	m_pEnemySetPos = new EnemySetPos;
 
@@ -141,6 +160,8 @@ Game::~Game()
 	delete m_pEnemyNormalManagement;
 	delete m_pPlayerHP;
 	delete m_pPlayer;
+	delete m_pplayerleft;
+	delete m_pplayerright;
 	delete m_pBG;
 
 	//そのほか
@@ -159,6 +180,8 @@ void Game::Update(void)
 	m_pBG->Update();
 
 	m_pPlayer->Update();
+	m_pplayerleft->Update(m_pPlayer->GetPos());
+	m_pplayerright->Update(m_pPlayer->GetPos());
 
 	m_pExplosionManagement->Update();
 
@@ -193,6 +216,8 @@ void Game::Draw(void)const
 {
 	m_pBG->DrawBG();
 	m_pPlayer->Draw();
+	m_pplayerleft->Draw();
+	m_pplayerright->Draw();
 	m_pEnemyNormalManagement->Draw();
 
 	m_pPlayer->DrawBullet();
