@@ -9,11 +9,8 @@
 #define _ENEMY_ITEM_MANAGEMENT_H_
 
 #include "main.h"
-#include "EnemyNormal.h"
 #include "DrawObject.h"
-#include "player.h"
 #include "enemyitem.h"
-#include "EnemySetPos.h"
 
 class EnemyItemManagement
 {
@@ -31,13 +28,8 @@ private:
 	//メンバ変数
 	EnemyItem* m_pEnemyItem = nullptr;
 	DrawObject m_pDrawObjectEnemyItem;
-	EnemySetPos m_pEnemySetPos;
 
-	int m_enemy_num = 0;		//敵の数
-	int m_bullet_num = 0;		//弾の数
-	int m_enemyitem_num = 0;	//敵のアイテムの数
-
-	int m_count = 0;			//敵の出現速度
+	int m_enemyitem_num = 0;				//敵のアイテムの数
 
 public:
 	//デフォルトコンストラクタ
@@ -46,7 +38,7 @@ public:
 	}
 
 	//引数付きコンストラクタ
-	EnemyItemManagement(DrawObject& pDrawObject3,EnemySetPos& pEnemySetPos);
+	EnemyItemManagement(DrawObject& pDrawObject3);
 
 	//更新処理
 	void Update(const D3DXVECTOR2& PlayerPos);

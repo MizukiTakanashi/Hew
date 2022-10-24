@@ -17,8 +17,8 @@ const float EnemyItemManagement::ENEMYITEM_SPEED = 2.5f;
 //=========================
 // 引数付きコンストラクタ
 //=========================
-EnemyItemManagement::EnemyItemManagement(DrawObject& pDrawObject3, EnemySetPos& pEnemySetPos) 
-	: m_pDrawObjectEnemyItem(pDrawObject3), m_pEnemySetPos(pEnemySetPos)
+EnemyItemManagement::EnemyItemManagement(DrawObject& pDrawObject3) 
+	: m_pDrawObjectEnemyItem(pDrawObject3)
 {
 	m_pEnemyItem = new EnemyItem[MAX_NUM];
 }
@@ -30,7 +30,7 @@ void EnemyItemManagement::Update(const D3DXVECTOR2& PlayerPos)
 {
 
 	//今いる敵のアイテムの処理
-	for (int i = 0; i < m_bullet_num; i++) {
+	for (int i = 0; i < m_enemyitem_num; i++) {
 		m_pEnemyItem[i].Update();
 		//画面外から出たら...
 		if (m_pEnemyItem[i].GetScreenOut()) {
@@ -56,8 +56,8 @@ void EnemyItemManagement::Draw(void)const
 //======================
 void EnemyItemManagement::DeleteEnemyItem(int index_num)
 {
-	for (int i = index_num; i < m_bullet_num - 1; i++) {
+	for (int i = index_num; i < m_enemyitem_num - 1; i++) {
 		m_pEnemyItem[i] = m_pEnemyItem[i + 1];
 	}
-	m_bullet_num--;
+	m_enemyitem_num--;
 }
