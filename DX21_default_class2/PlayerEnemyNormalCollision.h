@@ -16,10 +16,10 @@
 class PlayerEnemyNormalCollision
 {
 private:
-	Player* m_rPlayer;
-	EnemyNormalManagement* m_rEnemyNormalManagement;
-	ExplosionManagement* m_rExplosionManagement;
-	Number* m_pNumber;
+	Player* m_rPlayer = nullptr;
+	EnemyNormalManagement* m_rEnemyNormalManagement = nullptr;
+	ExplosionManagement* m_rExplosionManagement = nullptr;
+	Number* m_pNumber = nullptr;
 	bool m_PlayerEnemyNormalCol = false;	//プレイヤー自身と敵自身が当たっているかフラグ
 
 public:
