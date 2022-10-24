@@ -2,9 +2,6 @@
 *.d
 
 *.vs/
-*.suo
-*.db
-sample/
 
 # Compiled Object files
 *.slo
