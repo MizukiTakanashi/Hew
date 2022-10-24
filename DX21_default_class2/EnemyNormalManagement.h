@@ -14,7 +14,6 @@
 #include "DrawObject.h"
 #include "EnemySetPos.h"
 #include "player.h"
-#include "enemyitem.h"
 
 class EnemyNormalManagement
 {
@@ -31,10 +30,6 @@ private:
 	static const float BULLET_SIZE_Y;		//サイズY
 	static const float BULLET_SPEED;		//スピード
 
-	//敵のアイテム
-	static const float ENEMYITEM_SIZE_X;		//サイズX
-	static const float ENEMYITEM_SIZE_Y;		//サイズY
-	static const float ENEMYITEM_SPEED;		//スピード
 
 
 
@@ -50,10 +45,8 @@ private:
 	//メンバ変数
 	EnemyNormal* m_pEnemyNormal = nullptr;
 	Bullet* m_pBullet = nullptr;
-	EnemyItem* m_pEnemyItem = nullptr;
 	DrawObject m_pDrawObjectEnemy;
 	DrawObject m_pDrawObjectBullet;
-	DrawObject m_pDrawObjectEnemyItem;
 	EnemySetPos m_pEnemySetPos;
 
 	int m_enemy_num = 0;	//敵の数
@@ -67,11 +60,10 @@ public:
 	EnemyNormalManagement(){
 		m_pEnemyNormal = new EnemyNormal[MAX_NUM];
 		m_pBullet = new Bullet[MAX_NUM];
-		m_pEnemyItem = new EnemyItem[MAX_NUM];
 	}	
 
 	//引数付きコンストラクタ
-	EnemyNormalManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, DrawObject& pDrawObject3,
+	EnemyNormalManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2,
 		EnemySetPos& pEnemySetPos );
 
 	//更新処理
@@ -106,20 +98,7 @@ public:
 	//弾のサイズを返す
 	const D3DXVECTOR2& GetBulletSize(void)const { return m_pBullet[0].GetSize(); }
 
-	//=================================
-	// 敵のアイテム
-	// ================================
-	//指定した敵のアイテムを消す
-	void DeleteEnemyItem(int index_num);
 
-	//現在の敵のアイテムを返す
-	int GetEnemyItemNum(void)const { return m_EnemyItem_num; }
-
-	//指定した敵のアイテムの座標を返す
-	const D3DXVECTOR2& GetEnemyItemPos(int index_num)const { return m_pEnemyItem[index_num].GetPos(); }
-
-	//敵のアイテムのサイズを返す
-	const D3DXVECTOR2& GetEnemyItemSize(void)const { return m_pEnemyItem[0].GetSize(); }
 };
 
 #endif // !_ENEMY_NORMAL_MANAGEMENT_H_
