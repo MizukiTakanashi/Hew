@@ -37,7 +37,8 @@ private:
 	
 	static const float BULLET_SIZE_X;			//弾のサイズX
 	static const float BULLET_SIZE_Y;			//弾のサイズY
-	static const float BULLET_SPEED_Y;			//弾のスピードX
+	static const float BULLET_SPEED_X;			//弾のスピードX
+	static const float BULLET_SPEED_Y;			//弾のスピードY
 
 private:
 	Bullet* m_pBullet = nullptr;

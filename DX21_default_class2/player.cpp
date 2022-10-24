@@ -19,6 +19,7 @@ const float Player::SPEED_Y = 20.0f;
 const float Player::SPEED = 10.0f;
 const float Player::BULLET_SIZE_X = 40.0f;
 const float Player::BULLET_SIZE_Y = 40.0f;
+const float Player::BULLET_SPEED_X = -10.5f;
 const float Player::BULLET_SPEED_Y = -10.5f;
 
 //======================
@@ -69,7 +70,7 @@ void Player::Update()
 
 		if (m_BulletNum < BULLET_MAX_NUM) {
 			Bullet temp(m_BulletDrawObject, GameObject::GetPos(), D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y),
-				D3DXVECTOR2(0.0f, BULLET_SPEED_Y), 0.0f);
+				D3DXVECTOR2(BULLET_SPEED_X, BULLET_SPEED_Y), 0.0f);
 			m_pBullet[m_BulletNum] = temp;
 			m_BulletNum++;
 		}
