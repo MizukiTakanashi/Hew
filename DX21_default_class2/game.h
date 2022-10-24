@@ -19,6 +19,8 @@
 #include "ExplosionManagement.h"
 #include "PlayerEnemyNormalCollision.h"
 #include "number.h"
+#include "playerleft.h"
+#include "playerright.h"
 
 class Game
 {
@@ -49,6 +51,9 @@ private:
 	ExplosionManagement* m_pExplosionManagement = nullptr;
 
 	PlayerEnemyNormalCollision* m_pPlayerEnemyNormalCol = nullptr;
+
+	PlayerLeft* m_playerleft = nullptr;
+	PlayerRight* m_playerright = nullptr;
 
 public:
 	Game();	//デフォルトコンストラクタ
