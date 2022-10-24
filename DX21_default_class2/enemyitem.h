@@ -15,7 +15,6 @@ class EnemyItem :public GameObject
 public:
 	enum class EnemyItem_NUM :int
 	{
-		ENEMYITEM_NUM = 0,
 		ENEMYITEM_TYPE1,
 		ENEMYITEM_TYPE2,
 		ENEMYITEM_TYPE3,
@@ -24,9 +23,10 @@ public:
 		ENEMYITEM_TYPE6,
 		ENEMYITEM_TYPE7,
 		ENEMYITEM_TYPE8,
+		ENEMYITEM_TYPE_NUM,
 	};
 private:
-	enum EnemyItem_NUM m_TypeAttack = EnemyItem_NUM::ENEMYITEM_NUM;
+	enum EnemyItem_NUM m_TypeAttack = EnemyItem_NUM::ENEMYITEM_TYPE_NUM;
 	D3DXVECTOR2 m_mov = D3DXVECTOR2(0.0f, 0.0f);
 
 public:
