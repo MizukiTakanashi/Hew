@@ -107,11 +107,11 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	//プレイヤーの左右
 	m_pTexUseful[5].SetTextureName((char*)"data\\texture\\player2.png");
 	m_pDrawObject[6].SetDrawObject(m_pTexUseful[5]);
-	m_pplayerleft = new PlayerLeft();
+	m_pplayerleft = new PlayerLeft(m_pDrawObject[6], m_pPlayer->GetPos(), 0.0f);
 
 	m_pTexUseful[6].SetTextureName((char*)"data\\texture\\player2.png");
 	m_pDrawObject[7].SetDrawObject(m_pTexUseful[6]);
-	m_pplayerright = new PlayerRight();
+	m_pplayerright = new PlayerRight(m_pDrawObject[7], m_pPlayer->GetPos(), 0.0f);
 
 
 	//敵の配置場所
