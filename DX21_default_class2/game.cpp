@@ -34,16 +34,16 @@ Game::Game()
 	m_pDrawObject[2].SetDrawObject(m_pTexUseful[2]);
 
 	//プレイヤー
-	m_pTexUseful[0].SetTextureName((char*)"data\\texture\\player2.png");
+	m_pTexUseful[0].SetTextureName((char*)"data\\texture\\player.png");
 	m_pDrawObject[0].SetDrawObject(m_pTexUseful[0]);
 	m_pPlayer = new Player(m_pDrawObject[0], m_pDrawObject[2]);
 
 	//プレイヤーの左右
-	m_pTexUseful[5].SetTextureName((char*)"data\\texture\\player2.png");
+	m_pTexUseful[5].SetTextureName((char*)"data\\texture\\arm.png");
 	m_pDrawObject[6].SetDrawObject(m_pTexUseful[5]);
 	m_pPlayerLeft = new PlayerLeft();
 
-	m_pTexUseful[6].SetTextureName((char*)"data\\texture\\player2.png");
+	m_pTexUseful[6].SetTextureName((char*)"data\\texture\\arm.png");
 	m_pDrawObject[7].SetDrawObject(m_pTexUseful[6]);
 	m_pPlayerRight = new PlayerRight();
 
@@ -100,16 +100,16 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	m_pDrawObject[2].SetDrawObject(m_pTexUseful[2]);
 
 	//プレイヤー
-	m_pTexUseful[0].SetTextureName((char*)"data\\texture\\player2.png");
+	m_pTexUseful[0].SetTextureName((char*)"data\\texture\\player.png");
 	m_pDrawObject[0].SetDrawObject(m_pTexUseful[0]);
 	m_pPlayer = new Player(m_pDrawObject[0], m_pDrawObject[2]);
 
 	//プレイヤーの左右
-	m_pTexUseful[5].SetTextureName((char*)"data\\texture\\player2.png");
+	m_pTexUseful[5].SetTextureName((char*)"data\\texture\\arm.png");
 	m_pDrawObject[6].SetDrawObject(m_pTexUseful[5]);
 	m_pPlayerLeft = new PlayerLeft(m_pDrawObject[6], m_pPlayer->GetPos(), 0.0f);
 
-	m_pTexUseful[6].SetTextureName((char*)"data\\texture\\player2.png");
+	m_pTexUseful[6].SetTextureName((char*)"data\\texture\\arm.png");
 	m_pDrawObject[7].SetDrawObject(m_pTexUseful[6]);
 	m_pPlayerRight = new PlayerRight(m_pDrawObject[7], m_pPlayer->GetPos(), 0.0f);
 
