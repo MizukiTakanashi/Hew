@@ -12,7 +12,7 @@
 // ’è”‰Šú‰»
 //==========================
 const D3DXVECTOR2 Game::NUMBER_POS = D3DXVECTOR2(350.0f, 30.0f);
-const D3DXVECTOR2 Game::NUMBER_SIZE = D3DXVECTOR2(45.0f, 40.0f);
+const D3DXVECTOR2 Game::NUMBER_SIZE = D3DXVECTOR2(40.0f, 40.0f);
 
 //==========================
 // ‰Šú‰»ˆ—
