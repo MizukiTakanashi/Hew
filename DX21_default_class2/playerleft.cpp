@@ -10,11 +10,12 @@ const float PlayerLeft::SHOT_SPEED = 0.1f;
 
 void PlayerLeft::Update(D3DXVECTOR2 pos) 
 {
-	//  RƒL[‚ğ‰Ÿ‚·‚Æ˜r‚É‘•’…‚µ‚Ä‚¢‚é“G‚Ì’e‚ğ”­Ë‚·‚é
-	if (GetKeyboardTrigger(DIK_E))	// ’e‚ğ”­Ë‚³‚¹‚é
+	//  RƒL[‚ğ‰Ÿ‚·‚Æ˜r‚É‘•’…‚µ‚Ä‚¢‚é“G‚ğ”­Ë‚·‚é
+	if (GetKeyboardTrigger(DIK_E))	
 	{
-		m_shot = true;	// ’e‚ª”­Ë‚µ‚½
+		m_shot = true;	// ”­Ë‚µ‚½
 	}
+
 	// ”­Ë‚·‚é
 	if (m_shot)
 	{
