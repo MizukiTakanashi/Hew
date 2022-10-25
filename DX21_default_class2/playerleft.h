@@ -1,8 +1,8 @@
 #pragma once
 //=======================================
 // 自機の左(ヘッダ)
-// 作成日：2022/10/23
-// 作成者：恩田洋行
+// 作成日：2022/10/25
+// 作成者：小西 蓮
 //=======================================
 #ifndef PLAYER_LEFT
 #define PLAYER_LEFT
@@ -16,6 +16,12 @@ class PlayerLeft :public GameObject
 {
 private:
 
+	// 定数
+	static const float SHOT_SPEED;	// 弾の発射速度
+
+	// メンバ変数
+	bool m_shot = false; // 発射したかどうか
+
 public:
 	PlayerLeft() {}	//デフォルトコンストラクタ
 
@@ -27,7 +33,7 @@ public:
 
 
 	//更新処理
-	void Update(D3DXVECTOR2 pos) { SetPos(pos - D3DXVECTOR2(30.0f, 0.0f)); }
+	void Update(D3DXVECTOR2 pos);
 
 };
 
