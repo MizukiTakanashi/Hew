@@ -37,7 +37,7 @@ void PlayerRight::Update(D3DXVECTOR2 pos)
 
 }
 
-void PlayerRight::RightDraw(void)
+void PlayerRight::RightDraw(void)const
 {
 	if (m_type != TYPE::TYPE_NONE)
 	{
