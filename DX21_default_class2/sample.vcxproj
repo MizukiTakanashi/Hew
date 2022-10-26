@@ -147,6 +147,7 @@
     <ClCompile Include="PlayerEnemyNormalCollision.cpp" />
     <ClCompile Include="PlayerHP.cpp" />
     <ClCompile Include="playerleft.cpp" />
+    <ClCompile Include="playerright.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="result.cpp" />
     <ClCompile Include="scene.cpp" />
