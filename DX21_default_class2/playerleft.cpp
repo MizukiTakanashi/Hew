@@ -15,16 +15,29 @@ void PlayerLeft::Update(D3DXVECTOR2 pos)
 	{
 		m_shot = true;	// 弾が発射した
 	}
+
 	// 発射する
 	if (m_shot)
 	{
 		MovePos(D3DXVECTOR2(0.0f, -SHOT_SPEED));	// 動く際に必要
-
-		if (GetScreenOut());
+		
+		// 画面外に出たらTYPEを元に戻す
+		if (GetScreenOut())
+		{
+			m_type = TYPE::TYPE_NONE;
+		}
 	}
 	else
 	{
 		// 移動
 		SetPos(pos - D3DXVECTOR2(30.0f, 0.0f));
+	}
+}
+
+void PlayerLeft::LeftDraw(void)
+{
+	if (m_type != TYPE::TYPE_NONE)
+	{
+		LeftDraw();
 	}
 }
