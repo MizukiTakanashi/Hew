@@ -37,13 +37,13 @@ void Player::Update()
 	if (GetKeyboardPress(DIK_S)) {
 		temp.y += SPEED_Y;
 	}
-	//‰E–îˆó‚ª‰Ÿ‚³‚ê‚½‚ç
-	if (GetKeyboardPress(DIK_S)) {
-		temp.x += SPEED_X;
+	//¶–îˆó‚ª‰Ÿ‚³‚ê‚½‚ç
+	if (GetKeyboardPress(DIK_A)) {
+		temp.x -= SPEED_X;
 	}
 	//‰E–îˆó‚ª‰Ÿ‚³‚ê‚½‚ç
 	if (GetKeyboardPress(DIK_D)) {
-		temp.x -= SPEED_X;
+		temp.x += SPEED_X;
 	}
 
 	//³‹K‰»
