@@ -34,7 +34,7 @@ void PlayerLeft::Update(D3DXVECTOR2 pos)
 	}
 }
 
-void PlayerLeft::LeftDraw(void)
+void PlayerLeft::LeftDraw(void)const
 {
 	if (m_type != TYPE::TYPE_NONE)
 	{
