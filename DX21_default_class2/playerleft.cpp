@@ -38,6 +38,6 @@ void PlayerLeft::LeftDraw(void)
 {
 	if (m_type != TYPE::TYPE_NONE)
 	{
-		LeftDraw();
+		Draw();
 	}
 }

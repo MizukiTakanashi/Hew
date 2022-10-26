@@ -24,7 +24,7 @@ void PlayerRight::Update(D3DXVECTOR2 pos)
 		MovePos(D3DXVECTOR2(0.0f, -SHOT_SPEED));
 
 		//âÊñ äOÇ…èoÇΩÇÁTYPEÇå≥Ç…ñﬂÇ∑
-		if (GetScreenOut());
+		if (GetScreenOut())
 		{
 			m_type = TYPE::TYPE_NONE;
 		}
@@ -41,6 +41,6 @@ void PlayerRight::RightDraw(void)
 {
 	if (m_type != TYPE::TYPE_NONE)
 	{
-		RightDraw();
+		Draw();
 	}
 }

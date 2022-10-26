@@ -38,7 +38,7 @@ private:
 
 	//メンバー変数
 	bool m_shot = false;	//発射したか否か
-	TYPE m_type = TYPE::TYPE1;	//ついた敵のタイプ
+	TYPE m_type = TYPE::TYPE_NONE;	//ついた敵のタイプ
 
 
 

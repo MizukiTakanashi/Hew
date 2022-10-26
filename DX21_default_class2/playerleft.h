@@ -39,7 +39,7 @@ private:
 
 	// メンバ変数
 	bool m_shot = false; // 発射したかどうか
-	TYPE m_type = TYPE::TYPE1; // 付いた敵のタイプ
+	TYPE m_type = TYPE::TYPE_NONE; // 付いた敵のタイプ
 
 
 public:
