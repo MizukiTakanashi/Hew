@@ -4,8 +4,8 @@
 // çÏê¨ì˙ÅF2022/10/25
 // çÏê¨é“ÅFè¨êº ò@
 //=======================================
-#ifndef PLAYER_LEFT
-#define PLAYER_LEFT
+#ifndef PLAYER_LEFT_H_
+#define PLAYER_LEFT_H_
 
 
 
@@ -59,4 +59,4 @@ public:
 	void LeftDraw(void);
 };
 
-#endif // !PLAYER_LEFT
+#endif // !PLAYER_LEFT_H_

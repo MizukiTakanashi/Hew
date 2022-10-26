@@ -4,8 +4,8 @@
 // 作成日：2022/10/23
 // 作成者：恩田洋行
 //=======================================
-#ifndef PLAYER_RIGHT
-#define PLAYER_RIGHT
+#ifndef PLAYER_RIGHT_H_
+#define PLAYER_RIGHT_H_
 
 
 
@@ -59,4 +59,4 @@ public:
 	void RightDraw(void);
 };
 
-#endif // !PLAYER_RIGHT
+#endif // !PLAYER_RIGHT_H_

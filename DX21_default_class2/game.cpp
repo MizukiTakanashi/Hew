@@ -217,6 +217,10 @@ void Game::Draw(void)const
 	m_pBG->DrawBG();
 	m_pPlayer->Draw();
 
+	//プレイヤーの腕の描画処理
+	m_pPlayerLeft->LeftDraw();
+	m_pPlayerRight->RightDraw();
+
 	m_pEnemyNormalManagement->Draw();
 
 	m_pPlayer->DrawBullet();
