@@ -216,7 +216,7 @@ void Game::Draw(void)const
 {
 	m_pBG->DrawBG();
 	m_pPlayer->Draw();
-	m_pPlayerLeft->Draw();
+	m_pPlayerLeft->LeftDraw();
 	m_pPlayerRight->Draw();
 	m_pEnemyNormalManagement->Draw();
 
