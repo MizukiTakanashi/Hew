@@ -36,6 +36,10 @@ public:
 	//座標を動かす
 	void MovePos(const D3DXVECTOR2& mov) { m_pos += mov; }
 
+
+	void SetDrawObject(DrawObject& pDrawObject) { m_pDrawObject = pDrawObject; }
+
+
 	//座標をセット
 	void SetPos(const D3DXVECTOR2& pos) { m_pos = pos; }
 

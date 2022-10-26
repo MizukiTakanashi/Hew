@@ -30,19 +30,19 @@ void Player::Update()
 	D3DXVECTOR2 temp = D3DXVECTOR2(0.0f, 0.0f);
 
 	//ã–îˆó‚ª‰Ÿ‚³‚ê‚½‚ç
-	if (GetKeyboardPress(DIK_UP)) {
+	if (GetKeyboardPress(DIK_W)) {
 		temp.y -= SPEED_Y;
 	}
 	//‰º–îˆó‚ª‰Ÿ‚³‚ê‚½‚ç
-	if (GetKeyboardPress(DIK_DOWN)) {
+	if (GetKeyboardPress(DIK_S)) {
 		temp.y += SPEED_Y;
 	}
 	//‰E–îˆó‚ª‰Ÿ‚³‚ê‚½‚ç
-	if (GetKeyboardPress(DIK_RIGHT)) {
+	if (GetKeyboardPress(DIK_D)) {
 		temp.x += SPEED_X;
 	}
 	//‰E–îˆó‚ª‰Ÿ‚³‚ê‚½‚ç
-	if (GetKeyboardPress(DIK_LEFT)) {
+	if (GetKeyboardPress(DIK_A)) {
 		temp.x -= SPEED_X;
 	}
 
