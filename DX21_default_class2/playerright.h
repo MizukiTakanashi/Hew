@@ -14,8 +14,34 @@
 
 class PlayerRight :public GameObject
 {
+public:
+
+	//腕につく敵の処理
+	enum class TYPE :int
+	{
+		TYPE_NONE,	//	何もついていない
+		TYPE1,
+		TYPE2,
+		TYPE3,
+		TYPE4,
+		TYPE5,
+		TYPE6,
+		TYPE7,
+		TYPE8,
+		TYPE_NUM,
+	};
+
+
 private:
-	
+	//定数
+	static const float SHOT_SPEED;	//発射スピード
+
+	//メンバー変数
+	bool m_shot = false;	//発射したか否か
+	TYPE m_type = TYPE::TYPE1;	//ついた敵のタイプ
+
+
+
 public:
 	PlayerRight() {}	//デフォルトコンストラクタ
 
@@ -27,8 +53,10 @@ public:
 
 
 	//更新処理
-	void Update(D3DXVECTOR2 pos) { SetPos(pos + D3DXVECTOR2(30.0f, 0.0f)); }
+	void Update(D3DXVECTOR2 pos);
 
+	//描画処理
+	void RightDraw(void);
 };
 
 #endif // !PLAYER_RIGHT
