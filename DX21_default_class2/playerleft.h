@@ -56,7 +56,13 @@ public:
 	void Update(D3DXVECTOR2 pos);
 
 	// •`‰æˆ—
-	void LeftDraw(void);
+	void LeftDraw(void)const;
+
+	// ˜r‚Ìƒ^ƒCƒv‚ğİ’è
+	void SetType(int type)
+	{
+		m_type = (TYPE)type;
+	}
 };
 
 #endif // !PLAYER_LEFT_H_
