@@ -14,6 +14,24 @@
 
 class PlayerLeft :public GameObject
 {
+public:
+
+	// 腕に着く敵の種類
+	enum class TYPE :int
+	{
+		TYPE_NONE,	// 何も付いていない
+		TYPE1,
+		TYPE2,
+		TYPE3,
+		TYPE4,
+		TYPE5,
+		TYPE6,
+		TYPE7,
+		TYPE8,
+		TYPE_NUM,
+	};
+
+
 private:
 
 	// 定数
@@ -21,6 +39,8 @@ private:
 
 	// メンバ変数
 	bool m_shot = false; // 発射したかどうか
+	TYPE m_type = TYPE::TYPE1; // 付いた敵のタイプ
+
 
 public:
 	PlayerLeft() {}	//デフォルトコンストラクタ
@@ -35,6 +55,8 @@ public:
 	//更新処理
 	void Update(D3DXVECTOR2 pos);
 
+	// 描画処理
+	void LeftDraw(void);
 };
 
 #endif // !PLAYER_LEFT
