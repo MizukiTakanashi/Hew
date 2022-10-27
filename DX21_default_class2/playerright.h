@@ -7,16 +7,14 @@
 #ifndef PLAYER_RIGHT_H_
 #define PLAYER_RIGHT_H_
 
-
-
 #include "GameObject.h"
 #include "DrawObject.h"
 
 class PlayerRight :public GameObject
 {
+//定数
 public:
-
-	//腕につく敵の処理
+	//腕につく敵のタイプ
 	enum class TYPE :int
 	{
 		TYPE_NONE,	//	何もついていない
@@ -31,19 +29,20 @@ public:
 		TYPE_NUM,
 	};
 
-
 private:
-	//定数
+	//cppで初期化
 	static const float SHOT_SPEED;	//発射スピード
 
-	//メンバー変数
-	bool m_shot = false;	//発射したか否か
+
+//メンバ変数
+private:
+	bool m_shot = false;			//発射したか否か
 	TYPE m_type = TYPE::TYPE_NONE;	//ついた敵のタイプ
 
 
-
+//メンバ関数
 public:
-	PlayerRight() {}	//デフォルトコンストラクタ
+	PlayerRight() {}			//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
 	PlayerRight(DrawObject& pDrawObject, const D3DXVECTOR2& pos, float rot)
@@ -51,18 +50,14 @@ public:
 
 	virtual ~PlayerRight() {}	//デストラクタ
 
-
 	//更新処理
-	void Update(D3DXVECTOR2 pos);
+	void Update(const D3DXVECTOR2& pos);
 
 	//描画処理
 	void RightDraw(void)const;
 
 	//腕のタイプを設定
-	void SetType(int type)
-	{
-		m_type = (TYPE)type;
-	}
+	void SetType(int type){ m_type = (TYPE)type; }
 };
 
 #endif // !PLAYER_RIGHT_H_

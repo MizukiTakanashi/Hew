@@ -6,12 +6,13 @@
 #include "playerright.h"
 #include "input.h"
 
+//==========================
+// ’è”‚Ì‰Šú‰»
+//==========================
 const float PlayerRight::SHOT_SPEED = 0.1f;
 
-void PlayerRight::Update(D3DXVECTOR2 pos)
+void PlayerRight::Update(const D3DXVECTOR2& pos)
 {
-
-
 	//R‚ğ‰Ÿ‚µ‚½‚ç”­Ë
 	if (GetKeyboardTrigger(DIK_R))
 	{
@@ -39,6 +40,7 @@ void PlayerRight::Update(D3DXVECTOR2 pos)
 
 void PlayerRight::RightDraw(void)const
 {
+	//˜r‚É‚È‚É‚©‚Â‚¢‚Ä‚¢‚ê‚Î•`‰æ
 	if (m_type != TYPE::TYPE_NONE)
 	{
 		Draw();

@@ -7,15 +7,13 @@
 #ifndef PLAYER_LEFT_H_
 #define PLAYER_LEFT_H_
 
-
-
 #include "GameObject.h"
 #include "DrawObject.h"
 
 class PlayerLeft :public GameObject
 {
+//定数
 public:
-
 	// 腕に着く敵の種類
 	enum class TYPE :int
 	{
@@ -31,17 +29,18 @@ public:
 		TYPE_NUM,
 	};
 
-
 private:
-
-	// 定数
+	//cppで初期化
 	static const float SHOT_SPEED;	// 弾の発射速度
 
-	// メンバ変数
-	bool m_shot = false; // 発射したかどうか
-	TYPE m_type = TYPE::TYPE_NONE; // 付いた敵のタイプ
+
+// メンバ変数
+private:
+	bool m_shot = false;			// 発射したかどうか
+	TYPE m_type = TYPE::TYPE_NONE;	// 付いた敵のタイプ
 
 
+//メンバ関数
 public:
 	PlayerLeft() {}	//デフォルトコンストラクタ
 
@@ -51,18 +50,14 @@ public:
 
 	virtual ~PlayerLeft() {}	//デストラクタ
 
-
 	//更新処理
-	void Update(D3DXVECTOR2 pos);
+	void Update(const D3DXVECTOR2& pos);
 
 	// 描画処理
 	void LeftDraw(void)const;
 
 	// 腕のタイプを設定
-	void SetType(int type)
-	{
-		m_type = (TYPE)type;
-	}
+	void SetType(int type){	m_type = (TYPE)type; }
 };
 
 #endif // !PLAYER_LEFT_H_
