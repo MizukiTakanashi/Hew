@@ -13,9 +13,9 @@ const float EnemyNormal::SIZE_X = 50.0f;
 const float EnemyNormal::SIZE_Y = 50.0f;
 const float EnemyNormal::STOP_POS_Y = 100.0f;
 //private
-const float EnemyNormal::SPEED_X = 2.5f;
+const float EnemyNormal::SPEED_X = 1.5f;
 const float EnemyNormal::SPEED_Y = 2.5f;
-const float EnemyNormal::RANGE = 10.0f;
+const float EnemyNormal::RANGE = 20.0f;
 
 //======================
 // çXêVèàóù
