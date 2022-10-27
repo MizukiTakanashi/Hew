@@ -17,9 +17,9 @@ public:
 
 	~ScreenOut(){}	//デストラクタ
 
-	static bool GetScreenOut(D3DXVECTOR2 pos, D3DXVECTOR2 size);
+	static bool GetScreenOut(const D3DXVECTOR2& pos, const D3DXVECTOR2& size);
 
-	static void GetScreenIn(D3DXVECTOR2 pos, D3DXVECTOR2 size);
+	static const D3DXVECTOR2& GetScreenIn(const D3DXVECTOR2& pos, const D3DXVECTOR2& size);
 };
 
 #endif // !_SCREEN_OUT_H_

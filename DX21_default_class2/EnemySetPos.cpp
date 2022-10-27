@@ -5,12 +5,18 @@
 //=======================================
 #include "EnemySetPos.h"
 #include "collision.h"
+#include "ScreenOut.h"
 
 //==========================
 // 敵を配置
 //==========================
 bool EnemySetPos::SetEnemy(const D3DXVECTOR2& pos, const D3DXVECTOR2& size)
 {
+	//敵が画面外に出そうになったら配置できない
+	if (ScreenOut::GetScreenOut(pos, size)) {
+		return false;
+	}
+
 	for (int i = 0; i < m_index_num; i++) {
 		//他の敵と当たっていたら配置できない
 		if (Collision::ColBox(pos, m_pos[i], size, m_size[i])) {

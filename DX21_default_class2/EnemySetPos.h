@@ -28,6 +28,7 @@ public:
 	~EnemySetPos(){}	//デストラクタ
 
 	//敵を配置
+	// pos：敵の初期位置　size：敵の可動範囲
 	bool SetEnemy(const D3DXVECTOR2& pos, const D3DXVECTOR2& size);
 
 	//敵を削除

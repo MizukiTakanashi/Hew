@@ -8,7 +8,7 @@
 //==========================
 // 画面外に出たか否か
 //==========================
-bool ScreenOut::GetScreenOut(D3DXVECTOR2 pos, D3DXVECTOR2 size)
+bool ScreenOut::GetScreenOut(const D3DXVECTOR2& pos, const D3DXVECTOR2& size)
 {
 	if (pos.x - size.x / 2 > SCREEN_WIDTH ||
 		pos.x + size.x / 2 < 0 ||
@@ -23,19 +23,24 @@ bool ScreenOut::GetScreenOut(D3DXVECTOR2 pos, D3DXVECTOR2 size)
 //==========================
 // 画面外に出たら戻す
 //==========================
-void ScreenOut::GetScreenIn(D3DXVECTOR2 pos, D3DXVECTOR2 size)
+const D3DXVECTOR2& ScreenOut::GetScreenIn(const D3DXVECTOR2& pos, const D3DXVECTOR2& size)
 {
+	D3DXVECTOR2 result_pos = pos;
+
 	if (pos.x + size.x / 2 > SCREEN_WIDTH) {
-		pos.x = SCREEN_WIDTH - size.x / 2;
+		result_pos.x = SCREEN_WIDTH - size.x / 2;
 	}
 	else if (pos.x - size.x / 2 < 0) {
-		pos.x = size.x / 2;
+		result_pos.x = size.x / 2;
 	}
 
 	if (pos.y + size.y / 2 > SCREEN_HEIGHT) {
-		pos.y = SCREEN_HEIGHT - size.y / 2;
+		result_pos.y = SCREEN_HEIGHT - size.y / 2;
 	}
 	else if (pos.y - size.y / 2 < 0) {
-		pos.y = size.y / 2;
+		result_pos.y = size.y / 2;
 	}
+
+	//最終的に出た座標を返す
+	return result_pos;
 }
