@@ -12,7 +12,11 @@
 #include "EnemyNormalManagement.h"
 #include "ExplosionManagement.h"
 #include "number.h"
-
+#include "ItemManagement.h"
+	//敵のアイテム
+static const float ENEMYITEM_SIZE_X;	//サイズX
+static const float ENEMYITEM_SIZE_Y;	//サイズY
+static const float ENEMYITEM_SPEED;		//スピード
 class PlayerEnemyNormalCollision
 {
 private:
@@ -20,6 +24,7 @@ private:
 	EnemyNormalManagement* m_rEnemyNormalManagement;
 	ExplosionManagement* m_rExplosionManagement;
 	Number* m_pNumber;
+	ItemManagement* m_rItemManagement;
 	bool m_PlayerEnemyNormalCol = false;	//プレイヤー自身と敵自身が当たっているかフラグ
 
 public:
@@ -27,9 +32,9 @@ public:
 
 	//引数付きコンストラクタ
 	PlayerEnemyNormalCollision(Player* rPlayer, EnemyNormalManagement* rEnemyNormalManagement, 
-		ExplosionManagement* rExplosionManagement, Number* pNumber)
+		ExplosionManagement* rExplosionManagement, Number* pNumber,  ItemManagement* m_rItem)
 		:m_rPlayer(rPlayer), m_rEnemyNormalManagement(rEnemyNormalManagement), 
-		m_rExplosionManagement(rExplosionManagement), m_pNumber(pNumber){}
+		m_rExplosionManagement(rExplosionManagement), m_pNumber(pNumber),m_rItemManagement(m_rItem) {}
 
 	~PlayerEnemyNormalCollision(){}	//デストラクタ
 

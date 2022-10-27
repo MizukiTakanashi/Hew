@@ -21,7 +21,7 @@
 #include "number.h"
 #include "playerleft.h"
 #include "playerright.h"
-
+#include "ItemManagement.h"
 class Game
 {
 //定数
@@ -54,6 +54,7 @@ private:
 
 	PlayerLeft* m_pPlayerLeft = nullptr;
 	PlayerRight* m_pPlayerRight = nullptr;
+	ItemManagement* m_pItemManagement = nullptr;
 
 public:
 	Game();	//デフォルトコンストラクタ

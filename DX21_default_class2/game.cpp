@@ -68,7 +68,10 @@ Game::Game()
 	m_pTexUseful[4].SetTextureName((char*)"data\\texture\\explosion000.png");
 	m_pDrawObject[5].SetDrawObject(m_pTexUseful[4], 0.0f, 0.125f, 1.0f, 7);
 	m_pExplosionManagement = new ExplosionManagement(m_pDrawObject[5]);
-
+	//敵のアイテム
+	m_pTexUseful[7].SetTextureName((char*)"data\\texture\\explosion000.png");
+	m_pDrawObject[8].SetDrawObject(m_pTexUseful[7], 0.0f, 0.125f, 1.0f, 7);
+	m_pItemManagement = new ItemManagement(m_pDrawObject[8]);
 	//数字の初期化
 	m_pNumber->SetInitPos(NUMBER_POS);
 	m_pNumber->SetPos(NUMBER_POS);
@@ -77,7 +80,7 @@ Game::Game()
 
 	//プレイヤーと普通の敵の当たり判定
 	m_pPlayerEnemyNormalCol = new PlayerEnemyNormalCollision(m_pPlayer, m_pEnemyNormalManagement, 
-		m_pExplosionManagement, m_pNumber);
+		m_pExplosionManagement, m_pNumber,m_pItemManagement);
 }
 
 //=========================
@@ -135,7 +138,10 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	m_pTexUseful[4].SetTextureName((char*)"data\\texture\\explosion000.png");
 	m_pDrawObject[5].SetDrawObject(m_pTexUseful[4], 0.0f, 0.125f, 1.0f, 7);
 	m_pExplosionManagement = new ExplosionManagement(m_pDrawObject[5]);
-
+	//敵のアイテム
+	m_pTexUseful[7].SetTextureName((char*)"data\\texture\\playerHP.png");
+	m_pDrawObject[8].SetDrawObject(m_pTexUseful[7], 0.0f, 0.125f, 1.0f, 7);
+	m_pItemManagement = new ItemManagement(m_pDrawObject[8]);
 	//数字の初期化
 	m_pNumber->SetInitPos(NUMBER_POS);
 	m_pNumber->SetPos(NUMBER_POS);
@@ -144,7 +150,7 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 
 	//プレイヤーと普通の敵の当たり判定
 	m_pPlayerEnemyNormalCol = new PlayerEnemyNormalCollision(m_pPlayer, m_pEnemyNormalManagement, 
-		m_pExplosionManagement, m_pNumber);
+		m_pExplosionManagement, m_pNumber,m_pItemManagement);
 }
 
 //==========================
@@ -163,6 +169,7 @@ Game::~Game()
 	delete m_pPlayerLeft;
 	delete m_pPlayerRight;
 	delete m_pBG;
+	delete m_pItemManagement;
 
 	//そのほか
 	delete[] m_pDrawObject;
@@ -184,7 +191,7 @@ void Game::Update(void)
 	m_pPlayerRight->Update(m_pPlayer->GetPos());
 
 	m_pExplosionManagement->Update();
-
+	m_pItemManagement->Update();
 	//普通の敵の更新処理
 	m_pEnemyNormalManagement->Update(m_pPlayer->GetPos());
 
@@ -222,7 +229,7 @@ void Game::Draw(void)const
 
 	m_pPlayer->DrawBullet();
 	m_pExplosionManagement->Draw();
-
+	m_pItemManagement->Draw();
 	//UIの描画
 	m_pPlayerHP->DrawHP();
 	m_pNumber->DrawNumber();
