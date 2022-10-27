@@ -29,6 +29,7 @@ int PlayerEnemyNormalCollision::Update(void)
 						m_rPlayer->GetBulletSize(), m_rEnemyNormalManagement->GetEnemySize())) {
 					//爆発をセット
 					m_rExplosionManagement->SetExplosion(m_rEnemyNormalManagement->GetEnemyPos(j));
+					//敵アイテムのドロップ
 					m_rItemManagement->SetItem(m_rEnemyNormalManagement->GetEnemyPos(j));
 
 					//プレイヤーの弾を消す
