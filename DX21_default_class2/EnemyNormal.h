@@ -27,21 +27,29 @@ private:
 	static const int BULLET_TIME = 200;	//弾の発射間隔
 
 	//cppで初期化
-	static const float SPEED;			//敵のスピード
+	static const float SPEED_X;			//敵のスピードY
+	static const float SPEED_Y;			//敵のスピードY
+	static const float RANGE;			//敵が動く範囲
 
 
+//メンバ変数
 private:
-	//メンバ変数
-	int m_bullet_count = 0;		//弾を発射するまでのカウント
-	bool m_bullet_make = false;	//弾を作るか否か
-	bool m_enemyitem_make = false;	//アイテムを作るか否か
+	int m_bullet_count = 0;				//弾を発射するまでのカウント
+	bool m_bullet_make = false;			//弾を作るか否か
 
+	float m_move_width = 0.0f;			//敵が動く時のcosカーブ
+	float m_init_posx = 0.0f;			//敵の初期位置X
+
+	bool m_enemyitem_make = false;		//アイテムを作るか否か
+
+
+//メンバ関数
 public:
 	EnemyNormal(){}		//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
 	EnemyNormal(DrawObject& pDrawObject, const D3DXVECTOR2& pos)
-		:GameObject(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)){}
+		:GameObject(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)), m_init_posx(pos.x) {}
 
 	~EnemyNormal(){}	//デストラクタ
 
