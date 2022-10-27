@@ -223,8 +223,11 @@ void Game::Draw(void)const
 {
 	m_pBG->DrawBG();
 	m_pPlayer->Draw();
-	m_pPlayerLeft->Draw();
-	m_pPlayerRight->Draw();
+
+	//ƒvƒŒƒCƒ„[‚Ì˜r‚Ì•`‰æˆ—
+	m_pPlayerLeft->LeftDraw();
+	m_pPlayerRight->RightDraw();
+
 	m_pEnemyNormalManagement->Draw();
 
 	m_pPlayer->DrawBullet();
