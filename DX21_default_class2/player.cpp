@@ -56,7 +56,7 @@ void Player::Update()
 	//âÊñ äOÇ…èoÇΩÇÁ
 	if (GameObject::GetScreenOut()) {
 		//âÊñ ì‡Ç…ñﬂÇ∑
-		ScreenOut::GetScreenIn(GameObject::GetPos(), D3DXVECTOR2(BOX_W, BOX_H));
+		SetPos(ScreenOut::GetScreenIn(GameObject::GetPos(), D3DXVECTOR2(BOX_W, BOX_H)));
 	}
 
 
