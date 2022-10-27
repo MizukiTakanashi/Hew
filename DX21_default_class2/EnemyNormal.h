@@ -20,7 +20,10 @@ public:
 	//cppで初期化
 	static const float SIZE_X;			//サイズX
 	static const float SIZE_Y;			//サイズY
+
 	static const float STOP_POS_Y;		//敵が止まる場所
+
+	static const float RANGE;			//敵が動く範囲
 
 private:
 	//ここで初期化
@@ -29,7 +32,6 @@ private:
 	//cppで初期化
 	static const float SPEED_X;			//敵のスピードY
 	static const float SPEED_Y;			//敵のスピードY
-	static const float RANGE;			//敵が動く範囲
 
 
 //メンバ変数

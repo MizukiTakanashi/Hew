@@ -10,10 +10,10 @@
 //==========================
 bool ScreenOut::GetScreenOut(const D3DXVECTOR2& pos, const D3DXVECTOR2& size)
 {
-	if (pos.x + size.x / 2 > SCREEN_WIDTH ||
-		pos.x - size.x / 2 < 0 ||
-		pos.y + size.y / 2 > SCREEN_HEIGHT ||
-		pos.y - size.y / 2 < 0) {
+	if (pos.x - size.x / 2 > SCREEN_WIDTH ||
+		pos.x + size.x / 2 < 0 ||
+		pos.y - size.y / 2 > SCREEN_HEIGHT ||
+		pos.y + size.y / 2 < 0) {
 		return true;
 	}
 

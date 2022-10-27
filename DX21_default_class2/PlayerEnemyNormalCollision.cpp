@@ -5,6 +5,7 @@
 //============================================================
 #include "PlayerEnemyNormalCollision.h"
 #include "collision.h"
+#include "ScreenOut.h"
 
 //======================
 // 更新処理
@@ -13,24 +14,32 @@ int PlayerEnemyNormalCollision::Update(void)
 {
 	//プレイヤーの方
 	//敵の方
+
 	//弾
 	//自身
 	for (int i = 0; i < m_rPlayer->GetBulletNum(); i++) {
 		for (int j = 0; j < m_rEnemyNormalManagement->GetEnemyNum(); j++) {
-			if (Collision::ColBox(m_rPlayer->GetBulletPos(i), m_rEnemyNormalManagement->GetEnemyPos(j),
-				m_rPlayer->GetBulletSize(), m_rEnemyNormalManagement->GetEnemySize())) {
-				//爆発をセット
-				m_rExplosionManagement->SetExplosion(m_rEnemyNormalManagement->GetEnemyPos(j));
-				m_rItemManagement->SetItem(m_rEnemyNormalManagement->GetEnemyPos(j));
 
-				//プレイヤーの弾を消す
-				m_rPlayer->DeleteBullet(i);
-				i--;
-				//敵を消す
-				m_rEnemyNormalManagement->DeleteEnemy(j);
-				j--;
+			//もしも画面外にいたら壊せないようにする
+			if (!ScreenOut::GetScreenOut(m_rEnemyNormalManagement->GetEnemyPos(j),
+				m_rEnemyNormalManagement->GetEnemySize())) {
+				
+				//当たったか判定
+				if (Collision::ColBox(m_rPlayer->GetBulletPos(i), m_rEnemyNormalManagement->GetEnemyPos(j),
+						m_rPlayer->GetBulletSize(), m_rEnemyNormalManagement->GetEnemySize())) {
+					//爆発をセット
+					m_rExplosionManagement->SetExplosion(m_rEnemyNormalManagement->GetEnemyPos(j));
+					m_rItemManagement->SetItem(m_rEnemyNormalManagement->GetEnemyPos(j));
 
-				m_pNumber->AddNumber(1);
+					//プレイヤーの弾を消す
+					m_rPlayer->DeleteBullet(i);
+					i--;
+					//敵を消す
+					m_rEnemyNormalManagement->DeleteEnemy(j);
+					j--;
+
+					m_pNumber->AddNumber(1);
+				}
 			}
 		}
 	}
@@ -47,7 +56,7 @@ int PlayerEnemyNormalCollision::Update(void)
 				//プレイヤーの弾を消す
 				m_rPlayer->DeleteBullet(i);
 				i--;
-				//敵を消す
+				//敵の弾を消す
 				m_rEnemyNormalManagement->DeleteBullet(j);
 				j--;
 			}
@@ -65,7 +74,7 @@ int PlayerEnemyNormalCollision::Update(void)
 			//爆発をセット
 			m_rExplosionManagement->SetExplosion(m_rEnemyNormalManagement->GetBulletPos(j));
 
-			//敵を消す
+			//敵の弾を消す
 			m_rEnemyNormalManagement->DeleteBullet(j);
 			j--;
 			//ダメージ数を増やす
