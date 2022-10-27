@@ -131,7 +131,6 @@
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="DrawObject.cpp" />
-    <ClCompile Include="EnemyItemManagement.cpp" />
     <ClCompile Include="EnemyNormal.cpp" />
     <ClCompile Include="EnemyNormalManagement.cpp" />
     <ClCompile Include="EnemySetPos.cpp" />
@@ -140,6 +139,8 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="input.cpp" />
+    <ClCompile Include="ItemManagement.cpp" />
+    <ClCompile Include="itemP.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="number.cpp" />
     <ClCompile Include="player.cpp" />
@@ -161,8 +162,6 @@
     <ClInclude Include="bullet.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="DrawObject.h" />
-    <ClInclude Include="enemyitem.h" />
-    <ClInclude Include="EnemyItemManagemant.h" />
     <ClInclude Include="EnemyNormal.h" />
     <ClInclude Include="EnemyNormalManagement.h" />
     <ClInclude Include="EnemySetPos.h" />
@@ -171,6 +170,8 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="ItemManagement.h" />
+    <ClInclude Include="itemP.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="number.h" />
     <ClInclude Include="player.h" />
