@@ -12,26 +12,31 @@
 #include "EnemyNormalManagement.h"
 #include "ExplosionManagement.h"
 #include "number.h"
-
+#include "ItemManagement.h"
+	//敵のアイテム
+static const float ENEMYITEM_SIZE_X;	//サイズX
+static const float ENEMYITEM_SIZE_Y;	//サイズY
+static const float ENEMYITEM_SPEED;		//スピード
 class PlayerEnemyNormalCollision
 {
 private:
-	Player* m_rPlayer = nullptr;
-	EnemyNormalManagement* m_rEnemyNormalManagement = nullptr;
-	ExplosionManagement* m_rExplosionManagement = nullptr;
-	Number* m_pNumber = nullptr;
+	Player* m_rPlayer;
+	EnemyNormalManagement* m_rEnemyNormalManagement;
+	ExplosionManagement* m_rExplosionManagement;
+	Number* m_pNumber;
+	ItemManagement* m_rItemManagement;
 	bool m_PlayerEnemyNormalCol = false;	//プレイヤー自身と敵自身が当たっているかフラグ
 
 public:
-	PlayerEnemyNormalCollision(){}	//デフォルトコンストラクタ
+	PlayerEnemyNormalCollision() {}	//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
-	PlayerEnemyNormalCollision(Player* rPlayer, EnemyNormalManagement* rEnemyNormalManagement, 
-		ExplosionManagement* rExplosionManagement, Number* pNumber)
-		:m_rPlayer(rPlayer), m_rEnemyNormalManagement(rEnemyNormalManagement), 
-		m_rExplosionManagement(rExplosionManagement), m_pNumber(pNumber){}
+	PlayerEnemyNormalCollision(Player* rPlayer, EnemyNormalManagement* rEnemyNormalManagement,
+		ExplosionManagement* rExplosionManagement, Number* pNumber, ItemManagement* m_rItem)
+		:m_rPlayer(rPlayer), m_rEnemyNormalManagement(rEnemyNormalManagement),
+		m_rExplosionManagement(rExplosionManagement), m_pNumber(pNumber), m_rItemManagement(m_rItem) {}
 
-	~PlayerEnemyNormalCollision(){}	//デストラクタ
+	~PlayerEnemyNormalCollision() {}	//デストラクタ
 
 	//更新処理
 	int Update(void);

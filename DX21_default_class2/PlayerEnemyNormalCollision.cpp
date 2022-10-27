@@ -13,7 +13,6 @@ int PlayerEnemyNormalCollision::Update(void)
 {
 	//プレイヤーの方
 	//敵の方
-
 	//弾
 	//自身
 	for (int i = 0; i < m_rPlayer->GetBulletNum(); i++) {
@@ -22,6 +21,7 @@ int PlayerEnemyNormalCollision::Update(void)
 				m_rPlayer->GetBulletSize(), m_rEnemyNormalManagement->GetEnemySize())) {
 				//爆発をセット
 				m_rExplosionManagement->SetExplosion(m_rEnemyNormalManagement->GetEnemyPos(j));
+				m_rItemManagement->SetItem(m_rEnemyNormalManagement->GetEnemyPos(j));
 
 				//プレイヤーの弾を消す
 				m_rPlayer->DeleteBullet(i);
@@ -64,7 +64,7 @@ int PlayerEnemyNormalCollision::Update(void)
 			m_rPlayer->GetSize(), m_rEnemyNormalManagement->GetBulletSize())) {
 			//爆発をセット
 			m_rExplosionManagement->SetExplosion(m_rEnemyNormalManagement->GetBulletPos(j));
-			
+
 			//敵を消す
 			m_rEnemyNormalManagement->DeleteBullet(j);
 			j--;

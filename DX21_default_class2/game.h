@@ -21,7 +21,7 @@
 #include "number.h"
 #include "playerleft.h"
 #include "playerright.h"
-
+#include "ItemManagement.h"
 class Game
 {
 //íËêî
@@ -49,7 +49,7 @@ private:
 	EnemyNormalManagement* m_pEnemyNormalManagement = nullptr;
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;
-
+	ItemManagement* m_pItemManagement = nullptr;
 	PlayerEnemyNormalCollision* m_pPlayerEnemyNormalCol = nullptr;
 
 	PlayerLeft* m_pPlayerLeft = nullptr;
