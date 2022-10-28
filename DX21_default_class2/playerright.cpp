@@ -13,13 +13,13 @@ const float PlayerRight::SHOT_SPEED = 0.1f;
 
 void PlayerRight::Update(const D3DXVECTOR2& pos)
 {
-	//Rを押したら発射
+	//Rを押したら自分自身を発射
 	if (GetKeyboardTrigger(DIK_R))
 	{
 		m_shot = true;
 	}
 
-	//発射
+	//自分自身を発射
 	if (m_shot)
 	{
 		MovePos(D3DXVECTOR2(0.0f, -SHOT_SPEED));
@@ -30,12 +30,16 @@ void PlayerRight::Update(const D3DXVECTOR2& pos)
 			m_type = TYPE::TYPE_NONE;
 		}
 	}
+	//発射以外の時はプレイヤーの横について弾を発射する
 	else
 	{
 		//移動
 		SetPos(pos + D3DXVECTOR2(30.0f, 0.0f));
 
-
+		if (m_pEnemyItem != nullptr) {
+			//腕についてるアイテムの処理
+			m_pEnemyItem->Update();
+		}
 	}
 
 }
@@ -46,5 +50,10 @@ void PlayerRight::RightDraw(void)const
 	if (m_type != TYPE::TYPE_NONE)
 	{
 		Draw();
+
+		if (m_pEnemyItem != nullptr) {
+			//腕についているアイテムの描画
+			m_pEnemyItem->PlayerArmDraw();
+		}
 	}
 }

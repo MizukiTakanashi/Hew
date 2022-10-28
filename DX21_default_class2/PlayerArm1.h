@@ -21,7 +21,7 @@ public:
 
 	void Update()override;
 
-	void Draw()override;
+	void PlayerArmDraw()override;
 };
 
 #endif // !_PLAYER_ARM_1_H_
