@@ -31,10 +31,15 @@ private:
 	static const float POS_X;			//表示位置
 	static const float POS_Y;			//表示位置
 
+	//無敵時間
+	static const int INVINCIBLE__FRAME;
+
+
 private:
 	bool m_HP0 = false;
 	DrawObject m_frame_DrawObject;
 	float m_hp = HP_MAX;
+	int m_invincible = 0; //無敵時間
 
 public:
 	PlayerHP() { m_hp = HP_MAX; }	//デフォルトコンストラクタ
@@ -46,6 +51,9 @@ public:
 
 	~PlayerHP(){}							//デストラクタ
 
+	//更新処理
+	void Update(void);
+
 	//HPを減らす
 	void ReduceHP(float reduce_num);
 
@@ -54,6 +62,13 @@ public:
 
 	//HPが0になったかどうかのフラグを返す
 	bool GetHP0Flag(void)const { return m_HP0; }
+
+	//無敵時間開始
+	void SetInvincibleFrame(void) { m_invincible = INVINCIBLE__FRAME; }
+
+	//無敵かどうかを返す true:無敵じゃない  false:無敵
+	bool IsPlayerInvincible(void) { if (m_invincible <= 0) { return true; }return false; }
+
 };
 
 #endif // !_PLAYER_HP_H_

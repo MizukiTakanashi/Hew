@@ -6,6 +6,7 @@
 #include "player.h"
 #include "input.h"
 #include "ScreenOut.h"
+#include "PlayerHP.h"
 
 //==========================
 // 定数の初期化
@@ -22,10 +23,13 @@ const float Player::BULLET_SIZE_Y = 40.0f;
 const float Player::BULLET_SPEED_X = 0.0f;
 const float Player::BULLET_SPEED_Y = -10.5f;
 
+const D3DXCOLOR Player::INVINCIBLE__COLOR = D3DXCOLOR(1.0f, 0.3f, 0.3f, 1.0f);			//プレイヤー無敵時間の色
+
+
 //======================
 // 更新処理
 //======================
-void Player::Update()
+void Player::Update(bool isinvincible)
 {
 	D3DXVECTOR2 temp = D3DXVECTOR2(0.0f, 0.0f);
 
@@ -81,6 +85,16 @@ void Player::Update()
 			//弾を消す
 			DeleteBullet(i);
 		}
+	}
+
+	//無敵時間は色変更
+	if (isinvincible)
+	{//無敵じゃない
+		SetColor(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
+	}
+	else
+	{//無敵
+		SetColor(INVINCIBLE__COLOR);
 	}
 }
 

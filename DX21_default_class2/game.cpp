@@ -186,9 +186,11 @@ void Game::Update(void)
 {
 	m_pBG->Update();
 
-	m_pPlayer->Update();
+	m_pPlayer->Update(m_pPlayerHP->IsPlayerInvincible());
 	m_pPlayerLeft->Update(m_pPlayer->GetPos());
 	m_pPlayerRight->Update(m_pPlayer->GetPos());
+
+	m_pPlayerHP->Update();
 
 	m_pExplosionManagement->Update();
 

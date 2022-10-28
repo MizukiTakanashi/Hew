@@ -17,13 +17,24 @@ const float PlayerHP::POS_SPACE_X = 20.0f;
 const float PlayerHP::POS_SPACE_Y = 20.0f;
 const float PlayerHP::POS_X = (PlayerHP::SIZE_X / 2 + PlayerHP::POS_SPACE_X);
 const float PlayerHP::POS_Y = (PlayerHP::SIZE_Y / 2 + PlayerHP::POS_SPACE_Y);
+const int PlayerHP::INVINCIBLE__FRAME = 30;	//–³“GŠÔ
+
 
 //==========================
 // HP‚ğŒ¸‚ç‚·
 //==========================
 void PlayerHP::ReduceHP(float reduce_num)
 {
-	m_hp -= reduce_num;
+	//–³“G‚©‚Ç‚¤‚©
+	if (m_invincible > 0)
+	{//–³“G
+		return;
+	}
+	else
+	{//–³“G‚¶‚á‚È‚¢
+		m_hp -= reduce_num;
+		SetInvincibleFrame();
+	}
 
 	//‚à‚µ‚àHP‚ª0‚Å‚ ‚ê‚Î
 	if (m_hp <= 0) {
@@ -38,6 +49,18 @@ void PlayerHP::ReduceHP(float reduce_num)
 	UI::SetPos(D3DXVECTOR2(tempXsize / 2 + POS_SPACE_X, POS_Y));
 }
 
+//==========================
+// XVˆ—
+//==========================
+void PlayerHP::Update(void)
+{
+	//–³“GŠÔŒ¸­
+	if (m_invincible > 0)
+	{
+		m_invincible--;
+	}
+	
+}
 //==========================
 // •`‰æˆ—
 //==========================

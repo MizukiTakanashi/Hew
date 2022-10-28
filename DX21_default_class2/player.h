@@ -40,6 +40,8 @@ private:
 	static const float BULLET_SPEED_X;			//弾のスピードX
 	static const float BULLET_SPEED_Y;			//弾のスピードY
 
+	static const D3DXCOLOR INVINCIBLE__COLOR;			//プレイヤー無敵時間の色
+
 private:
 	Bullet* m_pBullet = nullptr;
 	int m_BulletNum = 0;			//弾の現在の数
@@ -59,7 +61,7 @@ public:
 	~Player() { delete[] m_pBullet; }		//デストラクタ
 
 	//更新処理
-	void Update();
+	void Update(bool);
 
 	//弾の描画処理
 	void DrawBullet(void)const;
