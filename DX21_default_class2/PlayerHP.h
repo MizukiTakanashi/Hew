@@ -36,10 +36,10 @@ private:
 
 
 private:
-	bool m_HP0 = false;
-	DrawObject m_frame_DrawObject;
-	float m_hp = HP_MAX;
-	int m_invincible = 0; //無敵時間
+	bool m_HP0 = false;				//プレイヤーのHPが0か判断
+	DrawObject m_frame_DrawObject;	//描画オブジェクト
+	float m_hp = HP_MAX;			//プレイヤーのHP
+	int m_invincible = 0;			//無敵時間
 
 public:
 	PlayerHP() { m_hp = HP_MAX; }	//デフォルトコンストラクタ

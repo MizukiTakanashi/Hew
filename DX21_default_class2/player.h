@@ -40,7 +40,7 @@ private:
 	static const float BULLET_SPEED_X;			//弾のスピードX
 	static const float BULLET_SPEED_Y;			//弾のスピードY
 
-	static const D3DXCOLOR INVINCIBLE__COLOR;			//プレイヤー無敵時間の色
+	static const D3DXCOLOR INVINCIBLE__COLOR;	//プレイヤー無敵時間の色
 
 private:
 	Bullet* m_pBullet = nullptr;
