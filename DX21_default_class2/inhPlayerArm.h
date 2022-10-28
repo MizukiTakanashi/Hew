@@ -8,7 +8,9 @@
 #ifndef _INH_PLAYER_ARM_H_
 #define _INH_PLAYER_ARM_H_
 
-class inhPlayerArm 
+#include "GameObject.h"
+
+class inhPlayerArm:public GameObject
 {
 public:
 	//デフォルトコンストラクタ

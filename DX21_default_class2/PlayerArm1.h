@@ -18,6 +18,10 @@ public:
 
 	//デストラクタ
 	~PlayerArm1(){}
+
+	void Update()override;
+
+	void Draw()override;
 };
 
 #endif // !_PLAYER_ARM_1_H_

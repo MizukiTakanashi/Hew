@@ -34,6 +34,8 @@ void PlayerRight::Update(const D3DXVECTOR2& pos)
 	{
 		//ˆÚ“®
 		SetPos(pos + D3DXVECTOR2(30.0f, 0.0f));
+
+
 	}
 
 }
