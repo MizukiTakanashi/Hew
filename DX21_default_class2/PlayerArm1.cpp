@@ -11,7 +11,7 @@ void PlayerArm1::Update()
 //==========================
 // •`‰æˆ—
 //==========================
-void PlayerArm1::Draw()
+void PlayerArm1::PlayerArmDraw()
 {
 
 }

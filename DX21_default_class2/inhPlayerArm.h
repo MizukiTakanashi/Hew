@@ -23,7 +23,7 @@ public:
 	virtual void Update() = 0;
 
 	//描画処理(オーバーライド)
-	virtual void Draw() = 0;
+	virtual void PlayerArmDraw() = 0;
 };
 
 #endif // !_INH_PLAYER_ARM_H_
