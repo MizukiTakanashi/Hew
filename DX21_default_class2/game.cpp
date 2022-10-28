@@ -140,8 +140,8 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	m_pDrawObject[5].SetDrawObject(m_pTexUseful[4], 0.0f, 0.125f, 1.0f, 7);
 	m_pExplosionManagement = new ExplosionManagement(m_pDrawObject[5]);
 	//敵のアイテム
-	m_pTexUseful[7].SetTextureName((char*)"data\\texture\\playerHP.png");
-	m_pDrawObject[8].SetDrawObject(m_pTexUseful[7], 0.0f, 0.125f, 1.0f, 7);
+	m_pTexUseful[7].SetTextureName((char*)"data\\texture\\EnemyItem.png");
+	m_pDrawObject[8].SetDrawObject(m_pTexUseful[7], 0.0f, 1.0f, 1.0f,1 );
 	m_pItemManagement = new ItemManagement(m_pDrawObject[8]);
 	//数字の初期化
 	m_pNumber->SetInitPos(NUMBER_POS);
