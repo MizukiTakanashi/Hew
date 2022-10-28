@@ -81,6 +81,7 @@ Game::Game()
 	//プレイヤーと普通の敵の当たり判定
 	m_pPlayerEnemyNormalCol = new PlayerEnemyNormalCollision(m_pPlayer, m_pEnemyNormalManagement,
 		m_pExplosionManagement, m_pNumber, m_pItemManagement);
+	m_ArmEnemyCollision = new ArmEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pItemManagement);
 }
 
 //=========================
@@ -151,6 +152,8 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	//プレイヤーと普通の敵の当たり判定
 	m_pPlayerEnemyNormalCol = new PlayerEnemyNormalCollision(m_pPlayer, m_pEnemyNormalManagement,
 		m_pExplosionManagement, m_pNumber, m_pItemManagement);
+	m_ArmEnemyCollision = new ArmEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pItemManagement);
+
 }
 
 //==========================
