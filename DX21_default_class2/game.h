@@ -22,6 +22,8 @@
 #include "playerleft.h"
 #include "playerright.h"
 #include "ItemManagement.h"
+#include "EnemyGatoringManagement.h"
+#include "EnemyGatoring.h"
 class Game
 {
 //íËêî
@@ -47,6 +49,7 @@ private:
 	Player* m_pPlayer = nullptr;
 	EnemySetPos* m_pEnemySetPos = nullptr;
 	EnemyNormalManagement* m_pEnemyNormalManagement = nullptr;
+	EnemyGatoringManagement* m_pEnemyGatoringManagement = nullptr;
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;
 	ItemManagement* m_pItemManagement = nullptr;

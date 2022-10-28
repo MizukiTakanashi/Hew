@@ -57,6 +57,10 @@ Game::Game()
 	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[1], m_pDrawObject[2],
 		*m_pEnemySetPos);
 
+	// 発射レートの高い敵の初期化処理
+	m_pEnemyGatoringManagement = new EnemyGatoringManagement(m_pDrawObject[1], m_pDrawObject[2],
+		*m_pEnemySetPos);
+
 	//プレイヤーのHP
 	m_pTexUseful[3].SetTextureName((char*)"data\\texture\\playerHP.png");
 	m_pDrawObject[3].SetDrawObject(m_pTexUseful[3], 0.0f, 1.0f, 0.5f, 1);
@@ -81,6 +85,8 @@ Game::Game()
 	//プレイヤーと普通の敵の当たり判定
 	m_pPlayerEnemyNormalCol = new PlayerEnemyNormalCollision(m_pPlayer, m_pEnemyNormalManagement,
 		m_pExplosionManagement, m_pNumber, m_pItemManagement);
+
+
 }
 
 //=========================
@@ -127,6 +133,9 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[1], m_pDrawObject[2],
 		*m_pEnemySetPos);
 
+	m_pEnemyGatoringManagement = new EnemyGatoringManagement(m_pDrawObject[1], m_pDrawObject[2],
+		*m_pEnemySetPos);
+
 	//プレイヤーのHP
 	m_pTexUseful[3].SetTextureName((char*)"data\\texture\\playerHP.png");
 	m_pDrawObject[3].SetDrawObject(m_pTexUseful[3], 0.0f, 1.0f, 0.5f, 1);
@@ -164,6 +173,7 @@ Game::~Game()
 	//ゲームオブジェクトを消す
 	delete m_pExplosionManagement;
 	delete m_pEnemyNormalManagement;
+	delete m_pEnemyGatoringManagement;
 	delete m_pPlayerHP;
 	delete m_pPlayer;
 	delete m_pPlayerLeft;
@@ -198,6 +208,8 @@ void Game::Update(void)
 	//普通の敵の更新処理
 	m_pEnemyNormalManagement->Update(m_pPlayer->GetPos());
 
+	// 発射レートの高い敵の更新処理
+	m_pEnemyGatoringManagement->Update(m_pPlayer->GetPos());
 
 	//====================================
 	//プレイヤーのHPに対する攻撃の処理
@@ -232,6 +244,9 @@ void Game::Draw(void)const
 	m_pPlayerRight->RightDraw();
 
 	m_pEnemyNormalManagement->Draw();
+
+	// 敵の発射レート(間隔)が高い
+	m_pEnemyGatoringManagement->Draw();
 
 	m_pPlayer->DrawBullet();
 	m_pExplosionManagement->Draw();
