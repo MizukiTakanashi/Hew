@@ -131,7 +131,6 @@
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="DrawObject.cpp" />
-    <ClCompile Include="EnemyItemManagement.cpp" />
     <ClCompile Include="EnemyNormal.cpp" />
     <ClCompile Include="EnemyNormalManagement.cpp" />
     <ClCompile Include="EnemySetPos.cpp" />
@@ -165,8 +164,6 @@
     <ClInclude Include="bullet.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="DrawObject.h" />
-    <ClInclude Include="enemyitem.h" />
-    <ClInclude Include="EnemyItemManagemant.h" />
     <ClInclude Include="EnemyNormal.h" />
     <ClInclude Include="EnemyNormalManagement.h" />
     <ClInclude Include="EnemySetPos.h" />
