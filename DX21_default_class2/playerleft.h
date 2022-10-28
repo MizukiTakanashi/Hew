@@ -9,6 +9,8 @@
 
 #include "GameObject.h"
 #include "DrawObject.h"
+#include "inhPlayerArm.h"
+#include "PlayerArm1.h"
 
 class PlayerLeft :public GameObject
 {
@@ -36,9 +38,9 @@ private:
 
 // メンバ変数
 private:
-	bool m_shot = false;			// 発射したかどうか
-	TYPE m_type = TYPE::TYPE_NONE;	// 付いた敵のタイプ
-
+	bool m_shot = false;					// 発射したかどうか
+	TYPE m_type = TYPE::TYPE_NONE;			// 付いた敵のタイプ
+	inhPlayerArm* m_pEnemyItem = nullptr;	//腕についている敵のクラス
 
 //メンバ関数
 public:
