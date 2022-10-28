@@ -3,7 +3,7 @@
 // 作成日：2022/07/14
 // 作成者：高梨水希
 //=======================================
-
+#pragma once
 
 
 #include "GameObject.h"
@@ -37,8 +37,8 @@ public:
 	Item() {}	//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
-	Item(DrawObject& DrawObject, const D3DXVECTOR2& pos/*Item_NUM typeitem*/)
-		:GameObject(DrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)) {}
+	Item(DrawObject& DrawObject, const D3DXVECTOR2& pos,Item_NUM typeitem)
+		:GameObject(DrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)), m_TypeItem(typeitem) {}
 	//更新処理
 	void Update(void) { GameObject::MovePos(ITEM_MOOB); }
 

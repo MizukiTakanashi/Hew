@@ -41,12 +41,20 @@ void ItemManagement::Update(void)
 
 }
 
+void ItemManagement::DeleteItem(int index_num)
+{
+	for (int i = index_num; i < m_ItemNum - 1; i++) {
+		m_pItem[i] = m_pItem[i + 1];
+	}
+	m_ItemNum--;
+}
+
 //==========================
 // ”š”­‚ðƒZƒbƒg
 //==========================
-void ItemManagement::SetItem(const D3DXVECTOR2& pos)
+void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem)
 {
-	Item Temp(m_DrawObject, pos);
+	Item Temp(m_DrawObject, pos, Item::Item_NUM::ENEMYITEM_NUM);
 	m_pItem[m_ItemNum] = Temp;
 	m_ItemNum++;
 
