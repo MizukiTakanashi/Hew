@@ -18,7 +18,7 @@ const float EnemyNormalManagement::BULLET_SPEED = 2.5f;
 // 引数付きコンストラクタ
 //=========================
 EnemyNormalManagement::EnemyNormalManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, EnemySetPos& pEnemySetPos)
-	:m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
+	:Management(m_pEnemyNormal, MAX_NUM), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
 {
 	m_pEnemyNormal = new EnemyNormal[MAX_NUM];
 	m_pBullet = new Bullet[MAX_NUM];
@@ -30,22 +30,22 @@ EnemyNormalManagement::EnemyNormalManagement(DrawObject& pDrawObject1, DrawObjec
 void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 {
 	//時間が来たら敵を配置
-	if (m_count++ > APPEARANCE_TIME && m_enemy_num != MAX_NUM) {
+	if (m_count++ > APPEARANCE_TIME && GetObjNum() != MAX_NUM) {
 		//ランダムで出現位置を決める
 		float x = rand() % (SCREEN_WIDTH - (int)EnemyNormal::SIZE_X / 2) + EnemyNormal::SIZE_X / 2;
 
 		//フラグに応じて敵を作る
 		if (m_pEnemySetPos.SetEnemy(D3DXVECTOR2(x, EnemyNormal::STOP_POS_Y), D3DXVECTOR2(EnemyNormal::SIZE_X + EnemyNormal::RANGE * 2, EnemyNormal::SIZE_Y))) {
 			EnemyNormal temp(m_pDrawObjectEnemy, D3DXVECTOR2(x, -EnemyNormal::SIZE_Y / 2));
-			m_pEnemyNormal[m_enemy_num] = temp;
-			m_enemy_num++;
+			m_pEnemyNormal[GetObjNum()] = temp;
+			IncreaseObjNum();
 		}
 
 		m_count = 0;
 	}
 
 	//今いる敵の処理
-	for (int i = 0; i < m_enemy_num; i++) {
+	for (int i = 0; i < GetObjNum(); i++) {
 		m_pEnemyNormal[i].Update();
 
 		//弾を作る
@@ -97,7 +97,7 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 //==========================
 void EnemyNormalManagement::Draw(void)const
 {
-	for (int i = 0; i < m_enemy_num; i++) {
+	for (int i = 0; i < GetObjNum(); i++) {
 		m_pEnemyNormal[i].Draw();
 	}
 
@@ -113,10 +113,7 @@ void EnemyNormalManagement::DeleteEnemy(int index_num)
 {
 	m_pEnemySetPos.DeleteEnemy(m_pEnemyNormal[index_num].GetPos());
 
-	for (int i = index_num; i < m_enemy_num - 1; i++) {
-		m_pEnemyNormal[i] = m_pEnemyNormal[i + 1];
-	}
-	m_enemy_num--;
+	Delete(index_num);
 }
 
 //======================

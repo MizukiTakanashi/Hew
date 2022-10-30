@@ -25,19 +25,22 @@ public:
 	Management(GameObject* pObj, int max_num):m_pObj(pObj), m_obj_max_num(max_num) {}
 	
 	//デストラクタ
-	~Management(){}
+	virtual ~Management(){}
 
 	//現在のオブジェクトの数を返す
 	int GetObjNum(void)const { return m_obj_num; }
+
+	//現在のオブジェクト数を増やす
+	void IncreaseObjNum(int num = 1) { m_obj_num += num; }
 
 	//指定した番号の物を消す
 	void Delete(int index_num);
 
 	//指定した番号の座標を返す
-	const D3DXVECTOR2& GetObjPos(int index_num) { return (m_pObj + index_num)->GetPos(); }
+	const D3DXVECTOR2& GetObjPos(int index_num)const { return (m_pObj + index_num)->GetPos(); }
 
 	//指定した番号のサイズを返す
-	const D3DXVECTOR2& GetObjSize(int index_num) { return (m_pObj + index_num)->GetSize(); }
+	const D3DXVECTOR2& GetObjSize(int index_num)const { return (m_pObj + index_num)->GetSize(); }
 };
 
 #endif // !_MANAGEMENT_H_

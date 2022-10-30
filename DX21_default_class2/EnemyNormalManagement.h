@@ -9,13 +9,14 @@
 #define _ENEMY_NORMAL_MANAGEMENT_H_
 
 #include "main.h"
+#include "management.h"
 #include "EnemyNormal.h"
 #include "bullet.h"
 #include "DrawObject.h"
 #include "EnemySetPos.h"
 #include "player.h"
 
-class EnemyNormalManagement
+class EnemyNormalManagement:public Management
 {
 //定数
 private:
@@ -47,7 +48,6 @@ private:
 	DrawObject m_pDrawObjectBullet;
 	EnemySetPos m_pEnemySetPos;
 
-	int m_enemy_num = 0;	//敵の数
 	int m_bullet_num = 0;	//弾の数
 	int m_EnemyItem_num = 0;	//敵のアイテムの数
 
@@ -65,7 +65,7 @@ public:
 		EnemySetPos& pEnemySetPos );
 
 	//デストラクタ
-	~EnemyNormalManagement() { delete[] m_pEnemyNormal; delete[] m_pBullet; }
+	~EnemyNormalManagement()override { delete[] m_pEnemyNormal; delete[] m_pBullet; }
 
 	//更新処理
 	void Update(const D3DXVECTOR2& PlayerPos);
@@ -73,12 +73,8 @@ public:
 	//描画処理
 	void Draw(void)const;			
 
-
 	//指定した敵を消す
 	void DeleteEnemy(int index_num);
-
-	//現在の敵の数を返す
-	int GetEnemyNum(void)const { return m_enemy_num; }
 
 	//指定した敵の座標を返す
 	const D3DXVECTOR2& GetEnemyPos(int index_num)const { return m_pEnemyNormal[index_num].GetPos(); }
