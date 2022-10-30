@@ -11,7 +11,7 @@
 //==========================
 const float PlayerRight::SHOT_SPEED = 0.1f;
 
-void PlayerRight::Update(const D3DXVECTOR2& pos)
+void PlayerRight::Update(const D3DXVECTOR2& player_pos)
 {
 	//Rを押したら自分自身を発射
 	if (GetKeyboardTrigger(DIK_R))
@@ -34,7 +34,7 @@ void PlayerRight::Update(const D3DXVECTOR2& pos)
 	else
 	{
 		//移動
-		SetPos(pos + D3DXVECTOR2(30.0f, 0.0f));
+		SetPos(player_pos + D3DXVECTOR2(30.0f, 0.0f));
 
 		if (m_pEnemyItem != nullptr) {
 			//腕についてるアイテムの処理

@@ -11,7 +11,7 @@
 //==========================
 const float PlayerLeft::SHOT_SPEED = 0.1f;
 
-void PlayerLeft::Update(const D3DXVECTOR2& pos)
+void PlayerLeft::Update(const D3DXVECTOR2& player_pos)
 {
 	//  Rキーを押すと腕に装着している敵を発射する
 	if (GetKeyboardTrigger(DIK_E))	
@@ -34,7 +34,7 @@ void PlayerLeft::Update(const D3DXVECTOR2& pos)
 	else
 	{
 		// 移動
-		SetPos(pos - D3DXVECTOR2(30.0f, 0.0f));
+		SetPos(player_pos - D3DXVECTOR2(30.0f, 0.0f));
 
 		if (m_pEnemyItem != nullptr) {
 			//腕についてるアイテムの処理

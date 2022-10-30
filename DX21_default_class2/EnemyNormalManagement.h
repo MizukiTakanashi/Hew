@@ -64,6 +64,9 @@ public:
 	EnemyNormalManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2,
 		EnemySetPos& pEnemySetPos );
 
+	//デストラクタ
+	~EnemyNormalManagement() { delete[] m_pEnemyNormal; delete[] m_pBullet; }
+
 	//更新処理
 	void Update(const D3DXVECTOR2& PlayerPos);
 
