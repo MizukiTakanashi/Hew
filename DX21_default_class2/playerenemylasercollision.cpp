@@ -1,41 +1,41 @@
 //============================================================
-// ƒvƒŒƒCƒ„[‚ÆƒŒ[ƒU[‚Ì“G‚Ì”X‚Ì“–‚½‚è”»’èŠÖŒW(cppƒtƒ@ƒCƒ‹)
-// ì¬“úF
-// ì¬ÒF‰¶“c—ms
+// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¨ãƒ¬ãƒ¼ã‚¶ãƒ¼ã®æ•µã®è«¸ã€…ã®å½“ãŸã‚Šåˆ¤å®šé–¢ä¿‚(cppãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š
+// ä½œæˆè€…ï¼šæ©ç”°æ´‹è¡Œ
 //============================================================
 #include "playerenemylasercollision.h"
 #include "collision.h"
 #include "ScreenOut.h"
 
 //======================
-// XVˆ—
+// æ›´æ–°å‡¦ç†
 //======================
 int PlayerEnemyLaserCollision::Update(void)
 {
-	//ƒvƒŒƒCƒ„[‚Ì•û
-	//“G‚Ì•û
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ–¹
+	//æ•µã®æ–¹
 
-	//’e
-	//©g
+	//å¼¾
+	//è‡ªèº«
 	for (int i = 0; i < m_rPlayer->GetBulletNum(); i++) {
 		for (int j = 0; j < m_rEnemyNormalManagement->GetEnemyNum(); j++) {
 
-			//‚à‚µ‚à‰æ–ÊŠO‚É‚¢‚½‚ç‰ó‚¹‚È‚¢‚æ‚¤‚É‚·‚é
+			//ã‚‚ã—ã‚‚ç”»é¢å¤–ã«ã„ãŸã‚‰å£Šã›ãªã„ã‚ˆã†ã«ã™ã‚‹
 			if (!ScreenOut::GetScreenOut(m_rEnemyNormalManagement->GetEnemyPos(j),
 				m_rEnemyNormalManagement->GetEnemySize())) {
 				
-				//“–‚½‚Á‚½‚©”»’è
+				//å½“ãŸã£ãŸã‹åˆ¤å®š
 				if (Collision::ColBox(m_rPlayer->GetBulletPos(i), m_rEnemyNormalManagement->GetEnemyPos(j),
 						m_rPlayer->GetBulletSize(), m_rEnemyNormalManagement->GetEnemySize())) {
-					//”š”­‚ğƒZƒbƒg
+					//çˆ†ç™ºã‚’ã‚»ãƒƒãƒˆ
 					m_rExplosionManagement->SetExplosion(m_rEnemyNormalManagement->GetEnemyPos(j));
-					//“GƒAƒCƒeƒ€‚Ìƒhƒƒbƒv
-					m_rItemManagement->SetItem(m_rEnemyNormalManagement->GetEnemyPos(j));
+					//æ•µã‚¢ã‚¤ãƒ†ãƒ ã®ãƒ‰ãƒ­ãƒƒãƒ—
+					m_rItemManagement->SetItem(m_rEnemyNormalManagement->GetEnemyPos(j), 0);
 
-					//ƒvƒŒƒCƒ„[‚Ì’e‚ğÁ‚·
+					//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å¼¾ã‚’æ¶ˆã™
 					m_rPlayer->DeleteBullet(i);
 					i--;
-					//“G‚ğÁ‚·
+					//æ•µã‚’æ¶ˆã™
 					m_rEnemyNormalManagement->DeleteEnemy(j);
 					j--;
 
@@ -45,53 +45,53 @@ int PlayerEnemyLaserCollision::Update(void)
 		}
 	}
 
-	//’e
-	//’e
+	//å¼¾
+	//å¼¾
 	for (int i = 0; i < m_rPlayer->GetBulletNum(); i++) {
 		for (int j = 0; j < m_rEnemyNormalManagement->GetBulletNum(); j++) {
 			if (Collision::ColBox(m_rPlayer->GetBulletPos(i), m_rEnemyNormalManagement->GetBulletPos(j),
 				m_rPlayer->GetBulletSize(), m_rEnemyNormalManagement->GetBulletSize())) {
-				//”š”­‚ğƒZƒbƒg
+				//çˆ†ç™ºã‚’ã‚»ãƒƒãƒˆ
 				m_rExplosionManagement->SetExplosion(m_rEnemyNormalManagement->GetBulletPos(j));
 
-				//ƒvƒŒƒCƒ„[‚Ì’e‚ğÁ‚·
+				//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å¼¾ã‚’æ¶ˆã™
 				m_rPlayer->DeleteBullet(i);
 				i--;
-				//“G‚Ì’e‚ğÁ‚·
+				//æ•µã®å¼¾ã‚’æ¶ˆã™
 				//m_rEnemyNormalManagement->DeleteBullet(j);
 				j--;
 			}
 		}
 	}
 
-	//ƒvƒŒƒCƒ„[©g‚ªó‚¯‚½ƒ_ƒ[ƒW”
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼è‡ªèº«ãŒå—ã‘ãŸãƒ€ãƒ¡ãƒ¼ã‚¸æ•°
 	int attacked = 0;
 
-	//©g
-	//’e
+	//è‡ªèº«
+	//å¼¾
 	for (int j = 0; j < m_rEnemyNormalManagement->GetBulletNum(); j++) {
 		if (Collision::ColBox(m_rPlayer->GetPos(), m_rEnemyNormalManagement->GetBulletPos(j),
 			m_rPlayer->GetSize(), m_rEnemyNormalManagement->GetBulletSize())) {
 
-			//“G‚Ì’e‚ğÁ‚·
+			//æ•µã®å¼¾ã‚’æ¶ˆã™
 			//m_rEnemyNormalManagement->DeleteBullet(j);
 			//j--;
-			//ƒ_ƒ[ƒW”‚ğ‘‚â‚·
+			//ãƒ€ãƒ¡ãƒ¼ã‚¸æ•°ã‚’å¢—ã‚„ã™
 			attacked = 1 * EnemyLaserManagement::LASER_ATTACK;
 		}
 	}
 
-	//©g
-	//©g
+	//è‡ªèº«
+	//è‡ªèº«
 	for (int j = 0; j < m_rEnemyNormalManagement->GetEnemyNum(); j++) {
 		if (Collision::ColBox(m_rPlayer->GetPos(), m_rEnemyNormalManagement->GetEnemyPos(j),
 			m_rPlayer->GetSize(), m_rEnemyNormalManagement->GetEnemySize())) {
-			//ˆê“x—£‚ê‚Ä‚©‚ç‚¶‚á‚È‚¢‚Æ‚à‚¤ˆê“x“–‚½‚Á‚½”»’è‚É‚Í‚È‚ç‚È‚¢
+			//ä¸€åº¦é›¢ã‚Œã¦ã‹ã‚‰ã˜ã‚ƒãªã„ã¨ã‚‚ã†ä¸€åº¦å½“ãŸã£ãŸåˆ¤å®šã«ã¯ãªã‚‰ãªã„
 			if (!m_PlayerEnemyNormalCol) {
-				//‚Ô‚Â‚©‚Á‚½ƒtƒ‰ƒO‚ğƒIƒ“
+				//ã¶ã¤ã‹ã£ãŸãƒ•ãƒ©ã‚°ã‚’ã‚ªãƒ³
 				m_PlayerEnemyNormalCol = true;
 
-				//ƒ_ƒ[ƒW”‚ğ‘‚â‚·
+				//ãƒ€ãƒ¡ãƒ¼ã‚¸æ•°ã‚’å¢—ã‚„ã™
 				attacked = 1 * EnemyLaserManagement::ATTACK;
 			}
 		}
