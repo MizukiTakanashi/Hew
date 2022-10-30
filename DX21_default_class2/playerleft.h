@@ -53,7 +53,7 @@ public:
 	virtual ~PlayerLeft() {}	//デストラクタ
 
 	//更新処理
-	void Update(const D3DXVECTOR2& player_pos);
+	void Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_pos);
 
 	// 描画処理
 	void LeftDraw(void)const;

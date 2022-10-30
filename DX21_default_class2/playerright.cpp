@@ -11,7 +11,7 @@
 //==========================
 const float PlayerRight::SHOT_SPEED = 0.1f;
 
-void PlayerRight::Update(const D3DXVECTOR2& player_pos)
+void PlayerRight::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_pos)
 {
 	//R‚ğ‰Ÿ‚µ‚½‚ç©•ª©g‚ğ”­Ë
 	if (GetKeyboardTrigger(DIK_R))
