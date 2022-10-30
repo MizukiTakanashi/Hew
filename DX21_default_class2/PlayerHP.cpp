@@ -23,7 +23,7 @@ const int PlayerHP::INVINCIBLE__FRAME = 30;	//–³“GŽžŠÔ
 //==========================
 // HP‚ðŒ¸‚ç‚·
 //==========================
-void PlayerHP::ReduceHP(float reduce_num)
+void PlayerHP::ReduceHP(float reduce_num, D3DXVECTOR2 ppos)
 {
 	//–³“G‚©‚Ç‚¤‚©
 	if (m_invincible > 0)
@@ -33,6 +33,9 @@ void PlayerHP::ReduceHP(float reduce_num)
 	else
 	{//–³“G‚¶‚á‚È‚¢
 		m_hp -= reduce_num;
+		//”š”­‚ðƒZƒbƒg
+		m_pExplosionManagement->SetExplosion(ppos);
+
 		SetInvincibleFrame();
 	}
 

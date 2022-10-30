@@ -131,6 +131,8 @@
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="DrawObject.cpp" />
+    <ClCompile Include="enemylaser.cpp" />
+    <ClCompile Include="enemylasermanagement.cpp" />
     <ClCompile Include="EnemyNormal.cpp" />
     <ClCompile Include="EnemyNormalManagement.cpp" />
     <ClCompile Include="EnemySetPos.cpp" />
@@ -142,11 +144,13 @@
     <ClCompile Include="input.cpp" />
     <ClCompile Include="ItemManagement.cpp" />
     <ClCompile Include="itemP.cpp" />
+    <ClCompile Include="laser.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="management.cpp" />
     <ClCompile Include="number.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="BG.cpp" />
+    <ClCompile Include="playerenemylasercollision.cpp" />
     <ClCompile Include="PlayerArm1.cpp" />
     <ClCompile Include="PlayerEnemyNormalCollision.cpp" />
     <ClCompile Include="PlayerHP.cpp" />
@@ -167,6 +171,8 @@
     <ClInclude Include="bullet.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="DrawObject.h" />
+    <ClInclude Include="enemylaser.h" />
+    <ClInclude Include="enemylasermanagement.h" />
     <ClInclude Include="EnemyNormal.h" />
     <ClInclude Include="EnemyNormalManagement.h" />
     <ClInclude Include="EnemySetPos.h" />
@@ -178,11 +184,13 @@
     <ClInclude Include="input.h" />
     <ClInclude Include="ItemManagement.h" />
     <ClInclude Include="itemP.h" />
+    <ClInclude Include="laser.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="management.h" />
     <ClInclude Include="number.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="BG.h" />
+    <ClInclude Include="playerenemylasercollision.h" />
     <ClInclude Include="PlayerArm1.h" />
     <ClInclude Include="PlayerEnemyNormalCollision.h" />
     <ClInclude Include="PlayerHP.h" />

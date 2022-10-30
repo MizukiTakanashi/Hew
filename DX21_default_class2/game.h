@@ -14,10 +14,12 @@
 #include "DrawObject.h"
 #include "EnemySetPos.h"
 #include "EnemyNormalManagement.h"
+#include "enemylasermanagement.h"
 #include "texture_useful.h"
 #include "PlayerHP.h"
 #include "ExplosionManagement.h"
 #include "PlayerEnemyNormalCollision.h"
+#include "playerenemylasercollision.h"
 #include "number.h"
 #include "playerleft.h"
 #include "playerright.h"
@@ -48,10 +50,12 @@ private:
 	Player* m_pPlayer = nullptr;
 	EnemySetPos* m_pEnemySetPos = nullptr;
 	EnemyNormalManagement* m_pEnemyNormalManagement = nullptr;
+	EnemyLaserManagement* m_pEnemyLaserManagement = nullptr;
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;
 	ItemManagement* m_pItemManagement = nullptr;
 	PlayerEnemyNormalCollision* m_pPlayerEnemyNormalCol = nullptr;
+	PlayerEnemyLaserCollision* m_pPlayerEnemyLaserCol = nullptr;
 
 	ArmEnemyCollision* m_ArmEnemyCollision = nullptr;
 
