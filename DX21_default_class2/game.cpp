@@ -79,6 +79,7 @@ Game::Game()
 	m_pTexUseful[7].SetTextureName((char*)"data\\texture\\explosion000.png");
 	m_pDrawObject[8].SetDrawObject(m_pTexUseful[7], 0.0f, 0.125f, 1.0f, 7);
 	m_pItemManagement = new ItemManagement(m_pDrawObject[8]);
+
 	//数字の初期化
 	m_pNumber->SetInitPos(NUMBER_POS);
 	m_pNumber->SetPos(NUMBER_POS);
@@ -93,8 +94,12 @@ Game::Game()
 	m_pPlayerEnemyLaserCol = new PlayerEnemyLaserCollision(m_pPlayer, m_pEnemyLaserManagement,
 		m_pExplosionManagement, m_pNumber, m_pItemManagement);
 
+	//プレイヤーの腕と敵のアイテムの当たり判定
 	m_ArmEnemyCollision = new ArmEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pItemManagement);
 
+	//敵の管理
+	Management* test[] = { m_pEnemyNormalManagement, m_pEnemyLaserManagement };
+	m_pAllEnemyManagement = new AllEnemyManagement(test);
 }
 
 //=========================
@@ -178,9 +183,8 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	m_pPlayerEnemyLaserCol = new PlayerEnemyLaserCollision(m_pPlayer, m_pEnemyLaserManagement,
 		m_pExplosionManagement, m_pNumber, m_pItemManagement);
 
+	//プレイヤーの腕と敵のアイテムの当たり判定
 	m_ArmEnemyCollision = new ArmEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pItemManagement);
-
-
 }
 
 //==========================

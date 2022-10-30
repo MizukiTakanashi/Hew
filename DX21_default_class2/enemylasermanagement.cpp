@@ -70,7 +70,7 @@ void EnemyLaserManagement::Update()
 	{
 		m_pLaser[i].Update();
 		//‰æ–ÊŠO‚©‚ço‚½‚ç...
-		if (m_pLaser[i].GetScreenOut()) 
+		if (m_pLaser[i].GetScreenOut() || !m_pLaser[i].IsLaserUse())
 		{
 			//’e‚ğÁ‚·
 			DeleteBullet(i);

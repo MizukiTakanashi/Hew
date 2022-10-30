@@ -13,11 +13,14 @@
 class AllEnemyManagement
 {
 private:
-	Management* m_pEnemy[];	//敵全クラス
+	Management* m_pEnemy = nullptr;	//敵全クラス
 
 public:
 	//デフォルトコンストラクタ
 	AllEnemyManagement(){}
+
+	//引数付きコンストラクタ
+	AllEnemyManagement(Management* p[]) :m_pEnemy(p[0]){}
 
 	//デストラクタ
 	~AllEnemyManagement(){}
