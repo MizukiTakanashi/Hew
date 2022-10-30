@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AllEnemyManagement.cpp" />
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="DrawObject.cpp" />
@@ -168,6 +169,7 @@
     <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AllEnemyManagement.h" />
     <ClInclude Include="bullet.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="DrawObject.h" />
