@@ -9,12 +9,13 @@
 #define _ENEMY_LASER_MANAGEMENT_H_
 
 #include "main.h"
+#include "management.h"
 #include "enemylaser.h"
 #include "laser.h"
 #include "DrawObject.h"
 #include "EnemySetPos.h"
 
-class EnemyLaserManagement
+class EnemyLaserManagement:public Management
 {
 //’è”
 private:
@@ -44,7 +45,6 @@ private:
 	DrawObject m_pDrawObjectLaser;
 	EnemySetPos m_pEnemySetPos;
 
-	int m_enemy_num = 0;	//“G‚Ì”
 	int m_laser_num = 0;	//’e‚Ì”
 	int m_EnemyItem_num = 0;	//“G‚ÌƒAƒCƒeƒ€‚Ì”
 
@@ -67,19 +67,8 @@ public:
 	//•`‰æˆ—
 	void Draw(void)const;			
 
-
 	//w’è‚µ‚½“G‚ğÁ‚·
 	void DeleteEnemy(int index_num);
-
-	//Œ»İ‚Ì“G‚Ì”‚ğ•Ô‚·
-	int GetEnemyNum(void)const { return m_enemy_num; }
-
-	//w’è‚µ‚½“G‚ÌÀ•W‚ğ•Ô‚·
-	const D3DXVECTOR2& GetEnemyPos(int index_num)const { return m_pEnemyLaser[index_num].GetPos(); }
-
-	//“G‚ÌƒTƒCƒY‚ğ•Ô‚·
-	const D3DXVECTOR2& GetEnemySize(void)const { return m_pEnemyLaser[0].GetSize(); }
-
 
 	//w’è‚µ‚½’e‚ğÁ‚·
 	void DeleteBullet(int index_num);
@@ -92,7 +81,6 @@ public:
 
 	//’e‚ÌƒTƒCƒY‚ğ•Ô‚·
 	const D3DXVECTOR2& GetBulletSize(void)const { return m_pLaser[0].GetSize(); }
-
 
 };
 

@@ -19,19 +19,19 @@ int PlayerEnemyNormalCollision::Update(void)
 	//弾
 	//自身
 	for (int i = 0; i < m_rPlayer->GetBulletNum(); i++) {
-		for (int j = 0; j < m_rEnemyNormalManagement->GetEnemyNum(); j++) {
+		for (int j = 0; j < m_rEnemyNormalManagement->GetObjNum(); j++) {
 
 			//もしも画面外にいたら壊せないようにする
-			if (!ScreenOut::GetScreenOut(m_rEnemyNormalManagement->GetEnemyPos(j),
-				m_rEnemyNormalManagement->GetEnemySize())) {
+			if (!ScreenOut::GetScreenOut(m_rEnemyNormalManagement->GetObjPos(j),
+				m_rEnemyNormalManagement->GetObjSize())) {
 				
 				//当たったか判定
-				if (Collision::ColBox(m_rPlayer->GetBulletPos(i), m_rEnemyNormalManagement->GetEnemyPos(j),
-						m_rPlayer->GetBulletSize(), m_rEnemyNormalManagement->GetEnemySize())) {
+				if (Collision::ColBox(m_rPlayer->GetBulletPos(i), m_rEnemyNormalManagement->GetObjPos(j),
+						m_rPlayer->GetBulletSize(), m_rEnemyNormalManagement->GetObjSize())) {
 					//爆発をセット
-					m_rExplosionManagement->SetExplosion(m_rEnemyNormalManagement->GetEnemyPos(j));
+					m_rExplosionManagement->SetExplosion(m_rEnemyNormalManagement->GetObjPos(j));
 					//敵アイテムのドロップ
-					m_rItemManagement->SetItem(m_rEnemyNormalManagement->GetEnemyPos(j),1);
+					m_rItemManagement->SetItem(m_rEnemyNormalManagement->GetObjPos(j),1);
 
 					//プレイヤーの弾を消す
 					m_rPlayer->DeleteBullet(i);
@@ -84,9 +84,9 @@ int PlayerEnemyNormalCollision::Update(void)
 
 	//自身
 	//自身
-	for (int j = 0; j < m_rEnemyNormalManagement->GetEnemyNum(); j++) {
-		if (Collision::ColBox(m_rPlayer->GetPos(), m_rEnemyNormalManagement->GetEnemyPos(j),
-			m_rPlayer->GetSize(), m_rEnemyNormalManagement->GetEnemySize())) {
+	for (int j = 0; j < m_rEnemyNormalManagement->GetObjNum(); j++) {
+		if (Collision::ColBox(m_rPlayer->GetPos(), m_rEnemyNormalManagement->GetObjPos(j),
+			m_rPlayer->GetSize(), m_rEnemyNormalManagement->GetObjSize())) {
 			//一度離れてからじゃないともう一度当たった判定にはならない
 			if (!m_PlayerEnemyNormalCol) {
 				//ぶつかったフラグをオン

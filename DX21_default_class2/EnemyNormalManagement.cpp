@@ -97,9 +97,7 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 //==========================
 void EnemyNormalManagement::Draw(void)const
 {
-	for (int i = 0; i < GetObjNum(); i++) {
-		m_pEnemyNormal[i].Draw();
-	}
+	Management::DrawObj();
 
 	for (int i = 0; i < m_bullet_num; i++) {
 		m_pBullet[i].Draw();
@@ -113,7 +111,7 @@ void EnemyNormalManagement::DeleteEnemy(int index_num)
 {
 	m_pEnemySetPos.DeleteEnemy(m_pEnemyNormal[index_num].GetPos());
 
-	Delete(index_num);
+	Management::Delete(index_num);
 }
 
 //======================

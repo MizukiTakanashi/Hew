@@ -19,7 +19,7 @@ const float EnemyLaserManagement::BULLET_SIZE_Y = 0.0f;
 // 引数付きコンストラクタ
 //=========================
 EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, EnemySetPos& pEnemySetPos)
-	:m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectLaser(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
+	:Management(m_pEnemyLaser, MAX_NUM), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectLaser(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
 {
 	m_pEnemyLaser = new EnemyLaser[MAX_NUM];
 	m_pLaser = new Laser[MAX_NUM];
@@ -31,22 +31,22 @@ EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject&
 void EnemyLaserManagement::Update()
 {
 	//時間が来たら敵を配置
-	if (m_count++ > APPEARANCE_TIME && m_enemy_num != MAX_NUM) {
+	if (m_count++ > APPEARANCE_TIME && GetObjNum() != MAX_NUM) {
 		//ランダムで出現位置を決める
 		float x = rand() % (SCREEN_WIDTH - (int)EnemyLaser::SIZE_X / 2) + EnemyLaser::SIZE_X / 2;
 
 		//フラグに応じて敵を作る
 		//if (m_pEnemySetPos.SetEnemy(D3DXVECTOR2(x, EnemyLaser::STOP_POS_Y), D3DXVECTOR2(EnemyLaser::SIZE_X + EnemyLaser::RANGE * 2, EnemyLaser::SIZE_Y))) {
 			EnemyLaser temp(m_pDrawObjectEnemy, D3DXVECTOR2(x, -EnemyLaser::SIZE_Y / 2));
-			m_pEnemyLaser[m_enemy_num] = temp;
-			m_enemy_num++;
+			m_pEnemyLaser[GetObjNum()] = temp;
+			IncreaseObjNum();
 		//}
 
 		m_count = 0;
 	}
 
 	//今いる敵の処理
-	for (int i = 0; i < m_enemy_num; i++) 
+	for (int i = 0; i < GetObjNum(); i++)
 	{
 		m_pEnemyLaser[i].Update();
 
@@ -81,10 +81,7 @@ void EnemyLaserManagement::Update()
 //==========================
 void EnemyLaserManagement::Draw(void)const
 {
-	for (int i = 0; i < m_enemy_num; i++) 
-	{
-		m_pEnemyLaser[i].Draw();
-	}
+	Management::DrawObj();
 
 	for (int i = 0; i < m_laser_num; i++) 
 	{
@@ -99,11 +96,7 @@ void EnemyLaserManagement::DeleteEnemy(int index_num)
 {
 	m_pEnemySetPos.DeleteEnemy(m_pEnemyLaser[index_num].GetPos());
 
-	for (int i = index_num; i < m_enemy_num - 1; i++) 
-	{
-		m_pEnemyLaser[i] = m_pEnemyLaser[i + 1];
-	}
-	m_enemy_num--;
+	Management::Delete(index_num);
 }
 
 //======================

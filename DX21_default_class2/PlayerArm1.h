@@ -45,8 +45,10 @@ public:
 	//デストラクタ
 	~PlayerArm1() { delete[] m_pBullet; }
 
+	//更新処理(オーバーライド)
 	void Update()override;
 
+	//描画処理(オーバーライド)
 	void PlayerArmDraw()override;
 
 	void SetEnemyPos(const D3DXVECTOR2& enemy_pos) { m_enemy_pos = enemy_pos; }

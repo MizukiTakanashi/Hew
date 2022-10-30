@@ -3,6 +3,13 @@
 #include <math.h>
 
 //==========================
+// ’è”‚Ì‰Šú‰»
+//==========================
+const float PlayerArm1::BULLET_SIZE_X = 40.0f;
+const float PlayerArm1::BULLET_SIZE_Y = 40.0f;
+const float PlayerArm1::BULLET_SPEED = 2.5f;
+
+//==========================
 // XVˆ—
 //==========================
 void PlayerArm1::Update()

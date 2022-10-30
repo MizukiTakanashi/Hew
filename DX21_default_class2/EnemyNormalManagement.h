@@ -76,12 +76,6 @@ public:
 	//指定した敵を消す
 	void DeleteEnemy(int index_num);
 
-	//指定した敵の座標を返す
-	const D3DXVECTOR2& GetEnemyPos(int index_num)const { return m_pEnemyNormal[index_num].GetPos(); }
-
-	//敵のサイズを返す
-	const D3DXVECTOR2& GetEnemySize(void)const { return m_pEnemyNormal[0].GetSize(); }
-
 
 	//指定した弾を消す
 	void DeleteBullet(int index_num);
@@ -94,8 +88,6 @@ public:
 
 	//弾のサイズを返す
 	const D3DXVECTOR2& GetBulletSize(void)const { return m_pBullet[0].GetSize(); }
-
-
 };
 
 #endif // !_ENEMY_NORMAL_MANAGEMENT_H_

@@ -219,8 +219,8 @@ void Game::Update(void)
 	m_pBG->Update();
 
 	m_pPlayer->Update(m_pPlayerHP->IsPlayerInvincible());
-	m_pPlayerLeft->Update(m_pPlayer->GetPos());
-	m_pPlayerRight->Update(m_pPlayer->GetPos());
+	m_pPlayerLeft->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
+	m_pPlayerRight->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
 
 	m_pPlayerHP->Update();
 
