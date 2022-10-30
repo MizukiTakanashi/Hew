@@ -27,6 +27,9 @@ public:
 	//デストラクタ
 	virtual ~Management(){}
 
+	//ゲームオブジェクトのポインタをセット
+	void SetPoint(GameObject* pObj) { m_pObj = pObj; }
+
 	//現在のオブジェクトの数を返す
 	int GetObjNum(void)const { return m_obj_num; }
 
@@ -36,7 +39,7 @@ public:
 	//オブジェクトを描画する
 	void DrawObj(void)const {
 		for (int i = 0; i < m_obj_num; i++) {
-			(m_pObj + i)->Draw();
+			m_pObj[i].Draw();
 		}
 	}
 
@@ -44,10 +47,10 @@ public:
 	void Delete(int index_num);
 
 	//指定した番号の座標を返す
-	const D3DXVECTOR2& GetObjPos(int index_num)const { return (m_pObj + index_num)->GetPos(); }
+	const D3DXVECTOR2& GetObjPos(int index_num)const { return m_pObj[index_num].GetPos(); }
 
 	//指定した番号のサイズを返す
-	const D3DXVECTOR2& GetObjSize(int index_num = 0)const { return (m_pObj + index_num)->GetSize(); }
+	const D3DXVECTOR2& GetObjSize(int index_num = 0)const { return m_pObj[index_num].GetSize(); }
 };
 
 #endif // !_MANAGEMENT_H_

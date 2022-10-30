@@ -13,7 +13,7 @@
 #include "ExplosionManagement.h"
 #include "number.h"
 #include "ItemManagement.h"
-	//敵のアイテム
+//敵のアイテム
 static const float ENEMYITEM_SIZE_X;	//サイズX
 static const float ENEMYITEM_SIZE_Y;	//サイズY
 static const float ENEMYITEM_SPEED;		//スピード

@@ -22,6 +22,8 @@ EnemyNormalManagement::EnemyNormalManagement(DrawObject& pDrawObject1, DrawObjec
 {
 	m_pEnemyNormal = new EnemyNormal[MAX_NUM];
 	m_pBullet = new Bullet[MAX_NUM];
+
+	Management::SetPoint(m_pEnemyNormal);
 }
 
 //======================

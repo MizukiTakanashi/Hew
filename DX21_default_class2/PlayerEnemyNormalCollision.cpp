@@ -85,7 +85,9 @@ int PlayerEnemyNormalCollision::Update(void)
 	//自身
 	//自身
 	for (int j = 0; j < m_rEnemyNormalManagement->GetObjNum(); j++) {
-		if (Collision::ColBox(m_rPlayer->GetPos(), m_rEnemyNormalManagement->GetObjPos(j),
+		D3DXVECTOR2 Hoge = m_rEnemyNormalManagement->GetObjPos(0);
+
+		if (Collision::ColBox(m_rPlayer->GetPos(), m_rEnemyNormalManagement->GetObjPos(0),
 			m_rPlayer->GetSize(), m_rEnemyNormalManagement->GetObjSize())) {
 			//一度離れてからじゃないともう一度当たった判定にはならない
 			if (!m_PlayerEnemyNormalCol) {

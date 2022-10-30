@@ -14,7 +14,6 @@
 #include "bullet.h"
 #include "DrawObject.h"
 #include "EnemySetPos.h"
-#include "player.h"
 
 class EnemyNormalManagement:public Management
 {
