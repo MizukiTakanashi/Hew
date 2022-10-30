@@ -1,16 +1,16 @@
 //============================================================
-// プレイヤーと普通の敵の諸々の当たり判定関係(cppファイル)
-// 作成日：2022/09/22
-// 作成者：高梨水希
+// プレイヤーとレーザーの敵の諸々の当たり判定関係(cppファイル)
+// 作成日：
+// 作成者：恩田洋行
 //============================================================
-#include "PlayerEnemyNormalCollision.h"
+#include "playerenemylasercollision.h"
 #include "collision.h"
 #include "ScreenOut.h"
 
 //======================
 // 更新処理
 //======================
-int PlayerEnemyNormalCollision::Update(void)
+int PlayerEnemyLaserCollision::Update(void)
 {
 	//プレイヤーの方
 	//敵の方
@@ -58,7 +58,7 @@ int PlayerEnemyNormalCollision::Update(void)
 				m_rPlayer->DeleteBullet(i);
 				i--;
 				//敵の弾を消す
-				m_rEnemyNormalManagement->DeleteBullet(j);
+				//m_rEnemyNormalManagement->DeleteBullet(j);
 				j--;
 			}
 		}
@@ -74,10 +74,10 @@ int PlayerEnemyNormalCollision::Update(void)
 			m_rPlayer->GetSize(), m_rEnemyNormalManagement->GetBulletSize())) {
 
 			//敵の弾を消す
-			m_rEnemyNormalManagement->DeleteBullet(j);
-			j--;
+			//m_rEnemyNormalManagement->DeleteBullet(j);
+			//j--;
 			//ダメージ数を増やす
-			attacked = 1 * EnemyNormalManagement::BULLET_ATTACK;
+			attacked = 1 * EnemyLaserManagement::LASER_ATTACK;
 		}
 	}
 
@@ -92,7 +92,7 @@ int PlayerEnemyNormalCollision::Update(void)
 				m_PlayerEnemyNormalCol = true;
 
 				//ダメージ数を増やす
-				attacked = 1 * EnemyNormalManagement::ATTACK;
+				attacked = 1 * EnemyLaserManagement::ATTACK;
 			}
 		}
 		else {

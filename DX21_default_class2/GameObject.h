@@ -39,6 +39,9 @@ public:
 	//座標をセット
 	void SetPos(const D3DXVECTOR2& pos) { m_pos = pos; }
 
+	//サイズをセット
+	void SetSize(const D3DXVECTOR2& size) { m_size = size; }
+
 	//角度をセット
 	void SetRot(float rot) { m_rot = rot; }
 
