@@ -33,10 +33,6 @@ Game::Game()
 	m_pTexUseful[2].SetTextureName((char*)"data\\texture\\bullet00.png");
 	m_pDrawObject[2].SetDrawObject(m_pTexUseful[2]);
 
-	//レーザー
-	m_pTexUseful[8].SetTextureName((char*)"data\\texture\\laser00.png");
-	m_pDrawObject[9].SetDrawObject(m_pTexUseful[8]);
-
 	//プレイヤー
 	m_pTexUseful[0].SetTextureName((char*)"data\\texture\\player.png");
 	m_pDrawObject[0].SetDrawObject(m_pTexUseful[0]);
@@ -60,21 +56,18 @@ Game::Game()
 
 	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[1], m_pDrawObject[2],
 		*m_pEnemySetPos);
-	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[1], m_pDrawObject[9],
-		*m_pEnemySetPos);
-
-	//爆発
-	m_pTexUseful[4].SetTextureName((char*)"data\\texture\\explosion000.png");
-	m_pDrawObject[5].SetDrawObject(m_pTexUseful[4], 0.0f, 0.125f, 1.0f, 7);
-	m_pExplosionManagement = new ExplosionManagement(m_pDrawObject[5]);
 
 	//プレイヤーのHP
 	m_pTexUseful[3].SetTextureName((char*)"data\\texture\\playerHP.png");
 	m_pDrawObject[3].SetDrawObject(m_pTexUseful[3], 0.0f, 1.0f, 0.5f, 1);
 
 	m_pDrawObject[4].SetDrawObject(m_pTexUseful[3], 1.0f, 1.0f, 0.5f, 1);
-	m_pPlayerHP = new PlayerHP(m_pDrawObject[3], m_pDrawObject[4], m_pExplosionManagement);
+	m_pPlayerHP = new PlayerHP(m_pDrawObject[3], m_pDrawObject[4]);
 
+	//爆発
+	m_pTexUseful[4].SetTextureName((char*)"data\\texture\\explosion000.png");
+	m_pDrawObject[5].SetDrawObject(m_pTexUseful[4], 0.0f, 0.125f, 1.0f, 7);
+	m_pExplosionManagement = new ExplosionManagement(m_pDrawObject[5]);
 	//敵のアイテム
 	m_pTexUseful[7].SetTextureName((char*)"data\\texture\\explosion000.png");
 	m_pDrawObject[8].SetDrawObject(m_pTexUseful[7], 0.0f, 0.125f, 1.0f, 7);
@@ -88,13 +81,7 @@ Game::Game()
 	//プレイヤーと普通の敵の当たり判定
 	m_pPlayerEnemyNormalCol = new PlayerEnemyNormalCollision(m_pPlayer, m_pEnemyNormalManagement,
 		m_pExplosionManagement, m_pNumber, m_pItemManagement);
-
-	//プレイヤーとレーザーの敵の当たり判定
-	m_pPlayerEnemyLaserCol = new PlayerEnemyLaserCollision(m_pPlayer, m_pEnemyLaserManagement,
-		m_pExplosionManagement, m_pNumber, m_pItemManagement);
-
 	m_ArmEnemyCollision = new ArmEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pItemManagement);
-
 }
 
 //=========================
@@ -115,10 +102,6 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	//弾
 	m_pTexUseful[2].SetTextureName((char*)"data\\texture\\bullet00.png");
 	m_pDrawObject[2].SetDrawObject(m_pTexUseful[2]);
-
-	//レーザー
-	m_pTexUseful[8].SetTextureName((char*)"data\\texture\\laser00.png");
-	m_pDrawObject[9].SetDrawObject(m_pTexUseful[8]);
 
 	//プレイヤー
 	m_pTexUseful[0].SetTextureName((char*)"data\\texture\\player.png");
@@ -144,21 +127,18 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 
 	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[1], m_pDrawObject[2],
 		*m_pEnemySetPos);
-	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[1], m_pDrawObject[9],
-		*m_pEnemySetPos);
-
-	//爆発
-	m_pTexUseful[4].SetTextureName((char*)"data\\texture\\explosion000.png");
-	m_pDrawObject[5].SetDrawObject(m_pTexUseful[4], 0.0f, 0.125f, 1.0f, 7);
-	m_pExplosionManagement = new ExplosionManagement(m_pDrawObject[5]);
 
 	//プレイヤーのHP
 	m_pTexUseful[3].SetTextureName((char*)"data\\texture\\playerHP.png");
 	m_pDrawObject[3].SetDrawObject(m_pTexUseful[3], 0.0f, 1.0f, 0.5f, 1);
 
 	m_pDrawObject[4].SetDrawObject(m_pTexUseful[3], 1.0f, 1.0f, 0.5f, 1);
-	m_pPlayerHP = new PlayerHP(m_pDrawObject[3], m_pDrawObject[4], m_pExplosionManagement);
+	m_pPlayerHP = new PlayerHP(m_pDrawObject[3], m_pDrawObject[4]);
 
+	//爆発
+	m_pTexUseful[4].SetTextureName((char*)"data\\texture\\explosion000.png");
+	m_pDrawObject[5].SetDrawObject(m_pTexUseful[4], 0.0f, 0.125f, 1.0f, 7);
+	m_pExplosionManagement = new ExplosionManagement(m_pDrawObject[5]);
 	//敵のアイテム
 	m_pTexUseful[7].SetTextureName((char*)"data\\texture\\EnemyItem.png");
 	m_pDrawObject[8].SetDrawObject(m_pTexUseful[7], 0.0f, 1.0f, 1.0f,1 );
@@ -172,13 +152,7 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	//プレイヤーと普通の敵の当たり判定
 	m_pPlayerEnemyNormalCol = new PlayerEnemyNormalCollision(m_pPlayer, m_pEnemyNormalManagement,
 		m_pExplosionManagement, m_pNumber, m_pItemManagement);
-
-	//プレイヤーとレーザーの敵の当たり判定
-	m_pPlayerEnemyLaserCol = new PlayerEnemyLaserCollision(m_pPlayer, m_pEnemyLaserManagement,
-		m_pExplosionManagement, m_pNumber, m_pItemManagement);
-
 	m_ArmEnemyCollision = new ArmEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pItemManagement);
-
 
 }
 
@@ -193,7 +167,6 @@ Game::~Game()
 	//ゲームオブジェクトを消す
 	delete m_pExplosionManagement;
 	delete m_pEnemyNormalManagement;
-	delete m_pEnemyLaserManagement;
 	delete m_pPlayerHP;
 	delete m_pPlayer;
 	delete m_pPlayerLeft;
@@ -201,8 +174,6 @@ Game::~Game()
 	delete m_pBG;
 
 	delete m_pItemManagement;
-	delete m_pPlayerEnemyNormalCol;
-	delete m_pPlayerEnemyLaserCol;
 	//そのほか
 	delete[] m_pDrawObject;
 	delete[] m_pTexUseful;
@@ -227,9 +198,8 @@ void Game::Update(void)
 	m_pExplosionManagement->Update();
 
 	m_pItemManagement->Update();
-	//敵の更新処理
+	//普通の敵の更新処理
 	m_pEnemyNormalManagement->Update(m_pPlayer->GetPos());
-	m_pEnemyLaserManagement->Update();
 
 
 	//====================================
@@ -241,16 +211,10 @@ void Game::Update(void)
 	
 	//プレイヤーのHPを攻撃数によって減らす
 	if (attack_num != 0) {
-		m_pPlayerHP->ReduceHP((float)attack_num, m_pPlayer->GetPos());
+		m_pPlayerHP->ReduceHP((float)attack_num);
+		m_pExplosionManagement->SetExplosion(m_pPlayer->GetPos());
 	}
 
-	//レーザーの敵
-	attack_num += m_pPlayerEnemyLaserCol->Update();
-	
-	//プレイヤーのHPを攻撃数によって減らす
-	if (attack_num != 0) {
-		m_pPlayerHP->ReduceHP((float)attack_num, m_pPlayer->GetPos());
-	}
 
 	//プレイヤーのHPが0になったら...
 	if (m_pPlayerHP->GetHP0Flag()) {
@@ -271,7 +235,6 @@ void Game::Draw(void)const
 	m_pPlayerRight->RightDraw();
 
 	m_pEnemyNormalManagement->Draw();
-	m_pEnemyLaserManagement->Draw();
 
 	m_pPlayer->DrawBullet();
 	m_pExplosionManagement->Draw();

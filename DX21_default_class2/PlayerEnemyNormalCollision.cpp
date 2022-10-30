@@ -73,6 +73,8 @@ int PlayerEnemyNormalCollision::Update(void)
 	for (int j = 0; j < m_rEnemyNormalManagement->GetBulletNum(); j++) {
 		if (Collision::ColBox(m_rPlayer->GetPos(), m_rEnemyNormalManagement->GetBulletPos(j),
 			m_rPlayer->GetSize(), m_rEnemyNormalManagement->GetBulletSize())) {
+			//爆発をセット
+			m_rExplosionManagement->SetExplosion(m_rEnemyNormalManagement->GetBulletPos(j));
 
 			//敵の弾を消す
 			m_rEnemyNormalManagement->DeleteBullet(j);
@@ -91,6 +93,9 @@ int PlayerEnemyNormalCollision::Update(void)
 			if (!m_PlayerEnemyNormalCol) {
 				//ぶつかったフラグをオン
 				m_PlayerEnemyNormalCol = true;
+
+				//爆発をセット
+				m_rExplosionManagement->SetExplosion(m_rPlayer->GetPos());
 
 				//ダメージ数を増やす
 				attacked = 1 * EnemyNormalManagement::ATTACK;
