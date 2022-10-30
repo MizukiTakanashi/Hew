@@ -42,8 +42,15 @@ public:
 			m_pItem[i].Draw();
 		}
 	}
-
-	//爆発をセット
-	void SetItem(const D3DXVECTOR2& pos);
+	//現在のアイテム位置を返す
+	const D3DXVECTOR2& GetEnemyPos(int index_num)const { return m_pItem[index_num].GetPos(); }
+	//アイテムのサイズを返す
+	const D3DXVECTOR2& GetEnemySize(void)const { return m_pItem[0].GetSize(); }
+	//指定したアイテムを消す
+	void DeleteItem(int index_num);
+	//現在のアイテムの数を返す
+	int GetItemNum(void)const { return m_ItemNum; }
+	//アイテムをセット
+	void SetItem(const D3DXVECTOR2& pos,int typeitem);
 };
 

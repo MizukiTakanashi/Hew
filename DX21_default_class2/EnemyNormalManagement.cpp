@@ -70,9 +70,22 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 
 	//今いる弾の処理
 	for (int i = 0; i < m_bullet_num; i++) {
+		//プレイヤーの後を追う(ホーミング弾)
+		D3DXVECTOR2 movTemp = PlayerPos - m_pBullet[i].GetPos();
+		D3DXVECTOR2 rotposTemp = m_pEnemyNormal[i].GetPos() - PlayerPos;
+		D3DXVec2Normalize(&movTemp, &movTemp);
+		movTemp *= BULLET_SPEED;
+
+		float rotTemp = atan2(rotposTemp.y, rotposTemp.x) * (180 / M_PI) + 180.0f;
+
+		m_pBullet[i].SetRot(rotTemp);
+		m_pBullet[i].SetMove(movTemp);
+
+		//弾の更新処理
 		m_pBullet[i].Update();
-		//画面外から出たら...
-		if (m_pBullet[i].GetScreenOut()) {
+		
+		//画面外から出たら、時間経過したら...
+		if (m_pBullet[i].GetScreenOut() || m_pBullet[i].GetTime() > BULLET_BREAK_TIME) {
 			//弾を消す
 			DeleteBullet(i);
 		}

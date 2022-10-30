@@ -21,17 +21,15 @@ class EnemyNormalManagement
 private:
 	//ここで初期化
 	//敵自身
-	static const int MAX_NUM = 10;			//敵の最大数
-	static const int APPEARANCE_TIME = 200;	//敵の出現スピード
+	static const int MAX_NUM = 10;				//敵の最大数
+	static const int APPEARANCE_TIME = 200;		//敵の出現スピード
+	static const int BULLET_BREAK_TIME = 200;	//ホーミング弾が壊れる時間
 
 	//cppで初期化
 	//弾
 	static const float BULLET_SIZE_X;		//サイズX
 	static const float BULLET_SIZE_Y;		//サイズY
 	static const float BULLET_SPEED;		//スピード
-
-
-
 
 public:
 	//ここで初期化

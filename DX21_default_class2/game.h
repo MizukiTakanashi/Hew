@@ -24,6 +24,7 @@
 #include "playerleft.h"
 #include "playerright.h"
 #include "ItemManagement.h"
+#include "ArmEnemyCollision.h"
 class Game
 {
 //定数
@@ -56,9 +57,12 @@ private:
 	PlayerEnemyNormalCollision* m_pPlayerEnemyNormalCol = nullptr;
 	PlayerEnemyLaserCollision* m_pPlayerEnemyLaserCol = nullptr;
 
+	ArmEnemyCollision* m_ArmEnemyCollision = nullptr;
+
 	PlayerLeft* m_pPlayerLeft = nullptr;
 	PlayerRight* m_pPlayerRight = nullptr;
 
+	
 public:
 	Game();	//デフォルトコンストラクタ
 
