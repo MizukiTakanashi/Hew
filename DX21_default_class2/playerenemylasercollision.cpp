@@ -30,7 +30,7 @@ int PlayerEnemyLaserCollision::Update(void)
 					//爆発をセット
 					m_rExplosionManagement->SetExplosion(m_rEnemyNormalManagement->GetEnemyPos(j));
 					//敵アイテムのドロップ
-					m_rItemManagement->SetItem(m_rEnemyNormalManagement->GetEnemyPos(j));
+					m_rItemManagement->SetItem(m_rEnemyNormalManagement->GetEnemyPos(j),0);
 
 					//プレイヤーの弾を消す
 					m_rPlayer->DeleteBullet(i);
