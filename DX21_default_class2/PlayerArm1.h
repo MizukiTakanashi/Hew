@@ -51,6 +51,7 @@ public:
 	//描画処理(オーバーライド)
 	void PlayerArmDraw()override;
 
+	//一番近い敵の位置をセット
 	void SetEnemyPos(const D3DXVECTOR2& enemy_pos) { m_enemy_pos = enemy_pos; }
 };
 
