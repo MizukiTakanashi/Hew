@@ -38,7 +38,7 @@ void EnemyLaserManagement::Update()
 		if (m_pEnemySetPos.SetEnemy(D3DXVECTOR2(x, EnemyLaser::STOP_POS_Y), D3DXVECTOR2(EnemyLaser::SIZE_X + EnemyLaser::RANGE * 2, EnemyLaser::SIZE_Y))) {
 			EnemyLaser temp(m_pDrawObjectEnemy, D3DXVECTOR2(x, -EnemyLaser::SIZE_Y / 2));
 			m_pEnemyLaser[GetObjNum()] = temp;
-			IncreaseObjNum();
+			EnemyManagement::IncreaseObjNum(1);
 		}
 
 		m_count = 0;

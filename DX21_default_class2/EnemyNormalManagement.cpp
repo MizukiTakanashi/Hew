@@ -38,7 +38,7 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 		if (m_pEnemySetPos.SetEnemy(D3DXVECTOR2(x, EnemyNormal::STOP_POS_Y), D3DXVECTOR2(EnemyNormal::SIZE_X + EnemyNormal::RANGE * 2, EnemyNormal::SIZE_Y))) {
 			EnemyNormal temp(m_pDrawObjectEnemy, D3DXVECTOR2(x, -EnemyNormal::SIZE_Y / 2));
 			m_pEnemyNormal[GetObjNum()] = temp;
-			IncreaseObjNum();
+		 	EnemyManagement::IncreaseObjNum(1);
 		}
 
 		m_count = 0;
@@ -62,7 +62,7 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), movTemp, rotTemp);
 			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
 
-			EnemyManagement::IncreaseBulletNum(-1);
+			EnemyManagement::IncreaseBulletNum(1);
 
 			m_pEnemyNormal[i].BulletMake();
 		}

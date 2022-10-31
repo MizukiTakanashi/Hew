@@ -42,7 +42,7 @@ public:
 	void IncreaseObjNum(int num = 1) { m_obj_num += num; }
 
 	//現在の弾数を増やす
-	void IncreaseBulletNum(int num = 1) { m_obj_num += num; }
+	void IncreaseBulletNum(int num = 1) { m_bullet_num += num; }
 
 	//現在のオブジェクトの数を返す
 	int GetObjNum(void)const { return m_obj_num; }
