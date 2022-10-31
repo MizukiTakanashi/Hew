@@ -151,6 +151,7 @@
     <ClCompile Include="number.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="BG.cpp" />
+    <ClCompile Include="PlayerArm3.cpp" />
     <ClCompile Include="playerenemylasercollision.cpp" />
     <ClCompile Include="PlayerArm1.cpp" />
     <ClCompile Include="PlayerEnemyNormalCollision.cpp" />
@@ -192,6 +193,7 @@
     <ClInclude Include="number.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="BG.h" />
+    <ClInclude Include="PlayerArm3.h" />
     <ClInclude Include="playerenemylasercollision.h" />
     <ClInclude Include="PlayerArm1.h" />
     <ClInclude Include="PlayerEnemyNormalCollision.h" />
