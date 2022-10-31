@@ -282,6 +282,7 @@ void Game::Draw(void)const
 	m_pExplosionManagement->Draw();
 
 	m_pItemManagement->Draw();
+
 	//UIの描画
 	m_pPlayerHP->DrawHP();
 	m_pNumber->DrawNumber();
