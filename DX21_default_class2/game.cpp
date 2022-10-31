@@ -103,7 +103,7 @@ Game::Game()
 	m_ArmEnemyCollision = new ArmEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pItemManagement);
 
 	//敵の管理
-	Management* test[] = { m_pEnemyNormalManagement, m_pEnemyLaserManagement };
+	EnemyManagement* test[] = { m_pEnemyNormalManagement, m_pEnemyLaserManagement };
 	m_pAllEnemyManagement = new AllEnemyManagement(test);
 }
 

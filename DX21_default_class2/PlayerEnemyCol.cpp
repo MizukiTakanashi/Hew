@@ -92,7 +92,7 @@ int PlayerEnemyCol::Collision(void)
 					m_PlayerEnemyCol = true;
 
 					//ƒ_ƒ[ƒW”‚ð‘‚â‚·
-					attacked += (m_pEnemy + k)->GetBulletAttack();
+					attacked += (m_pEnemy + k)->GetObjAttack();
 				}
 			}
 			else {

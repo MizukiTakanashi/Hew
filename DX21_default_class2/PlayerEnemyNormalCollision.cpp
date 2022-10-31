@@ -37,7 +37,7 @@ int PlayerEnemyNormalCollision::Update(void)
 					m_rPlayer->DeleteBullet(i);
 					i--;
 					//“G‚ğÁ‚·
-					m_rEnemyNormalManagement->DeleteEnemy(j);
+					m_rEnemyNormalManagement->DeleteObj(j);
 					j--;
 
 					m_pNumber->AddNumber(1);

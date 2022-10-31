@@ -18,7 +18,7 @@ const float EnemyLaserManagement::BULLET_SIZE_Y = 0.0f;
 // 引数付きコンストラクタ
 //=========================
 EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, EnemySetPos& pEnemySetPos)
-	:EnemyManagement(MAX_NUM, MAX_NUM), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectLaser(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
+	:EnemyManagement(MAX_NUM, MAX_NUM, ATTACK, LASER_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectLaser(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
 {
 	m_pEnemyLaser = new EnemyLaser[MAX_NUM];
 	m_pLaser = new Laser[MAX_NUM];

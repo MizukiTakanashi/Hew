@@ -36,7 +36,7 @@ int PlayerEnemyLaserCollision::Update(void)
 					m_rPlayer->DeleteBullet(i);
 					i--;
 					//敵を消す
-					m_rEnemyManagement->DeleteEnemy(j);
+					m_rEnemyManagement->DeleteObj(j);
 					j--;
 
 					m_pNumber->AddNumber(1);

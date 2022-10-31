@@ -17,6 +17,7 @@ private:
 	int m_obj_num = 0;				//Œ»İ‚ÌƒIƒuƒWƒFƒNƒg”
 	int m_bullet_max_num = 0;		//’e‚ÌÅ‘å”
 	int m_bullet_num = 0;			//Œ»İ‚Ì’e”
+	int m_obj_attack = 0;			//“G©g‚ª‚Ô‚Â‚©‚Á‚Ä—^‚¦‚éUŒ‚—Í
 	int m_bullet_attack = 0;		//’e‚ª—^‚¦‚éUŒ‚—Í
 
 public:
@@ -24,8 +25,9 @@ public:
 	EnemyManagement() {}
 
 	//ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
-	EnemyManagement(int enemy_max_num, int bullet_max_num, int bullet_attack) 
-		:m_obj_max_num(enemy_max_num), m_bullet_max_num(bullet_max_num), m_bullet_attack(bullet_attack) {}
+	EnemyManagement(int enemy_max_num, int bullet_max_num, int obj_attack, int bullet_attack) 
+		:m_obj_max_num(enemy_max_num), m_bullet_max_num(bullet_max_num), 
+		m_obj_attack(obj_attack), m_bullet_attack(bullet_attack) {}
 
 	//ƒfƒXƒgƒ‰ƒNƒ^
 	virtual ~EnemyManagement() {}
@@ -48,6 +50,9 @@ public:
 	//Œ»İ‚Ì’e‚Ì”‚ğ•Ô‚·
 	int GetBulletNum(void)const { return m_bullet_num; }
 	
+	//“G©g‚ª‚Ô‚Â‚©‚Á‚½‚ÌUŒ‚—Í‚ğ•Ô‚·
+	int GetObjAttack(void)const { return m_obj_attack; }
+
 	//’e‚ÌUŒ‚—Í‚ğ•Ô‚·
 	int GetBulletAttack(void)const { return m_bullet_attack; }
 

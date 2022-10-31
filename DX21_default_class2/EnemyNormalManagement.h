@@ -81,7 +81,7 @@ public:
 	const D3DXVECTOR2& GetObjPos(int index_num)const override { return m_pEnemyNormal[index_num].GetPos(); }
 
 	//指定した番号のサイズを返す(オーバーライド)
-	const D3DXVECTOR2& GetObjPos(int index_num = 0)const override { return m_pEnemyNormal[index_num].GetSize(); }
+	const D3DXVECTOR2& GetObjSize(int index_num = 0)const override { return m_pEnemyNormal[index_num].GetSize(); }
 
 	//指定した弾の座標を返す
 	const D3DXVECTOR2& GetBulletPos(int index_num)const override{ return m_pBullet[index_num].GetPos(); }

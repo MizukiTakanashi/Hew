@@ -25,7 +25,7 @@
 #include "playerright.h"
 #include "ItemManagement.h"
 #include "ArmEnemyCollision.h"
-#include "management.h"
+#include "EnemyManagement.h"
 #include "AllEnemyManagement.h"
 
 class Game
@@ -96,7 +96,7 @@ private:
 	PlayerLeft* m_pPlayerLeft = nullptr;
 	PlayerRight* m_pPlayerRight = nullptr;
 
-	Management* m_pEnemyManagement = nullptr;	//“G‚ÌŠÇ——p
+	EnemyManagement* m_pEnemyManagement = nullptr;	//“G‚ÌŠÇ——p
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
 	
 public:

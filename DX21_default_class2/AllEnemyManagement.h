@@ -8,19 +8,19 @@
 #ifndef _ALL_ENEMY_MANAGEMENT_H_
 #define _ALL_ENEMY_MANAGEMENT_H_
 
-#include "management.h"
+#include "EnemyManagement.h"
 
 class AllEnemyManagement
 {
 private:
-	Management* m_pEnemy = nullptr;	//敵全クラス
+	EnemyManagement* m_pEnemy = nullptr;	//敵全クラス
 
 public:
 	//デフォルトコンストラクタ
 	AllEnemyManagement(){}
 
 	//引数付きコンストラクタ
-	AllEnemyManagement(Management* p[]) :m_pEnemy(p[0]){}
+	AllEnemyManagement(EnemyManagement* p[]) :m_pEnemy(p[0]){}
 
 	//デストラクタ
 	~AllEnemyManagement(){}
