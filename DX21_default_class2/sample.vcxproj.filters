@@ -40,6 +40,7 @@
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="AllEnemyManagement.cpp" />
+    <ClCompile Include="PlayerArm3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
@@ -81,5 +82,6 @@
     <ClInclude Include="Title.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="AllEnemyManagement.h" />
+    <ClInclude Include="PlayerArm3.h" />
   </ItemGroup>
 </Project>
