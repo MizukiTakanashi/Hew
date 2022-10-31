@@ -76,6 +76,12 @@ public:
 	//現在の弾の数を返す
 	int GetBulletNum(void)const { return m_laser_num; }
 
+	//指定した番号の座標を返す(オーバーライド)
+	const D3DXVECTOR2& GetObjPos(int index_num)override { return m_pEnemyLaser[index_num].GetPos(); }
+
+	//指定した番号のサイズを返す(オーバーライド)
+	const D3DXVECTOR2& GetObjPos(int index_num = 0)override { return m_pEnemyLaser[index_num].GetSize(); }
+
 	//指定した弾の座標を返す
 	const D3DXVECTOR2& GetBulletPos(int index_num)const { return m_pLaser[index_num].GetPos(); }
 

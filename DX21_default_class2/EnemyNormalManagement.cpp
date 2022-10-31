@@ -18,12 +18,10 @@ const float EnemyNormalManagement::BULLET_SPEED = 2.5f;
 // 引数付きコンストラクタ
 //=========================
 EnemyNormalManagement::EnemyNormalManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, EnemySetPos& pEnemySetPos)
-	:Management(m_pEnemyNormal, MAX_NUM), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
+	:Management(MAX_NUM), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
 {
 	m_pEnemyNormal = new EnemyNormal[MAX_NUM];
 	m_pBullet = new Bullet[MAX_NUM];
-
-	Management::SetPoint(m_pEnemyNormal);
 }
 
 //======================
@@ -115,7 +113,10 @@ void EnemyNormalManagement::DeleteEnemy(int index_num)
 {
 	m_pEnemySetPos.DeleteEnemy(m_pEnemyNormal[index_num].GetPos());
 
-	Management::Delete(index_num);
+	for (int i = index_num; i < Management::GetObjNum() - 1; i++) {
+		m_pEnemyNormal[i] = m_pEnemyNormal[i + 1];
+	}
+	Management::IncreaseObjNum(-1);
 }
 
 //======================

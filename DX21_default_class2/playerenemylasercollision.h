@@ -21,7 +21,7 @@ class PlayerEnemyLaserCollision
 {
 private:
 	Player* m_rPlayer = nullptr;
-	EnemyLaserManagement* m_rEnemyNormalManagement = nullptr;
+	EnemyLaserManagement* m_rEnemyManagement = nullptr;
 	ExplosionManagement* m_rExplosionManagement = nullptr;
 	Number* m_pNumber = nullptr;
 	ItemManagement* m_rItemManagement = nullptr;
@@ -33,7 +33,7 @@ public:
 	//引数付きコンストラクタ
 	PlayerEnemyLaserCollision(Player* rPlayer, EnemyLaserManagement* rEnemyNormalManagement,
 		ExplosionManagement* rExplosionManagement, Number* pNumber, ItemManagement* m_rItem)
-		:m_rPlayer(rPlayer), m_rEnemyNormalManagement(rEnemyNormalManagement),
+		:m_rPlayer(rPlayer), m_rEnemyManagement(rEnemyNormalManagement),
 		m_rExplosionManagement(rExplosionManagement), m_pNumber(pNumber), m_rItemManagement(m_rItem) {}
 
 	~PlayerEnemyLaserCollision() {}	//デストラクタ
