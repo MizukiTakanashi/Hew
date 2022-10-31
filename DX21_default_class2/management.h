@@ -22,7 +22,7 @@ public:
 	Management(){}
 
 	//引数付きコンストラクタ
-	Management(GameObject* pObj, int max_num):m_pObj(pObj), m_obj_max_num(max_num) {}
+	Management(GameObject* pObj, int max_num) :m_pObj(pObj), m_obj_max_num(max_num) {}
 	
 	//デストラクタ
 	virtual ~Management(){}

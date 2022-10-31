@@ -99,7 +99,9 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 //==========================
 void EnemyNormalManagement::Draw(void)const
 {
-	Management::DrawObj();
+	for (int i = 0; i < Management::GetObjNum(); i++) {
+		m_pEnemyNormal[i].Draw();
+	}
 
 	for (int i = 0; i < m_bullet_num; i++) {
 		m_pBullet[i].Draw();

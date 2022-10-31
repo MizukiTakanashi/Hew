@@ -41,7 +41,7 @@ private:
 	DrawObject m_frame_DrawObject;	//描画オブジェクト
 	float m_hp = HP_MAX;			//プレイヤーのHP
 	int m_invincible = 0;			//無敵時間
-	ExplosionManagement* m_pExplosionManagement; //爆発管理のポインタ
+	ExplosionManagement* m_pExplosionManagement = nullptr; //爆発管理のポインタ
 
 public:
 	PlayerHP() { m_hp = HP_MAX; }	//デフォルトコンストラクタ
