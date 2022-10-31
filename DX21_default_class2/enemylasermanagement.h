@@ -9,13 +9,13 @@
 #define _ENEMY_LASER_MANAGEMENT_H_
 
 #include "main.h"
-#include "management.h"
+#include "EnemyManagement.h"
 #include "enemylaser.h"
 #include "laser.h"
 #include "DrawObject.h"
 #include "EnemySetPos.h"
 
-class EnemyLaserManagement:public Management
+class EnemyLaserManagement:public EnemyManagement
 {
 //定数
 private:
@@ -45,7 +45,6 @@ private:
 	DrawObject m_pDrawObjectLaser;
 	EnemySetPos m_pEnemySetPos;
 
-	int m_laser_num = 0;	//弾の数
 	int m_EnemyItem_num = 0;	//敵のアイテムの数
 
 	int m_count = 0;		//敵の出現速度
@@ -68,25 +67,22 @@ public:
 	void Draw(void)const;			
 
 	//指定した敵を消す
-	void DeleteEnemy(int index_num);
+	void DeleteObj(int index_num)override;
 
 	//指定した弾を消す
-	void DeleteBullet(int index_num);
-	
-	//現在の弾の数を返す
-	int GetBulletNum(void)const { return m_laser_num; }
+	void DeleteBullet(int index_num)override;
 
 	//指定した番号の座標を返す(オーバーライド)
-	const D3DXVECTOR2& GetObjPos(int index_num)override { return m_pEnemyLaser[index_num].GetPos(); }
+	const D3DXVECTOR2& GetObjPos(int index_num)const override { return m_pEnemyLaser[index_num].GetPos(); }
 
 	//指定した番号のサイズを返す(オーバーライド)
-	const D3DXVECTOR2& GetObjPos(int index_num = 0)override { return m_pEnemyLaser[index_num].GetSize(); }
+	const D3DXVECTOR2& GetObjPos(int index_num = 0)const override { return m_pEnemyLaser[index_num].GetSize(); }
 
 	//指定した弾の座標を返す
-	const D3DXVECTOR2& GetBulletPos(int index_num)const { return m_pLaser[index_num].GetPos(); }
+	const D3DXVECTOR2& GetBulletPos(int index_num)const override { return m_pLaser[index_num].GetPos(); }
 
 	//弾のサイズを返す
-	const D3DXVECTOR2& GetBulletSize(void)const { return m_pLaser[0].GetSize(); }
+	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override{ return m_pLaser[index_num].GetSize(); }
 
 };
 

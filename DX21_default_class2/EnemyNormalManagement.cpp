@@ -18,7 +18,7 @@ const float EnemyNormalManagement::BULLET_SPEED = 2.5f;
 // 引数付きコンストラクタ
 //=========================
 EnemyNormalManagement::EnemyNormalManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, EnemySetPos& pEnemySetPos)
-	:Management(MAX_NUM), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
+	:EnemyManagement(MAX_NUM, MAX_NUM), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
 {
 	m_pEnemyNormal = new EnemyNormal[MAX_NUM];
 	m_pBullet = new Bullet[MAX_NUM];
@@ -49,7 +49,7 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 		m_pEnemyNormal[i].Update();
 
 		//弾を作る
-		if (m_pEnemyNormal[i].GetFlagBulletMake() && m_bullet_num != MAX_NUM) {
+		if (m_pEnemyNormal[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() != MAX_NUM) {
 			//プレイヤーの後を追うようにして、弾を生成
 			D3DXVECTOR2 movTemp = PlayerPos - m_pEnemyNormal[i].GetPos();
 			D3DXVECTOR2 rotposTemp = m_pEnemyNormal[i].GetPos() - PlayerPos;
@@ -60,16 +60,16 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 
 			Bullet temp(m_pDrawObjectBullet, m_pEnemyNormal[i].GetPos(),
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), movTemp, rotTemp);
-			m_pBullet[m_bullet_num] = temp;
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
 
-			m_bullet_num++;
+			EnemyManagement::IncreaseBulletNum(-1);
 
 			m_pEnemyNormal[i].BulletMake();
 		}
 	}
 
 	//今いる弾の処理
-	for (int i = 0; i < m_bullet_num; i++) {
+	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {
 		//プレイヤーの後を追う(ホーミング弾)
 		D3DXVECTOR2 movTemp = PlayerPos - m_pBullet[i].GetPos();
 		D3DXVECTOR2 rotposTemp = m_pEnemyNormal[i].GetPos() - PlayerPos;
@@ -97,11 +97,11 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 //==========================
 void EnemyNormalManagement::Draw(void)const
 {
-	for (int i = 0; i < Management::GetObjNum(); i++) {
+	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
 		m_pEnemyNormal[i].Draw();
 	}
 
-	for (int i = 0; i < m_bullet_num; i++) {
+	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {
 		m_pBullet[i].Draw();
 	}
 }
@@ -109,14 +109,14 @@ void EnemyNormalManagement::Draw(void)const
 //======================
 // 敵を消す
 //======================
-void EnemyNormalManagement::DeleteEnemy(int index_num)
+void EnemyNormalManagement::DeleteObj(int index_num)
 {
 	m_pEnemySetPos.DeleteEnemy(m_pEnemyNormal[index_num].GetPos());
 
-	for (int i = index_num; i < Management::GetObjNum() - 1; i++) {
+	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
 		m_pEnemyNormal[i] = m_pEnemyNormal[i + 1];
 	}
-	Management::IncreaseObjNum(-1);
+	EnemyManagement::IncreaseObjNum(-1);
 }
 
 //======================
@@ -124,8 +124,8 @@ void EnemyNormalManagement::DeleteEnemy(int index_num)
 //======================
 void EnemyNormalManagement::DeleteBullet(int index_num)
 {
-	for (int i = index_num; i < m_bullet_num - 1; i++) {
+	for (int i = index_num; i < EnemyManagement::GetBulletNum() - 1; i++) {
 		m_pBullet[i] = m_pBullet[i + 1];
 	}
-	m_bullet_num--;
+	EnemyManagement::IncreaseBulletNum(-1);
 }

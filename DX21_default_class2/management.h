@@ -26,17 +26,20 @@ public:
 	//デストラクタ
 	virtual ~Management(){}
 
+	//指定した番号のオブジェクトを消す
+	virtual void DeleteObj(int index_num) = 0;
+
+	//現在のオブジェクト数を増やす
+	void IncreaseObjNum(int num = 1) { m_obj_num += num; }
+
 	//現在のオブジェクトの数を返す
 	int GetObjNum(void)const { return m_obj_num; }
 
 	//指定した番号の座標を返す(オーバーライド用)
-	virtual const D3DXVECTOR2& GetObjPos(int index_num) = 0;
+	virtual const D3DXVECTOR2& GetObjPos(int index_num)const = 0;
 
 	//指定した番号のサイズを返す(オーバーライド用)
-	virtual const D3DXVECTOR2& GetObjPos(int index_num = 0) = 0;
-
-	//現在のオブジェクト数を増やす
-	void IncreaseObjNum(int num = 1) { m_obj_num += num; }
+	virtual const D3DXVECTOR2& GetObjSize(int index_num = 0)const = 0;
 };
 
 #endif // !_MANAGEMENT_H_
