@@ -23,61 +23,63 @@ Game::Game()
 	PlaySound(m_BGM, -1);	//BGM再生
 	SetVolume(m_BGM, 0.1f);
 
-	m_pTexUseful = new TextureUseful[10];
-	m_pDrawObject = new DrawObject[10];
+	m_pTexUseful = new TextureUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_NUM];
+	m_pDrawObject = new DrawObject[(int)DRAW_TYPE::DRAW_TYPE_NUM];
 
 	//背景の初期化処理
 	m_pBG = new BG((char*)"data\\texture\\bg_uchu_space.jpg");	
 
 	//弾
-	m_pTexUseful[2].SetTextureName((char*)"data\\texture\\bullet00.png");
-	m_pDrawObject[2].SetDrawObject(m_pTexUseful[2]);
+	m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_BULLET].SetTextureName((char*)"data\\texture\\bullet00.png");
+	m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_BULLET]);
 
 	//レーザー
-	m_pTexUseful[8].SetTextureName((char*)"data\\texture\\laser00.png");
-	m_pDrawObject[9].SetDrawObject(m_pTexUseful[8]);
+	m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_LASER].SetTextureName((char*)"data\\texture\\laser00.png");
+	m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_LASER]);
 
 	//プレイヤー
-	m_pTexUseful[0].SetTextureName((char*)"data\\texture\\player.png");
-	m_pDrawObject[0].SetDrawObject(m_pTexUseful[0]);
-	m_pPlayer = new Player(m_pDrawObject[0], m_pDrawObject[2]);
+	m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_PLAYER].SetTextureName((char*)"data\\texture\\player.png");
+	m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_PLAYER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_PLAYER]);
+	m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_PLAYER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_BULLET]]);
+	m_pPlayer = new Player(m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_PLAYER], m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_PLAYER_BULLET]);
 
 	//プレイヤーの左右
-	m_pTexUseful[5].SetTextureName((char*)"data\\texture\\arm.png");
-	m_pDrawObject[6].SetDrawObject(m_pTexUseful[5]);
+	m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_PLAYER_ARM].SetTextureName((char*)"data\\texture\\arm.png");
+	m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_PLAYER_ARM_LEFT].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_PLAYER_ARM]);
 	m_pPlayerLeft = new PlayerLeft();
 
-	m_pTexUseful[6].SetTextureName((char*)"data\\texture\\arm.png");
-	m_pDrawObject[7].SetDrawObject(m_pTexUseful[6]);
+	m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_PLAYER_ARM_RIGHT].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_PLAYER_ARM]);
 	m_pPlayerRight = new PlayerRight();
 
 	//敵の配置場所
 	m_pEnemySetPos = new EnemySetPos;
 
 	//普通の敵
-	m_pTexUseful[1].SetTextureName((char*)"data\\texture\\eilian.png");
-	m_pDrawObject[1].SetDrawObject(m_pTexUseful[1]);
+	m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_ENEMY1].SetTextureName((char*)"data\\texture\\eilian.png");
+	m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_ENEMY1].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_ENEMY1]);
 
-	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[1], m_pDrawObject[2],
-		*m_pEnemySetPos);
-	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[1], m_pDrawObject[9],
-		*m_pEnemySetPos);
+	m_pEnemyNormalManagement = 
+		new EnemyNormalManagement(m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_ENEMY1], 
+			m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_ENEMY1_BULLET], *m_pEnemySetPos);
+
+	//レーザーの敵
+	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[1], 
+		m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_ENEMY2_LASER], *m_pEnemySetPos);
 
 	//爆発
-	m_pTexUseful[4].SetTextureName((char*)"data\\texture\\explosion000.png");
-	m_pDrawObject[5].SetDrawObject(m_pTexUseful[4], 0.0f, 0.125f, 1.0f, 7);
+	m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_EXPLOSION].SetTextureName((char*)"data\\texture\\explosion000.png");
+	m_pDrawObject[5].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_EXPLOSION], 0.0f, 0.125f, 1.0f, 7);
 	m_pExplosionManagement = new ExplosionManagement(m_pDrawObject[5]);
 
 	//プレイヤーのHP
-	m_pTexUseful[3].SetTextureName((char*)"data\\texture\\playerHP.png");
-	m_pDrawObject[3].SetDrawObject(m_pTexUseful[3], 0.0f, 1.0f, 0.5f, 1);
+	m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_PLAYER_HP].SetTextureName((char*)"data\\texture\\playerHP.png");
+	m_pDrawObject[3].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_PLAYER_HP], 0.0f, 1.0f, 0.5f, 1);
 
-	m_pDrawObject[4].SetDrawObject(m_pTexUseful[3], 1.0f, 1.0f, 0.5f, 1);
+	m_pDrawObject[4].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_PLAYER_HP], 1.0f, 1.0f, 0.5f, 1);
 	m_pPlayerHP = new PlayerHP(m_pDrawObject[3], m_pDrawObject[4], m_pExplosionManagement);
 
 	//敵のアイテム
-	m_pTexUseful[7].SetTextureName((char*)"data\\texture\\explosion000.png");
-	m_pDrawObject[8].SetDrawObject(m_pTexUseful[7], 0.0f, 0.125f, 1.0f, 7);
+	m_pDrawObject[8].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_EXPLOSION], 0.0f, 0.125f, 1.0f, 7);
 	m_pItemManagement = new ItemManagement(m_pDrawObject[8]);
 
 	//数字の初期化
