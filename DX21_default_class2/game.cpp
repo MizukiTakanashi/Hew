@@ -63,24 +63,25 @@ Game::Game()
 			m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_ENEMY1_BULLET], *m_pEnemySetPos);
 
 	//レーザーの敵
-	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[1], 
+	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_ENEMY2],
 		m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_ENEMY2_LASER], *m_pEnemySetPos);
 
 	//爆発
 	m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_EXPLOSION].SetTextureName((char*)"data\\texture\\explosion000.png");
-	m_pDrawObject[5].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_EXPLOSION], 0.0f, 0.125f, 1.0f, 7);
-	m_pExplosionManagement = new ExplosionManagement(m_pDrawObject[5]);
+	m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_EXPLOSION].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_EXPLOSION], 0.0f, 0.125f, 1.0f, 7);
+	m_pExplosionManagement = new ExplosionManagement(m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_EXPLOSION]);
 
 	//プレイヤーのHP
 	m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_PLAYER_HP].SetTextureName((char*)"data\\texture\\playerHP.png");
-	m_pDrawObject[3].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_PLAYER_HP], 0.0f, 1.0f, 0.5f, 1);
+	m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_PLAYER_HP].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_PLAYER_HP], 0.0f, 1.0f, 0.5f, 1);
+	m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_PLAYER_HP_FRAME].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_PLAYER_HP], 1.0f, 1.0f, 0.5f, 1);
 
-	m_pDrawObject[4].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_PLAYER_HP], 1.0f, 1.0f, 0.5f, 1);
-	m_pPlayerHP = new PlayerHP(m_pDrawObject[3], m_pDrawObject[4], m_pExplosionManagement);
+	m_pPlayerHP = new PlayerHP(m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_PLAYER_HP], 
+		m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_PLAYER_HP_FRAME], m_pExplosionManagement);
 
 	//敵のアイテム
-	m_pDrawObject[8].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_EXPLOSION], 0.0f, 0.125f, 1.0f, 7);
-	m_pItemManagement = new ItemManagement(m_pDrawObject[8]);
+	m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_ENEMY_ITEM_EXPLOSION].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::TEXTURE_TYPE_EXPLOSION], 0.0f, 0.125f, 1.0f, 7);
+	m_pItemManagement = new ItemManagement(m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_ENEMY_ITEM_EXPLOSION]);
 
 	//数字の初期化
 	m_pNumber->SetInitPos(NUMBER_POS);
