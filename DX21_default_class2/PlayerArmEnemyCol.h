@@ -31,9 +31,9 @@ public:
 	PlayerArmEnemyCol() {}
 
 	//引数付きコンストラクタ
-	PlayerArmEnemyCol(inhPlayerArm* pPlayer, EnemyManagement* pEnemy, ExplosionManagement* pExplosion,
+	PlayerArmEnemyCol(EnemyManagement* pEnemy, ExplosionManagement* pExplosion,
 		ItemManagement* pItem, Number* pNumber, int EnemyNum)
-		:m_pArm(pPlayer), m_pEnemy(pEnemy), m_pExplosion(pExplosion),
+		:m_pEnemy(pEnemy), m_pExplosion(pExplosion),
 		m_pItem(pItem), m_pNumber(pNumber), m_EnemyNum(EnemyNum) {}
 
 	//デストラクタ

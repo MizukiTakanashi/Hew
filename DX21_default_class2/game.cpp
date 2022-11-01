@@ -102,6 +102,8 @@ Game::Game()
 	//プレイヤーの腕と敵のアイテムの当たり判定
 	m_ArmEnemyCollision = new ArmEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pItemManagement);
 
+	m_pArmEnemyCol=new PlayerArmEnemyCol()
+
 	//敵の管理
 	EnemyManagement* test[] = { m_pEnemyNormalManagement, m_pEnemyLaserManagement };
 	m_pAllEnemyManagement = new AllEnemyManagement(test);
