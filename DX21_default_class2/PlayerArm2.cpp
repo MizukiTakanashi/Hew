@@ -42,5 +42,7 @@ void PlayerArm2::Update()
 
 void PlayerArm2::PlayerArmDraw()const
 {
-
+	for (int i = 0; i < m_bullet_num; i++) {
+		m_pBullet[i].Draw();
+	}
 }
