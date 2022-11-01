@@ -32,7 +32,7 @@ private:
 	Bullet* m_pBullet = nullptr;		//弾のオブジェクト
 	int m_bullet_num = 0;				//現在の弾の数
 	int m_bullet_interval_count = 0;	//発射間隔カウント
-	
+	bool m_right = true;				//自分が付いているのが右か左か判断
 
 	//メンバ関数
 public:
@@ -40,7 +40,8 @@ public:
 	PlayerArm3() { m_pBullet = new Bullet[BULLET_NUM_MAX]; }
 
 	//引数付きコンストラクタ
-	PlayerArm3(DrawObject bulletdraw) :m_bulletdraw(bulletdraw) { m_pBullet = new Bullet[BULLET_NUM_MAX]; }
+	PlayerArm3(DrawObject bulletdraw, bool right) 
+		:m_bulletdraw(bulletdraw),m_right (right) { m_pBullet = new Bullet[BULLET_NUM_MAX]; }
 
 	//デストラクタ
 	~PlayerArm3() { delete[] m_pBullet; }
