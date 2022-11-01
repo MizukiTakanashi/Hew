@@ -103,8 +103,7 @@ Game::Game()
 	m_ArmEnemyCollision = new ArmEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pItemManagement);
 
 	//敵の管理
-	EnemyManagement* test[] = { m_pEnemyNormalManagement, m_pEnemyLaserManagement };
-	m_pAllEnemyManagement = new AllEnemyManagement(test);
+	m_pAllEnemyManagement = new AllEnemyManagement(m_pEnemyNormalManagement, m_pEnemyLaserManagement, 2);
 }
 
 //=========================
@@ -190,6 +189,9 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 
 	//プレイヤーの腕と敵のアイテムの当たり判定
 	m_ArmEnemyCollision = new ArmEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pItemManagement);
+
+	//敵の管理
+	m_pAllEnemyManagement = new AllEnemyManagement(m_pEnemyNormalManagement, m_pEnemyLaserManagement,2);
 }
 
 //==========================
@@ -229,8 +231,8 @@ void Game::Update(void)
 	m_pBG->Update();
 
 	m_pPlayer->Update(m_pPlayerHP->IsPlayerInvincible());
-	m_pPlayerLeft->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
-	m_pPlayerRight->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
+	m_pPlayerLeft->Update(m_pPlayer->GetPos(), m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerLeft->GetPos()));
+	m_pPlayerRight->Update(m_pPlayer->GetPos(), m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerRight->GetPos()));
 
 	m_pPlayerHP->Update();
 

@@ -96,7 +96,7 @@ private:
 	PlayerLeft* m_pPlayerLeft = nullptr;
 	PlayerRight* m_pPlayerRight = nullptr;
 
-	EnemyManagement* m_pEnemyManagement = nullptr;	//“G‚ÌŠÇ——p
+	EnemyManagement* m_pEnemyManagement[2];	//“G‚ÌŠÇ——p
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
 	
 public:
