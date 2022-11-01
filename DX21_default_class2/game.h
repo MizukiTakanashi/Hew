@@ -27,6 +27,7 @@
 #include "ArmEnemyCollision.h"
 #include "EnemyManagement.h"
 #include "AllEnemyManagement.h"
+#include "PlayerArmEnemyCol.h"
 
 class Game
 {
@@ -98,6 +99,8 @@ private:
 
 	EnemyManagement* m_pEnemyManagement = nullptr;	//敵の管理用
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
+
+	PlayerArmEnemyCol* m_pArmEnemyCol = nullptr;	//プレイヤーの腕と全敵の当たり判定
 	
 public:
 	Game();	//デフォルトコンストラクタ
