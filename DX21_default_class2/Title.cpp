@@ -10,7 +10,7 @@
 #include	"input.h"
 #include	"scene.h"
 #include	"sound.h"
-#include	"BG.h"
+#include	"bg.h"
 
 //======================
 // ƒOƒ[ƒoƒ‹•Ï”

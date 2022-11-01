@@ -8,8 +8,8 @@
 #define _PLAYER_H_
 
 #include "main.h"
-#include "DrawObject.h"
-#include "GameObject.h"
+#include "draw_object.h"
+#include "game_object.h"
 #include "bullet.h"
 
 //======================

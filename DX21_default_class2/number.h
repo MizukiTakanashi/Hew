@@ -9,8 +9,8 @@
 #define _NUMBER_H_
 
 #include "main.h"
-#include "UI.h"
-#include "DrawObject.h"
+#include "ui.h"
+#include "draw_object.h"
 
 class Number:public UI
 {

@@ -8,8 +8,8 @@
 #define _BULLET_H_
 
 #include <time.h>
-#include "GameObject.h"
-#include "DrawObject.h"
+#include "game_object.h"
+#include "draw_object.h"
 
 class Bullet:public GameObject
 {

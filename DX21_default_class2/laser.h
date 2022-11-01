@@ -7,9 +7,9 @@
 #ifndef _LASER_H_
 #define _LASER_H_
 
-#include "GameObject.h"
-#include "DrawObject.h"
-#include "enemylaser.h"
+#include "game_object.h"
+#include "draw_object.h"
+#include "enemy_laser.h"
 
 class Laser:public GameObject
 {

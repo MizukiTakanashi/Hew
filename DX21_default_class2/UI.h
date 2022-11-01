@@ -9,7 +9,7 @@
 #define _UI_H_
 
 #include "main.h"
-#include "DrawObject.h"
+#include "draw_object.h"
 
 class UI
 {

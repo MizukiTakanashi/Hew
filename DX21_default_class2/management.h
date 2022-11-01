@@ -8,7 +8,7 @@
 #ifndef _MANAGEMENT_H_
 #define _MANAGEMENT_H_
 
-#include "GameObject.h"
+#include "game_object.h"
 
 class Management
 {

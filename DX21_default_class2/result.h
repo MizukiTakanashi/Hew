@@ -9,8 +9,8 @@
 #define _RESULT_H_
 
 #include "texture_useful.h"
-#include "DrawObject.h"
-#include "UI.h"
+#include "draw_object.h"
+#include "ui.h"
 #include "number.h"
 #include "main.h"
 

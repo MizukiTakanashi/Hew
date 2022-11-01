@@ -5,8 +5,8 @@
 //=======================================
 #include "player.h"
 #include "input.h"
-#include "ScreenOut.h"
-#include "PlayerHP.h"
+#include "screen_out.h"
+#include "player_hp.h"
 
 //==========================
 // ’è”‚Ì‰Šú‰»

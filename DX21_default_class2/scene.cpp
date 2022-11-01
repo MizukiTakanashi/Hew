@@ -11,7 +11,7 @@
 #include "game.h"
 #include "result.h"
 #include "number.h"
-#include "DrawObject.h"
+#include "draw_object.h"
 
 //======================
 // ƒOƒ[ƒoƒ‹•Ï”
