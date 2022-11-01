@@ -18,8 +18,8 @@ const float Player::START_POS_Y = (SCREEN_HEIGHT / 2);
 const float Player::SPEED_X = 20.0f;
 const float Player::SPEED_Y = 20.0f;
 const float Player::SPEED = 10.0f;
-const float Player::BULLET_SIZE_X = 40.0f;
-const float Player::BULLET_SIZE_Y = 40.0f;
+const float Player::BULLET_SIZE_X = 15.0f;
+const float Player::BULLET_SIZE_Y = 30.0f;
 const float Player::BULLET_SPEED_X = 0.0f;
 const float Player::BULLET_SPEED_Y = -10.5f;
 
