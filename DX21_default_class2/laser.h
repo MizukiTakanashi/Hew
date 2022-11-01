@@ -31,7 +31,8 @@ public:
 
 	virtual ~Laser() {}	//デストラクタ
 
-	bool IsLaserUse() { if (m_lasertime < 0) { return false; } return true; }
+	//レーザーの残り時間があるか
+	//bool IsLaserUse() { if (m_lasertime < 0) { return false; } return true; }
 
 	//更新処理(弾を移動)
 	void Update(void); 
