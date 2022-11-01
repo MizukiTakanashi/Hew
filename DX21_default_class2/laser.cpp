@@ -22,7 +22,7 @@ void Laser::Update(void)
 		if (m_lasertime < 0) //レーザーの射出時間が終わったか
 		{
 			//レーザーを短くする
-			GameObject::SetSize(D3DXVECTOR2(GameObject::GetSize().x, GameObject::GetSize().y - SPEED_Y * 4));
+			//GameObject::SetSize(D3DXVECTOR2(GameObject::GetSize().x, GameObject::GetSize().y - SPEED_Y * 2));
 		}
 		//レーザーのX座標をエネミーに合わせる
 		GameObject::SetPos(D3DXVECTOR2(m_pEnemynum->GetPos().x, GameObject::GetPos().y));

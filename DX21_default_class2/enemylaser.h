@@ -27,7 +27,7 @@ public:
 
 private:
 	//ここで初期化
-	static const int LASER_BETWEEN = 400;	//レーザーの発射間隔
+	static const int LASER_BETWEEN = 300;	//レーザーの発射間隔
 
 	//cppで初期化
 	static const float SPEED_X;			//敵のスピードY

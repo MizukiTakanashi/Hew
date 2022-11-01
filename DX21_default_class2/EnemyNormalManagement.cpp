@@ -10,8 +10,8 @@
 //==========================
 // ’è”‚Ì‰Šú‰»
 //==========================
-const float EnemyNormalManagement::BULLET_SIZE_X = 40.0f;
-const float EnemyNormalManagement::BULLET_SIZE_Y = 40.0f;
+const float EnemyNormalManagement::BULLET_SIZE_X = 15.0f;
+const float EnemyNormalManagement::BULLET_SIZE_Y = 30.0f;
 const float EnemyNormalManagement::BULLET_SPEED = 2.5f;
 
 //=========================
