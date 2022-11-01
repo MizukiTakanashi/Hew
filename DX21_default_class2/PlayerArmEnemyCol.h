@@ -40,8 +40,10 @@ public:
 	~PlayerArmEnemyCol() {}
 
 	//全ての敵とプレイヤーの当たり判定
-	//プレイヤーの削れたHPの値を返す
 	void Collision(void);
+
+	//プレイヤーの腕のアイテムをセット
+	void SetPlayerArm(inhPlayerArm* pArm) { m_pArm = pArm; }
 };
 
 #endif // !_PLAYER_ARM_ENEMY_COL_H_#pragma once
