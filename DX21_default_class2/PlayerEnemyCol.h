@@ -42,6 +42,7 @@ public:
 	//全ての敵とプレイヤーの当たり判定
 	//プレイヤーの削れたHPの値を返す
 	int Collision(void);
+
 };
 
 #endif // !_PLAYER_ENEMY_COL_H_
