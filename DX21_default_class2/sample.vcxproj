@@ -160,6 +160,7 @@
     <ClCompile Include="PlayerHP.cpp" />
     <ClCompile Include="playerleft.cpp" />
     <ClCompile Include="playerright.cpp" />
+    <ClCompile Include="PlayerArmEnemyCol.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="result.cpp" />
     <ClCompile Include="scene.cpp" />
@@ -204,6 +205,7 @@
     <ClInclude Include="PlayerHP.h" />
     <ClInclude Include="playerleft.h" />
     <ClInclude Include="playerright.h" />
+    <ClInclude Include="PlayerArmEnemyCol.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="result.h" />
     <ClInclude Include="scene.h" />

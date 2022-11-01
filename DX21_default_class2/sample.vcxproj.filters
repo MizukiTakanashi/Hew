@@ -43,6 +43,7 @@
     <ClCompile Include="PlayerArm3.cpp" />
     <ClCompile Include="PlayerEnemyCol.cpp" />
     <ClCompile Include="EnemyManagement.cpp" />
+    <ClCompile Include="PlayerArmEnemyCol.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
@@ -87,5 +88,6 @@
     <ClInclude Include="PlayerArm3.h" />
     <ClInclude Include="PlayerEnemyCol.h" />
     <ClInclude Include="EnemyManagement.h" />
+    <ClInclude Include="PlayerArmEnemyCol.h" />
   </ItemGroup>
 </Project>
