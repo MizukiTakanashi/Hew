@@ -6,6 +6,7 @@
 #include "PlayerArm1.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
+#include "input.h"
 
 //==========================
 // 定数の初期化
@@ -19,8 +20,8 @@ const float PlayerArm1::BULLET_SPEED = 2.5f;
 //==========================
 void PlayerArm1::Update()
 {
-	//発射できる時間になったら...
-	if (++m_bullet_interval_count > BULLET_INTERVAL) {
+	//ボタンが押されたら
+	if ((m_right && GetKeyboardPress(DIK_RIGHT)) || (!m_right && GetKeyboardPress(DIK_LEFT))) {
 		//プレイヤーの後を追うようにして、弾を生成
 		D3DXVECTOR2 movTemp = m_enemy_pos - GetPos();
 		D3DXVECTOR2 rotposTemp = GetPos() - m_enemy_pos;
