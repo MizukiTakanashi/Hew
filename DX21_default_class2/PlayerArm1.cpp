@@ -70,7 +70,7 @@ void PlayerArm1::Update()
 //==========================
 // •`‰æˆ—
 //==========================
-void PlayerArm1::PlayerArmDraw()
+void PlayerArm1::PlayerArmDraw()const
 {
 	for (int i = 0; i < m_bullet_num; i++) {
 		m_pBullet[i].Draw();

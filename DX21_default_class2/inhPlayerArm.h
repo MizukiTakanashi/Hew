@@ -36,7 +36,7 @@ public:
 	void IncreaseBulletNum(int num = 1) { m_BulletNum += num; }
 
 	//弾の数を取得
-	int GetBulletNum(void)const { return m_BulletNum;}
+	int GetBulletNum(void)const { return m_BulletNum; }
 
 	//指定した番号の弾の座標を返す(オーバーライド用)
 	virtual const D3DXVECTOR2& GetBulletPos(int index_num)const = 0;

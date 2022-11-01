@@ -39,3 +39,8 @@ void PlayerArm2::Update()
 		m_bullet_num++;
 	}
 }
+
+void PlayerArm2::PlayerArmDraw()const
+{
+
+}

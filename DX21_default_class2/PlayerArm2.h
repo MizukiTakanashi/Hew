@@ -37,7 +37,6 @@ private:
 	Bullet* m_pBullet = nullptr;		//弾のオブジェクト
 	int m_bullet_num = 0;				//現在の弾の数
 	int m_bullet_interval_count = 0;	//発射間隔カウント
-	D3DXVECTOR2 m_enemy_pos = D3DXVECTOR2(0.0f, 0.0f);	//一番近い敵の位置
 	Player* m_pPlayer = nullptr;	//プレイヤー位置確認用
 	//メンバ関数
 public:
@@ -54,10 +53,7 @@ public:
 	void Update()override;
 
 	//描画処理(オーバーライド)
-	void PlayerArmDraw()override;
-
-	//一番近い敵の位置をセット
-	void SetEnemyPos(const D3DXVECTOR2& enemy_pos) { m_enemy_pos = enemy_pos; }
+	void PlayerArmDraw()const override;
 };
 
 #endif // !_PLAYER_ARM_1_H_

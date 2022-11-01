@@ -50,7 +50,7 @@ public:
 	void Update()override;
 
 	//描画処理(オーバーライド)
-	void PlayerArmDraw()override;
+	void PlayerArmDraw()const override;
 
 };
 
