@@ -8,7 +8,7 @@
 //==========================
 // ’è”‰Šú‰»
 //==========================
-const float PlayerHP::HP_MAX = 5.0f;
+const float PlayerHP::HP_MAX = 50.0f;
 const float PlayerHP::SIZE_X = 200.0f;
 const float PlayerHP::SIZE_Y = 25.0f;
 const float PlayerHP::FLAME_SIZE_X = 205.0f;

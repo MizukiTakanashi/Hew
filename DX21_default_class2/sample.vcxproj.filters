@@ -46,6 +46,9 @@
     <ClCompile Include="PlayerArmEnemyCol.cpp" />
     <ClCompile Include="PlayerArm2.cpp" />
     <ClCompile Include="ArmEnemyCollision.cpp" />
+    <ClCompile Include="PlayerEnemyGatoringCollision.cpp" />
+    <ClCompile Include="EnemyGatoring.cpp" />
+    <ClCompile Include="EnemyGatoringManagement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
@@ -93,5 +96,8 @@
     <ClInclude Include="PlayerArmEnemyCol.h" />
     <ClInclude Include="PlayerArm2.h" />
     <ClInclude Include="ArmEnemyCollision.h" />
+    <ClInclude Include="PlayerEnemyGatoringCollision.h" />
+    <ClInclude Include="EnemyGatoring.h" />
+    <ClInclude Include="EnemyGatoringManagement.h" />
   </ItemGroup>
 </Project>

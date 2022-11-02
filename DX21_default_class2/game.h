@@ -15,11 +15,13 @@
 #include "EnemySetPos.h"
 #include "EnemyNormalManagement.h"
 #include "enemylasermanagement.h"
+#include "EnemyGatoringManagement.h"
 #include "texture_useful.h"
 #include "PlayerHP.h"
 #include "ExplosionManagement.h"
 #include "PlayerEnemyNormalCollision.h"
 #include "playerenemylasercollision.h"
+#include "PlayerEnemyGatoringCollision.h"
 #include "number.h"
 #include "playerleft.h"
 #include "playerright.h"
@@ -86,11 +88,13 @@ private:
 	EnemySetPos* m_pEnemySetPos = nullptr;
 	EnemyNormalManagement* m_pEnemyNormalManagement = nullptr;
 	EnemyLaserManagement* m_pEnemyLaserManagement = nullptr;
+	EnemyGatoringManagement* m_pEnemyGatoringManagement = nullptr;
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;
 	ItemManagement* m_pItemManagement = nullptr;
 	PlayerEnemyNormalCollision* m_pPlayerEnemyNormalCol = nullptr;
 	PlayerEnemyLaserCollision* m_pPlayerEnemyLaserCol = nullptr;
+	PlayerEnemyGatoringCollision* m_pPlayerEnemyGatoringCol = nullptr;
 
 	ArmEnemyCollision* m_ArmEnemyCollision = nullptr;
 
