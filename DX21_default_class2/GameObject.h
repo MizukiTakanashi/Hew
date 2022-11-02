@@ -28,7 +28,7 @@ public:
 	GameObject(DrawObject& pDrawObject, const D3DXVECTOR2& pos, const D3DXVECTOR2& size, float rot = 0.0f)
 		:m_pDrawObject(pDrawObject), m_pos(pos), m_size(size), m_rot(rot) {}
 
-	~GameObject(){}	//デストラクタ
+	virtual ~GameObject(){}	//デストラクタ
 
 	//描画処理
 	void Draw()const { m_pDrawObject.Draw(m_pos, m_size, m_color, m_rot); }

@@ -118,7 +118,7 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	SetVolume(m_BGM, 0.1f);
 
 	m_pTexUseful = new TextureUseful[10];
-	m_pDrawObject = new DrawObject[10];
+	m_pDrawObject = new DrawObject[15];
 
 	//背景の初期化処理
 	m_pBG = new BG((char*)"data\\texture\\bg_uchu_space.jpg");
@@ -139,11 +139,17 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	//プレイヤーの左右
 	m_pTexUseful[5].SetTextureName((char*)"data\\texture\\arm.png");
 	m_pDrawObject[6].SetDrawObject(m_pTexUseful[5]);
-	m_pPlayerLeft = new PlayerLeft(m_pDrawObject[6], m_pPlayer->GetPos(), 0.0f);
+	m_pDrawObject[10].SetDrawObject(m_pTexUseful[2]);
+	m_pDrawObject[11].SetDrawObject(m_pTexUseful[8]);
+	m_pPlayerLeft = new PlayerLeft(m_pDrawObject[6], m_pDrawObject[10], 
+		m_pDrawObject[11], m_pPlayer->GetPos());
 
 	m_pTexUseful[6].SetTextureName((char*)"data\\texture\\arm.png");
 	m_pDrawObject[7].SetDrawObject(m_pTexUseful[6]);
-	m_pPlayerRight = new PlayerRight(m_pDrawObject[7], m_pPlayer->GetPos(), 0.0f);
+	m_pDrawObject[11].SetDrawObject(m_pTexUseful[2]);
+	m_pDrawObject[12].SetDrawObject(m_pTexUseful[8]);
+	m_pPlayerRight = new PlayerRight(m_pDrawObject[7], m_pDrawObject[11], 
+		m_pDrawObject[12], m_pPlayer->GetPos());
 
 
 	//敵の配置場所

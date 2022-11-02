@@ -55,7 +55,7 @@ public:
 		:GameObject(pDrawObject, pos, D3DXVECTOR2(30.0f, 50.0f)),
 		m_bullet_draw(pBullet), m_laser_draw(pLaser) {}
 
-	virtual ~PlayerLeft() {}	//デストラクタ
+	~PlayerLeft()override { delete m_pEnemyItem; }	//デストラクタ
 
 	//更新処理
 	// player_pos：プレイヤーの座標　enemy_pos：一番近い敵の座標

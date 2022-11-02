@@ -42,6 +42,7 @@ public:
 			m_pItem[i].Draw();
 		}
 	}
+
 	//現在のアイテム位置を返す
 	const D3DXVECTOR2& GetItemPos(int index_num)const { return m_pItem[index_num].GetPos(); }
 

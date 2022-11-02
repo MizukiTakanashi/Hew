@@ -66,6 +66,11 @@ void PlayerRight::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy
 
 			//˜r‚É‚Â‚¢‚Ä‚éƒAƒCƒeƒ€‚Ìˆ—
 			m_pEnemyItem->Update(GameObject::GetPos());
+
+			//’e‚ðŽg‚¢Ø‚Á‚½‚çØ‚è—£‚·
+			if (m_pEnemyItem->IsBulletUsed()) {
+				m_shot = true;
+			}
 		}
 	}
 }
@@ -78,10 +83,11 @@ void PlayerRight::RightDraw(void)const
 	//˜r‚É‚È‚É‚©‚Â‚¢‚Ä‚¢‚ê‚Î•`‰æ
 	if (m_type != TYPE::TYPE_NONE)
 	{
+		//˜r‚É‚Â‚¢‚Ä‚¢‚éƒAƒCƒeƒ€Ž©g‚Ì•`‰æ
 		Draw();
 
 		if (m_pEnemyItem != nullptr) {
-			//˜r‚É‚Â‚¢‚Ä‚¢‚éƒAƒCƒeƒ€‚Ì•`‰æ
+			//˜r‚É‚Â‚¢‚Ä‚¢‚éƒAƒCƒeƒ€‚Ì’e“™•`‰æ
 			m_pEnemyItem->PlayerArmDraw();
 		}
 	}

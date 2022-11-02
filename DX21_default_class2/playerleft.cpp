@@ -51,6 +51,7 @@ void PlayerLeft::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_
 		// 移動
 		SetPos(player_pos + FROM_PLAYER_POS);
 
+		//腕についているアイテムの処理
 		if (m_pEnemyItem != nullptr) {
 			//更新処理の前の各々の処理
 			switch (m_type) {
@@ -66,6 +67,11 @@ void PlayerLeft::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_
 
 			//腕についてるアイテムの処理
 			m_pEnemyItem->Update(GameObject::GetPos());
+
+			//弾を使い切ったら切り離す
+			if (m_pEnemyItem->IsBulletUsed()) {
+				m_shot = true;
+			}
 		}
 	}
 }
@@ -78,15 +84,19 @@ void PlayerLeft::LeftDraw(void)const
 	//腕になにかついていれば描画
 	if (m_type != TYPE::TYPE_NONE)
 	{
+		//腕についているアイテム自身の描画
 		Draw();
 
 		if (m_pEnemyItem != nullptr) {
-			//腕についているアイテムの描画
+			//腕についているアイテムの弾等描画
 			m_pEnemyItem->PlayerArmDraw();
 		}
 	}
 }
 
+//==========================
+// タイプをセット
+//==========================
 void PlayerLeft::SetType(int type)
 {
 	//発射中であればセットしない
