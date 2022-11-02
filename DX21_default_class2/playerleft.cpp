@@ -28,6 +28,8 @@ void PlayerLeft::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_
 		if (GetScreenOut())
 		{
 			m_type = TYPE::TYPE_NONE;
+			SetPos(player_pos);
+			m_shot = false;
 		}
 	}
 	//発射以外の時はプレイヤーの横について弾を発射する
