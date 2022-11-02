@@ -10,7 +10,11 @@
 // 定数の初期化
 //==========================
 const float PlayerLeft::SHOT_SPEED = 5.0f;
+const D3DXVECTOR2 PlayerLeft::FROM_PLAYER_POS = D3DXVECTOR2(-30.0f, 0.0f);
 
+//==========================
+// 更新処理
+//==========================
 void PlayerLeft::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_pos)
 {
 	//  Rキーを押すと腕に装着している敵を発射する
@@ -24,11 +28,16 @@ void PlayerLeft::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_
 	{
 		MovePos(D3DXVECTOR2(0.0f, -SHOT_SPEED));	// 動く際に必要
 		
-		// 画面外に出たらTYPEを元に戻す
+		// 画面外に出たら...
 		if (GetScreenOut())
 		{
+			//TYPEを元に戻す
 			m_type = TYPE::TYPE_NONE;
+			
+			//位置を元に戻す
 			SetPos(player_pos);
+			
+			//発射のフラグをオフ
 			m_shot = false;
 		}
 	}
@@ -36,15 +45,18 @@ void PlayerLeft::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_
 	else
 	{
 		// 移動
-		SetPos(player_pos - D3DXVECTOR2(30.0f, 0.0f));
+		SetPos(player_pos + FROM_PLAYER_POS);
 
 		if (m_pEnemyItem != nullptr) {
 			//腕についてるアイテムの処理
-			m_pEnemyItem->Update();
+			m_pEnemyItem->Update(GameObject::GetPos());
 		}
 	}
 }
 
+//==========================
+// 描画処理
+//==========================
 void PlayerLeft::LeftDraw(void)const
 {
 	//腕になにかついていれば描画

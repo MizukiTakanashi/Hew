@@ -33,7 +33,8 @@ public:
 
 private:
 	//cppで初期化
-	static const float SHOT_SPEED;	// 弾の発射速度
+	static const float SHOT_SPEED;				// 切り離し発射スピード
+	static const D3DXVECTOR2 FROM_PLAYER_POS;	//プレイヤーからどれくらい離れているか
 
 
 // メンバ変数
