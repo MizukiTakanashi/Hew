@@ -17,8 +17,8 @@ class PlayerArm1:public inhPlayerArm
 //定数
 private:
 	//ここで初期化
-	static const int BULLET_NUM_MAX = 10;		//弾の最大数
-	static const int BULLET_INTERVAL = 200;		//弾の発射間隔
+	static const int BULLET_NUM_MAX = 10;		//弾の同時最大発射数
+	static const int BULLET_INTERVAL = 20;		//弾の発射間隔
 	static const int BULLET_BREAK_TIME = 200;	//ホーミング弾が壊れる時間
 
 	//cppで初期化
@@ -30,8 +30,6 @@ private:
 private:
 	DrawObject m_bulletdraw;			//弾の描画オブジェクト
 	Bullet* m_pBullet = nullptr;		//弾のオブジェクト
-	int m_bullet_num = 0;				//現在の弾の数
-	int m_bullet_interval_count = 0;	//発射間隔カウント
 	bool m_right = true;				//自分がついているのが右か左か判断
 	D3DXVECTOR2 m_enemy_pos = D3DXVECTOR2(0.0f, 0.0f);	//一番近い敵の位置
 
@@ -42,7 +40,7 @@ public:
 
 	//引数付きコンストラクタ
 	PlayerArm1(DrawObject bulletdraw, bool right)
-		:m_bulletdraw(bulletdraw), m_right(right) { m_pBullet = new Bullet[BULLET_NUM_MAX]; }
+		:inhPlayerArm() m_bulletdraw(bulletdraw), m_right(right) { m_pBullet = new Bullet[BULLET_NUM_MAX]; }
 
 	//デストラクタ
 	~PlayerArm1() { delete[] m_pBullet; }

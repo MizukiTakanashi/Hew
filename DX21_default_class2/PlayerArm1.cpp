@@ -34,14 +34,14 @@ void PlayerArm1::Update()
 		Bullet temp(m_bulletdraw, GetPos(),
 			D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), movTemp, rotTemp);
 
-		m_pBullet[m_bullet_num] = temp;
+		m_pBullet[inhPlayerArm::GetBulletNum()] = temp;
 
 		//現在の弾の数を増やす
-		m_bullet_num++;
+		inhPlayerArm::IncreaseBulletNum();
 	}
 
 	//今いる弾の処理
-	for (int i = 0; i < m_bullet_num; i++) {
+	for (int i = 0; i < inhPlayerArm::GetBulletNum(); i++) {
 		//プレイヤーの後を追う(ホーミング弾)
 		D3DXVECTOR2 movTemp = m_enemy_pos - m_pBullet[i].GetPos();
 		D3DXVECTOR2 rotposTemp = m_pBullet[i].GetPos() - m_enemy_pos;
@@ -59,10 +59,10 @@ void PlayerArm1::Update()
 		//画面外から出たら、時間経過したら...
 		if (m_pBullet[i].GetScreenOut() || m_pBullet[i].GetTime() > BULLET_BREAK_TIME) {
 			//弾を消す
-			for (int j = i; j < m_bullet_num; j++) {
+			for (int j = i; j < inhPlayerArm::GetBulletNum(); j++) {
 				m_pBullet[j] = m_pBullet[j + 1];
 			}
-			m_bullet_num--;
+			inhPlayerArm::IncreaseBulletNum(-1);
 		}
 	}
 }
@@ -72,7 +72,7 @@ void PlayerArm1::Update()
 //==========================
 void PlayerArm1::PlayerArmDraw()const
 {
-	for (int i = 0; i < m_bullet_num; i++) {
+	for (int i = 0; i < inhPlayerArm::GetBulletNum(); i++) {
 		m_pBullet[i].Draw();
 	}
 }
