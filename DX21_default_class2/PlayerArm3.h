@@ -14,44 +14,52 @@
 
 class PlayerArm3 :public inhPlayerArm
 {
-	//定数
+//定数
 private:
 	//ここで初期化
-	static const int BULLET_NUM_MAX = 10;		//弾の最大数
+	static const int BULLET_NUM_MAX = 10;		//弾の制限数
+	static const int BULLET_SHOOT_MAX = 10;		//弾の同時最大発射数
 	static const int BULLET_INTERVAL = 100;		//弾の発射間隔
 	
-
 	//cppで初期化
 	static const float BULLET_SIZE_X;		//サイズX
 	static const float BULLET_SIZE_Y;		//サイズY
 	static const float BULLET_SPEED;		//スピード
 
-	//メンバ変数
+//メンバ変数
 private:
 	DrawObject m_bulletdraw;			//弾の描画オブジェクト
 	Bullet* m_pBullet = nullptr;		//弾のオブジェクト
-	int m_bullet_num = 0;				//現在の弾の数
 	int m_bullet_interval_count = 0;	//発射間隔カウント
-	bool m_right = true;				//自分が付いているのが右か左か判断
 
-	//メンバ関数
+//メンバ関数
 public:
 	//デフォルトコンストラクタ
-	PlayerArm3() { m_pBullet = new Bullet[BULLET_NUM_MAX]; }
+	PlayerArm3() { m_pBullet = new Bullet[BULLET_SHOOT_MAX]; }
 
 	//引数付きコンストラクタ
 	PlayerArm3(DrawObject bulletdraw, bool right) 
-		:m_bulletdraw(bulletdraw),m_right (right) { m_pBullet = new Bullet[BULLET_NUM_MAX]; }
+		:inhPlayerArm(BULLET_NUM_MAX, right), m_bulletdraw(bulletdraw) { m_pBullet = new Bullet[BULLET_SHOOT_MAX]; }
 
 	//デストラクタ
 	~PlayerArm3() { delete[] m_pBullet; }
 
 	//更新処理(オーバーライド)
-	void Update()override;
+	void Update(const D3DXVECTOR2& arm_pos)override;
 
 	//描画処理(オーバーライド)
 	void PlayerArmDraw()const override;
 
+	//指定した番号の弾を消す(オーバーライド)
+	void DeleteBullet(int index_num)override;
+
+	//指定した番号の弾の座標を返す(オーバーライド)
+	const D3DXVECTOR2& GetBulletPos(int index_num)const override
+		{ return m_pBullet[index_num].GetPos();	}
+
+	//指定した番号の弾のサイズを返す(オーバーライド)
+	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override
+		{ return m_pBullet[index_num].GetSize(); }
 };
 
 #endif // !_PLAYER_ARM_1_H_

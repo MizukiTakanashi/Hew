@@ -14,8 +14,6 @@
 class Laser:public GameObject
 {
 private:
-	//D3DXVECTOR2 m_mov = D3DXVECTOR2(0.0f, 0.0f);
-	EnemyLaser* m_pEnemynum = nullptr; //レーザーを射出しているエネミーのポインタ
 	int m_lasertime = LASER_TIME;
 
 public:
@@ -26,8 +24,8 @@ public:
 	Laser(){}	//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
-	Laser(DrawObject& pDrawObject, const D3DXVECTOR2& pos, const D3DXVECTOR2& size, EnemyLaser* pEnemyLaser)
-		:GameObject(pDrawObject, pos, size, 0.0f), m_pEnemynum(pEnemyLaser) {}
+	Laser(DrawObject& pDrawObject, const D3DXVECTOR2& pos, const D3DXVECTOR2& size)
+		:GameObject(pDrawObject, pos, size, 0.0f) {}
 
 	virtual ~Laser() {}	//デストラクタ
 
@@ -35,7 +33,7 @@ public:
 	void DeleteLaser() { m_lasertime = -1; }
 
 	//更新処理(弾を移動)
-	void Update(void); 
+	void Update(const D3DXVECTOR2& pos); 
 };
 
 #endif // !_LASER_H_

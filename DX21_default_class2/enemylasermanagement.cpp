@@ -55,7 +55,7 @@ void EnemyLaserManagement::Update()
 			//レーザー番号をセット
 			m_pEnemyLaser[i].SetLaserIndex(EnemyManagement::GetBulletNum());
 			Laser temp(m_pDrawObjectLaser, m_pEnemyLaser[i].GetPos() + D3DXVECTOR2(0.0f, 10.0f),
-				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), &m_pEnemyLaser[i]);
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y));
 			m_pLaser[EnemyManagement::GetBulletNum()] = temp;
 
 			EnemyManagement::IncreaseBulletNum(1);
@@ -67,7 +67,14 @@ void EnemyLaserManagement::Update()
 	//今いる弾の処理
 	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++)
 	{
-		m_pLaser[i].Update();
+		//レーザーの発射場所と敵の位置と合わせる
+		for (int j = 0; j < GetObjNum(); j++) {
+			if (m_pEnemyLaser[j].GetLaserIndex() == i) {
+				//更新
+				m_pLaser[i].Update(m_pEnemyLaser[j].GetPos());
+			}
+		}
+		
 		//画面外から出たら...
 		if (m_pLaser[i].GetScreenOut())
 		{
