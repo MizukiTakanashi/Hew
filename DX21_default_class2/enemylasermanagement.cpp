@@ -52,6 +52,8 @@ void EnemyLaserManagement::Update()
 		//弾を作る
 		if (m_pEnemyLaser[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() != MAX_NUM)
 		{
+			//レーザー番号をセット
+			m_pEnemyLaser[i].SetLaserIndex(EnemyManagement::GetBulletNum());
 			Laser temp(m_pDrawObjectLaser, m_pEnemyLaser[i].GetPos() + D3DXVECTOR2(0.0f, 10.0f),
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), &m_pEnemyLaser[i]);
 			m_pLaser[EnemyManagement::GetBulletNum()] = temp;
@@ -95,10 +97,16 @@ void EnemyLaserManagement::Draw(void)const
 //======================
 void EnemyLaserManagement::DeleteObj(int index_num)
 {
+	if (m_pEnemyLaser[index_num].GetLaserIndex() >= 0)
+	{
+		m_pLaser[m_pEnemyLaser[index_num].GetLaserIndex()].DeleteLaser();
+	}
+
 	m_pEnemySetPos.DeleteEnemy(m_pEnemyLaser[index_num].GetPos());
 
 	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
 		m_pEnemyLaser[i] = m_pEnemyLaser[i + 1];
+
 	}
 	EnemyManagement::IncreaseObjNum(-1);
 }
