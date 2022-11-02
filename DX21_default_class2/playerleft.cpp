@@ -9,7 +9,7 @@
 //==========================
 // ’è”‚Ì‰Šú‰»
 //==========================
-const float PlayerLeft::SHOT_SPEED = 0.1f;
+const float PlayerLeft::SHOT_SPEED = 5.0f;
 
 void PlayerLeft::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_pos)
 {
