@@ -9,6 +9,8 @@ int ArmEnemyCollision::Update(void)
             m_rplayerleft->GetSize(), m_rItemManagement->GetItemSize()))
         {
             m_rItemManagement->DeleteItem(i);
+
+            m_rplayerleft->SetType(1);
             m_rplayerleft->LeftDraw();
         }
     }
@@ -18,6 +20,7 @@ int ArmEnemyCollision::Update(void)
             m_rplayerright->GetSize(), m_rItemManagement->GetItemSize()))
         {
             m_rItemManagement->DeleteItem(j);
+            m_rplayerright->SetType(1);
             m_rplayerright->RightDraw();
         }
     }

@@ -244,7 +244,7 @@ void Game::Update(void)
 	//敵の更新処理
 	m_pEnemyNormalManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyLaserManagement->Update();
-
+	m_ArmEnemyCollision->Update();
 
 	//====================================
 	//プレイヤーのHPに対する攻撃の処理
