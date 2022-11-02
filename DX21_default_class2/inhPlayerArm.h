@@ -13,12 +13,16 @@
 class inhPlayerArm:public GameObject
 {
 private:
-	int m_BulletNum = 0;	//弾の数
-
+	int m_BulletNum = 0;		//現在の弾の数
+	int m_bullet_maked_num = 0;	//今まで作られた弾の数(アイテムの消費量)
+	int m_bullet_max_num = 0;	//アイテムが出す最大弾数
 
 public:
 	//デフォルトコンストラクタ
 	inhPlayerArm(){}
+
+	//引数付きコンストラクタ
+	inhPlayerArm(int bullet_max_num):m_bullet_max_num(bullet_max_num) {}
 
 	//デストラクタ
 	~inhPlayerArm(){}
@@ -29,7 +33,11 @@ public:
 	//描画処理(オーバーライド)
 	virtual void PlayerArmDraw(void)const = 0;
 
-	//指定した番号のオブジェクトを消す
+	//弾が尽きたかを返す
+	// true：使い終わった　false：まだ使い終わってない
+	bool IsBulletUsed(void)const;
+
+	//指定した番号のオブジェクトを消す(オーバーライド)
 	virtual void DeleteBullet(int index_num) = 0;
 
 	//現在の弾数を増やす
