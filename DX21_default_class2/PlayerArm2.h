@@ -18,7 +18,8 @@ class PlayerArm2 :public inhPlayerArm
 	//定数
 private:
 	//ここで初期化
-	static const int BULLET_NUM_MAX = 10;		//弾の最大数
+	static const int BULLET_NUM_MAX = 10;		//弾の制限数
+	static const int BULLET_SHOOT_MAX = 20;		//弾の同時最大発射数
 	static const int BULLET_INTERVAL = 200;		//弾の発射間隔
 	static const int BULLET_BREAK_TIME = 200;	//ホーミング弾が壊れる時間
 
@@ -41,11 +42,11 @@ private:
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
-	PlayerArm2() { m_pLaser = new Laser[BULLET_NUM_MAX]; }
+	PlayerArm2() { m_pLaser = new Laser[BULLET_SHOOT_MAX]; }
 
 	//引数付きコンストラクタ
-	PlayerArm2(DrawObject bulletdraw) 
-		:inhPlayerArm(), m_laser_draw(bulletdraw) { m_pLaser = new Laser[BULLET_NUM_MAX]; }
+	PlayerArm2(DrawObject& bulletdraw, bool right) 
+		:inhPlayerArm(BULLET_NUM_MAX, right), m_laser_draw(bulletdraw) { m_pLaser = new Laser[BULLET_SHOOT_MAX]; }
 
 	//デストラクタ
 	~PlayerArm2() { delete[] m_pLaser; }
@@ -56,7 +57,16 @@ public:
 	//描画処理(オーバーライド)
 	void PlayerArmDraw()const override;
 
-	void SetArmPos(const D3DXVECTOR2&){}
+	//指定した番号の弾を消す(オーバーライド)
+	void DeleteBullet(int index_num)override;
+
+	//指定した番号の弾の座標を返す(オーバーライド用)
+	const D3DXVECTOR2& GetBulletPos(int index_num)const override
+		{ return m_pLaser[index_num].GetPos(); }
+
+	//指定した番号の弾のサイズを返す(オーバーライド用)
+	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override
+		{ return m_pLaser[index_num].GetSize();	}
 };
 
 #endif // !_PLAYER_ARM_1_H_

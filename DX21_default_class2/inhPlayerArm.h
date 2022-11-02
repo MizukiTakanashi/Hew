@@ -42,7 +42,7 @@ public:
 	//作った弾の数を増やす
 	void IncreaseBulletMaked(int num = 1) { m_bullet_maked_num += num; }
 
-	//指定した番号のオブジェクトを消す(オーバーライド)
+	//指定した番号の弾を消す(オーバーライド用)
 	virtual void DeleteBullet(int index_num) = 0;
 
 	//現在の弾数を増やす

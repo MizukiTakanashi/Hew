@@ -53,6 +53,17 @@ public:
 	//描画処理(オーバーライド)
 	void PlayerArmDraw()const override;
 
+	//指定した番号のオブジェクトを消す(オーバーライド)
+	void DeleteBullet(int index_num)override;
+
+	//指定した番号の弾の座標を返す(オーバーライド)
+	const D3DXVECTOR2& GetBulletPos(int index_num)const override
+		{ return m_pBullet[index_num].GetPos();	}
+
+	//指定した番号の弾のサイズを返す(オーバーライド)
+	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override
+		{ return m_pBullet[index_num].GetSize(); }
+
 	//一番近い敵の位置をセット
 	void SetEnemyPos(const D3DXVECTOR2& enemy_pos) { m_enemy_pos = enemy_pos; }
 };

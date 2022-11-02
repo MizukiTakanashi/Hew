@@ -11,7 +11,7 @@
 const float Laser::SPEED_Y = 15.0f;
 const int Laser::LASER_TIME = 150;
 
-void Laser::Update(void)
+void Laser::Update(const D3DXVECTOR2& pos)
 {
 	//レーザーの残り時間減少
 	m_lasertime--;
@@ -26,7 +26,7 @@ void Laser::Update(void)
 		//レーザーを長くする
 		GameObject::SetSize(D3DXVECTOR2(GameObject::GetSize().x, GameObject::GetSize().y + SPEED_Y * 2));
 		//レーザーのX座標をエネミーに合わせる
-		GameObject::SetPos(D3DXVECTOR2(m_pEnemynum->GetPos().x, GameObject::GetPos().y + SPEED_Y));
+		GameObject::SetPos(D3DXVECTOR2(pos.x, GameObject::GetPos().y + SPEED_Y));
 	}
 
 }

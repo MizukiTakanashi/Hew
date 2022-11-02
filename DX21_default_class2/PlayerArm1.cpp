@@ -71,11 +71,7 @@ void PlayerArm1::Update(const D3DXVECTOR2& arm_pos)
 
 		//画面外から出たら、時間経過したら...
 		if (m_pBullet[i].GetScreenOut() || m_pBullet[i].GetTime() > BULLET_BREAK_TIME) {
-			//弾を消す
-			for (int j = i; j < inhPlayerArm::GetBulletNum(); j++) {
-				m_pBullet[j] = m_pBullet[j + 1];
-			}
-			inhPlayerArm::IncreaseBulletNum(-1);
+			DeleteBullet(i);
 		}
 	}
 }
@@ -89,3 +85,15 @@ void PlayerArm1::PlayerArmDraw()const
 		m_pBullet[i].Draw();
 	}
 }
+
+//==========================
+// 指定した番号の弾を消す
+//==========================
+void PlayerArm1::DeleteBullet(int index_num)
+{
+	//弾を消す
+	for (int i = index_num; i < inhPlayerArm::GetBulletNum() - 1; i++) {
+		m_pBullet[i] = m_pBullet[i + 1];
+	}
+	inhPlayerArm::IncreaseBulletNum(-1);
+ }

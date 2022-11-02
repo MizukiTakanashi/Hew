@@ -18,35 +18,37 @@ const float PlayerArm3::BULLET_SPEED = 2.5f;
 //==========================
 // 更新処理
 //==========================
-void PlayerArm3::Update()
+void PlayerArm3::Update(const D3DXVECTOR2& arm_pos)
 {
 	//ボタンが押されたら
-	if ((m_right && GetKeyboardPress(DIK_RIGHT))|| (!m_right && GetKeyboardPress(DIK_LEFT))) {
-		
-		//弾を作る
-		Bullet temp(m_bulletdraw, GetPos(),
-			D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0.0f,-BULLET_SPEED),0.0f );
+	if ((inhPlayerArm::GetRightLeft() && GetKeyboardPress(DIK_RIGHT)) || 
+		(!inhPlayerArm::GetRightLeft() && GetKeyboardPress(DIK_LEFT))) {
+		//発射できる時間になったら...
+		if (++m_bullet_interval_count > BULLET_INTERVAL) {
+			m_bullet_interval_count = 0;
 
-		m_pBullet[m_bullet_num] = temp;
+			//弾を作る
+			Bullet temp(m_bulletdraw, GetPos(),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0.0f, -BULLET_SPEED), 0.0f);
 
-		//現在の弾の数を増やす
-		m_bullet_num++;
+			m_pBullet[inhPlayerArm::GetBulletNum()] = temp;
+
+			//現在の弾の数を増やす
+			inhPlayerArm::IncreaseBulletNum();
+
+			//作った弾の数を増やす
+			inhPlayerArm::IncreaseBulletMaked();
+		}
 	}
 
 	//今いる弾の処理
-	for (int i = 0; i < m_bullet_num; i++) {
-		
-
+	for (int i = 0; i < inhPlayerArm::GetBulletNum(); i++) {
 		//弾の更新処理
 		m_pBullet[i].Update();
 
-		//画面外から出たら、時間経過したら...
+		//画面外から出たら...
 		if (m_pBullet[i].GetScreenOut()){
-			//弾を消す
-			for (int j = i; j < m_bullet_num; j++) {
-				m_pBullet[j] = m_pBullet[j + 1];
-			}
-			m_bullet_num--;
+			DeleteBullet(i);
 		}
 	}
 }
@@ -56,7 +58,19 @@ void PlayerArm3::Update()
 //==========================
 void PlayerArm3::PlayerArmDraw()const
 {
-	for (int i = 0; i < m_bullet_num; i++) {
+	for (int i = 0; i < inhPlayerArm::GetBulletNum(); i++) {
 		m_pBullet[i].Draw();
 	}
+}
+
+//==========================
+// 指定した番号の弾を消す
+//==========================
+void PlayerArm3::DeleteBullet(int index_num)
+{
+	//弾を消す
+	for (int i = index_num; i < inhPlayerArm::GetBulletNum(); i++) {
+		m_pBullet[i] = m_pBullet[i + 1];
+	}
+	inhPlayerArm::IncreaseBulletNum(-1);
 }
