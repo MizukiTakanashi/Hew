@@ -2,12 +2,14 @@
 #include "playerleft.h"
 #include "playerright.h"
 #include "ItemManagement.h"
+
 class ArmEnemyCollision
 {
 private:
 	PlayerLeft* m_rplayerleft = nullptr;
 	PlayerRight* m_rplayerright = nullptr;
 	ItemManagement* m_rItemManagement = nullptr;
+	
 	bool m_playerleft = false;				//左手とアイテムの当たり判定フラグ
 	bool m_playerright = false;				//右手とアイテムの当たり判定フラグ
 public:
