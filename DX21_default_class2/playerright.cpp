@@ -57,3 +57,12 @@ void PlayerRight::RightDraw(void)const
 		}
 	}
 }
+
+void PlayerRight::SetType(int type)
+{
+	//タイプをセット
+	 m_type = (TYPE)type; 
+
+	 //テクスチャをタイプに合わせてセット
+	 GameObject::SetAnimationNum((float)m_type - 1.0f);
+}

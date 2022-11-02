@@ -99,7 +99,7 @@ int PlayerEnemyCol::Collision(void)
 				m_PlayerEnemyCol = false;
 			}
 		}
-
-		return attacked;
 	}
+
+	return attacked;
 }
