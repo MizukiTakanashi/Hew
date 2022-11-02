@@ -32,7 +32,6 @@ private:
 	DrawObject m_bulletdraw;			//弾の描画オブジェクト
 	Bullet* m_pBullet = nullptr;		//弾のオブジェクト
 	int m_interval_count = 0;			//発射間隔のカウント
-	bool m_right = true;				//自分がついているのが右か左か判断
 	D3DXVECTOR2 m_enemy_pos = D3DXVECTOR2(0.0f, 0.0f);	//一番近い敵の位置
 
 //メンバ関数
@@ -41,14 +40,15 @@ public:
 	PlayerArm1(){ m_pBullet = new Bullet[BULLET_SHOOT_MAX]; }
 
 	//引数付きコンストラクタ
-	PlayerArm1(DrawObject bulletdraw, bool right)
-		:inhPlayerArm(BULLET_NUM_MAX), m_bulletdraw(bulletdraw), m_right(right) { m_pBullet = new Bullet[BULLET_SHOOT_MAX]; }
+	PlayerArm1(DrawObject& bulletdraw, bool right)
+		:inhPlayerArm(BULLET_NUM_MAX, right), m_bulletdraw(bulletdraw) 
+	{ m_pBullet = new Bullet[BULLET_SHOOT_MAX]; }
 
 	//デストラクタ
 	~PlayerArm1() { delete[] m_pBullet; }
 
 	//更新処理(オーバーライド)
-	void Update()override;
+	void Update(const D3DXVECTOR2& arm_pos)override;
 
 	//描画処理(オーバーライド)
 	void PlayerArmDraw()const override;

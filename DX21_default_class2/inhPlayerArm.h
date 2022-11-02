@@ -16,19 +16,21 @@ private:
 	int m_BulletNum = 0;		//現在の弾の数
 	int m_bullet_maked_num = 0;	//今まで作られた弾の数(アイテムの消費量)
 	int m_bullet_max_num = 0;	//アイテムが出す最大弾数
+	bool m_right = false;		//右についてるか左についてるか
 
 public:
 	//デフォルトコンストラクタ
 	inhPlayerArm(){}
 
 	//引数付きコンストラクタ
-	inhPlayerArm(int bullet_max_num):m_bullet_max_num(bullet_max_num) {}
+	inhPlayerArm(int bullet_max_num, bool right)
+		:m_bullet_max_num(bullet_max_num), m_right(right) {}
 
 	//デストラクタ
 	~inhPlayerArm(){}
 
 	//更新処理(オーバーライド)
-	virtual void Update() = 0;
+	virtual void Update(const D3DXVECTOR2& arm_pos) = 0;
 
 	//描画処理(オーバーライド)
 	virtual void PlayerArmDraw(void)const = 0;
@@ -54,6 +56,9 @@ public:
 
 	//指定した番号の弾のサイズを返す(オーバーライド用)
 	virtual const D3DXVECTOR2& GetBulletSize(int index_num = 0)const = 0;
+
+	//ついているのが右腕か左腕かを返す
+	bool GetRightLeft(void)const { return m_right; }
 };
 
 #endif // !_INH_PLAYER_ARM_H_

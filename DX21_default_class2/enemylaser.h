@@ -9,7 +9,6 @@
 #define _ENEMY_LASER_H_
 
 #include "main.h"
-//#include "bullet.h"
 #include "DrawObject.h"
 #include "GameObject.h"
 
