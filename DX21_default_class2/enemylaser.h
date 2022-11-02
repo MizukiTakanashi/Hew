@@ -44,6 +44,7 @@ private:
 
 	bool m_enemyitem_make = false;		//アイテムを作るか否か
 
+	int m_laser_index = -1;	//レーザー番号
 
 //メンバ関数
 public:
@@ -68,6 +69,12 @@ public:
 
 	//敵のアイテムを作った
 	void EnemyItemMake() { m_enemyitem_make = false; }
+
+	//レーザー番号をセット
+	void SetLaserIndex(int num) { m_laser_index = num; }
+
+	//レーザー番号を返す
+	int GetLaserIndex() const { return m_laser_index; }
 };
 
 #endif // !_ENEMY_LASER_H_
