@@ -18,25 +18,25 @@ int PlayerEnemyGatoringCollision::Update(void)
 	//弾
 	//自身
 	for (int i = 0; i < m_rPlayer->GetBulletNum(); i++) {
-		for (int j = 0; j < m_rEnemyGatoringManagement->GetEnemyNum(); j++) {
+		for (int j = 0; j < m_rEnemyGatoringManagement->GetObjNum(); j++) {
 
 			//もしも画面外にいたら壊せないようにする
-			if (!ScreenOut::GetScreenOut(m_rEnemyGatoringManagement->GetEnemyPos(j),
-				m_rEnemyGatoringManagement->GetEnemySize())) {
+			if (!ScreenOut::GetScreenOut(m_rEnemyGatoringManagement->GetObjPos(j),
+				m_rEnemyGatoringManagement->GetObjSize())) {
 				
 				//当たったか判定
-				if (Collision::ColBox(m_rPlayer->GetBulletPos(i), m_rEnemyGatoringManagement->GetEnemyPos(j),
-						m_rPlayer->GetBulletSize(), m_rEnemyGatoringManagement->GetEnemySize())) {
+				if (Collision::ColBox(m_rPlayer->GetBulletPos(i), m_rEnemyGatoringManagement->GetObjPos(j),
+						m_rPlayer->GetBulletSize(), m_rEnemyGatoringManagement->GetObjSize())) {
 					//爆発をセット
-					m_rExplosionManagement->SetExplosion(m_rEnemyGatoringManagement->GetEnemyPos(j));
+					m_rExplosionManagement->SetExplosion(m_rEnemyGatoringManagement->GetObjPos(j));
 					//敵アイテムのドロップ
-					m_rItemManagement->SetItem(m_rEnemyGatoringManagement->GetEnemyPos(j), 0);
+					m_rItemManagement->SetItem(m_rEnemyGatoringManagement->GetObjPos(j), 0);
 
 					//プレイヤーの弾を消す
 					m_rPlayer->DeleteBullet(i);
 					i--;
 					//敵を消す
-					m_rEnemyGatoringManagement->DeleteEnemy(j);
+					m_rEnemyGatoringManagement->DeleteObj(j);
 					j--;
 
 					m_pNumber->AddNumber(1);
@@ -85,9 +85,9 @@ int PlayerEnemyGatoringCollision::Update(void)
 
 	//自身
 	//自身
-	for (int j = 0; j < m_rEnemyGatoringManagement->GetEnemyNum(); j++) {
-		if (Collision::ColBox(m_rPlayer->GetPos(), m_rEnemyGatoringManagement->GetEnemyPos(j),
-			m_rPlayer->GetSize(), m_rEnemyGatoringManagement->GetEnemySize())) {
+	for (int j = 0; j < m_rEnemyGatoringManagement->GetObjNum(); j++) {
+		if (Collision::ColBox(m_rPlayer->GetPos(), m_rEnemyGatoringManagement->GetObjPos(j),
+			m_rPlayer->GetSize(), m_rEnemyGatoringManagement->GetObjSize())) {
 			//一度離れてからじゃないともう一度当たった判定にはならない
 			if (!m_PlayerEnemyGatoringCol) {
 				//ぶつかったフラグをオン

@@ -8,15 +8,17 @@
 
 void PlayerArmEnemyCol::Collision(void)
 {
-	//プレイヤー自身が受けたダメージ数
-	int attacked = 0;
+	//もしも腕のポインタに何もなければ終了
+	if (m_pArm == nullptr){
+		return;
+	}
 
 	for (int k = 0; k < m_EnemyNum; k++) {
 		//腕の弾の方
 		//敵の方
 
-			//弾
-			//自身
+		//弾
+		//自身
 		for (int i = 0; i < m_pArm->GetBulletNum(); i++) {
 			for (int j = 0; j < (m_pEnemy + k)->GetObjNum(); j++) {
 

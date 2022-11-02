@@ -12,16 +12,22 @@
 
 class AllEnemyManagement
 {
+//定数
 private:
-	EnemyManagement* m_pEnemy[2];	//敵全クラス
-	int m_EnemyNum = 0;						//敵の種類の数
+	//ここで初期化
+	static const int ENEMY_NUM = 2;			//全敵の種類数
 
+//メンバ変数
+private:
+	EnemyManagement* m_pEnemy[ENEMY_NUM];	//敵全クラス
+
+//メンバ関数
 public:
 	//デフォルトコンストラクタ
 	AllEnemyManagement(){}
 
 	//引数付きコンストラクタ
-	AllEnemyManagement(EnemyManagement* p1, EnemyManagement* p2, int EnemyNum) :m_EnemyNum(EnemyNum) {
+	AllEnemyManagement(EnemyManagement* p1, EnemyManagement* p2) {
 		m_pEnemy[0] = p1;
 		m_pEnemy[1] = p2;
 	}

@@ -13,7 +13,7 @@ const D3DXVECTOR2& AllEnemyManagement::GetCloltestEnemyPos(const D3DXVECTOR2& po
 	float min_vec = 0.0f;
 
 	//全部の敵の位置を検索
-	for (int i = 0; i < m_EnemyNum; i++) {
+	for (int i = 0; i < ENEMY_NUM; i++) {
 		for (int j = 0; j < m_pEnemy[i]->GetObjNum(); j++) {
 			//ベクトルを取得
 			D3DXVECTOR2 vec_pos = m_pEnemy[i]->GetObjPos(j) - pos;

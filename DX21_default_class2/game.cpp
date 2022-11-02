@@ -207,7 +207,10 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	m_ArmEnemyCollision = new ArmEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pItemManagement);
 
 	//敵の管理
-	m_pAllEnemyManagement = new AllEnemyManagement(m_pEnemyNormalManagement, m_pEnemyLaserManagement,2);
+	m_pAllEnemyManagement = new AllEnemyManagement(m_pEnemyNormalManagement, m_pEnemyLaserManagement);
+
+	//プレイヤーの腕のアイテムの弾と敵の当たり判定
+	//m_pArmEnemyCol = new PlayerArmEnemyCol()
 }
 
 //==========================
