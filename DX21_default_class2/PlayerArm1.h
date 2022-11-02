@@ -40,7 +40,7 @@ public:
 
 	//引数付きコンストラクタ
 	PlayerArm1(DrawObject bulletdraw, bool right)
-		:inhPlayerArm() m_bulletdraw(bulletdraw), m_right(right) { m_pBullet = new Bullet[BULLET_NUM_MAX]; }
+		:m_bulletdraw(bulletdraw), m_right(right) { m_pBullet = new Bullet[BULLET_NUM_MAX]; }
 
 	//デストラクタ
 	~PlayerArm1() { delete[] m_pBullet; }
