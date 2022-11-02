@@ -20,24 +20,36 @@ const float PlayerArm1::BULLET_SPEED = 2.5f;
 //==========================
 void PlayerArm1::Update()
 {
+	//発射間隔カウント
+	m_interval_count++;
+
 	//ボタンが押されたら
 	if ((m_right && GetKeyboardPress(DIK_RIGHT)) || (!m_right && GetKeyboardPress(DIK_LEFT))) {
-		//プレイヤーの後を追うようにして、弾を生成
-		D3DXVECTOR2 movTemp = m_enemy_pos - GetPos();
-		D3DXVECTOR2 rotposTemp = GetPos() - m_enemy_pos;
-		D3DXVec2Normalize(&movTemp, &movTemp);
-		movTemp *= BULLET_SPEED;
+		//発射間隔が一定以上になったら
+		if (m_interval_count > BULLET_INTERVAL) {
+			//カウントをリセット
+			m_interval_count = 0;
 
-		float rotTemp = atan2(rotposTemp.y, rotposTemp.x) * (180 / M_PI) + 180.0f;
+			//プレイヤーの後を追うようにして、弾を生成
+			D3DXVECTOR2 movTemp = m_enemy_pos - GetPos();
+			D3DXVECTOR2 rotposTemp = GetPos() - m_enemy_pos;
+			D3DXVec2Normalize(&movTemp, &movTemp);
+			movTemp *= BULLET_SPEED;
 
-		//弾を作る
-		Bullet temp(m_bulletdraw, GetPos(),
-			D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), movTemp, rotTemp);
+			float rotTemp = atan2(rotposTemp.y, rotposTemp.x) * (180 / M_PI) + 180.0f;
 
-		m_pBullet[inhPlayerArm::GetBulletNum()] = temp;
+			//弾を作る
+			Bullet temp(m_bulletdraw, GetPos(),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), movTemp, rotTemp);
 
-		//現在の弾の数を増やす
-		inhPlayerArm::IncreaseBulletNum();
+			m_pBullet[inhPlayerArm::GetBulletNum()] = temp;
+
+			//現在の弾の数を増やす
+			inhPlayerArm::IncreaseBulletNum();
+
+			//作った弾の数を増やす
+			inhPlayerArm::IncreaseBulletMaked();
+		}
 	}
 
 	//今いる弾の処理

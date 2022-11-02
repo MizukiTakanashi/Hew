@@ -37,6 +37,9 @@ public:
 	// true：使い終わった　false：まだ使い終わってない
 	bool IsBulletUsed(void)const;
 
+	//作った弾の数を増やす
+	void IncreaseBulletMaked(int num = 1) { m_bullet_maked_num += num; }
+
 	//指定した番号のオブジェクトを消す(オーバーライド)
 	virtual void DeleteBullet(int index_num) = 0;
 
