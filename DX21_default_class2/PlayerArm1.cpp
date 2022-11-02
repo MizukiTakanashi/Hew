@@ -46,6 +46,9 @@ void PlayerArm1::Update()
 
 			//Œ»İ‚Ì’e‚Ì”‚ğ‘‚â‚·
 			inhPlayerArm::IncreaseBulletNum();
+
+			//ì‚Á‚½’e‚Ì”‚ğ‘‚â‚·
+			inhPlayerArm::IncreaseBulletMaked();
 		}
 	}
 

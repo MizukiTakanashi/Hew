@@ -13,7 +13,7 @@ void PlayerArm2::Update()
 {
 	//発射できる時間になったら...
 	if (++m_bullet_interval_count > BULLET_INTERVAL) {
-		for (int i = 0; i < m_bullet_num; i++) {
+		for (int i = 0; i < inhPlayerArm::GetBulletNum(); i++) {
 			//レーザーの残り時間減少
 			m_lasertime--;
 
@@ -36,14 +36,16 @@ void PlayerArm2::Update()
 			}
 
 			//現在の弾の数を増やす
-			m_bullet_num++;
+			inhPlayerArm::IncreaseBulletNum();
+
+			//
 		}
 	}
 }
 
 void PlayerArm2::PlayerArmDraw()const
 {
-	for (int i = 0; i < m_bullet_num; i++) {
+	for (int i = 0; i < inhPlayerArm::GetBulletNum(); i++) {
 		m_pBullet[i].Draw();
 	}
 }
