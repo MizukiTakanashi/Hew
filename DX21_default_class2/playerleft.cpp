@@ -6,6 +6,10 @@
 #include "playerleft.h"
 #include "input.h"
 
+#include "PlayerArm1.h"
+#include "PlayerArm2.h"
+#include "PlayerArm3.h"
+
 //==========================
 // 定数の初期化
 //==========================
@@ -48,6 +52,18 @@ void PlayerLeft::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_
 		SetPos(player_pos + FROM_PLAYER_POS);
 
 		if (m_pEnemyItem != nullptr) {
+			//更新処理の前の各々の処理
+			switch (m_type) {
+
+			case TYPE::TYPE1:
+				//ホーミング用の敵の位置を取得
+				m_pEnemyItem->SetSomethingPos(enemy_pos);
+				break;
+
+			default:
+				break;
+			}
+
 			//腕についてるアイテムの処理
 			m_pEnemyItem->Update(GameObject::GetPos());
 		}
@@ -73,9 +89,37 @@ void PlayerLeft::LeftDraw(void)const
 
 void PlayerLeft::SetType(int type)
 {
+	//発射中であればセットしない
+	if (m_shot) {
+		return;
+	}
+
+	//前のタイプのインスタンスを削除
+	delete m_pEnemyItem;
+	m_pEnemyItem = nullptr;
+
 	//タイプをセット
 	m_type = (TYPE)type;
 
 	//テクスチャをタイプに合わせてセット
 	GameObject::SetAnimationNum((float)m_type - 1.0f);
+
+	//タイプに沿って腕のアイテムをセット
+	switch (m_type) {
+
+	case TYPE::TYPE1:
+		m_pEnemyItem = new PlayerArm1(m_bullet_draw, false);
+		break;
+
+	case TYPE::TYPE2:
+		m_pEnemyItem = new PlayerArm2(m_laser_draw, false);
+		break;
+
+	case TYPE::TYPE3:
+		m_pEnemyItem = new PlayerArm3(m_bullet_draw, false);
+		break;
+
+	default:
+		break;
+	}
 }

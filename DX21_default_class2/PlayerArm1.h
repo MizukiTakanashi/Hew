@@ -32,7 +32,6 @@ private:
 	DrawObject m_bulletdraw;			//弾の描画オブジェクト
 	Bullet* m_pBullet = nullptr;		//弾のオブジェクト
 	int m_interval_count = 0;			//発射間隔のカウント
-	D3DXVECTOR2 m_enemy_pos = D3DXVECTOR2(0.0f, 0.0f);	//一番近い敵の位置
 
 //メンバ関数
 public:
@@ -63,9 +62,6 @@ public:
 	//指定した番号の弾のサイズを返す(オーバーライド)
 	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override
 		{ return m_pBullet[index_num].GetSize(); }
-
-	//一番近い敵の位置をセット
-	void SetEnemyPos(const D3DXVECTOR2& enemy_pos) { m_enemy_pos = enemy_pos; }
 };
 
 #endif // !_PLAYER_ARM_1_H_

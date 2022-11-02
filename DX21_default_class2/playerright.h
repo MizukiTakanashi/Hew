@@ -40,19 +40,24 @@ private:
 private:
 	bool m_shot = false;					//発射したか否か
 	TYPE m_type = TYPE::TYPE_NONE;			//ついた敵のタイプ
+
 	inhPlayerArm* m_pEnemyItem = nullptr;	//腕についている敵のクラス
+	DrawObject m_bullet_draw;				//弾の描画オブジェクト
+	DrawObject m_laser_draw;				//レーザーの描画オブジェクト
 
 //メンバ関数
 public:
 	PlayerRight() {}			//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
-	PlayerRight(DrawObject& pDrawObject, const D3DXVECTOR2& pos, float rot)
-		:GameObject(pDrawObject, pos, D3DXVECTOR2(30.0f, 50.0f), rot) {}
+	PlayerRight(DrawObject& pDrawObject, DrawObject& pBullet, DrawObject& pLaser, const D3DXVECTOR2& pos)
+		:GameObject(pDrawObject, pos, D3DXVECTOR2(30.0f, 50.0f)), 
+		m_bullet_draw(pBullet), m_laser_draw(pLaser) {}
 
 	virtual ~PlayerRight() {}	//デストラクタ
 
 	//更新処理
+	// player_pos：プレイヤーの座標　enemy_pos：一番近い敵の座標
 	void Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_pos);
 
 	//描画処理

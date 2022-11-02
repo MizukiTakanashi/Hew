@@ -32,8 +32,8 @@ void PlayerArm1::Update(const D3DXVECTOR2& arm_pos)
 			m_interval_count = 0;
 
 			//プレイヤーの後を追うようにして、弾を生成
-			D3DXVECTOR2 movTemp = m_enemy_pos - arm_pos;
-			D3DXVECTOR2 rotposTemp = arm_pos - m_enemy_pos;
+			D3DXVECTOR2 movTemp = inhPlayerArm::GetSomethingPos() - arm_pos;
+			D3DXVECTOR2 rotposTemp = arm_pos - inhPlayerArm::GetSomethingPos();
 			D3DXVec2Normalize(&movTemp, &movTemp);
 			movTemp *= BULLET_SPEED;
 
@@ -56,8 +56,8 @@ void PlayerArm1::Update(const D3DXVECTOR2& arm_pos)
 	//今いる弾の処理
 	for (int i = 0; i < inhPlayerArm::GetBulletNum(); i++) {
 		//プレイヤーの後を追う(ホーミング弾)
-		D3DXVECTOR2 movTemp = m_enemy_pos - m_pBullet[i].GetPos();
-		D3DXVECTOR2 rotposTemp = m_pBullet[i].GetPos() - m_enemy_pos;
+		D3DXVECTOR2 movTemp = inhPlayerArm::GetSomethingPos() - m_pBullet[i].GetPos();
+		D3DXVECTOR2 rotposTemp = m_pBullet[i].GetPos() - inhPlayerArm::GetSomethingPos();
 		D3DXVec2Normalize(&movTemp, &movTemp);
 		movTemp *= BULLET_SPEED;
 
