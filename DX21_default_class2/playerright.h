@@ -33,7 +33,8 @@ public:
 
 private:
 	//cppで初期化
-	static const float SHOT_SPEED;		//切り離し発射スピード
+	static const D3DXVECTOR2 SIZE;				//サイズ
+	static const float SHOT_SPEED;				//切り離し発射スピード
 	static const D3DXVECTOR2 FROM_PLAYER_POS;	//プレイヤーからどれくらい離れているか
 
 //メンバ変数
@@ -51,7 +52,7 @@ public:
 
 	//引数付きコンストラクタ
 	PlayerRight(DrawObject& pDrawObject, DrawObject& pBullet, DrawObject& pLaser, const D3DXVECTOR2& pos)
-		:GameObject(pDrawObject, pos, D3DXVECTOR2(30.0f, 50.0f)), 
+		:GameObject(pDrawObject, pos, SIZE), 
 		m_bullet_draw(pBullet), m_laser_draw(pLaser) {}
 
 	~PlayerRight()override { delete m_pEnemyItem; }	//デストラクタ

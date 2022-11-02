@@ -9,8 +9,8 @@
 // ’è”‰Šú‰»
 //==========================
 //public
-const float EnemyGatoring::SIZE_X = 50.0f;
-const float EnemyGatoring::SIZE_Y = 50.0f;
+const float EnemyGatoring::SIZE_X = 60.0f;
+const float EnemyGatoring::SIZE_Y = 60.0f;
 const float EnemyGatoring::STOP_POS_Y = 100.0f;
 const float EnemyGatoring::RANGE = 20.0f;
 //private

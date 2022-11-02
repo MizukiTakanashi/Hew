@@ -136,35 +136,37 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	m_pDrawObject[0].SetDrawObject(m_pTexUseful[0]);
 	m_pPlayer = new Player(m_pDrawObject[0], m_pDrawObject[2]);
 
-	//プレイヤーの左右
-	m_pTexUseful[5].SetTextureName((char*)"data\\texture\\arm.png");
-	m_pDrawObject[6].SetDrawObject(m_pTexUseful[5]);
-	m_pDrawObject[10].SetDrawObject(m_pTexUseful[2]);
-	m_pDrawObject[11].SetDrawObject(m_pTexUseful[8]);
-	m_pPlayerLeft = new PlayerLeft(m_pDrawObject[6], m_pDrawObject[10], 
-		m_pDrawObject[11], m_pPlayer->GetPos());
-
-	m_pTexUseful[6].SetTextureName((char*)"data\\texture\\arm.png");
-	m_pDrawObject[7].SetDrawObject(m_pTexUseful[6]);
-	m_pDrawObject[11].SetDrawObject(m_pTexUseful[2]);
-	m_pDrawObject[12].SetDrawObject(m_pTexUseful[8]);
-	m_pPlayerRight = new PlayerRight(m_pDrawObject[7], m_pDrawObject[11], 
-		m_pDrawObject[12], m_pPlayer->GetPos());
-
-
 	//敵の配置場所
 	m_pEnemySetPos = new EnemySetPos;
 
 	//普通の敵
-	m_pTexUseful[1].SetTextureName((char*)"data\\texture\\eilian.png");
-	m_pDrawObject[1].SetDrawObject(m_pTexUseful[1]);
+	m_pTexUseful[1].SetTextureName((char*)"data\\texture\\teki2.png");
+	m_pDrawObject[1].SetDrawObject(m_pTexUseful[1], 0.0f, 0.33f, 1.0f, 3);
+	m_pDrawObject[13].SetDrawObject(m_pTexUseful[1], 1.0f, 0.33f, 1.0f, 3);
+	m_pDrawObject[14].SetDrawObject(m_pTexUseful[1], 2.0f, 0.33f, 1.0f, 3);
 
 	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[1], m_pDrawObject[2],
 		*m_pEnemySetPos);
-	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[1], m_pDrawObject[9],
+	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[13], m_pDrawObject[9],
 		*m_pEnemySetPos);
-	m_pEnemyGatoringManagement = new EnemyGatoringManagement(m_pDrawObject[1], m_pDrawObject[9],
+	m_pEnemyGatoringManagement = new EnemyGatoringManagement(m_pDrawObject[14], m_pDrawObject[9],
 		*m_pEnemySetPos);
+
+	//プレイヤーの腕の左
+	m_pTexUseful[5].SetTextureName((char*)"data\\texture\\arm.png");
+	m_pDrawObject[6].SetDrawObject(m_pTexUseful[1], 0.0f, 0.33f, 1.0f, 3);
+	m_pDrawObject[10].SetDrawObject(m_pTexUseful[2]);
+	m_pDrawObject[11].SetDrawObject(m_pTexUseful[8]);
+	m_pPlayerLeft = new PlayerLeft(m_pDrawObject[6], m_pDrawObject[10],
+		m_pDrawObject[11], m_pPlayer->GetPos());
+
+	//プレイヤーの腕の右
+	m_pTexUseful[6].SetTextureName((char*)"data\\texture\\arm.png");
+	m_pDrawObject[7].SetDrawObject(m_pTexUseful[1], 0.0f, 0.33f, 1.0f, 3);
+	m_pDrawObject[11].SetDrawObject(m_pTexUseful[2]);
+	m_pDrawObject[12].SetDrawObject(m_pTexUseful[8]);
+	m_pPlayerRight = new PlayerRight(m_pDrawObject[7], m_pDrawObject[11],
+		m_pDrawObject[12], m_pPlayer->GetPos());
 
 	//爆発
 	m_pTexUseful[4].SetTextureName((char*)"data\\texture\\explosion000.png");

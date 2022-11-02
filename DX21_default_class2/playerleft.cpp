@@ -13,6 +13,7 @@
 //==========================
 // ’è”‚Ì‰Šú‰»
 //==========================
+const D3DXVECTOR2 PlayerLeft::SIZE = D3DXVECTOR2(50.0f, 50.0f);
 const float PlayerLeft::SHOT_SPEED = 5.0f;
 const D3DXVECTOR2 PlayerLeft::FROM_PLAYER_POS = D3DXVECTOR2(-30.0f, 0.0f);
 

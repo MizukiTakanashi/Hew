@@ -10,7 +10,7 @@
 //==========================
 //public
 const float EnemyNormal::SIZE_X = 50.0f;
-const float EnemyNormal::SIZE_Y = 50.0f;
+const float EnemyNormal::SIZE_Y = 60.0f;
 const float EnemyNormal::STOP_POS_Y = 100.0f;
 const float EnemyNormal::RANGE = 20.0f;
 //private
