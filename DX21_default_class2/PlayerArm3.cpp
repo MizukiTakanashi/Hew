@@ -6,6 +6,7 @@
 #include "PlayerArm3.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
+#include "input.h"
 
 //==========================
 // ’è”‚Ì‰Šú‰»
@@ -19,8 +20,8 @@ const float PlayerArm3::BULLET_SPEED = 2.5f;
 //==========================
 void PlayerArm3::Update()
 {
-	//”­Ë‚Å‚«‚éŠÔ‚É‚È‚Á‚½‚ç...
-	if (++m_bullet_interval_count > BULLET_INTERVAL) {
+	//ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚ç
+	if ((m_right && GetKeyboardPress(DIK_RIGHT))|| (!m_right && GetKeyboardPress(DIK_LEFT))) {
 		
 		//’e‚ğì‚é
 		Bullet temp(m_bulletdraw, GetPos(),
@@ -53,7 +54,7 @@ void PlayerArm3::Update()
 //==========================
 // •`‰æˆ—
 //==========================
-void PlayerArm3::PlayerArmDraw()
+void PlayerArm3::PlayerArmDraw()const
 {
 	for (int i = 0; i < m_bullet_num; i++) {
 		m_pBullet[i].Draw();

@@ -59,7 +59,7 @@ public:
 	void RightDraw(void)const;
 
 	//˜r‚Ìƒ^ƒCƒv‚ğİ’è
-	void SetType(int type){ m_type = (TYPE)type; }
+	void SetType(int type);
 };
 
 #endif // !PLAYER_RIGHT_H_

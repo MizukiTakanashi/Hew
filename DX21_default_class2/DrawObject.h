@@ -16,10 +16,10 @@ class DrawObject
 {
 private:
 	TextureUseful m_pTexUseful;
-	float m_paternNo = 0.0f;
-	float m_uv_w = 0.0f;
-	float m_uv_h = 0.0f;
-	int m_tex_num = 0;
+	float m_paternNo = 0.0f;		//現在のアニメーション番号
+	float m_uv_w = 0.0f;			//横のUVサイズ
+	float m_uv_h = 0.0f;			//縦のUVサイズ
+	int m_tex_num = 0;				//横に並んでいるアニメーション数
 
 public:
 	DrawObject(){}	//デフォルトコンストラクタ

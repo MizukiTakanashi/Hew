@@ -1,48 +1,49 @@
 #pragma once
 //=================================================
-// プレイヤーと敵の当たり判定関係(ヘッダファイル)
-// 作成日：2022/10/31
-// 作成者：高梨水希
+// 腕から出る弾と敵の当たり判定(ヘッダファイル)
+// 作成日：2022/11/01
+// 作成者：山本亮太
 //=================================================
 
-#ifndef _PLAYER_ENEMY_COL_H_
-#define _PLAYER_ENEMY_COL_H_
+#ifndef _PLAYER_ARM_ENEMY_COL_H_
+#define _PLAYER_ARM_ENEMY_COL_H_
 
-#include "player.h"
-#include "EnemyManagement.h"
 #include "ExplosionManagement.h"
 #include "ItemManagement.h"
 #include "number.h"
+#include "inhPlayerArm.h"
+#include "EnemyManagement.h"
 
-class PlayerEnemyCol
+class PlayerArmEnemyCol
 {
 private:
-	Player* m_pPlayer = nullptr;					//プレイヤー
 	EnemyManagement* m_pEnemy = nullptr;			//全敵
 	ExplosionManagement* m_pExplosion = nullptr;	//爆発
 	ItemManagement* m_pItem = nullptr;				//アイテム
 	Number* m_pNumber = nullptr;					//倒した敵の数表示
+	inhPlayerArm* m_pArm = nullptr;					//腕から出る弾
 
 	int m_EnemyNum = 0;								//敵の種類の数
 	bool m_PlayerEnemyCol = false;					//敵自身とプレイヤー自身の当たりフラグ
 
 public:
 	//デフォルトコンストラクタ
-	PlayerEnemyCol(){}
+	PlayerArmEnemyCol() {}
 
 	//引数付きコンストラクタ
-	PlayerEnemyCol(Player* pPlayer, EnemyManagement* pEnemy, ExplosionManagement* pExplosion,
+	PlayerArmEnemyCol(EnemyManagement* pEnemy, ExplosionManagement* pExplosion,
 		ItemManagement* pItem, Number* pNumber, int EnemyNum)
-		:m_pPlayer(pPlayer), m_pEnemy(pEnemy), m_pExplosion(pExplosion), 
+		:m_pEnemy(pEnemy), m_pExplosion(pExplosion),
 		m_pItem(pItem), m_pNumber(pNumber), m_EnemyNum(EnemyNum) {}
 
 	//デストラクタ
-	~PlayerEnemyCol(){}
+	~PlayerArmEnemyCol() {}
 
 	//全ての敵とプレイヤーの当たり判定
-	//プレイヤーの削れたHPの値を返す
-	int Collision(void);
+	void Collision(void);
 
+	//プレイヤーの腕のアイテムをセット
+	void SetPlayerArm(inhPlayerArm* pArm) { m_pArm = pArm; }
 };
 
-#endif // !_PLAYER_ENEMY_COL_H_
+#endif // !_PLAYER_ARM_ENEMY_COL_H_#pragma once

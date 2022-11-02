@@ -59,7 +59,7 @@ public:
 	void LeftDraw(void)const;
 
 	// ˜r‚Ìƒ^ƒCƒv‚ğİ’è
-	void SetType(int type){	m_type = (TYPE)type; }
+	void SetType(int type);
 };
 
 #endif // !PLAYER_LEFT_H_
