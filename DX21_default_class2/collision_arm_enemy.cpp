@@ -1,4 +1,4 @@
-#include "arm_enemy_collision.h"
+#include "collision_arm_enemy.h"
 #include "collision.h"
 int ArmEnemyCollision::Update(void)
 {

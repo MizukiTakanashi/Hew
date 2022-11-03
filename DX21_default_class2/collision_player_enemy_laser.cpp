@@ -3,7 +3,7 @@
 // 作成日：
 // 作成者：恩田洋行
 //============================================================
-#include "player_enemy_laser_collision.h"
+#include "collision_player_enemy_laser.h"
 #include "collision.h"
 #include "screen_out.h"
 

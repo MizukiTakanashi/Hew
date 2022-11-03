@@ -3,7 +3,7 @@
 // ì¬“úF2022/09/22
 // ì¬ÒF‚—œ…Šó
 //============================================================
-#include "player_enemy_normal_collision.h"
+#include "collision_player_enemy_normal.h"
 #include "collision.h"
 #include "screen_out.h"
 #include "item_p.h"

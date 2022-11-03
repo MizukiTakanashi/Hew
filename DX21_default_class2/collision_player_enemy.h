@@ -9,9 +9,9 @@
 #define _PLAYER_ENEMY_COL_H_
 
 #include "player.h"
-#include "enemy_management.h"
-#include "explosion_management.h"
-#include "item_management.h"
+#include "management_enemy.h"
+#include "management_explosion.h"
+#include "management_item.h"
 #include "number.h"
 
 class PlayerEnemyCol

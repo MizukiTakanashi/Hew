@@ -9,7 +9,7 @@
 #define _ENEMY_GATORING_MANAGEMENT_H_
 
 #include "main.h"
-#include "enemy_management.h"
+#include "management_enemy.h"
 #include "enemy_gatoring.h"
 #include "bullet.h"
 #include "draw_object.h"

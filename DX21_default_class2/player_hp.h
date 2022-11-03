@@ -10,7 +10,7 @@
 
 #include "draw_object.h"
 #include "UI.h"
-#include "explosion_management.h"
+#include "management_explosion.h"
 
 //======================
 // É}ÉNÉçíËã`

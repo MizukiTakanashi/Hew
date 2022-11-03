@@ -3,7 +3,7 @@
 // ì¬“úF2022/09/18
 // ì¬ÒF‚—œ…Šó
 //=======================================
-#include "item_management.h"
+#include "management_item.h"
 #include "sound.h"
 
 //============================

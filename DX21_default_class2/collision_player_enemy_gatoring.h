@@ -9,10 +9,10 @@
 #define _PLAYER_ENEMY_GATORING_COLLISION_H_
 
 #include "player.h"
-#include "enemy_gatoring_management.h"
-#include "explosion_management.h"
+#include "management_enemy_gatoring.h"
+#include "management_explosion.h"
 #include "number.h"
-#include "item_management.h"
+#include "management_item.h"
 	
 class PlayerEnemyGatoringCollision
 {

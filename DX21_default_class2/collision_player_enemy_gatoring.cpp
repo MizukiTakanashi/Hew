@@ -3,7 +3,7 @@
 // ì¬“úF2022/11/01
 // ì¬ÒF¬¼ ˜@
 //============================================================
-#include "player_enemy_gatoring_collision.h"
+#include "collision_player_enemy_gatoring.h"
 #include "collision.h"
 #include "screen_out.h"
 

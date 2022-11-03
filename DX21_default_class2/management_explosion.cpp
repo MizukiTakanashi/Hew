@@ -3,7 +3,7 @@
 // ì¬“úF2022/09/18
 // ì¬ÒF‚—œ…Šó
 //=======================================
-#include "explosion_management.h"
+#include "management_explosion.h"
 #include "sound.h"
 
 //============================

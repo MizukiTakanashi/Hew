@@ -3,7 +3,7 @@
 // ì¬“úF2022/09/13
 // ì¬ÒF‚—œ…Šó
 //=======================================
-#include "enemy_normal_management.h"
+#include "management_enemy_normal.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
 

@@ -9,10 +9,10 @@
 #define _PLAYER_ENEMY_LASER_COLLISION_H_
 
 #include "player.h"
-#include "enemy_laser_management.h"
-#include "explosion_management.h"
+#include "management_enemy_laser.h"
+#include "management_explosion.h"
 #include "number.h"
-#include "item_management.h"
+#include "management_item.h"
 	//敵のアイテム
 //static const float ENEMYITEM_SIZE_X;	//サイズX
 //static const float ENEMYITEM_SIZE_Y;	//サイズY

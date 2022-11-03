@@ -1,11 +1,11 @@
 #pragma once
 #include "player_left.h"
 #include "player_right.h"
-#include "Item_management.h"
-#include "enemy_laser_management.h"
-#include "enemy_gatoring_management.h"
-#include "enemy_management.h"
-#include "explosion_management.h"
+#include "management_item.h"
+#include "management_enemy_laser.h"
+#include "management_enemy_gatoring.h"
+#include "management_enemy.h"
+#include "management_explosion.h"
 class ArmAllEnemyCollision
 {
 private:

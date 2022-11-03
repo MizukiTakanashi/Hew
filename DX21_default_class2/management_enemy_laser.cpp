@@ -3,7 +3,7 @@
 // 作成日：
 // 作成者：恩田洋行
 //=======================================
-#include "enemy_laser_management.h"
+#include "management_enemy_laser.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
 

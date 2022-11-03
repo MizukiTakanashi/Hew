@@ -8,7 +8,7 @@
 #ifndef _ALL_ENEMY_MANAGEMENT_H_
 #define _ALL_ENEMY_MANAGEMENT_H_
 
-#include "enemy_management.h"
+#include "management_enemy.h"
 
 class AllEnemyManagement
 {

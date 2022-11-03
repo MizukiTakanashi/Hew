@@ -3,7 +3,7 @@
 // ì¬“úF2022/10/31
 // ì¬ÒF‚—œ…Šó
 //===============================================
-#include "player_enemy_col.h"
+#include "collision_player_enemy.h"
 #include "collision.h"
 
 int PlayerEnemyCol::Collision(void)

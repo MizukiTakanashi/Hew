@@ -3,7 +3,7 @@
 // 作成日：2022/11/01
 // 作成者：山本亮太
 //===============================================
-#include "player_arm_enemy_col.h"
+#include "collision_player_arm_enemy.h"
 #include "collision.h"
 
 PlayerArmEnemyCol::PlayerArmEnemyCol(EnemyManagement* p1, EnemyManagement* p2, EnemyManagement* p3,

@@ -8,11 +8,11 @@
 #ifndef _PLAYER_ARM_ENEMY_COL_H_
 #define _PLAYER_ARM_ENEMY_COL_H_
 
-#include "explosion_management.h"
-#include "item_management.h"
+#include "management_explosion.h"
+#include "management_item.h"
 #include "number.h"
 #include "inh_player_arm.h"
-#include "enemy_management.h"
+#include "management_enemy.h"
 
 class PlayerArmEnemyCol
 {
