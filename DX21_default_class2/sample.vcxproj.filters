@@ -49,6 +49,7 @@
     <ClCompile Include="PlayerEnemyGatoringCollision.cpp" />
     <ClCompile Include="EnemyGatoring.cpp" />
     <ClCompile Include="EnemyGatoringManagement.cpp" />
+    <ClCompile Include="ArmAllEnemyCollision.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
@@ -99,5 +100,6 @@
     <ClInclude Include="PlayerEnemyGatoringCollision.h" />
     <ClInclude Include="EnemyGatoring.h" />
     <ClInclude Include="EnemyGatoringManagement.h" />
+    <ClInclude Include="ArmAllEnemyCollision.h" />
   </ItemGroup>
 </Project>
