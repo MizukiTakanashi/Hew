@@ -7,8 +7,8 @@
 #ifndef _EXPLOSION_H_
 #define _EXPLOSION_H_
 
-#include "GameObject.h"
-#include "DrawObject.h"
+#include "game_object.h"
+#include "draw_object.h"
 #include "main.h"
 
 class Explosion:public GameObject

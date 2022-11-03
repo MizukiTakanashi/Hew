@@ -10,7 +10,7 @@
 
 #include "main.h"
 #include "UI.h"
-#include "DrawObject.h"
+#include "draw_object.h"
 
 class Number:public UI
 {
