@@ -69,6 +69,9 @@ public:
 	// 腕のタイプを設定
 	void SetType(int type);
 
+	//タイプを返す
+	TYPE GetType(void)const { return m_type; }
+
 	// 腕のクラスのポインタを返す
 	inhPlayerArm* GetArmPointer(void)const { return m_pEnemyItem; }
 };

@@ -26,6 +26,8 @@ void PlayerRight::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy
 	if (GetKeyboardTrigger(DIK_R))
 	{
 		m_shot = true;
+
+		m_type = TYPE::TYPE_SHOOT;
 	}
 
 	//©•ª©g‚ğ”­Ë

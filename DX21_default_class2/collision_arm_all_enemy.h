@@ -27,5 +27,5 @@ public:
 	~ArmAllEnemyCollision() {}		//デストラクタ
 
 	//更新処理
-	int Update(void);
+	void Update(void);
 };
