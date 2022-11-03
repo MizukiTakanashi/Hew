@@ -8,9 +8,8 @@ int ArmEnemyCollision::Update(void)
         if (Collision::ColBox(m_rplayerleft->GetPos(), m_rItemManagement->GetItemPos(i),
             m_rplayerleft->GetSize(), m_rItemManagement->GetItemSize()))
         {
+            m_rplayerleft->SetType(m_rItemManagement->GetItemType(i));
             m_rItemManagement->DeleteItem(i);
-
-            m_rplayerleft->SetType(1);
             m_rplayerleft->LeftDraw();
         }
     }
@@ -19,8 +18,8 @@ int ArmEnemyCollision::Update(void)
         if (Collision::ColBox(m_rplayerright->GetPos(), m_rItemManagement->GetItemPos(j),
             m_rplayerright->GetSize(), m_rItemManagement->GetItemSize()))
         {
+            m_rplayerright->SetType(m_rItemManagement->GetItemType(j));
             m_rItemManagement->DeleteItem(j);
-            m_rplayerright->SetType(1);
             m_rplayerright->RightDraw();
         }
     }

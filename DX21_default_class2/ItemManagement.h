@@ -57,5 +57,10 @@ public:
 
 	//アイテムをセット
 	void SetItem(const D3DXVECTOR2& pos,int typeitem);
-};
+
+	//アイテムのタイプを返す
+	int GetItemType(int i) const { return m_pItem[i].GerItemType(); }
+	
+	
+	};
 

@@ -50,14 +50,11 @@ void ItemManagement::DeleteItem(int index_num)
 }
 
 //==========================
-// 爆発をセット
+// アイテムをセット
 //==========================
 void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem)
 {
-	Item Temp(m_DrawObject, pos, Item::Item_NUM::ENEMYITEM_NUM);
+	Item Temp(m_DrawObject, pos, typeitem);
 	m_pItem[m_ItemNum] = Temp;
 	m_ItemNum++;
-
-	PlaySound(m_SE, 0);
-	SetVolume(m_SE, 0.1f);
 }
