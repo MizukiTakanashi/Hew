@@ -32,6 +32,9 @@ public:
 	//レーザーの削除
 	void DeleteLaser() { m_lasertime = -1; }
 
+	//レーザーの残り時間を返す
+	int GetLaserTime() { return m_lasertime; }
+
 	//更新処理(弾を移動)
 	void Update(const D3DXVECTOR2& pos); 
 };
