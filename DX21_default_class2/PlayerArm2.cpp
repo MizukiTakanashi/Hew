@@ -21,11 +21,13 @@ const float PlayerArm2::SPEED_Y = 15.0f;
 //==========================
 void PlayerArm2::Update(const D3DXVECTOR2& arm_pos)
 {
+	m_bullet_interval_count++;
+
 	//É{É^ÉìÇ™âüÇ≥ÇÍÇΩÇÁ
 	if ((inhPlayerArm::GetRightLeft() && GetKeyboardTrigger(DIK_RIGHT)) || 
 		(!inhPlayerArm::GetRightLeft() && GetKeyboardTrigger(DIK_LEFT))) {
 		//î≠éÀÇ≈Ç´ÇÈéûä‘Ç…Ç»Ç¡ÇΩÇÁ...
-		if (++m_bullet_interval_count > BULLET_INTERVAL) {
+		if (m_bullet_interval_count > BULLET_INTERVAL) {
 			m_bullet_interval_count = 0;
 			
 			Laser temp(m_laser_draw, arm_pos, D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y));
@@ -41,7 +43,7 @@ void PlayerArm2::Update(const D3DXVECTOR2& arm_pos)
 
 	//åªç›ÇÃíeÇÃèàóù
 	for (int i = 0; i < inhPlayerArm::GetBulletNum(); i++) {
-		m_pLaser[i].Update(arm_pos);
+		m_pLaser[i].Update(arm_pos, false);
 
 		//âÊñ Ç©ÇÁèoÇΩÇÁè¡Ç∑
 		if (m_pLaser[i].GetScreenOut()) {

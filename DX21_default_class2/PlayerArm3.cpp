@@ -20,11 +20,13 @@ const float PlayerArm3::BULLET_SPEED = 2.5f;
 //==========================
 void PlayerArm3::Update(const D3DXVECTOR2& arm_pos)
 {
+	m_bullet_interval_count++;
+
 	//ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚ç
 	if ((inhPlayerArm::GetRightLeft() && GetKeyboardPress(DIK_RIGHT)) || 
 		(!inhPlayerArm::GetRightLeft() && GetKeyboardPress(DIK_LEFT))) {
 		//”­Ë‚Å‚«‚éŠÔ‚É‚È‚Á‚½‚ç...
-		if (++m_bullet_interval_count > BULLET_INTERVAL) {
+		if (m_bullet_interval_count > BULLET_INTERVAL) {
 			m_bullet_interval_count = 0;
 
 			//’e‚ğì‚é

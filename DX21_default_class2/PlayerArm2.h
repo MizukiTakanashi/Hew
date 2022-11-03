@@ -20,7 +20,7 @@ private:
 	//ここで初期化
 	static const int BULLET_NUM_MAX = 10;		//弾の制限数
 	static const int BULLET_SHOOT_MAX = 20;		//弾の同時最大発射数
-	static const int BULLET_INTERVAL = 200;		//弾の発射間隔
+	static const int BULLET_INTERVAL = 20;		//弾の発射間隔
 	static const int BULLET_BREAK_TIME = 200;	//ホーミング弾が壊れる時間
 
 	static const int LASER_TIME = 150;			//レーザーの射出時間
