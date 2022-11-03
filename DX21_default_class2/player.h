@@ -33,7 +33,7 @@ private:
 	//弾
 	//ここで初期化
 	static const int BULLET_MAX_NUM = 100;		//プレイヤーの弾の総数
-	static const int BULLET_INTERVAL_TIME = 5;	//弾の発射間隔
+	static const int BULLET_INTERVAL_TIME = 20;	//弾の発射間隔
 	
 	static const float BULLET_SIZE_X;			//弾のサイズX
 	static const float BULLET_SIZE_Y;			//弾のサイズY
