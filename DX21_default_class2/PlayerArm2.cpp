@@ -21,26 +21,6 @@ const float PlayerArm2::SPEED_Y = 15.0f;
 //==========================
 void PlayerArm2::Update(const D3DXVECTOR2& arm_pos)
 {
-	m_bullet_interval_count++;
-
-	//ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚ç
-	if ((inhPlayerArm::GetRightLeft() && GetKeyboardTrigger(DIK_RIGHT)) || 
-		(!inhPlayerArm::GetRightLeft() && GetKeyboardTrigger(DIK_LEFT))) {
-		//”­Ë‚Å‚«‚éŠÔ‚É‚È‚Á‚½‚ç...
-		if (m_bullet_interval_count > BULLET_INTERVAL) {
-			m_bullet_interval_count = 0;
-			
-			Laser temp(m_laser_draw, arm_pos, D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y));
-			m_pLaser[inhPlayerArm::GetBulletNum()] = temp;
-			
-			//Œ»İ‚Ì’e‚Ì”‚ğ‘‚â‚·
-			inhPlayerArm::IncreaseBulletNum();
-
-			//ì‚Á‚½’e‚Ì”‚ğ‘‚â‚·
-			inhPlayerArm::IncreaseBulletMaked();
-		}
-	}
-
 	//Œ»İ‚Ì’e‚Ìˆ—
 	for (int i = 0; i < inhPlayerArm::GetBulletNum(); i++) {
 		m_pLaser[i].Update(arm_pos, false);
@@ -48,6 +28,32 @@ void PlayerArm2::Update(const D3DXVECTOR2& arm_pos)
 		//‰æ–Ê‚©‚ço‚½‚çÁ‚·
 		if (m_pLaser[i].GetScreenOut()) {
 			DeleteBullet(i);
+		}
+	}
+
+	//‚à‚µ‚à’e‚Ì§ŒÀ‚ª’´‚¦‚Ä‚½‚ç’e‚ğì‚ç‚È‚¢
+	if (inhPlayerArm::IsBulletUsed()) {
+		return;
+	}
+
+	//”­ËŠÔŠuƒJƒEƒ“ƒg
+	m_bullet_interval_count++;
+
+	//ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚ç
+	if ((inhPlayerArm::GetRightLeft() && GetKeyboardTrigger(DIK_RIGHT)) ||
+		(!inhPlayerArm::GetRightLeft() && GetKeyboardTrigger(DIK_LEFT))) {
+		//”­Ë‚Å‚«‚éŠÔ‚É‚È‚Á‚½‚ç...
+		if (m_bullet_interval_count > BULLET_INTERVAL) {
+			m_bullet_interval_count = 0;
+
+			Laser temp(m_laser_draw, arm_pos, D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y));
+			m_pLaser[inhPlayerArm::GetBulletNum()] = temp;
+
+			//Œ»İ‚Ì’e‚Ì”‚ğ‘‚â‚·
+			inhPlayerArm::IncreaseBulletNum();
+
+			//ì‚Á‚½’e‚Ì”‚ğ‘‚â‚·
+			inhPlayerArm::IncreaseBulletMaked();
 		}
 	}
 }

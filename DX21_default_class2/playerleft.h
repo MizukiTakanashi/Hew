@@ -28,6 +28,8 @@ public:
 		TYPE6,
 		TYPE7,
 		TYPE8,
+		TYPE_SHOOT,	// 前のタイプの弾の処理 & 自身発射中
+		TYPE_OLD,	// 前のタイプの弾の処理中
 		TYPE_NUM,
 	};
 

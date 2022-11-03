@@ -20,11 +20,38 @@ const float PlayerArm1::BULLET_SPEED = 2.5f;
 //==========================
 void PlayerArm1::Update(const D3DXVECTOR2& arm_pos)
 {
+	//今いる弾の処理
+	for (int i = 0; i < inhPlayerArm::GetBulletNum(); i++) {
+		//プレイヤーの後を追う(ホーミング弾)
+		D3DXVECTOR2 movTemp = inhPlayerArm::GetSomethingPos() - m_pBullet[i].GetPos();
+		D3DXVECTOR2 rotposTemp = m_pBullet[i].GetPos() - inhPlayerArm::GetSomethingPos();
+		D3DXVec2Normalize(&movTemp, &movTemp);
+		movTemp *= BULLET_SPEED;
+
+		float rotTemp = atan2(rotposTemp.y, rotposTemp.x) * (180 / M_PI) + 180.0f;
+
+		m_pBullet[i].SetRot(rotTemp);
+		m_pBullet[i].SetMove(movTemp);
+
+		//弾の更新処理
+		m_pBullet[i].Update();
+
+		//画面外から出たら、時間経過したら...
+		if (m_pBullet[i].GetScreenOut() || m_pBullet[i].GetTime() > BULLET_BREAK_TIME) {
+			DeleteBullet(i);
+		}
+	}
+
+	//もしも弾の制限が超えてたら弾を作らない
+	if (inhPlayerArm::IsBulletUsed()) {
+		return;
+	}	
+
 	//発射間隔カウント
 	m_interval_count++;
 
 	//ボタンが押されたら
-	if ((inhPlayerArm::GetRightLeft() && GetKeyboardPress(DIK_RIGHT)) || 
+	if ((inhPlayerArm::GetRightLeft() && GetKeyboardPress(DIK_RIGHT)) ||
 		(!inhPlayerArm::GetRightLeft() && GetKeyboardPress(DIK_LEFT))) {
 		//発射間隔が一定以上になったら
 		if (m_interval_count > BULLET_INTERVAL) {
@@ -50,28 +77,6 @@ void PlayerArm1::Update(const D3DXVECTOR2& arm_pos)
 
 			//作った弾の数を増やす
 			inhPlayerArm::IncreaseBulletMaked();
-		}
-	}
-
-	//今いる弾の処理
-	for (int i = 0; i < inhPlayerArm::GetBulletNum(); i++) {
-		//プレイヤーの後を追う(ホーミング弾)
-		D3DXVECTOR2 movTemp = inhPlayerArm::GetSomethingPos() - m_pBullet[i].GetPos();
-		D3DXVECTOR2 rotposTemp = m_pBullet[i].GetPos() - inhPlayerArm::GetSomethingPos();
-		D3DXVec2Normalize(&movTemp, &movTemp);
-		movTemp *= BULLET_SPEED;
-
-		float rotTemp = atan2(rotposTemp.y, rotposTemp.x) * (180 / M_PI) + 180.0f;
-
-		m_pBullet[i].SetRot(rotTemp);
-		m_pBullet[i].SetMove(movTemp);
-
-		//弾の更新処理
-		m_pBullet[i].Update();
-
-		//画面外から出たら、時間経過したら...
-		if (m_pBullet[i].GetScreenOut() || m_pBullet[i].GetTime() > BULLET_BREAK_TIME) {
-			DeleteBullet(i);
 		}
 	}
 }
