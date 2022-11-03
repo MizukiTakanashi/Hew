@@ -11,8 +11,8 @@
 //==========================
 // íËêîÇÃèâä˙âª
 //==========================
-const float PlayerArm3::BULLET_SIZE_X = 40.0f;
-const float PlayerArm3::BULLET_SIZE_Y = 40.0f;
+const float PlayerArm3::BULLET_SIZE_X = 15.0f;
+const float PlayerArm3::BULLET_SIZE_Y = 30.0f;
 const float PlayerArm3::BULLET_SPEED = 2.5f;
 
 //==========================
@@ -47,7 +47,7 @@ void PlayerArm3::Update(const D3DXVECTOR2& arm_pos)
 			m_bullet_interval_count = 0;
 
 			//íeÇçÏÇÈ
-			Bullet temp(m_bulletdraw, GetPos(),
+			Bullet temp(m_bulletdraw, arm_pos,
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0.0f, -BULLET_SPEED), 0.0f);
 
 			m_pBullet[inhPlayerArm::GetBulletNum()] = temp;

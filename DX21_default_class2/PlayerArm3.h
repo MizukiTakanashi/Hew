@@ -17,9 +17,9 @@ class PlayerArm3 :public inhPlayerArm
 //’è”
 private:
 	//‚±‚±‚Å‰Šú‰»
-	static const int BULLET_NUM_MAX = 10;		//’e‚Ì§ŒÀ”
-	static const int BULLET_SHOOT_MAX = 10;		//’e‚Ì“¯Å‘å”­Ë”
-	static const int BULLET_INTERVAL = 100;		//’e‚Ì”­ËŠÔŠu
+	static const int BULLET_NUM_MAX = 100;		//’e‚Ì§ŒÀ”
+	static const int BULLET_SHOOT_MAX = 20;		//’e‚Ì“¯Å‘å”­Ë”
+	static const int BULLET_INTERVAL = 10;		//’e‚Ì”­ËŠÔŠu
 	
 	//cpp‚Å‰Šú‰»
 	static const float BULLET_SIZE_X;		//ƒTƒCƒYX
