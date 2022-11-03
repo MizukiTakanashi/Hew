@@ -209,6 +209,10 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	//敵の管理
 	m_pAllEnemyManagement = new AllEnemyManagement(m_pEnemyNormalManagement, m_pEnemyLaserManagement);
 
+	//発射した腕と敵の当たり判定
+	m_pArmAllEnemyCollision = new ArmAllEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pEnemyLaserManagement,
+												m_pEnemyGatoringManagement, m_pEnemyNormalManagement, m_pExplosionManagement);
+
 	//プレイヤーの腕のアイテムの弾と敵の当たり判定
 	//m_pArmEnemyCol = new PlayerArmEnemyCol()
 }
@@ -265,6 +269,7 @@ void Game::Update(void)
 	m_pEnemyLaserManagement->Update();
 	m_pEnemyGatoringManagement->Update(m_pPlayer->GetPos());
 	m_ArmEnemyCollision->Update();
+	m_pArmAllEnemyCollision->Update();
 
 	//====================================
 	//プレイヤーのHPに対する攻撃の処理
