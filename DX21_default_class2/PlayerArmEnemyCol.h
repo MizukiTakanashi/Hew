@@ -16,25 +16,27 @@
 
 class PlayerArmEnemyCol
 {
+//定数
 private:
-	EnemyManagement* m_pEnemy = nullptr;			//全敵
+	//ここで初期化
+	static const int ENEMY_NUM = 3;
+
+private:
+	EnemyManagement* m_pEnemy[ENEMY_NUM];			//全敵
 	ExplosionManagement* m_pExplosion = nullptr;	//爆発
 	ItemManagement* m_pItem = nullptr;				//アイテム
 	Number* m_pNumber = nullptr;					//倒した敵の数表示
 	inhPlayerArm* m_pArm = nullptr;					//腕から出る弾
 
-	int m_EnemyNum = 0;								//敵の種類の数
 	bool m_PlayerEnemyCol = false;					//敵自身とプレイヤー自身の当たりフラグ
 
 public:
 	//デフォルトコンストラクタ
-	PlayerArmEnemyCol() {}
+	PlayerArmEnemyCol() { m_pEnemy[0] = nullptr; m_pEnemy[1] = nullptr; m_pEnemy[2] = nullptr; }
 
 	//引数付きコンストラクタ
-	PlayerArmEnemyCol(EnemyManagement* pEnemy, ExplosionManagement* pExplosion,
-		ItemManagement* pItem, Number* pNumber, int EnemyNum)
-		:m_pEnemy(pEnemy), m_pExplosion(pExplosion),
-		m_pItem(pItem), m_pNumber(pNumber), m_EnemyNum(EnemyNum) {}
+	PlayerArmEnemyCol(EnemyManagement* p1, EnemyManagement* p2, EnemyManagement* p3,
+		ExplosionManagement* pExplosion, ItemManagement* pItem, Number* pNumber);
 
 	//デストラクタ
 	~PlayerArmEnemyCol() {}
