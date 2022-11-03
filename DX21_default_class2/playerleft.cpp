@@ -101,7 +101,7 @@ void PlayerLeft::LeftDraw(void)const
 void PlayerLeft::SetType(int type)
 {
 	//”­ŽË’†‚Å‚ ‚ê‚ÎƒZƒbƒg‚µ‚È‚¢
-	if (m_shot) {
+	if (m_shot || m_type != TYPE::TYPE_NONE) {
 		return;
 	}
 

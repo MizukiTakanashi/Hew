@@ -100,7 +100,7 @@ void PlayerRight::RightDraw(void)const
 void PlayerRight::SetType(int type)
 {
 	//”­ŽË’†‚Å‚ ‚ê‚ÎƒZƒbƒg‚µ‚È‚¢
-	if (m_shot) {
+	if (m_shot || m_type != TYPE::TYPE_NONE) {
 		return;
 	}
 
