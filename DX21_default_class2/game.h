@@ -30,7 +30,7 @@
 #include "EnemyManagement.h"
 #include "AllEnemyManagement.h"
 #include "PlayerArmEnemyCol.h"
-
+#include "ArmAllEnemyCollision.h"
 class Game
 {
 //íËêî
@@ -95,7 +95,7 @@ private:
 	PlayerEnemyNormalCollision* m_pPlayerEnemyNormalCol = nullptr;
 	PlayerEnemyLaserCollision* m_pPlayerEnemyLaserCol = nullptr;
 	PlayerEnemyGatoringCollision* m_pPlayerEnemyGatoringCol = nullptr;
-
+	ArmAllEnemyCollision* m_pArmAllEnemyCollision = nullptr;
 	ArmEnemyCollision* m_ArmEnemyCollision = nullptr;
 
 	PlayerLeft* m_pPlayerLeft = nullptr;

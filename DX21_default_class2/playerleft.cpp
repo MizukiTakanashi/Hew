@@ -35,15 +35,35 @@ void PlayerLeft::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_
 		
 		// 画面外に出たら...
 		if (GetScreenOut())
-		{
-			//TYPEを元に戻す
-			m_type = TYPE::TYPE_NONE;
-			
+		{			
+			m_type = TYPE::TYPE_OLD;
+
 			//位置を元に戻す
-			SetPos(player_pos);
+			SetPos(player_pos + FROM_PLAYER_POS);
 			
 			//発射のフラグをオフ
 			m_shot = false;
+		}
+
+		//もしも前のタイプの弾が残っていたら
+		if (m_type == TYPE::TYPE_SHOOT) {
+			//腕についているアイテムの処理
+			if (m_pEnemyItem != nullptr) {
+				//更新処理の前の各々の処理
+				switch (m_type) {
+
+				case TYPE::TYPE1:
+					//ホーミング用の敵の位置を取得
+					m_pEnemyItem->SetSomethingPos(enemy_pos);
+					break;
+
+				default:
+					break;
+				}
+
+				//腕についてるアイテムの処理
+				m_pEnemyItem->Update(GameObject::GetPos());
+			}
 		}
 	}
 	//発射以外の時はプレイヤーの横について弾を発射する
@@ -70,8 +90,9 @@ void PlayerLeft::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_
 			m_pEnemyItem->Update(GameObject::GetPos());
 
 			//弾を使い切ったら切り離す
-			if (m_pEnemyItem->IsBulletUsed()) {
+			if (m_pEnemyItem->IsBulletUsed() && m_type != TYPE::TYPE_OLD && m_type != TYPE::TYPE_SHOOT) {
 				m_shot = true;
+				m_type = TYPE::TYPE_SHOOT;
 			}
 		}
 	}
@@ -85,8 +106,10 @@ void PlayerLeft::LeftDraw(void)const
 	//腕になにかついていれば描画
 	if (m_type != TYPE::TYPE_NONE)
 	{
-		//腕についているアイテム自身の描画
-		Draw();
+		if (m_type != TYPE::TYPE_OLD) {
+			//腕についているアイテム自身の描画
+			Draw();
+		}
 
 		if (m_pEnemyItem != nullptr) {
 			//腕についているアイテムの弾等描画
@@ -102,6 +125,11 @@ void PlayerLeft::SetType(int type)
 {
 	//発射中であればセットしない
 	if (m_shot) {
+		return;
+	}
+
+	//既にタイプがついていればセットしない
+	if (m_type != TYPE::TYPE_NONE && m_type != TYPE::TYPE_OLD) {
 		return;
 	}
 

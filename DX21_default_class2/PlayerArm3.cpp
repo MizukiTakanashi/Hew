@@ -20,11 +20,30 @@ const float PlayerArm3::BULLET_SPEED = 2.5f;
 //==========================
 void PlayerArm3::Update(const D3DXVECTOR2& arm_pos)
 {
+	//今いる弾の処理
+	for (int i = 0; i < inhPlayerArm::GetBulletNum(); i++) {
+		//弾の更新処理
+		m_pBullet[i].Update();
+
+		//画面外から出たら...
+		if (m_pBullet[i].GetScreenOut()){
+			DeleteBullet(i);
+		}
+	}
+
+	//もしも弾の制限が超えてたら弾を作らない
+	if (inhPlayerArm::IsBulletUsed()) {
+		return;
+	}
+
+	//発射間隔カウント
+	m_bullet_interval_count++;
+
 	//ボタンが押されたら
-	if ((inhPlayerArm::GetRightLeft() && GetKeyboardPress(DIK_RIGHT)) || 
+	if ((inhPlayerArm::GetRightLeft() && GetKeyboardPress(DIK_RIGHT)) ||
 		(!inhPlayerArm::GetRightLeft() && GetKeyboardPress(DIK_LEFT))) {
 		//発射できる時間になったら...
-		if (++m_bullet_interval_count > BULLET_INTERVAL) {
+		if (m_bullet_interval_count > BULLET_INTERVAL) {
 			m_bullet_interval_count = 0;
 
 			//弾を作る
@@ -38,17 +57,6 @@ void PlayerArm3::Update(const D3DXVECTOR2& arm_pos)
 
 			//作った弾の数を増やす
 			inhPlayerArm::IncreaseBulletMaked();
-		}
-	}
-
-	//今いる弾の処理
-	for (int i = 0; i < inhPlayerArm::GetBulletNum(); i++) {
-		//弾の更新処理
-		m_pBullet[i].Update();
-
-		//画面外から出たら...
-		if (m_pBullet[i].GetScreenOut()){
-			DeleteBullet(i);
 		}
 	}
 }

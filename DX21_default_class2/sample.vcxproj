@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AllEnemyManagement.cpp" />
+    <ClCompile Include="ArmAllEnemyCollision.cpp" />
     <ClCompile Include="ArmEnemyCollision.cpp" />
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="collision.cpp" />
@@ -179,6 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AllEnemyManagement.h" />
+    <ClInclude Include="ArmAllEnemyCollision.h" />
     <ClInclude Include="ArmEnemyCollision.h" />
     <ClInclude Include="bullet.h" />
     <ClInclude Include="collision.h" />

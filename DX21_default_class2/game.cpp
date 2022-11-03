@@ -207,10 +207,16 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	m_ArmEnemyCollision = new ArmEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pItemManagement);
 
 	//敵の管理
-	m_pAllEnemyManagement = new AllEnemyManagement(m_pEnemyNormalManagement, m_pEnemyLaserManagement);
+	m_pAllEnemyManagement = new AllEnemyManagement(m_pEnemyNormalManagement, m_pEnemyLaserManagement, 
+		m_pEnemyGatoringManagement);
+
+	//発射した腕と敵の当たり判定
+	m_pArmAllEnemyCollision = new ArmAllEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pEnemyLaserManagement,
+												m_pEnemyGatoringManagement, m_pEnemyNormalManagement, m_pExplosionManagement);
 
 	//プレイヤーの腕のアイテムの弾と敵の当たり判定
-	//m_pArmEnemyCol = new PlayerArmEnemyCol()
+	m_pArmEnemyCol = new PlayerArmEnemyCol(m_pEnemyNormalManagement, m_pEnemyLaserManagement,
+		m_pEnemyGatoringManagement, m_pExplosionManagement, m_pItemManagement, m_pNumber);
 }
 
 //==========================
@@ -249,25 +255,41 @@ Game::~Game()
 //======================
 void Game::Update(void)
 {
+	//背景
 	m_pBG->Update();
 
+	//プレイヤー
 	m_pPlayer->Update(m_pPlayerHP->IsPlayerInvincible());
 	m_pPlayerLeft->Update(m_pPlayer->GetPos(), m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerLeft->GetPos()));
 	m_pPlayerRight->Update(m_pPlayer->GetPos(), m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerRight->GetPos()));
 
 	m_pPlayerHP->Update();
 
+	//爆発
 	m_pExplosionManagement->Update();
 
+	//敵から落ちるアイテム
 	m_pItemManagement->Update();
-	//敵の更新処理
+
+	//=======================
+	// 敵の更新処理
 	m_pEnemyNormalManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyLaserManagement->Update();
 	m_pEnemyGatoringManagement->Update(m_pPlayer->GetPos());
 	m_ArmEnemyCollision->Update();
+	m_pArmAllEnemyCollision->Update();
+
+	//==========================
+	// プレイヤーの腕と敵
+	//左腕
+	m_pArmEnemyCol->SetPlayerArm(m_pPlayerLeft->GetArmPointer());
+	m_pArmEnemyCol->Collision();
+	//右腕
+	m_pArmEnemyCol->SetPlayerArm(m_pPlayerRight->GetArmPointer());
+	m_pArmEnemyCol->Collision();
 
 	//====================================
-	//プレイヤーのHPに対する攻撃の処理
+	//プレイヤーのHPに対する敵の攻撃の処理
 	int attack_num = 0;
 
 	//普通の敵

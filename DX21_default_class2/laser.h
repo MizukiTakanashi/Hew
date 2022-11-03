@@ -36,7 +36,7 @@ public:
 	int GetLaserTime() { return m_lasertime; }
 
 	//XVˆ—(’e‚ğˆÚ“®)
-	void Update(const D3DXVECTOR2& pos); 
+	void Update(const D3DXVECTOR2& pos, bool down = true); 
 };
 
 #endif // !_LASER_H_
