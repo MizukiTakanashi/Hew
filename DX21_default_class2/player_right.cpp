@@ -156,15 +156,15 @@ void PlayerRight::SetType(int type)
 	 switch (m_type) {
 
 	 case TYPE::TYPE1:
-		 m_pEnemyItem = new PlayerArm1(m_bullet_draw, true);
+		 m_pEnemyItem = new PlayerArm1(m_bullet_draw, true, (int)m_type - 1);
 		 break;
 
 	 case TYPE::TYPE2:
-		 m_pEnemyItem = new PlayerArm2(m_laser_draw, true);
+		 m_pEnemyItem = new PlayerArm2(m_laser_draw, true, (int)m_type - 1);
 		 break;
 
 	 case TYPE::TYPE3:
-		 m_pEnemyItem = new PlayerArm3(m_bullet_draw, true);
+		 m_pEnemyItem = new PlayerArm3(m_bullet_draw, true, (int)m_type - 1);
 		 break;
 
 	 default:

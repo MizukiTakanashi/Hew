@@ -43,9 +43,13 @@ void PlayerArmEnemyCol::Collision(void)
 						//敵アイテムのドロップ
 						m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), 1);
 
-						//プレイヤーの弾を消す
-						m_pArm->DeleteBullet(i);
-						i--;
+						//腕についている種類がTYPE2(レーザー)でなければ...
+						if (m_pArm->GetType() != inhPlayerArm::TYPE::TYPE2) {
+							//プレイヤーの弾を消す
+							m_pArm->DeleteBullet(i);
+							i--;
+						}
+						
 						//敵を消す
 						m_pEnemy[k]->DeleteObj(j);
 						j--;
@@ -66,9 +70,13 @@ void PlayerArmEnemyCol::Collision(void)
 					//爆発をセット
 					m_pExplosion->SetExplosion(m_pEnemy[k]->GetBulletPos(j));
 
-					//プレイヤーの弾を消す
-					m_pArm->DeleteBullet(i);
-					i--;
+					//腕についている種類がTYPE2(レーザー)でなければ...
+					if (m_pArm->GetType() != inhPlayerArm::TYPE::TYPE2) {
+						//プレイヤーの弾を消す
+						m_pArm->DeleteBullet(i);
+						i--;
+					}
+
 					//敵の弾を消す
 					m_pEnemy[k]->DeleteBullet(j);
 					j--;

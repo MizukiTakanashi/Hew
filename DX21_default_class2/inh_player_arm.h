@@ -12,6 +12,22 @@
 
 class inhPlayerArm:public GameObject
 {
+//定数
+public:
+	// 腕に着く敵の種類
+	enum class TYPE :int
+	{
+		TYPE1,
+		TYPE2,
+		TYPE3,
+		TYPE4,
+		TYPE5,
+		TYPE6,
+		TYPE7,
+		TYPE8,
+		TYPE_NUM,
+	};
+
 //メンバ変数
 private:
 	int m_BulletNum = 0;		//現在の弾の数
@@ -19,6 +35,7 @@ private:
 	int m_bullet_max_num = 0;	//アイテムが出す最大弾数
 	bool m_right = false;		//右についてるか左についてるか
 	bool m_button_push = false;	//ボタンが押されたか
+	TYPE m_type = TYPE::TYPE1;	//自分のタイプ
 
 	//とある座標取得用
 	//現在はPlayerArm1のホーミング弾の敵の位置取得用
@@ -30,8 +47,8 @@ public:
 	inhPlayerArm(){}
 
 	//引数付きコンストラクタ
-	inhPlayerArm(int bullet_max_num, bool right)
-		:m_bullet_max_num(bullet_max_num), m_right(right) {}
+	inhPlayerArm(int bullet_max_num, bool right, int type)
+		:m_bullet_max_num(bullet_max_num), m_right(right), m_type((TYPE)type) {}
 
 	//デストラクタ
 	~inhPlayerArm(){}
@@ -76,6 +93,9 @@ public:
 
 	//ボタンが押されたかを返す
 	bool IsButtonPush(void)const { return m_button_push; }
+
+	//タイプを返す
+	TYPE GetType(void)const { return m_type; }
 
 	//とある座標セット用(詳細はメンバ変数のm_something_posのコメントへ)
 	void SetSomethingPos(const D3DXVECTOR2& pos) { m_something_pos = pos; }
