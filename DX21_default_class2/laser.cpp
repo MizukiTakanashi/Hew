@@ -36,14 +36,14 @@ void Laser::Update(const D3DXVECTOR2& pos, bool down)
 			//レーザーを長くする
 			GameObject::SetSize(D3DXVECTOR2(GameObject::GetSize().x, GameObject::GetSize().y + SPEED_Y * 2));
 			//レーザーのX座標をエネミーに合わせる、レーザーを下へ移動
-			GameObject::SetPos(D3DXVECTOR2(pos.x, GameObject::GetPos().y + SPEED_Y));
+			GameObject::SetPos(D3DXVECTOR2(pos.x , pos.y + GameObject::GetSize().y / 2));
 		}
 		//上向きなのであれば...
 		else {
 			//レーザーを長くする
 			GameObject::SetSize(D3DXVECTOR2(GameObject::GetSize().x, GameObject::GetSize().y + SPEED_Y * 2));
 			//レーザーのX座標をエネミーに合わせる、レーザーを上へ移動
-			GameObject::SetPos(D3DXVECTOR2(pos.x, GameObject::GetPos().y - SPEED_Y));
+			GameObject::SetPos(D3DXVECTOR2(pos.x, pos.y - GameObject::GetSize().y / 2));
 		}
 	}
 
