@@ -20,23 +20,25 @@ private:
 	float m_uv_w = 0.0f;			//横のUVサイズ
 	float m_uv_h = 0.0f;			//縦のUVサイズ
 	int m_tex_num = 0;				//横に並んでいるアニメーション数
+	D3DXCOLOR m_color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);	//色
 
 public:
 	DrawObject(){}	//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
 	DrawObject(const TextureUseful& pTexUseful, 
-		float paternNo = 0.0f, float uv_w = 1.0f, float uv_h = 1.0f, int tex_num = 1) 
-		:m_pTexUseful(pTexUseful), m_paternNo(paternNo), m_uv_w(uv_w), m_uv_h(uv_h), m_tex_num(tex_num){}
+		float paternNo = 0.0f, float uv_w = 1.0f, float uv_h = 1.0f, int tex_num = 1,
+		const D3DXCOLOR& color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f))
+		:m_pTexUseful(pTexUseful), m_paternNo(paternNo), m_uv_w(uv_w), m_uv_h(uv_h), 
+		m_tex_num(tex_num), m_color(color) {}
 
 	~DrawObject(){}	//デストラクタ
 
 	void SetDrawObject(const TextureUseful& pTexUseful, float paternNo = 0.0f, float uv_w = 1.0f, 
-		float uv_h = 1.0f, int tex_num = 1);
+		float uv_h = 1.0f, int tex_num = 1, const D3DXCOLOR& color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 
 	//描画
-	void Draw(const D3DXVECTOR2& pos, const D3DXVECTOR2& size, 
-		const D3DXCOLOR& col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f), float rot = 0.0f)const;
+	void Draw(const D3DXVECTOR2& pos, const D3DXVECTOR2& size, float rot = 0.0f)const;
 
 	//アニメーション番号指定
 	void SetPaterNo(float patenNo) { m_paternNo = patenNo; }

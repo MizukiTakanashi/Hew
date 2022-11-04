@@ -30,7 +30,7 @@ public:
 	~UI(){}	//デストラクタ
 
 	//描画
-	void Draw(void)const { m_DrawObject.Draw(m_pos, m_size, m_color); }
+	void Draw(void)const { m_DrawObject.Draw(m_pos, m_size); }
 
 	//座標をセット
 	void SetPos(const D3DXVECTOR2& pos) { m_pos = pos; }
