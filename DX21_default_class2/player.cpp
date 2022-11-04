@@ -4,7 +4,11 @@
 // 作成者：高梨水希
 //=======================================
 #include "player.h"
-#include "input.h"
+
+//#include "input.h"
+#include "inputx.h"
+#include "keyboard.h"
+
 #include "screen_out.h"
 #include "player_hp.h"
 
@@ -34,19 +38,19 @@ void Player::Update(bool isinvincible)
 	D3DXVECTOR2 temp = D3DXVECTOR2(0.0f, 0.0f);
 
 	//上矢印が押されたら
-	if (GetKeyboardPress(DIK_W)) {
+	if (InputGetKey(KK_W)) {
 		temp.y -= SPEED_Y;
 	}
 	//下矢印が押されたら
-	if (GetKeyboardPress(DIK_S)) {
+	if (InputGetKey(KK_S)) {
 		temp.y += SPEED_Y;
 	}
 	//左矢印が押されたら
-	if (GetKeyboardPress(DIK_A)) {
+	if (InputGetKey(KK_A)) {
 		temp.x -= SPEED_X;
 	}
 	//右矢印が押されたら
-	if (GetKeyboardPress(DIK_D)) {
+	if (InputGetKey(KK_D)) {
 		temp.x += SPEED_X;
 	}
 
@@ -66,7 +70,7 @@ void Player::Update(bool isinvincible)
 
 	m_BulletInterval++;
 	//スペースが押された + 発射間隔が指定の値を超えたら弾を生成
-	if (GetKeyboardPress(DIK_SPACE) && m_BulletInterval > BULLET_INTERVAL_TIME) {
+	if (InputGetKey(KK_SPACE) && m_BulletInterval > BULLET_INTERVAL_TIME) {
 		m_BulletInterval = 0;
 
 		if (m_BulletNum < BULLET_MAX_NUM) {

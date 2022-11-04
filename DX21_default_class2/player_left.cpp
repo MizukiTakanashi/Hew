@@ -4,7 +4,10 @@
 // 作成者：小西 蓮
 //=======================================
 #include "player_left.h"
-#include "input.h"
+
+//#include "input.h"
+#include "inputx.h"
+#include "keyboard.h"
 
 #include "player_arm_1.h"
 #include "player_arm_2.h"
@@ -22,8 +25,8 @@ const D3DXVECTOR2 PlayerLeft::FROM_PLAYER_POS = D3DXVECTOR2(-30.0f, 0.0f);
 //==========================
 void PlayerLeft::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_pos)
 {
-	//  Rキーを押すと腕に装着している敵を発射する
-	if (GetKeyboardTrigger(DIK_E))	
+	//  Eキーを押すと腕に装着している敵を発射する
+	if (InputGetKeyDown(KK_E))
 	{
 		m_shot = true;	// 発射した
 
@@ -51,8 +54,7 @@ void PlayerLeft::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_
 		if (m_type == TYPE::TYPE_SHOOT) {
 			//腕についているアイテムの処理
 			if (m_pEnemyItem != nullptr) {
-				//更新処理の前の各々の処理
-				//ホーミング用の敵の位置を取得
+				//ホーミング用の敵の位置を取得(PlayerArm1)
 				m_pEnemyItem->SetSomethingPos(enemy_pos);
 
 				//腕についてるアイテムの処理
@@ -68,17 +70,24 @@ void PlayerLeft::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_
 
 		//腕についているアイテムの処理
 		if (m_pEnemyItem != nullptr) {
-			//更新処理の前の各々の処理
+			//=======================
+			// 更新処理の前の処理
+			//ホーミング用の敵の位置を取得(PlayerArm1)
+			m_pEnemyItem->SetSomethingPos(enemy_pos);
+
+			//ボタン押されたか判断
 			switch (m_type) {
 
-			case TYPE::TYPE1:
-				//ホーミング用の敵の位置を取得
-				m_pEnemyItem->SetSomethingPos(enemy_pos);
+			//Arm2はトリガーになってる
+			case TYPE::TYPE2:
+				m_pEnemyItem->SetButtonPush(InputGetKeyDown(KK_LEFT));
 				break;
 
 			default:
+				m_pEnemyItem->SetButtonPush(InputGetKey(KK_LEFT));
 				break;
 			}
+
 
 			//腕についてるアイテムの処理
 			m_pEnemyItem->Update(GameObject::GetPos());

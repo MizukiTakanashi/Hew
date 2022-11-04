@@ -4,7 +4,11 @@
 // 作成者：高梨水希
 //=======================================
 #include "result.h"
-#include "input.h"
+
+//#include "input.h"
+#include "inputx.h"
+#include "keyboard.h"
+
 #include "scene.h"
 #include "sound.h"
 
@@ -61,7 +65,7 @@ Result::~Result()
 void Result::Update(void)
 {
 	//SPACEキーが入力されたらタイトル画面に戻る
-	if (GetKeyboardTrigger(DIK_SPACE)){
+	if (InputGetKeyDown(KK_SPACE)){
 		SetScene(SCENE::SCENE_TITLE);
 	}
 }

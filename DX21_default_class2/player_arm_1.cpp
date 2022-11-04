@@ -50,9 +50,9 @@ void PlayerArm1::Update(const D3DXVECTOR2& arm_pos)
 	//発射間隔カウント
 	m_interval_count++;
 
-	//ボタンが押されたら
-	if ((inhPlayerArm::GetRightLeft() && GetKeyboardPress(DIK_RIGHT)) ||
-		(!inhPlayerArm::GetRightLeft() && GetKeyboardPress(DIK_LEFT))) {
+	//正しいボタンが押されたら
+	if ((inhPlayerArm::GetRightLeft() && inhPlayerArm::IsButtonPush()) ||
+		(!inhPlayerArm::GetRightLeft() && inhPlayerArm::IsButtonPush())) {
 		//発射間隔が一定以上になったら
 		if (m_interval_count > BULLET_INTERVAL) {
 			//カウントをリセット

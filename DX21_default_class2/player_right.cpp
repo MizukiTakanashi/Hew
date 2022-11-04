@@ -4,7 +4,10 @@
 // 作成者：山本亮太
 //=======================================
 #include "player_right.h"
-#include "input.h"
+
+//#include "input.h"
+#include "inputx.h"
+#include "keyboard.h"
 
 #include "player_arm_1.h"
 #include "player_arm_2.h"
@@ -23,7 +26,7 @@ const D3DXVECTOR2 PlayerRight::FROM_PLAYER_POS = D3DXVECTOR2(30.0f, 0.0f);
 void PlayerRight::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_pos)
 {
 	//Rを押したら自分自身を発射
-	if (GetKeyboardTrigger(DIK_R))
+	if (InputGetKeyDown(KK_R))
 	{
 		m_shot = true;
 
@@ -51,8 +54,7 @@ void PlayerRight::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy
 		if (m_type == TYPE::TYPE_SHOOT) {
 			//腕についているアイテムの処理
 			if (m_pEnemyItem != nullptr) {
-				//更新処理の前の各々の処理
-				//ホーミング用の敵の位置を取得
+				//ホーミング用の敵の位置を取得(PlayerArm1)
 				m_pEnemyItem->SetSomethingPos(enemy_pos);
 
 				//腕についてるアイテムの処理
@@ -68,17 +70,24 @@ void PlayerRight::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy
 
 		//腕についているアイテムの処理
 		if (m_pEnemyItem != nullptr) {
-			//更新処理の前の各々の処理
+			//=======================
+			// 更新処理の前の処理
+			//ホーミング用の敵の位置を取得(PlayerArm1)
+			m_pEnemyItem->SetSomethingPos(enemy_pos);
+
+			//ボタン押されたか判断
 			switch (m_type) {
 
-			case TYPE::TYPE1:
-				//ホーミング用の敵の位置を取得
-				m_pEnemyItem->SetSomethingPos(enemy_pos);
+			//Arm2はトリガーになってる
+			case TYPE::TYPE2:
+				m_pEnemyItem->SetButtonPush(InputGetKeyDown(KK_RIGHT));
 				break;
 
 			default:
+				m_pEnemyItem->SetButtonPush(InputGetKey(KK_RIGHT));
 				break;
 			}
+
 
 			//腕についてるアイテムの処理
 			m_pEnemyItem->Update(GameObject::GetPos());

@@ -40,8 +40,8 @@ void PlayerArm3::Update(const D3DXVECTOR2& arm_pos)
 	m_bullet_interval_count++;
 
 	//ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚ç
-	if ((inhPlayerArm::GetRightLeft() && GetKeyboardPress(DIK_RIGHT)) ||
-		(!inhPlayerArm::GetRightLeft() && GetKeyboardPress(DIK_LEFT))) {
+	if ((inhPlayerArm::GetRightLeft() && inhPlayerArm::IsButtonPush()) ||
+		(!inhPlayerArm::GetRightLeft() && inhPlayerArm::IsButtonPush())) {
 		//”­ŽË‚Å‚«‚éŽžŠÔ‚É‚È‚Á‚½‚ç...
 		if (m_bullet_interval_count > BULLET_INTERVAL) {
 			m_bullet_interval_count = 0;

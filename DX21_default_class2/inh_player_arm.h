@@ -18,6 +18,7 @@ private:
 	int m_bullet_maked_num = 0;	//今まで作られた弾の数(アイテムの消費量)
 	int m_bullet_max_num = 0;	//アイテムが出す最大弾数
 	bool m_right = false;		//右についてるか左についてるか
+	bool m_button_push = false;	//ボタンが押されたか
 
 	//とある座標取得用
 	//現在はPlayerArm1のホーミング弾の敵の位置取得用
@@ -69,6 +70,12 @@ public:
 
 	//ついているのが右腕か左腕かを返す
 	bool GetRightLeft(void)const { return m_right; }
+
+	//ボタンが押されたかフラグをセット
+	void SetButtonPush(bool push) { m_button_push = push; }
+
+	//ボタンが押されたかを返す
+	bool IsButtonPush(void)const { return m_button_push; }
 
 	//とある座標セット用(詳細はメンバ変数のm_something_posのコメントへ)
 	void SetSomethingPos(const D3DXVECTOR2& pos) { m_something_pos = pos; }

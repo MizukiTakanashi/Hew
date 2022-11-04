@@ -7,7 +7,11 @@
 #include	"renderer.h"
 #include	"texture.h"
 #include	"sprite.h"
-#include	"input.h"
+
+//#include	"input.h"
+#include "inputx.h"
+#include "keyboard.h"
+
 #include	"scene.h"
 #include	"sound.h"
 #include	"BG.h"
@@ -74,7 +78,7 @@ void	UninitTitle()
 void	UpdateTitle()
 {
 	//キー入力のチェック
-	if (GetKeyboardTrigger(DIK_SPACE))
+	if (InputGetKeyDown(KK_SPACE))
 	{
 		SetScene(SCENE::SCENE_GAME);
 	}

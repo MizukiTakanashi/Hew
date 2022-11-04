@@ -8,7 +8,9 @@
 ==============================================================================*/
 #include "main.h"
 #include "renderer.h"
-#include "input.h"
+//#include "input.h"
+#include "inputx.h"
+#include "keyboard.h"
 #include "texture.h"
 #include "sprite.h"
 #include "scene.h"
@@ -171,6 +173,9 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 //=============================================================================
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
+	//キーボードの導入
+	Keyboard_ProcessMessage(uMsg, wParam, lParam);
+
 	switch (uMsg) {
 	case WM_KEYDOWN:
 		if (wParam == VK_ESCAPE) {
@@ -202,6 +207,9 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 
 	//入力処理の初期化
 	InitInput(hInstance, hWnd);
+
+	//キーボードの初期化
+	Keyboard_Initialize();
 
 	//サウンドの初期化
 	InitSound(hWnd);
@@ -240,6 +248,8 @@ void Update(void)
 	UpdateScene();		//シーンの更新処理
 
 	UpdateInput();		//入力処理の更新処理
+
+	SetImmediatelyKeyState();	//キーボードの更新
 }
 
 //=============================================================================

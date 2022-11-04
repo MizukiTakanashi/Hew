@@ -14,7 +14,6 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="game_object.cpp" />
     <ClCompile Include="inh_player_arm.cpp" />
-    <ClCompile Include="input.cpp" />
     <ClCompile Include="management_item.cpp" />
     <ClCompile Include="item_p.cpp" />
     <ClCompile Include="laser.cpp" />
@@ -50,6 +49,8 @@
     <ClCompile Include="enemy_gatoring.cpp" />
     <ClCompile Include="management_enemy_gatoring.cpp" />
     <ClCompile Include="collision_arm_all_enemy.cpp" />
+    <ClCompile Include="keyboard.cpp" />
+    <ClCompile Include="inputx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
@@ -65,7 +66,6 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="game_object.h" />
     <ClInclude Include="inh_player_arm.h" />
-    <ClInclude Include="input.h" />
     <ClInclude Include="management_item.h" />
     <ClInclude Include="item_p.h" />
     <ClInclude Include="laser.h" />
@@ -101,5 +101,7 @@
     <ClInclude Include="enemy_gatoring.h" />
     <ClInclude Include="management_enemy_gatoring.h" />
     <ClInclude Include="collision_arm_all_enemy.h" />
+    <ClInclude Include="keyboard.h" />
+    <ClInclude Include="inputx.h" />
   </ItemGroup>
 </Project>
