@@ -202,6 +202,35 @@ int GetRightTrigger(int padNo)
 	return g_Controllers[padNo].state.Gamepad.bRightTrigger;
 }
 
+int GetLeftTriggerTriggered(int padNo)
+{
+	return g_Controllers[padNo].trigger.Gamepad.bLeftTrigger;
+}
+
+int GetRightTriggerTriggered(int padNo)
+{
+	return g_Controllers[padNo].trigger.Gamepad.bRightTrigger;
+}
+
+bool GetLeftTriggerRelease(int padNo)
+{
+	if (g_Controllers[padNo].lastState.Gamepad.bLeftTrigger > 0) {
+		if (g_Controllers[padNo].state.Gamepad.bLeftTrigger = 0) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool GetRightTriggerRelease(int padNo)
+{
+	if (g_Controllers[padNo].lastState.Gamepad.bRightTrigger > 0) {
+		if (g_Controllers[padNo].state.Gamepad.bRightTrigger = 0) {
+			return true;
+		}
+	}
+	return false;
+}
 
 // バイブレーションの範囲
 // 0 ～ 255

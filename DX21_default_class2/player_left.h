@@ -34,6 +34,9 @@ public:
 	};
 
 private:
+	//ここで初期化
+	static const int TRIGGER = 100;				//トリガーの重さ(0～255)
+
 	//cppで初期化
 	static const D3DXVECTOR2 SIZE;				//サイズ
 	static const float SHOT_SPEED;				// 切り離し発射スピード

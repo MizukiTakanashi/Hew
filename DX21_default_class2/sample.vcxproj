@@ -135,6 +135,9 @@
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="draw_object.cpp" />
     <ClCompile Include="enemy_gatoring.cpp" />
+    <ClCompile Include="input.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="inputx.cpp" />
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="management_enemy_gatoring.cpp" />
@@ -187,6 +190,9 @@
     <ClInclude Include="collision.h" />
     <ClInclude Include="draw_object.h" />
     <ClInclude Include="enemy_gatoring.h" />
+    <ClInclude Include="input.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="inputx.h" />
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="management_enemy_gatoring.h" />

@@ -25,12 +25,16 @@ const D3DXVECTOR2 PlayerLeft::FROM_PLAYER_POS = D3DXVECTOR2(-30.0f, 0.0f);
 //==========================
 void PlayerLeft::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_pos)
 {
-	//  Eキーを押すと腕に装着している敵を発射する
-	if (InputGetKeyDown(KK_E))
+	//パッドLボタンを押したら...
+	//キーボードEを押したら...
+	if (InputGetKeyDown(KK_E) || IsButtonTriggered(0, XINPUT_GAMEPAD_LEFT_SHOULDER))
 	{
-		m_shot = true;	// 発射した
+		if (m_type != TYPE::TYPE_NONE && m_type != TYPE::TYPE_OLD) {
+			//自分自身を発射
+			m_shot = true;
 
-		m_type = TYPE::TYPE_SHOOT;
+			m_type = TYPE::TYPE_SHOOT;
+		}
 	}
 
 	// 自分自身を発射する
@@ -80,11 +84,13 @@ void PlayerLeft::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_
 
 			//Arm2はトリガーになってる
 			case TYPE::TYPE2:
-				m_pEnemyItem->SetButtonPush(InputGetKeyDown(KK_LEFT));
+				m_pEnemyItem->SetButtonPush(InputGetKeyDown(KK_LEFT) ||
+					GetLeftTriggerTriggered(0) > TRIGGER);
 				break;
 
 			default:
-				m_pEnemyItem->SetButtonPush(InputGetKey(KK_LEFT));
+				m_pEnemyItem->SetButtonPush(InputGetKey(KK_LEFT) ||
+					GetLeftTrigger(0) > TRIGGER);
 				break;
 			}
 

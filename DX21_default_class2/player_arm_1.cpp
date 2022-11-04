@@ -6,7 +6,6 @@
 #include "player_arm_1.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
-#include "input.h"
 
 //==========================
 // ’è”‚Ì‰Šú‰»

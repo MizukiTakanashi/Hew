@@ -4,7 +4,6 @@
 // 作成者：高梨水希
 //=======================================
 #include "game.h"
-#include "input.h"
 #include "scene.h"
 #include "sound.h"
 

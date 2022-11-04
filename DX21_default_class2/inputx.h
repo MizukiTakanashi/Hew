@@ -53,21 +53,48 @@ void UpdateInput(void);	//アップデート処理で一回呼ぶ
 
 //取得したい情報ごとに呼び分ける
 //何回でも呼び出し可能
+
+//================
+// 左スティック
+
+// 左右
+// 0以上：右  0以下：左
 float GetThumbLeftX(int padNo);
+
+//上下
+// 0以上：上  0以下：下
 float GetThumbLeftY(int padNo);
+
+//================
+// 右スティック
+
+// 左右
+// 1.0：右  -1.0：左
 float GetThumbRightX(int padNo);
+
+//上下
+// 1.0：上  -1.0：下
 float GetThumbRightY(int padNo);
 
-void SetLeftVibration(int padNo, int speed);
-void SetRightVibration(int padNo, int speed);
-void SetVibration(int padNo, int speed);
-void StopVibration(int padNo);
+// バイブレーション
+void SetLeftVibration(int padNo, int speed);	//左
+void SetRightVibration(int padNo, int speed);	//右
+void SetVibration(int padNo, int speed);		//全体
+void StopVibration(int padNo);					//止める
 
+//押している瞬間
 int GetLeftTrigger(int padNo);
 int GetRightTrigger(int padNo);
+//押した瞬間
+int GetLeftTriggerTriggered(int padNo);
+int GetRightTriggerTriggered(int padNo);
+//離した瞬間
+// true：離した  false：離してない
+bool GetLeftTriggerRelease(int padNo);
+bool GetRightTriggerRelease(int padNo);
 
-BOOL IsButtonPressed(int padNo,DWORD button);
-BOOL IsButtonTriggered(int padNo,DWORD button);
-BOOL IsButtonRelease(int padNo,DWORD button);
+BOOL IsButtonPressed(int padNo,DWORD button);	//押している瞬間
+BOOL IsButtonTriggered(int padNo,DWORD button);	//押した瞬間
+BOOL IsButtonRelease(int padNo,DWORD button);	//離した瞬間
 
 

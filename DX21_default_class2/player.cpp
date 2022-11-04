@@ -37,6 +37,50 @@ void Player::Update(bool isinvincible)
 {
 	D3DXVECTOR2 temp = D3DXVECTOR2(0.0f, 0.0f);
 
+	//==========================
+	// パッド
+	
+	//左スティックで上に倒されたら...
+	if (GetThumbLeftY(0) > 0) {
+		//上に行く
+		temp.y -= SPEED_Y * GetThumbLeftY(0);
+	}
+	//左スティックで下に倒されたら...
+	if (GetThumbLeftY(0) < 0) {
+		//下に行く
+		temp.y += SPEED_Y * -GetThumbLeftY(0);
+	}
+	//左スティックで左に倒されたら...
+	if (GetThumbLeftX(0) < 0) {
+		//左に行く
+		temp.x += SPEED_X * GetThumbLeftX(0);
+	}
+	//左スティックで右に倒されたら...
+	if (GetThumbLeftX(0) > 0) {
+		//右に行く
+		temp.x += SPEED_X * GetThumbLeftX(0);
+	}
+
+	//十字キー上が押されたら
+	if (IsButtonPressed(0, XINPUT_GAMEPAD_DPAD_UP)) {
+		temp.y -= SPEED_Y;
+	}
+	//十字キー下が押されたら
+	if (IsButtonPressed(0, XINPUT_GAMEPAD_DPAD_DOWN)) {
+		temp.y += SPEED_Y;
+	}
+	//十字キー左が押されたら
+	if (IsButtonPressed(0, XINPUT_GAMEPAD_DPAD_LEFT)) {
+		temp.x -= SPEED_X;
+	}
+	//十字キー右が押されたら
+	if (IsButtonPressed(0, XINPUT_GAMEPAD_DPAD_RIGHT)) {
+		temp.x += SPEED_X;
+	}
+
+	//==========================
+	// キーボード
+
 	//上矢印が押されたら
 	if (InputGetKey(KK_W)) {
 		temp.y -= SPEED_Y;

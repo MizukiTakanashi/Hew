@@ -25,12 +25,16 @@ const D3DXVECTOR2 PlayerRight::FROM_PLAYER_POS = D3DXVECTOR2(30.0f, 0.0f);
 //==========================
 void PlayerRight::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_pos)
 {
-	//Rを押したら自分自身を発射
-	if (InputGetKeyDown(KK_R))
+	//パッドRボタンを押したら...
+	//キーボードRを押したら...
+	if (InputGetKeyDown(KK_R) || IsButtonTriggered(0, XINPUT_GAMEPAD_RIGHT_SHOULDER))
 	{
-		m_shot = true;
+		if (m_type != TYPE::TYPE_NONE && m_type != TYPE::TYPE_OLD) {
+			//自分自身を発射
+			m_shot = true;
 
-		m_type = TYPE::TYPE_SHOOT;
+			m_type = TYPE::TYPE_SHOOT;
+		}
 	}
 
 	//自分自身を発射
@@ -80,11 +84,13 @@ void PlayerRight::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy
 
 			//Arm2はトリガーになってる
 			case TYPE::TYPE2:
-				m_pEnemyItem->SetButtonPush(InputGetKeyDown(KK_RIGHT));
+				m_pEnemyItem->SetButtonPush(InputGetKeyDown(KK_RIGHT) ||
+					GetRightTriggerTriggered(0) > TRIGGER);
 				break;
 
 			default:
-				m_pEnemyItem->SetButtonPush(InputGetKey(KK_RIGHT));
+				m_pEnemyItem->SetButtonPush(InputGetKey(KK_RIGHT) || 
+					GetRightTrigger(0) > TRIGGER);
 				break;
 			}
 

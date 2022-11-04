@@ -51,6 +51,7 @@
     <ClCompile Include="collision_arm_all_enemy.cpp" />
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="inputx.cpp" />
+    <ClCompile Include="input.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
@@ -103,5 +104,6 @@
     <ClInclude Include="collision_arm_all_enemy.h" />
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="inputx.h" />
+    <ClInclude Include="input.h" />
   </ItemGroup>
 </Project>
