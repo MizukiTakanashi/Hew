@@ -19,7 +19,7 @@ class PlayerArmEnemyCol
 //’è”
 private:
 	//‚±‚±‚Å‰Šú‰»
-	static const int ENEMY_NUM = 3;
+	static const int ENEMY_NUM = 3;					//‘S“G‚Ìí—Ş‚Ì”
 
 private:
 	EnemyManagement* m_pEnemy[ENEMY_NUM];			//‘S“G
