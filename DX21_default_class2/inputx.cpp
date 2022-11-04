@@ -202,14 +202,24 @@ int GetRightTrigger(int padNo)
 	return g_Controllers[padNo].state.Gamepad.bRightTrigger;
 }
 
-int GetLeftTriggerTriggered(int padNo)
+int GetLeftTriggerTriggered(int padNo, int range)
 {
-	return g_Controllers[padNo].trigger.Gamepad.bLeftTrigger;
+	if (g_Controllers[padNo].lastState.Gamepad.bLeftTrigger < range) {
+		if (g_Controllers[padNo].state.Gamepad.bLeftTrigger > range) {
+			return true;
+		}
+	}
+	return false;
 }
 
-int GetRightTriggerTriggered(int padNo)
+int GetRightTriggerTriggered(int padNo, int range)
 {
-	return g_Controllers[padNo].trigger.Gamepad.bRightTrigger;
+	if (g_Controllers[padNo].lastState.Gamepad.bRightTrigger < range) {
+		if (g_Controllers[padNo].state.Gamepad.bRightTrigger > range) {
+			return true;
+		}
+	}
+	return false;
 }
 
 bool GetLeftTriggerRelease(int padNo)

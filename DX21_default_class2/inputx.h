@@ -86,8 +86,8 @@ void StopVibration(int padNo);					//~‚ß‚é
 int GetLeftTrigger(int padNo);
 int GetRightTrigger(int padNo);
 //‰Ÿ‚µ‚½uŠÔ
-int GetLeftTriggerTriggered(int padNo);
-int GetRightTriggerTriggered(int padNo);
+int GetLeftTriggerTriggered(int padNo, int range);
+int GetRightTriggerTriggered(int padNo, int range);
 //—£‚µ‚½uŠÔ
 // trueF—£‚µ‚½  falseF—£‚µ‚Ä‚È‚¢
 bool GetLeftTriggerRelease(int padNo);

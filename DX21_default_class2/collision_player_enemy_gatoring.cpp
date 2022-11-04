@@ -30,7 +30,7 @@ int PlayerEnemyGatoringCollision::Update(void)
 					//爆発をセット
 					m_rExplosionManagement->SetExplosion(m_rEnemyGatoringManagement->GetObjPos(j));
 					//敵アイテムのドロップ
-					m_rItemManagement->SetItem(m_rEnemyGatoringManagement->GetObjPos(j), 3);
+					m_rItemManagement->SetItem(m_rEnemyGatoringManagement->GetObjPos(j), 2);
 
 					//プレイヤーの弾を消す
 					m_rPlayer->DeleteBullet(i);

@@ -31,7 +31,7 @@ int PlayerEnemyNormalCollision::Update(void)
 					//爆発をセット
 					m_rExplosionManagement->SetExplosion(m_rEnemyNormalManagement->GetObjPos(j));
 					//敵アイテムのドロップ
-					m_rItemManagement->SetItem(m_rEnemyNormalManagement->GetObjPos(j),1);
+					m_rItemManagement->SetItem(m_rEnemyNormalManagement->GetObjPos(j),0);
 
 					//プレイヤーの弾を消す
 					m_rPlayer->DeleteBullet(i);

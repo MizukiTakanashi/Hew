@@ -10,7 +10,7 @@
 //==========================
 // ’è”‚Ì‰Šú‰»
 //==========================
-const float EnemyLaserManagement::BULLET_SIZE_X = 30.0f;
+const float EnemyLaserManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyLaserManagement::BULLET_SIZE_Y = 0.0f;
 
 

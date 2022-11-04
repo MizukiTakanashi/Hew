@@ -8,8 +8,8 @@
 //==========================
 // ’è”‚Ì‰Šú‰»
 //==========================
-const float PlayerArm2::BULLET_SIZE_X = 40.0f;
-const float PlayerArm2::BULLET_SIZE_Y = 40.0f;
+const float PlayerArm2::BULLET_SIZE_X = 20.0f;
+const float PlayerArm2::BULLET_SIZE_Y = 0.0f;
 const float PlayerArm2::BULLET_SPEED = 2.5f;
 const float PlayerArm2::SPEED_Y = 15.0f;
 
