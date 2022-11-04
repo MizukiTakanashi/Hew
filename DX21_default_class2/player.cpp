@@ -113,8 +113,10 @@ void Player::Update(bool isinvincible)
 	// 弾
 
 	m_BulletInterval++;
-	//スペースが押された + 発射間隔が指定の値を超えたら弾を生成
-	if (InputGetKey(KK_SPACE) && m_BulletInterval > BULLET_INTERVAL_TIME) {
+	//パッドのAが押されたら、又はキーボードのスペースが押されたら...
+	//なおかつ発射間隔が指定の値を超えたら弾を生成
+	if ((InputGetKey(KK_SPACE) || IsButtonPressed(0, XINPUT_GAMEPAD_A)) && 
+		m_BulletInterval > BULLET_INTERVAL_TIME) {
 		m_BulletInterval = 0;
 
 		if (m_BulletNum < BULLET_MAX_NUM) {

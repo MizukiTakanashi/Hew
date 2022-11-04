@@ -85,7 +85,7 @@ void PlayerRight::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy
 			//Arm2‚ÍƒgƒŠƒK[‚É‚È‚Á‚Ä‚é
 			case TYPE::TYPE2:
 				m_pEnemyItem->SetButtonPush(InputGetKeyDown(KK_RIGHT) ||
-					GetRightTriggerTriggered(0) > TRIGGER);
+					GetRightTriggerTriggered(0, TRIGGER));
 				break;
 
 			default:
