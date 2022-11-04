@@ -117,28 +117,39 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	SetVolume(m_BGM, 0.1f);
 
 	m_pTexUseful = new TextureUseful[10];
-	m_pDrawObject = new DrawObject[15];
+	m_pDrawObject = new DrawObject[20];
 
 	//背景の初期化処理
 	m_pBG = new BG((char*)"data\\texture\\bg_uchu_space.jpg");
 
-	//弾
+	//=======================
+	// 弾
 	m_pTexUseful[2].SetTextureName((char*)"data\\texture\\bullet00.png");
+	//プレイヤー側の弾
+	m_pDrawObject[15].SetDrawObject(m_pTexUseful[2], 0.0f, 1.0f, 1.0f, 1,
+		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
+	//敵側の弾
 	m_pDrawObject[2].SetDrawObject(m_pTexUseful[2]);
-
-	//レーザー
+	
+	//=======================
+	// レーザー
 	m_pTexUseful[8].SetTextureName((char*)"data\\texture\\laser00.png");
+	//プレイヤー側のレーザー
+	m_pDrawObject[16].SetDrawObject(m_pTexUseful[8], 0.0f, 1.0f, 1.0f, 1,
+		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
+	//敵側のレーザー
 	m_pDrawObject[9].SetDrawObject(m_pTexUseful[8]);
-
+	
 	//プレイヤー
 	m_pTexUseful[0].SetTextureName((char*)"data\\texture\\player.png");
 	m_pDrawObject[0].SetDrawObject(m_pTexUseful[0]);
-	m_pPlayer = new Player(m_pDrawObject[0], m_pDrawObject[2]);
+	m_pPlayer = new Player(m_pDrawObject[0], m_pDrawObject[15]);
 
 	//敵の配置場所
 	m_pEnemySetPos = new EnemySetPos;
 
-	//普通の敵
+	//=======================
+	// 敵
 	m_pTexUseful[1].SetTextureName((char*)"data\\texture\\teki2.png");
 	m_pDrawObject[1].SetDrawObject(m_pTexUseful[1], 0.0f, 0.33f, 1.0f, 3);
 	m_pDrawObject[13].SetDrawObject(m_pTexUseful[1], 1.0f, 0.33f, 1.0f, 3);
@@ -148,22 +159,32 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 		*m_pEnemySetPos);
 	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[13], m_pDrawObject[9],
 		*m_pEnemySetPos);
-	m_pEnemyGatoringManagement = new EnemyGatoringManagement(m_pDrawObject[14], m_pDrawObject[9],
+	m_pEnemyGatoringManagement = new EnemyGatoringManagement(m_pDrawObject[14], m_pDrawObject[2],
 		*m_pEnemySetPos);
 
-	//プレイヤーの腕の左
+	//=======================
+	// プレイヤーの腕の左
 	m_pTexUseful[5].SetTextureName((char*)"data\\texture\\arm.png");
 	m_pDrawObject[6].SetDrawObject(m_pTexUseful[1], 0.0f, 0.33f, 1.0f, 3);
-	m_pDrawObject[10].SetDrawObject(m_pTexUseful[2]);
-	m_pDrawObject[11].SetDrawObject(m_pTexUseful[8]);
+	//弾
+	m_pDrawObject[10].SetDrawObject(m_pTexUseful[2], 0.0f, 1.0f, 1.0f, 1,
+		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
+	//レーザー
+	m_pDrawObject[11].SetDrawObject(m_pTexUseful[8], 0.0f, 1.0f, 1.0f, 1,
+		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
 	m_pPlayerLeft = new PlayerLeft(m_pDrawObject[6], m_pDrawObject[10],
 		m_pDrawObject[11], m_pPlayer->GetPos());
 
-	//プレイヤーの腕の右
+	//=======================
+	// プレイヤーの腕の右
 	m_pTexUseful[6].SetTextureName((char*)"data\\texture\\arm.png");
 	m_pDrawObject[7].SetDrawObject(m_pTexUseful[1], 0.0f, 0.33f, 1.0f, 3);
-	m_pDrawObject[11].SetDrawObject(m_pTexUseful[2]);
-	m_pDrawObject[12].SetDrawObject(m_pTexUseful[8]);
+	//弾
+	m_pDrawObject[11].SetDrawObject(m_pTexUseful[2], 0.0f, 1.0f, 1.0f, 1,
+		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
+	//レーザー
+	m_pDrawObject[12].SetDrawObject(m_pTexUseful[8], 0.0f, 1.0f, 1.0f, 1,
+		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
 	m_pPlayerRight = new PlayerRight(m_pDrawObject[7], m_pDrawObject[11],
 		m_pDrawObject[12], m_pPlayer->GetPos());
 
