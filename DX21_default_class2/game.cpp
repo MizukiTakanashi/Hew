@@ -188,6 +188,8 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	m_pPlayerRight = new PlayerRight(m_pDrawObject[7], m_pDrawObject[11],
 		m_pDrawObject[12], m_pPlayer->GetPos());
 
+	//腕の交換
+	m_pPlayerArmChange=new PlayerArmChange(m_pPlayerLeft, m_pPlayerRight);
 	//爆発
 	m_pTexUseful[4].SetTextureName((char*)"data\\texture\\explosion000.png");
 	m_pDrawObject[5].SetDrawObject(m_pTexUseful[4], 0.0f, 0.125f, 1.0f, 7);
@@ -277,6 +279,9 @@ void Game::Update(void)
 {
 	//背景
 	m_pBG->Update();
+
+	//腕の切り替え
+	m_pPlayerArmChange->Change();
 
 	//プレイヤー
 	m_pPlayer->Update(m_pPlayerHP->IsPlayerInvincible());

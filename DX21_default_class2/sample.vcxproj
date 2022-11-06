@@ -167,6 +167,7 @@
     <ClCompile Include="collision_player_enemy_laser.cpp" />
     <ClCompile Include="player_arm_1.cpp" />
     <ClCompile Include="collision_player_enemy_normal.cpp" />
+    <ClCompile Include="player_arm_change.cpp" />
     <ClCompile Include="player_hp.cpp" />
     <ClCompile Include="player_left.cpp" />
     <ClCompile Include="player_right.cpp" />
@@ -222,6 +223,7 @@
     <ClInclude Include="collision_player_enemy_laser.h" />
     <ClInclude Include="player_arm_1.h" />
     <ClInclude Include="collision_player_enemy_normal.h" />
+    <ClInclude Include="player_arm_change.h" />
     <ClInclude Include="player_hp.h" />
     <ClInclude Include="player_left.h" />
     <ClInclude Include="player_right.h" />

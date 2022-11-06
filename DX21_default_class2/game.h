@@ -31,6 +31,7 @@
 #include "all_enemy_management.h"
 #include "collision_player_arm_enemy.h"
 #include "collision_arm_all_enemy.h"
+#include "player_arm_change.h"
 class Game
 {
 //定数
@@ -105,7 +106,7 @@ private:
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
 
 	PlayerArmEnemyCol* m_pArmEnemyCol = nullptr;	//プレイヤーの腕と全敵の当たり判定
-	
+	PlayerArmChange* m_pPlayerArmChange = nullptr;	//腕の交換
 public:
 	Game();	//デフォルトコンストラクタ
 

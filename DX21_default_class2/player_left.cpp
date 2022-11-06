@@ -41,15 +41,15 @@ void PlayerLeft::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_
 	if (m_shot)
 	{
 		MovePos(D3DXVECTOR2(0.0f, -SHOT_SPEED));	// 動く際に必要
-		
+
 		// 画面外に出たら...
 		if (GetScreenOut())
-		{			
+		{
 			m_type = TYPE::TYPE_OLD;
 
 			//位置を元に戻す
 			SetPos(player_pos + FROM_PLAYER_POS);
-			
+
 			//発射のフラグをオフ
 			m_shot = false;
 		}
@@ -82,7 +82,7 @@ void PlayerLeft::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_
 			//ボタン押されたか判断
 			switch (m_type) {
 
-			//Arm2はトリガーになってる
+				//Arm2はトリガーになってる
 			case TYPE::TYPE2:
 				m_pEnemyItem->SetButtonPush(InputGetKeyDown(KK_LEFT) ||
 					GetLeftTriggerTriggered(0, TRIGGER));
@@ -130,7 +130,7 @@ void PlayerLeft::LeftDraw(void)const
 //==========================
 // タイプをセット
 //==========================
-void PlayerLeft::SetType(int type)
+void PlayerLeft::SetType(int type, bool set)
 {
 	//発射中であればセットしない
 	if (m_shot) {
@@ -139,8 +139,12 @@ void PlayerLeft::SetType(int type)
 
 	//既にタイプがついていればセットしない
 	if (m_type != TYPE::TYPE_NONE && m_type != TYPE::TYPE_OLD) {
-		return;
+		//setがtrueなら強制的にタイプをセット（playaer_arm_change用）
+		if (!set) {
+			return;
+		}
 	}
+
 
 	//前のタイプのインスタンスを削除
 	delete m_pEnemyItem;

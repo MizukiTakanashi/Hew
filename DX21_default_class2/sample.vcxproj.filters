@@ -52,6 +52,7 @@
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="inputx.cpp" />
     <ClCompile Include="input.cpp" />
+    <ClCompile Include="player_arm_change.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
@@ -105,5 +106,6 @@
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="inputx.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="player_arm_change.h" />
   </ItemGroup>
 </Project>

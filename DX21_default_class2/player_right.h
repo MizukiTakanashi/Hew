@@ -70,13 +70,16 @@ public:
 	void RightDraw(void)const;
 
 	//腕のタイプを設定
-	void SetType(int type);
+	void SetType(int type, bool set = false);
 
 	//タイプを返す
 	TYPE GetType(void)const { return m_type; }
 
 	// 腕のクラスのポインタを返す
 	inhPlayerArm* GetArmPointer(void)const { return m_pEnemyItem; }
+
+	//腕のクラスのポインタのセット
+	void SetArmPointer(inhPlayerArm* ArmPointer) { m_pEnemyItem = ArmPointer; }
 };
 
 #endif // !PLAYER_RIGHT_H_
