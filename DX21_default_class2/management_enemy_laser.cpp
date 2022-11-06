@@ -49,7 +49,10 @@ void EnemyLaserManagement::Update()
 	{
 		m_pEnemyLaser[i].Update();
 		//レーザーのアップデート
-		m_pLaser[m_pEnemyLaser->GetLaserIndex()].Update(m_pEnemyLaser[i].GetPos());
+		if (m_pEnemyLaser[i].GetLaserIndex() >= 0)
+		{
+			m_pLaser[m_pEnemyLaser[i].GetLaserIndex()].Update(m_pEnemyLaser[i].GetPos());
+		}
 
 		//弾を作る
 		if (m_pEnemyLaser[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() != MAX_NUM)
@@ -125,6 +128,17 @@ void EnemyLaserManagement::DeleteBullet(int index_num)
 	for (int i = index_num; i < EnemyManagement::GetBulletNum() - 1; i++)
 	{
 		m_pLaser[i] = m_pLaser[i + 1];
+	}
+	for (int i = 0; i < EnemyManagement::GetObjNum(); i++)
+	{
+		if (m_pEnemyLaser[i].GetLaserIndex() == index_num)
+		{
+			m_pEnemyLaser[i].SetLaserIndex(-1);
+		}
+		else if (m_pEnemyLaser[i].GetLaserIndex() > index_num)
+		{
+			m_pEnemyLaser[i].SetLaserIndex(m_pEnemyLaser[i].GetLaserIndex() - 1);
+		}
 	}
 	EnemyManagement::IncreaseBulletNum(-1);
 }

@@ -56,7 +56,7 @@ void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
 						   // ’e‚Ì‘å‚«‚³								’e‚ðŒ‚‚Â•ûŒü		
 			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
 
-			EnemyManagement::IncreaseBulletNum();
+			EnemyManagement::IncreaseBulletNum(1);
 
 			m_pEnemyGatoring[i].BulletMake();
 		}
