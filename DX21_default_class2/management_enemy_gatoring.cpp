@@ -38,7 +38,7 @@ void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
 		if (m_pEnemySetPos.SetEnemy(D3DXVECTOR2(x, EnemyGatoring::STOP_POS_Y), D3DXVECTOR2(EnemyGatoring::SIZE_X + EnemyGatoring::RANGE * 2, EnemyGatoring::SIZE_Y))) {
 			EnemyGatoring temp(m_pDrawObjectEnemy, D3DXVECTOR2(x, -EnemyGatoring::SIZE_Y / 2));
 			m_pEnemyGatoring[EnemyManagement::GetObjNum()] = temp;
-			EnemyManagement::IncreaseObjNum();
+			EnemyManagement::IncreaseObjNum(1);
 		}
 
 		m_count = 0;
@@ -56,7 +56,7 @@ void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
 						   // ’e‚Ì‘å‚«‚³								’e‚ðŒ‚‚Â•ûŒü		
 			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
 
-			EnemyManagement::IncreaseBulletNum();
+			EnemyManagement::IncreaseBulletNum(1);
 
 			m_pEnemyGatoring[i].BulletMake();
 		}

@@ -22,7 +22,7 @@ private:
 	//ここで初期化
 	//敵自身
 	static const int MAX_NUM = 10;			//敵の最大数
-	static const int APPEARANCE_TIME = 400;	//敵の出現スピード
+	static const int APPEARANCE_TIME = 250;	//敵の出現スピード
 
 	//cppで初期化
 	//弾
