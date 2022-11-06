@@ -9,7 +9,7 @@
 // ’è”‰Šú‰»
 //==========================
 const float Laser::SPEED_Y = 15.0f;
-const int Laser::LASER_TIME = 150;
+const int Laser::LASER_TIME = 180;
 
 void Laser::Update(const D3DXVECTOR2& pos, bool down)
 {

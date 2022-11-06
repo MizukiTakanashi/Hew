@@ -62,7 +62,7 @@ void EnemyLaserManagement::Update()
 			Laser temp(m_pDrawObjectLaser, m_pEnemyLaser[i].GetPos() + D3DXVECTOR2(0.0f, 10.0f),
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y));
 			m_pLaser[EnemyManagement::GetBulletNum()] = temp;
-			m_pEnemyLaser->SetLaserIndex(GetBulletNum());
+			m_pEnemyLaser[i].SetLaserIndex(EnemyManagement::GetBulletNum());
 			EnemyManagement::IncreaseBulletNum(1);
 
 			m_pEnemyLaser[i].BulletMake();
