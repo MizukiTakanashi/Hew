@@ -229,8 +229,10 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	m_ArmEnemyCollision = new ArmEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pItemManagement);
 
 	//敵の管理
-	m_pAllEnemyManagement = new AllEnemyManagement(m_pEnemyNormalManagement, m_pEnemyLaserManagement, 
-		m_pEnemyGatoringManagement);
+	m_pAllEnemyManagement = new AllEnemyManagement;
+	m_pAllEnemyManagement->AddPointer(m_pEnemyNormalManagement);
+	m_pAllEnemyManagement->AddPointer(m_pEnemyLaserManagement);
+	m_pAllEnemyManagement->AddPointer(m_pEnemyGatoringManagement);
 
 	//発射した腕と敵の当たり判定
 	m_pArmAllEnemyCollision = new ArmAllEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pEnemyLaserManagement,

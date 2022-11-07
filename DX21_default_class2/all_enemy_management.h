@@ -15,7 +15,7 @@ class AllEnemyManagement
 //定数
 private:
 	//ここで初期化
-	static const int ENEMY_NUM = 3;			//全敵の種類数
+	static const int ENEMY_NUM = 10;		//全敵の種類数の制限数
 
 //メンバ変数
 private:
@@ -25,13 +25,10 @@ private:
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
-	AllEnemyManagement(){}
-
-	//引数付きコンストラクタ
-	AllEnemyManagement(EnemyManagement* p1, EnemyManagement* p2, EnemyManagement* p3) {
-		m_pEnemy[0] = p1;
-		m_pEnemy[1] = p2;
-		m_pEnemy[2] = p3;
+	AllEnemyManagement() { 
+		for (int i = 0; i < ENEMY_NUM; i++) {	//ポインタの初期化
+			m_pEnemy[i] = nullptr;
+		}
 	}
 
 	//デストラクタ

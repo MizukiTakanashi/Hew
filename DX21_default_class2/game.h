@@ -27,7 +27,6 @@
 #include "player_right.h"
 #include "management_item.h"
 #include "collision_arm_enemy.h"
-#include "management_enemy.h"
 #include "all_enemy_management.h"
 #include "collision_player_arm_enemy.h"
 #include "collision_arm_all_enemy.h"
@@ -102,7 +101,6 @@ private:
 	PlayerLeft* m_pPlayerLeft = nullptr;
 	PlayerRight* m_pPlayerRight = nullptr;
 
-	EnemyManagement* m_pEnemyManagement[2];	//“G‚ÌŠÇ——p
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
 
 	PlayerArmEnemyCol* m_pArmEnemyCol = nullptr;	//ƒvƒŒƒCƒ„[‚Ì˜r‚Æ‘S“G‚Ì“–‚½‚è”»’è
