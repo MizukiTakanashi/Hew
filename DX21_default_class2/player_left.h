@@ -70,7 +70,7 @@ public:
 	void LeftDraw(void)const;
 
 	// 腕のタイプを設定
-	void SetType(int type, bool set = false);
+	void SetType(int type, bool newtype = true);
 
 	//タイプを返す
 	TYPE GetType(void)const { return m_type; }

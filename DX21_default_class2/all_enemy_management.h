@@ -19,6 +19,7 @@ private:
 
 //メンバ変数
 private:
+	int m_enemy_num = 0;					//敵の種類の数
 	EnemyManagement* m_pEnemy[ENEMY_NUM];	//敵全クラス
 
 //メンバ関数
@@ -35,6 +36,12 @@ public:
 
 	//デストラクタ
 	~AllEnemyManagement(){}
+
+	//クラスのポインタを加える
+	void AddPointer(EnemyManagement* p){
+		m_pEnemy[m_enemy_num] = p;
+		m_enemy_num++;				//敵の種類の数を増やす
+	}
 
 	//引数から一番近い敵の位置を返す
 	const D3DXVECTOR2& GetCloltestEnemyPos(const D3DXVECTOR2& pos);

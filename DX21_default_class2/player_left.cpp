@@ -130,7 +130,7 @@ void PlayerLeft::LeftDraw(void)const
 //==========================
 // タイプをセット
 //==========================
-void PlayerLeft::SetType(int type, bool set)
+void PlayerLeft::SetType(int type, bool newtype)
 {
 	//発射中であればセットしない
 	if (m_shot) {
@@ -139,16 +139,11 @@ void PlayerLeft::SetType(int type, bool set)
 
 	//既にタイプがついていればセットしない
 	if (m_type != TYPE::TYPE_NONE && m_type != TYPE::TYPE_OLD) {
-		//setがtrueなら強制的にタイプをセット（playaer_arm_change用）
-		if (!set) {
+		//newtypeがfalseなら強制的にタイプをセット（playaer_arm_change用）
+		if (newtype) {
 			return;
 		}
 	}
-
-
-	//前のタイプのインスタンスを削除
-	delete m_pEnemyItem;
-	m_pEnemyItem = nullptr;
 
 	//タイプをセット
 	m_type = (TYPE)type;
@@ -156,22 +151,28 @@ void PlayerLeft::SetType(int type, bool set)
 	//テクスチャをタイプに合わせてセット
 	GameObject::SetAnimationNum((float)m_type - 1.0f);
 
-	//タイプに沿って腕のアイテムをセット
-	switch (m_type) {
+	if (newtype) {
+		//前のタイプのインスタンスを削除
+		delete m_pEnemyItem;
+		m_pEnemyItem = nullptr;
 
-	case TYPE::TYPE1:
-		m_pEnemyItem = new PlayerArm1(m_bullet_draw, false, (int)m_type - 1);
-		break;
+		//タイプに沿って腕のアイテムをセット
+		switch (m_type) {
 
-	case TYPE::TYPE2:
-		m_pEnemyItem = new PlayerArm2(m_laser_draw, false, (int)m_type - 1);
-		break;
+		case TYPE::TYPE1:
+			m_pEnemyItem = new PlayerArm1(m_bullet_draw, false, (int)m_type - 1);
+			break;
 
-	case TYPE::TYPE3:
-		m_pEnemyItem = new PlayerArm3(m_bullet_draw, false, (int)m_type - 1);
-		break;
+		case TYPE::TYPE2:
+			m_pEnemyItem = new PlayerArm2(m_laser_draw, false, (int)m_type - 1);
+			break;
 
-	default:
-		break;
+		case TYPE::TYPE3:
+			m_pEnemyItem = new PlayerArm3(m_bullet_draw, false, (int)m_type - 1);
+			break;
+
+		default:
+			break;
+		}
 	}
 }
