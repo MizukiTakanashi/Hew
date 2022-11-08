@@ -57,6 +57,15 @@ void PlayerArm1::Update(const D3DXVECTOR2& arm_pos)
 			//カウントをリセット
 			m_interval_count = 0;
 
+			//腕の切り離しと同時に弾を作らないための処理
+			if (inhPlayerArm::GetBulletMaked() == BULLET_NUM_MAX - 1)
+			{
+				//作った弾の数を増やす
+				inhPlayerArm::IncreaseBulletMaked();
+
+				return;
+			}
+
 			//プレイヤーの後を追うようにして、弾を生成
 			D3DXVECTOR2 movTemp = inhPlayerArm::GetSomethingPos() - arm_pos;
 			D3DXVECTOR2 rotposTemp = arm_pos - inhPlayerArm::GetSomethingPos();

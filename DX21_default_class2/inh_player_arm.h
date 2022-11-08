@@ -79,6 +79,9 @@ public:
 	//ì‚Á‚½’e‚Ì”‚ğ‘‚â‚·
 	void IncreaseBulletMaked(int num = 1) { m_bullet_maked_num += num; }
 
+	//ì‚Á‚½’e‚Ì”‚ğ•Ô‚·
+	int GetBulletMaked(void) { return m_bullet_maked_num; }
+
 	//Œ»İ‚Ì’e”‚ğ‘‚â‚·
 	void IncreaseBulletNum(int num = 1) { m_BulletNum += num; }
 
