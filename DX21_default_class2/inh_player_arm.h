@@ -35,6 +35,7 @@ private:
 	int m_bullet_max_num = 0;	//アイテムが出す最大弾数
 	bool m_right = false;		//右についてるか左についてるか
 	bool m_button_push = false;	//ボタンが押されたか
+	bool m_bullet_used = false;	//弾が尽きたかどうか
 	TYPE m_type = TYPE::TYPE1;	//自分のタイプ
 
 	//とある座標取得用
@@ -75,6 +76,9 @@ public:
 	//弾が尽きたかを返す
 	// true：使い終わった　false：まだ使い終わってない
 	bool IsBulletUsed(void)const;
+
+	//弾が尽きたかどうかをセット
+	void SetBulletUsed(bool used) { m_bullet_used = used; }
 
 	//作った弾の数を増やす
 	void IncreaseBulletMaked(int num = 1) { m_bullet_maked_num += num; }
