@@ -17,7 +17,7 @@
 //======================
 #define PLAYER_HP_POS_Y (PLAYER_HP_SIZE_Y / 2 + PLAYER_HP_POS_SPACE_X)
 
-class PlayerHP:public UI
+class PlayerHP :public UI
 {
 private:
 	//定数
@@ -49,15 +49,18 @@ public:
 	//引数付きコンストラクタ
 	PlayerHP(DrawObject& DrawObject1, DrawObject& DrawObject2, ExplosionManagement* pEM)
 		:UI(DrawObject1, D3DXVECTOR2(POS_X, POS_Y),
-		D3DXVECTOR2(SIZE_X, SIZE_Y)), m_frame_DrawObject(DrawObject2), m_pExplosionManagement(pEM) {}
+			D3DXVECTOR2(SIZE_X, SIZE_Y)), m_frame_DrawObject(DrawObject2), m_pExplosionManagement(pEM) {}
 
-	~PlayerHP(){}							//デストラクタ
+	~PlayerHP() {}							//デストラクタ
 
 	//更新処理
 	void Update(void);
 
 	//HPを減らす
 	void ReduceHP(float reduce_num, D3DXVECTOR2 ppos);
+
+	//HPを回復
+	void HeelHP(float heel_num, D3DXVECTOR2 ppos);
 
 	//描画
 	void DrawHP(void)const;

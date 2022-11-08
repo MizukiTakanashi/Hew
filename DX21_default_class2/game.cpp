@@ -266,6 +266,7 @@ Game::~Game()
 	delete m_pPlayerEnemyNormalCol;
 	delete m_pPlayerEnemyLaserCol;
 	delete m_pPlayerEnemyGatoringCol;
+	delete m_pArmEnemyCol;
 	//そのほか
 	delete[] m_pDrawObject;
 	delete[] m_pTexUseful;
@@ -316,22 +317,26 @@ void Game::Update(void)
 	m_pArmEnemyCol->Collision();
 
 	//====================================
+	//====================================
 	//プレイヤーのHPに対する敵の攻撃の処理
 	int attack_num = 0;
-
+	int heel_num = 0;
 	//普通の敵
 	attack_num += m_pPlayerEnemyNormalCol->Update();
 	//レーザーの敵
 	attack_num += m_pPlayerEnemyLaserCol->Update();
 	//レーザーの敵
 	attack_num += m_pPlayerEnemyGatoringCol->Update();
+	//回復
+	heel_num += m_ArmEnemyCollision->Update();
 
-	
 	//プレイヤーのHPを攻撃数によって減らす
 	if (attack_num != 0) {
 		m_pPlayerHP->ReduceHP((float)attack_num, m_pPlayer->GetPos());
 	}
-
+	if (heel_num != 0) {
+		m_pPlayerHP->HeelHP((float)heel_num, m_pPlayer->GetPos());
+	}
 	
 	//プレイヤーのHPが0になったら...
 	if (m_pPlayerHP->GetHP0Flag()) {
