@@ -117,7 +117,7 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	SetVolume(m_BGM, 0.1f);
 
 	m_pTexUseful = new TextureUseful[(int)TEXTURE_TYPE::NUM];
-	m_pDrawObject = new DrawObject[20];
+	m_pDrawObject = new DrawObject[(int)DRAW_TYPE::NUM];
 
 	//背景の初期化処理
 	m_pBG = new BG((char*)"data\\texture\\bg_uchu_space.jpg");
@@ -126,7 +126,7 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	// 弾
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET].SetTextureName((char*)"data\\texture\\bullet00.png");
 	//プレイヤー側の弾
-	m_pDrawObject[15].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET], 0.0f, 1.0f, 1.0f, 1,
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
 	//敵側の弾
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET]);
@@ -134,16 +134,14 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	//=======================
 	// レーザー
 	m_pTexUseful[(int)TEXTURE_TYPE::LASER].SetTextureName((char*)"data\\texture\\laser00.png");
-	//プレイヤー側のレーザー
-	m_pDrawObject[16].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER], 0.0f, 1.0f, 1.0f, 1,
-		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
+
 	//敵側のレーザー
-	m_pDrawObject[9].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER]);
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER]);
 	
 	//プレイヤー
 	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER].SetTextureName((char*)"data\\texture\\player.png");
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER]);
-	m_pPlayer = new Player(m_pDrawObject[(int)DRAW_TYPE::PLAYER], m_pDrawObject[15]);
+	m_pPlayer = new Player(m_pDrawObject[(int)DRAW_TYPE::PLAYER], m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET]);
 
 	//敵の配置場所
 	m_pEnemySetPos = new EnemySetPos;
@@ -152,41 +150,41 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	// 敵
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY].SetTextureName((char*)"data\\texture\\teki2.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
-	m_pDrawObject[13].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 1.0f, 0.33f, 1.0f, 3);
-	m_pDrawObject[14].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 2.0f, 0.33f, 1.0f, 3);
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 1.0f, 0.33f, 1.0f, 3);
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 2.0f, 0.33f, 1.0f, 3);
 
 	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY],
 		*m_pEnemySetPos);
-	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[13], m_pDrawObject[9],
+	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER_LASER],
 		*m_pEnemySetPos);
-	m_pEnemyGatoringManagement = new EnemyGatoringManagement(m_pDrawObject[14], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY],
+	m_pEnemyGatoringManagement = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY],
 		*m_pEnemySetPos);
 
 	//=======================
 	// プレイヤーの腕の左
 	//m_pTexUseful[5].SetTextureName((char*)"data\\texture\\arm.png");
-	m_pDrawObject[6].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
 	//弾
-	m_pDrawObject[10].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET], 0.0f, 1.0f, 1.0f, 1,
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
 	//レーザー
-	m_pDrawObject[11].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER], 0.0f, 1.0f, 1.0f, 1,
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
-	m_pPlayerLeft = new PlayerLeft(m_pDrawObject[6], m_pDrawObject[10],
-		m_pDrawObject[11], m_pPlayer->GetPos());
+	m_pPlayerLeft = new PlayerLeft(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_BULLET],
+		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER], m_pPlayer->GetPos());
 
 	//=======================
 	// プレイヤーの腕の右
 	//m_pTexUseful[6].SetTextureName((char*)"data\\texture\\arm.png");
-	m_pDrawObject[7].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
 	//弾
-	m_pDrawObject[11].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET], 0.0f, 1.0f, 1.0f, 1,
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
 	//レーザー
-	m_pDrawObject[12].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER], 0.0f, 1.0f, 1.0f, 1,
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
-	m_pPlayerRight = new PlayerRight(m_pDrawObject[7], m_pDrawObject[11],
-		m_pDrawObject[12], m_pPlayer->GetPos());
+	m_pPlayerRight = new PlayerRight(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_BULLET],
+		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER], m_pPlayer->GetPos());
 
 	//腕の交換
 	m_pPlayerArmChange=new PlayerArmChange(m_pPlayerLeft, m_pPlayerRight);
@@ -204,8 +202,8 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 
 	//敵のアイテム
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ITEM].SetTextureName((char*)"data\\texture\\EnemyItem.png");
-	m_pDrawObject[8].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ITEM], 0.0f, 1.0f, 1.0f,1 );
-	m_pItemManagement = new ItemManagement(m_pDrawObject[8]);
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ITEM].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ITEM], 0.0f, 1.0f, 1.0f,1 );
+	m_pItemManagement = new ItemManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ITEM]);
 
 	//数字の初期化
 	m_pNumber->SetInitPos(NUMBER_POS);
