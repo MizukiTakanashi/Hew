@@ -10,8 +10,8 @@
 //==========================
 // ’è”‚Ì‰Šú‰»
 //==========================
-const float EnemyGatoringManagement::BULLET_SIZE_X = 15.0f;
-const float EnemyGatoringManagement::BULLET_SIZE_Y = 15.0f;
+const float EnemyGatoringManagement::BULLET_SIZE_X = 20.0f;
+const float EnemyGatoringManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyGatoringManagement::BULLET_SPEED = 2.5f;
 
 //=========================

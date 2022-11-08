@@ -124,7 +124,7 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 
 	//=======================
 	// 弾
-	m_pTexUseful[(int)TEXTURE_TYPE::BULLET].SetTextureName((char*)"data\\texture\\bullet00.png");
+	m_pTexUseful[(int)TEXTURE_TYPE::BULLET].SetTextureName((char*)"data\\texture\\bullet_red.png");
 	//プレイヤー側の弾
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));

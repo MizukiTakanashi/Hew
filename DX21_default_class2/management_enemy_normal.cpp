@@ -10,8 +10,8 @@
 //==========================
 // íËêîÇÃèâä˙âª
 //==========================
-const float EnemyNormalManagement::BULLET_SIZE_X = 15.0f;
-const float EnemyNormalManagement::BULLET_SIZE_Y = 15.0f;
+const float EnemyNormalManagement::BULLET_SIZE_X = 20.0f;
+const float EnemyNormalManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyNormalManagement::BULLET_SPEED = 5.0f;
 
 //=========================
@@ -56,10 +56,10 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 			D3DXVec2Normalize(&movTemp, &movTemp);
 			movTemp *= BULLET_SPEED;
 
-			float rotTemp = atan2(rotposTemp.y, rotposTemp.x) * (180 / M_PI) + 90.0f;
+			//float rotTemp = atan2(rotposTemp.y, rotposTemp.x) * (180 / M_PI) + 90.0f;
 
 			Bullet temp(m_pDrawObjectBullet, m_pEnemyNormal[i].GetPos(),
-				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), movTemp, rotTemp);
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), movTemp, 0.0f);
 			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
 
 			EnemyManagement::IncreaseBulletNum(1);
@@ -76,9 +76,9 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 		D3DXVec2Normalize(&movTemp, &movTemp);
 		movTemp *= BULLET_SPEED;
 
-		float rotTemp = atan2(rotposTemp.y, rotposTemp.x) * (180 / M_PI) + 90.0f;
+		//float rotTemp = atan2(rotposTemp.y, rotposTemp.x) * (180 / M_PI) + 90.0f;
 
-		m_pBullet[i].SetRot(rotTemp);
+		m_pBullet[i].SetRot(0.0f);
 		m_pBullet[i].SetMove(movTemp);
 
 		//íeÇÃçXêVèàóù
