@@ -14,5 +14,5 @@ bool inhPlayerArm::IsBulletUsed(void)const
 		return true;
 	}
 
-	return false;
+	return m_bullet_used;
 }

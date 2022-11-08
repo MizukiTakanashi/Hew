@@ -33,6 +33,9 @@ void PlayerRight::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy
 			//自分自身を発射
 			m_shot = true;
 
+			//弾が出しきったフラグをセット
+			m_pEnemyItem->SetBulletUsed(true);
+
 			m_type = TYPE::TYPE_SHOOT;
 		}
 	}
