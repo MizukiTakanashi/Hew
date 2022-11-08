@@ -2,26 +2,39 @@
 #include "collision.h"
 int ArmEnemyCollision::Update(void)
 {
+    int heel = 0;
     //ƒAƒCƒeƒ€‚Æ˜r‚Ì”»’èˆ—
+    //¶˜r
     for (int i = 0; i < m_rItemManagement->GetItemNum(); i++)
     {
-        if (Collision::ColBox(m_rplayerleft->GetPos(), m_rItemManagement->GetItemPos(i),
-            m_rplayerleft->GetSize(), m_rItemManagement->GetItemSize()))
+        if (Collision::ColBox(m_rPlayeLeft->GetPos(), m_rItemManagement->GetItemPos(i),
+            m_rPlayeLeft->GetSize(), m_rItemManagement->GetItemSize()))
         {
-            m_rplayerleft->SetType(m_rItemManagement->GetItemType(i) + 1);
+            if ((int)PlayerLeft::TYPE::TYPE_NONE)
+            {
+                heel = 1;
+            }
+            m_rPlayeLeft->SetType(m_rItemManagement->GetItemType(i) + 1);
             m_rItemManagement->DeleteItem(i);
-            m_rplayerleft->LeftDraw();
+            m_rPlayeLeft->LeftDraw();
+          
         }
     }
+    //‰E˜r
     for (int j = 0; j < m_rItemManagement->GetItemNum(); j++)
     {
-        if (Collision::ColBox(m_rplayerright->GetPos(), m_rItemManagement->GetItemPos(j),
-            m_rplayerright->GetSize(), m_rItemManagement->GetItemSize()))
+        if (Collision::ColBox(m_rPlayerRight->GetPos(), m_rItemManagement->GetItemPos(j),
+            m_rPlayerRight->GetSize(), m_rItemManagement->GetItemSize()))
         {
-            m_rplayerright->SetType(m_rItemManagement->GetItemType(j) + 1);
+            if ((int)PlayerRight::TYPE::TYPE_NONE)
+            {
+                heel = 1;
+            }
+            m_rPlayerRight->SetType(m_rItemManagement->GetItemType(j) + 1);
             m_rItemManagement->DeleteItem(j);
-            m_rplayerright->RightDraw();
+            m_rPlayerRight->RightDraw();
+            
         }
     }
-    return 0;
+    return heel;
 }

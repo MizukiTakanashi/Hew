@@ -8,7 +8,7 @@
 //==========================
 // 定数初期化
 //==========================
-const float PlayerHP::HP_MAX = 50.0f;
+const float PlayerHP::HP_MAX = 3.0f;
 const float PlayerHP::SIZE_X = 200.0f;
 const float PlayerHP::SIZE_Y = 25.0f;
 const float PlayerHP::FLAME_SIZE_X = 205.0f;
@@ -51,6 +51,17 @@ void PlayerHP::ReduceHP(float reduce_num, D3DXVECTOR2 ppos)
 	UI::SetSize(D3DXVECTOR2(tempXsize, SIZE_Y));
 	UI::SetPos(D3DXVECTOR2(tempXsize / 2 + POS_SPACE_X, POS_Y));
 }
+//=====================================
+//回復処理
+//=====================================
+void PlayerHP::HeelHP(float heel_num, D3DXVECTOR2 ppos)
+{
+	m_hp += heel_num;
+	//HPバーのサイズ、位置の変更
+	float tempXsize = SIZE_X * (m_hp / HP_MAX);
+	UI::SetSize(D3DXVECTOR2(tempXsize, SIZE_Y));
+	UI::SetPos(D3DXVECTOR2(tempXsize / 2 + POS_SPACE_X, POS_Y));
+}
 
 //==========================
 // 更新処理
@@ -62,7 +73,7 @@ void PlayerHP::Update(void)
 	{
 		m_invincible--;
 	}
-	
+
 }
 //==========================
 // 描画処理
