@@ -43,6 +43,15 @@ void PlayerArm2::Update(const D3DXVECTOR2& arm_pos)
 		if (m_bullet_interval_count > BULLET_INTERVAL) {
 			m_bullet_interval_count = 0;
 
+			//˜r‚ÌØ‚è—£‚µ‚Æ“¯‚É’e‚ğì‚ç‚È‚¢‚½‚ß‚Ìˆ—
+			if (inhPlayerArm::GetBulletMaked() == BULLET_NUM_MAX - 1)
+			{
+				//ì‚Á‚½’e‚Ì”‚ğ‘‚â‚·
+				inhPlayerArm::IncreaseBulletMaked();
+				
+				return;
+			}
+
 			Laser temp(m_laser_draw, arm_pos, D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y));
 			m_pLaser[inhPlayerArm::GetBulletNum()] = temp;
 

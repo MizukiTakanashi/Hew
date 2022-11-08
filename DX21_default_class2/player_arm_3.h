@@ -17,7 +17,7 @@ class PlayerArm3 :public inhPlayerArm
 //’è”
 private:
 	//‚±‚±‚Å‰Šú‰»
-	static const int BULLET_NUM_MAX = 100;		//’e‚Ì§ŒÀ”
+	static const int BULLET_NUM_MAX = 50;		//’e‚Ì§ŒÀ”@ÀÛ‚ÉŒ‚‚Ä‚é”‚Í‚±‚ê‚æ‚è‚P­‚È‚¢
 	static const int BULLET_SHOOT_MAX = 20;		//’e‚Ì“¯Å‘å”­Ë”
 	static const int BULLET_INTERVAL = 10;		//’e‚Ì”­ËŠÔŠu
 	
