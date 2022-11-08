@@ -56,6 +56,7 @@ void PlayerHP::ReduceHP(float reduce_num, D3DXVECTOR2 ppos)
 //=====================================
 void PlayerHP::HeelHP(float heel_num, D3DXVECTOR2 ppos)
 {
+	//回復処理
 	m_hp += heel_num;
 	//HPバーのサイズ、位置の変更
 	float tempXsize = SIZE_X * (m_hp / HP_MAX);
