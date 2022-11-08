@@ -287,6 +287,7 @@ void Game::Update(void)
 	//プレイヤー
 	m_pPlayer->Update(m_pPlayerHP->IsPlayerInvincible());
 	m_pPlayerLeft->Update(m_pPlayer->GetPos(), m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerLeft->GetPos()));
+	//m_pPlayerRight->ButtonPress();
 	m_pPlayerRight->Update(m_pPlayer->GetPos(), m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerRight->GetPos()));
 
 	m_pPlayerHP->Update();
@@ -314,7 +315,6 @@ void Game::Update(void)
 	m_pArmEnemyCol->SetPlayerArm(m_pPlayerRight->GetArmPointer());
 	m_pArmEnemyCol->Collision();
 
-	//====================================
 	//====================================
 	//プレイヤーのHPに対する敵の攻撃の処理
 	int attack_num = 0;
