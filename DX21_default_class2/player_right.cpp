@@ -84,12 +84,12 @@ void PlayerRight::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy
 
 				//Arm2‚ÍƒgƒŠƒK[‚É‚È‚Á‚Ä‚é
 			case TYPE::TYPE2:
-				m_pEnemyItem->SetButtonPush(InputGetKeyDown(KK_RIGHT) ||
+				m_pEnemyItem->SetButtonPush((InputGetKey(KK_SPACE) || IsButtonPressed(0, XINPUT_GAMEPAD_A)) ||
 					GetRightTriggerTriggered(0, TRIGGER));
 				break;
 
 			default:
-				m_pEnemyItem->SetButtonPush(InputGetKey(KK_RIGHT) ||
+				m_pEnemyItem->SetButtonPush((InputGetKey(KK_SPACE) || IsButtonPressed(0, XINPUT_GAMEPAD_A)) ||
 					GetRightTrigger(0) > TRIGGER);
 				break;
 			}
