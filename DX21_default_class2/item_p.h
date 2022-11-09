@@ -39,6 +39,10 @@ public:
 	//引数付きコンストラクタ
 	Item(DrawObject& DrawObject, const D3DXVECTOR2& pos,int typeitem)
 		:GameObject(DrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)), m_TypeItem((Item_NUM)typeitem) {}
+	
+	//デストラクタ
+	~Item()override{}
+	
 	//更新処理
 	void Update(void) { GameObject::MovePos(ITEM_MOOB); }
 

@@ -60,6 +60,9 @@ public:
 	EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2,
 		EnemySetPos& pEnemySetPos );
 
+	//デストラクタ
+	~EnemyLaserManagement()override{}
+
 	//更新処理
 	void Update();
 

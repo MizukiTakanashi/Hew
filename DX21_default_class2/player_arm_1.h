@@ -44,7 +44,7 @@ public:
 	{ m_pBullet = new Bullet[BULLET_SHOOT_MAX]; }
 
 	//デストラクタ
-	~PlayerArm1() { delete[] m_pBullet; }
+	~PlayerArm1()override { delete[] m_pBullet; }
 
 	//更新処理(オーバーライド)
 	void Update(const D3DXVECTOR2& arm_pos)override;

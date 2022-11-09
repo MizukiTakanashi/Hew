@@ -52,7 +52,7 @@ public:
 		:m_bullet_max_num(bullet_max_num), m_right(right), m_type((TYPE)type) {}
 
 	//デストラクタ
-	~inhPlayerArm(){}
+	virtual ~inhPlayerArm()override{}
 
 	//=========================
 	// オーバーライド用

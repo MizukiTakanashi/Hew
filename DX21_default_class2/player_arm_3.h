@@ -42,7 +42,7 @@ public:
 		:inhPlayerArm(BULLET_NUM_MAX, right, type), m_bulletdraw(bulletdraw) { m_pBullet = new Bullet[BULLET_SHOOT_MAX]; }
 
 	//デストラクタ
-	~PlayerArm3() { delete[] m_pBullet; }
+	~PlayerArm3()override { delete[] m_pBullet; }
 
 	//更新処理(オーバーライド)
 	void Update(const D3DXVECTOR2& arm_pos)override;

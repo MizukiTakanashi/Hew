@@ -24,7 +24,7 @@ public:
 	Bullet(DrawObject& pDrawObject, const D3DXVECTOR2& pos, const D3DXVECTOR2& size, const D3DXVECTOR2& mov, float rot)
 		:GameObject(pDrawObject, pos, size, rot), m_mov(mov){}
 
-	virtual ~Bullet() {}	//デストラクタ
+	~Bullet()override {}	//デストラクタ
 
 	//更新処理(弾を移動)(経過時間を計測)
 	void Update(void) { GameObject::MovePos(m_mov); m_time++; }

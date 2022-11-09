@@ -17,7 +17,7 @@
 
 class EnemyGatoringManagement:public EnemyManagement
 {
-	//定数
+//定数
 private:
 	//ここで初期化
 	//敵自身
@@ -30,9 +30,6 @@ private:
 	static const float BULLET_SIZE_Y;		//サイズY
 	static const float BULLET_SPEED;		//スピード
 
-
-
-
 public:
 	//ここで初期化
 	//敵自身
@@ -40,9 +37,8 @@ public:
 	//弾
 	static const int BULLET_ATTACK = 1;		//攻撃値
 
-
+//メンバ変数
 private:
-	//メンバ変数
 	EnemyGatoring* m_pEnemyGatoring = nullptr;	//敵のクラス
 	Bullet* m_pBullet = nullptr;				//弾のクラス
 	DrawObject m_pDrawObjectEnemy;				//敵の描画オブジェクト
@@ -53,6 +49,7 @@ private:
 
 	int m_count = 0;			//敵の出現速度
 
+//メンバ関数
 public:
 	//デフォルトコンストラクタ
 	EnemyGatoringManagement() {
@@ -64,12 +61,14 @@ public:
 	EnemyGatoringManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2,
 		EnemySetPos& pEnemySetPos);
 
+	//デストラクタ
+	~EnemyGatoringManagement()override{}
+
 	//更新処理
 	void Update(const D3DXVECTOR2& PlayerPos);
 
 	//描画処理
 	void Draw(void)const;
-
 
 	//指定した敵を消す
 	void DeleteObj(int index_num)override;

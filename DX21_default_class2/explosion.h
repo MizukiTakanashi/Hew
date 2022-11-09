@@ -35,7 +35,8 @@ public:
 	Explosion(DrawObject& DrawObject, const D3DXVECTOR2& pos)
 		:GameObject(DrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)){}
 
-	~Explosion(){}
+	//デストラクタ
+	~Explosion()override{}
 
 	//更新処理
 	void Update(void);
