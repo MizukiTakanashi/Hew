@@ -37,10 +37,11 @@ private:
 	//cppで初期化
 	static const D3DXVECTOR2 SIZE;				//サイズ
 	static const float SHOT_SPEED;				//切り離し発射スピード
-	static const D3DXVECTOR2 FROM_PLAYER_POS;	//プレイヤーからどれくらい離れているか
 
 //メンバ変数
 private:
+	D3DXVECTOR2 m_from_player = D3DXVECTOR2(0.0f, 0.0f);	//プレイヤーからどれくらい離れているか
+
 	bool m_shot = false;					//自分自身が発射されてるか否か
 	TYPE m_type = TYPE::TYPE_NONE;			//ついた敵のタイプ
 
@@ -58,8 +59,10 @@ public:
 	inhPlayerArmBoth(){}
 
 	//引数付きコンストラクタ
-	inhPlayerArmBoth(DrawObject& pDrawObject, DrawObject& pBullet, DrawObject& pLaser, const D3DXVECTOR2& pos)
-		:GameObject(pDrawObject, pos, SIZE), m_bullet_draw(pBullet), m_laser_draw(pLaser) {}
+	inhPlayerArmBoth(DrawObject& pDrawObject, DrawObject& pBullet, DrawObject& pLaser, const D3DXVECTOR2& pos,
+		const D3DXVECTOR2& from_player)
+		:GameObject(pDrawObject, pos, SIZE), m_bullet_draw(pBullet), m_laser_draw(pLaser),
+		m_from_player(from_player) {}
 
 	//デストラクタ
 	virtual ~inhPlayerArmBoth()override { delete m_pEnemyItem; }

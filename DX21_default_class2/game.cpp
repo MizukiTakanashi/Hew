@@ -287,8 +287,9 @@ void Game::Update(void)
 
 	//プレイヤー
 	m_pPlayer->Update(m_pPlayerHP->IsPlayerInvincible());
+	m_pPlayerLeft->ButtonPress();
 	m_pPlayerLeft->Update(m_pPlayer->GetPos(), m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerLeft->GetPos()));
-	//m_pPlayerRight->ButtonPress();
+	m_pPlayerRight->ButtonPress();
 	m_pPlayerRight->Update(m_pPlayer->GetPos(), m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerRight->GetPos()));
 
 	m_pPlayerHP->Update();
@@ -352,8 +353,8 @@ void Game::Draw(void)const
 	m_pPlayer->Draw();
 
 	//プレイヤーの腕の描画処理
-	m_pPlayerLeft->LeftDraw();
-	m_pPlayerRight->RightDraw();
+	m_pPlayerLeft->ArmDraw();
+	m_pPlayerRight->ArmDraw();
 
 	m_pEnemyNormalManagement->Draw();
 	m_pEnemyLaserManagement->Draw();
