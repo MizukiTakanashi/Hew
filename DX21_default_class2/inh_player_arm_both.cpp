@@ -13,7 +13,6 @@
 //==========================
 const D3DXVECTOR2 inhPlayerArmBoth::SIZE = D3DXVECTOR2(50.0f, 50.0f);
 const float inhPlayerArmBoth::SHOT_SPEED = 5.0f;
-const D3DXVECTOR2 inhPlayerArmBoth::FROM_PLAYER_POS = D3DXVECTOR2(-30.0f, 0.0f);
 
 
 //==========================
@@ -47,7 +46,7 @@ void inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& 
 			m_type = TYPE::TYPE_OLD;
 
 			//位置を元に戻す
-			SetPos(player_pos + FROM_PLAYER_POS);
+			SetPos(player_pos + m_from_player);
 
 			//発射のフラグをオフ
 			m_shot = false;
@@ -69,7 +68,7 @@ void inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& 
 	else
 	{
 		// 移動
-		SetPos(player_pos + FROM_PLAYER_POS);
+		SetPos(player_pos + m_from_player);
 
 		//腕についているアイテムの処理
 		if (m_pEnemyItem != nullptr) {
