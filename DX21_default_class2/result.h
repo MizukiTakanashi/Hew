@@ -19,7 +19,7 @@ class Result
 //’è”
 private:
 	//‚±‚±‚Å‰Šú‰»
-	static const int NUMBER_DIGIT = 3;
+	static const int NUMBER_DIGIT = 10 ;
 
 	//cpp‚Å‰Šú‰»
 	static const D3DXVECTOR2 NUMBER_POS;

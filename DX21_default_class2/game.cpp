@@ -10,8 +10,8 @@
 //==========================
 // 定数初期化
 //==========================
-const D3DXVECTOR2 Game::NUMBER_POS = D3DXVECTOR2(350.0f, 30.0f);
-const D3DXVECTOR2 Game::NUMBER_SIZE = D3DXVECTOR2(40.0f, 40.0f);
+const D3DXVECTOR2 Game::NUMBER_POS = D3DXVECTOR2(1230.0f, 30.0f);
+const D3DXVECTOR2 Game::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
 
 //==========================
 // 初期化処理

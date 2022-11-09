@@ -15,8 +15,8 @@
 //==========================
 // íËêîèâä˙âª
 //==========================
-const D3DXVECTOR2 Result::NUMBER_POS = D3DXVECTOR2(SCREEN_WIDTH / 2 + 100.0f, SCREEN_HEIGHT / 2);
-const D3DXVECTOR2 Result::NUMBER_SIZE = D3DXVECTOR2(100.0f, 100.0f);
+const D3DXVECTOR2 Result::NUMBER_POS = D3DXVECTOR2(800, SCREEN_HEIGHT / 2);
+const D3DXVECTOR2 Result::NUMBER_SIZE = D3DXVECTOR2(50.0f, 50.0f);
 
 //==========================
 // èâä˙âªèàóù

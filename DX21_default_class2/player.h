@@ -47,6 +47,7 @@ private:
 	int m_BulletNum = 0;			//弾の現在の数
 	DrawObject m_BulletDrawObject;
 	int m_BulletInterval = 0;		//弾の発射間隔
+	bool m_ComboFlag = false;
 
 public:
 	//デフォルトコンストラクタ
@@ -78,6 +79,11 @@ public:
 
 	//弾のサイズを返す
 	const D3DXVECTOR2& GetBulletSize(void)const { return m_pBullet[0].GetSize(); }
+
+	//コンボフラグをセット
+	void SetComboFlag(bool flg) { m_ComboFlag = flg; }
+	//コンボフラグを返す
+	bool GetComboFlag(void) { return m_ComboFlag; }
 };
 
 #endif // !_PLAYER_H_
