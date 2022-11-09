@@ -58,7 +58,7 @@ public:
 		m_BulletDrawObject(BulletDrawObject)
 	{ m_pBullet = new Bullet[BULLET_MAX_NUM]; }
 
-	~Player() { delete[] m_pBullet; }		//デストラクタ
+	~Player()override { delete[] m_pBullet; }		//デストラクタ
 
 	//更新処理
 	void Update(bool);

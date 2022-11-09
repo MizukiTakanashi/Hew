@@ -35,7 +35,7 @@ public:
 	Number(DrawObject& pDrawObject, const D3DXVECTOR2& pos = D3DXVECTOR2(0.0f, 0.0f),
 		const D3DXVECTOR2& size = D3DXVECTOR2(0.0f, 0.0f), int digit = 0);
 
-	~Number(){}	//デストラクタ
+	~Number()override{}	//デストラクタ
 
 	//数字を追加
 	void AddNumber(int num);

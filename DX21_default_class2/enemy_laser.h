@@ -53,7 +53,7 @@ public:
 	EnemyLaser(DrawObject& pDrawObject, const D3DXVECTOR2& pos)
 		:GameObject(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)), m_init_posx(pos.x) {}
 
-	~EnemyLaser(){}	//デストラクタ
+	~EnemyLaser()override{}	//デストラクタ
 
 	void Update(void);	//更新処理
 

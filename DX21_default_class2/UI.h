@@ -27,7 +27,7 @@ public:
 		const D3DXCOLOR& color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f))
 		:m_DrawObject(draw_object), m_pos(pos), m_size(size), m_color(color){}
 
-	~UI(){}	//デストラクタ
+	virtual ~UI(){}	//デストラクタ
 
 	//描画
 	void Draw(void)const { m_DrawObject.Draw(m_pos, m_size); }

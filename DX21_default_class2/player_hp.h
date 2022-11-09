@@ -53,7 +53,7 @@ public:
 		:UI(DrawObject1, D3DXVECTOR2(POS_X, POS_Y),
 			D3DXVECTOR2(SIZE_X, SIZE_Y)), m_frame_DrawObject(DrawObject2), m_pExplosionManagement(pEM), m_pNumber(pNumber) {}
 
-	~PlayerHP() {}							//デストラクタ
+	~PlayerHP()override {}							//デストラクタ
 
 	//更新処理
 	void Update(void);

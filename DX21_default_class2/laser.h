@@ -27,7 +27,7 @@ public:
 	Laser(DrawObject& pDrawObject, const D3DXVECTOR2& pos, const D3DXVECTOR2& size)
 		:GameObject(pDrawObject, pos, size, 0.0f) {}
 
-	virtual ~Laser() {}	//デストラクタ
+	~Laser()override {}	//デストラクタ
 
 	//レーザーの削除
 	void DeleteLaser() { m_lasertime = -1; }

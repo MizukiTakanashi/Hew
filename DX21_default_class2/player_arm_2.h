@@ -48,7 +48,7 @@ public:
 		:inhPlayerArm(BULLET_NUM_MAX, right, type), m_laser_draw(bulletdraw) { m_pLaser = new Laser[BULLET_SHOOT_MAX]; }
 
 	//デストラクタ
-	~PlayerArm2() { delete[] m_pLaser; }
+	~PlayerArm2()override { delete[] m_pLaser; }
 
 	//更新処理(オーバーライド)
 	void Update(const D3DXVECTOR2& arm_pos)override;

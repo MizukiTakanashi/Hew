@@ -38,9 +38,8 @@ public:
 	//弾
 	static const int BULLET_ATTACK = 1;		//攻撃値
 
-
+//メンバ変数
 private:
-	//メンバ変数
 	EnemyNormal* m_pEnemyNormal = nullptr;
 	Bullet* m_pBullet = nullptr;
 	DrawObject m_pDrawObjectEnemy;
@@ -51,6 +50,7 @@ private:
 
 	int m_count = 0;		//敵の出現速度
 
+//メンバ関数
 public:
 	//デフォルトコンストラクタ
 	EnemyNormalManagement(){
