@@ -29,7 +29,6 @@ const float Player::BULLET_SPEED_Y = -10.5f;
 
 const D3DXCOLOR Player::INVINCIBLE__COLOR = D3DXCOLOR(1.0f, 0.3f, 0.3f, 1.0f);			//プレイヤー無敵時間の色
 
-
 //======================
 // 更新処理
 //======================

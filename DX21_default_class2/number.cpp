@@ -9,6 +9,8 @@
 // 定数初期化
 //==========================
 const float Number::SPACE_RATIO = 0.2f;
+const float Number::COMBO_MAGNIFICATION = 1.1f; //コンボ継続時の
+
 
 //=========================
 // 引数付きコンストラクタ
@@ -19,6 +21,12 @@ Number::Number(DrawObject & pDrawObject, const D3DXVECTOR2 & pos, const D3DXVECT
 	m_space = size.x * SPACE_RATIO;
 }
 
+void Number::AddNumber(int num)
+{
+	m_num += num * m_ComboMagnification;
+	m_ComboMagnification *= Number::COMBO_MAGNIFICATION;
+	m_ComboNum++;
+}
 //==========================
 // 描画処理
 //==========================

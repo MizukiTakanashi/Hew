@@ -43,7 +43,7 @@ void InitScene(SCENE s)
 		break;
 
 	case SCENE::SCENE_GAME:
-		pGame = new Game(g_pNumber);
+		pGame = new Game(g_pNumber = new Number(g_pDrawObject[0]));
 		break;
 
 	case SCENE::SCENE_RESULT:
