@@ -54,6 +54,7 @@
     <ClCompile Include="input.cpp" />
     <ClCompile Include="player_arm_change.cpp" />
     <ClCompile Include="inh_player_arm_both.cpp" />
+    <ClCompile Include="collision_all.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
@@ -109,5 +110,6 @@
     <ClInclude Include="input.h" />
     <ClInclude Include="player_arm_change.h" />
     <ClInclude Include="inh_player_arm_both.h" />
+    <ClInclude Include="collision_all.h" />
   </ItemGroup>
 </Project>

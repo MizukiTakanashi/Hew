@@ -48,9 +48,5 @@ public:
 
 	//アイテムのタイプを返す
 	int GerItemType() const { return (int)m_TypeItem; }
-
-	////アイテムのタイプをセット
-	//void SetItemType(int type) {m_TypeItem = (Item_NUM)type;}
-	~Item() {}
 };
 

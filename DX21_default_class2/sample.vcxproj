@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="all_enemy_management.cpp" />
+    <ClCompile Include="collision_all.cpp" />
     <ClCompile Include="collision_arm_all_enemy.cpp" />
     <ClCompile Include="collision_arm_enemy.cpp" />
     <ClCompile Include="bullet.cpp" />
@@ -186,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h" />
+    <ClInclude Include="collision_all.h" />
     <ClInclude Include="collision_arm_all_enemy.h" />
     <ClInclude Include="collision_arm_enemy.h" />
     <ClInclude Include="bullet.h" />
