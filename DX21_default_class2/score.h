@@ -1,18 +1,15 @@
 //=======================================
-// 数字関係(ヘッダファイル)
-// 作成日：2022/09/29
-// 作成者：高梨水希
+// スコア関係(ヘッダファイル)
+// 作成日：
+// 作成者：恩田洋行
 //=======================================
 #pragma once
+#ifndef _SCORE_H_
+#define _SCORE_H_
 
-#ifndef _NUMBER_H_
-#define _NUMBER_H_
+#include "number.h"
 
-#include "main.h"
-#include "UI.h"
-#include "draw_object.h"
-
-class Number :public UI
+class Score :public Number
 {
 	//定数
 private:
@@ -29,13 +26,13 @@ private:
 	int m_ComboNum = 0; //コンボ継続数
 
 public:
-	Number() {}	//デフォルトコンストラクタ
+	Score() {}	//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
-	Number(DrawObject& pDrawObject, const D3DXVECTOR2& pos = D3DXVECTOR2(0.0f, 0.0f),
+	Score(DrawObject& pDrawObject, const D3DXVECTOR2& pos = D3DXVECTOR2(0.0f, 0.0f),
 		const D3DXVECTOR2& size = D3DXVECTOR2(0.0f, 0.0f), int digit = 0);
 
-	~Number()override {}	//デストラクタ
+	~Score()override {}	//デストラクタ
 
 	//数字を追加
 	void AddScore(int num);
@@ -57,6 +54,4 @@ public:
 
 };
 
-
-#endif // !_NUMBER_H_
-
+#endif // !_SCORE_H_

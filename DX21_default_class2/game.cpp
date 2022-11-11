@@ -110,7 +110,7 @@ Game::Game()
 //=========================
 // 引数付きコンストラクタ
 //=========================
-Game::Game(Number * pNumber):m_pNumber(pNumber)
+Game::Game(Score * pNumber):m_pNumber(pNumber)
 {
 	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);	//BGM再生

@@ -19,7 +19,7 @@
 #include "texture_useful.h"
 #include "player_hp.h"
 #include "management_explosion.h"
-#include "number.h"
+#include "score.h"
 #include "player_left.h"
 #include "player_right.h"
 #include "management_item.h"
@@ -83,7 +83,7 @@ private:
 	TextureUseful* m_pTexUseful = nullptr;
 	DrawObject* m_pDrawObject = nullptr;
 
-	Number* m_pNumber = nullptr;
+	Score* m_pNumber = nullptr;
 
 	BG* m_pBG = nullptr;
 	Player* m_pPlayer = nullptr;
@@ -111,7 +111,7 @@ private:
 public:
 	Game();	//デフォルトコンストラクタ
 
-	Game(Number* pNumber);
+	Game(Score* pNumber);
 
 	~Game();	//デストラクタ
 

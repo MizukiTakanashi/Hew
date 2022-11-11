@@ -20,7 +20,7 @@ CollisionAll::CollisionAll()
 // 引数付きコンストラクタ
 //==========================
 CollisionAll::CollisionAll(Player* pPlayer, ExplosionManagement* pExplosion,
-	ItemManagement* pItem, Number* pNumber)
+	ItemManagement* pItem, Score* pNumber)
 	:m_pPlayer(pPlayer), m_pExplosion(pExplosion), m_pItem(pItem), m_pNumber(pNumber)
 {
 	for (int i = 0; i < ENEMY_NUM; i++) {
@@ -65,7 +65,7 @@ int CollisionAll::Collision(void)
 						j--;
 
 						//倒した敵の数を増やす
-						m_pNumber->AddNumber(1);
+						m_pNumber->AddScore(1);
 					}
 				}
 			}
