@@ -9,7 +9,6 @@
 #define _ENEMY_NORMAL_H_
 
 #include "main.h"
-#include "bullet.h"
 #include "draw_object.h"
 #include "game_object.h"
 
