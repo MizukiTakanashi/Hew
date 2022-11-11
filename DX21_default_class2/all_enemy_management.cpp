@@ -27,5 +27,6 @@ const D3DXVECTOR2& AllEnemyManagement::GetCloltestEnemyPos(const D3DXVECTOR2& po
 		}
 	}
 
+	//ˆø”‚ÌÀ•W‚©‚çˆê”Ô‹ß‚¢“G‚ÌÀ•W‚ğ•Ô‚·
 	return min_pos;
 }
