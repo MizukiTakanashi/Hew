@@ -7,7 +7,7 @@
 #include "collision.h"
 
 PlayerArmEnemyCol::PlayerArmEnemyCol(EnemyManagement* p1, EnemyManagement* p2, EnemyManagement* p3,
-	ExplosionManagement* pExplosion, ItemManagement* pItem, Number* pNumber) 
+	ExplosionManagement* pExplosion, ItemManagement* pItem, Number* pNumber)
 	:m_pExplosion(pExplosion), m_pItem(pItem), m_pNumber(pNumber)
 {
 	m_pEnemy[0] = p1;
@@ -18,7 +18,7 @@ PlayerArmEnemyCol::PlayerArmEnemyCol(EnemyManagement* p1, EnemyManagement* p2, E
 void PlayerArmEnemyCol::Collision(void)
 {
 	//もしも腕のポインタに何もなければ終了
-	if (m_pArm == nullptr){
+	if (m_pArm == nullptr) {
 		return;
 	}
 
@@ -41,7 +41,7 @@ void PlayerArmEnemyCol::Collision(void)
 						//爆発をセット
 						m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
 						//敵アイテムのドロップ
-						m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), 1);
+						m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), 1, 1);
 
 						//腕についている種類がTYPE2(レーザー)でなければ...
 						if (m_pArm->GetType() != inhPlayerArm::TYPE::TYPE2) {
@@ -49,7 +49,7 @@ void PlayerArmEnemyCol::Collision(void)
 							m_pArm->DeleteBullet(i);
 							i--;
 						}
-						
+
 						//敵を消す
 						m_pEnemy[k]->DeleteObj(j);
 						j--;

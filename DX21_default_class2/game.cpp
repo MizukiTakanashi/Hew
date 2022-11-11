@@ -110,7 +110,7 @@ Game::Game()
 //=========================
 // 引数付きコンストラクタ
 //=========================
-Game::Game(Number * pNumber):m_pNumber(pNumber)
+Game::Game(Number* pNumber) :m_pNumber(pNumber)
 {
 	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);	//BGM再生
@@ -130,14 +130,14 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
 	//敵側の弾
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET]);
-	
+
 	//=======================
 	// レーザー
 	m_pTexUseful[(int)TEXTURE_TYPE::LASER].SetTextureName((char*)"data\\texture\\laser00.png");
 
 	//敵側のレーザー
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER]);
-	
+
 	//プレイヤー
 	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER].SetTextureName((char*)"data\\texture\\player.png");
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER]);
@@ -187,7 +187,7 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER], m_pPlayer->GetPos());
 
 	//腕の交換
-	m_pPlayerArmChange=new PlayerArmChange(m_pPlayerLeft, m_pPlayerRight);
+	m_pPlayerArmChange = new PlayerArmChange(m_pPlayerLeft, m_pPlayerRight);
 	//爆発
 	m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION].SetTextureName((char*)"data\\texture\\explosion000.png");
 	m_pDrawObject[(int)DRAW_TYPE::EXPLOSION].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION], 0.0f, 0.125f, 1.0f, 7);
@@ -202,8 +202,8 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 
 	//敵のアイテム
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ITEM].SetTextureName((char*)"data\\texture\\EnemyItem.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ITEM].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ITEM], 0.0f, 1.0f, 1.0f,1 );
-	m_pItemManagement = new ItemManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ITEM]);
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ITEM].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ITEM], 0.0f, 1.0f, 1.0f, 1);
+	m_pItemManagement = new ItemManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ITEM],1);
 
 	//数字の初期化
 	m_pNumber->SetInitPos(NUMBER_POS);
@@ -234,7 +234,7 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 
 	//発射した腕と敵の当たり判定
 	m_pArmAllEnemyCollision = new ArmAllEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pEnemyLaserManagement,
-												m_pEnemyGatoringManagement, m_pEnemyNormalManagement, m_pExplosionManagement);
+		m_pEnemyGatoringManagement, m_pEnemyNormalManagement, m_pExplosionManagement);
 
 	//プレイヤーの腕のアイテムの弾と敵の当たり判定
 	m_pArmEnemyCol = new PlayerArmEnemyCol(m_pEnemyNormalManagement, m_pEnemyLaserManagement,
@@ -332,10 +332,11 @@ void Game::Update(void)
 	if (attack_num != 0) {
 		m_pPlayerHP->ReduceHP((float)attack_num, m_pPlayer->GetPos());
 	}
+	//プレイヤーのHPを回復する
 	if (heel_num != 0) {
 		m_pPlayerHP->HeelHP((float)heel_num, m_pPlayer->GetPos());
 	}
-	
+
 	//プレイヤーのHPが0になったら...
 	if (m_pPlayerHP->GetHP0Flag()) {
 		SetScene(SCENE::SCENE_RESULT);

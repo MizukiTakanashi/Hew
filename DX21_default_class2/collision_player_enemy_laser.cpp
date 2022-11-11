@@ -23,14 +23,14 @@ int PlayerEnemyLaserCollision::Update(void)
 			//もしも画面外にいたら壊せないようにする
 			if (!ScreenOut::GetScreenOut(m_rEnemyManagement->GetObjPos(j),
 				m_rEnemyManagement->GetObjSize())) {
-				
+
 				//当たったか判定
 				if (Collision::ColBox(m_rPlayer->GetBulletPos(i), m_rEnemyManagement->GetObjPos(j),
-						m_rPlayer->GetBulletSize(), m_rEnemyManagement->GetObjSize())) {
+					m_rPlayer->GetBulletSize(), m_rEnemyManagement->GetObjSize())) {
 					//爆発をセット
 					m_rExplosionManagement->SetExplosion(m_rEnemyManagement->GetObjPos(j));
 					//敵アイテムのドロップ
-					m_rItemManagement->SetItem(m_rEnemyManagement->GetObjPos(j), 1);
+					m_rItemManagement->SetItem(m_rEnemyManagement->GetObjPos(j), 1, 1);
 
 					//プレイヤーの弾を消す
 					m_rPlayer->DeleteBullet(i);

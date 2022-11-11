@@ -31,20 +31,18 @@ private:
 	static const float SIZE_X;		//サイズX
 	static const float SIZE_Y;		//サイズY
 	static const D3DXVECTOR2 ITEM_MOOB;		//サイズY
-
 	Item_NUM m_TypeItem = Item_NUM::ENEMYITEM_NUM;
 public:
 	Item() {}	//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
-	Item(DrawObject& DrawObject, const D3DXVECTOR2& pos,int typeitem)
+	Item(DrawObject& DrawObject, const D3DXVECTOR2& pos, int typeitem)
 		:GameObject(DrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)), m_TypeItem((Item_NUM)typeitem) {}
 	//更新処理
 	void Update(void) { GameObject::MovePos(ITEM_MOOB); }
 
 	//アイテムのタイプを返す
 	int GerItemType() const { return (int)m_TypeItem; }
-
 	////アイテムのタイプをセット
 	//void SetItemType(int type) {m_TypeItem = (Item_NUM)type;}
 	~Item() {}

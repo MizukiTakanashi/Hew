@@ -1,7 +1,7 @@
 //=======================================
-// 爆発管理関係(ヘッダファイル)
-// 作成日：2022/09/18
-// 作成者：高梨水希
+// 敵の落とすアイテム関係(ヘッダファイル)
+// 作成日：2022//11/10
+// 作成者：矢野
 //=======================================
 #pragma once
 
@@ -24,12 +24,14 @@ private:
 	Item* m_pItem = nullptr;
 	int m_ItemNum = 0;	//アイテムの数
 
+
 public:
+	static const int ITEM_HEEL = 1;		//回復値
 	//デフォルトコンストラクタ
 	ItemManagement();
 
 	//引数付きコンストラクタ
-	ItemManagement(DrawObject& DrawObject);
+	ItemManagement(DrawObject& DrawObject, int heel);
 
 	~ItemManagement() { delete[] m_pItem; }	//デストラクタ
 
@@ -56,11 +58,10 @@ public:
 	int GetItemNum(void)const { return m_ItemNum; }
 
 	//アイテムをセット
-	void SetItem(const D3DXVECTOR2& pos,int typeitem);
+	void SetItem(const D3DXVECTOR2& pos,int typeitem,int heel);
 
 	//アイテムのタイプを返す
 	int GetItemType(int i) const { return m_pItem[i].GerItemType(); }
-	
 	
 	};
 

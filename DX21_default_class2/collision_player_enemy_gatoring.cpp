@@ -23,14 +23,14 @@ int PlayerEnemyGatoringCollision::Update(void)
 			//もしも画面外にいたら壊せないようにする
 			if (!ScreenOut::GetScreenOut(m_rEnemyGatoringManagement->GetObjPos(j),
 				m_rEnemyGatoringManagement->GetObjSize())) {
-				
+
 				//当たったか判定
 				if (Collision::ColBox(m_rPlayer->GetBulletPos(i), m_rEnemyGatoringManagement->GetObjPos(j),
-						m_rPlayer->GetBulletSize(), m_rEnemyGatoringManagement->GetObjSize())) {
+					m_rPlayer->GetBulletSize(), m_rEnemyGatoringManagement->GetObjSize())) {
 					//爆発をセット
 					m_rExplosionManagement->SetExplosion(m_rEnemyGatoringManagement->GetObjPos(j));
 					//敵アイテムのドロップ
-					m_rItemManagement->SetItem(m_rEnemyGatoringManagement->GetObjPos(j), 2);
+					m_rItemManagement->SetItem(m_rEnemyGatoringManagement->GetObjPos(j), 2, 1);
 
 					//プレイヤーの弾を消す
 					m_rPlayer->DeleteBullet(i);

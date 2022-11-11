@@ -19,7 +19,7 @@ ItemManagement::ItemManagement()
 //=========================
 // 引数付きコンストラクタ
 //=========================
-ItemManagement::ItemManagement(DrawObject& DrawObject) :m_DrawObject(DrawObject)
+ItemManagement::ItemManagement(DrawObject& DrawObject,int heel) :m_DrawObject(DrawObject)
 {
 	m_pItem = new Item[MAX_NUM];
 
@@ -52,9 +52,9 @@ void ItemManagement::DeleteItem(int index_num)
 //==========================
 // アイテムをセット
 //==========================
-void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem)
+void ItemManagement::SetItem(const D3DXVECTOR2& pos, int typeitem, int )
 {
-	Item Temp(m_DrawObject, pos, typeitem);
+	Item Temp(m_DrawObject, pos, typeitem );
 	m_pItem[m_ItemNum] = Temp;
 	m_ItemNum++;
 }

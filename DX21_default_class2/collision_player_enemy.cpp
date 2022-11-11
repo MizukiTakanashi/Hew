@@ -12,11 +12,11 @@ int PlayerEnemyCol::Collision(void)
 	int attacked = 0;
 
 	for (int k = 0; k < m_EnemyNum; k++) {
-	//プレイヤーの方
-	//敵の方
+		//プレイヤーの方
+		//敵の方
 
-		//弾
-		//自身
+			//弾
+			//自身
 		for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
 			for (int j = 0; j < (m_pEnemy + k)->GetObjNum(); j++) {
 
@@ -30,7 +30,7 @@ int PlayerEnemyCol::Collision(void)
 						//爆発をセット
 						m_pExplosion->SetExplosion((m_pEnemy + k)->GetObjPos(j));
 						//敵アイテムのドロップ
-						m_pItem->SetItem((m_pEnemy + k)->GetObjPos(j), 1);
+						m_pItem->SetItem((m_pEnemy + k)->GetObjPos(j), 1, 1);
 
 						//プレイヤーの弾を消す
 						m_pPlayer->DeleteBullet(i);

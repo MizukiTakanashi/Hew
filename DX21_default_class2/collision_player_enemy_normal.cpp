@@ -24,14 +24,14 @@ int PlayerEnemyNormalCollision::Update(void)
 			//もしも画面外にいたら壊せないようにする
 			if (!ScreenOut::GetScreenOut(m_rEnemyNormalManagement->GetObjPos(j),
 				m_rEnemyNormalManagement->GetObjSize())) {
-				
+
 				//当たったか判定
 				if (Collision::ColBox(m_rPlayer->GetBulletPos(i), m_rEnemyNormalManagement->GetObjPos(j),
-						m_rPlayer->GetBulletSize(), m_rEnemyNormalManagement->GetObjSize())) {
+					m_rPlayer->GetBulletSize(), m_rEnemyNormalManagement->GetObjSize())) {
 					//爆発をセット
 					m_rExplosionManagement->SetExplosion(m_rEnemyNormalManagement->GetObjPos(j));
 					//敵アイテムのドロップ
-					m_rItemManagement->SetItem(m_rEnemyNormalManagement->GetObjPos(j),0);
+					m_rItemManagement->SetItem(m_rEnemyNormalManagement->GetObjPos(j), 0, 1);
 
 					//プレイヤーの弾を消す
 					m_rPlayer->DeleteBullet(i);
