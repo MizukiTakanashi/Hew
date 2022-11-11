@@ -11,7 +11,7 @@
 #include "player.h"
 #include "management_enemy_normal.h"
 #include "management_explosion.h"
-#include "number.h"
+#include "score.h"
 #include "management_item.h"
 //敵のアイテム
 static const float ENEMYITEM_SIZE_X;	//サイズX
@@ -23,7 +23,7 @@ private:
 	Player* m_rPlayer = nullptr;
 	EnemyNormalManagement* m_rEnemyNormalManagement = nullptr;
 	ExplosionManagement* m_rExplosionManagement = nullptr;
-	Number* m_pNumber = nullptr;
+	Score* m_pNumber = nullptr;
 	ItemManagement* m_rItemManagement = nullptr;
 	bool m_PlayerEnemyNormalCol = false;	//プレイヤー自身と敵自身が当たっているかフラグ
 
@@ -32,7 +32,7 @@ public:
 
 	//引数付きコンストラクタ
 	PlayerEnemyNormalCollision(Player* rPlayer, EnemyNormalManagement* rEnemyNormalManagement,
-		ExplosionManagement* rExplosionManagement, Number* pNumber, ItemManagement* m_rItem)
+		ExplosionManagement* rExplosionManagement, Score* pNumber, ItemManagement* m_rItem)
 		:m_rPlayer(rPlayer), m_rEnemyNormalManagement(rEnemyNormalManagement),
 		m_rExplosionManagement(rExplosionManagement), m_pNumber(pNumber), m_rItemManagement(m_rItem) {}
 

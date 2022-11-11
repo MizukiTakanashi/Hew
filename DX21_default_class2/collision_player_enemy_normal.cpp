@@ -40,7 +40,7 @@ int PlayerEnemyNormalCollision::Update(void)
 					m_rEnemyNormalManagement->DeleteObj(j);
 					j--;
 
-					m_pNumber->AddNumber(1);
+					m_pNumber->AddScore(1);
 				}
 			}
 		}

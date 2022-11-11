@@ -11,7 +11,7 @@
 #include "texture_useful.h"
 #include "draw_object.h"
 #include "UI.h"
-#include "number.h"
+#include "score.h"
 #include "main.h"
 
 class Result
@@ -33,12 +33,12 @@ private:
 	TextureUseful* m_pTexUse = nullptr;
 	DrawObject* m_pDrawOb = nullptr;
 	UI* m_pBG = nullptr;
-	Number* m_pNumber = nullptr;
+	Score* m_pNumber = nullptr;
 
 public:
 	Result();	//デフォルトコンストラクタ
 
-	Result(Number* pNumber);
+	Result(Score* pNumber);
 
 	~Result();	//デストラクタ
 

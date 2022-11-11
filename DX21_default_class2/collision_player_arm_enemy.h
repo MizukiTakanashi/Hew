@@ -10,7 +10,7 @@
 
 #include "management_explosion.h"
 #include "management_item.h"
-#include "number.h"
+#include "score.h"
 #include "inh_player_arm.h"
 #include "management_enemy.h"
 
@@ -25,7 +25,7 @@ private:
 	EnemyManagement* m_pEnemy[ENEMY_NUM];			//全敵
 	ExplosionManagement* m_pExplosion = nullptr;	//爆発
 	ItemManagement* m_pItem = nullptr;				//アイテム
-	Number* m_pNumber = nullptr;					//倒した敵の数表示
+	Score* m_pNumber = nullptr;					//倒した敵の数表示
 	inhPlayerArm* m_pArm = nullptr;					//腕から出る弾
 
 	bool m_PlayerEnemyCol = false;					//敵自身とプレイヤー自身の当たりフラグ
@@ -36,7 +36,7 @@ public:
 
 	//引数付きコンストラクタ
 	PlayerArmEnemyCol(EnemyManagement* p1, EnemyManagement* p2, EnemyManagement* p3,
-		ExplosionManagement* pExplosion, ItemManagement* pItem, Number* pNumber);
+		ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber);
 
 	//デストラクタ
 	~PlayerArmEnemyCol() {}

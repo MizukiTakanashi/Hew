@@ -12,7 +12,7 @@
 #include "management_enemy.h"
 #include "management_explosion.h"
 #include "management_item.h"
-#include "number.h"
+#include "score.h"
 
 class PlayerEnemyCol
 {
@@ -21,7 +21,7 @@ private:
 	EnemyManagement* m_pEnemy = nullptr;			//全敵
 	ExplosionManagement* m_pExplosion = nullptr;	//爆発
 	ItemManagement* m_pItem = nullptr;				//アイテム
-	Number* m_pNumber = nullptr;					//倒した敵の数表示
+	Score* m_pNumber = nullptr;					//倒した敵の数表示
 
 	int m_EnemyNum = 0;								//敵の種類の数
 	bool m_PlayerEnemyCol = false;					//敵自身とプレイヤー自身の当たりフラグ
@@ -32,7 +32,7 @@ public:
 
 	//引数付きコンストラクタ
 	PlayerEnemyCol(Player* pPlayer, EnemyManagement* pEnemy, ExplosionManagement* pExplosion,
-		ItemManagement* pItem, Number* pNumber, int EnemyNum)
+		ItemManagement* pItem, Score* pNumber, int EnemyNum)
 		:m_pPlayer(pPlayer), m_pEnemy(pEnemy), m_pExplosion(pExplosion), 
 		m_pItem(pItem), m_pNumber(pNumber), m_EnemyNum(EnemyNum) {}
 

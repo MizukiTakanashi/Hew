@@ -14,7 +14,7 @@
 
 #include "management_explosion.h"
 #include "management_item.h"
-#include "number.h"
+#include "score.h"
 
 class CollisionAll
 {
@@ -35,7 +35,7 @@ private:
 	
 	ExplosionManagement* m_pExplosion = nullptr;	//爆発
 	ItemManagement* m_pItem = nullptr;				//アイテム
-	Number* m_pNumber = nullptr;					//倒した敵の数表示
+	Score* m_pNumber = nullptr;					//倒した敵の数表示
 
 	bool m_player_enemy_col = false;				//プレイヤーと
 
@@ -46,7 +46,7 @@ public:
 
 	//引数付きコンストラクタ
 	CollisionAll(Player* pPlayer, ExplosionManagement* pExplosion, 
-		ItemManagement* pItem, Number* pNumber);
+		ItemManagement* pItem, Score* pNumber);
 
 	//デストラクタ
 	~CollisionAll(){}

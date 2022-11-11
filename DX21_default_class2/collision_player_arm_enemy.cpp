@@ -7,7 +7,7 @@
 #include "collision.h"
 
 PlayerArmEnemyCol::PlayerArmEnemyCol(EnemyManagement* p1, EnemyManagement* p2, EnemyManagement* p3,
-	ExplosionManagement* pExplosion, ItemManagement* pItem, Number* pNumber) 
+	ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber) 
 	:m_pExplosion(pExplosion), m_pItem(pItem), m_pNumber(pNumber)
 {
 	m_pEnemy[0] = p1;
@@ -55,7 +55,7 @@ void PlayerArmEnemyCol::Collision(void)
 						j--;
 
 						//“|‚µ‚½“G‚Ì”‚ð‘‚â‚·
-						m_pNumber->AddNumber(1);
+						m_pNumber->AddScore(1);
 					}
 				}
 			}

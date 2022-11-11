@@ -10,7 +10,7 @@
 #include "sprite.h"
 #include "game.h"
 #include "result.h"
-#include "number.h"
+#include "score.h"
 #include "draw_object.h"
 
 //======================
@@ -23,7 +23,7 @@ Result* pResult;
 
 TextureUseful* g_pTexUseful;
 DrawObject* g_pDrawObject;
-Number* g_pNumber;
+Score* g_pNumber;
 
 //==========================
 // èâä˙âªèàóù
@@ -43,7 +43,7 @@ void InitScene(SCENE s)
 		break;
 
 	case SCENE::SCENE_GAME:
-		pGame = new Game(g_pNumber = new Number(g_pDrawObject[0]));
+		pGame = new Game(g_pNumber = new Score(g_pDrawObject[0]));
 		break;
 
 	case SCENE::SCENE_RESULT:
@@ -67,7 +67,7 @@ void InitScene2(SCENE s)
 	//êîéö
 	g_pTexUseful[0].SetTextureName((char*)"data\\texture\\number.png");
 	g_pDrawObject[0].SetDrawObject(g_pTexUseful[0], 0.0f, 0.0909f, 1.0f, 11);
-	g_pNumber = new Number(g_pDrawObject[0]);
+	g_pNumber = new Score(g_pDrawObject[0]);
 
 	InitScene(s);
 }
