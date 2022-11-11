@@ -37,8 +37,8 @@ void PlayerArm2::Update(const D3DXVECTOR2& arm_pos)
 	m_bullet_interval_count++;
 
 	//³‚µ‚¢ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚ç
-	if ((inhPlayerArm::GetRightLeft() && inhPlayerArm::IsButtonPush()) ||
-		(!inhPlayerArm::GetRightLeft() && inhPlayerArm::IsButtonPush())) {
+	if ((inhPlayerArm::GetRightLeft() && inhPlayerArm::IsButtonTrigger()) ||
+		(!inhPlayerArm::GetRightLeft() && inhPlayerArm::IsButtonTrigger())) {
 		//”­ŽË‚Å‚«‚éŽžŠÔ‚É‚È‚Á‚½‚ç...
 		if (m_bullet_interval_count > BULLET_INTERVAL) {
 			m_bullet_interval_count = 0;
