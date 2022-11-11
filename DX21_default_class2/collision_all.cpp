@@ -130,9 +130,9 @@ int CollisionAll::Collision(void)
 			}
 		}
 
-		if (m_pPlayerRight->GetType() == inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
+		/*if (m_pPlayerRight->GetType() == inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
 
-		}
+		}*/
 	}
 
 	return attacked;
