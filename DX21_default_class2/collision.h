@@ -11,8 +11,7 @@
 
 class Collision
 {
-private:						//半径2(丸)
-
+//メンバ関数
 public:
 	Collision(){}	//デフォルトコンストラクタ
 
