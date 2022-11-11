@@ -1,13 +1,13 @@
 //============================================================
-// �S�ẴQ�[���I�u�W�F�N�g�̓����蔻��֌W(cpp�t�@�C��)
-// �쐬���F2022/11/10
-// �쐬�ҁF��������
+// 全てのゲームオブジェクトの当たり判定関係(cppファイル)
+// 作成日：2022/11/10
+// 作成者：高梨水希
 //============================================================
 #include "collision_all.h"
 #include "collision.h"
 
 //==========================
-// �f�t�H���g�R���X�g���N�^
+// デフォルトコンストラクタ
 //==========================
 CollisionAll::CollisionAll()
 {
@@ -17,7 +17,7 @@ CollisionAll::CollisionAll()
 }
 
 //==========================
-// �����t���R���X�g���N�^
+// 引数付きコンストラクタ
 //==========================
 CollisionAll::CollisionAll(Player* pPlayer, ExplosionManagement* pExplosion,
 	ItemManagement* pItem, Score* pNumber)
@@ -29,67 +29,67 @@ CollisionAll::CollisionAll(Player* pPlayer, ExplosionManagement* pExplosion,
 }
 
 //==========================
-// �����蔻��
+// 当たり判定
 //==========================
 int CollisionAll::Collision(void)
 {
-	//�v���C���[���g���󂯂��_���[�W��
+	//プレイヤー自身が受けたダメージ数
 	int attacked = 0;
 
 	//=================================================
-	// �G�Ɓ���
+	// 敵と○○
 
-	//�G�̎�ނ̐������[�v
+	//敵の種類の数分ループ
 	for (int k = 0; k < m_enemy_num; k++) {
 
 		//=================================================
-		// �G�̐������[�v
+		// 敵の数分ループ
 		for (int j = 0; j < m_pEnemy[k]->GetObjNum(); j++) {
 
 			//=================================================
-			// �v���C���[�ƓG
+			// プレイヤーと敵
 
-			//�v���C���[�̕�
-			//�G�̕�
+			//プレイヤーの方
+			//敵の方
 
-				//�e
-				//���g
+				//弾
+				//自身
 			for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
-				//��������ʊO�ɂ�����󂹂Ȃ��悤�ɂ���
+				//もしも画面外にいたら壊せないようにする
 				if (!ScreenOut::GetScreenOut(m_pEnemy[k]->GetObjPos(j),
 					m_pEnemy[k]->GetObjSize())) {
 
-					//��������������
+					//当たったか判定
 					if (Collision::ColBox(m_pPlayer->GetBulletPos(i), m_pEnemy[k]->GetObjPos(j),
 						m_pPlayer->GetBulletSize(), m_pEnemy[k]->GetObjSize())) {
-						//�������Z�b�g
+						//爆発をセット
 						m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
-						//�G�A�C�e���̃h���b�v
+						//敵アイテムのドロップ
 						m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 
-						//�v���C���[�̒e������
+						//プレイヤーの弾を消す
 						m_pPlayer->DeleteBullet(i);
 						i--;
-						//�G������
+						//敵を消す
 						m_pEnemy[k]->DeleteObj(j);
 						j--;
 
-						//�|�����G�̐��𑝂₷
+						//倒した敵の数を増やす
 						m_pNumber->AddScore(1);
 					}
 				}
 			}
 
-				//���g
-				//���g
+				//自身
+				//自身
 			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetObjPos(0),
 				m_pPlayer->GetSize(), m_pEnemy[k]->GetObjSize())) {
-				//��x����Ă��炶��Ȃ��Ƃ�����x������������ɂ͂Ȃ�Ȃ�
+				//一度離れてからじゃないともう一度当たった判定にはならない
 				if (!m_player_enemy_col) {
-					//�Ԃ������t���O���I��
+					//ぶつかったフラグをオン
 					m_player_enemy_col = true;
 
-					//�_���[�W���𑝂₷
+					//ダメージ数を増やす
 					attacked += m_pEnemy[k]->GetObjAttack();
 				}
 			}
@@ -98,66 +98,91 @@ int CollisionAll::Collision(void)
 			}
 
 			//=================================================
-			// �v���C���[�̘r�ƓG
+			// プレイヤーの腕と敵
 
-			//�E�r
+			//右腕
 			//if (m_pPlayerRight->GetType() == inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
-			//	//�r�̕�
-			//	//�G�̕�
+			//	//腕の方
+			//	//敵の方
 
-			//		//���g
-			//		//���g
+			//		//自身
+			//		//自身
 			//	if (Collision::ColBox(m_pPlayerRight->GetPos(), m_pEnemy[k]->GetObjPos(j),
 			//		m_pPlayerRight->GetSize(), m_pEnemy[k]->GetObjSize(j))){
-			//		//TYPE_OLD�ɃZ�b�g
+			//		//TYPE_OLDにセット
 			//		m_pPlayerRight->SetType(inhPlayerArmBoth::TYPE::TYPE_OLD);
-			//		//�G���폜
+			//		//敵を削除
 			//		m_pEnemy[k]->DeleteObj(j);
-			//		//�������Z�b�g
+			//		//爆発をセット
 			//		m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
 			//	}
 			//}
 		}
 
 		//=================================================
-		// �G�̒e�����[�v
+		// 敵の弾分ループ
 		for (int j = 0; j < m_pEnemy[k]->GetBulletNum(); j++) {
 
 			//=================================================
-			// �v���C���[�ƓG�̒e
+			// プレイヤーと敵の弾
 
-			//�v���C���[�̕�
-			//�G�̕�
+			//プレイヤーの方
+			//敵の方
 			
-				//�e
-				//�e
+				//弾
+				//弾
 			for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
 				if (Collision::ColBox(m_pPlayer->GetBulletPos(i), m_pEnemy[k]->GetBulletPos(j),
 					m_pPlayer->GetBulletSize(), m_pEnemy[k]->GetBulletSize())) {
-					//�������Z�b�g
+					//爆発をセット
 					m_pExplosion->SetExplosion(m_pEnemy[k]->GetBulletPos(j));
 
-					//�v���C���[�̒e������
+					//プレイヤーの弾を消す
 					m_pPlayer->DeleteBullet(i);
 					i--;
-					//�G�̒e������
+					//敵の弾を消す
 					m_pEnemy[k]->DeleteBullet(j);
 					j--;
 				}
 			}
 
-				//���g
-				//�e
+				//自身
+				//弾
 			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetBulletPos(j),
 				m_pPlayer->GetSize(), m_pEnemy[k]->GetBulletSize())) {
 
-				//�G�̒e������
+				//敵の弾を消す
 				m_pEnemy[k]->DeleteBullet(j);
 				j--;
-				//�_���[�W���𑝂₷
+				//ダメージ数を増やす
 				attacked += m_pEnemy[k]->GetBulletAttack();
 			}
 		}
+
+		//自身
+		//自身
+		for (int j = 0; j < m_pEnemy[k]->GetObjNum(); j++) {
+			D3DXVECTOR2 Hoge = m_pEnemy[k]->GetObjPos(0);
+
+			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetObjPos(0),
+				m_pPlayer->GetSize(), m_pEnemy[k]->GetObjSize())) {
+				//一度離れてからじゃないともう一度当たった判定にはならない
+				if (!m_player_enemy_col) {
+					//ぶつかったフラグをオン
+					m_player_enemy_col = true;
+
+					//ダメージ数を増やす
+					attacked += m_pEnemy[k]->GetObjAttack();
+				}
+			}
+			else {
+				m_player_enemy_col = false;
+			}
+		}
+
+		/*if (m_pPlayerRight->GetType() == inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
+
+		}*/
 	}
 
 	return attacked;
