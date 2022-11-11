@@ -39,7 +39,7 @@ int PlayerEnemyGatoringCollision::Update(void)
 					m_rEnemyGatoringManagement->DeleteObj(j);
 					j--;
 
-					m_pNumber->AddNumber(1);
+					m_pNumber->AddScore(1);
 				}
 			}
 		}

@@ -35,7 +35,7 @@ Result::Result()
 //=========================
 // 引数付きコンストラクタ
 //=========================
-Result::Result(Number * pNumber):m_pNumber(pNumber)
+Result::Result(Score * pNumber):m_pNumber(pNumber)
 {
 	m_BGM = LoadSound((char*)"data\\BGM\\silky_sky_away (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);
