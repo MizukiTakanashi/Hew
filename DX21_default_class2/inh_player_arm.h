@@ -35,6 +35,7 @@ private:
 	int m_bullet_max_num = 0;	//アイテムが出す最大弾数
 	bool m_right = false;		//右についてるか左についてるか
 	bool m_button_push = false;	//ボタンが押されたか
+	bool m_button_trigger = false;	//ボタンが押されたか(トリガー)
 	bool m_bullet_used = false;	//弾が尽きたかどうか
 	TYPE m_type = TYPE::TYPE1;	//自分のタイプ
 
@@ -100,6 +101,12 @@ public:
 
 	//ボタンが押されたかを返す
 	bool IsButtonPush(void)const { return m_button_push; }
+
+	//ボタンが押されたかフラグをセット　トリガー
+	void SetButtonTrigger(bool push) { m_button_trigger = push; }
+
+	//ボタンが押されたかを返す　トリガー
+	bool IsButtonTrigger(void)const { return m_button_trigger; }
 
 	//タイプを返す
 	TYPE GetType(void)const { return m_type; }

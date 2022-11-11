@@ -77,15 +77,17 @@ void inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& 
 			//ホーミング用の敵の位置を取得(PlayerArm1)
 			m_pEnemyItem->SetSomethingPos(enemy_pos);
 
+			//m_pEnemyItem->SetButtonTrigger(false);
+			//m_pEnemyItem->SetButtonPush(false);
 			//ボタン押されたか判断
 			switch (m_type) {
 
 				//Arm2はトリガーになってる
 			case TYPE::TYPE2:
-				m_pEnemyItem->SetButtonPush(m_bullet_shot_trigger);
+				m_pEnemyItem->SetButtonTrigger(m_bullet_shot_trigger);
 				break;
 
-			default:
+			default: 
 				m_pEnemyItem->SetButtonPush(m_bullet_shot);
 				break;
 			}
