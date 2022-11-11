@@ -7,9 +7,11 @@
 #ifndef _SCORE_H_
 #define _SCORE_H_
 
-#include "number.h"
+#include "main.h"
+#include "UI.h"
+#include "draw_object.h"
 
-class Score :public Number
+class Score :public UI
 {
 	//’è”
 private:
