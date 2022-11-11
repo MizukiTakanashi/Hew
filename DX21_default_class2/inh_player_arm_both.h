@@ -75,7 +75,7 @@ public:
 	void ArmDraw(void)const;
 
 	//腕のタイプを設定
-	void SetType(int type, bool newtype = true);
+	void SetType(TYPE type, bool newtype = true);
 
 	//タイプを返す
 	TYPE GetType(void)const { return m_type; }

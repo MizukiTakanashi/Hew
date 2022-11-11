@@ -36,20 +36,25 @@ int CollisionAll::Collision(void)
 	//プレイヤー自身が受けたダメージ数
 	int attacked = 0;
 
+	//=================================================
+	// 敵と○○
+
 	//敵の種類の数分ループ
 	for (int k = 0; k < m_enemy_num; k++) {
 
 		//=================================================
-		//
+		// 敵の数分ループ
+		for (int j = 0; j < m_pEnemy[k]->GetObjNum(); j++) {
 
-		//プレイヤーの方
-		//敵の方
+			//=================================================
+			// プレイヤーと敵
 
-			//弾
-			//自身
-		for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
-			for (int j = 0; j < m_pEnemy[k]->GetObjNum(); j++) {
+			//プレイヤーの方
+			//敵の方
 
+				//弾
+				//自身
+			for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
 				//もしも画面外にいたら壊せないようにする
 				if (!ScreenOut::GetScreenOut(m_pEnemy[k]->GetObjPos(j),
 					m_pEnemy[k]->GetObjSize())) {
@@ -74,46 +79,9 @@ int CollisionAll::Collision(void)
 					}
 				}
 			}
-		}
 
-		//弾
-		//弾
-		for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
-			for (int j = 0; j < m_pEnemy[k]->GetBulletNum(); j++) {
-				if (Collision::ColBox(m_pPlayer->GetBulletPos(i), m_pEnemy[k]->GetBulletPos(j),
-					m_pPlayer->GetBulletSize(), m_pEnemy[k]->GetBulletSize())) {
-					//爆発をセット
-					m_pExplosion->SetExplosion(m_pEnemy[k]->GetBulletPos(j));
-
-					//プレイヤーの弾を消す
-					m_pPlayer->DeleteBullet(i);
-					i--;
-					//敵の弾を消す
-					m_pEnemy[k]->DeleteBullet(j);
-					j--;
-				}
-			}
-		}
-
-		//自身
-		//弾
-		for (int j = 0; j < m_pEnemy[k]->GetBulletNum(); j++) {
-			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetBulletPos(j),
-				m_pPlayer->GetSize(), m_pEnemy[k]->GetBulletSize())) {
-
-				//敵の弾を消す
-				m_pEnemy[k]->DeleteBullet(j);
-				j--;
-				//ダメージ数を増やす
-				attacked += m_pEnemy[k]->GetBulletAttack();
-			}
-		}
-
-		//自身
-		//自身
-		for (int j = 0; j < m_pEnemy[k]->GetObjNum(); j++) {
-			D3DXVECTOR2 Hoge = m_pEnemy[k]->GetObjPos(0);
-
+				//自身
+				//自身
 			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetObjPos(0),
 				m_pPlayer->GetSize(), m_pEnemy[k]->GetObjSize())) {
 				//一度離れてからじゃないともう一度当たった判定にはならない
@@ -128,10 +96,67 @@ int CollisionAll::Collision(void)
 			else {
 				m_player_enemy_col = false;
 			}
+
+			//=================================================
+			// プレイヤーの腕と敵
+
+			//右腕
+			if (m_pPlayerRight->GetType() == inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
+				//腕の方
+				//敵の方
+
+					//自身
+					//自身
+				if (Collision::ColBox(m_pPlayerRight->GetPos(), m_pEnemy[k]->GetObjPos(j),
+					m_pPlayerRight->GetSize(), m_pEnemy[k]->GetObjSize(j))){
+					//TYPE_OLDにセット
+					m_pPlayerRight->SetType(inhPlayerArmBoth::TYPE::TYPE_OLD);
+					//敵を削除
+					m_pEnemy[k]->DeleteObj(j);
+					//爆発をセット
+					m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
+				}
+			}
 		}
 
-		if (m_pPlayerRight->GetType() == inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
+		//=================================================
+		// 敵の弾分ループ
+		for (int j = 0; j < m_pEnemy[k]->GetBulletNum(); j++) {
 
+			//=================================================
+			// プレイヤーと敵の弾
+
+			//プレイヤーの方
+			//敵の方
+			
+				//弾
+				//弾
+			for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
+				if (Collision::ColBox(m_pPlayer->GetBulletPos(i), m_pEnemy[k]->GetBulletPos(j),
+					m_pPlayer->GetBulletSize(), m_pEnemy[k]->GetBulletSize())) {
+					//爆発をセット
+					m_pExplosion->SetExplosion(m_pEnemy[k]->GetBulletPos(j));
+
+					//プレイヤーの弾を消す
+					m_pPlayer->DeleteBullet(i);
+					i--;
+					//敵の弾を消す
+					m_pEnemy[k]->DeleteBullet(j);
+					j--;
+				}
+			}
+
+				//自身
+				//弾
+			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetBulletPos(j),
+				m_pPlayer->GetSize(), m_pEnemy[k]->GetBulletSize())) {
+
+				//敵の弾を消す
+				m_pEnemy[k]->DeleteBullet(j);
+				j--;
+				//ダメージ数を増やす
+				attacked += m_pEnemy[k]->GetBulletAttack();
+			}
 		}
 	}
 

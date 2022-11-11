@@ -5,6 +5,7 @@
 //=========================================================
 
 #include"collision_arm_all_enemy.h"
+#include "inh_player_arm_both.h"
 #include"collision.h"
 
 void ArmAllEnemyCollision::Update()
@@ -20,7 +21,7 @@ void ArmAllEnemyCollision::Update()
 			if (Collision::ColBox(m_rplayerleft->GetPos(), m_rEnemyManagement->GetObjPos(n),
 				m_rplayerleft->GetSize(), m_rEnemyManagement->GetObjSize(n)))
 			{
-				m_rplayerleft->SetType(0);
+				m_rplayerleft->SetType(inhPlayerArmBoth::TYPE::TYPE_OLD);
 				m_rEnemyManagement->DeleteObj(n);
 				//”š”­‚ðƒZƒbƒg
 				m_rExplosionManagement->SetExplosion(m_rEnemyManagement->GetObjPos(n));
@@ -33,7 +34,7 @@ void ArmAllEnemyCollision::Update()
 			if (Collision::ColBox(m_rplayerleft->GetPos(), m_rEnemyLaserManagement->GetObjPos(j),
 				m_rplayerleft->GetSize(), m_rEnemyLaserManagement->GetObjSize(j)))
 			{
-				m_rplayerleft->SetType(0);
+				m_rplayerleft->SetType(inhPlayerArmBoth::TYPE::TYPE_OLD);
 				m_rEnemyLaserManagement->DeleteObj(j);
 				m_rExplosionManagement->SetExplosion(m_rEnemyLaserManagement->GetObjPos(j));
 			}
@@ -45,7 +46,7 @@ void ArmAllEnemyCollision::Update()
 			if (Collision::ColBox(m_rplayerleft->GetPos(), m_rEnemyGatoringManagement->GetObjPos(l),
 				m_rplayerleft->GetSize(), m_rEnemyGatoringManagement->GetObjSize(l)))
 			{
-				m_rplayerleft->SetType(0);
+				m_rplayerleft->SetType(inhPlayerArmBoth::TYPE::TYPE_OLD);
 				m_rEnemyGatoringManagement->DeleteObj(l);
 
 				m_rExplosionManagement->SetExplosion(m_rEnemyGatoringManagement->GetObjPos(l));
@@ -64,7 +65,7 @@ void ArmAllEnemyCollision::Update()
 			if (Collision::ColBox(m_rplayerright->GetPos(), m_rEnemyManagement->GetObjPos(m),
 				m_rplayerright->GetSize(), m_rEnemyManagement->GetObjSize(m)))
 			{
-				m_rplayerright->SetType(0);
+				m_rplayerright->SetType(inhPlayerArmBoth::TYPE::TYPE_OLD);
 				m_rEnemyManagement->DeleteObj(m);
 
 				m_rExplosionManagement->SetExplosion(m_rEnemyManagement->GetObjPos(m));
@@ -77,7 +78,7 @@ void ArmAllEnemyCollision::Update()
 			if (Collision::ColBox(m_rplayerright->GetPos(), m_rEnemyLaserManagement->GetObjPos(i),
 				m_rplayerright->GetSize(), m_rEnemyLaserManagement->GetObjSize(i)))
 			{
-				m_rplayerright->SetType(0);
+				m_rplayerright->SetType(inhPlayerArmBoth::TYPE::TYPE_OLD);
 
 				m_rEnemyLaserManagement->DeleteObj(i);
 				m_rExplosionManagement->SetExplosion(m_rEnemyLaserManagement->GetObjPos(i));
@@ -90,7 +91,7 @@ void ArmAllEnemyCollision::Update()
 			if (Collision::ColBox(m_rplayerright->GetPos(), m_rEnemyGatoringManagement->GetObjPos(k),
 				m_rplayerright->GetSize(), m_rEnemyGatoringManagement->GetObjSize(k)))
 			{
-				m_rplayerright->SetType(0);
+				m_rplayerright->SetType(inhPlayerArmBoth::TYPE::TYPE_OLD);
 				m_rEnemyGatoringManagement->DeleteObj(k);
 				m_rExplosionManagement->SetExplosion(m_rEnemyGatoringManagement->GetObjPos(k));
 			}

@@ -128,7 +128,7 @@ void inhPlayerArmBoth::ArmDraw(void) const
 //==========================
 // 腕のタイプを設定
 //==========================
-void inhPlayerArmBoth::SetType(int type, bool newtype)
+void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 {
 	//発射中であればセットしない
 	if (m_shot/*m_type == TYPE::TYPE_SHOOT*/) {
@@ -144,7 +144,7 @@ void inhPlayerArmBoth::SetType(int type, bool newtype)
 	}
 
 	//タイプをセット
-	m_type = (TYPE)type;
+	m_type = type;
 
 	//テクスチャをタイプに合わせてセット
 	GameObject::SetAnimationNum((float)m_type - 1.0f);
