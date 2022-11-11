@@ -101,22 +101,22 @@ int CollisionAll::Collision(void)
 			// プレイヤーの腕と敵
 
 			//右腕
-			if (m_pPlayerRight->GetType() == inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
-				//腕の方
-				//敵の方
+			//if (m_pPlayerRight->GetType() == inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
+			//	//腕の方
+			//	//敵の方
 
-					//自身
-					//自身
-				if (Collision::ColBox(m_pPlayerRight->GetPos(), m_pEnemy[k]->GetObjPos(j),
-					m_pPlayerRight->GetSize(), m_pEnemy[k]->GetObjSize(j))){
-					//TYPE_OLDにセット
-					m_pPlayerRight->SetType(inhPlayerArmBoth::TYPE::TYPE_OLD);
-					//敵を削除
-					m_pEnemy[k]->DeleteObj(j);
-					//爆発をセット
-					m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
-				}
-			}
+			//		//自身
+			//		//自身
+			//	if (Collision::ColBox(m_pPlayerRight->GetPos(), m_pEnemy[k]->GetObjPos(j),
+			//		m_pPlayerRight->GetSize(), m_pEnemy[k]->GetObjSize(j))){
+			//		//TYPE_OLDにセット
+			//		m_pPlayerRight->SetType(inhPlayerArmBoth::TYPE::TYPE_OLD);
+			//		//敵を削除
+			//		m_pEnemy[k]->DeleteObj(j);
+			//		//爆発をセット
+			//		m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
+			//	}
+			//}
 		}
 
 		//=================================================
