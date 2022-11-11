@@ -14,9 +14,9 @@ void PlayerArmChange::Change()
 		m_PlayerRight->SetArmPointer(temp);
 
 		//腕の中のタイプを変更
-		PlayerLeft::TYPE temp1;
+		inhPlayerArmBoth::TYPE temp1;
 		temp1 = m_PlayerLeft->GetType();
-		m_PlayerLeft->SetType((int)m_PlayerRight->GetType(), false);
-		m_PlayerRight->SetType((int)temp1, false);
+		m_PlayerLeft->SetType(m_PlayerRight->GetType(), false);
+		m_PlayerRight->SetType(temp1, false);
 	}
 }

@@ -1,13 +1,13 @@
 //============================================================
-// ‘S‚Ä‚ÌƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚Ì“–‚½‚è”»’èŠÖŒW(cppƒtƒ@ƒCƒ‹)
-// ì¬“úF2022/11/10
-// ì¬ÒF‚—œ…Šó
+// å…¨ã¦ã®ã‚²ãƒ¼ãƒ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å½“ãŸã‚Šåˆ¤å®šé–¢ä¿‚(cppãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š2022/11/10
+// ä½œæˆè€…ï¼šé«˜æ¢¨æ°´å¸Œ
 //============================================================
 #include "collision_all.h"
 #include "collision.h"
 
 //==========================
-// ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //==========================
 CollisionAll::CollisionAll()
 {
@@ -17,7 +17,7 @@ CollisionAll::CollisionAll()
 }
 
 //==========================
-// ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+// å¼•æ•°ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //==========================
 CollisionAll::CollisionAll(Player* pPlayer, ExplosionManagement* pExplosion,
 	ItemManagement* pItem, Score* pNumber)
@@ -29,99 +29,149 @@ CollisionAll::CollisionAll(Player* pPlayer, ExplosionManagement* pExplosion,
 }
 
 //==========================
-// “–‚½‚è”»’è
+// å½“ãŸã‚Šåˆ¤å®š
 //==========================
 int CollisionAll::Collision(void)
 {
-	//ƒvƒŒƒCƒ„[©g‚ªó‚¯‚½ƒ_ƒ[ƒW”
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼è‡ªèº«ãŒå—ã‘ãŸãƒ€ãƒ¡ãƒ¼ã‚¸æ•°
 	int attacked = 0;
 
-	//“G‚Ìí—Ş‚Ì”•ªƒ‹[ƒv
+	//=================================================
+	// æ•µã¨â—‹â—‹
+
+	//æ•µã®ç¨®é¡ã®æ•°åˆ†ãƒ«ãƒ¼ãƒ—
 	for (int k = 0; k < m_enemy_num; k++) {
 
 		//=================================================
-		//
+		// æ•µã®æ•°åˆ†ãƒ«ãƒ¼ãƒ—
+		for (int j = 0; j < m_pEnemy[k]->GetObjNum(); j++) {
 
-		//ƒvƒŒƒCƒ„[‚Ì•û
-		//“G‚Ì•û
+			//=================================================
+			// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¨æ•µ
 
-			//’e
-			//©g
-		for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
-			for (int j = 0; j < m_pEnemy[k]->GetObjNum(); j++) {
+			//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ–¹
+			//æ•µã®æ–¹
 
-				//‚à‚µ‚à‰æ–ÊŠO‚É‚¢‚½‚ç‰ó‚¹‚È‚¢‚æ‚¤‚É‚·‚é
+				//å¼¾
+				//è‡ªèº«
+			for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
+				//ã‚‚ã—ã‚‚ç”»é¢å¤–ã«ã„ãŸã‚‰å£Šã›ãªã„ã‚ˆã†ã«ã™ã‚‹
 				if (!ScreenOut::GetScreenOut(m_pEnemy[k]->GetObjPos(j),
 					m_pEnemy[k]->GetObjSize())) {
 
-					//“–‚½‚Á‚½‚©”»’è
+					//å½“ãŸã£ãŸã‹åˆ¤å®š
 					if (Collision::ColBox(m_pPlayer->GetBulletPos(i), m_pEnemy[k]->GetObjPos(j),
 						m_pPlayer->GetBulletSize(), m_pEnemy[k]->GetObjSize())) {
-						//”š”­‚ğƒZƒbƒg
+						//çˆ†ç™ºã‚’ã‚»ãƒƒãƒˆ
 						m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
-						//“GƒAƒCƒeƒ€‚Ìƒhƒƒbƒv
+						//æ•µã‚¢ã‚¤ãƒ†ãƒ ã®ãƒ‰ãƒ­ãƒƒãƒ—
 						m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 
-						//ƒvƒŒƒCƒ„[‚Ì’e‚ğÁ‚·
+						//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å¼¾ã‚’æ¶ˆã™
 						m_pPlayer->DeleteBullet(i);
 						i--;
-						//“G‚ğÁ‚·
+						//æ•µã‚’æ¶ˆã™
 						m_pEnemy[k]->DeleteObj(j);
 						j--;
 
-						//“|‚µ‚½“G‚Ì”‚ğ‘‚â‚·
+						//å€’ã—ãŸæ•µã®æ•°ã‚’å¢—ã‚„ã™
 						m_pNumber->AddScore(1);
 					}
 				}
 			}
+
+				//è‡ªèº«
+				//è‡ªèº«
+			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetObjPos(0),
+				m_pPlayer->GetSize(), m_pEnemy[k]->GetObjSize())) {
+				//ä¸€åº¦é›¢ã‚Œã¦ã‹ã‚‰ã˜ã‚ƒãªã„ã¨ã‚‚ã†ä¸€åº¦å½“ãŸã£ãŸåˆ¤å®šã«ã¯ãªã‚‰ãªã„
+				if (!m_player_enemy_col) {
+					//ã¶ã¤ã‹ã£ãŸãƒ•ãƒ©ã‚°ã‚’ã‚ªãƒ³
+					m_player_enemy_col = true;
+
+					//ãƒ€ãƒ¡ãƒ¼ã‚¸æ•°ã‚’å¢—ã‚„ã™
+					attacked += m_pEnemy[k]->GetObjAttack();
+				}
+			}
+			else {
+				m_player_enemy_col = false;
+			}
+
+			//=================================================
+			// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•ã¨æ•µ
+
+			//å³è…•
+			//if (m_pPlayerRight->GetType() == inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
+			//	//è…•ã®æ–¹
+			//	//æ•µã®æ–¹
+
+			//		//è‡ªèº«
+			//		//è‡ªèº«
+			//	if (Collision::ColBox(m_pPlayerRight->GetPos(), m_pEnemy[k]->GetObjPos(j),
+			//		m_pPlayerRight->GetSize(), m_pEnemy[k]->GetObjSize(j))){
+			//		//TYPE_OLDã«ã‚»ãƒƒãƒˆ
+			//		m_pPlayerRight->SetType(inhPlayerArmBoth::TYPE::TYPE_OLD);
+			//		//æ•µã‚’å‰Šé™¤
+			//		m_pEnemy[k]->DeleteObj(j);
+			//		//çˆ†ç™ºã‚’ã‚»ãƒƒãƒˆ
+			//		m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
+			//	}
+			//}
 		}
 
-		//’e
-		//’e
-		for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
-			for (int j = 0; j < m_pEnemy[k]->GetBulletNum(); j++) {
+		//=================================================
+		// æ•µã®å¼¾åˆ†ãƒ«ãƒ¼ãƒ—
+		for (int j = 0; j < m_pEnemy[k]->GetBulletNum(); j++) {
+
+			//=================================================
+			// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¨æ•µã®å¼¾
+
+			//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ–¹
+			//æ•µã®æ–¹
+			
+				//å¼¾
+				//å¼¾
+			for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
 				if (Collision::ColBox(m_pPlayer->GetBulletPos(i), m_pEnemy[k]->GetBulletPos(j),
 					m_pPlayer->GetBulletSize(), m_pEnemy[k]->GetBulletSize())) {
-					//”š”­‚ğƒZƒbƒg
+					//çˆ†ç™ºã‚’ã‚»ãƒƒãƒˆ
 					m_pExplosion->SetExplosion(m_pEnemy[k]->GetBulletPos(j));
 
-					//ƒvƒŒƒCƒ„[‚Ì’e‚ğÁ‚·
+					//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å¼¾ã‚’æ¶ˆã™
 					m_pPlayer->DeleteBullet(i);
 					i--;
-					//“G‚Ì’e‚ğÁ‚·
+					//æ•µã®å¼¾ã‚’æ¶ˆã™
 					m_pEnemy[k]->DeleteBullet(j);
 					j--;
 				}
 			}
-		}
 
-		//©g
-		//’e
-		for (int j = 0; j < m_pEnemy[k]->GetBulletNum(); j++) {
+				//è‡ªèº«
+				//å¼¾
 			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetBulletPos(j),
 				m_pPlayer->GetSize(), m_pEnemy[k]->GetBulletSize())) {
 
-				//“G‚Ì’e‚ğÁ‚·
+				//æ•µã®å¼¾ã‚’æ¶ˆã™
 				m_pEnemy[k]->DeleteBullet(j);
 				j--;
-				//ƒ_ƒ[ƒW”‚ğ‘‚â‚·
+				//ãƒ€ãƒ¡ãƒ¼ã‚¸æ•°ã‚’å¢—ã‚„ã™
 				attacked += m_pEnemy[k]->GetBulletAttack();
 			}
 		}
 
-		//©g
-		//©g
+		//è‡ªèº«
+		//è‡ªèº«
 		for (int j = 0; j < m_pEnemy[k]->GetObjNum(); j++) {
 			D3DXVECTOR2 Hoge = m_pEnemy[k]->GetObjPos(0);
 
 			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetObjPos(0),
 				m_pPlayer->GetSize(), m_pEnemy[k]->GetObjSize())) {
-				//ˆê“x—£‚ê‚Ä‚©‚ç‚¶‚á‚È‚¢‚Æ‚à‚¤ˆê“x“–‚½‚Á‚½”»’è‚É‚Í‚È‚ç‚È‚¢
+				//ä¸€åº¦é›¢ã‚Œã¦ã‹ã‚‰ã˜ã‚ƒãªã„ã¨ã‚‚ã†ä¸€åº¦å½“ãŸã£ãŸåˆ¤å®šã«ã¯ãªã‚‰ãªã„
 				if (!m_player_enemy_col) {
-					//‚Ô‚Â‚©‚Á‚½ƒtƒ‰ƒO‚ğƒIƒ“
+					//ã¶ã¤ã‹ã£ãŸãƒ•ãƒ©ã‚°ã‚’ã‚ªãƒ³
 					m_player_enemy_col = true;
 
-					//ƒ_ƒ[ƒW”‚ğ‘‚â‚·
+					//ãƒ€ãƒ¡ãƒ¼ã‚¸æ•°ã‚’å¢—ã‚„ã™
 					attacked += m_pEnemy[k]->GetObjAttack();
 				}
 			}

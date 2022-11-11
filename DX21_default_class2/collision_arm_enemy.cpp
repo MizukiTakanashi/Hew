@@ -14,7 +14,7 @@ int ArmEnemyCollision::Update(void)
             {
                 heel++;
             }
-            m_rPlayeLeft->SetType(m_rItemManagement->GetItemType(i) + 1);
+            m_rPlayeLeft->SetType((inhPlayerArmBoth::TYPE)(m_rItemManagement->GetItemType(i) + 1));
             m_rItemManagement->DeleteItem(i);          
         }
     }
@@ -28,7 +28,7 @@ int ArmEnemyCollision::Update(void)
             {
                 heel++;
             }
-            m_rPlayerRight->SetType(m_rItemManagement->GetItemType(j) + 1);
+            m_rPlayerRight->SetType((inhPlayerArmBoth::TYPE)(m_rItemManagement->GetItemType(j) + 1));
             m_rItemManagement->DeleteItem(j);            
         }
     }
