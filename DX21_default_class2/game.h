@@ -19,9 +19,6 @@
 #include "texture_useful.h"
 #include "player_hp.h"
 #include "management_explosion.h"
-#include "collision_player_enemy_normal.h"
-#include "collision_player_enemy_laser.h"
-#include "collision_player_enemy_gatoring.h"
 #include "number.h"
 #include "player_left.h"
 #include "player_right.h"
@@ -31,12 +28,14 @@
 #include "collision_player_arm_enemy.h"
 #include "collision_arm_all_enemy.h"
 #include "player_arm_change.h"
+#include "collision_all.h"
+
 class Game
 {
 //定数
 private:
 	//ここで初期化
-	static const int NUMBER_DIGIT = 10;
+	static const int NUMBER_DIGIT = 10;		//数字の桁
 
 	//cppで初期化
 	static const D3DXVECTOR2 NUMBER_SIZE;	//数字のサイズ
@@ -95,9 +94,6 @@ private:
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;
 	ItemManagement* m_pItemManagement = nullptr;
-	PlayerEnemyNormalCollision* m_pPlayerEnemyNormalCol = nullptr;
-	PlayerEnemyLaserCollision* m_pPlayerEnemyLaserCol = nullptr;
-	PlayerEnemyGatoringCollision* m_pPlayerEnemyGatoringCol = nullptr;
 	ArmAllEnemyCollision* m_pArmAllEnemyCollision = nullptr;
 	ArmEnemyCollision* m_ArmEnemyCollision = nullptr;
 
@@ -108,6 +104,10 @@ private:
 
 	PlayerArmEnemyCol* m_pArmEnemyCol = nullptr;	//プレイヤーの腕と全敵の当たり判定
 	PlayerArmChange* m_pPlayerArmChange = nullptr;	//腕の交換
+
+	CollisionAll* m_pColAll = nullptr;				//全ての当たり判定
+
+//メンバ関数
 public:
 	Game();	//デフォルトコンストラクタ
 

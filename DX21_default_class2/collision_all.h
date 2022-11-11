@@ -10,6 +10,9 @@
 
 #include "player.h"
 #include "management_enemy.h"
+#include "management_explosion.h"
+#include "management_item.h"
+#include "number.h"
 
 class CollisionAll
 {
@@ -20,10 +23,15 @@ private:
 
 //メンバ変数
 private:
-	Player* m_pPlayer = nullptr;			//プレイヤー
+	Player* m_pPlayer = nullptr;					//プレイヤー
 
-	int m_enemy_num = 0;					//敵の種類の数
-	EnemyManagement* m_pEnemy[ENEMY_NUM];	//敵全クラス
+	int m_enemy_num = 0;							//敵の種類の数
+	EnemyManagement* m_pEnemy[ENEMY_NUM];			//敵全クラス
+	ExplosionManagement* m_pExplosion = nullptr;	//爆発
+	ItemManagement* m_pItem = nullptr;				//アイテム
+	Number* m_pNumber = nullptr;					//倒した敵の数表示
+
+	bool m_player_enemy_col = false;				//プレイヤーと
 
 //メンバ関数
 public:
@@ -31,10 +39,20 @@ public:
 	CollisionAll();
 
 	//引数付きコンストラクタ
-	CollisionAll(Player* pPlayer):m_pPlayer(pPlayer);
+	CollisionAll(Player* pPlayer, ExplosionManagement* pExplosion, 
+		ItemManagement* pItem, Number* pNumber);
 
 	//デストラクタ
 	~CollisionAll(){}
+
+	//敵のクラスのポインタを加える
+	void AddEnemyPointer(EnemyManagement* pEnemy) { 
+		m_pEnemy[m_enemy_num] = pEnemy; 
+		m_enemy_num++;
+	}
+
+	//当たり判定
+	int Collision(void);
 };
 
 #endif // !_COLLISION_ALL_H_

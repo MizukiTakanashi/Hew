@@ -211,19 +211,6 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_FRAME].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER_HP], 1.0f, 1.0f, 0.5f, 1);
 	m_pPlayerHP = new PlayerHP(m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_BAR], m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_FRAME], m_pExplosionManagement, m_pNumber);
 
-
-	//プレイヤーと普通の敵の当たり判定
-	m_pPlayerEnemyNormalCol = new PlayerEnemyNormalCollision(m_pPlayer, m_pEnemyNormalManagement,
-		m_pExplosionManagement, m_pNumber, m_pItemManagement);
-
-	//プレイヤーとレーザーの敵の当たり判定
-	m_pPlayerEnemyLaserCol = new PlayerEnemyLaserCollision(m_pPlayer, m_pEnemyLaserManagement,
-		m_pExplosionManagement, m_pNumber, m_pItemManagement);
-
-	//プレイヤーとガトリングの敵の当たり判定
-	m_pPlayerEnemyGatoringCol = new PlayerEnemyGatoringCollision(m_pPlayer, m_pEnemyGatoringManagement,
-		m_pExplosionManagement, m_pNumber, m_pItemManagement);
-
 	//プレイヤーの腕と敵のアイテムの当たり判定
 	m_ArmEnemyCollision = new ArmEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pItemManagement);
 
@@ -234,12 +221,19 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	m_pAllEnemyManagement->AddPointer(m_pEnemyGatoringManagement);
 
 	//発射した腕と敵の当たり判定
-	m_pArmAllEnemyCollision = new ArmAllEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pEnemyLaserManagement,
-												m_pEnemyGatoringManagement, m_pEnemyNormalManagement, m_pExplosionManagement);
+	m_pArmAllEnemyCollision = new ArmAllEnemyCollision(m_pPlayerLeft, m_pPlayerRight, 
+		m_pEnemyLaserManagement, m_pEnemyGatoringManagement, m_pEnemyNormalManagement, m_pExplosionManagement);
 
 	//プレイヤーの腕のアイテムの弾と敵の当たり判定
 	m_pArmEnemyCol = new PlayerArmEnemyCol(m_pEnemyNormalManagement, m_pEnemyLaserManagement,
 		m_pEnemyGatoringManagement, m_pExplosionManagement, m_pItemManagement, m_pNumber);
+
+	//全ての当たり判定(今のところ敵とプレイヤーだけ)
+	m_pColAll = new CollisionAll(m_pPlayer, m_pExplosionManagement, m_pItemManagement, m_pNumber);
+	m_pColAll->AddEnemyPointer(m_pEnemyNormalManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemyLaserManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemyGatoringManagement);
+
 }
 
 //==========================
@@ -249,6 +243,14 @@ Game::~Game()
 {
 	//描画がない物から消していく
 	delete m_pEnemySetPos;
+	delete m_pAllEnemyManagement;
+	delete m_pPlayerArmChange;
+
+	//当たり判定
+	delete m_pColAll;
+	delete m_pArmAllEnemyCollision;
+	delete m_ArmEnemyCollision;
+	delete m_pArmEnemyCol;
 
 	//ゲームオブジェクトを消す
 	delete m_pExplosionManagement;
@@ -262,10 +264,6 @@ Game::~Game()
 	delete m_pBG;
 
 	delete m_pItemManagement;
-	delete m_pPlayerEnemyNormalCol;
-	delete m_pPlayerEnemyLaserCol;
-	delete m_pPlayerEnemyGatoringCol;
-	delete m_pArmEnemyCol;
 	//そのほか
 	delete[] m_pDrawObject;
 	delete[] m_pTexUseful;
@@ -321,12 +319,10 @@ void Game::Update(void)
 	//プレイヤーのHPに対する敵の攻撃の処理
 	int attack_num = 0;
 	int heel_num = 0;
-	//普通の敵
-	attack_num += m_pPlayerEnemyNormalCol->Update();
-	//レーザーの敵
-	attack_num += m_pPlayerEnemyLaserCol->Update();
-	//レーザーの敵
-	attack_num += m_pPlayerEnemyGatoringCol->Update();
+	
+	//敵とプレイヤーの当たり判定
+	attack_num = m_pColAll->Collision();
+
 	//回復
 	heel_num += m_ArmEnemyCollision->Update();
 
