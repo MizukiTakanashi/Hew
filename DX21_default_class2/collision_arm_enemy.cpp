@@ -10,9 +10,9 @@ int ArmEnemyCollision::Update(void)
         if (Collision::ColBox(m_rPlayeLeft->GetPos(), m_rItemManagement->GetItemPos(i),
             m_rPlayeLeft->GetSize(), m_rItemManagement->GetItemSize()))
         {
-            if ((int)inhPlayerArmBoth::TYPE::TYPE_NONE)
+            if (m_rPlayeLeft->GetType() == inhPlayerArmBoth::TYPE::TYPE_NONE)
             {
-                heel = 1;
+                heel++;
             }
             m_rPlayeLeft->SetType(m_rItemManagement->GetItemType(i) + 1);
             m_rItemManagement->DeleteItem(i);          
@@ -24,9 +24,9 @@ int ArmEnemyCollision::Update(void)
         if (Collision::ColBox(m_rPlayerRight->GetPos(), m_rItemManagement->GetItemPos(j),
             m_rPlayerRight->GetSize(), m_rItemManagement->GetItemSize()))
         {
-            if ((int)inhPlayerArmBoth::TYPE::TYPE_NONE)
+            if (m_rPlayerRight->GetType() == inhPlayerArmBoth::TYPE::TYPE_NONE);
             {
-                heel = 1;
+                heel++;
             }
             m_rPlayerRight->SetType(m_rItemManagement->GetItemType(j) + 1);
             m_rItemManagement->DeleteItem(j);            

@@ -212,7 +212,7 @@ Game::Game(Number * pNumber):m_pNumber(pNumber)
 	m_pPlayerHP = new PlayerHP(m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_BAR], m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_FRAME], m_pExplosionManagement, m_pNumber);
 
 	//プレイヤーの腕と敵のアイテムの当たり判定
-	m_ArmEnemyCollision = new ArmEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pItemManagement);
+	m_ArmEnemyCollision = new ArmEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pItemManagement, m_pPlayer);
 
 	//敵の管理
 	m_pAllEnemyManagement = new AllEnemyManagement;
@@ -303,7 +303,6 @@ void Game::Update(void)
 	m_pEnemyNormalManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyLaserManagement->Update();
 	m_pEnemyGatoringManagement->Update(m_pPlayer->GetPos());
-	m_ArmEnemyCollision->Update();
 	m_pArmAllEnemyCollision->Update();
 
 	//==========================
@@ -324,7 +323,7 @@ void Game::Update(void)
 	attack_num = m_pColAll->Collision();
 
 	//回復
-	heel_num += m_ArmEnemyCollision->Update();
+	heel_num = m_ArmEnemyCollision->Update();
 
 	//プレイヤーのHPを攻撃数によって減らす
 	if (attack_num != 0) {

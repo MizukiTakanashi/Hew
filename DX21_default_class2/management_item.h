@@ -19,7 +19,6 @@ private:
 	//メンバ変数
 private:
 	int m_SE = 0;
-
 	DrawObject m_DrawObject;
 	Item* m_pItem = nullptr;
 	int m_ItemNum = 0;	//アイテムの数
@@ -56,11 +55,11 @@ public:
 	int GetItemNum(void)const { return m_ItemNum; }
 
 	//アイテムをセット
-	void SetItem(const D3DXVECTOR2& pos,int typeitem);
+	void SetItem(const D3DXVECTOR2& pos, int typeitem);
 
 	//アイテムのタイプを返す
 	int GetItemType(int i) const { return m_pItem[i].GerItemType(); }
-	
-	
-	};
+
+
+};
 
