@@ -36,7 +36,12 @@ int CollisionAll::Collision(void)
 	//プレイヤー自身が受けたダメージ数
 	int attacked = 0;
 
+	//敵の種類の数分ループ
 	for (int k = 0; k < m_enemy_num; k++) {
+
+		//=================================================
+		//
+
 		//プレイヤーの方
 		//敵の方
 
@@ -123,6 +128,10 @@ int CollisionAll::Collision(void)
 			else {
 				m_player_enemy_col = false;
 			}
+		}
+
+		if (m_pPlayerRight->GetType() == inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
+
 		}
 	}
 

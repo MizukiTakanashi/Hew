@@ -10,6 +10,8 @@
 
 #include "player.h"
 #include "management_enemy.h"
+#include "inh_player_arm_both.h"
+
 #include "management_explosion.h"
 #include "management_item.h"
 #include "number.h"
@@ -27,6 +29,10 @@ private:
 
 	int m_enemy_num = 0;							//敵の種類の数
 	EnemyManagement* m_pEnemy[ENEMY_NUM];			//敵全クラス
+	
+	inhPlayerArmBoth* m_pPlayerRight = nullptr;		//プレイヤーの右腕
+	inhPlayerArmBoth* m_pPlayerLeft = nullptr;		//プレイヤーの左腕
+	
 	ExplosionManagement* m_pExplosion = nullptr;	//爆発
 	ItemManagement* m_pItem = nullptr;				//アイテム
 	Number* m_pNumber = nullptr;					//倒した敵の数表示

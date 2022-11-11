@@ -1,4 +1,10 @@
 #pragma once
+//=========================================================
+// 飛んでいる最中の腕と敵の当たり判定関係(ヘッダファイル)
+// 作成日：2022/11/11
+// 作成者：高梨水希
+//=========================================================
+
 #include "player_left.h"
 #include "player_right.h"
 #include "management_item.h"
@@ -6,6 +12,7 @@
 #include "management_enemy_gatoring.h"
 #include "management_enemy.h"
 #include "management_explosion.h"
+
 class ArmAllEnemyCollision
 {
 private:
