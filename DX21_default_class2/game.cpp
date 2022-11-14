@@ -211,25 +211,16 @@ Game::Game(Score * pNumber):m_pNumber(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_FRAME].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER_HP], 1.0f, 1.0f, 0.5f, 1);
 	m_pPlayerHP = new PlayerHP(m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_BAR], m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_FRAME], m_pExplosionManagement, m_pNumber);
 
-	//プレイヤーの腕と敵のアイテムの当たり判定
-	m_ArmEnemyCollision = new ArmEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pItemManagement, m_pPlayer);
-
 	//敵の管理
 	m_pAllEnemyManagement = new AllEnemyManagement;
 	m_pAllEnemyManagement->AddPointer(m_pEnemyNormalManagement);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyLaserManagement);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyGatoringManagement);
 
-	//発射した腕と敵の当たり判定
-	m_pArmAllEnemyCollision = new ArmAllEnemyCollision(m_pPlayerLeft, m_pPlayerRight, 
-		m_pEnemyLaserManagement, m_pEnemyGatoringManagement, m_pEnemyNormalManagement, m_pExplosionManagement);
-
-	//プレイヤーの腕のアイテムの弾と敵の当たり判定
-	m_pArmEnemyCol = new PlayerArmEnemyCol(m_pEnemyNormalManagement, m_pEnemyLaserManagement,
-		m_pEnemyGatoringManagement, m_pExplosionManagement, m_pItemManagement, m_pNumber);
-
 	//全ての当たり判定(今のところ敵とプレイヤーだけ)
-	m_pColAll = new CollisionAll(m_pPlayer, m_pExplosionManagement, m_pItemManagement, m_pNumber);
+	m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement, 
+		m_pItemManagement, m_pNumber);
+	//敵のポインタをセット
 	m_pColAll->AddEnemyPointer(m_pEnemyNormalManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyLaserManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyGatoringManagement);
@@ -248,9 +239,6 @@ Game::~Game()
 
 	//当たり判定
 	delete m_pColAll;
-	delete m_pArmAllEnemyCollision;
-	delete m_ArmEnemyCollision;
-	delete m_pArmEnemyCol;
 
 	//ゲームオブジェクトを消す
 	delete m_pExplosionManagement;
@@ -303,16 +291,6 @@ void Game::Update(void)
 	m_pEnemyNormalManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyLaserManagement->Update();
 	m_pEnemyGatoringManagement->Update(m_pPlayer->GetPos());
-	m_pArmAllEnemyCollision->Update();
-
-	//==========================
-	// プレイヤーの腕と敵
-	//左腕
-	m_pArmEnemyCol->SetPlayerArm(m_pPlayerLeft->GetArmPointer());
-	m_pArmEnemyCol->Collision();
-	//右腕
-	m_pArmEnemyCol->SetPlayerArm(m_pPlayerRight->GetArmPointer());
-	m_pArmEnemyCol->Collision();
 
 	//====================================
 	//プレイヤーのHPに対する敵の攻撃の処理
@@ -323,7 +301,7 @@ void Game::Update(void)
 	attack_num = m_pColAll->Collision();
 
 	//回復
-	heel_num = m_ArmEnemyCollision->Update();
+	heel_num = m_pColAll->HeelCollision();
 
 	//プレイヤーのHPを攻撃数によって減らす
 	if (attack_num != 0) {

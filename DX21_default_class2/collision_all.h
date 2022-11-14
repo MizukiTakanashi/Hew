@@ -30,8 +30,8 @@ private:
 	int m_enemy_num = 0;							//敵の種類の数
 	EnemyManagement* m_pEnemy[ENEMY_NUM];			//敵全クラス
 	
-	inhPlayerArmBoth* m_pPlayerRight = nullptr;		//プレイヤーの右腕
 	inhPlayerArmBoth* m_pPlayerLeft = nullptr;		//プレイヤーの左腕
+	inhPlayerArmBoth* m_pPlayerRight = nullptr;		//プレイヤーの右腕
 	
 	ExplosionManagement* m_pExplosion = nullptr;	//爆発
 	ItemManagement* m_pItem = nullptr;				//アイテム
@@ -45,8 +45,8 @@ public:
 	CollisionAll();
 
 	//引数付きコンストラクタ
-	CollisionAll(Player* pPlayer, ExplosionManagement* pExplosion, 
-		ItemManagement* pItem, Score* pNumber);
+	CollisionAll(Player* pPlayer, inhPlayerArmBoth* pL, inhPlayerArmBoth* pR, 
+		ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber);
 
 	//デストラクタ
 	~CollisionAll(){}
@@ -57,8 +57,11 @@ public:
 		m_enemy_num++;
 	}
 
-	//当たり判定
+	//当たり判定(プレイヤーのHPが削れる当たり判定)
 	int Collision(void);
+
+	//プレイヤーのHPが回復する当たり判定
+	int HeelCollision(void);
 };
 
 #endif // !_COLLISION_ALL_H_

@@ -23,10 +23,10 @@
 #include "player_left.h"
 #include "player_right.h"
 #include "management_item.h"
-#include "collision_arm_enemy.h"
+//#include "collision_arm_enemy.h"
 #include "all_enemy_management.h"
-#include "collision_player_arm_enemy.h"
-#include "collision_arm_all_enemy.h"
+//#include "collision_player_arm_enemy.h"
+//#include "collision_arm_all_enemy.h"
 #include "player_arm_change.h"
 #include "collision_all.h"
 
@@ -94,15 +94,15 @@ private:
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;
 	ItemManagement* m_pItemManagement = nullptr;
-	ArmAllEnemyCollision* m_pArmAllEnemyCollision = nullptr;
-	ArmEnemyCollision* m_ArmEnemyCollision = nullptr;
+	//ArmAllEnemyCollision* m_pArmAllEnemyCollision = nullptr;
+	//ArmEnemyCollision* m_ArmEnemyCollision = nullptr;
 
 	PlayerLeft* m_pPlayerLeft = nullptr;
 	PlayerRight* m_pPlayerRight = nullptr;
 
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
 
-	PlayerArmEnemyCol* m_pArmEnemyCol = nullptr;	//プレイヤーの腕と全敵の当たり判定
+	//PlayerArmEnemyCol* m_pArmEnemyCol = nullptr;	//プレイヤーの腕と全敵の当たり判定
 	PlayerArmChange* m_pPlayerArmChange = nullptr;	//腕の交換
 
 	CollisionAll* m_pColAll = nullptr;				//全ての当たり判定
