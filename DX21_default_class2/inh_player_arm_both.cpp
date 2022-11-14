@@ -18,8 +18,10 @@ const float inhPlayerArmBoth::SHOT_SPEED = 5.0f;
 //==========================
 // 更新処理
 //==========================
-void inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_pos)
+int inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_pos)
 {
+	int hp_reduce = 0;
+
 	//パッドLボタンを押したら...
 	//キーボードEを押したら...
 	if (m_separation_button)
@@ -32,6 +34,9 @@ void inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& 
 			m_pEnemyItem->SetBulletUsed(true);
 
 			m_type = TYPE::TYPE_SHOOT;
+
+			//HPが-1される
+			hp_reduce++;
 		}
 	}
 
@@ -100,9 +105,13 @@ void inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& 
 			if (m_pEnemyItem->IsBulletUsed() && m_type != TYPE::TYPE_OLD && m_type != TYPE::TYPE_SHOOT) {
 				m_shot = true;
 				m_type = TYPE::TYPE_SHOOT;
+				//HPが-1される
+				hp_reduce++;
 			}
 		}
 	}
+
+	return hp_reduce;
 }
 
 //==========================
@@ -146,8 +155,14 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 	//タイプをセット
 	m_type = type;
 
-	//テクスチャをタイプに合わせてセット
-	GameObject::SetAnimationNum((float)m_type - 1.0f);
+	//発射中をセットされた場合はテクスチャを変えない
+	if (m_type != TYPE::TYPE_SHOOT) {
+		//テクスチャをタイプに合わせてセット
+		GameObject::SetAnimationNum((float)m_type - 1.0f);
+	}//発射中をセットされた場合は発射中のフラグをオン
+	else {
+		m_shot = true;
+	}
 
 	//newtypeがfalseならインスタンスは消さないで保存（playaer_arm_change用）
 	if (newtype) {

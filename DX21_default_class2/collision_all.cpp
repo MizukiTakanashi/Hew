@@ -263,6 +263,35 @@ int CollisionAll::Collision(void)
 		}
 	}
 
+	//攻撃を受けたら、腕の切り離しを行う
+	if (attacked > 0) {
+		//片方から切り離し
+		if (m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_NONE &&
+			m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_OLD &&
+			m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
+			m_pPlayerLeft->SetType(inhPlayerArmBoth::TYPE::TYPE_SHOOT, false);
+		}
+		else if (m_pPlayerRight->GetType() != inhPlayerArmBoth::TYPE::TYPE_NONE &&
+			m_pPlayerRight->GetType() != inhPlayerArmBoth::TYPE::TYPE_OLD &&
+			m_pPlayerRight->GetType() != inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
+			m_pPlayerRight->SetType(inhPlayerArmBoth::TYPE::TYPE_SHOOT, false);
+		}
+
+		//2回食らっていたら次にもう片方を切り離し
+		if (attacked > 1) {
+			if (m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_NONE &&
+				m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_OLD &&
+				m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
+				m_pPlayerLeft->SetType(inhPlayerArmBoth::TYPE::TYPE_SHOOT, false);
+			}
+			else if (m_pPlayerRight->GetType() != inhPlayerArmBoth::TYPE::TYPE_NONE &&
+				m_pPlayerRight->GetType() != inhPlayerArmBoth::TYPE::TYPE_OLD &&
+				m_pPlayerRight->GetType() != inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
+				m_pPlayerRight->SetType(inhPlayerArmBoth::TYPE::TYPE_SHOOT, false);
+			}
+		}
+	}
+
 	return attacked;
 }
 
@@ -291,28 +320,25 @@ int CollisionAll::HeelCollision(void)
 				//自身
 				//自身
 
-		//左腕
-		if (Collision::ColBox(m_pPlayerLeft->GetPos(), m_pItem->GetItemPos(i),
-			m_pPlayerLeft->GetSize(), m_pItem->GetItemSize()))
-		{
-			if (m_pPlayerLeft->GetType() == inhPlayerArmBoth::TYPE::TYPE_NONE)
-			{
-				heel++;
-			}
-			m_pPlayerLeft->SetType((inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i) + 1));
-			m_pItem->DeleteItem(i);
-		}
+		//腕のポインタを取ってくる(初期は左から)
+		inhPlayerArmBoth* pArm = m_pPlayerLeft;
 
-		//右腕
-		if (Collision::ColBox(m_pPlayerRight->GetPos(), m_pItem->GetItemPos(i),
-			m_pPlayerRight->GetSize(), m_pItem->GetItemSize()))
-		{
-			if (m_pPlayerRight->GetType() == inhPlayerArmBoth::TYPE::TYPE_NONE)
+		//右と左、両方行う
+		for (int m = 0; m < 2; m++) {
+			if (Collision::ColBox(pArm->GetPos(), m_pItem->GetItemPos(i),
+				pArm->GetSize(), m_pItem->GetItemSize()))
 			{
-				heel++;
+				if (pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE_NONE ||
+					pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE_OLD)
+				{
+					heel++;
+				}
+				pArm->SetType((inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i) + 1));
+				m_pItem->DeleteItem(i);
 			}
-			m_pPlayerRight->SetType((inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i) + 1));
-			m_pItem->DeleteItem(i);
+
+			//腕のポインタを取ってくる(二回目は右)
+			pArm = m_pPlayerRight;
 		}
 	}
 
