@@ -273,10 +273,6 @@ void Game::Update(void)
 
 	//プレイヤー
 	m_pPlayer->Update(m_pPlayerHP->IsPlayerInvincible());
-	m_pPlayerLeft->ButtonPress();
-	m_pPlayerLeft->Update(m_pPlayer->GetPos(), m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerLeft->GetPos()));
-	m_pPlayerRight->ButtonPress();
-	m_pPlayerRight->Update(m_pPlayer->GetPos(), m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerRight->GetPos()));
 
 	m_pPlayerHP->Update();
 
@@ -293,12 +289,24 @@ void Game::Update(void)
 	m_pEnemyGatoringManagement->Update(m_pPlayer->GetPos());
 
 	//====================================
-	//プレイヤーのHPに対する敵の攻撃の処理
+	//プレイヤーのHPに対する処理
 	int attack_num = 0;
 	int heel_num = 0;
+
+	//プレイヤーの腕
+	
+	//ホーミング弾用
+	D3DXVECTOR2 temp_pos = m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerLeft->GetPos());
+
+	m_pPlayerLeft->ButtonPress();
+	//切り離されたらHPを減らす
+	attack_num += m_pPlayerLeft->Update(m_pPlayer->GetPos(), temp_pos);
+	m_pPlayerRight->ButtonPress();
+	//切り離されたらHPを減らす
+	attack_num += m_pPlayerRight->Update(m_pPlayer->GetPos(), temp_pos);
 	
 	//敵とプレイヤーの当たり判定
-	attack_num = m_pColAll->Collision();
+	attack_num += m_pColAll->Collision();
 
 	//回復
 	heel_num = m_pColAll->HeelCollision();
