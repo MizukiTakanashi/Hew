@@ -335,6 +335,7 @@ int CollisionAll::HeelCollision(void)
 				}
 				pArm->SetType((inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i) + 1));
 				m_pItem->DeleteItem(i);
+				i--;
 			}
 
 			//腕のポインタを取ってくる(二回目は右)
