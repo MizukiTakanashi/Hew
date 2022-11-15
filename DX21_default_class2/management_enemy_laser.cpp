@@ -106,6 +106,8 @@ void EnemyLaserManagement::Draw(void)const
 //======================
 void EnemyLaserManagement::DeleteObj(int index_num)
 {
+	EnemyManagement::DeleteObj(index_num);
+
 	if (m_pEnemyLaser[index_num].GetLaserIndex() >= 0)
 	{
 		m_pLaser[m_pEnemyLaser[index_num].GetLaserIndex()].DeleteLaser();

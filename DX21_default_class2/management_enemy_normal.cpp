@@ -111,6 +111,8 @@ void EnemyNormalManagement::Draw(void)const
 //======================
 void EnemyNormalManagement::DeleteObj(int index_num)
 {
+	EnemyManagement::DeleteObj(index_num);
+
 	m_pEnemySetPos.DeleteEnemy(m_pEnemyNormal[index_num].GetPos());
 
 	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {

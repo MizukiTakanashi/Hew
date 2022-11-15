@@ -161,6 +161,8 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 		GameObject::SetAnimationNum((float)m_type - 1.0f);
 	}//発射中をセットされた場合は発射中のフラグをオン
 	else {
+		//弾が出しきったフラグをセット
+		m_pEnemyItem->SetBulletUsed(true);
 		m_shot = true;
 	}
 

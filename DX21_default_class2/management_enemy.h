@@ -15,6 +15,7 @@ class EnemyManagement
 private:
 	int m_obj_max_num = 0;			//オブジェクトの最大数
 	int m_obj_num = 0;				//現在のオブジェクト数
+	int m_obj_delete_index = 0;		//消したオブジェクトの番号
 	int m_bullet_max_num = 0;		//弾の最大数
 	int m_bullet_num = 0;			//現在の弾数
 	int m_obj_attack = 0;			//敵自身がぶつかって与える攻撃力
@@ -33,7 +34,11 @@ public:
 	virtual ~EnemyManagement() {}
 
 	//指定した番号のオブジェクトを消す
-	virtual void DeleteObj(int index_num) = 0;
+	//メンバ変数に消したオブジェクトの番号を記録させておく
+	virtual void DeleteObj(int index_num) { m_obj_delete_index = index_num; }
+
+	//消したオブジェクトの番号を返す(ホーミング弾用)
+	int GetDeleteObjIndex(void)const { return m_obj_delete_index; }
 
 	//指定した番号のオブジェクトを消す
 	virtual void DeleteBullet(int index_num) = 0;

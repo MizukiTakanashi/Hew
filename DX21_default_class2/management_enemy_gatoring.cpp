@@ -92,6 +92,8 @@ void EnemyGatoringManagement::Draw(void)const
 //======================
 void EnemyGatoringManagement::DeleteObj(int index_num)
 {
+	EnemyManagement::DeleteObj(index_num);
+
 	m_pEnemySetPos.DeleteEnemy(m_pEnemyGatoring[index_num].GetPos());
 
 	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
