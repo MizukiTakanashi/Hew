@@ -23,13 +23,12 @@ const D3DXVECTOR2& AllEnemyManagement::GetCloltestEnemyPos(const D3DXVECTOR2& po
 					//一つ配列をずらす
 					m_enemy_index[1] -= 1;
 				}
+				//現在、消したオブジェクトの番号を記録
+				m_enemy_delete_before = m_pEnemy[i]->GetDeleteObjIndex();
 			}
-
-			//現在、消したオブジェクトの番号を記録
-			m_enemy_delete_before = m_pEnemy[i]->GetDeleteObjIndex();
 		}
 
-		if (m_enemy_index[0] != -1) {
+		if (m_enemy_index[0] > -1 && m_enemy_index[1] > -1) {
 			//ターゲットにしている敵の座標を返す
 			return m_pEnemy[m_enemy_index[0]]->GetObjPos(m_enemy_index[1]);
 		}
