@@ -156,7 +156,7 @@ int CollisionAll::Collision(void)
 								//爆発をセット
 								m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
 								//敵アイテムのドロップ
-								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), 1);
+								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 
 								//腕についている種類がTYPE2(レーザー)でなければ...
 								if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
@@ -304,27 +304,25 @@ int CollisionAll::HeelCollision(void)
 	int heel = 0;
 
 	//=================================================
-	// 敵のアイテムと○○
+	// 腕と○○
+	
+	//腕のポインタを取ってくる(初期は左から)
+	inhPlayerArmBoth* pArm = m_pPlayerLeft;
 
-	for (int i = 0; i < m_pItem->GetItemNum(); i++) {
-
+	for (int m = 0; m < 2; m++) {
 		//=================================================
 		// プレイヤーの腕と敵のアイテム
-
+		
 		//プレイヤーの腕の方
 		//敵のアイテムの方
-
+		
 			//腕の方
 			//敵の方
-
+		
 				//自身
 				//自身
 
-		//腕のポインタを取ってくる(初期は左から)
-		inhPlayerArmBoth* pArm = m_pPlayerLeft;
-
-		//右と左、両方行う
-		for (int m = 0; m < 2; m++) {
+		for (int i = 0; i < m_pItem->GetItemNum(); i++) {
 			if (Collision::ColBox(pArm->GetPos(), m_pItem->GetItemPos(i),
 				pArm->GetSize(), m_pItem->GetItemSize()))
 			{
@@ -337,10 +335,10 @@ int CollisionAll::HeelCollision(void)
 				m_pItem->DeleteItem(i);
 				i--;
 			}
-
-			//腕のポインタを取ってくる(二回目は右)
-			pArm = m_pPlayerRight;
 		}
+
+		//腕のポインタを取ってくる(二回目は右)
+		pArm = m_pPlayerRight;
 	}
 
 	return heel;
