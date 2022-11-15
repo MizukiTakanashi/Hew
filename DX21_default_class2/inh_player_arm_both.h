@@ -95,6 +95,9 @@ public:
 
 	//弾発射のボタンが押されたかフラグ(押した時)をセット
 	void SetBulletShotButtonTrigger(bool flag) { m_bullet_shot_trigger = flag; }
+
+	//残弾数回復
+	void HeelBullet(void) { m_pEnemyItem->HeelBullet(); }
 };
 
 #endif // !_INH_PLAYER_ARM_BOTH_H_
