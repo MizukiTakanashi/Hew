@@ -237,9 +237,6 @@ Game::~Game()
 	delete m_pAllEnemyManagement;
 	delete m_pPlayerArmChange;
 
-	//当たり判定
-	delete m_pColAll;
-
 	//ゲームオブジェクトを消す
 	delete m_pExplosionManagement;
 	delete m_pEnemyNormalManagement;
@@ -252,6 +249,7 @@ Game::~Game()
 	delete m_pBG;
 
 	delete m_pItemManagement;
+	delete m_pColAll;
 	//そのほか
 	delete[] m_pDrawObject;
 	delete[] m_pTexUseful;
