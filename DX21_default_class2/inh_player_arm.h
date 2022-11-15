@@ -116,6 +116,9 @@ public:
 
 	//とある座標取得用(詳細はメンバ変数のm_something_posのコメントへ)
 	const D3DXVECTOR2& GetSomethingPos(void)const { return m_something_pos; }
+
+	//残弾数回復
+	void HeelBullet(void) { m_bullet_maked_num = 0; }
 };
 
 #endif // !_INH_PLAYER_ARM_H_
