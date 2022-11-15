@@ -331,6 +331,11 @@ int CollisionAll::HeelCollision(void)
 				{
 					heel++;
 				}
+				//タイプが同じだったら残弾数を回復する
+				if (pArm->GetType() == (inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i) + 1))
+				{
+					pArm->HeelBullet();
+				}
 				pArm->SetType((inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i) + 1));
 				m_pItem->DeleteItem(i);
 				i--;
