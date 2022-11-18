@@ -48,7 +48,19 @@ private:
 	int m_EnemyItem_num = 0;	//敵のアイテムの数
 
 	int m_count = 0;			//敵の出現速度
-
+	//敵の配列
+	D3DXVECTOR2 m_SetEnemy[12] = { D3DXVECTOR2(52.5f + (105 * 1 - 1), -EnemyGatoring::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyGatoring::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 3 - 1), -EnemyGatoring::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 4 - 1), -EnemyGatoring::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 5 - 1), -EnemyGatoring::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 6 - 1), -EnemyGatoring::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 7 - 1), -EnemyGatoring::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 8 - 1), -EnemyGatoring::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 9 - 1), -EnemyGatoring::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 10 - 1), -EnemyGatoring::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyGatoring::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyGatoring::SIZE_Y / 2) };
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
