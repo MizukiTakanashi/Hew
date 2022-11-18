@@ -38,7 +38,7 @@ private:
 	//cppで初期化
 	static const D3DXVECTOR2 SIZE;				//サイズ
 	static const float SHOT_SPEED;				//切り離し発射スピード
-	static const D3DXVECTOR2 ICON_SIZE;				//敵アイコンの表示場所
+	static const D3DXVECTOR2 ICON_SIZE;			//敵アイコンの表示場所
 
 //メンバ変数
 private:
