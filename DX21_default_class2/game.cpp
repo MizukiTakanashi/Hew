@@ -164,8 +164,8 @@ Game::Game(Score * pNumber):m_pNumber(pNumber)
 	// 残弾
 	m_pTexUseful[(int)TEXTURE_TYPE::NUMBER].SetTextureName((char*)"data\\texture\\number.png");
 	m_pDrawObject[(int)DRAW_TYPE::NUMBER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::NUMBER], 0.0f, 0.0909f, 1.0f, 11);
-	m_pRemaining_Left = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(50.0f, 600.0f), D3DXVECTOR2(20.0f, 30.0f), 2);
-	m_pRemaining_Right = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(50.0f, 650.0f), D3DXVECTOR2(20.0f, 30.0f), 2);
+	m_pRemaining_Left = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(80.0f, 600.0f), D3DXVECTOR2(20.0f, 30.0f), 2);
+	m_pRemaining_Right = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(80.0f, 650.0f), D3DXVECTOR2(20.0f, 30.0f), 2);
 	m_pRemaining_Left->SetInitPos(D3DXVECTOR2(50.0f, 600.0f));
 	m_pRemaining_Right->SetInitPos(D3DXVECTOR2(50.0f, 650.0f));
 
