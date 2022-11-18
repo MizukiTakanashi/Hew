@@ -23,7 +23,7 @@ bool inhPlayerArm::IsBulletUsed(void)const
 //==========================
 int inhPlayerArm::GetRemainingBullet(void)
 {
-	if (m_bullet_max_num == 0)
+	if (m_bullet_maked_num >= m_bullet_max_num)
 	{
 		return m_bullet_max_num - m_bullet_maked_num;
 	}

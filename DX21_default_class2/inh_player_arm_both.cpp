@@ -13,6 +13,7 @@
 //==========================
 const D3DXVECTOR2 inhPlayerArmBoth::SIZE = D3DXVECTOR2(50.0f, 50.0f);
 const float inhPlayerArmBoth::SHOT_SPEED = 5.0f;
+const D3DXVECTOR2 inhPlayerArmBoth::ICON_SIZE = D3DXVECTOR2(30.0f, 30.0f);
 
 
 //==========================
@@ -131,6 +132,8 @@ void inhPlayerArmBoth::ArmDraw(void) const
 		if (m_type != TYPE::TYPE_OLD) {
 			//腕についているアイテム自身の描画
 			Draw();
+			//残弾数横の敵アイコン表示
+			Draw(m_Remaining_Bullet_Pos, ICON_SIZE);
 		}
 
 		if (m_pEnemyItem != nullptr) {
