@@ -111,6 +111,12 @@ int inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& e
 		}
 	}
 
+	//Žc’e”‚ðXV
+	if (m_pRemaining_Bullet && m_pEnemyItem)
+	{
+		m_pRemaining_Bullet->SetNumber(m_pEnemyItem->GetRemainingBullet());
+	}
+
 	return hp_reduce;
 }
 

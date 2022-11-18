@@ -10,6 +10,7 @@
 
 #include "game_object.h"
 #include "inh_player_arm.h"
+#include "number.h"
 
 class inhPlayerArmBoth :public GameObject
 {
@@ -53,6 +54,8 @@ private:
 	bool m_bullet_shot = false;				//弾発射のボタンが押されたか(押している間)
 	bool m_bullet_shot_trigger = false;		//弾発射のボタンが押されたか(押した時)
 
+	Number* m_pRemaining_Bullet = nullptr;	//残弾数表示オブジェクト
+
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
@@ -60,9 +63,9 @@ public:
 
 	//引数付きコンストラクタ
 	inhPlayerArmBoth(DrawObject& pDrawObject, DrawObject& pBullet, DrawObject& pLaser, const D3DXVECTOR2& pos,
-		const D3DXVECTOR2& from_player)
+		const D3DXVECTOR2& from_player, Number* pNum)
 		:GameObject(pDrawObject, pos, SIZE), m_bullet_draw(pBullet), m_laser_draw(pLaser),
-		m_from_player(from_player) {}
+		m_from_player(from_player), m_pRemaining_Bullet(pNum) {}
 
 	//デストラクタ
 	virtual ~inhPlayerArmBoth()override { delete m_pEnemyItem; }

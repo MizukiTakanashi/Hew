@@ -119,6 +119,9 @@ public:
 
 	//c’e”‰ñ•œ
 	void HeelBullet(void) { m_bullet_maked_num = 0; }
+
+	//c’e”‚ğ•Ô‚·
+	int GetRemainingBullet(void);
 };
 
 #endif // !_INH_PLAYER_ARM_H_

@@ -25,8 +25,8 @@ public:
 	PlayerLeft() {}			//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
-	PlayerLeft(DrawObject& pDrawObject, DrawObject& pBullet, DrawObject& pLaser, const D3DXVECTOR2& pos)
-		:inhPlayerArmBoth(pDrawObject, pBullet, pLaser, pos, FROM_PLAYER_POS) {}
+	PlayerLeft(DrawObject& pDrawObject, DrawObject& pBullet, DrawObject& pLaser, const D3DXVECTOR2& pos, Number* pNum)
+		:inhPlayerArmBoth(pDrawObject, pBullet, pLaser, pos, FROM_PLAYER_POS, pNum) {}
 
 	~PlayerLeft()override {}	//デストラクタ
 

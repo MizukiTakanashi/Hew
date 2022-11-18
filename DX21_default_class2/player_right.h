@@ -25,8 +25,8 @@ public:
 	PlayerRight() {}			//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
-	PlayerRight(DrawObject& pDrawObject, DrawObject& pBullet, DrawObject& pLaser, const D3DXVECTOR2& pos)
-		:inhPlayerArmBoth(pDrawObject, pBullet, pLaser, pos, FROM_PLAYER_POS) {}
+	PlayerRight(DrawObject& pDrawObject, DrawObject& pBullet, DrawObject& pLaser, const D3DXVECTOR2& pos, Number* pNum)
+		:inhPlayerArmBoth(pDrawObject, pBullet, pLaser, pos, FROM_PLAYER_POS, pNum) {}
 
 	~PlayerRight()override {}	//デストラクタ
 
