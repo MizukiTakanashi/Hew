@@ -16,3 +16,19 @@ bool inhPlayerArm::IsBulletUsed(void)const
 
 	return m_bullet_used;
 }
+
+
+//==========================
+// Žc’e”‚ð•Ô‚·
+//==========================
+int inhPlayerArm::GetRemainingBullet(void)
+{
+	if (m_bullet_maked_num >= m_bullet_max_num)
+	{
+		return m_bullet_max_num - m_bullet_maked_num;
+	}
+	else
+	{
+		return m_bullet_max_num - m_bullet_maked_num - 1;
+	}
+}

@@ -20,6 +20,7 @@
 #include "player_hp.h"
 #include "management_explosion.h"
 #include "score.h"
+#include "number.h"
 #include "player_left.h"
 #include "player_right.h"
 #include "management_item.h"
@@ -47,6 +48,7 @@ private:
 		BULLET,
 		LASER,
 		EXPLOSION,
+		NUMBER,
 		NUM
 	};
 
@@ -69,6 +71,7 @@ private:
 		PLAYER_ARM_RIGHT,
 		PLAYER_ARM_RIGHT_BULLET,
 		PLAYER_ARM_RIGHT_LASER,
+		NUMBER,
 		NUM
 	};
 
@@ -94,6 +97,9 @@ private:
 
 	PlayerLeft* m_pPlayerLeft = nullptr;
 	PlayerRight* m_pPlayerRight = nullptr;
+
+	Number* m_pRemaining_Left = nullptr;
+	Number* m_pRemaining_Right = nullptr;
 
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
 

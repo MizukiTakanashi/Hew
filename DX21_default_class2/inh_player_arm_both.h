@@ -10,6 +10,7 @@
 
 #include "game_object.h"
 #include "inh_player_arm.h"
+#include "number.h"
 
 class inhPlayerArmBoth :public GameObject
 {
@@ -37,6 +38,7 @@ private:
 	//cppで初期化
 	static const D3DXVECTOR2 SIZE;				//サイズ
 	static const float SHOT_SPEED;				//切り離し発射スピード
+	static const D3DXVECTOR2 ICON_SIZE;				//敵アイコンの表示場所
 
 //メンバ変数
 private:
@@ -53,6 +55,9 @@ private:
 	bool m_bullet_shot = false;				//弾発射のボタンが押されたか(押している間)
 	bool m_bullet_shot_trigger = false;		//弾発射のボタンが押されたか(押した時)
 
+	Number* m_pRemaining_Bullet = nullptr;	//残弾数表示オブジェクト
+	D3DXVECTOR2 m_Remaining_Bullet_Pos = D3DXVECTOR2(0.0f, 0.0f);	//敵アイコン表示場所
+
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
@@ -60,9 +65,9 @@ public:
 
 	//引数付きコンストラクタ
 	inhPlayerArmBoth(DrawObject& pDrawObject, DrawObject& pBullet, DrawObject& pLaser, const D3DXVECTOR2& pos,
-		const D3DXVECTOR2& from_player)
+		const D3DXVECTOR2& from_player, Number* pNum, D3DXVECTOR2 icon_pos)
 		:GameObject(pDrawObject, pos, SIZE), m_bullet_draw(pBullet), m_laser_draw(pLaser),
-		m_from_player(from_player) {}
+		m_from_player(from_player), m_pRemaining_Bullet(pNum), m_Remaining_Bullet_Pos(icon_pos) {}
 
 	//デストラクタ
 	virtual ~inhPlayerArmBoth()override { delete m_pEnemyItem; }
