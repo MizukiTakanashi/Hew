@@ -164,12 +164,22 @@ Game::Game(Score * pNumber):m_pNumber(pNumber)
 	// 残弾表示
 	m_pTexUseful[(int)TEXTURE_TYPE::NUMBER].SetTextureName((char*)"data\\texture\\number.png");
 	m_pDrawObject[(int)DRAW_TYPE::NUMBER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::NUMBER], 0.0f, 0.0909f, 1.0f, 11);
-	m_pRemaining_Left = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(20.0f, 30.0f), 2);
-	m_pRemaining_Right = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(20.0f, 30.0f), 2);
-	m_pRemaining_Left->SetInitPos(D3DXVECTOR2(80.0f, 650.0f));
-	m_pRemaining_Right->SetInitPos(D3DXVECTOR2(80.0f, 700.0f));
+	m_pRemaining_Left = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(40.0f, 60.0f), 2);
+	m_pRemaining_Right = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(40.0f, 60.0f), 2);
+	m_pRemaining_Left->SetInitPos(D3DXVECTOR2(130.0f, 600.0f));
+	m_pRemaining_Right->SetInitPos(D3DXVECTOR2(130.0f, 680.0f));
 
-	 
+	//=======================
+	// コンボ数の横の×
+	m_pTexUseful[(int)TEXTURE_TYPE::MULTIPLY].SetTextureName((char*)"data\\texture\\multiply.png");
+	m_pDrawObject[(int)DRAW_TYPE::MULTIPLY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::MULTIPLY], 0.0f, 1.0f, 1.0f, 1);
+	m_pMultiply = new UI(m_pDrawObject[(int)DRAW_TYPE::MULTIPLY], D3DXVECTOR2(SCREEN_WIDTH - 130, SCREEN_HEIGHT - 40), D3DXVECTOR2(40.0f, 40.0f), D3DXCOLOR());
+
+	//=======================
+	// コンボ継続数表示
+	m_pComboNum = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(40.0f, 60.0f), 2);
+	m_pComboNum->SetInitPos(D3DXVECTOR2(SCREEN_WIDTH - 30, SCREEN_HEIGHT - 40));
+
 	//=======================
 	// プレイヤーの腕の左
 	//m_pTexUseful[5].SetTextureName((char*)"data\\texture\\arm.png");
@@ -181,7 +191,7 @@ Game::Game(Score * pNumber):m_pNumber(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
 	m_pPlayerLeft = new PlayerLeft(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_BULLET],
-		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER], m_pPlayer->GetPos(), m_pRemaining_Left, D3DXVECTOR2(25.0f, 650.0f));
+		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER], m_pPlayer->GetPos(), m_pRemaining_Left, D3DXVECTOR2(30.0f, 600.0f));
 
 	//=======================
 	// プレイヤーの腕の右
@@ -194,7 +204,7 @@ Game::Game(Score * pNumber):m_pNumber(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
 	m_pPlayerRight = new PlayerRight(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_BULLET],
-		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER], m_pPlayer->GetPos(), m_pRemaining_Right, D3DXVECTOR2(25.0f, 700.0f));
+		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER], m_pPlayer->GetPos(), m_pRemaining_Right, D3DXVECTOR2(30.0f, 680.0f));
 
 	//腕の交換
 	m_pPlayerArmChange=new PlayerArmChange(m_pPlayerLeft, m_pPlayerRight);
@@ -259,6 +269,8 @@ Game::~Game()
 	delete m_pBG;
 	delete m_pRemaining_Left;
 	delete m_pRemaining_Right;
+	delete m_pComboNum;
+	delete m_pMultiply;
 
 	delete m_pItemManagement;
 	delete m_pColAll;
@@ -361,5 +373,8 @@ void Game::Draw(void)const
 	m_pNumber->DrawNumber();
 	m_pRemaining_Left->DrawNumber();
 	m_pRemaining_Right->DrawNumber();
+	m_pComboNum->SetNumber(m_pNumber->GetComboNum());
+	m_pComboNum->DrawNumber();
+	m_pMultiply->Draw();
 
 }

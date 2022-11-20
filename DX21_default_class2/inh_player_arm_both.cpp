@@ -13,7 +13,7 @@
 //==========================
 const D3DXVECTOR2 inhPlayerArmBoth::SIZE = D3DXVECTOR2(50.0f, 50.0f);
 const float inhPlayerArmBoth::SHOT_SPEED = 5.0f;
-const D3DXVECTOR2 inhPlayerArmBoth::ICON_SIZE = D3DXVECTOR2(30.0f, 30.0f);
+const D3DXVECTOR2 inhPlayerArmBoth::ICON_SIZE = D3DXVECTOR2(50.0f, 50.0f);
 
 
 //==========================

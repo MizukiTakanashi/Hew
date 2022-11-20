@@ -38,6 +38,8 @@ public:
 	//コンボが途切れた時の処理
 	void InitCombo(void) { m_ComboMagnification = 1.0f; m_ComboNum = 0; }
 
+	//コンボ継続数を返す
+	int GetComboNum(void) { return m_ComboNum; }
 };
 
 #endif // !_SCORE_H_

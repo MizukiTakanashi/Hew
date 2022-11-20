@@ -49,6 +49,7 @@ private:
 		LASER,
 		EXPLOSION,
 		NUMBER,
+		MULTIPLY,
 		NUM
 	};
 
@@ -72,6 +73,7 @@ private:
 		PLAYER_ARM_RIGHT_BULLET,
 		PLAYER_ARM_RIGHT_LASER,
 		NUMBER,
+		MULTIPLY,
 		NUM
 	};
 
@@ -100,6 +102,9 @@ private:
 
 	Number* m_pRemaining_Left = nullptr;
 	Number* m_pRemaining_Right = nullptr;
+
+	UI* m_pMultiply = nullptr;
+	Number* m_pComboNum = nullptr;
 
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
 
