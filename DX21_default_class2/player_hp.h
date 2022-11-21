@@ -25,12 +25,9 @@ private:
 	static const float HP_MAX;			//最大HP
 	static const float SIZE_X;			//サイズX
 	static const float SIZE_Y;			//サイズY
-	static const float FLAME_SIZE_X;	//フレームサイズX
-	static const float FLAME_SIZE_Y;	//フレームサイズY
-	static const float POS_SPACE_X;		//端からどれくらい離れているかX
-	static const float POS_SPACE_Y;		//端からどれくらい離れているかY
 	static const float POS_X;			//表示位置
 	static const float POS_Y;			//表示位置
+	static const float BET_X;			//ハートの表示間隔
 
 	//無敵時間
 	static const int INVINCIBLE__FRAME;
@@ -38,7 +35,6 @@ private:
 
 private:
 	bool m_HP0 = false;				//プレイヤーのHPが0か判断
-	DrawObject m_frame_DrawObject;	//描画オブジェクト
 	float m_hp = HP_MAX;			//プレイヤーのHP
 	int m_invincible = 0;			//無敵時間
 	ExplosionManagement* m_pExplosionManagement = nullptr; //爆発管理のポインタ
@@ -48,9 +44,9 @@ public:
 	PlayerHP() { m_hp = HP_MAX; }	//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
-	PlayerHP(DrawObject& DrawObject1, DrawObject& DrawObject2, ExplosionManagement* pEM)
+	PlayerHP(DrawObject& DrawObject1, ExplosionManagement* pEM)
 		:UI(DrawObject1, D3DXVECTOR2(POS_X, POS_Y),
-			D3DXVECTOR2(SIZE_X, SIZE_Y)), m_frame_DrawObject(DrawObject2), m_pExplosionManagement(pEM) {}
+			D3DXVECTOR2(SIZE_X, SIZE_Y)), m_pExplosionManagement(pEM) {}
 
 	~PlayerHP()override {}							//デストラクタ
 

@@ -31,6 +31,7 @@ public:
 
 	//描画
 	void Draw(void)const { m_DrawObject.Draw(m_pos, m_size); }
+	void Draw(D3DXVECTOR2 pos, D3DXVECTOR2 size)const { m_DrawObject.Draw(pos, size); }
 
 	//座標をセット
 	void SetPos(const D3DXVECTOR2& pos) { m_pos = pos; }
