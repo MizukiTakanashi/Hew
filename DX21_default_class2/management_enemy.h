@@ -13,7 +13,6 @@
 class EnemyManagement
 {
 private:
-	int m_obj_max_num = 0;			//オブジェクトの最大数
 	int m_obj_num = 0;				//現在のオブジェクト数
 	int m_obj_delete_index = 0;		//消したオブジェクトの番号
 	int m_bullet_max_num = 0;		//弾の最大数
@@ -21,13 +20,14 @@ private:
 	int m_obj_attack = 0;			//敵自身がぶつかって与える攻撃力
 	int m_bullet_attack = 0;		//弾が与える攻撃力
 
+	int m_FlameNum = 0;				//現在のフレーム数
 public:
 	//デフォルトコンストラクタ
 	EnemyManagement() {}
 
 	//引数付きコンストラクタ
-	EnemyManagement(int enemy_max_num, int bullet_max_num, int obj_attack, int bullet_attack) 
-		:m_obj_max_num(enemy_max_num), m_bullet_max_num(bullet_max_num), 
+	EnemyManagement(int bullet_max_num, int obj_attack, int bullet_attack) 
+		:m_bullet_max_num(bullet_max_num), 
 		m_obj_attack(obj_attack), m_bullet_attack(bullet_attack) {}
 
 	//デストラクタ
@@ -72,6 +72,12 @@ public:
 
 	//指定した番号の弾のサイズを返す(オーバーライド用)
 	virtual const D3DXVECTOR2& GetBulletSize(int index_num = 0)const = 0;
+
+	//フレーム数を増加
+	void AddFlame(void) { m_FlameNum++; } 
+
+	//現在のフレーム数を返す
+	int GetFlameNum(void) { return m_FlameNum; }
 };
 
 #endif // !_ENEMY_MANAGEMENT_H_

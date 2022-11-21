@@ -21,8 +21,7 @@ class EnemyGatoringManagement:public EnemyManagement
 private:
 	//ここで初期化
 	//敵自身
-	static const int MAX_NUM = 10;			//敵の最大数
-	static const int APPEARANCE_TIME = 250;	//敵の出現スピード
+	static const int ENEMY_NUM = 10;		//敵を出現させる数
 
 	//cppで初期化
 	//弾
@@ -47,7 +46,8 @@ private:
 
 	int m_EnemyItem_num = 0;	//敵のアイテムの数
 
-	int m_count = 0;			//敵の出現速度
+	int m_EnemyNum = 0; //作った敵の数
+
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[12] = { D3DXVECTOR2(52.5f + (105 * 1 - 1), -EnemyGatoring::SIZE_Y / 2)
 										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyGatoring::SIZE_Y / 2)
@@ -61,12 +61,25 @@ private:
 										,D3DXVECTOR2(52.5f + (105 * 10 - 1), -EnemyGatoring::SIZE_Y / 2)
 										,D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyGatoring::SIZE_Y / 2)
 										,D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyGatoring::SIZE_Y / 2) };
+	int m_SetEnemyTime[12] = {	30,
+								60,
+								90,
+								120,
+								150,
+								180,
+								210,
+								240,
+								270,
+								300,
+								330,
+								360};
+
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
 	EnemyGatoringManagement() {
-		m_pEnemyGatoring = new EnemyGatoring[MAX_NUM];
-		m_pBullet = new Bullet[MAX_NUM];
+		m_pEnemyGatoring = new EnemyGatoring[ENEMY_NUM];
+		m_pBullet = new Bullet[ENEMY_NUM];
 	}
 
 	//引数付きコンストラクタ

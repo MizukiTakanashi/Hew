@@ -11,7 +11,7 @@
 //============================
 ItemManagement::ItemManagement()
 {
-	m_pItem = new Item[MAX_NUM];
+	m_pItem = new Item[ENEMY_NUM];
 
 	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//サウンドのロード
 }
@@ -21,7 +21,7 @@ ItemManagement::ItemManagement()
 //=========================
 ItemManagement::ItemManagement(DrawObject& DrawObject) :m_DrawObject(DrawObject)
 {
-	m_pItem = new Item[MAX_NUM];
+	m_pItem = new Item[ENEMY_NUM];
 
 	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//サウンドのロード
 }

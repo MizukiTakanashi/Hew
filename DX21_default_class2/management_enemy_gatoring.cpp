@@ -18,10 +18,10 @@ const float EnemyGatoringManagement::BULLET_SPEED = 2.5f;
 // 引数付きコンストラクタ
 //=========================
 EnemyGatoringManagement::EnemyGatoringManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, EnemySetPos& pEnemySetPos)
-	:EnemyManagement(MAX_NUM, MAX_NUM, ATTACK, BULLET_ATTACK),m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
+	:EnemyManagement(ENEMY_NUM, ATTACK, BULLET_ATTACK),m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
 {
-	m_pEnemyGatoring = new EnemyGatoring[MAX_NUM];
-	m_pBullet = new Bullet[MAX_NUM];
+	m_pEnemyGatoring = new EnemyGatoring[ENEMY_NUM];
+	m_pBullet = new Bullet[ENEMY_NUM];
 }
 
 //======================
@@ -29,19 +29,16 @@ EnemyGatoringManagement::EnemyGatoringManagement(DrawObject& pDrawObject1, DrawO
 //======================
 void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
 {
-	//時間が来たら敵を配置
-	if (m_count++ > APPEARANCE_TIME && EnemyManagement::GetObjNum() != MAX_NUM) {
-		//ランダムで出現位置を決める
-		float x = rand() % (SCREEN_WIDTH - (int)EnemyGatoring::SIZE_X / 2) + EnemyGatoring::SIZE_X / 2;
+	AddFlame(); //フレーム数を増加
 
-		//フラグに応じて敵を作る
-		if (m_pEnemySetPos.SetEnemy(D3DXVECTOR2(x, EnemyGatoring::STOP_POS_Y), D3DXVECTOR2(EnemyGatoring::SIZE_X + EnemyGatoring::RANGE * 2, EnemyGatoring::SIZE_Y))) {
-			EnemyGatoring temp(m_pDrawObjectEnemy, D3DXVECTOR2(x, -EnemyGatoring::SIZE_Y / 2));
-			m_pEnemyGatoring[EnemyManagement::GetObjNum()] = temp;
-			EnemyManagement::IncreaseObjNum(1);
-		}
+	int i = GetFlameNum();
+	if (GetFlameNum() == m_SetEnemyTime[m_EnemyNum] && GetObjNum() != ENEMY_NUM)
+	{
+		EnemyGatoring temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
+		m_pEnemyGatoring[GetObjNum()] = temp;
+		EnemyManagement::IncreaseObjNum(1);
 
-		m_count = 0;
+		m_EnemyNum++;
 	}
 
 	//今いる敵の処理
@@ -49,7 +46,7 @@ void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
 		m_pEnemyGatoring[i].Update();
 
 		//弾を作る
-		if (m_pEnemyGatoring[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() != MAX_NUM)
+		if (m_pEnemyGatoring[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() != ENEMY_NUM)
 		{
 			Bullet temp(m_pDrawObjectBullet, m_pEnemyGatoring[i].GetPos(),
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y),D3DXVECTOR2(0, 10.0f), 0.0f);

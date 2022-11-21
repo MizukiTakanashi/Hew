@@ -13,7 +13,7 @@ class ItemManagement
 {
 	//’è”
 private:
-	static const int MAX_NUM = 50;	//”š”­‚ÌÅ‘å”
+	static const int ENEMY_NUM = 50;	//”š”­‚ÌÅ‘å”
 
 
 	//ƒƒ“ƒo•Ï”

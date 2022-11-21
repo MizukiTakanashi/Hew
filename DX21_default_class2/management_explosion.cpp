@@ -11,7 +11,7 @@
 //============================
 ExplosionManagement::ExplosionManagement()
 {
-	m_pExplosion = new Explosion[MAX_NUM];
+	m_pExplosion = new Explosion[ENEMY_NUM];
 
 	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//サウンドのロード
 }
@@ -21,7 +21,7 @@ ExplosionManagement::ExplosionManagement()
 //=========================
 ExplosionManagement::ExplosionManagement(DrawObject & DrawObject) :m_DrawObject(DrawObject)
 {
-	m_pExplosion = new Explosion[MAX_NUM];
+	m_pExplosion = new Explosion[ENEMY_NUM];
 
 	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//サウンドのロード
 }

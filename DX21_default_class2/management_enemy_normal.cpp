@@ -18,10 +18,10 @@ const float EnemyNormalManagement::BULLET_SPEED = 5.0f;
 // 引数付きコンストラクタ
 //=========================
 EnemyNormalManagement::EnemyNormalManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, EnemySetPos& pEnemySetPos)
-	:EnemyManagement(MAX_NUM, MAX_NUM, ATTACK, BULLET_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
+	:EnemyManagement(ENEMY_NUM, ATTACK, BULLET_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
 {
-	m_pEnemyNormal = new EnemyNormal[MAX_NUM];
-	m_pBullet = new Bullet[MAX_NUM];
+	m_pEnemyNormal = new EnemyNormal[ENEMY_NUM];
+	m_pBullet = new Bullet[ENEMY_NUM];
 }
 
 //======================
@@ -29,19 +29,16 @@ EnemyNormalManagement::EnemyNormalManagement(DrawObject& pDrawObject1, DrawObjec
 //======================
 void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 {
-	//時間が来たら敵を配置
-	if (m_count++ > APPEARANCE_TIME && GetObjNum() != MAX_NUM) {
-		//ランダムで出現位置を決める
-		float x = rand() % (SCREEN_WIDTH - (int)EnemyNormal::SIZE_X / 2) + EnemyNormal::SIZE_X / 2;
+	AddFlame(); //フレーム数を増加
 
-		//フラグに応じて敵を作る
-		if (m_pEnemySetPos.SetEnemy(D3DXVECTOR2(x, EnemyNormal::STOP_POS_Y), D3DXVECTOR2(EnemyNormal::SIZE_X + EnemyNormal::RANGE * 2, EnemyNormal::SIZE_Y))) {
-			EnemyNormal temp(m_pDrawObjectEnemy, D3DXVECTOR2(x, -EnemyNormal::SIZE_Y / 2));
-			m_pEnemyNormal[GetObjNum()] = temp;
-		 	EnemyManagement::IncreaseObjNum(1);
-		}
+	int i = GetFlameNum();
+	if (GetFlameNum() == m_SetEnemyTime[m_EnemyNum] && GetObjNum() != ENEMY_NUM)
+	{
+		EnemyNormal temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
+		m_pEnemyNormal[GetObjNum()] = temp;
+		EnemyManagement::IncreaseObjNum(1);
 
-		m_count = 0;
+		m_EnemyNum++;
 	}
 
 	//今いる敵の処理
@@ -49,7 +46,7 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 		m_pEnemyNormal[i].Update();
 
 		//弾を作る
-		if (m_pEnemyNormal[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() != MAX_NUM) {
+		if (m_pEnemyNormal[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() != ENEMY_NUM) {
 			//プレイヤーの後を追うようにして、弾を生成
 			D3DXVECTOR2 movTemp = PlayerPos - m_pEnemyNormal[i].GetPos();
 			D3DXVECTOR2 rotposTemp = m_pEnemyNormal[i].GetPos() - PlayerPos;

@@ -18,10 +18,10 @@ const float EnemyLaserManagement::BULLET_SIZE_Y = 0.0f;
 // 引数付きコンストラクタ
 //=========================
 EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, EnemySetPos& pEnemySetPos)
-	:EnemyManagement(MAX_NUM, MAX_NUM, ATTACK, LASER_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectLaser(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
+	:EnemyManagement(ENEMY_NUM, ATTACK, LASER_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectLaser(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
 {
-	m_pEnemyLaser = new EnemyLaser[MAX_NUM];
-	m_pLaser = new Laser[MAX_NUM];
+	m_pEnemyLaser = new EnemyLaser[ENEMY_NUM];
+	m_pLaser = new Laser[ENEMY_NUM];
 }
 
 //======================
@@ -29,19 +29,16 @@ EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject&
 //======================
 void EnemyLaserManagement::Update()
 {
-	//時間が来たら敵を配置
-	if (m_count++ > APPEARANCE_TIME && GetObjNum() != MAX_NUM) {
-		//ランダムで出現位置を決める
-		float x = rand() % (SCREEN_WIDTH - (int)EnemyLaser::SIZE_X / 2) + EnemyLaser::SIZE_X / 2;
+	AddFlame(); //フレーム数を増加
 
-		//フラグに応じて敵を作る
-		if (m_pEnemySetPos.SetEnemy(D3DXVECTOR2(x, EnemyLaser::STOP_POS_Y), D3DXVECTOR2(EnemyLaser::SIZE_X + EnemyLaser::RANGE * 2, EnemyLaser::SIZE_Y))) {
-			EnemyLaser temp(m_pDrawObjectEnemy, D3DXVECTOR2(x, -EnemyLaser::SIZE_Y / 2));
-			m_pEnemyLaser[GetObjNum()] = temp;
-			EnemyManagement::IncreaseObjNum(1);
-		}
+	int i = GetFlameNum();
+	if (GetFlameNum() == m_SetEnemyTime[m_EnemyNum] && GetObjNum() != ENEMY_NUM)
+	{
+		EnemyLaser temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
+		m_pEnemyLaser[GetObjNum()] = temp;
+		EnemyManagement::IncreaseObjNum(1);
 
-		m_count = 0;
+		m_EnemyNum++;
 	}
 
 	//今いる敵の処理
@@ -55,7 +52,7 @@ void EnemyLaserManagement::Update()
 		}
 
 		//弾を作る
-		if (m_pEnemyLaser[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() != MAX_NUM)
+		if (m_pEnemyLaser[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() != ENEMY_NUM)
 		{
 			//レーザー番号をセット
 			m_pEnemyLaser[i].SetLaserIndex(EnemyManagement::GetBulletNum());
