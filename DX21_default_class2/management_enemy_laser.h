@@ -61,18 +61,18 @@ private:
 										,D3DXVECTOR2(52.5f + (105 * 10 - 1), -EnemyLaser::SIZE_Y / 2)
 										,D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyLaser::SIZE_Y / 2)
 										,D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyLaser::SIZE_Y / 2) };
-	int m_SetEnemyTime[12] = {	30,
-								60,
-								90,
-								120,
-								150,
-								180,
-								210,
-								240,
-								270,
-								300,
-								330,
-								360};
+	int m_SetEnemyTime[12] = { 60 * 3,
+								60 * 6,
+								60 * 9,
+								60 * 12,
+								60 * 15,
+								60 * 18,
+								60 * 21,
+								60 * 24,
+								60 * 27,
+								60 * 30,
+								60 * 33,
+								60 * 36 };
 
 public:
 	//デフォルトコンストラクタ

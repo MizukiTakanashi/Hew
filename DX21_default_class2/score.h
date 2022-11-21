@@ -34,7 +34,6 @@ public:
 	//スコアを追加
 	void AddScore(int num);
 
-
 	//コンボが途切れた時の処理
 	void InitCombo(void) { m_ComboMagnification = 1.0f; m_ComboNum = 0; }
 
