@@ -32,7 +32,7 @@ void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
 	AddFlame(); //ƒtƒŒ[ƒ€”‚ğ‘‰Á
 
 	int i = GetFlameNum();
-	if (GetFlameNum() == m_SetEnemyTime[m_EnemyNum] && GetObjNum() != ENEMY_NUM)
+	if (GetFlameNum() == m_SetEnemyTime[m_EnemyNum])
 	{
 		EnemyGatoring temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
 		m_pEnemyGatoring[GetObjNum()] = temp;
@@ -46,7 +46,7 @@ void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
 		m_pEnemyGatoring[i].Update();
 
 		//’e‚ğì‚é
-		if (m_pEnemyGatoring[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() != ENEMY_NUM)
+		if (m_pEnemyGatoring[i].GetFlagBulletMake())
 		{
 			Bullet temp(m_pDrawObjectBullet, m_pEnemyGatoring[i].GetPos(),
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y),D3DXVECTOR2(0, 10.0f), 0.0f);

@@ -32,7 +32,7 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 	AddFlame(); //フレーム数を増加
 
 	int i = GetFlameNum();
-	if (GetFlameNum() == m_SetEnemyTime[m_EnemyNum] && GetObjNum() != ENEMY_NUM)
+	if (GetFlameNum() == m_SetEnemyTime[m_EnemyNum])
 	{
 		EnemyNormal temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
 		m_pEnemyNormal[GetObjNum()] = temp;
@@ -46,7 +46,7 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 		m_pEnemyNormal[i].Update();
 
 		//弾を作る
-		if (m_pEnemyNormal[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() != ENEMY_NUM) {
+		if (m_pEnemyNormal[i].GetFlagBulletMake()) {
 			//プレイヤーの後を追うようにして、弾を生成
 			D3DXVECTOR2 movTemp = PlayerPos - m_pEnemyNormal[i].GetPos();
 			D3DXVECTOR2 rotposTemp = m_pEnemyNormal[i].GetPos() - PlayerPos;

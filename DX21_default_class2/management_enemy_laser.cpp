@@ -32,7 +32,7 @@ void EnemyLaserManagement::Update()
 	AddFlame(); //フレーム数を増加
 
 	int i = GetFlameNum();
-	if (GetFlameNum() == m_SetEnemyTime[m_EnemyNum] && GetObjNum() != ENEMY_NUM)
+	if (GetFlameNum() == m_SetEnemyTime[m_EnemyNum])
 	{
 		EnemyLaser temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
 		m_pEnemyLaser[GetObjNum()] = temp;
@@ -52,7 +52,7 @@ void EnemyLaserManagement::Update()
 		}
 
 		//弾を作る
-		if (m_pEnemyLaser[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() != ENEMY_NUM)
+		if (m_pEnemyLaser[i].GetFlagBulletMake())
 		{
 			//レーザー番号をセット
 			m_pEnemyLaser[i].SetLaserIndex(EnemyManagement::GetBulletNum());

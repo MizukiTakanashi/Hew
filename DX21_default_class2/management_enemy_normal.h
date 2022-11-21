@@ -21,7 +21,7 @@ class EnemyNormalManagement:public EnemyManagement
 private:
 	//ここで初期化
 	//敵自身
-	static const int ENEMY_NUM = 10;			//敵を出現させる数
+	static const int ENEMY_NUM = 12;		//敵を出現させる数
 	static const int BULLET_BREAK_TIME = 200;	//ホーミング弾が壊れる時間
 
 	//cppで初期化
@@ -50,7 +50,7 @@ private:
 	int m_EnemyNum = 0; //作った敵の数
 
 	//敵の配列
-	D3DXVECTOR2 m_SetEnemy[12] = { D3DXVECTOR2(52.5f + (105 * 1 - 1), -EnemyNormal::SIZE_Y / 2)
+	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = { D3DXVECTOR2(52.5f + (105 * 1 - 1), -EnemyNormal::SIZE_Y / 2)
 										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyNormal::SIZE_Y / 2)
 										,D3DXVECTOR2(52.5f + (105 * 3 - 1), -EnemyNormal::SIZE_Y / 2)
 										,D3DXVECTOR2(52.5f + (105 * 4 - 1), -EnemyNormal::SIZE_Y / 2)
@@ -63,7 +63,7 @@ private:
 										,D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyNormal::SIZE_Y / 2)
 										,D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyNormal::SIZE_Y / 2) };
 
-	int m_SetEnemyTime[12] = {	60 * 3,
+	int m_SetEnemyTime[ENEMY_NUM] = {	60 * 3,
 								60 * 6,
 								60 * 9,
 								60 * 12,
