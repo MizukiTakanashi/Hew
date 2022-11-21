@@ -93,6 +93,8 @@ int CollisionAll::Collision(void)
 
 					//ダメージ数を増やす
 					attacked += m_pEnemy[k]->GetObjAttack();
+					//コンボを途切れさせる
+					m_pNumber->InitCombo();
 				}
 			}
 			else {
@@ -218,6 +220,8 @@ int CollisionAll::Collision(void)
 				j--;
 				//ダメージ数を増やす
 				attacked += m_pEnemy[k]->GetBulletAttack();
+				//コンボを途切れさせる
+				m_pNumber->InitCombo();
 			}
 
 

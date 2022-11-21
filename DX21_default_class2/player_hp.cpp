@@ -35,8 +35,6 @@ void PlayerHP::ReduceHP(float reduce_num, D3DXVECTOR2 ppos)
 		m_hp -= reduce_num;
 		//爆発をセット
 		m_pExplosionManagement->SetExplosion(ppos);
-		//コンボを途切れさせる
-		m_pNumber->InitCombo();
 		SetInvincibleFrame();
 	}
 
