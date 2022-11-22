@@ -20,7 +20,11 @@ private:
 	int m_obj_attack = 0;			//敵自身がぶつかって与える攻撃力
 	int m_bullet_attack = 0;		//弾が与える攻撃力
 
+
+protected:
+	int m_EnemyNum = 0;				//出現させた敵の数
 	int m_FlameNum = 0;				//現在のフレーム数
+
 public:
 	//デフォルトコンストラクタ
 	EnemyManagement() {}
@@ -73,11 +77,6 @@ public:
 	//指定した番号の弾のサイズを返す(オーバーライド用)
 	virtual const D3DXVECTOR2& GetBulletSize(int index_num = 0)const = 0;
 
-	//フレーム数を増加
-	void AddFlame(void) { m_FlameNum++; } 
-
-	//現在のフレーム数を返す
-	int GetFlameNum(void) { return m_FlameNum; }
 };
 
 #endif // !_ENEMY_MANAGEMENT_H_

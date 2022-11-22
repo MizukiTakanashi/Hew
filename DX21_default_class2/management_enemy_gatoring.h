@@ -46,8 +46,6 @@ private:
 
 	int m_EnemyItem_num = 0;	//敵のアイテムの数
 
-	int m_EnemyNum = 0; //作った敵の数
-
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = { D3DXVECTOR2(52.5f + (105 * 1 - 1), -EnemyGatoring::SIZE_Y / 2)
 										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyGatoring::SIZE_Y / 2)

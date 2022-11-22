@@ -29,10 +29,10 @@ EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject&
 //======================
 void EnemyLaserManagement::Update()
 {
-	AddFlame(); //フレーム数を増加
+	m_FlameNum++; //フレーム数を増加
 
-	int i = GetFlameNum();
-	if (GetFlameNum() == m_SetEnemyTime[m_EnemyNum])
+	int i = m_FlameNum;
+	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
 	{
 		EnemyLaser temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
 		m_pEnemyLaser[GetObjNum()] = temp;
