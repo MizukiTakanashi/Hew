@@ -31,7 +31,7 @@ private:
 	//cppで初期化
 	static const float SPEED_X;			//敵のスピードY
 	static const float SPEED_Y;			//敵のスピードY
-
+	static const int HP_MAX;			//敵のHP最大値
 
 //メンバ変数
 private:
@@ -44,6 +44,8 @@ private:
 	bool m_enemyitem_make = false;		//アイテムを作るか否か
 
 	int m_laser_index = -1;	//レーザー番号
+
+	int m_hp = HP_MAX;					//敵の現在のHP
 
 //メンバ関数
 public:
