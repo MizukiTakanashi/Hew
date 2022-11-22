@@ -124,12 +124,14 @@ Game::Game(Score * pNumber):m_pNumber(pNumber)
 
 	//=======================
 	// 弾
-	m_pTexUseful[(int)TEXTURE_TYPE::BULLET].SetTextureName((char*)"data\\texture\\bullet_red.png");
+	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_RED].SetTextureName((char*)"data\\texture\\bullet_red.png");
+	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN].SetTextureName((char*)"data\\texture\\bullet_green.png");
+	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_SQUARE_GREEN].SetTextureName((char*)"data\\texture\\bullet02.png");
 	//プレイヤー側の弾
-	m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET], 0.0f, 1.0f, 1.0f, 1,
-		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_SQUARE_GREEN], 0.0f, 1.0f, 1.0f, 1,
+		D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 	//敵側の弾
-	m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET]);
+	m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_RED]);
 	
 	//=======================
 	// レーザー
@@ -185,11 +187,11 @@ Game::Game(Score * pNumber):m_pNumber(pNumber)
 	//m_pTexUseful[5].SetTextureName((char*)"data\\texture\\arm.png");
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
 	//弾
-	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET], 0.0f, 1.0f, 1.0f, 1,
-		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
+		D3DXCOLOR(0.2f, 1.0f, 0.2f, 1.0f));
 	//レーザー
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER], 0.0f, 1.0f, 1.0f, 1,
-		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
+		D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
 	m_pPlayerLeft = new PlayerLeft(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_BULLET],
 		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER], m_pPlayer->GetPos(), m_pRemaining_Left, D3DXVECTOR2(30.0f, 600.0f));
 
@@ -198,11 +200,11 @@ Game::Game(Score * pNumber):m_pNumber(pNumber)
 	//m_pTexUseful[6].SetTextureName((char*)"data\\texture\\arm.png");
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
 	//弾
-	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET], 0.0f, 1.0f, 1.0f, 1,
-		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
+		D3DXCOLOR(0.2f, 1.0f, 0.2f, 1.0f));
 	//レーザー
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER], 0.0f, 1.0f, 1.0f, 1,
-		D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
+		D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
 	m_pPlayerRight = new PlayerRight(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_BULLET],
 		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER], m_pPlayer->GetPos(), m_pRemaining_Right, D3DXVECTOR2(30.0f, 680.0f));
 
