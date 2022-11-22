@@ -1,7 +1,7 @@
 #include "meteo.h"
 //public
-const float Meteo::SIZE_X = 50.0f;
-const float Meteo::SIZE_Y = 60.0f;
+const float Meteo::SIZE_X = 100.0f;
+const float Meteo::SIZE_Y = 120.0f;
 
 //private
 const float Meteo::SPEED_X = 1.5f;

@@ -1,24 +1,28 @@
 #include "management_meteo.h"
 
 Management_Meteo::Management_Meteo(DrawObject& pDrawObject, EnemySetPos& pEnemySetPos)
+	:EnemyManagement(MAX_NUM, ATTACK,0), m_pDrawObjectMeteo(pDrawObject), m_pEnemySetPos(pEnemySetPos)
 {
 	m_pMeteo = new Meteo[MAX_NUM];
 }
 
 void Management_Meteo::Update() 
 {
-	//時間が来たら敵を配置
-	if (m_count++ > APPEARANCE_TIME && GetObjNum() != MAX_NUM) {
-		//ランダムで出現位置を決める
-		float x = rand() % (SCREEN_WIDTH - (int)Meteo::SIZE_X / 2) + Meteo::SIZE_X / 2;
+	m_FlameNum++; //フレーム数を増加
 
-		//フラグに応じて敵を作る
-		if (m_pEnemySetPos.SetEnemy(D3DXVECTOR2(x, -50), D3DXVECTOR2(Meteo::SIZE_X + 20.0f * 2, Meteo::SIZE_Y))) {
-			Meteo temp(m_pDrawObjectMeteo, D3DXVECTOR2(x, -Meteo::SIZE_Y / 2));
-			m_pMeteo[GetObjNum()] = temp;
-			EnemyManagement::IncreaseObjNum(1);
-		}
-		m_count = 0;
+	int i = m_FlameNum;
+	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
+	{
+		Meteo temp(m_pDrawObjectMeteo, m_SetEnemy[m_EnemyNum]);
+		m_pMeteo[GetObjNum()] = temp;
+		EnemyManagement::IncreaseObjNum(1);
+
+		m_EnemyNum++;
+	}
+	//今いる敵の処理
+	for (int i = 0; i < GetObjNum(); i++)
+	{
+		m_pMeteo[i].Update();
 	}
 }
 

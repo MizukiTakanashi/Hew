@@ -140,6 +140,7 @@
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="draw_object.cpp" />
     <ClCompile Include="enemy_gatoring.cpp" />
+    <ClCompile Include="enemy_public.cpp" />
     <ClCompile Include="inh_player_arm_both.cpp" />
     <ClCompile Include="input.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -154,6 +155,7 @@
     <ClCompile Include="management_enemy_normal.cpp" />
     <ClCompile Include="enemy_set_pos.cpp" />
     <ClCompile Include="explosion.cpp" />
+    <ClCompile Include="management_enemy_public.cpp" />
     <ClCompile Include="management_explosion.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="game_object.cpp" />
@@ -164,6 +166,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="management.cpp" />
     <ClCompile Include="management_meteo.cpp" />
+    <ClCompile Include="meteo.cpp" />
     <ClCompile Include="number.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="bg.cpp" />
@@ -214,6 +217,7 @@
     <ClInclude Include="collision.h" />
     <ClInclude Include="draw_object.h" />
     <ClInclude Include="enemy_gatoring.h" />
+    <ClInclude Include="enemy_public.h" />
     <ClInclude Include="inh_player_arm_both.h" />
     <ClInclude Include="input.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -228,6 +232,7 @@
     <ClInclude Include="management_enemy_normal.h" />
     <ClInclude Include="enemy_set_pos.h" />
     <ClInclude Include="explosion.h" />
+    <ClInclude Include="management_enemy_public.h" />
     <ClInclude Include="management_explosion.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="game_object.h" />

@@ -27,6 +27,8 @@
 #include "all_enemy_management.h"
 #include "player_arm_change.h"
 #include "collision_all.h"
+#include "management_meteo.h"
+#include "management_enemy_public.h"
 
 class Game
 {
@@ -62,6 +64,8 @@ private:
 		ENEMY_NOREMAL,
 		ENEMY_LASER,
 		ENEMY_GATORING,
+		ENEMY_PUBLIC,
+		ENEMY_METEO,
 		ENEMY_ITEM,
 		PLAYER_BULLET,
 		BULLET_ENEMY,
@@ -94,6 +98,8 @@ private:
 	EnemyNormalManagement* m_pEnemyNormalManagement = nullptr;
 	EnemyLaserManagement* m_pEnemyLaserManagement = nullptr;
 	EnemyGatoringManagement* m_pEnemyGatoringManagement = nullptr;
+	Management_EnemyPublic* m_pEnemyPublicManagement = nullptr;
+	Management_Meteo* m_pMeteoManagement = nullptr;
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;
 	ItemManagement* m_pItemManagement = nullptr;
