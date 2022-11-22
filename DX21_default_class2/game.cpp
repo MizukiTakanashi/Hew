@@ -120,7 +120,7 @@ Game::Game(Score * pNumber):m_pNumber(pNumber)
 	m_pDrawObject = new DrawObject[(int)DRAW_TYPE::NUM];
 
 	//背景の初期化処理
-	m_pBG = new BG((char*)"data\\texture\\bg_uchu_space.jpg");
+	m_pBG = new BG((char*)"data\\texture\\moon_bg.png");
 
 	//=======================
 	// 弾
