@@ -248,6 +248,8 @@ Game::Game(Score * pNumber):m_pNumber(pNumber)
 	m_pColAll->AddEnemyPointer(m_pEnemyNormalManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyLaserManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyGatoringManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemyPublicManagement);
+	//m_pColAll->AddEnemyPointer(m_pMeteoManagement);
 
 }
 
