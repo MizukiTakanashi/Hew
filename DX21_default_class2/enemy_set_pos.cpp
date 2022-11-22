@@ -17,12 +17,12 @@ bool EnemySetPos::SetEnemy(const D3DXVECTOR2& pos, const D3DXVECTOR2& size)
 		return false;
 	}
 
-	//for (int i = 0; i < m_index_num; i++) {
-	//	//‘¼‚Ì“G‚Æ“–‚½‚Á‚Ä‚¢‚½‚ç”z’u‚Å‚«‚È‚¢
-	//	if (Collision::ColBox(pos, m_pos[i], size, m_size[i])) {
-	//		return false;
-	//	}
-	//}
+	for (int i = 0; i < m_index_num; i++) {
+		//‘¼‚Ì“G‚Æ“–‚½‚Á‚Ä‚¢‚½‚ç”z’u‚Å‚«‚È‚¢
+		if (Collision::ColBox(pos, m_pos[i], size, m_size[i])) {
+			return false;
+		}
+	}
 	m_pos[m_index_num] = pos;
 	m_size[m_index_num] = size;
 	m_index_num++;

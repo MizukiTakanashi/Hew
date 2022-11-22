@@ -154,6 +154,8 @@ Game::Game(Score * pNumber):m_pNumber(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 1.0f, 0.33f, 1.0f, 3);
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 2.0f, 0.33f, 1.0f, 3);
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_PUBLIC].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 1.0f, 0.33f, 1.0f, 3);
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 2.0f, 0.33f, 1.0f, 3);
 
 	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY],
 		*m_pEnemySetPos);
@@ -161,7 +163,8 @@ Game::Game(Score * pNumber):m_pNumber(pNumber)
 		*m_pEnemySetPos);
 	m_pEnemyGatoringManagement = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY],
 		*m_pEnemySetPos);
-
+	m_pEnemyPublicManagement = new Management_EnemyPublic(m_pDrawObject[(int)DRAW_TYPE::ENEMY_PUBLIC],*m_pEnemySetPos);
+	m_pMeteoManagement = new Management_Meteo(m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO],*m_pEnemySetPos);
 	//=======================
 	// 残弾表示
 	m_pTexUseful[(int)TEXTURE_TYPE::NUMBER].SetTextureName((char*)"data\\texture\\number.png");
@@ -272,7 +275,8 @@ Game::~Game()
 	delete m_pRemaining_Right;
 	delete m_pComboNum;
 	delete m_pMultiply;
-
+	delete m_pEnemyPublicManagement;
+	delete m_pMeteoManagement;
 	delete m_pItemManagement;
 	delete m_pColAll;
 	//そのほか
@@ -310,6 +314,8 @@ void Game::Update(void)
 	m_pEnemyNormalManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyLaserManagement->Update();
 	m_pEnemyGatoringManagement->Update(m_pPlayer->GetPos());
+	m_pEnemyPublicManagement->Update();
+	m_pMeteoManagement->Update();
 
 	//====================================
 	//プレイヤーのHPに対する処理
@@ -363,6 +369,8 @@ void Game::Draw(void)const
 	m_pEnemyNormalManagement->Draw();
 	m_pEnemyLaserManagement->Draw();
 	m_pEnemyGatoringManagement->Draw();
+	m_pEnemyPublicManagement->Draw();
+	m_pMeteoManagement->Draw();
 
 	m_pPlayer->DrawBullet();
 	m_pExplosionManagement->Draw();
