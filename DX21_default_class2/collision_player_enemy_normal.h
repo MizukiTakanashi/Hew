@@ -23,7 +23,7 @@ private:
 	Player* m_rPlayer = nullptr;
 	EnemyNormalManagement* m_rEnemyNormalManagement = nullptr;
 	ExplosionManagement* m_rExplosionManagement = nullptr;
-	Score* m_pNumber = nullptr;
+	Score* m_pScore = nullptr;
 	ItemManagement* m_rItemManagement = nullptr;
 	bool m_PlayerEnemyNormalCol = false;	//プレイヤー自身と敵自身が当たっているかフラグ
 
@@ -34,7 +34,7 @@ public:
 	PlayerEnemyNormalCollision(Player* rPlayer, EnemyNormalManagement* rEnemyNormalManagement,
 		ExplosionManagement* rExplosionManagement, Score* pNumber, ItemManagement* m_rItem)
 		:m_rPlayer(rPlayer), m_rEnemyNormalManagement(rEnemyNormalManagement),
-		m_rExplosionManagement(rExplosionManagement), m_pNumber(pNumber), m_rItemManagement(m_rItem) {}
+		m_rExplosionManagement(rExplosionManagement), m_pScore(pNumber), m_rItemManagement(m_rItem) {}
 
 	~PlayerEnemyNormalCollision() {}	//デストラクタ
 

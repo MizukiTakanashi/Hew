@@ -35,7 +35,7 @@ Result::Result()
 //=========================
 // 引数付きコンストラクタ
 //=========================
-Result::Result(Score * pNumber):m_pNumber(pNumber)
+Result::Result(Score * pNumber):m_pScore(pNumber)
 {
 	m_BGM = LoadSound((char*)"data\\BGM\\silky_sky_away (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);
@@ -46,15 +46,15 @@ Result::Result(Score * pNumber):m_pNumber(pNumber)
 	m_pDrawOb = new DrawObject(*m_pTexUse);
 	m_pBG = new UI(*m_pDrawOb, D3DXVECTOR2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT));
 
-	m_pNumber->SetDigit(NUMBER_DIGIT);
-	m_pNumber->SetInitPos(NUMBER_POS);
-	m_pNumber->SetPos(NUMBER_POS);
-	m_pNumber->SetSize(NUMBER_SIZE);
+	m_pScore->SetDigit(NUMBER_DIGIT);
+	m_pScore->SetInitPos(NUMBER_POS);
+	m_pScore->SetPos(NUMBER_POS);
+	m_pScore->SetSize(NUMBER_SIZE);
 }
 
 Result::~Result()
 {
-	m_pNumber->SetNumber(0);
+	m_pScore->SetNumber(0);
 
 	StopSound(m_BGM);
 }
@@ -77,5 +77,5 @@ void Result::Draw(void)const
 {
 	m_pBG->Draw();
 
-	m_pNumber->DrawNumber();
+	m_pScore->DrawNumber();
 }

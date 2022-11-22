@@ -25,7 +25,7 @@ private:
 	EnemyManagement* m_pEnemy[ENEMY_NUM];			//‘S“G
 	ExplosionManagement* m_pExplosion = nullptr;	//”š”­
 	ItemManagement* m_pItem = nullptr;				//ƒAƒCƒeƒ€
-	Score* m_pNumber = nullptr;						//“|‚µ‚½“G‚Ì”•\¦
+	Score* m_pScore = nullptr;						//“|‚µ‚½“G‚Ì”•\¦
 	inhPlayerArm* m_pArm = nullptr;					//˜r‚©‚ço‚é’e
 
 public:

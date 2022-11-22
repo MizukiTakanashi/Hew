@@ -32,8 +32,10 @@ int inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& e
 			m_shot = true;
 
 			//弾が出しきったフラグをセット
-			m_pEnemyItem->SetBulletUsed(true);
-
+			if (m_pEnemyItem)
+			{
+				m_pEnemyItem->SetBulletUsed(true);
+			}
 			m_type = TYPE::TYPE_SHOOT;
 
 			//HPが-1される
@@ -171,7 +173,10 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 	}//発射中をセットされた場合は発射中のフラグをオン
 	else {
 		//弾が出しきったフラグをセット
-		m_pEnemyItem->SetBulletUsed(true);
+		if (m_pEnemyItem)
+		{
+			m_pEnemyItem->SetBulletUsed(true);
+		}
 		m_shot = true;
 	}
 

@@ -186,6 +186,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="player_arm_change.cpp" />
+    <ClCompile Include="player_center.cpp" />
     <ClCompile Include="player_hp.cpp" />
     <ClCompile Include="player_left.cpp" />
     <ClCompile Include="player_right.cpp" />
@@ -263,6 +264,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="player_arm_change.h" />
+    <ClInclude Include="player_center.h" />
     <ClInclude Include="player_hp.h" />
     <ClInclude Include="player_left.h" />
     <ClInclude Include="player_right.h" />

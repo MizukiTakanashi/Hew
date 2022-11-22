@@ -8,7 +8,7 @@
 
 PlayerArmEnemyCol::PlayerArmEnemyCol(EnemyManagement* p1, EnemyManagement* p2, EnemyManagement* p3,
 	ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber) 
-	:m_pExplosion(pExplosion), m_pItem(pItem), m_pNumber(pNumber)
+	:m_pExplosion(pExplosion), m_pItem(pItem), m_pScore(pNumber)
 {
 	m_pEnemy[0] = p1;
 	m_pEnemy[1] = p2;
@@ -55,7 +55,7 @@ void PlayerArmEnemyCol::Collision(void)
 						j--;
 
 						//“|‚µ‚½“G‚Ì”‚ð‘‚â‚·
-						m_pNumber->AddScore(1);
+						m_pScore->AddScore(1);
 					}
 				}
 			}

@@ -58,6 +58,9 @@
     <ClCompile Include="score.cpp" />
     <ClCompile Include="management_meteo.cpp" />
     <ClCompile Include="meteo.cpp" />
+    <ClCompile Include="enemy_public.cpp" />
+    <ClCompile Include="management_enemy_public.cpp" />
+    <ClCompile Include="player_center.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
@@ -117,5 +120,8 @@
     <ClInclude Include="score.h" />
     <ClInclude Include="meteo.h" />
     <ClInclude Include="management_meteo.h" />
+    <ClInclude Include="enemy_public.h" />
+    <ClInclude Include="management_enemy_public.h" />
+    <ClInclude Include="player_center.h" />
   </ItemGroup>
 </Project>

@@ -20,7 +20,7 @@ private:
 	Player* m_rPlayer = nullptr;
 	EnemyGatoringManagement* m_rEnemyGatoringManagement = nullptr;
 	ExplosionManagement* m_rExplosionManagement = nullptr;
-	Score* m_pNumber = nullptr;
+	Score* m_pScore = nullptr;
 	ItemManagement* m_rItemManagement = nullptr;
 	bool m_PlayerEnemyGatoringCol = false;	//プレイヤー自身と敵自身が当たっているかフラグ
 
@@ -31,7 +31,7 @@ public:
 	PlayerEnemyGatoringCollision(Player* rPlayer, EnemyGatoringManagement* rEnemyGatoringManagement,
 		ExplosionManagement* rExplosionManagement, Score* pNumber, ItemManagement* m_rItem)
 		:m_rPlayer(rPlayer), m_rEnemyGatoringManagement(rEnemyGatoringManagement),
-		m_rExplosionManagement(rExplosionManagement), m_pNumber(pNumber), m_rItemManagement(m_rItem) {}
+		m_rExplosionManagement(rExplosionManagement), m_pScore(pNumber), m_rItemManagement(m_rItem) {}
 
 	~PlayerEnemyGatoringCollision() {}	//デストラクタ
 

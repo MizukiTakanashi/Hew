@@ -40,7 +40,7 @@ int PlayerEnemyCol::Collision(void)
 						j--;
 
 						//“|‚µ‚½“G‚Ì”‚ð‘‚â‚·
-						m_pNumber->AddScore(1);
+						m_pScore->AddScore(1);
 					}
 				}
 			}

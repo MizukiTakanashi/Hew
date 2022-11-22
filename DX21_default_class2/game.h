@@ -29,6 +29,7 @@
 #include "collision_all.h"
 #include "management_meteo.h"
 #include "management_enemy_public.h"
+#include "player_center.h"
 
 class Game
 {
@@ -77,6 +78,9 @@ private:
 		PLAYER_ARM_RIGHT,
 		PLAYER_ARM_RIGHT_BULLET,
 		PLAYER_ARM_RIGHT_LASER,
+		PLAYER_ARM_CENTER,
+		PLAYER_ARM_CENTTER_BULLET,
+		PLAYER_ARM_CENTER_LASER,
 		NUMBER,
 		MULTIPLY,
 		NUM
@@ -87,7 +91,7 @@ private:
 private:
 	int m_BGM = 0;
 
-	Score* m_pNumber = nullptr;
+	Score* m_pScore = nullptr;
 
 	TextureUseful* m_pTexUseful = nullptr;
 	DrawObject* m_pDrawObject = nullptr;
@@ -106,9 +110,11 @@ private:
 
 	PlayerLeft* m_pPlayerLeft = nullptr;
 	PlayerRight* m_pPlayerRight = nullptr;
+	PlayerCenter* m_pPlayerCenter = nullptr;
 
 	Number* m_pRemaining_Left = nullptr;
 	Number* m_pRemaining_Right = nullptr;
+	Number* m_pRemaining_Center = nullptr;
 
 	UI* m_pMultiply = nullptr;
 	Number* m_pComboNum = nullptr;

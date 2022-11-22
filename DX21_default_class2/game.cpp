@@ -85,18 +85,18 @@ Game::Game()
 	//m_pItemManagement = new ItemManagement(m_pDrawObject[(int)DRAW_TYPE::DRAW_TYPE_ENEMY_ITEM_EXPLOSION]);
 	//
 	////数字の初期化
-	//m_pNumber->SetInitPos(NUMBER_POS);
-	//m_pNumber->SetPos(NUMBER_POS);
-	//m_pNumber->SetSize(NUMBER_SIZE);
-	//m_pNumber->SetDigit(NUMBER_DIGIT);
+	//m_pScore->SetInitPos(NUMBER_POS);
+	//m_pScore->SetPos(NUMBER_POS);
+	//m_pScore->SetSize(NUMBER_SIZE);
+	//m_pScore->SetDigit(NUMBER_DIGIT);
 	//
 	////プレイヤーと普通の敵の当たり判定
 	//m_pPlayerEnemyNormalCol = new PlayerEnemyNormalCollision(m_pPlayer, m_pEnemyNormalManagement,
-	//	m_pExplosionManagement, m_pNumber, m_pItemManagement);
+	//	m_pExplosionManagement, m_pScore, m_pItemManagement);
 	//
 	////プレイヤーとレーザーの敵の当たり判定
 	//m_pPlayerEnemyLaserCol = new PlayerEnemyLaserCollision(m_pPlayer, m_pEnemyLaserManagement,
-	//	m_pExplosionManagement, m_pNumber, m_pItemManagement);
+	//	m_pExplosionManagement, m_pScore, m_pItemManagement);
 	//
 	////プレイヤーの腕と敵のアイテムの当たり判定
 	//m_ArmEnemyCollision = new ArmEnemyCollision(m_pPlayerLeft, m_pPlayerRight, m_pItemManagement);
@@ -110,7 +110,7 @@ Game::Game()
 //=========================
 // 引数付きコンストラクタ
 //=========================
-Game::Game(Score * pNumber):m_pNumber(pNumber)
+Game::Game(Score * pNumber):m_pScore(pNumber)
 {
 	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);	//BGM再生
@@ -171,8 +171,10 @@ Game::Game(Score * pNumber):m_pNumber(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::NUMBER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::NUMBER], 0.0f, 0.0909f, 1.0f, 11);
 	m_pRemaining_Left = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(40.0f, 60.0f), 2);
 	m_pRemaining_Right = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(40.0f, 60.0f), 2);
+	m_pRemaining_Center = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(40.0f, 60.0f), 2);
 	m_pRemaining_Left->SetInitPos(D3DXVECTOR2(130.0f, 600.0f));
 	m_pRemaining_Right->SetInitPos(D3DXVECTOR2(130.0f, 680.0f));
+	m_pRemaining_Center->SetInitPos(D3DXVECTOR2(130.0f, 520.0f));
 
 	//=======================
 	// コンボ数の横の×
@@ -211,8 +213,21 @@ Game::Game(Score * pNumber):m_pNumber(pNumber)
 	m_pPlayerRight = new PlayerRight(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_BULLET],
 		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER], m_pPlayer->GetPos(), m_pRemaining_Right, D3DXVECTOR2(30.0f, 680.0f));
 
+	//=======================
+	// プレイヤーの腕の真ん中
+	//m_pTexUseful[6].SetTextureName((char*)"data\\texture\\arm.png");
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
+	//弾
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTTER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
+		D3DXCOLOR(0.2f, 1.0f, 0.2f, 1.0f));
+	//レーザー
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER], 0.0f, 1.0f, 1.0f, 1,
+		D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
+	m_pPlayerCenter = new PlayerCenter(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTTER_BULLET],
+		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER_LASER], m_pPlayer->GetPos(), m_pRemaining_Center, D3DXVECTOR2(30.0f, 520.0f));
+
 	//腕の交換
-	m_pPlayerArmChange=new PlayerArmChange(m_pPlayerLeft, m_pPlayerRight);
+	m_pPlayerArmChange=new PlayerArmChange(m_pPlayerLeft, m_pPlayerRight, m_pPlayerCenter);
 	//爆発
 	m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION].SetTextureName((char*)"data\\texture\\explosion000.png");
 	m_pDrawObject[(int)DRAW_TYPE::EXPLOSION].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION], 0.0f, 0.125f, 1.0f, 7);
@@ -224,10 +239,10 @@ Game::Game(Score * pNumber):m_pNumber(pNumber)
 	m_pItemManagement = new ItemManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ITEM]);
 
 	//数字の初期化
-	m_pNumber->SetInitPos(NUMBER_POS);
-	m_pNumber->SetPos(NUMBER_POS);
-	m_pNumber->SetSize(NUMBER_SIZE);
-	m_pNumber->SetDigit(NUMBER_DIGIT);
+	m_pScore->SetInitPos(NUMBER_POS);
+	m_pScore->SetPos(NUMBER_POS);
+	m_pScore->SetSize(NUMBER_SIZE);
+	m_pScore->SetDigit(NUMBER_DIGIT);
 
 	//プレイヤーのHP
 	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER_HP].SetTextureName((char*)"data\\texture\\hp.png");
@@ -243,7 +258,7 @@ Game::Game(Score * pNumber):m_pNumber(pNumber)
 
 	//全ての当たり判定(今のところ敵とプレイヤーだけ)
 	m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement, 
-		m_pItemManagement, m_pNumber);
+		m_pItemManagement, m_pScore);
 	//敵のポインタをセット
 	m_pColAll->AddEnemyPointer(m_pEnemyNormalManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyLaserManagement);
@@ -262,25 +277,27 @@ Game::~Game()
 	delete m_pEnemySetPos;
 	delete m_pAllEnemyManagement;
 	delete m_pPlayerArmChange;
+	delete m_pColAll;
 
 	//ゲームオブジェクトを消す
+	delete m_pBG;
 	delete m_pExplosionManagement;
 	delete m_pEnemyNormalManagement;
 	delete m_pEnemyLaserManagement;
 	delete m_pEnemyGatoringManagement;
-	delete m_pPlayerHP;
-	delete m_pPlayer;
-	delete m_pPlayerLeft;
-	delete m_pPlayerRight;
-	delete m_pBG;
-	delete m_pRemaining_Left;
-	delete m_pRemaining_Right;
-	delete m_pComboNum;
-	delete m_pMultiply;
 	delete m_pEnemyPublicManagement;
 	delete m_pMeteoManagement;
 	delete m_pItemManagement;
-	delete m_pColAll;
+	delete m_pPlayer;
+	delete m_pPlayerHP;
+	delete m_pPlayerLeft;
+	delete m_pPlayerRight;
+	delete m_pRemaining_Left;
+	delete m_pRemaining_Right;
+	delete m_pRemaining_Center;
+	delete m_pPlayerCenter;
+	delete m_pComboNum;
+	delete m_pMultiply;
 	//そのほか
 	delete[] m_pDrawObject;
 	delete[] m_pTexUseful;
@@ -335,6 +352,9 @@ void Game::Update(void)
 	m_pPlayerRight->ButtonPress();
 	//切り離されたらHPを減らす
 	attack_num += m_pPlayerRight->Update(m_pPlayer->GetPos(), temp_pos);
+	m_pPlayerCenter->ButtonPress();
+	//切り離されたらHPを減らす
+	attack_num += m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
 	
 	//敵とプレイヤーの当たり判定
 	attack_num += m_pColAll->Collision();
@@ -367,6 +387,7 @@ void Game::Draw(void)const
 	//プレイヤーの腕の描画処理
 	m_pPlayerLeft->ArmDraw();
 	m_pPlayerRight->ArmDraw();
+	m_pPlayerCenter->ArmDraw();
 
 	m_pEnemyNormalManagement->Draw();
 	m_pEnemyLaserManagement->Draw();
@@ -381,10 +402,11 @@ void Game::Draw(void)const
 
 	//UIの描画
 	m_pPlayerHP->DrawHP();
-	m_pNumber->DrawNumber();
+	m_pScore->DrawNumber();
 	m_pRemaining_Left->DrawNumber();
 	m_pRemaining_Right->DrawNumber();
-	m_pComboNum->SetNumber(m_pNumber->GetComboNum());
+	m_pRemaining_Center->DrawNumber();
+	m_pComboNum->SetNumber(m_pScore->GetComboNum());
 	m_pComboNum->DrawNumber();
 	m_pMultiply->Draw();
 

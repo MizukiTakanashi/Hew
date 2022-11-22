@@ -21,7 +21,7 @@ private:
 	EnemyManagement* m_pEnemy = nullptr;			//全敵
 	ExplosionManagement* m_pExplosion = nullptr;	//爆発
 	ItemManagement* m_pItem = nullptr;				//アイテム
-	Score* m_pNumber = nullptr;					//倒した敵の数表示
+	Score* m_pScore = nullptr;					//倒した敵の数表示
 
 	int m_EnemyNum = 0;								//敵の種類の数
 	bool m_PlayerEnemyCol = false;					//敵自身とプレイヤー自身の当たりフラグ
@@ -34,7 +34,7 @@ public:
 	PlayerEnemyCol(Player* pPlayer, EnemyManagement* pEnemy, ExplosionManagement* pExplosion,
 		ItemManagement* pItem, Score* pNumber, int EnemyNum)
 		:m_pPlayer(pPlayer), m_pEnemy(pEnemy), m_pExplosion(pExplosion), 
-		m_pItem(pItem), m_pNumber(pNumber), m_EnemyNum(EnemyNum) {}
+		m_pItem(pItem), m_pScore(pNumber), m_EnemyNum(EnemyNum) {}
 
 	//デストラクタ
 	~PlayerEnemyCol(){}

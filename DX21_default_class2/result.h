@@ -33,7 +33,7 @@ private:
 	TextureUseful* m_pTexUse = nullptr;
 	DrawObject* m_pDrawOb = nullptr;
 	UI* m_pBG = nullptr;
-	Score* m_pNumber = nullptr;
+	Score* m_pScore = nullptr;
 
 public:
 	Result();	//デフォルトコンストラクタ

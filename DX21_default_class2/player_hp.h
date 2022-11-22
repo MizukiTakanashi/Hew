@@ -38,7 +38,7 @@ private:
 	float m_hp = HP_MAX;			//プレイヤーのHP
 	int m_invincible = 0;			//無敵時間
 	ExplosionManagement* m_pExplosionManagement = nullptr; //爆発管理のポインタ
-	//Score* m_pNumber = nullptr; //ナンバーのポインタ
+	//Score* m_pScore = nullptr; //ナンバーのポインタ
 
 public:
 	PlayerHP() { m_hp = HP_MAX; }	//デフォルトコンストラクタ

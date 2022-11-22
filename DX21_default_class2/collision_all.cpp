@@ -23,7 +23,7 @@ CollisionAll::CollisionAll()
 CollisionAll::CollisionAll(Player* pPlayer, inhPlayerArmBoth* pL, inhPlayerArmBoth* pR,
 	ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber)
 	:m_pPlayer(pPlayer), m_pPlayerLeft(pL), m_pPlayerRight(pR), m_pExplosion(pExplosion), 
-	m_pItem(pItem), m_pNumber(pNumber)
+	m_pItem(pItem), m_pScore(pNumber)
 {
 	for (int i = 0; i < ENEMY_NUM; i++) {
 		m_pEnemy[i] = nullptr;
@@ -79,7 +79,7 @@ int CollisionAll::Collision(void)
 						j--;
 
 						//倒した敵の数を増やす
-						m_pNumber->AddScore(1);
+						m_pScore->AddScore(1);
 					}
 				}
 			}
@@ -96,7 +96,7 @@ int CollisionAll::Collision(void)
 					//ダメージ数を増やす
 					attacked += m_pEnemy[k]->GetObjAttack();
 					//コンボを途切れさせる
-					m_pNumber->InitCombo();
+					m_pScore->InitCombo();
 				}
 			}
 			else {
@@ -180,7 +180,7 @@ int CollisionAll::Collision(void)
 								j--;
 
 								//倒した敵の数を増やす
-								m_pNumber->AddScore(1);
+								m_pScore->AddScore(1);
 							}
 						}
 					}
@@ -229,7 +229,7 @@ int CollisionAll::Collision(void)
 				//ダメージ数を増やす
 				attacked += m_pEnemy[k]->GetBulletAttack();
 				//コンボを途切れさせる
-				m_pNumber->InitCombo();
+				m_pScore->InitCombo();
 			}
 
 

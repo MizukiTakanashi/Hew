@@ -35,7 +35,7 @@ private:
 	
 	ExplosionManagement* m_pExplosion = nullptr;	//爆発
 	ItemManagement* m_pItem = nullptr;				//アイテム
-	Score* m_pNumber = nullptr;					//倒した敵の数表示
+	Score* m_pScore = nullptr;					//倒した敵の数表示
 	Number* m_pCombo = nullptr;					//コンボのポインタ
 
 	bool m_player_enemy_col = false;				//プレイヤーと
