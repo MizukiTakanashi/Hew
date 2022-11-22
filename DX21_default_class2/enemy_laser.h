@@ -76,6 +76,13 @@ public:
 
 	//ƒŒ[ƒU[”Ô†‚ğ•Ô‚·
 	int GetLaserIndex() const { return m_laser_index; }
+
+	//HP‚ğŒ¸‚ç‚·
+	void ReduceHP(int amount) { m_hp -= amount; }
+
+	//HP‚ğ•Ô‚·
+	int GetHP(void) { return m_hp; }
+
 };
 
 #endif // !_ENEMY_LASER_H_

@@ -99,24 +99,31 @@ void EnemyLaserManagement::Draw(void)const
 }
 
 //======================
-// “G‚ğÁ‚·
+// “G‚ÌHP‚ğŒ¸‚ç‚·
 //======================
-void EnemyLaserManagement::DeleteObj(int index_num)
+bool EnemyLaserManagement::ReduceHP(int index_num, int reduceHP)
 {
-	EnemyManagement::DeleteObj(index_num);
+	m_pEnemyLaser[index_num].ReduceHP(reduceHP);
+	if (m_pEnemyLaser[index_num].GetHP() <= 0)
+	{//HP‚ª‚OˆÈ‰º‚È‚ç“G‚ğÁ‚·
 
-	if (m_pEnemyLaser[index_num].GetLaserIndex() >= 0)
-	{
-		m_pLaser[m_pEnemyLaser[index_num].GetLaserIndex()].DeleteLaser();
+		EnemyManagement::DeleteObj(index_num, reduceHP);
+
+		if (m_pEnemyLaser[index_num].GetLaserIndex() >= 0)
+		{
+			m_pLaser[m_pEnemyLaser[index_num].GetLaserIndex()].DeleteLaser();
+		}
+
+		m_pEnemySetPos.DeleteEnemy(m_pEnemyLaser[index_num].GetPos());
+
+		for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
+			m_pEnemyLaser[i] = m_pEnemyLaser[i + 1];
+
+		}
+		EnemyManagement::IncreaseObjNum(-1);
+		return true;
 	}
-
-	m_pEnemySetPos.DeleteEnemy(m_pEnemyLaser[index_num].GetPos());
-
-	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
-		m_pEnemyLaser[i] = m_pEnemyLaser[i + 1];
-
-	}
-	EnemyManagement::IncreaseObjNum(-1);
+	return false;
 }
 
 //======================

@@ -104,18 +104,25 @@ void EnemyNormalManagement::Draw(void)const
 }
 
 //======================
-// “G‚ğÁ‚·
+// “G‚ÌHP‚ğŒ¸‚ç‚·
 //======================
-void EnemyNormalManagement::DeleteObj(int index_num)
+bool EnemyNormalManagement::ReduceHP(int index_num, int reduceHP)
 {
-	EnemyManagement::DeleteObj(index_num);
+	m_pEnemyNormal[index_num].ReduceHP(reduceHP);
+	if (m_pEnemyNormal[index_num].GetHP() <= 0)
+	{//HP‚ª‚OˆÈ‰º‚È‚ç“G‚ğÁ‚·
+		EnemyManagement::DeleteObj(index_num, reduceHP);
 
-	m_pEnemySetPos.DeleteEnemy(m_pEnemyNormal[index_num].GetPos());
+		m_pEnemySetPos.DeleteEnemy(m_pEnemyNormal[index_num].GetPos());
 
-	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
-		m_pEnemyNormal[i] = m_pEnemyNormal[i + 1];
+		for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
+			m_pEnemyNormal[i] = m_pEnemyNormal[i + 1];
+		}
+		EnemyManagement::IncreaseObjNum(-1);
+
+		return true;
 	}
-	EnemyManagement::IncreaseObjNum(-1);
+	return false;
 }
 
 //======================

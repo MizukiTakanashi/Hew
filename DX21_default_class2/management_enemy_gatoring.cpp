@@ -85,18 +85,26 @@ void EnemyGatoringManagement::Draw(void)const
 }
 
 //======================
-// “G‚ğÁ‚·
+// “G‚ÌHP‚ğŒ¸‚ç‚·
 //======================
-void EnemyGatoringManagement::DeleteObj(int index_num)
+bool EnemyGatoringManagement::ReduceHP(int index_num, int reduceHP)
 {
-	EnemyManagement::DeleteObj(index_num);
+	m_pEnemyGatoring[index_num].ReduceHP(reduceHP);
+	if (m_pEnemyGatoring[index_num].GetHP() <= 0)
+	{//HP‚ª‚OˆÈ‰º‚È‚ç“G‚ğÁ‚·
 
-	m_pEnemySetPos.DeleteEnemy(m_pEnemyGatoring[index_num].GetPos());
+		EnemyManagement::DeleteObj(index_num, reduceHP);
 
-	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
-		m_pEnemyGatoring[i] = m_pEnemyGatoring[i + 1];
+		m_pEnemySetPos.DeleteEnemy(m_pEnemyGatoring[index_num].GetPos());
+
+		for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
+			m_pEnemyGatoring[i] = m_pEnemyGatoring[i + 1];
+		}
+		EnemyManagement::IncreaseObjNum(-1);
+
+		return true;
 	}
-	EnemyManagement::IncreaseObjNum(-1);
+	return false;
 }
 
 //======================

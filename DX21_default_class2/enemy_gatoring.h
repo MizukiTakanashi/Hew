@@ -69,6 +69,13 @@ public:
 
 	//“G‚ÌƒAƒCƒeƒ€‚ğì‚Á‚½
 	void EnemyItemMake() { m_enemyitem_make = false; }
+
+	//HP‚ğŒ¸‚ç‚·
+	void ReduceHP(int amount) { m_hp -= amount; }
+
+	//HP‚ğ•Ô‚·
+	int GetHP(void) { return m_hp; }
+
 };
 
 #endif // !_ENEMY_GATORING_H_

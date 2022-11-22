@@ -16,7 +16,7 @@ const float EnemyLaser::RANGE = 240.0f;
 //private
 const float EnemyLaser::SPEED_X = 0.5f;
 const float EnemyLaser::SPEED_Y = 2.5f;
-const int EnemyLaser::HP_MAX = 3;
+const int EnemyLaser::HP_MAX = 2;
 
 //======================
 // XVˆ—

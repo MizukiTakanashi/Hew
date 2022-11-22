@@ -37,14 +37,16 @@ public:
 	//デストラクタ
 	virtual ~EnemyManagement() {}
 
-	//指定した番号のオブジェクトを消す
 	//メンバ変数に消したオブジェクトの番号を記録させておく
-	virtual void DeleteObj(int index_num) { m_obj_delete_index = index_num; }
+	void DeleteObj(int index_num, int reduceHP) { m_obj_delete_index = index_num; }
+
+	//指定した番号のオブジェクトのHPを減らす
+	virtual bool ReduceHP(int index_num, int reduceHP) { return false; }
 
 	//消したオブジェクトの番号を返す(ホーミング弾用)
 	int GetDeleteObjIndex(void)const { return m_obj_delete_index; }
 
-	//指定した番号のオブジェクトを消す
+	//指定した番号のオブジェクトを消す 敵が死んだらtrueを返す
 	virtual void DeleteBullet(int index_num) = 0;
 
 	//現在のオブジェクト数を増やす

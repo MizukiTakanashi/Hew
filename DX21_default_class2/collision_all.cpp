@@ -66,14 +66,16 @@ int CollisionAll::Collision(void)
 						m_pPlayer->GetBulletSize(), m_pEnemy[k]->GetObjSize())) {
 						//爆発をセット
 						m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
-						//敵アイテムのドロップ
-						m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 
 						//プレイヤーの弾を消す
 						m_pPlayer->DeleteBullet(i);
 						i--;
-						//敵を消す
-						m_pEnemy[k]->DeleteObj(j);
+						//敵のHPを減らす
+						if (m_pEnemy[k]->ReduceHP(j, 1))
+						{//敵が死んだ場合の処理
+							//敵アイテムのドロップ
+							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
+						}
 						j--;
 
 						//倒した敵の数を増やす
@@ -120,8 +122,12 @@ int CollisionAll::Collision(void)
 						pArm->GetSize(), m_pEnemy[k]->GetObjSize(j))) {
 						//TYPE_OLDにセット
 						pArm->SetType(inhPlayerArmBoth::TYPE::TYPE_OLD);
-						//敵を削除
-						m_pEnemy[k]->DeleteObj(j);
+
+						//敵のHPを減らす
+						if (m_pEnemy[k]->ReduceHP(j, 1))
+						{//敵が死んだ場合の処理
+							
+						}
 						//爆発をセット
 						m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
 					}
@@ -157,8 +163,6 @@ int CollisionAll::Collision(void)
 								pArmItem->GetBulletSize(), m_pEnemy[k]->GetObjSize())) {
 								//爆発をセット
 								m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
-								//敵アイテムのドロップ
-								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 
 								//腕についている種類がTYPE2(レーザー)でなければ...
 								if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
@@ -167,8 +171,12 @@ int CollisionAll::Collision(void)
 									i--;
 								}
 
-								//敵を消す
-								m_pEnemy[k]->DeleteObj(j);
+								//敵のHPを減らす
+								if (m_pEnemy[k]->ReduceHP(j, 1))
+								{//敵が死んだ場合の処理
+									//敵アイテムのドロップ
+									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
+								}
 								j--;
 
 								//倒した敵の数を増やす

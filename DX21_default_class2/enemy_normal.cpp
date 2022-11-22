@@ -16,7 +16,7 @@ const float EnemyNormal::RANGE = 20.0f;
 //private
 const float EnemyNormal::SPEED_X = 1.5f;
 const float EnemyNormal::SPEED_Y = 2.5f;
-const int EnemyNormal::HP_MAX = 3;
+const int EnemyNormal::HP_MAX = 2;
 
 //======================
 // XVˆ—

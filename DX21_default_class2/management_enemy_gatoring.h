@@ -93,8 +93,8 @@ public:
 	//•`‰æˆ—
 	void Draw(void)const;
 
-	//w’è‚µ‚½“G‚ğÁ‚·
-	void DeleteObj(int index_num)override;
+	//w’è‚µ‚½‚ÌHP‚ğŒ¸‚ç‚·@“G‚ª€‚ñ‚¾‚çtrue‚ğ•Ô‚·
+	bool ReduceHP(int index_num, int reduceHP)override;
 
 	//w’è‚µ‚½’e‚ğÁ‚·
 	void DeleteBullet(int index_num)override;
