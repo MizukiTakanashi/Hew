@@ -33,14 +33,22 @@ void Management_Meteo::Draw(void) const
 	}
 }
 
-void Management_Meteo::DeleteObj(int index_num, int reduceHP)
+bool Management_Meteo::ReduceHP(int index_num, int reduceHP)
 {
-	EnemyManagement::DeleteObj(index_num, reduceHP);
+	m_pMeteo[index_num].ReduceHP(reduceHP);
+	if (m_pMeteo[index_num].GetHP() <= 0)
+	{//HP‚ª‚OˆÈ‰º‚È‚ç“G‚ðÁ‚·
 
-	m_pEnemySetPos.DeleteEnemy(m_pMeteo[index_num].GetPos());
+		EnemyManagement::DeleteObj(index_num, reduceHP);
 
-	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
-		m_pMeteo[i] = m_pMeteo[i + 1];
+		m_pEnemySetPos.DeleteEnemy(m_pMeteo[index_num].GetPos());
+
+		for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
+			m_pMeteo[i] = m_pMeteo[i + 1];
+		}
+		EnemyManagement::IncreaseObjNum(-1);
+
+		return true;
 	}
-	EnemyManagement::IncreaseObjNum(-1);
+	return false;
 }

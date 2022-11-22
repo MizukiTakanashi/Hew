@@ -15,6 +15,9 @@ private:
 	//cppで初期化
 	static const float SPEED_X;			//敵のスピードY
 	static const float SPEED_Y;			//敵のスピードY
+	static const int HP_MAX;			//敵のHP最大値
+
+	int m_hp = HP_MAX;					//敵の現在のHP
 
 public:
 	Meteo(){}	//デフォルトコンストラクタ
@@ -22,4 +25,11 @@ public:
 		:GameObject(pDrawObject,pos,D3DXVECTOR2(SIZE_X, SIZE_Y)){}
 	~Meteo(){}
 	void Update(void);	//更新処理
+
+	//HPを減らす
+	void ReduceHP(int amount) { m_hp -= amount; }
+
+	//HPを返す
+	int GetHP(void) { return m_hp; }
+
 };
