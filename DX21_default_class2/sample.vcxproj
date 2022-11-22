@@ -163,6 +163,7 @@
     <ClCompile Include="laser.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="management.cpp" />
+    <ClCompile Include="management_meteo.cpp" />
     <ClCompile Include="number.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="bg.cpp" />
@@ -236,6 +237,8 @@
     <ClInclude Include="laser.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="management.h" />
+    <ClInclude Include="management_meteo.h" />
+    <ClInclude Include="meteo.h" />
     <ClInclude Include="number.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="bg.h" />
