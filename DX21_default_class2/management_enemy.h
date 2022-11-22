@@ -38,7 +38,7 @@ public:
 	virtual ~EnemyManagement() {}
 
 	//メンバ変数に消したオブジェクトの番号を記録させておく
-	void DeleteObj(int index_num, int reduceHP) { m_obj_delete_index = index_num; }
+	virtual void DeleteObj(int index_num, int reduceHP) { m_obj_delete_index = index_num; }
 
 	//指定した番号のオブジェクトのHPを減らす
 	virtual bool ReduceHP(int index_num, int reduceHP) { return false; }

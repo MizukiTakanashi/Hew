@@ -44,7 +44,7 @@ public:
 	void Draw(void)const;
 
 	//指定した敵を消す
-	void DeleteObj(int index_num)override;
+	void DeleteObj(int index_num, int reduceHP)override;
 
 	//指定した番号の座標を返す(オーバーライド)
 	const D3DXVECTOR2& GetObjPos(int index_num)const override { return m_pMeteo[index_num].GetPos(); }

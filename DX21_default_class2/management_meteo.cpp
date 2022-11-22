@@ -29,9 +29,9 @@ void Management_Meteo::Draw(void) const
 	}
 }
 
-void Management_Meteo::DeleteObj(int index_num)
+void Management_Meteo::DeleteObj(int index_num, int reduceHP)
 {
-	EnemyManagement::DeleteObj(index_num);
+	EnemyManagement::DeleteObj(index_num, reduceHP);
 
 	m_pEnemySetPos.DeleteEnemy(m_pMeteo[index_num].GetPos());
 

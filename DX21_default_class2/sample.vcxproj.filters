@@ -57,6 +57,7 @@
     <ClCompile Include="collision_all.cpp" />
     <ClCompile Include="score.cpp" />
     <ClCompile Include="management_meteo.cpp" />
+    <ClCompile Include="meteo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
