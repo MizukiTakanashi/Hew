@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="all_enemy_management.cpp" />
+    <ClCompile Include="Bom.cpp" />
     <ClCompile Include="collision_all.cpp" />
     <ClCompile Include="collision_arm_all_enemy.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -207,6 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h" />
+    <ClInclude Include="Bom.h" />
     <ClInclude Include="collision_all.h" />
     <ClInclude Include="collision_arm_all_enemy.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
