@@ -47,6 +47,7 @@ private:
 		PLAYER,
 		PLAYER_HP,
 		ENEMY,
+		ENEMY_PUBLIC,
 		ENEMY_ITEM,
 		BULLET_CIRCLE_RED,
 		BULLET_CIRCLE_GREEN,
@@ -55,6 +56,7 @@ private:
 		EXPLOSION,
 		NUMBER,
 		MULTIPLY,
+		METEO,
 		NUM
 	};
 
