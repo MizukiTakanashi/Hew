@@ -12,8 +12,8 @@ public:
 	Bom() {}	//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
-	Bom(DrawObject& pDrawObject, const D3DXVECTOR2& pos, const D3DXVECTOR2& size, const D3DXVECTOR2& mov, float rot)
-		:GameObject(pDrawObject, pos, size, rot), m_mov(mov) {}
+	Bom(DrawObject& pDrawObject, const D3DXVECTOR2& pos, const D3DXVECTOR2& size, float rot)
+		:GameObject(pDrawObject, pos, size, rot) {}
 
 	~Bom()override {}	//デストラクタ
 
