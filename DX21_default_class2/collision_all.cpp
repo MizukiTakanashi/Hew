@@ -102,7 +102,31 @@ int CollisionAll::Collision(void)
 			else {
 				m_player_enemy_col = false;
 			}
+			for (int i = 0; i < m_pPlayer->GetBomNum(); i++) {
+				//もしも画面外にいたら壊せないようにする
+				if (!ScreenOut::GetScreenOut(m_pEnemy[k]->GetObjPos(j),
+					m_pEnemy[k]->GetObjSize())) {
 
+					//当たったか判定
+					if (Collision::ColBox(m_pPlayer->GetBomPos(i), m_pEnemy[k]->GetObjPos(j),
+						m_pPlayer->GetBomSize(), m_pEnemy[k]->GetObjSize())) {
+						//爆発をセット
+						m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
+
+						
+						//敵のHPを減らす
+						if (m_pEnemy[k]->ReduceHP(j, 100))
+						{//敵が死んだ場合の処理
+							//敵アイテムのドロップ
+							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
+						}
+						j--;
+
+						//倒した敵の数を増やす
+						m_pScore->AddScore(1);
+					}
+				}
+			}
 			//=================================================
 			// プレイヤーの腕と敵
 

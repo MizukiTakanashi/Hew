@@ -130,6 +130,9 @@ Game::Game(Score * pNumber):m_pScore(pNumber)
 	//プレイヤー側の弾
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_SQUARE_GREEN], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
+	//爆弾
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
+		D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 	//敵側の弾
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_RED]);
 	
@@ -143,7 +146,7 @@ Game::Game(Score * pNumber):m_pScore(pNumber)
 	//プレイヤー
 	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER].SetTextureName((char*)"data\\texture\\player.png");
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER]);
-	m_pPlayer = new Player(m_pDrawObject[(int)DRAW_TYPE::PLAYER], m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET]);
+	m_pPlayer = new Player(m_pDrawObject[(int)DRAW_TYPE::PLAYER], m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET], m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET]);
 
 	//敵の配置場所
 	m_pEnemySetPos = new EnemySetPos;
@@ -400,6 +403,7 @@ void Game::Draw(void)const
 	m_pMeteoManagement->Draw();
 
 	m_pPlayer->DrawBullet();
+	m_pPlayer->DrawBom();
 	m_pExplosionManagement->Draw();
 
 	m_pItemManagement->Draw();
