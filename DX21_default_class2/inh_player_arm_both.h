@@ -20,9 +20,9 @@ public:
 	enum class TYPE :int
 	{
 		TYPE_NONE,	//	何もついていない
-		TYPE1,
-		TYPE2,
-		TYPE3,
+		TYPE1, //ホーミング
+		TYPE2, //レーザー
+		TYPE3, //ガトリング
 		TYPE4,
 		TYPE5,
 		TYPE6,
