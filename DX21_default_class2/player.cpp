@@ -127,6 +127,10 @@ void Player::Update(bool isinvincible)
 			m_pBullet[m_BulletNum] = temp;
 			m_BulletNum++;
 		}
+
+	}
+	if ((InputGetKey(KK_ENTER)))
+	{
 		if (Bom_Count < 4) {
 			if (m_BomNum < BOM_MAX_NUM) {
 				Bom temp1(m_BomDrawObject, D3DXVECTOR2(BOM_SIZE_X / 2, BOM_SIZE_Y / 2), D3DXVECTOR2(BOM_SIZE_X, BOM_SIZE_Y),
@@ -136,7 +140,6 @@ void Player::Update(bool isinvincible)
 			}
 		}
 	}
-
 	for (int i = 0; i < m_BulletNum; i++) {
 		m_pBullet[i].Update();
 
