@@ -120,7 +120,7 @@ void Player::Update(bool isinvincible)
 	if ((InputGetKey(KK_SPACE) || IsButtonPressed(0, XINPUT_GAMEPAD_A)) &&
 		m_BulletInterval > BULLET_INTERVAL_TIME) {
 		m_BulletInterval = 0;
-		Bom_Count++;
+		
 		if (m_BulletNum < BULLET_MAX_NUM) {
 			Bullet temp(m_BulletDrawObject, GameObject::GetPos(), D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y),
 				D3DXVECTOR2(BULLET_SPEED_X, BULLET_SPEED_Y), 0.0f);
@@ -129,8 +129,9 @@ void Player::Update(bool isinvincible)
 		}
 
 	}
-	if ((InputGetKey(KK_ENTER)))
+	if ((InputGetKeyDown(KK_ENTER)))
 	{
+		Bom_Count++;
 		if (Bom_Count < 4) {
 			if (m_BomNum < BOM_MAX_NUM) {
 				Bom temp1(m_BomDrawObject, D3DXVECTOR2(BOM_SIZE_X / 2, BOM_SIZE_Y / 2), D3DXVECTOR2(BOM_SIZE_X, BOM_SIZE_Y),
