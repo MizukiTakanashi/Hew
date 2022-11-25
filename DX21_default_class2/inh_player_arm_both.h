@@ -102,7 +102,7 @@ public:
 	void SetBulletShotButtonTrigger(bool flag) { m_bullet_shot_trigger = flag; }
 
 	//Žc’e”‰ñ•œ
-	void HeelBullet(void) { m_pEnemyItem->HeelBullet(); }
+	void HeelBullet(void) { if (m_pEnemyItem)m_pEnemyItem->HeelBullet(); }
 };
 
 #endif // !_INH_PLAYER_ARM_BOTH_H_

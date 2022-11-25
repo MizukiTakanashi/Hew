@@ -17,7 +17,7 @@ int ArmEnemyCollision::Update(void)
             //タイプが同じだったら残弾数を回復する
             if (m_rPlayeLeft->GetType() == (inhPlayerArmBoth::TYPE)(m_rItemManagement->GetItemType(i) + 1))
             {
-                m_rPlayeLeft->HeelBullet();
+                //m_rPlayeLeft->HeelBullet();
             }
             m_rPlayeLeft->SetType((inhPlayerArmBoth::TYPE)(m_rItemManagement->GetItemType(i) + 1));
             m_rItemManagement->DeleteItem(i);          
@@ -36,7 +36,7 @@ int ArmEnemyCollision::Update(void)
             //タイプが同じだったら残弾数を回復する
             if (m_rPlayerRight->GetType() == (inhPlayerArmBoth::TYPE)(m_rItemManagement->GetItemType(j) + 1))
             {
-                m_rPlayerRight->HeelBullet();
+                //m_rPlayerRight->HeelBullet();
             }
 
             m_rPlayerRight->SetType((inhPlayerArmBoth::TYPE)(m_rItemManagement->GetItemType(j) + 1));
