@@ -47,30 +47,20 @@ private:
 	int m_EnemyItem_num = 0;	//敵のアイテムの数
 
 	//敵の配列
-	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = { D3DXVECTOR2(52.5f + (105 * 1 - 1), -EnemyLaser::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyLaser::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 3 - 1), -EnemyLaser::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 4 - 1), -EnemyLaser::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 5 - 1), -EnemyLaser::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 6 - 1), -EnemyLaser::SIZE_Y / 2)
+	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = { D3DXVECTOR2(52.5f + (105 * 6 - 1), -EnemyLaser::SIZE_Y / 2)
 										,D3DXVECTOR2(52.5f + (105 * 7 - 1), -EnemyLaser::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 8 - 1), -EnemyLaser::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 9 - 1), -EnemyLaser::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 10 - 1), -EnemyLaser::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyLaser::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyLaser::SIZE_Y / 2) };
-	int m_SetEnemyTime[ENEMY_NUM] = { 60 * 3,
-								60 * 6,
-								60 * 9,
-								60 * 12,
-								60 * 15,
-								60 * 18,
-								60 * 21,
-								60 * 24,
-								60 * 27,
-								60 * 30,
-								60 * 33,
-								60 * 36 };
+										,D3DXVECTOR2(52.5f + (105 * 1 - 1), -EnemyLaser::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyLaser::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 5 - 1), -EnemyLaser::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 7 - 1), -EnemyLaser::SIZE_Y / 2)
+										 };
+	int m_SetEnemyTime[ENEMY_NUM] = { 60 * 25,
+								60 * 35,
+								60 * 50,
+								60 * 50+1,
+								60 * 75,
+								60 * 75+1
+								};
 
 public:
 	//デフォルトコンストラクタ

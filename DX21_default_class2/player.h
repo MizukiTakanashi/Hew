@@ -71,6 +71,7 @@ public:
 	{
 		m_pBullet = new Bullet[BULLET_MAX_NUM];
 		m_pBom = new Bom[BOM_MAX_NUM];
+		
 	}
 
 	~Player()override {
