@@ -74,7 +74,7 @@ int CollisionAll::Collision(void)
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{//敵が死んだ場合の処理
 							//敵アイテムのドロップ
-							if (k != 3) //合体できない敵でない場合
+							if (k != 4) //合体できない敵でない場合
 							{
 								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 							}

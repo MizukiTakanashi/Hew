@@ -57,7 +57,7 @@ public:
 		m_pEnemy[m_enemy_num] = pEnemy; 
 		m_enemy_num++;
 	}
-
+	 
 	//“–‚½‚è”»’è(ƒvƒŒƒCƒ„[‚ÌHP‚ªí‚ê‚é“–‚½‚è”»’è)
 	int Collision(void);
 
