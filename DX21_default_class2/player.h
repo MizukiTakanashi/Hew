@@ -102,7 +102,6 @@ public:
 	//”š’e‚Ì•`‰æˆ—
 	void DrawBom(void)const;
 
-
 	//Œ»İ”š’e‚Ì”‚ğ•Ô‚·
 	int GetBomNum(void)const { return m_BomNum; }
 

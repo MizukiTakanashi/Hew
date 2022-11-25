@@ -71,7 +71,7 @@ private:
 										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyGatoring::SIZE_Y / 2)
 										,D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyGatoring::SIZE_Y / 2)
 	};
-
+	//ìGÇèoÇ∑éûä‘
 	int m_SetEnemyTime[ENEMY_NUM] = {
 								60 * 5,
 								60 * 5 + 1,

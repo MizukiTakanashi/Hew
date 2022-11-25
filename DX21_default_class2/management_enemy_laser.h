@@ -54,6 +54,7 @@ private:
 										,D3DXVECTOR2(52.5f + (105 * 5 - 1), -EnemyLaser::SIZE_Y / 2)
 										,D3DXVECTOR2(52.5f + (105 * 7 - 1), -EnemyLaser::SIZE_Y / 2)
 										 };
+	//ìGÇèoÇ∑éûä‘
 	int m_SetEnemyTime[ENEMY_NUM] = { 60 * 25,
 								60 * 35,
 								60 * 50,
