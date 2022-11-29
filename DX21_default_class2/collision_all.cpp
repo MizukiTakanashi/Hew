@@ -121,7 +121,7 @@ int CollisionAll::Collision(void)
 
 						
 						//敵のHPを減らす
-						if (m_pEnemy[k]->ReduceHP(j, 100))
+						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{//敵が死んだ場合の処理
 							if (k == 3) //合体できない敵でない場合
 							{
