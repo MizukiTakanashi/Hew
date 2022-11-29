@@ -42,6 +42,10 @@ void InitScene(SCENE s)
 		InitTitle();
 		break;
 
+	case SCENE::SCENE_STAGE_SELECT:
+		InitTitle();
+		break;
+
 	case SCENE::SCENE_GAME:
 		pGame = new Game(g_pNumber = new Score(g_pDrawObject[0]));
 		break;
@@ -86,6 +90,10 @@ void UninitScene(void)
 		UninitTitle();
 		break;
 
+	case SCENE::SCENE_STAGE_SELECT:
+		InitTitle();
+		break;
+
 	case SCENE::SCENE_GAME:
 		delete pGame;
 		break;
@@ -123,6 +131,10 @@ void UpdateScene(void)
 		UpdateTitle();
 		break;
 
+	case SCENE::SCENE_STAGE_SELECT:
+		InitTitle();
+		break;
+
 	case SCENE::SCENE_GAME:
 		pGame->Update();
 		break;
@@ -148,6 +160,10 @@ void DrawScene(void)
 
 	case SCENE::SCENE_TITLE:
 		DrawTitle();
+		break;
+
+	case SCENE::SCENE_STAGE_SELECT:
+		InitTitle();
 		break;
 
 	case SCENE::SCENE_GAME:
