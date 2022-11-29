@@ -201,6 +201,7 @@
     <ClCompile Include="screen_out.cpp" />
     <ClCompile Include="sound.cpp" />
     <ClCompile Include="sprite.cpp" />
+    <ClCompile Include="stage_select.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="texture_useful.cpp" />
     <ClCompile Include="title.cpp" />
@@ -280,6 +281,7 @@
     <ClInclude Include="screen_out.h" />
     <ClInclude Include="sound.h" />
     <ClInclude Include="sprite.h" />
+    <ClInclude Include="stage_select.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="texture_useful.h" />
     <ClInclude Include="title.h" />

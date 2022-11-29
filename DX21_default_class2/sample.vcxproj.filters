@@ -61,6 +61,8 @@
     <ClCompile Include="enemy_public.cpp" />
     <ClCompile Include="management_enemy_public.cpp" />
     <ClCompile Include="player_center.cpp" />
+    <ClCompile Include="Bom.cpp" />
+    <ClCompile Include="stage_select.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
@@ -123,5 +125,7 @@
     <ClInclude Include="enemy_public.h" />
     <ClInclude Include="management_enemy_public.h" />
     <ClInclude Include="player_center.h" />
+    <ClInclude Include="Bom.h" />
+    <ClInclude Include="stage_select.h" />
   </ItemGroup>
 </Project>
