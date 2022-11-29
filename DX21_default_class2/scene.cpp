@@ -12,18 +12,23 @@
 #include "result.h"
 #include "score.h"
 #include "draw_object.h"
+#include "stage_select.h"
 
 //======================
 // グローバル変数
 //======================
-SCENE g_scene;	//現在のシーン
+SCENE g_scene;			//現在のシーン
 SCENE g_scene_next;		//次のシーン
-Game* pGame;
-Result* pResult;
+
+StageSelect* pStageSelect = nullptr;	//ステージ選択画面
+Game* pGame = nullptr;					//ゲーム画面
+Result* pResult = nullptr;				//リザルト画面
 
 TextureUseful* g_pTexUseful;
 DrawObject* g_pDrawObject;
 Score* g_pNumber;
+
+int g_Score[STAGE_NUM];		//スコア保持用
 
 //==========================
 // 初期化処理
@@ -43,7 +48,7 @@ void InitScene(SCENE s)
 		break;
 
 	case SCENE::SCENE_STAGE_SELECT:
-		InitTitle();
+		pStageSelect = new StageSelect(g_Score);
 		break;
 
 	case SCENE::SCENE_GAME:
@@ -73,6 +78,11 @@ void InitScene2(SCENE s)
 	g_pDrawObject[0].SetDrawObject(g_pTexUseful[0], 0.0f, 0.0909f, 1.0f, 11);
 	g_pNumber = new Score(g_pDrawObject[0]);
 
+	//スコアを初期化
+	for (int i = 0; i < STAGE_NUM; i++) {
+		g_Score[i] = 0;
+	}
+
 	InitScene(s);
 }
 
@@ -91,7 +101,7 @@ void UninitScene(void)
 		break;
 
 	case SCENE::SCENE_STAGE_SELECT:
-		InitTitle();
+		delete pStageSelect;
 		break;
 
 	case SCENE::SCENE_GAME:
@@ -132,7 +142,7 @@ void UpdateScene(void)
 		break;
 
 	case SCENE::SCENE_STAGE_SELECT:
-		InitTitle();
+		pStageSelect->Update();
 		break;
 
 	case SCENE::SCENE_GAME:
@@ -163,7 +173,7 @@ void DrawScene(void)
 		break;
 
 	case SCENE::SCENE_STAGE_SELECT:
-		InitTitle();
+		pStageSelect->Draw();
 		break;
 
 	case SCENE::SCENE_GAME:

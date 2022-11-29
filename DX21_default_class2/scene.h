@@ -19,6 +19,17 @@ typedef enum {
 	SCENE_NUM
 }SCENE;
 
+typedef enum {
+	STAGE_MOON,
+	STAGE_MARS,
+	STAGE_MERCURY,
+	STAGE_JUPITER,
+	STAGE_VENUS,
+	STAGE_SATURN,
+	STAGE_SUN,
+	STAGE_NUM
+}STAGE;
+
 //======================
 // プロトタイプ宣言
 //======================
