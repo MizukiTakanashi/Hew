@@ -41,7 +41,7 @@ private:
 	static const D3DXVECTOR2 ICON_SIZE;			//敵アイコンの表示場所
 
 //メンバ変数
-private:
+private: 
 	D3DXVECTOR2 m_from_player = D3DXVECTOR2(0.0f, 0.0f);	//プレイヤーからどれくらい離れているか
 
 	bool m_shot = false;					//自分自身が発射されてるか否か
