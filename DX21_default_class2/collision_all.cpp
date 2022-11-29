@@ -123,8 +123,14 @@ int CollisionAll::Collision(void)
 						//敵のHPを減らす
 						if (m_pEnemy[k]->ReduceHP(j, 100))
 						{//敵が死んだ場合の処理
-							//敵アイテムのドロップ
-							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
+							if (k == 3) //合体できない敵でない場合
+							{
+							}
+							else
+							{
+								//敵アイテムのドロップ
+								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
+							}
 						}
 						j--;
 
@@ -204,8 +210,14 @@ int CollisionAll::Collision(void)
 								//敵のHPを減らす
 								if (m_pEnemy[k]->ReduceHP(j, 1))
 								{//敵が死んだ場合の処理
-									//敵アイテムのドロップ
-									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
+									if (k == 3) //合体できない敵でない場合
+									{
+									}
+									else
+									{
+										//敵アイテムのドロップ
+										m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
+									}
 								}
 								j--;
 
