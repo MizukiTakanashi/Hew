@@ -22,17 +22,16 @@ private:
 	static const float START_POS_Y;	//初期位置Y
 
 
-//メンバ変数
-private:
-
-
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
 	StageSelectMars(){}
 
 	//引数付きコンストラクタ
-	//StageSelectMars(DrawObject& pDrawObj):GameObject(pDrawObj, D3DXVECTOR2(START_POS_X, START_POS_Y)) {}
+	StageSelectMars(DrawObject& pDrawObj):GameObject(pDrawObj, D3DXVECTOR2(START_POS_X, START_POS_Y), D3DXVECTOR2(BOX_W, BOX_H)) {}
+
+	//デストラクタ
+	~StageSelectMars() {}
 };
 
 #endif // !_STAGE_SELECT_MARS_H_

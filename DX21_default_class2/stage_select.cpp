@@ -34,6 +34,14 @@ StageSelect::StageSelect(int stage_score[])
 	//‰Î¯
 	m_pTexUseful[(int)TEXTURE_TYPE::MARS].SetTextureName((char*)"data\\texture\\mars.png");
 	m_pDrawObject[(int)DRAW_TYPE::MARS].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::MARS]);
+
+	//…¯
+	m_pTexUseful[(int)TEXTURE_TYPE::MERCURY].SetTextureName((char*)"data\\texture\\mercury.png");
+	m_pDrawObject[(int)DRAW_TYPE::MERCURY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::MERCURY]);
+
+
+	//˜f¯
+	m_pPlanet = new StageSelectPlanet(m_pDrawObject[(int)DRAW_TYPE::MARS], m_pDrawObject[(int)DRAW_TYPE::MERCURY]);
 }
 
 //==========================
@@ -41,7 +49,8 @@ StageSelect::StageSelect(int stage_score[])
 //==========================
 void StageSelect::Update(void)
 {
-
+	//˜f¯
+	m_pPlanet->Update();
 }
 
 //==========================
@@ -49,5 +58,6 @@ void StageSelect::Update(void)
 //==========================
 void StageSelect::Draw(void) const
 {
-
+	//˜f¯
+	m_pPlanet->Draw();
 }

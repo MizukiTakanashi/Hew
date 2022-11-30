@@ -64,6 +64,7 @@
     <ClCompile Include="Bom.cpp" />
     <ClCompile Include="stage_select.cpp" />
     <ClCompile Include="stage_select_mars.cpp" />
+    <ClCompile Include="stage_select_planet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
