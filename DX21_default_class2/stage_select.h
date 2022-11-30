@@ -14,6 +14,7 @@
 #include "draw_object.h"
 #include "number.h"
 #include "scene.h"
+#include "stage_select_planet.h"
 
 class StageSelect
 {
@@ -64,7 +65,8 @@ private:
 
 	UI* m_pMultiply = nullptr;
 	Number* m_pComboNum = nullptr;
-
+	
+	StageSelectPlanet* m_pPlanet = nullptr;
 
 //ƒƒ“ƒoŠÖ”
 public:

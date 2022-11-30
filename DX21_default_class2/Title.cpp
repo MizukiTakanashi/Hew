@@ -82,6 +82,12 @@ void	UpdateTitle()
 	{
 		SetScene(SCENE::SCENE_GAME);
 	}
+
+	//キー入力のチェック
+	if (InputGetKeyDown(KK_A))
+	{
+		SetScene(SCENE::SCENE_STAGE_SELECT);
+	}
 }
 
 //==========================
