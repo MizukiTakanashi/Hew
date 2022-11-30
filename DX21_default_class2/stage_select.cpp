@@ -26,6 +26,14 @@ StageSelect::StageSelect(int stage_score[])
 	for (int i = 0; i < STAGE_NUM; i++) {
 		m_stage_score[i] = stage_score[i];
 	}
+
+	//•`‰æŠÖŒW‚Ì‚à‚Ì
+	m_pTexUseful = new TextureUseful[(int)TEXTURE_TYPE::NUM];
+	m_pDrawObject = new DrawObject[(int)DRAW_TYPE::NUM];
+
+	//‰Î¯
+	m_pTexUseful[(int)TEXTURE_TYPE::MARS].SetTextureName((char*)"data\\texture\\mars.png");
+	m_pDrawObject[(int)DRAW_TYPE::MARS].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::MARS]);
 }
 
 //==========================
@@ -33,6 +41,7 @@ StageSelect::StageSelect(int stage_score[])
 //==========================
 void StageSelect::Update(void)
 {
+
 }
 
 //==========================
@@ -40,4 +49,5 @@ void StageSelect::Update(void)
 //==========================
 void StageSelect::Draw(void) const
 {
+
 }

@@ -85,7 +85,6 @@ public:
 	//’e‚Ì•`‰æˆ—
 	void DrawBullet(void)const;
 
-
 	//Œ»İ’e‚Ì”‚ğ•Ô‚·
 	int GetBulletNum(void)const { return m_BulletNum; }
 
@@ -97,7 +96,6 @@ public:
 
 	//’e‚ÌƒTƒCƒY‚ğ•Ô‚·
 	const D3DXVECTOR2& GetBulletSize(void)const { return m_pBullet[0].GetSize(); }
-
 
 	//”š’e‚Ì•`‰æˆ—
 	void DrawBom(void)const;

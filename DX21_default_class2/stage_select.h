@@ -28,13 +28,6 @@ private:
 
 	enum class TEXTURE_TYPE :int
 	{
-		PLAYER,
-		PLANET
-	};
-
-	enum class DRAW_TYPE :int
-	{
-		PLAYER,
 		MOON,
 		MARS,
 		MERCURY,
@@ -42,6 +35,19 @@ private:
 		VENUS,
 		SATURN,
 		SUN,
+		NUM
+	};
+
+	enum class DRAW_TYPE :int
+	{
+		MOON,
+		MARS,
+		MERCURY,
+		JUPITER,
+		VENUS,
+		SATURN,
+		SUN,
+		NUM
 	};
 
 

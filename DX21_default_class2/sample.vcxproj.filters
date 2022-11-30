@@ -63,6 +63,7 @@
     <ClCompile Include="player_center.cpp" />
     <ClCompile Include="Bom.cpp" />
     <ClCompile Include="stage_select.cpp" />
+    <ClCompile Include="stage_select_mars.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
@@ -127,5 +128,7 @@
     <ClInclude Include="player_center.h" />
     <ClInclude Include="Bom.h" />
     <ClInclude Include="stage_select.h" />
+    <ClInclude Include="stage_select_planet.h" />
+    <ClInclude Include="stage_select_mars.h" />
   </ItemGroup>
 </Project>
