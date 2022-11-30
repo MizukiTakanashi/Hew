@@ -202,8 +202,11 @@
     <ClCompile Include="sound.cpp" />
     <ClCompile Include="sprite.cpp" />
     <ClCompile Include="stage_select.cpp" />
-    <ClCompile Include="stage_select_mars.cpp" />
+    <ClCompile Include="stage_select_mars.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="stage_select_planet.cpp" />
+    <ClCompile Include="stage_select_planet_make.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="texture_useful.cpp" />
     <ClCompile Include="title.cpp" />
@@ -284,8 +287,11 @@
     <ClInclude Include="sound.h" />
     <ClInclude Include="sprite.h" />
     <ClInclude Include="stage_select.h" />
-    <ClInclude Include="stage_select_mars.h" />
+    <ClInclude Include="stage_select_mars.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="stage_select_planet.h" />
+    <ClInclude Include="stage_select_planet_make.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="texture_useful.h" />
     <ClInclude Include="title.h" />

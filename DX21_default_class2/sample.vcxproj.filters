@@ -65,6 +65,7 @@
     <ClCompile Include="stage_select.cpp" />
     <ClCompile Include="stage_select_mars.cpp" />
     <ClCompile Include="stage_select_planet.cpp" />
+    <ClCompile Include="stage_select_planet_make.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
@@ -131,5 +132,6 @@
     <ClInclude Include="stage_select.h" />
     <ClInclude Include="stage_select_planet.h" />
     <ClInclude Include="stage_select_mars.h" />
+    <ClInclude Include="stage_select_planet_make.h" />
   </ItemGroup>
 </Project>

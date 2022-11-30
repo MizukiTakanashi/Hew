@@ -9,34 +9,8 @@
 #define _STAGE_SELECT_PLANET_H_
 
 #include "game_object.h"
-#include "stage_select_mars.h"
 #include "draw_object.h"
-
-//==========================
-// 水星
-//==========================
-class StageSelectMercury:public GameObject
-{
-//定数
-private:
-	//cppで初期化
-	static const float BOX_W;		//四角形の横のサイズ
-	static const float BOX_H;		//四角形の縦のサイズ
-	static const float START_POS_X;	//初期位置X
-	static const float START_POS_Y;	//初期位置Y
-
-
-//メンバ関数
-public:
-	//デフォルトコンストラクタ
-	StageSelectMercury() {}
-
-	//引数付きコンストラクタ
-	StageSelectMercury(DrawObject& pDrawObj) :GameObject(pDrawObj, D3DXVECTOR2(START_POS_X, START_POS_Y), D3DXVECTOR2(BOX_W, BOX_H)) {}
-
-	//デストラクタ
-	~StageSelectMercury() {}
-};
+#include "stage_select_planet_make.h"
 
 //==========================
 // 惑星全体

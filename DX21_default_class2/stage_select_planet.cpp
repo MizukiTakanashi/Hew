@@ -7,14 +7,6 @@
 #include "stage_select_planet.h"
 
 //==========================
-// ’è”‚Ì‰Šú‰»
-//==========================
-const float StageSelectMercury::BOX_W = 50.0f;
-const float StageSelectMercury::BOX_H = 50.0f;
-const float StageSelectMercury::START_POS_X = 400.0f;
-const float StageSelectMercury::START_POS_Y = SCREEN_HEIGHT / 2;
-
-//==========================
 // XVˆ—
 //==========================
 void StageSelectPlanet::Update()
