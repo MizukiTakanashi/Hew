@@ -17,6 +17,20 @@
 //==========================
 class StageSelectPlanet
 {
+//定数
+private:
+	//腕につく敵のタイプ
+	enum class PLANET :int
+	{
+		MARS,
+		MERCURY,
+		JUPITER,
+		VENUS,
+		SATURN,
+		SUN,
+		NUM
+	};
+
 //メンバ変数
 private:
 	StageSelectMars* m_mars = nullptr;			//火星
@@ -28,13 +42,18 @@ private:
 
 	bool m_sun_appearance = false;				//太陽が出てるかどうか
 
+	int m_planet_index = 0;						//惑星のインデックス番号
+
 public:
 	//デフォルトコンストラクタ
 	StageSelectPlanet(){}
 
 	//引数付きコンストラクタ
-	StageSelectPlanet(DrawObject& mars, DrawObject& mercury, bool sun = false)
-		:m_mars(new StageSelectMars(mars)), m_mercury(new StageSelectMercury(mercury)) {}
+	StageSelectPlanet(DrawObject& mars, DrawObject& mercury, DrawObject& jupiter, 
+		DrawObject& venus, DrawObject& saturn, DrawObject& sun, bool sun_appearance = false)
+		:m_mars(new StageSelectMars(mars)), m_mercury(new StageSelectMercury(mercury)),
+		m_jupiter(new StageSelectJupiter(jupiter)), m_venus(new StageSelectVenus(venus)),
+		m_saturn(new StageSelectSaturn(saturn)), m_sun(new StageSelectSun(sun)) {}
 
 	//デストラクタ
 	~StageSelectPlanet() {
