@@ -10,6 +10,7 @@ const int EnemyPublic::HP_MAX = 1;
 
 void EnemyPublic::Update(void)
 {
+	m_invincible_flame--;
 	GameObject::MovePos(D3DXVECTOR2(0.0f, SPEED_Y));
 
 }

@@ -10,6 +10,7 @@ const int Meteo::HP_MAX = 100;
 
 void Meteo::Update(void)
 {
-		GameObject::MovePos(D3DXVECTOR2(0.0f, SPEED_Y));
+	m_invincible_flame--;
+	GameObject::MovePos(D3DXVECTOR2(0.0f, SPEED_Y));
 
 }

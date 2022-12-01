@@ -23,6 +23,7 @@ const int EnemyLaser::HP_MAX = 3;
 //======================
 void EnemyLaser::Update(void)
 {
+	m_invincible_flame--;
 	//~‚Ü‚éêŠ‚Ü‚ÅˆÚ“®‚·‚é
 	if (GameObject::GetPos().y < STOP_POS_Y) {
 		GameObject::MovePos(D3DXVECTOR2(0.0f, SPEED_Y));
