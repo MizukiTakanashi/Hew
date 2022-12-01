@@ -28,6 +28,7 @@ public:
 private:
 	//ここで初期化
 	static const int BULLET_TIME = 30;	//弾の発射間隔
+	static const int INVINCIBLE_FLAME = 30;			//敵の無敵時間
 
 	//cppで初期化
 	static const float SPEED_X;			//敵のスピードY
@@ -45,6 +46,7 @@ private:
 	bool m_enemyitem_make = false;		//アイテムを作るか否か
 
 	int m_hp = HP_MAX;					//敵の現在のHP
+	int m_invincible_flame = 0; //無敵時間の残り
 
 	//メンバ関数
 public:
@@ -71,7 +73,14 @@ public:
 	void EnemyItemMake() { m_enemyitem_make = false; }
 
 	//HPを減らす
-	void ReduceHP(int amount) { m_hp -= amount; }
+	void ReduceHP(int amount)
+	{
+		if (m_invincible_flame <= 0)
+		{
+			m_hp -= amount;
+			m_invincible_flame = INVINCIBLE_FLAME;
+		}
+	}
 
 	//HPを返す
 	int GetHP(void) { return m_hp; }

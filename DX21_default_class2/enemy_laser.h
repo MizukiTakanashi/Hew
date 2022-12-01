@@ -27,6 +27,8 @@ public:
 private:
 	//ここで初期化
 	static const int LASER_BETWEEN = 300;	//レーザーの発射間隔
+	static const int INVINCIBLE_FLAME = 30;			//敵の無敵時間
+
 
 	//cppで初期化
 	static const float SPEED_X;			//敵のスピードY
@@ -46,6 +48,8 @@ private:
 	int m_laser_index = -1;	//レーザー番号
 
 	int m_hp = HP_MAX;					//敵の現在のHP
+	int m_invincible_flame = 0; //無敵時間の残り
+
 
 //メンバ関数
 public:
@@ -78,7 +82,14 @@ public:
 	int GetLaserIndex() const { return m_laser_index; }
 
 	//HPを減らす
-	void ReduceHP(int amount) { m_hp -= amount; }
+	void ReduceHP(int amount) 
+	{
+		if (m_invincible_flame <= 0)
+		{
+			m_hp -= amount;
+			m_invincible_flame = INVINCIBLE_FLAME;
+		}
+	}
 
 	//HPを返す
 	int GetHP(void) { return m_hp; }

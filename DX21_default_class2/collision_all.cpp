@@ -64,8 +64,6 @@ int CollisionAll::Collision(void)
 					//当たったか判定
 					if (Collision::ColBox(m_pPlayer->GetBulletPos(i), m_pEnemy[k]->GetObjPos(j),
 						m_pPlayer->GetBulletSize(), m_pEnemy[k]->GetObjSize())) {
-						//爆発をセット
-						m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
 
 						//プレイヤーの弾を消す
 						m_pPlayer->DeleteBullet(i);
@@ -73,7 +71,9 @@ int CollisionAll::Collision(void)
 						//敵のHPを減らす
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{//敵が死んだ場合の処理
-							if (k == 3) //合体できない敵でない場合
+							//爆発をセット
+							m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
+							if (k == 3) //合体できる敵かどうか
 							{
 							}
 							else
@@ -81,8 +81,8 @@ int CollisionAll::Collision(void)
 								//敵アイテムのドロップ
 								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 							}
+							j--;
 						}
-						j--;
 
 						//倒した敵の数を増やす
 						m_pScore->AddScore(1);
@@ -116,14 +116,13 @@ int CollisionAll::Collision(void)
 					//当たったか判定
 					if (Collision::ColBox(m_pPlayer->GetBomPos(i), m_pEnemy[k]->GetObjPos(j),
 						m_pPlayer->GetBomSize(), m_pEnemy[k]->GetObjSize())) {
-						//爆発をセット
-						m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
-
 						
 						//敵のHPを減らす
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{//敵が死んだ場合の処理
-							if (k == 3) //合体できない敵でない場合
+							//爆発をセット
+							m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
+							if (k == 3) //合体できる敵かどうか
 							{
 							}
 							else
@@ -131,8 +130,8 @@ int CollisionAll::Collision(void)
 								//敵アイテムのドロップ
 								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 							}
+							j--;
 						}
-						j--;
 
 						//倒した敵の数を増やす
 						m_pScore->AddScore(1);
@@ -162,10 +161,10 @@ int CollisionAll::Collision(void)
 						//敵のHPを減らす
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{//敵が死んだ場合の処理
-							
+							//爆発をセット
+							m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
+
 						}
-						//爆発をセット
-						m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
 					}
 				}
 
@@ -197,8 +196,6 @@ int CollisionAll::Collision(void)
 							//当たったか判定
 							if (Collision::ColBox(pArmItem->GetBulletPos(i), m_pEnemy[k]->GetObjPos(j),
 								pArmItem->GetBulletSize(), m_pEnemy[k]->GetObjSize())) {
-								//爆発をセット
-								m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
 
 								//腕についている種類がTYPE2(レーザー)でなければ...
 								if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
@@ -210,7 +207,9 @@ int CollisionAll::Collision(void)
 								//敵のHPを減らす
 								if (m_pEnemy[k]->ReduceHP(j, 1))
 								{//敵が死んだ場合の処理
-									if (k == 3) //合体できない敵でない場合
+									//爆発をセット
+									m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
+									if (k == 3) //合体できる敵かどうか
 									{
 									}
 									else
@@ -218,8 +217,8 @@ int CollisionAll::Collision(void)
 										//敵アイテムのドロップ
 										m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 									}
+									j--;
 								}
-								j--;
 
 								//倒した敵の数を増やす
 								m_pScore->AddScore(1);

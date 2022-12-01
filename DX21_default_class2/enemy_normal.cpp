@@ -23,6 +23,7 @@ const int EnemyNormal::HP_MAX = 2;
 //======================
 void EnemyNormal::Update(void)
 {
+	m_invincible_flame--;
 	//~‚Ü‚éêŠ‚Ü‚ÅˆÚ“®‚·‚é
 	if (GameObject::GetPos().y < STOP_POS_Y) {
 		GameObject::MovePos(D3DXVECTOR2(0.0f, SPEED_Y));
