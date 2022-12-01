@@ -21,13 +21,19 @@ class StageSelectPlanet
 private:
 	StageSelectMars* m_mars = nullptr;			//火星
 	StageSelectMercury* m_mercury = nullptr;	//水星
+	StageSelectJupiter* m_jupiter = nullptr;	//木星
+	StageSelectVenus* m_venus = nullptr;		//金星
+	StageSelectSaturn* m_saturn = nullptr;		//土星
+	StageSelectSun* m_sun = nullptr;			//太陽
+
+	bool m_sun_appearance = false;				//太陽が出てるかどうか
 
 public:
 	//デフォルトコンストラクタ
 	StageSelectPlanet(){}
 
 	//引数付きコンストラクタ
-	StageSelectPlanet(DrawObject& mars, DrawObject& mercury)
+	StageSelectPlanet(DrawObject& mars, DrawObject& mercury, bool sun = false)
 		:m_mars(new StageSelectMars(mars)), m_mercury(new StageSelectMercury(mercury)) {}
 
 	//デストラクタ
