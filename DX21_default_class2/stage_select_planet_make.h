@@ -15,16 +15,18 @@
 //==========================
 class StageSelectMars :public GameObject
 {
-	//定数
+//定数
 private:
 	//cppで初期化
 	static const float BOX_W;		//四角形の横のサイズ
 	static const float BOX_H;		//四角形の縦のサイズ
+	static const float BIG_BOX_W;	//大きくなる時の四角形の横のサイズ
+	static const float BIG_BOX_H;	//大きくなる時の四角形の縦のサイズ
 	static const float START_POS_X;	//初期位置X
 	static const float START_POS_Y;	//初期位置Y
 
 
-	//メンバ関数
+//メンバ関数
 public:
 	//デフォルトコンストラクタ
 	StageSelectMars() {}
@@ -35,6 +37,9 @@ public:
 
 	//デストラクタ
 	~StageSelectMars() {}
+
+	//大きくする
+	void SetSizeBigger(void) { GameObject::SetSize(D3DXVECTOR2(BIG_BOX_W, BIG_BOX_H)); }
 };
 
 //==========================
@@ -47,6 +52,8 @@ private:
 	//cppで初期化
 	static const float BOX_W;		//四角形の横のサイズ
 	static const float BOX_H;		//四角形の縦のサイズ
+	static const float BIG_BOX_W;	//大きくなる時の四角形の横のサイズ
+	static const float BIG_BOX_H;	//大きくなる時の四角形の縦のサイズ
 	static const float START_POS_X;	//初期位置X
 	static const float START_POS_Y;	//初期位置Y
 
@@ -62,6 +69,9 @@ public:
 
 	//デストラクタ
 	~StageSelectMercury() {}
+
+	//大きくする
+	void SetSizeBigger(void) { GameObject::SetSize(D3DXVECTOR2(BIG_BOX_W, BIG_BOX_H)); }
 };
 
 //==========================
@@ -74,6 +84,8 @@ private:
 	//cppで初期化
 	static const float BOX_W;		//四角形の横のサイズ
 	static const float BOX_H;		//四角形の縦のサイズ
+	static const float BIG_BOX_W;	//大きくなる時の四角形の横のサイズ
+	static const float BIG_BOX_H;	//大きくなる時の四角形の縦のサイズ
 	static const float START_POS_X;	//初期位置X
 	static const float START_POS_Y;	//初期位置Y
 
@@ -89,6 +101,9 @@ public:
 
 	//デストラクタ
 	~StageSelectJupiter() {}
+
+	//大きくする
+	void SetSizeBigger(void) { GameObject::SetSize(D3DXVECTOR2(BIG_BOX_W, BIG_BOX_H)); }
 };
 
 //==========================
@@ -101,6 +116,8 @@ private:
 	//cppで初期化
 	static const float BOX_W;		//四角形の横のサイズ
 	static const float BOX_H;		//四角形の縦のサイズ
+	static const float BIG_BOX_W;	//大きくなる時の四角形の横のサイズ
+	static const float BIG_BOX_H;	//大きくなる時の四角形の縦のサイズ
 	static const float START_POS_X;	//初期位置X
 	static const float START_POS_Y;	//初期位置Y
 
@@ -116,6 +133,9 @@ public:
 
 	//デストラクタ
 	~StageSelectVenus() {}
+
+	//大きくする
+	void SetSizeBigger(void) { GameObject::SetSize(D3DXVECTOR2(BIG_BOX_W, BIG_BOX_H)); }
 };
 
 //==========================
@@ -128,6 +148,8 @@ private:
 	//cppで初期化
 	static const float BOX_W;		//四角形の横のサイズ
 	static const float BOX_H;		//四角形の縦のサイズ
+	static const float BIG_BOX_W;	//大きくなる時の四角形の横のサイズ
+	static const float BIG_BOX_H;	//大きくなる時の四角形の縦のサイズ
 	static const float START_POS_X;	//初期位置X
 	static const float START_POS_Y;	//初期位置Y
 
@@ -143,6 +165,9 @@ public:
 
 	//デストラクタ
 	~StageSelectSaturn() {}
+
+	//大きくする
+	void SetSizeBigger(void) { GameObject::SetSize(D3DXVECTOR2(BIG_BOX_W, BIG_BOX_H)); }
 };
 
 //==========================
@@ -155,6 +180,8 @@ private:
 	//cppで初期化
 	static const float BOX_W;		//四角形の横のサイズ
 	static const float BOX_H;		//四角形の縦のサイズ
+	static const float BIG_BOX_W;	//大きくなる時の四角形の横のサイズ
+	static const float BIG_BOX_H;	//大きくなる時の四角形の縦のサイズ
 	static const float START_POS_X;	//初期位置X
 	static const float START_POS_Y;	//初期位置Y
 
@@ -170,6 +197,9 @@ public:
 
 	//デストラクタ
 	~StageSelectSun() {}
+
+	//大きくする
+	void SetSizeBigger(void) { GameObject::SetSize(D3DXVECTOR2(BIG_BOX_W, BIG_BOX_H)); }
 };
 
 #endif // !_STAGE_SELECT_PLANET_MAKE_H_
