@@ -80,13 +80,13 @@ void	UpdateTitle()
 	//キー入力のチェック
 	if (InputGetKeyDown(KK_SPACE))
 	{
-		SetScene(SCENE::SCENE_GAME);
+		Fade(SCENE::SCENE_GAME);
 	}
 
 	//キー入力のチェック
 	if (InputGetKeyDown(KK_A))
 	{
-		SetScene(SCENE::SCENE_STAGE_SELECT);
+		Fade(SCENE::SCENE_STAGE_SELECT);
 	}
 }
 

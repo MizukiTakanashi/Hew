@@ -23,7 +23,7 @@
 #define DIRECTINPUT_VERSION 0x0800		// Œx‘Îˆ
 #include "dinput.h"
 #include "mmsystem.h"
-
+#include "Fade.h"
 #pragma warning(pop)
 
 //Xinput‚Ì“±“ü

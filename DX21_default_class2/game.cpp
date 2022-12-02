@@ -379,7 +379,7 @@ void Game::Update(void)
 	
 	//プレイヤーのHPが0になったら...
 	if (m_pPlayerHP->GetHP0Flag()) {
-		SetScene(SCENE::SCENE_RESULT);
+		Fade(SCENE::SCENE_RESULT);
 	}
 }
 
