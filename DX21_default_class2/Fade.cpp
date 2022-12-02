@@ -9,7 +9,9 @@ FADE_STATE	g_FadeState;
 SCENE		g_FadeNextScene;
 float		g_FadeAlpha;
 float m_start_uv_y = 0.0f;		//UV座標Y
-
+//=========================================================
+// 初期化処理
+//=========================================================
 void InitFade()
 {
 	g_FadeState = FADE_STATE_NONE;
@@ -17,7 +19,9 @@ void InitFade()
 	g_FadeAlpha = 0.0f;
 	SetScene(SCENE::SCENE_TITLE);
 }
-
+//=========================================================
+// 更新処理
+//=========================================================
 void UpdateFade()
 {
 
@@ -25,7 +29,7 @@ void UpdateFade()
 	{
 		if (g_FadeAlpha >= 1.0f)
 		{
-			g_FadeAlpha = 1.0f;
+			g_FadeAlpha = 1.0f;	
 			g_FadeState = FADE_STATE_IN;
 			SetScene(g_FadeNextScene);
 		}
@@ -47,25 +51,24 @@ void UpdateFade()
 	}
 
 }
-
+//=========================================================
+// 描画処理
+//=========================================================
 void DrawFade()
 {
 	if (g_FadeState == FADE_STATE_NONE)
 		return;
 
-	//SetTexture(0);
-
-	//DrawSprite(0.0f, 0.0f, SCREEN_WIDTH, SCREEN_HEIGHT,
-	//	0.0f, 0.0f, 1.0f, 1.0f,
-	//	MakeFloat4(0.0f, 0.0f, 0.0f, g_FadeAlpha));
-	//GetDeviceContext()->PSGetShaderResources(0, 1, NULL);
+	//LoadTexture();
 
 	Sprite::DrawSpriteUVStart(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f,
 		D3DXCOLOR(0.0f, 0.0f, 0.0f, g_FadeAlpha), 0.0f, m_start_uv_y, 1.0f, 1.0f);
 }
 
 
-
+//=========================================================
+// フェード
+//=========================================================
 void Fade(SCENE NextScene)
 {
 
