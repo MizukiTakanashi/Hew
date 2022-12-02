@@ -19,6 +19,8 @@ class inhStageSelectPlanetMake :public GameObject
 private:
 	D3DXVECTOR2 m_small_size = D3DXVECTOR2(0.0f, 0.0f);
 	D3DXVECTOR2 m_big_size = D3DXVECTOR2(0.0f, 0.0f);
+	D3DXVECTOR2 m_sun_small_size = D3DXVECTOR2(0.0f, 0.0f);
+	D3DXVECTOR2 m_sun_big_size = D3DXVECTOR2(0.0f, 0.0f);
 
 
 //メンバ関数
@@ -27,8 +29,10 @@ public:
 	inhStageSelectPlanetMake(){}
 
 	//引数付きコンストラクタ
-	inhStageSelectPlanetMake(DrawObject& pDrawObj, D3DXVECTOR2 pos, D3DXVECTOR2 small_size, D3DXVECTOR2 big_size)
-		:GameObject(pDrawObj, pos, small_size), m_small_size(small_size), m_big_size(big_size) {}
+	inhStageSelectPlanetMake(DrawObject& pDrawObj, D3DXVECTOR2 pos, D3DXVECTOR2 small_size, D3DXVECTOR2 big_size, 
+		D3DXVECTOR2 sun_small_size = D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2 sun_big_size = D3DXVECTOR2(0.0f, 0.0f))
+		:GameObject(pDrawObj, pos, small_size), m_small_size(small_size), m_big_size(big_size),
+		m_sun_small_size(sun_small_size), m_sun_big_size(sun_big_size) {}
 
 	//デストラクタ
 	virtual ~inhStageSelectPlanetMake()override{}
@@ -38,6 +42,15 @@ public:
 
 	//大きくする
 	void SetSizeBigger(void) { GameObject::SetSize(m_big_size); }
+
+	//=============================
+	// 太陽あり
+
+	//小さくする
+	void SetSunSizeSmaller(void) { GameObject::SetSize(m_sun_small_size); }
+
+	//大きくする
+	void SetSunSizeBigger(void) { GameObject::SetSize(m_sun_big_size); }
 };
 
 //==========================
@@ -52,6 +65,10 @@ private:
 	static const float BOX_H;		//四角形の縦のサイズ
 	static const float BIG_BOX_W;	//大きくなる時の四角形の横のサイズ
 	static const float BIG_BOX_H;	//大きくなる時の四角形の縦のサイズ
+	static const float SUN_BOX_W;		//太陽あり、四角形の横のサイズ
+	static const float SUN_BOX_H;		//太陽あり、四角形の縦のサイズ
+	static const float SUN_BIG_BOX_W;	//太陽あり、大きくなる時の四角形の横のサイズ
+	static const float SUN_BIG_BOX_H;	//太陽あり、大きくなる時の四角形の縦のサイズ
 	static const float START_POS_X;	//初期位置X
 	static const float START_POS_Y;	//初期位置Y
 
@@ -64,7 +81,8 @@ public:
 	//引数付きコンストラクタ
 	StageSelectMars(DrawObject& pDrawObj) 
 		:inhStageSelectPlanetMake(pDrawObj, D3DXVECTOR2(START_POS_X, START_POS_Y),
-			D3DXVECTOR2(BOX_W, BOX_H), D3DXVECTOR2(BIG_BOX_W, BIG_BOX_H)) {}
+			D3DXVECTOR2(BOX_W, BOX_H), D3DXVECTOR2(BIG_BOX_W, BIG_BOX_H),
+			D3DXVECTOR2(SUN_BOX_W, SUN_BOX_H), D3DXVECTOR2(SUN_BIG_BOX_W, SUN_BIG_BOX_H)) {}
 
 	//デストラクタ
 	~StageSelectMars()override {}
@@ -82,6 +100,10 @@ private:
 	static const float BOX_H;		//四角形の縦のサイズ
 	static const float BIG_BOX_W;	//大きくなる時の四角形の横のサイズ
 	static const float BIG_BOX_H;	//大きくなる時の四角形の縦のサイズ
+	static const float SUN_BOX_W;		//太陽あり、四角形の横のサイズ
+	static const float SUN_BOX_H;		//太陽あり、四角形の縦のサイズ
+	static const float SUN_BIG_BOX_W;	//太陽あり、大きくなる時の四角形の横のサイズ
+	static const float SUN_BIG_BOX_H;	//太陽あり、大きくなる時の四角形の縦のサイズ
 	static const float START_POS_X;	//初期位置X
 	static const float START_POS_Y;	//初期位置Y
 
@@ -94,7 +116,8 @@ public:
 	//引数付きコンストラクタ
 	StageSelectMercury(DrawObject& pDrawObj) 
 		:inhStageSelectPlanetMake(pDrawObj, D3DXVECTOR2(START_POS_X, START_POS_Y), 
-			D3DXVECTOR2(BOX_W, BOX_H), D3DXVECTOR2(BIG_BOX_W, BIG_BOX_H)) {}
+			D3DXVECTOR2(BOX_W, BOX_H), D3DXVECTOR2(BIG_BOX_W, BIG_BOX_H),
+			D3DXVECTOR2(SUN_BOX_W, SUN_BOX_H), D3DXVECTOR2(SUN_BIG_BOX_W, SUN_BIG_BOX_H)) {}
 
 	//デストラクタ
 	~StageSelectMercury()override {}
@@ -112,6 +135,10 @@ private:
 	static const float BOX_H;		//四角形の縦のサイズ
 	static const float BIG_BOX_W;	//大きくなる時の四角形の横のサイズ
 	static const float BIG_BOX_H;	//大きくなる時の四角形の縦のサイズ
+	static const float SUN_BOX_W;		//太陽あり、四角形の横のサイズ
+	static const float SUN_BOX_H;		//太陽あり、四角形の縦のサイズ
+	static const float SUN_BIG_BOX_W;	//太陽あり、大きくなる時の四角形の横のサイズ
+	static const float SUN_BIG_BOX_H;	//太陽あり、大きくなる時の四角形の縦のサイズ
 	static const float START_POS_X;	//初期位置X
 	static const float START_POS_Y;	//初期位置Y
 
@@ -124,7 +151,8 @@ public:
 	//引数付きコンストラクタ
 	StageSelectJupiter(DrawObject& pDrawObj) 
 		:inhStageSelectPlanetMake(pDrawObj, D3DXVECTOR2(START_POS_X, START_POS_Y), 
-			D3DXVECTOR2(BOX_W, BOX_H), D3DXVECTOR2(BIG_BOX_W, BIG_BOX_H)) {}
+			D3DXVECTOR2(BOX_W, BOX_H), D3DXVECTOR2(BIG_BOX_W, BIG_BOX_H),
+			D3DXVECTOR2(SUN_BOX_W, SUN_BOX_H), D3DXVECTOR2(SUN_BIG_BOX_W, SUN_BIG_BOX_H)) {}
 
 	//デストラクタ
 	~StageSelectJupiter()override {}
@@ -142,6 +170,10 @@ private:
 	static const float BOX_H;		//四角形の縦のサイズ
 	static const float BIG_BOX_W;	//大きくなる時の四角形の横のサイズ
 	static const float BIG_BOX_H;	//大きくなる時の四角形の縦のサイズ
+	static const float SUN_BOX_W;		//太陽あり、四角形の横のサイズ
+	static const float SUN_BOX_H;		//太陽あり、四角形の縦のサイズ
+	static const float SUN_BIG_BOX_W;	//太陽あり、大きくなる時の四角形の横のサイズ
+	static const float SUN_BIG_BOX_H;	//太陽あり、大きくなる時の四角形の縦のサイズ
 	static const float START_POS_X;	//初期位置X
 	static const float START_POS_Y;	//初期位置Y
 
@@ -154,7 +186,8 @@ public:
 	//引数付きコンストラクタ
 	StageSelectVenus(DrawObject& pDrawObj)
 		:inhStageSelectPlanetMake(pDrawObj, D3DXVECTOR2(START_POS_X, START_POS_Y), 
-			D3DXVECTOR2(BOX_W, BOX_H), D3DXVECTOR2(BIG_BOX_W, BIG_BOX_H)) {}
+			D3DXVECTOR2(BOX_W, BOX_H), D3DXVECTOR2(BIG_BOX_W, BIG_BOX_H),
+			D3DXVECTOR2(SUN_BOX_W, SUN_BOX_H), D3DXVECTOR2(SUN_BIG_BOX_W, SUN_BIG_BOX_H)) {}
 
 	//デストラクタ
 	~StageSelectVenus()override {}
@@ -172,6 +205,10 @@ private:
 	static const float BOX_H;		//四角形の縦のサイズ
 	static const float BIG_BOX_W;	//大きくなる時の四角形の横のサイズ
 	static const float BIG_BOX_H;	//大きくなる時の四角形の縦のサイズ
+	static const float SUN_BOX_W;		//太陽あり、四角形の横のサイズ
+	static const float SUN_BOX_H;		//太陽あり、四角形の縦のサイズ
+	static const float SUN_BIG_BOX_W;	//太陽あり、大きくなる時の四角形の横のサイズ
+	static const float SUN_BIG_BOX_H;	//太陽あり、大きくなる時の四角形の縦のサイズ
 	static const float START_POS_X;	//初期位置X
 	static const float START_POS_Y;	//初期位置Y
 
@@ -184,7 +221,8 @@ public:
 	//引数付きコンストラクタ
 	StageSelectSaturn(DrawObject& pDrawObj)
 		:inhStageSelectPlanetMake(pDrawObj, D3DXVECTOR2(START_POS_X, START_POS_Y), 
-			D3DXVECTOR2(BOX_W, BOX_H), D3DXVECTOR2(BIG_BOX_W, BIG_BOX_H)) {}
+			D3DXVECTOR2(BOX_W, BOX_H), D3DXVECTOR2(BIG_BOX_W, BIG_BOX_H),
+			D3DXVECTOR2(SUN_BOX_W, SUN_BOX_H), D3DXVECTOR2(SUN_BIG_BOX_W, SUN_BIG_BOX_H)) {}
 
 	//デストラクタ
 	~StageSelectSaturn()override {}

@@ -12,7 +12,7 @@
 // 引数付きコンストラクタ
 //==========================
 StageSelectPlanet::StageSelectPlanet(DrawObject& mars, DrawObject& mercury, DrawObject& jupiter, 
-	DrawObject& venus, DrawObject& saturn, DrawObject& sun, bool sun_appearance) 
+	DrawObject& venus, DrawObject& saturn, DrawObject& sun, bool sun_appearance) :m_sun_appearance(sun_appearance)
 {
 	//惑星のセット
 	m_planets[(int)PLANET::MARS] = new StageSelectMars(mars);
@@ -22,7 +22,23 @@ StageSelectPlanet::StageSelectPlanet(DrawObject& mars, DrawObject& mercury, Draw
 	m_planets[(int)PLANET::SATURN] = new StageSelectSaturn(saturn);
 	m_planets[(int)PLANET::SUN] = new StageSelectSun(sun);
 
-	m_planets[0]->SetSizeBigger();
+	//太陽が来るのであれば...
+	if (sun_appearance) {
+		//太陽以外の惑星を小さくする
+		for (int i = 0; i < (int)PLANET::SUN; i++) {
+			m_planets[i]->SetSunSizeSmaller();
+		}
+		//太陽を大きくする(選択中)
+		m_planets[(int)PLANET::SUN]->SetSizeBigger();
+
+		//インデックス番号をセット
+		m_planet_index = (int)PLANET::SUN;
+		m_planet_index_before = (int)PLANET::SUN;
+	}
+	else {
+		//最初の惑星を大きくする(選択中)
+		m_planets[0]->SetSizeBigger();
+	}
 }
 
 //==========================
@@ -108,6 +124,15 @@ void StageSelectPlanet::Update()
 	//サイズを更新する
 	//前のインデックス番号から変更があれば...
 	if (m_planet_index != m_planet_index_before) {
+
+		//太陽があれば...
+		if (m_sun_appearance) {
+			//現在のインデックス番号の惑星を大きくする
+			m_planets[m_planet_index]->SetSunSizeBigger();
+
+			//前のインデックス番号の惑星を小さくする
+			m_planets[m_planet_index_before]->SetSunSizeSmaller();
+		}
 		//現在のインデックス番号の惑星を大きくする
 		m_planets[m_planet_index]->SetSizeBigger();
 
