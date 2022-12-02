@@ -21,6 +21,8 @@ StageSelectPlanet::StageSelectPlanet(DrawObject& mars, DrawObject& mercury, Draw
 	m_planets[(int)PLANET::VENUS] = new StageSelectVenus(venus);
 	m_planets[(int)PLANET::SATURN] = new StageSelectSaturn(saturn);
 	m_planets[(int)PLANET::SUN] = new StageSelectSun(sun);
+
+	m_planets[0]->SetSizeBigger();
 }
 
 //==========================

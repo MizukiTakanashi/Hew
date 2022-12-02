@@ -29,6 +29,7 @@ private:
 
 	enum class TEXTURE_TYPE :int
 	{
+		BG,
 		MOON,
 		MARS,
 		MERCURY,
@@ -41,6 +42,7 @@ private:
 
 	enum class DRAW_TYPE :int
 	{
+		BG,
 		MOON,
 		MARS,
 		MERCURY,

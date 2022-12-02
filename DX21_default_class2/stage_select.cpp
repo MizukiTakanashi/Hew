@@ -31,6 +31,9 @@ StageSelect::StageSelect(int stage_score[])
 	m_pTexUseful = new TextureUseful[(int)TEXTURE_TYPE::NUM];
 	m_pDrawObject = new DrawObject[(int)DRAW_TYPE::NUM];
 
+	//”wŒi
+	m_pBG = new BG((char*)"data\\texture\\stage_select_bg.jpg");
+
 	//‰Î¯
 	m_pTexUseful[(int)TEXTURE_TYPE::MARS].SetTextureName((char*)"data\\texture\\mars.png");
 	m_pDrawObject[(int)DRAW_TYPE::MARS].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::MARS]);
@@ -75,6 +78,9 @@ void StageSelect::Update(void)
 //==========================
 void StageSelect::Draw(void) const
 {
+	//”wŒi
+	m_pBG->DrawBG();
+
 	//˜f¯
 	m_pPlanet->Draw();
 }
