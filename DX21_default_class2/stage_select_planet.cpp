@@ -31,9 +31,12 @@ StageSelectPlanet::StageSelectPlanet(DrawObject& mars, DrawObject& mercury, Draw
 		//太陽を大きくする(選択中)
 		m_planets[(int)PLANET::SUN]->SetSizeBigger();
 
-		//インデックス番号をセット
+		//インデックス番号を太陽にセット
 		m_planet_index = (int)PLANET::SUN;
 		m_planet_index_before = (int)PLANET::SUN;
+
+		//動く時間カウントをセット
+		m_move_time = 0;
 	}
 	else {
 		//最初の惑星を大きくする(選択中)
@@ -46,6 +49,13 @@ StageSelectPlanet::StageSelectPlanet(DrawObject& mars, DrawObject& mercury, Draw
 //==========================
 void StageSelectPlanet::Update()
 {
+	//惑星が動いていれば...
+	if (m_move_time++ >= 0) {
+		for (int i = 0; i < (int)PLANET::NUM; i++) {
+			m_planets[i]->MovePos(D3DXVECTOR2(m_move_speed, 0.0f));
+		}
+	}
+
 	//=======================
 	// キーボード
 
@@ -127,17 +137,33 @@ void StageSelectPlanet::Update()
 
 		//太陽があれば...
 		if (m_sun_appearance) {
+			//太陽が次のインデックス番号であれば...
+			if (m_planet_index == (int)PLANET::SUN) {
+				//現在のインデックス番号の惑星を大きくする
+				m_planets[m_planet_index]->SetSizeBigger();
+			}
+			else {
+				//現在のインデックス番号の惑星を大きくする
+				m_planets[m_planet_index]->SetSunSizeBigger();
+			}
+
+			//太陽が前のインデックス番号であれば...
+			if (m_planet_index_before == (int)PLANET::SUN) {
+				//前のインデックス番号の惑星を小さくする
+				m_planets[m_planet_index_before]->SetSizeSmaller();
+			}
+			else {
+				//前のインデックス番号の惑星を小さくする
+				m_planets[m_planet_index_before]->SetSunSizeSmaller();
+			}
+		}
+		else {
 			//現在のインデックス番号の惑星を大きくする
-			m_planets[m_planet_index]->SetSunSizeBigger();
+			m_planets[m_planet_index]->SetSizeBigger();
 
 			//前のインデックス番号の惑星を小さくする
-			m_planets[m_planet_index_before]->SetSunSizeSmaller();
+			m_planets[m_planet_index_before]->SetSizeSmaller();
 		}
-		//現在のインデックス番号の惑星を大きくする
-		m_planets[m_planet_index]->SetSizeBigger();
-
-		//前のインデックス番号の惑星を小さくする
-		m_planets[m_planet_index_before]->SetSizeSmaller();
 	}
 
 	//現在の惑星インデックス番号を保存

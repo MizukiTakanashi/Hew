@@ -70,9 +70,9 @@ const float StageSelectSaturn::START_POS_X = 1000.0f;
 const float StageSelectSaturn::START_POS_Y = SCREEN_HEIGHT / 2;
 
 //‘¾—z
-const float StageSelectSun::BOX_W = 50.0f;
-const float StageSelectSun::BOX_H = 50.0f;
-const float StageSelectSun::BIG_BOX_W = 100.0f;
-const float StageSelectSun::BIG_BOX_H = 100.0f;
+const float StageSelectSun::BOX_W = 100.0f;
+const float StageSelectSun::BOX_H = 100.0f;
+const float StageSelectSun::BIG_BOX_W = 200.0f;
+const float StageSelectSun::BIG_BOX_H = 200.0f;
 const float StageSelectSun::START_POS_X = 50.0f;
 const float StageSelectSun::START_POS_Y = SCREEN_HEIGHT / 2;
