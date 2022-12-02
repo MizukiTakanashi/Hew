@@ -9,6 +9,21 @@
 #include "keyboard.h"
 
 //==========================
+// 引数付きコンストラクタ
+//==========================
+StageSelectPlanet::StageSelectPlanet(DrawObject& mars, DrawObject& mercury, DrawObject& jupiter, 
+	DrawObject& venus, DrawObject& saturn, DrawObject& sun, bool sun_appearance) 
+{
+	//惑星のセット
+	m_planets[(int)PLANET::MARS] = new StageSelectMars(mars);
+	m_planets[(int)PLANET::MERCURY] = new StageSelectMercury(mercury);
+	m_planets[(int)PLANET::JUPITER] = new StageSelectJupiter(jupiter);
+	m_planets[(int)PLANET::VENUS] = new StageSelectVenus(venus);
+	m_planets[(int)PLANET::SATURN] = new StageSelectSaturn(saturn);
+	m_planets[(int)PLANET::SUN] = new StageSelectSun(sun);
+}
+
+//==========================
 // 更新処理
 //==========================
 void StageSelectPlanet::Update()
@@ -44,14 +59,22 @@ void StageSelectPlanet::Update()
 
 	//左スティックで左に倒されたら...
 	if (GetThumbLeftX(0) < 0) {
-		//左にずらす
-		m_planet_index--;
+		//前フレームのスティックが右に倒されてたら...(連続押しを拒否)
+		if (m_thumb_before >= 0) {
+			//左にずらす
+			m_planet_index--;
+		}
 	}
 	//左スティックで右に倒されたら...
 	if (GetThumbLeftX(0) > 0) {
-		//右にずらす
-		m_planet_index++;
+		//前フレームのスティックが左に倒されてたら...(連続押しを拒否)
+		if (m_thumb_before <= 0) {
+			//右にずらす
+			m_planet_index++;
+		}
 	}
+	//スティックの値を保存
+	m_thumb_before = GetThumbLeftX(0);
 
 	//太陽がなかったら...
 	if (!m_sun_appearance) {
@@ -80,7 +103,18 @@ void StageSelectPlanet::Update()
 		}
 	}
 
-	//
+	//サイズを更新する
+	//前のインデックス番号から変更があれば...
+	if (m_planet_index != m_planet_index_before) {
+		//現在のインデックス番号の惑星を大きくする
+		m_planets[m_planet_index]->SetSizeBigger();
+
+		//前のインデックス番号の惑星を小さくする
+		m_planets[m_planet_index_before]->SetSizeSmaller();
+	}
+
+	//現在の惑星インデックス番号を保存
+	m_planet_index_before = m_planet_index;
 }
 
 //==========================
@@ -88,23 +122,14 @@ void StageSelectPlanet::Update()
 //==========================
 void StageSelectPlanet::Draw() const
 {
-	//火星
-	m_mars->Draw();
+	//太陽以外の描画
+	for (int i = 0; i < (int)PLANET::SUN; i++) {
+		m_planets[i]->Draw();
+	}
 
-	//水星
-	m_mercury->Draw();
-
-	//木星
-	m_jupiter->Draw();
-
-	//金星
-	m_venus->Draw();
-
-	//土星
-	m_saturn->Draw();
-
+	//太陽がもし出てたなら...
 	if (m_sun_appearance) {
-		//太陽
-		m_sun->Draw();
+		//太陽を描画
+		m_planets[(int)PLANET::SUN]->Draw();
 	}
 }

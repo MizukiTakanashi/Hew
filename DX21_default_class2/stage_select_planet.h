@@ -19,7 +19,7 @@ class StageSelectPlanet
 {
 //定数
 private:
-	//腕につく敵のタイプ
+	//惑星(左から並ぶ)(SUNは最後)
 	enum class PLANET :int
 	{
 		MARS,
@@ -32,32 +32,33 @@ private:
 	};
 
 //メンバ変数
-private:
-	StageSelectMars* m_mars = nullptr;			//火星
-	StageSelectMercury* m_mercury = nullptr;	//水星
-	StageSelectJupiter* m_jupiter = nullptr;	//木星
-	StageSelectVenus* m_venus = nullptr;		//金星
-	StageSelectSaturn* m_saturn = nullptr;		//土星
-	StageSelectSun* m_sun = nullptr;			//太陽
+private:	
+	inhStageSelectPlanetMake* m_planets[(int)PLANET::NUM];	//惑星達
 
-	bool m_sun_appearance = false;				//太陽が出てるかどうか
+	bool m_sun_appearance = false;							//太陽が出てるかどうか
 
-	int m_planet_index = 0;						//惑星のインデックス番号
+	int m_planet_index = 0;									//惑星の現在のインデックス番号
+	int m_planet_index_before = 0;							//惑星の前のインデックス番号
+
+	int m_thumb_before = 0;									//前フレームのスティックの値
 
 public:
 	//デフォルトコンストラクタ
-	StageSelectPlanet(){}
+	StageSelectPlanet(){
+		for (int i = 0; i < (int)PLANET::NUM; i++) {
+			m_planets[i] = nullptr;
+		}
+	}
 
 	//引数付きコンストラクタ
-	StageSelectPlanet(DrawObject& mars, DrawObject& mercury, DrawObject& jupiter, 
-		DrawObject& venus, DrawObject& saturn, DrawObject& sun, bool sun_appearance = false)
-		:m_mars(new StageSelectMars(mars)), m_mercury(new StageSelectMercury(mercury)),
-		m_jupiter(new StageSelectJupiter(jupiter)), m_venus(new StageSelectVenus(venus)),
-		m_saturn(new StageSelectSaturn(saturn)), m_sun(new StageSelectSun(sun)) {}
+	StageSelectPlanet(DrawObject& mars, DrawObject& mercury, DrawObject& jupiter,
+		DrawObject& venus, DrawObject& saturn, DrawObject& sun, bool sun_appearance = false);
 
 	//デストラクタ
 	~StageSelectPlanet() {
-		delete m_mars;
+		for (int i = 0; i < (int)PLANET::NUM; i++) {
+			delete m_planets[i];
+		}
 	}
 
 	//更新処理
