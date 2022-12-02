@@ -22,14 +22,15 @@ private:
 	//惑星(左から並ぶ)(SUNは最後)
 	enum class PLANET :int
 	{
-		MARS,
-		MERCURY,
-		JUPITER,
-		VENUS,
-		SATURN,
-		SUN,
-		NUM
+		MARS,		//火星
+		MERCURY,	//水星
+		JUPITER,	//木星
+		VENUS,		//金星
+		SATURN,		//土星
+		SUN,		//太陽
+		NUM			//惑星の数
 	};
+
 
 //メンバ変数
 private:	
@@ -42,6 +43,8 @@ private:
 
 	int m_thumb_before = 0;									//前フレームのスティックの値
 
+
+//メンバ関数
 public:
 	//デフォルトコンストラクタ
 	StageSelectPlanet(){

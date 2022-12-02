@@ -75,7 +75,7 @@ public:
 //==========================
 class StageSelectMercury :public inhStageSelectPlanetMake
 {
-	//定数
+//定数
 private:
 	//cppで初期化
 	static const float BOX_W;		//四角形の横のサイズ
@@ -86,7 +86,7 @@ private:
 	static const float START_POS_Y;	//初期位置Y
 
 
-	//メンバ関数
+//メンバ関数
 public:
 	//デフォルトコンストラクタ
 	StageSelectMercury() {}
@@ -105,7 +105,7 @@ public:
 //==========================
 class StageSelectJupiter :public inhStageSelectPlanetMake
 {
-	//定数
+//定数
 private:
 	//cppで初期化
 	static const float BOX_W;		//四角形の横のサイズ
@@ -116,7 +116,7 @@ private:
 	static const float START_POS_Y;	//初期位置Y
 
 
-	//メンバ関数
+//メンバ関数
 public:
 	//デフォルトコンストラクタ
 	StageSelectJupiter() {}
@@ -135,7 +135,7 @@ public:
 //==========================
 class StageSelectVenus :public inhStageSelectPlanetMake
 {
-	//定数
+//定数
 private:
 	//cppで初期化
 	static const float BOX_W;		//四角形の横のサイズ
@@ -146,7 +146,7 @@ private:
 	static const float START_POS_Y;	//初期位置Y
 
 
-	//メンバ関数
+//メンバ関数
 public:
 	//デフォルトコンストラクタ
 	StageSelectVenus() {}
@@ -165,7 +165,7 @@ public:
 //==========================
 class StageSelectSaturn :public inhStageSelectPlanetMake
 {
-	//定数
+//定数
 private:
 	//cppで初期化
 	static const float BOX_W;		//四角形の横のサイズ
@@ -176,7 +176,7 @@ private:
 	static const float START_POS_Y;	//初期位置Y
 
 
-	//メンバ関数
+//メンバ関数
 public:
 	//デフォルトコンストラクタ
 	StageSelectSaturn() {}
@@ -195,7 +195,7 @@ public:
 //==========================
 class StageSelectSun :public inhStageSelectPlanetMake
 {
-	//定数
+//定数
 private:
 	//cppで初期化
 	static const float BOX_W;		//四角形の横のサイズ
@@ -206,7 +206,7 @@ private:
 	static const float START_POS_Y;	//初期位置Y
 
 
-	//メンバ関数
+//メンバ関数
 public:
 	//デフォルトコンストラクタ
 	StageSelectSun() {}
