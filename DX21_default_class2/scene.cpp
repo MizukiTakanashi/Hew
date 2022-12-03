@@ -105,6 +105,11 @@ void UninitScene(void)
 		break;
 
 	case SCENE::SCENE_GAME:
+		//前のスコアよりも超えそうであれば...
+		if (pGame->GetScore() > g_Score[SCENE_GAME]) {
+			//スコアを更新
+			g_Score[SCENE_GAME] = pGame->GetScore();
+		}
 		delete pGame;
 		break;
 

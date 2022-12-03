@@ -140,5 +140,8 @@ public:
 
 	//•`‰æ
 	void Draw(void)const;
+
+	//ƒXƒRƒA‚ð•Ô‚·
+	int GetScore(void)const { return m_pScore->GetNumber(); }
 };
 #endif // !_GAME_H_
