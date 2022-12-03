@@ -31,7 +31,11 @@ private:
 		NUM			//惑星の数
 	};
 
-	static const float MOVE_LIMIT;
+	//ここで初期化
+	static const int MOVE_TIME_LIMIT = 100;	//惑星が動く時間
+
+	//cppで初期化
+	static const float MOVE_SPEED;			//動くスピード
 
 
 //メンバ変数
@@ -46,7 +50,6 @@ private:
 	int m_thumb_before = 0;									//前フレームのスティックの値
 
 	int m_move_time = -1;									//動く時間カウント
-	float m_move_speed = 0.1f;								//スピード
 
 
 //メンバ関数

@@ -27,6 +27,17 @@ StageSelect::StageSelect(int stage_score[])
 		m_stage_score[i] = stage_score[i];
 	}
 
+	bool stage_clear = true;
+	//スコアから全ステージクリアしているか確認
+	for (int i = 0; i < STAGE::STAGE_SUN; i++) {
+		//スコアが一つでも0の物があれば...
+		if (m_stage_score[i] == 0) {
+			//ステージクリアしていないをセット
+			stage_clear = false;
+			break;
+		}
+	}
+
 	//描画関係のもの
 	m_pTexUseful = new TextureUseful[(int)TEXTURE_TYPE::NUM];
 	m_pDrawObject = new DrawObject[(int)DRAW_TYPE::NUM];
@@ -61,7 +72,7 @@ StageSelect::StageSelect(int stage_score[])
 	//惑星
 	m_pPlanet = new StageSelectPlanet(m_pDrawObject[(int)DRAW_TYPE::MARS], m_pDrawObject[(int)DRAW_TYPE::MERCURY],
 		m_pDrawObject[(int)DRAW_TYPE::JUPITER], m_pDrawObject[(int)DRAW_TYPE::VENUS], m_pDrawObject[(int)DRAW_TYPE::SATURN],
-		m_pDrawObject[(int)DRAW_TYPE::SUN], true);
+		m_pDrawObject[(int)DRAW_TYPE::SUN], stage_clear);
 }
 
 //==========================

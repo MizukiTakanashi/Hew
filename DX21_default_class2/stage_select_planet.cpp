@@ -9,6 +9,11 @@
 #include "keyboard.h"
 
 //==========================
+// 定数の初期化
+//==========================
+const float StageSelectPlanet::MOVE_SPEED = 1.0f;
+
+//==========================
 // 引数付きコンストラクタ
 //==========================
 StageSelectPlanet::StageSelectPlanet(DrawObject& mars, DrawObject& mercury, DrawObject& jupiter, 
@@ -49,11 +54,20 @@ StageSelectPlanet::StageSelectPlanet(DrawObject& mars, DrawObject& mercury, Draw
 //==========================
 void StageSelectPlanet::Update()
 {
-	//惑星が動いていれば...
-	if (m_move_time++ >= 0) {
+	//惑星が動く時間であれば...
+	if (m_move_time >= 0) {
+		//惑星を動かす
 		for (int i = 0; i < (int)PLANET::NUM; i++) {
-			m_planets[i]->MovePos(D3DXVECTOR2(m_move_speed, 0.0f));
+			m_planets[i]->MovePos(D3DXVECTOR2(StageSelectPlanet::MOVE_SPEED, 0.0f));
 		}
+
+		//惑星が止まる時間が来たら...
+		if (m_move_time++ >= StageSelectPlanet::MOVE_TIME_LIMIT) {
+			//カウントをストップ
+			m_move_time = -1;
+		}
+
+		return;
 	}
 
 	//=======================
