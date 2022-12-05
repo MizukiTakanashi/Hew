@@ -31,7 +31,6 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 {
 	m_FlameNum++; //ƒtƒŒ[ƒ€”‚ğ‘‰Á
 
-	int i = m_FlameNum;
 	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
 	{
 		EnemyNormal temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
@@ -109,16 +108,17 @@ void EnemyNormalManagement::Draw(void)const
 bool EnemyNormalManagement::ReduceHP(int index_num, int reduceHP)
 {
 	m_pEnemyNormal[index_num].ReduceHP(reduceHP);
+
 	if (m_pEnemyNormal[index_num].GetHP() <= 0)
 	{//HP‚ª‚OˆÈ‰º‚È‚ç“G‚ğÁ‚·
-		EnemyManagement::DeleteObj(index_num, reduceHP);
+
+		EnemyManagement::DeleteObj(index_num);
 
 		m_pEnemySetPos.DeleteEnemy(m_pEnemyNormal[index_num].GetPos());
 
 		for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
 			m_pEnemyNormal[i] = m_pEnemyNormal[i + 1];
 		}
-		EnemyManagement::IncreaseObjNum(-1);
 
 		return true;
 	}
