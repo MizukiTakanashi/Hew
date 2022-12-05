@@ -68,24 +68,24 @@ int CollisionAll::Collision(void)
 						//プレイヤーの弾を消す
 						m_pPlayer->DeleteBullet(i);
 						i--;
+
 						//敵のHPを減らす
+						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
-						{//敵が死んだ場合の処理
+						{
 							//爆発をセット
 							m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
-							if (k == 3) //合体できる敵かどうか
-							{
-							}
-							else
-							{
+							
+							//ドロップする敵であれば...
+							if (k != (int)TYPE::PUBLIC) {
 								//敵アイテムのドロップ
 								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 							}
 							j--;
-						}
 
-						//倒した敵の数を増やす
-						m_pScore->AddScore(1);
+							//倒した敵の数を増やす
+							m_pScore->AddScore(1);
+						}
 					}
 				}
 			}
@@ -118,23 +118,22 @@ int CollisionAll::Collision(void)
 						m_pPlayer->GetBomSize(), m_pEnemy[k]->GetObjSize())) {
 						
 						//敵のHPを減らす
+						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
-						{//敵が死んだ場合の処理
+						{
 							//爆発をセット
 							m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
-							if (k == 3) //合体できる敵かどうか
-							{
-							}
-							else
-							{
+							
+							//ドロップする敵であれば...
+							if (k != (int)TYPE::PUBLIC) {
 								//敵アイテムのドロップ
 								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 							}
 							j--;
-						}
 
-						//倒した敵の数を増やす
-						m_pScore->AddScore(1);
+							//倒した敵の数を増やす
+							m_pScore->AddScore(1);
+						}
 					}
 				}
 			}
@@ -159,11 +158,21 @@ int CollisionAll::Collision(void)
 						pArm->SetType(inhPlayerArmBoth::TYPE::TYPE_OLD);
 
 						//敵のHPを減らす
+						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
-						{//敵が死んだ場合の処理
+						{
 							//爆発をセット
 							m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
 
+							//ドロップする敵であれば...
+							if (k != (int)TYPE::PUBLIC) {
+								//敵アイテムのドロップ
+								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
+							}
+							j--;
+
+							//倒した敵の数を増やす
+							m_pScore->AddScore(1);
 						}
 					}
 				}
@@ -205,23 +214,22 @@ int CollisionAll::Collision(void)
 								}
 
 								//敵のHPを減らす
+								//敵が死んだら...
 								if (m_pEnemy[k]->ReduceHP(j, 1))
-								{//敵が死んだ場合の処理
+								{
 									//爆発をセット
 									m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
-									if (k == 3) //合体できる敵かどうか
-									{
-									}
-									else
-									{
+
+									//ドロップする敵であれば...
+									if (k != (int)TYPE::PUBLIC) {
 										//敵アイテムのドロップ
 										m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 									}
 									j--;
-								}
 
-								//倒した敵の数を増やす
-								m_pScore->AddScore(1);
+									//倒した敵の数を増やす
+									m_pScore->AddScore(1);
+								}
 							}
 						}
 					}

@@ -8,7 +8,8 @@
 FADE_STATE	g_FadeState;
 SCENE		g_FadeNextScene;
 float		g_FadeAlpha;
-float m_start_uv_y = 0.0f;		//UVÀ•WY
+int			g_FadeTexNo = 0;
+
 //=========================================================
 // ‰Šú‰»ˆ—
 //=========================================================
@@ -18,6 +19,8 @@ void InitFade()
 	g_FadeNextScene = SCENE_NONE;
 	g_FadeAlpha = 0.0f;
 	SetScene(SCENE::SCENE_TITLE);
+
+	g_FadeTexNo = LoadTexture((char*)"data\\texture\\fade.png");
 }
 //=========================================================
 // XVˆ—
@@ -59,10 +62,10 @@ void DrawFade()
 	if (g_FadeState == FADE_STATE_NONE)
 		return;
 
-	//LoadTexture();
+	GetDeviceContext()->PSSetShaderResources(0, 1, GetTexture(g_FadeTexNo));
 
 	Sprite::DrawSpriteUVStart(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f,
-		D3DXCOLOR(0.0f, 0.0f, 0.0f, g_FadeAlpha), 0.0f, m_start_uv_y, 1.0f, 1.0f);
+		D3DXCOLOR(0.0f, 0.0f, 0.0f, g_FadeAlpha), 0.0f, 0.0f, 1.0f, 1.0f);
 }
 
 

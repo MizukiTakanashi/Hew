@@ -31,7 +31,6 @@ void EnemyLaserManagement::Update()
 {
 	m_FlameNum++; //ƒtƒŒ[ƒ€”‚ğ‘‰Á
 
-	int i = m_FlameNum;
 	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
 	{
 		EnemyLaser temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
@@ -107,7 +106,7 @@ bool EnemyLaserManagement::ReduceHP(int index_num, int reduceHP)
 	if (m_pEnemyLaser[index_num].GetHP() <= 0)
 	{//HP‚ª‚OˆÈ‰º‚È‚ç“G‚ğÁ‚·
 
-		EnemyManagement::DeleteObj(index_num, reduceHP);
+		EnemyManagement::DeleteObj(index_num);
 
 		if (m_pEnemyLaser[index_num].GetLaserIndex() >= 0)
 		{
@@ -120,7 +119,6 @@ bool EnemyLaserManagement::ReduceHP(int index_num, int reduceHP)
 			m_pEnemyLaser[i] = m_pEnemyLaser[i + 1];
 
 		}
-		EnemyManagement::IncreaseObjNum(-1);
 		return true;
 	}
 	return false;

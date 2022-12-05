@@ -172,6 +172,7 @@ Game::Game(Score * pNumber):m_pScore(pNumber)
 		*m_pEnemySetPos);
 	m_pEnemyPublicManagement = new Management_EnemyPublic(m_pDrawObject[(int)DRAW_TYPE::ENEMY_PUBLIC],*m_pEnemySetPos);
 	m_pMeteoManagement = new Management_Meteo(m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO],*m_pEnemySetPos);
+	
 	//=======================
 	// 残弾表示
 	m_pTexUseful[(int)TEXTURE_TYPE::NUMBER].SetTextureName((char*)"data\\texture\\number.png");
@@ -196,7 +197,6 @@ Game::Game(Score * pNumber):m_pScore(pNumber)
 
 	//=======================
 	// プレイヤーの腕の左
-	//m_pTexUseful[5].SetTextureName((char*)"data\\texture\\arm.png");
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
 	//弾
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
@@ -209,7 +209,6 @@ Game::Game(Score * pNumber):m_pScore(pNumber)
 
 	//=======================
 	// プレイヤーの腕の右
-	//m_pTexUseful[6].SetTextureName((char*)"data\\texture\\arm.png");
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
 	//弾
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
@@ -222,7 +221,6 @@ Game::Game(Score * pNumber):m_pScore(pNumber)
 
 	//=======================
 	// プレイヤーの腕の真ん中
-	//m_pTexUseful[6].SetTextureName((char*)"data\\texture\\arm.png");
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
 	//弾
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTTER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
@@ -235,6 +233,7 @@ Game::Game(Score * pNumber):m_pScore(pNumber)
 
 	//腕の交換
 	m_pPlayerArmChange=new PlayerArmChange(m_pPlayerLeft, m_pPlayerRight, m_pPlayerCenter);
+	
 	//爆発
 	m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION].SetTextureName((char*)"data\\texture\\explosion000.png");
 	m_pDrawObject[(int)DRAW_TYPE::EXPLOSION].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION], 0.0f, 0.125f, 1.0f, 7);

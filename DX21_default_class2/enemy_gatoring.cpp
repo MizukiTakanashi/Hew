@@ -16,7 +16,6 @@ const float EnemyGatoring::RANGE = 20.0f;
 //private
 const float EnemyGatoring::SPEED_X = 1.5f;
 const float EnemyGatoring::SPEED_Y = 2.5f;
-const int EnemyGatoring::HP_MAX = 1;
 
 //======================
 // XVˆ—

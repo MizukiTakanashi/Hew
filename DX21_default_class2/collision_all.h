@@ -20,6 +20,16 @@ class CollisionAll
 {
 //’è”
 private:
+	enum class TYPE :int
+	{
+		NORMAL,
+		LASER,
+		GATORING,
+		PUBLIC,
+		NUM
+	};
+
+
 	//‚±‚±‚Å‰Šú‰»
 	static const int ENEMY_NUM = 10;		//‘S“G‚Ìí—Ş”‚Ì§ŒÀ”	
 
