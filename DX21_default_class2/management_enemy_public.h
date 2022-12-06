@@ -2,7 +2,7 @@
 #include "enemy_public.h"
 #include "draw_object.h"
 #include "management.h"
-#include"enemy_set_pos.h"
+//#include"enemy_set_pos.h"
 #include "management_enemy.h"
 class Management_EnemyPublic :public EnemyManagement
 {
@@ -16,7 +16,7 @@ private:
 	//メンバ変数
 	EnemyPublic* m_pEnemyPublic = nullptr;
 	DrawObject m_pDrawObjectEnemyPublic;
-	EnemySetPos m_pEnemySetPos;
+	//EnemySetPos m_pEnemySetPos;
 
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[MAX_NUM] = { D3DXVECTOR2(52.5f + (105 * (1 - 1)), -EnemyPublic::SIZE_Y / 2)
@@ -52,7 +52,7 @@ public:
 	}
 
 	//引数付きコンストラクタ
-	Management_EnemyPublic(DrawObject& pDrawObject, EnemySetPos& pEnemySetPos);
+	Management_EnemyPublic(DrawObject& pDrawObject);
 
 	//デストラクタ
 	~Management_EnemyPublic() override { delete[]m_pEnemyPublic; }

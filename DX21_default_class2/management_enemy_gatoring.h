@@ -13,7 +13,7 @@
 #include "enemy_gatoring.h"
 #include "bullet.h"
 #include "draw_object.h"
-#include "enemy_set_pos.h"
+//#include "enemy_set_pos.h"
 
 class EnemyGatoringManagement:public EnemyManagement
 {
@@ -42,7 +42,7 @@ private:
 	Bullet* m_pBullet = nullptr;				//弾のクラス
 	DrawObject m_pDrawObjectEnemy;				//敵の描画オブジェクト
 	DrawObject m_pDrawObjectBullet;				//弾の描画オブジェクト
-	EnemySetPos m_pEnemySetPos;					//そこにセットしていいのかクラス
+	//EnemySetPos m_pEnemySetPos;					//そこにセットしていいのかクラス
 
 	int m_EnemyItem_num = 0;	//敵のアイテムの数
 
@@ -107,8 +107,7 @@ public:
 	}
 
 	//引数付きコンストラクタ
-	EnemyGatoringManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2,
-		EnemySetPos& pEnemySetPos);
+	EnemyGatoringManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2);
 
 	//デストラクタ
 	~EnemyGatoringManagement()override{}

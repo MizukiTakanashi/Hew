@@ -1,35 +1,35 @@
 //=======================================
-// •’Ê‚Ì“G‚ÌŠÇ—ŠÖŒW(cppƒtƒ@ƒCƒ‹)
-// ì¬“úF2022/09/13
-// ì¬ÒF‚—œ…Šó
+// æ™®é€šã®æ•µã®ç®¡ç†é–¢ä¿‚(cppãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š2022/09/13
+// ä½œæˆè€…ï¼šé«˜æ¢¨æ°´å¸Œ
 //=======================================
 #include "management_enemy_normal.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
 
 //==========================
-// ’è”‚Ì‰Šú‰»
+// å®šæ•°ã®åˆæœŸåŒ–
 //==========================
 const float EnemyNormalManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyNormalManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyNormalManagement::BULLET_SPEED = 5.0f;
 
 //=========================
-// ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+// å¼•æ•°ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //=========================
-EnemyNormalManagement::EnemyNormalManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, EnemySetPos& pEnemySetPos)
-	:EnemyManagement(ENEMY_NUM, ATTACK, BULLET_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
+EnemyNormalManagement::EnemyNormalManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
+	:EnemyManagement(ENEMY_NUM, ATTACK, BULLET_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
 	m_pEnemyNormal = new EnemyNormal[ENEMY_NUM];
 	m_pBullet = new Bullet[ENEMY_NUM];
 }
 
 //======================
-// XVˆ—
+// æ›´æ–°å‡¦ç†
 //======================
 void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 {
-	m_FlameNum++; //ƒtƒŒ[ƒ€”‚ğ‘‰Á
+	m_FlameNum++; //ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã‚’å¢—åŠ 
 
 	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
 	{
@@ -40,13 +40,13 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 		m_EnemyNum++;
 	}
 
-	//¡‚¢‚é“G‚Ìˆ—
+	//ä»Šã„ã‚‹æ•µã®å‡¦ç†
 	for (int i = 0; i < GetObjNum(); i++) {
 		m_pEnemyNormal[i].Update();
 
-		//’e‚ğì‚é
+		//å¼¾ã‚’ä½œã‚‹
 		if (m_pEnemyNormal[i].GetFlagBulletMake()) {
-			//ƒvƒŒƒCƒ„[‚ÌŒã‚ğ’Ç‚¤‚æ‚¤‚É‚µ‚ÄA’e‚ğ¶¬
+			//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å¾Œã‚’è¿½ã†ã‚ˆã†ã«ã—ã¦ã€å¼¾ã‚’ç”Ÿæˆ
 			D3DXVECTOR2 movTemp = PlayerPos - m_pEnemyNormal[i].GetPos();
 			D3DXVECTOR2 rotposTemp = m_pEnemyNormal[i].GetPos() - PlayerPos;
 			D3DXVec2Normalize(&movTemp, &movTemp);
@@ -64,9 +64,9 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 		}
 	}
 
-	//¡‚¢‚é’e‚Ìˆ—
+	//ä»Šã„ã‚‹å¼¾ã®å‡¦ç†
 	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {
-		//ƒvƒŒƒCƒ„[‚ÌŒã‚ğ’Ç‚¤(ƒz[ƒ~ƒ“ƒO’e)
+		//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å¾Œã‚’è¿½ã†(ãƒ›ãƒ¼ãƒŸãƒ³ã‚°å¼¾)
 		D3DXVECTOR2 movTemp = PlayerPos - m_pBullet[i].GetPos();
 		D3DXVECTOR2 rotposTemp = m_pEnemyNormal[i].GetPos() - PlayerPos;
 		D3DXVec2Normalize(&movTemp, &movTemp);
@@ -77,19 +77,19 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 		m_pBullet[i].SetRot(0.0f);
 		m_pBullet[i].SetMove(movTemp);
 
-		//’e‚ÌXVˆ—
+		//å¼¾ã®æ›´æ–°å‡¦ç†
 		m_pBullet[i].Update();
 		
-		//‰æ–ÊŠO‚©‚ço‚½‚çAŠÔŒo‰ß‚µ‚½‚ç...
+		//ç”»é¢å¤–ã‹ã‚‰å‡ºãŸã‚‰ã€æ™‚é–“çµŒéã—ãŸã‚‰...
 		if (m_pBullet[i].GetScreenOut() || m_pBullet[i].GetTime() > BULLET_BREAK_TIME) {
-			//’e‚ğÁ‚·
+			//å¼¾ã‚’æ¶ˆã™
 			DeleteBullet(i);
 		}
 	}
 }
 
 //==========================
-// •`‰æˆ—
+// æç”»å‡¦ç†
 //==========================
 void EnemyNormalManagement::Draw(void)const
 {
@@ -103,16 +103,18 @@ void EnemyNormalManagement::Draw(void)const
 }
 
 //======================
-// “G‚ÌHP‚ğŒ¸‚ç‚·
+// æ•µã®HPã‚’æ¸›ã‚‰ã™
 //======================
 bool EnemyNormalManagement::ReduceHP(int index_num, int reduceHP)
 {
 	m_pEnemyNormal[index_num].ReduceHP(reduceHP);
 
 	if (m_pEnemyNormal[index_num].GetHP() <= 0)
-	{//HP‚ª‚OˆÈ‰º‚È‚ç“G‚ğÁ‚·
+	{//HPãŒï¼ä»¥ä¸‹ãªã‚‰æ•µã‚’æ¶ˆã™
+  
+		EnemyManagement::DeleteObj(index_num);
 
-		m_pEnemySetPos.DeleteEnemy(m_pEnemyNormal[index_num].GetPos());
+		//m_pEnemySetPos.DeleteEnemy(m_pEnemyNormal[index_num].GetPos());
 
 		return true;
 	}
@@ -120,21 +122,21 @@ bool EnemyNormalManagement::ReduceHP(int index_num, int reduceHP)
 }
 
 //======================
-// “G‚ğÁ‚·
+// æ•µã‚’æ¶ˆã™
 //======================
 void EnemyNormalManagement::DeleteObj(int index_num)
 {
-	//“G‚ğÁ‚·
+	//æ•µã‚’æ¶ˆã™
 	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
 		m_pEnemyNormal[i] = m_pEnemyNormal[i + 1];
 	}
 
-	//Œp³Œ³‚Ì“G‚ğÁ‚·‚ğŒÄ‚Ô
+	//ç¶™æ‰¿å…ƒã®æ•µã‚’æ¶ˆã™ã‚’å‘¼ã¶
 	EnemyManagement::DeleteObj(index_num);
 }
 
 //======================
-// ’e‚ğÁ‚·
+// å¼¾ã‚’æ¶ˆã™
 //======================
 void EnemyNormalManagement::DeleteBullet(int index_num)
 {

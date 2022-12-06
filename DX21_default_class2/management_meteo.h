@@ -7,7 +7,7 @@
 #include"meteo.h"
 #include "draw_object.h"
 #include "management.h"
-#include"enemy_set_pos.h"
+//#include"enemy_set_pos.h"
 #include "management_enemy.h"
 class Management_Meteo:public EnemyManagement
 {
@@ -21,7 +21,7 @@ private:
 	//メンバ変数
 	Meteo* m_pMeteo = nullptr;
 	DrawObject m_pDrawObjectMeteo;
-	EnemySetPos m_pEnemySetPos;
+	//EnemySetPos m_pEnemySetPos;
 
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[MAX_NUM] = { D3DXVECTOR2(52.5f + (105 * 1 - 1), -Meteo::SIZE_Y / 2)
@@ -56,7 +56,7 @@ public:
 	}
 
 	//引数付きコンストラクタ
-	Management_Meteo(DrawObject& pDrawObject, EnemySetPos& pEnemySetPos);
+	Management_Meteo(DrawObject& pDrawObject);
 
 	//デストラクタ
 	~Management_Meteo() override { delete[]m_pMeteo; }
