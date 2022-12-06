@@ -255,7 +255,7 @@ Game::Game(Score * pNumber):m_pScore(pNumber)
 	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER_HP].SetTextureName((char*)"data\\texture\\hp.png");
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_BAR].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER_HP], 0.0f, 1.0f, 1.0f, 1);
 
-	m_pPlayerHP = new PlayerHP(m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_BAR], m_pExplosionManagement);
+	m_pPlayerHP = new PlayerHP(m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_BAR]);
 
 	//敵の管理
 	m_pAllEnemyManagement = new AllEnemyManagement;
@@ -380,10 +380,10 @@ void Game::Update(void)
 
 	//プレイヤーのHPを攻撃数によって減らす
 	if (attack_num != 0) {
-		m_pPlayerHP->ReduceHP((float)attack_num, m_pPlayer->GetPos());
+		m_pPlayerHP->ReduceHP((float)attack_num);
 	}
 	if (heel_num != 0) {
-		m_pPlayerHP->HeelHP((float)heel_num, m_pPlayer->GetPos());
+		m_pPlayerHP->HeelHP((float)heel_num);
 	}
 	
 	//プレイヤーのHPが0になったら...

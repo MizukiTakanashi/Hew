@@ -10,7 +10,6 @@
 
 #include "draw_object.h"
 #include "UI.h"
-#include "management_explosion.h"
 
 //======================
 // マクロ定義
@@ -37,16 +36,12 @@ private:
 	bool m_HP0 = false;				//プレイヤーのHPが0か判断
 	float m_hp = HP_MAX;			//プレイヤーのHP
 	int m_invincible = 0;			//無敵時間
-	ExplosionManagement* m_pExplosionManagement = nullptr; //爆発管理のポインタ
-	//Score* m_pScore = nullptr; //ナンバーのポインタ
 
 public:
 	PlayerHP() { m_hp = HP_MAX; }	//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
-	PlayerHP(DrawObject& DrawObject1, ExplosionManagement* pEM)
-		:UI(DrawObject1, D3DXVECTOR2(POS_X, POS_Y),
-			D3DXVECTOR2(SIZE_X, SIZE_Y)), m_pExplosionManagement(pEM) {}
+	PlayerHP(DrawObject& DrawObject1):UI(DrawObject1, D3DXVECTOR2(POS_X, POS_Y), D3DXVECTOR2(SIZE_X, SIZE_Y)) {}
 
 	~PlayerHP()override {}							//デストラクタ
 
@@ -54,10 +49,10 @@ public:
 	void Update(void);
 
 	//HPを減らす
-	void ReduceHP(float reduce_num, D3DXVECTOR2 ppos);
+	void ReduceHP(float reduce_num);
 
 	//HPを回復
-	void HeelHP(float heel_num, D3DXVECTOR2 ppos);
+	void HeelHP(float heel_num);
 
 	//描画
 	void DrawHP(void)const;
