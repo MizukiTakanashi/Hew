@@ -4,6 +4,7 @@
 // 作成者：高梨水希
 //=======================================
 #include "player_hp.h"
+#include "game.h"
 
 //==========================
 // 定数初期化
@@ -32,6 +33,8 @@ void PlayerHP::ReduceHP(float reduce_num, D3DXVECTOR2 ppos)
 		m_hp -= reduce_num;
 		//爆発をセット
 		m_pExplosionManagement->SetExplosion(ppos);
+		//ヒットストップ
+		HitStop(30);
 		SetInvincibleFrame();
 	}
 

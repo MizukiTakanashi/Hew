@@ -13,6 +13,9 @@
 const D3DXVECTOR2 Game::NUMBER_POS = D3DXVECTOR2(1230.0f, 30.0f);
 const D3DXVECTOR2 Game::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
 
+int StopFlame = 0; //ヒットストップ用
+
+
 //==========================
 // 初期化処理
 //==========================
@@ -317,6 +320,12 @@ Game::~Game()
 //======================
 void Game::Update(void)
 {
+	//ヒットストップ
+	if (StopFlame > 0)
+	{
+		StopFlame--;
+		return;
+	}
 	//背景
 	m_pBG->Update();
 
@@ -419,4 +428,10 @@ void Game::Draw(void)const
 	m_pComboNum->DrawNumber();
 	m_pMultiply->Draw();
 
+}
+
+
+void HitStop(int flame)
+{
+	StopFlame = flame;
 }

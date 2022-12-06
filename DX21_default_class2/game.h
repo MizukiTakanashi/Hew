@@ -3,7 +3,7 @@
 // 作成日：2022/07/14
 // 作成者：高梨水希
 //=======================================
-
+#pragma once
 #ifndef _GAME_H_
 #define _GAME_H_
 
@@ -31,6 +31,8 @@
 #include "management_meteo.h"
 #include "management_enemy_public.h"
 #include "player_center.h"
+
+
 
 class Game
 {
@@ -129,6 +131,7 @@ private:
 
 	CollisionAll* m_pColAll = nullptr;		//全ての当たり判定
 
+
 //メンバ関数
 public:
 	Game();	//デフォルトコンストラクタ
@@ -146,4 +149,9 @@ public:
 	//スコアを返す
 	int GetScore(void)const { return m_pScore->GetNumber(); }
 };
+
+void HitStop(int flame);
+
 #endif // !_GAME_H_
+
+
