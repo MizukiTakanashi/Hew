@@ -20,7 +20,7 @@ const float EnemyMissileManagement::BULLET_SPEED = 5.0f;
 EnemyMissileManagement::EnemyMissileManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
 	:EnemyManagement(ENEMY_NUM, ATTACK, BULLET_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
-	m_pEnemyMissile = new EnemyMissile[ENEMY_NUM];
+	m_pEnemyMissile = new EnemyNormal[ENEMY_NUM];
 	m_pBullet = new Bullet[ENEMY_NUM];
 }
 
@@ -34,7 +34,7 @@ void EnemyMissileManagement::Update(const D3DXVECTOR2& PlayerPos)
 	int i = m_FlameNum;
 	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
 	{
-		EnemyMissile temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
+		EnemyNormal temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
 		m_pEnemyMissile[GetObjNum()] = temp;
 		EnemyManagement::IncreaseObjNum(1);
 
@@ -67,16 +67,7 @@ void EnemyMissileManagement::Update(const D3DXVECTOR2& PlayerPos)
 
 	//今いる弾の処理
 	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {
-		//プレイヤーの後を追う(ホーミング弾)
-		D3DXVECTOR2 movTemp = PlayerPos - m_pBullet[i].GetPos();
-		D3DXVECTOR2 rotposTemp = m_pEnemyMissile[i].GetPos() - PlayerPos;
-		D3DXVec2Normalize(&movTemp, &movTemp);
-		movTemp *= BULLET_SPEED;
 
-		//float rotTemp = atan2(rotposTemp.y, rotposTemp.x) * (180 / M_PI) + 90.0f;
-
-		m_pBullet[i].SetRot(0.0f);
-		m_pBullet[i].SetMove(movTemp);
 
 		//弾の更新処理
 		m_pBullet[i].Update();

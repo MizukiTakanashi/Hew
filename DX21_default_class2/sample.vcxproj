@@ -135,7 +135,6 @@
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="draw_object.cpp" />
     <ClCompile Include="enemy_gatoring.cpp" />
-    <ClCompile Include="enemy_missile.cpp" />
     <ClCompile Include="enemy_public.cpp" />
     <ClCompile Include="Fade.cpp" />
     <ClCompile Include="inh_player_arm_both.cpp" />
@@ -201,7 +200,6 @@
     <ClInclude Include="collision.h" />
     <ClInclude Include="draw_object.h" />
     <ClInclude Include="enemy_gatoring.h" />
-    <ClInclude Include="enemy_missile.h" />
     <ClInclude Include="enemy_public.h" />
     <ClInclude Include="Fade.h" />
     <ClInclude Include="inh_player_arm_both.h" />

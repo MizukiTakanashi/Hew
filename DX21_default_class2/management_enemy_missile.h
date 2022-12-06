@@ -10,10 +10,10 @@
 
 #include "main.h"
 #include "management_enemy.h"
-#include "enemy_missile.h"
+#include "enemy_normal.h"
+//#include "enemy_missile.h"
 #include "bullet.h"
 #include "draw_object.h"
-//#include "enemy_set_pos.h"
 
 class EnemyMissileManagement :public EnemyManagement
 {
@@ -39,7 +39,7 @@ public:
 
 	//メンバ変数
 private:
-	EnemyMissile* m_pEnemyMissile = nullptr;
+	EnemyNormal* m_pEnemyMissile = nullptr;
 	Bullet* m_pBullet = nullptr;
 	DrawObject m_pDrawObjectEnemy;
 	DrawObject m_pDrawObjectBullet;
@@ -49,18 +49,18 @@ private:
 
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-										 D3DXVECTOR2(52.5f + (105 * 1 - 1), -EnemyMissile::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyMissile::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyMissile::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 10 - 1), -EnemyMissile::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 10 - 1), -EnemyMissile::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 3 - 1), -EnemyMissile::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyMissile::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyMissile::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 1 - 1), -EnemyMissile::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyMissile::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyMissile::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyMissile::SIZE_Y / 2)
+										 D3DXVECTOR2(52.5f + (105 * 1 - 1), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 10 - 1), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 10 - 1), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 3 - 1), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 1 - 1), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyNormal::SIZE_Y / 2)
 	};
 	//敵を出す時間
 	int m_SetEnemyTime[ENEMY_NUM] = {
@@ -81,7 +81,7 @@ private:
 public:
 	//デフォルトコンストラクタ
 	EnemyMissileManagement() {
-		m_pEnemyMissile = new EnemyMissile[ENEMY_NUM];
+		m_pEnemyMissile = new EnemyNormal[ENEMY_NUM];
 		m_pBullet = new Bullet[ENEMY_NUM];
 	}
 

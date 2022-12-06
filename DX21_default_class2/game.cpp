@@ -165,6 +165,7 @@ Game::Game(Score * pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::METEO], 2.0f, 1.0, 1.0f, 3);
 
 	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY]);
+	m_pEnemyMissileManagement = new EnemyMissileManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY]);
 	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER_LASER]);
 	m_pEnemyGatoringManagement = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY]);
 	m_pEnemyPublicManagement = new Management_EnemyPublic(m_pDrawObject[(int)DRAW_TYPE::ENEMY_PUBLIC]);
@@ -267,6 +268,7 @@ Game::Game(Score * pNumber):m_pScore(pNumber)
 	m_pColAll->AddEnemyPointer(m_pEnemyLaserManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyGatoringManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyPublicManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemyMissileManagement);
 	//m_pColAll->AddEnemyPointer(m_pMeteoManagement);
 
 }
@@ -289,6 +291,7 @@ Game::~Game()
 	delete m_pEnemyLaserManagement;
 	delete m_pEnemyGatoringManagement;
 	delete m_pEnemyPublicManagement;
+	delete m_pEnemyMissileManagement;
 	delete m_pMeteoManagement;
 	delete m_pItemManagement;
 	delete m_pPlayer;
@@ -334,6 +337,7 @@ void Game::Update(void)
 	//=======================
 	// 敵の更新処理
 	m_pEnemyNormalManagement->Update(m_pPlayer->GetPos());
+	m_pEnemyMissileManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyLaserManagement->Update();
 	m_pEnemyGatoringManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyPublicManagement->Update();
@@ -397,6 +401,7 @@ void Game::Draw(void)const
 	m_pEnemyGatoringManagement->Draw();
 	m_pEnemyPublicManagement->Draw();
 	m_pMeteoManagement->Draw();
+	m_pEnemyMissileManagement->Draw();
 
 	m_pPlayer->DrawBullet();
 	m_pPlayer->DrawBom();
