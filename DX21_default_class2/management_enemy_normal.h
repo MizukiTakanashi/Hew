@@ -49,18 +49,18 @@ private:
 
 	//ìGÇÃîzóÒ
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-										 D3DXVECTOR2(52.5f + (105 * 1 - 1), -EnemyNormal::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyNormal::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyNormal::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 10 - 1), -EnemyNormal::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 10 - 1), -EnemyNormal::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 3 - 1), -EnemyNormal::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyNormal::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyNormal::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 1 - 1), -EnemyNormal::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyNormal::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyNormal::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyNormal::SIZE_Y / 2)
+										 D3DXVECTOR2(52.5f + (105 * (1 - 1)), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (12 - 1)), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (2 - 1)), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (10 - 1)), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (10 - 1)), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (3 - 1)), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (2 - 1)), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (11 - 1)), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (1 - 1)), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (2 - 1)), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (11 - 1)), -EnemyNormal::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (12 - 1)), -EnemyNormal::SIZE_Y / 2)
 	};
 	//ìGÇèoÇ∑éûä‘
 	int m_SetEnemyTime[ENEMY_NUM] = {
@@ -99,6 +99,9 @@ public:
 
 	//éwíËÇµÇΩÇÃHPÇå∏ÇÁÇ∑
 	bool ReduceHP(int index_num, int reduceHP)override;
+
+	//éwíËÇµÇΩìGÇè¡Ç∑
+	void DeleteObj(int index_num)override;
 
 	//éwíËÇµÇΩíeÇè¡Ç∑
 	void DeleteBullet(int index_num)override;
