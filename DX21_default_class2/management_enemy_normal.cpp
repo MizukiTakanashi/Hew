@@ -112,10 +112,6 @@ bool EnemyNormalManagement::ReduceHP(int index_num, int reduceHP)
 	if (m_pEnemyNormal[index_num].GetHP() <= 0)
 	{//HPが０以下なら敵を消す
   
-		EnemyManagement::DeleteObj(index_num);
-
-		//m_pEnemySetPos.DeleteEnemy(m_pEnemyNormal[index_num].GetPos());
-
 		return true;
 	}
 	return false;

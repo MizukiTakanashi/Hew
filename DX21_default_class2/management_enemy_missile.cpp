@@ -102,14 +102,7 @@ bool EnemyMissileManagement::ReduceHP(int index_num, int reduceHP)
 	m_pEnemyMissile[index_num].ReduceHP(reduceHP);
 	if (m_pEnemyMissile[index_num].GetHP() <= 0)
 	{//HP‚ª‚OˆÈ‰º‚È‚ç“G‚ðÁ‚·
-		EnemyManagement::DeleteObj(index_num);
 
-		//m_pEnemySetPos.DeleteEnemy(m_pEnemyNormal[index_num].GetPos());
-
-		for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
-			m_pEnemyMissile[i] = m_pEnemyMissile[i + 1];
-		}
-		EnemyManagement::IncreaseObjNum(-1);
 
 		return true;
 	}

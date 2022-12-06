@@ -39,12 +39,6 @@ bool Management_EnemyPublic::ReduceHP(int index_num, int reduceHP)
 	{//HPが０以下なら敵を消す
 
 
-		EnemyManagement::DeleteObj(index_num);
-
-		//m_pEnemySetPos.DeleteEnemy(m_pEnemyPublic[index_num].GetPos());
-
-
-
 		return true;
 	}
 	return false;

@@ -38,13 +38,6 @@ bool Management_Meteo::ReduceHP(int index_num, int reduceHP)
 	if (m_pMeteo[index_num].GetHP() <= 0)
 	{//HP‚ª‚OˆÈ‰º‚È‚ç“G‚ðÁ‚·
 
-		EnemyManagement::DeleteObj(index_num);
-
-		//m_pEnemySetPos.DeleteEnemy(m_pMeteo[index_num].GetPos());
-
-		for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
-			m_pMeteo[i] = m_pMeteo[i + 1];
-		}
 
 		return true;
 	}

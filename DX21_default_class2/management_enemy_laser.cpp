@@ -107,16 +107,10 @@ bool EnemyLaserManagement::ReduceHP(int index_num, int reduceHP)
 	if (m_pEnemyLaser[index_num].GetHP() <= 0)
 	{//HPが０以下なら敵を消す
 
-
-		EnemyManagement::DeleteObj(index_num);
-
 		if (m_pEnemyLaser[index_num].GetLaserIndex() >= 0)
 		{
 			m_pLaser[m_pEnemyLaser[index_num].GetLaserIndex()].DeleteLaser();
 		}
-
-		//m_pEnemySetPos.DeleteEnemy(m_pEnemyLaser[index_num].GetPos());
-
 		
 		return true;
 	}
