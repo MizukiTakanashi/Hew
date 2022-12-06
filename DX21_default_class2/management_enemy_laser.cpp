@@ -1,21 +1,21 @@
 //=======================================
-// ƒŒ[ƒU[‚Ì“G‚ÌŠÇ—ŠÖŒW(cppƒtƒ@ƒCƒ‹)
-// ì¬“úF
-// ì¬ÒF‰¶“c—ms
+// ãƒ¬ãƒ¼ã‚¶ãƒ¼ã®æ•µã®ç®¡ç†é–¢ä¿‚(cppãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š
+// ä½œæˆè€…ï¼šæ©ç”°æ´‹è¡Œ
 //=======================================
 #include "management_enemy_laser.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
 
 //==========================
-// ’è”‚Ì‰Šú‰»
+// å®šæ•°ã®åˆæœŸåŒ–
 //==========================
 const float EnemyLaserManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyLaserManagement::BULLET_SIZE_Y = 0.0f;
 
 
 //=========================
-// ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+// å¼•æ•°ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //=========================
 EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
 	:EnemyManagement(ENEMY_NUM, ATTACK, LASER_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectLaser(pDrawObject2)
@@ -25,11 +25,11 @@ EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject&
 }
 
 //======================
-// XVˆ—
+// æ›´æ–°å‡¦ç†
 //======================
 void EnemyLaserManagement::Update()
 {
-	m_FlameNum++; //ƒtƒŒ[ƒ€”‚ğ‘‰Á
+	m_FlameNum++; //ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã‚’å¢—åŠ 
 
 	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
 	{
@@ -40,20 +40,20 @@ void EnemyLaserManagement::Update()
 		m_EnemyNum++;
 	}
 
-	//¡‚¢‚é“G‚Ìˆ—
+	//ä»Šã„ã‚‹æ•µã®å‡¦ç†
 	for (int i = 0; i < GetObjNum(); i++)
 	{
 		m_pEnemyLaser[i].Update();
-		//ƒŒ[ƒU[‚ÌƒAƒbƒvƒf[ƒg
+		//ãƒ¬ãƒ¼ã‚¶ãƒ¼ã®ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆ
 		if (m_pEnemyLaser[i].GetLaserIndex() >= 0)
 		{
 			m_pLaser[m_pEnemyLaser[i].GetLaserIndex()].Update(m_pEnemyLaser[i].GetPos());
 		}
 
-		//’e‚ğì‚é
+		//å¼¾ã‚’ä½œã‚‹
 		if (m_pEnemyLaser[i].GetFlagBulletMake())
 		{
-			//ƒŒ[ƒU[”Ô†‚ğƒZƒbƒg
+			//ãƒ¬ãƒ¼ã‚¶ãƒ¼ç•ªå·ã‚’ã‚»ãƒƒãƒˆ
 			m_pEnemyLaser[i].SetLaserIndex(EnemyManagement::GetBulletNum());
 			Laser temp(m_pDrawObjectLaser, m_pEnemyLaser[i].GetPos() + D3DXVECTOR2(0.0f, 10.0f),
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y));
@@ -65,7 +65,7 @@ void EnemyLaserManagement::Update()
 		}
 	}
 
-	//€‚ñ‚¾“G‚ÌƒŒ[ƒU[‚ÌƒAƒbƒvƒf[ƒg
+	//æ­»ã‚“ã æ•µã®ãƒ¬ãƒ¼ã‚¶ãƒ¼ã®ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆ
 	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++)
 	{
 		if (m_pLaser[i].GetLaserTime() < 0)
@@ -73,17 +73,17 @@ void EnemyLaserManagement::Update()
 			m_pLaser[i].Update(m_pLaser->GetPos());
 		}
 		
-		//‰æ–ÊŠO‚©‚ço‚½‚ç...
+		//ç”»é¢å¤–ã‹ã‚‰å‡ºãŸã‚‰...
 		if (m_pLaser[i].GetScreenOut())
 		{
-			//’e‚ğÁ‚·
+			//å¼¾ã‚’æ¶ˆã™
 			DeleteBullet(i);
 		}
 	}
 }
 
 //==========================
-// •`‰æˆ—
+// æç”»å‡¦ç†
 //==========================
 void EnemyLaserManagement::Draw(void)const
 {
@@ -98,13 +98,15 @@ void EnemyLaserManagement::Draw(void)const
 }
 
 //======================
-// “G‚ÌHP‚ğŒ¸‚ç‚·
+// æ•µã®HPã‚’æ¸›ã‚‰ã™
 //======================
 bool EnemyLaserManagement::ReduceHP(int index_num, int reduceHP)
 {
 	m_pEnemyLaser[index_num].ReduceHP(reduceHP);
+
 	if (m_pEnemyLaser[index_num].GetHP() <= 0)
-	{//HP‚ª‚OˆÈ‰º‚È‚ç“G‚ğÁ‚·
+	{//HPãŒï¼ä»¥ä¸‹ãªã‚‰æ•µã‚’æ¶ˆã™
+
 
 		EnemyManagement::DeleteObj(index_num);
 
@@ -115,17 +117,34 @@ bool EnemyLaserManagement::ReduceHP(int index_num, int reduceHP)
 
 		//m_pEnemySetPos.DeleteEnemy(m_pEnemyLaser[index_num].GetPos());
 
-		for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
-			m_pEnemyLaser[i] = m_pEnemyLaser[i + 1];
-
-		}
+		
 		return true;
 	}
 	return false;
 }
 
 //======================
-// ’e‚ğÁ‚·
+// æ•µã‚’æ¶ˆã™
+//======================
+void EnemyLaserManagement::DeleteObj(int index_num)
+{
+	//ãƒ¬ãƒ¼ã‚¶ãƒ¼ã‚’æ¶ˆã™
+	if (m_pEnemyLaser[index_num].GetLaserIndex() >= 0)
+	{
+		m_pLaser[m_pEnemyLaser[index_num].GetLaserIndex()].DeleteLaser();
+	}
+
+	//æ•µã‚’æ¶ˆã™
+	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
+		m_pEnemyLaser[i] = m_pEnemyLaser[i + 1];
+	}
+
+	//ç¶™æ‰¿å…ƒã®æ•µã‚’æ¶ˆã™ã‚’å‘¼ã¶
+	EnemyManagement::DeleteObj(index_num);
+}
+
+//======================
+// å¼¾ã‚’æ¶ˆã™
 //======================
 void EnemyLaserManagement::DeleteBullet(int index_num)
 {

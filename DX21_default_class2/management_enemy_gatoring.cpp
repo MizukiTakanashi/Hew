@@ -1,21 +1,21 @@
 //=======================================
-// •’Ê‚Ì“G‚ÌŠÇ—ŠÖŒW(cppƒtƒ@ƒCƒ‹)
-// ì¬“úF2022/09/13
-// ì¬ÒF‚—œ…Šó
+// æ™®é€šã®æ•µã®ç®¡ç†é–¢ä¿‚(cppãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š2022/09/13
+// ä½œæˆè€…ï¼šé«˜æ¢¨æ°´å¸Œ
 //=======================================
 #include "management_enemy_gatoring.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
 
 //==========================
-// ’è”‚Ì‰Šú‰»
+// å®šæ•°ã®åˆæœŸåŒ–
 //==========================
 const float EnemyGatoringManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyGatoringManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyGatoringManagement::BULLET_SPEED = 2.5f;
 
 //=========================
-// ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+// å¼•æ•°ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //=========================
 EnemyGatoringManagement::EnemyGatoringManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
 	:EnemyManagement(ENEMY_NUM, ATTACK, BULLET_ATTACK),m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
@@ -25,11 +25,11 @@ EnemyGatoringManagement::EnemyGatoringManagement(DrawObject& pDrawObject1, DrawO
 }
 
 //======================
-// XVˆ—
+// æ›´æ–°å‡¦ç†
 //======================
 void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
 {
-	m_FlameNum++; //ƒtƒŒ[ƒ€”‚ğ‘‰Á
+	m_FlameNum++; //ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã‚’å¢—åŠ 
 
 	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
 	{
@@ -40,16 +40,16 @@ void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
 		m_EnemyNum++;
 	}
 
-	//¡‚¢‚é“G‚Ìˆ—
+	//ä»Šã„ã‚‹æ•µã®å‡¦ç†
 	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
 		m_pEnemyGatoring[i].Update();
 
-		//’e‚ğì‚é
+		//å¼¾ã‚’ä½œã‚‹
 		if (m_pEnemyGatoring[i].GetFlagBulletMake())
 		{
 			Bullet temp(m_pDrawObjectBullet, m_pEnemyGatoring[i].GetPos(),
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y),D3DXVECTOR2(0, 10.0f), 0.0f);
-						   // ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+						   // å¼¾ã®å¤§ãã•								å¼¾ã‚’æ’ƒã¤æ–¹å‘		
 			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
 
 			EnemyManagement::IncreaseBulletNum(1);
@@ -58,19 +58,19 @@ void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
 		}
 	}
 
-	//¡‚¢‚é’e‚Ìˆ—
+	//ä»Šã„ã‚‹å¼¾ã®å‡¦ç†
 	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {
 		m_pBullet[i].Update();
-		//‰æ–ÊŠO‚©‚ço‚½‚ç...
+		//ç”»é¢å¤–ã‹ã‚‰å‡ºãŸã‚‰...
 		if (m_pBullet[i].GetScreenOut()) {
-			//’e‚ğÁ‚·
+			//å¼¾ã‚’æ¶ˆã™
 			DeleteBullet(i);
 		}
 	}
 }
 
 //==========================
-// •`‰æˆ—
+// æç”»å‡¦ç†
 //==========================
 void EnemyGatoringManagement::Draw(void)const
 {
@@ -84,30 +84,42 @@ void EnemyGatoringManagement::Draw(void)const
 }
 
 //======================
-// “G‚ÌHP‚ğŒ¸‚ç‚·
+// æ•µã®HPã‚’æ¸›ã‚‰ã™
 //======================
 bool EnemyGatoringManagement::ReduceHP(int index_num, int reduceHP)
 {
 	m_pEnemyGatoring[index_num].ReduceHP(reduceHP);
 
 	if (m_pEnemyGatoring[index_num].GetHP() <= 0)
-	{//HP‚ª‚OˆÈ‰º‚È‚ç“G‚ğÁ‚·
+	{//HPãŒï¼ä»¥ä¸‹ãªã‚‰æ•µã‚’æ¶ˆã™
+
 
 		EnemyManagement::DeleteObj(index_num);
 
 		//m_pEnemySetPos.DeleteEnemy(m_pEnemyGatoring[index_num].GetPos());
 
-		for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
-			m_pEnemyGatoring[i] = m_pEnemyGatoring[i + 1];
-		}
 
 		return true;
 	}
 	return false;
 }
 
+//==========================
+// æ•µã‚’æ¶ˆã™
+//==========================
+void EnemyGatoringManagement::DeleteObj(int index_num)
+{
+	//æ•µã‚’æ¶ˆã™
+	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
+		m_pEnemyGatoring[i] = m_pEnemyGatoring[i + 1];
+	}
+
+	//ç¶™æ‰¿å…ƒã®æ•µã‚’æ¶ˆã™ã‚’å‘¼ã¶
+	EnemyManagement::DeleteObj(index_num);
+}
+
 //======================
-// ’e‚ğÁ‚·
+// å¼¾ã‚’æ¶ˆã™
 //======================
 void EnemyGatoringManagement::DeleteBullet(int index_num)
 {

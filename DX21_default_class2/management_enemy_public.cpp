@@ -8,7 +8,7 @@ Management_EnemyPublic::Management_EnemyPublic(DrawObject& pDrawObject)
 
 void Management_EnemyPublic::Update()
 {
-	m_FlameNum++; //ƒtƒŒ[ƒ€”‚ğ‘‰Á
+	m_FlameNum++; //ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã‚’å¢—åŠ 
 
 	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
 	{
@@ -18,7 +18,7 @@ void Management_EnemyPublic::Update()
 
 		m_EnemyNum++;
 	}
-	//¡‚¢‚é“G‚Ìˆ—
+	//ä»Šã„ã‚‹æ•µã®å‡¦ç†
 	for (int i = 0; i < GetObjNum(); i++)
 	{
 		m_pEnemyPublic[i].Update();
@@ -36,17 +36,30 @@ bool Management_EnemyPublic::ReduceHP(int index_num, int reduceHP)
 {
 	m_pEnemyPublic[index_num].ReduceHP(reduceHP);
 	if (m_pEnemyPublic[index_num].GetHP() <= 0)
-	{//HP‚ª‚OˆÈ‰º‚È‚ç“G‚ğÁ‚·
+	{//HPãŒï¼ä»¥ä¸‹ãªã‚‰æ•µã‚’æ¶ˆã™
+
 
 		EnemyManagement::DeleteObj(index_num);
 
 		//m_pEnemySetPos.DeleteEnemy(m_pEnemyPublic[index_num].GetPos());
 
-		for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
-			m_pEnemyPublic[i] = m_pEnemyPublic[i + 1];
-		}
+
 
 		return true;
 	}
 	return false;
+}
+
+//==========================
+// æ•µã‚’æ¶ˆã™
+//==========================
+void Management_EnemyPublic::DeleteObj(int index_num)
+{
+	//æ•µã‚’æ¶ˆã™
+	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
+		m_pEnemyPublic[i] = m_pEnemyPublic[i + 1];
+	}
+
+	//ç¶™æ‰¿å…ƒã®æ•µã‚’æ¶ˆã™ã‚’å‘¼ã¶
+	EnemyManagement::DeleteObj(index_num);
 }
