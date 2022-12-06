@@ -21,7 +21,7 @@ class EnemyGatoringManagement:public EnemyManagement
 private:
 	//Ç±Ç±Ç≈èâä˙âª
 	//ìGé©êg
-	static const int ENEMY_NUM = 22;		//ìGÇèoåªÇ≥ÇπÇÈêî
+	static const int ENEMY_NUM = 9;		//ìGÇèoåªÇ≥ÇπÇÈêî
 
 	//cppÇ≈èâä˙âª
 	//íe
@@ -48,54 +48,28 @@ private:
 
 	//ìGÇÃà íuîzóÒ
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-										 D3DXVECTOR2(52.5f + (105 * 6 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 7 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 3 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 4 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 8 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 9 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 1 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 5 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 6 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 7 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 8 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 6 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 7 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 3 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 4 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 9 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 10 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyGatoring::SIZE_Y / 2)
+										 D3DXVECTOR2(52.5f + (105 *  5), -EnemyGatoring::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 *  0), -EnemyGatoring::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * 11), -EnemyGatoring::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 *  4), -EnemyGatoring::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 *  7), -EnemyGatoring::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 *  2), -EnemyGatoring::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 *  3), -EnemyGatoring::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 *  4), -EnemyGatoring::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 *  5), -EnemyGatoring::SIZE_Y / 2)
 	};
 
 	//ìGÇèoÇ∑éûä‘
 	int m_SetEnemyTime[ENEMY_NUM] = {
 								60 * 5,
-								60 * 5 + 1,
-								60 * 15,
-								60 * 15 + 1,
-								60 * 20,
-								60 * 20 + 1,
-								60 * 25,
-								60 * 25 + 1,
+								60 * 35 + 1,
 								60 * 35,
 								60 * 35 + 1,
-								60 * 45,
-								60 * 45 + 1,
-								60 * 45 + 2,
-								60 * 45 + 3,
-								60 * 60 ,
-								60 * 60 + 1,
-								60 * 65,
-								60 * 65 + 1,
-								60 * 65 + 2,
-								60 * 65 + 3,
-								60 * 75,
-								60 * 75 + 1
+								60 * 55,
+								60 * 85 + 1,
+								60 * 85,
+								60 * 85 + 1,
+								60 * 85,
 	};
 
 //ÉÅÉìÉoä÷êî
