@@ -135,7 +135,6 @@
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="draw_object.cpp" />
     <ClCompile Include="enemy_gatoring.cpp" />
-    <ClCompile Include="enemy_missile.cpp" />
     <ClCompile Include="enemy_public.cpp" />
     <ClCompile Include="Fade.cpp" />
     <ClCompile Include="inh_player_arm_both.cpp" />
@@ -149,7 +148,6 @@
     <ClCompile Include="management_enemy_laser.cpp" />
     <ClCompile Include="management_enemy.cpp" />
     <ClCompile Include="enemy_normal.cpp" />
-    <ClCompile Include="management_enemy_missile.cpp" />
     <ClCompile Include="management_enemy_normal.cpp" />
     <ClCompile Include="enemy_set_pos.cpp" />
     <ClCompile Include="explosion.cpp" />
@@ -202,7 +200,6 @@
     <ClInclude Include="collision.h" />
     <ClInclude Include="draw_object.h" />
     <ClInclude Include="enemy_gatoring.h" />
-    <ClInclude Include="enemy_missile.h" />
     <ClInclude Include="enemy_public.h" />
     <ClInclude Include="Fade.h" />
     <ClInclude Include="inh_player_arm_both.h" />
@@ -216,7 +213,6 @@
     <ClInclude Include="management_enemy_laser.h" />
     <ClInclude Include="management_enemy.h" />
     <ClInclude Include="enemy_normal.h" />
-    <ClInclude Include="management_enemy_missile.h" />
     <ClInclude Include="management_enemy_normal.h" />
     <ClInclude Include="enemy_set_pos.h" />
     <ClInclude Include="explosion.h" />
