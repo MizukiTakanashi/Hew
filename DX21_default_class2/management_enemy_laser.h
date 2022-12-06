@@ -21,7 +21,7 @@ class EnemyLaserManagement:public EnemyManagement
 private:
 	//ここで初期化
 	//敵自身
-	static const int ENEMY_NUM = 12;		//敵を出現させる数
+	static const int ENEMY_NUM = 4;		//敵を出現させる数
 
 	//cppで初期化
 	//弾
@@ -47,21 +47,19 @@ private:
 	int m_EnemyItem_num = 0;	//敵のアイテムの数
 
 	//敵の配列
-	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = { D3DXVECTOR2(52.5f + (105 * 6 - 1), -EnemyLaser::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 7 - 1), -EnemyLaser::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 1 - 1), -EnemyLaser::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyLaser::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 5 - 1), -EnemyLaser::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 7 - 1), -EnemyLaser::SIZE_Y / 2)
-										 };
+	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = { 
+										D3DXVECTOR2(52.5f + (105 *  4), -EnemyLaser::SIZE_Y / 2),
+										D3DXVECTOR2(52.5f + (105 *  7), -EnemyLaser::SIZE_Y / 2),
+										D3DXVECTOR2(52.5f + (105 *  0), -EnemyLaser::SIZE_Y / 2),
+										D3DXVECTOR2(52.5f + (105 * 11), -EnemyLaser::SIZE_Y / 2),
+	};
 	//敵を出す時間
-	int m_SetEnemyTime[ENEMY_NUM] = { 60 * 25,
+	int m_SetEnemyTime[ENEMY_NUM] = { 
+								60 * 25,
 								60 * 35,
-								60 * 50,
-								60 * 50+1,
-								60 * 75,
-								60 * 75+1
-								};
+								60 * 60,
+								60 * 60 + 1,
+	};
 
 public:
 	//デフォルトコンストラクタ

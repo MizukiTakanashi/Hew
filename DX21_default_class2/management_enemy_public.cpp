@@ -1,9 +1,9 @@
 #include "management_enemy_public.h"
 
 Management_EnemyPublic::Management_EnemyPublic(DrawObject& pDrawObject)
-	:EnemyManagement(MAX_NUM, ATTACK, 0), m_pDrawObjectEnemyPublic(pDrawObject)
+	:EnemyManagement(ENEMY_NUM, ATTACK, 0), m_pDrawObjectEnemyPublic(pDrawObject)
 {
-	m_pEnemyPublic = new EnemyPublic[MAX_NUM];
+	m_pEnemyPublic = new EnemyPublic[ENEMY_NUM];
 }
 
 void Management_EnemyPublic::Update()

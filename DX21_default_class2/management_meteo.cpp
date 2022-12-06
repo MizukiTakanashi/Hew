@@ -1,9 +1,9 @@
 #include "management_meteo.h"
 
 Management_Meteo::Management_Meteo(DrawObject& pDrawObject)
-	:EnemyManagement(MAX_NUM, ATTACK,0), m_pDrawObjectMeteo(pDrawObject)
+	:EnemyManagement(ENEMY_NUM, ATTACK,0), m_pDrawObjectMeteo(pDrawObject)
 {
-	m_pMeteo = new Meteo[MAX_NUM];
+	m_pMeteo = new Meteo[ENEMY_NUM];
 }
 
 void Management_Meteo::Update() 

@@ -48,28 +48,28 @@ private:
 
 	//敵の位置配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-										 D3DXVECTOR2(52.5f + (105 *  5), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 *  0), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 11), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 *  4), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 *  7), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 *  2), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 *  3), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 *  4), -EnemyGatoring::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 *  5), -EnemyGatoring::SIZE_Y / 2)
+										D3DXVECTOR2(52.5f + (105 *  5), -EnemyGatoring::SIZE_Y / 2),
+										D3DXVECTOR2(52.5f + (105 *  0), -EnemyGatoring::SIZE_Y / 2),
+										D3DXVECTOR2(52.5f + (105 * 11), -EnemyGatoring::SIZE_Y / 2),
+										D3DXVECTOR2(52.5f + (105 *  4), -EnemyGatoring::SIZE_Y / 2),
+										D3DXVECTOR2(52.5f + (105 *  7), -EnemyGatoring::SIZE_Y / 2),
+										D3DXVECTOR2(52.5f + (105 *  2), -EnemyGatoring::SIZE_Y / 2),
+										D3DXVECTOR2(52.5f + (105 *  3), -EnemyGatoring::SIZE_Y / 2),
+										D3DXVECTOR2(52.5f + (105 *  4), -EnemyGatoring::SIZE_Y / 2),
+										D3DXVECTOR2(52.5f + (105 *  5), -EnemyGatoring::SIZE_Y / 2)
 	};
 
 	//敵を出す時間
 	int m_SetEnemyTime[ENEMY_NUM] = {
 								60 * 5,
-								60 * 35 + 1,
 								60 * 35,
 								60 * 35 + 1,
 								60 * 55,
-								60 * 85 + 1,
+								60 * 55 + 1,
 								60 * 85,
 								60 * 85 + 1,
-								60 * 85,
+								60 * 85 + 2,
+								60 * 85 + 3,
 	};
 
 //メンバ関数
