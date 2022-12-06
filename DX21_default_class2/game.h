@@ -12,7 +12,7 @@
 #include "BG.h"
 #include "player.h"
 #include "draw_object.h"
-#include "enemy_set_pos.h"
+//#include "enemy_set_pos.h"
 #include "management_enemy_normal.h"
 #include "management_enemy_laser.h"
 #include "management_enemy_gatoring.h"
@@ -100,7 +100,7 @@ private:
 
 	BG* m_pBG = nullptr;
 	Player* m_pPlayer = nullptr;
-	EnemySetPos* m_pEnemySetPos = nullptr;
+	//EnemySetPos* m_pEnemySetPos = nullptr;
 	EnemyNormalManagement* m_pEnemyNormalManagement = nullptr;
 	EnemyLaserManagement* m_pEnemyLaserManagement = nullptr;
 	EnemyGatoringManagement* m_pEnemyGatoringManagement = nullptr;

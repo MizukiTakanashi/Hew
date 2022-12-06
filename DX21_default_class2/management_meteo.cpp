@@ -1,7 +1,7 @@
 #include "management_meteo.h"
 
-Management_Meteo::Management_Meteo(DrawObject& pDrawObject, EnemySetPos& pEnemySetPos)
-	:EnemyManagement(MAX_NUM, ATTACK,0), m_pDrawObjectMeteo(pDrawObject), m_pEnemySetPos(pEnemySetPos)
+Management_Meteo::Management_Meteo(DrawObject& pDrawObject)
+	:EnemyManagement(MAX_NUM, ATTACK,0), m_pDrawObjectMeteo(pDrawObject)
 {
 	m_pMeteo = new Meteo[MAX_NUM];
 }
@@ -40,7 +40,7 @@ bool Management_Meteo::ReduceHP(int index_num, int reduceHP)
 
 		EnemyManagement::DeleteObj(index_num);
 
-		m_pEnemySetPos.DeleteEnemy(m_pMeteo[index_num].GetPos());
+		//m_pEnemySetPos.DeleteEnemy(m_pMeteo[index_num].GetPos());
 
 		for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
 			m_pMeteo[i] = m_pMeteo[i + 1];

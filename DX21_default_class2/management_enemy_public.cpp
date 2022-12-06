@@ -1,7 +1,7 @@
 #include "management_enemy_public.h"
 
-Management_EnemyPublic::Management_EnemyPublic(DrawObject& pDrawObject, EnemySetPos& pEnemySetPos)
-	:EnemyManagement(MAX_NUM, ATTACK, 0), m_pDrawObjectEnemyPublic(pDrawObject), m_pEnemySetPos(pEnemySetPos)
+Management_EnemyPublic::Management_EnemyPublic(DrawObject& pDrawObject)
+	:EnemyManagement(MAX_NUM, ATTACK, 0), m_pDrawObjectEnemyPublic(pDrawObject)
 {
 	m_pEnemyPublic = new EnemyPublic[MAX_NUM];
 }
@@ -40,7 +40,7 @@ bool Management_EnemyPublic::ReduceHP(int index_num, int reduceHP)
 
 		EnemyManagement::DeleteObj(index_num);
 
-		m_pEnemySetPos.DeleteEnemy(m_pEnemyPublic[index_num].GetPos());
+		//m_pEnemySetPos.DeleteEnemy(m_pEnemyPublic[index_num].GetPos());
 
 		for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
 			m_pEnemyPublic[i] = m_pEnemyPublic[i + 1];

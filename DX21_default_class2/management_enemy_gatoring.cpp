@@ -17,8 +17,8 @@ const float EnemyGatoringManagement::BULLET_SPEED = 2.5f;
 //=========================
 // 引数付きコンストラクタ
 //=========================
-EnemyGatoringManagement::EnemyGatoringManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, EnemySetPos& pEnemySetPos)
-	:EnemyManagement(ENEMY_NUM, ATTACK, BULLET_ATTACK),m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
+EnemyGatoringManagement::EnemyGatoringManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
+	:EnemyManagement(ENEMY_NUM, ATTACK, BULLET_ATTACK),m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
 	m_pEnemyGatoring = new EnemyGatoring[ENEMY_NUM];
 	m_pBullet = new Bullet[ENEMY_NUM];
@@ -95,7 +95,7 @@ bool EnemyGatoringManagement::ReduceHP(int index_num, int reduceHP)
 
 		EnemyManagement::DeleteObj(index_num);
 
-		m_pEnemySetPos.DeleteEnemy(m_pEnemyGatoring[index_num].GetPos());
+		//m_pEnemySetPos.DeleteEnemy(m_pEnemyGatoring[index_num].GetPos());
 
 		for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
 			m_pEnemyGatoring[i] = m_pEnemyGatoring[i + 1];

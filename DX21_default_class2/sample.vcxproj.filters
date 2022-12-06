@@ -20,7 +20,6 @@
     <ClCompile Include="management_enemy.cpp" />
     <ClCompile Include="enemy_normal.cpp" />
     <ClCompile Include="management_enemy_normal.cpp" />
-    <ClCompile Include="enemy_set_pos.cpp" />
     <ClCompile Include="explosion.cpp" />
     <ClCompile Include="management_enemy_public.cpp" />
     <ClCompile Include="management_explosion.cpp" />
@@ -60,6 +59,8 @@
     <ClCompile Include="texture_useful.cpp" />
     <ClCompile Include="title.cpp" />
     <ClCompile Include="ui.cpp" />
+    <ClCompile Include="management_enemy_missile.cpp" />
+    <ClCompile Include="enemy_missile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h" />
@@ -81,7 +82,6 @@
     <ClInclude Include="management_enemy.h" />
     <ClInclude Include="enemy_normal.h" />
     <ClInclude Include="management_enemy_normal.h" />
-    <ClInclude Include="enemy_set_pos.h" />
     <ClInclude Include="explosion.h" />
     <ClInclude Include="management_enemy_public.h" />
     <ClInclude Include="management_explosion.h" />
@@ -121,5 +121,7 @@
     <ClInclude Include="texture_useful.h" />
     <ClInclude Include="title.h" />
     <ClInclude Include="ui.h" />
+    <ClInclude Include="management_enemy_missile.h" />
+    <ClInclude Include="enemy_missile.h" />
   </ItemGroup>
 </Project>
