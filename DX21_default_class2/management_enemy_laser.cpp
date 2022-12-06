@@ -17,8 +17,8 @@ const float EnemyLaserManagement::BULLET_SIZE_Y = 0.0f;
 //=========================
 // 引数付きコンストラクタ
 //=========================
-EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, EnemySetPos& pEnemySetPos)
-	:EnemyManagement(ENEMY_NUM, ATTACK, LASER_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectLaser(pDrawObject2), m_pEnemySetPos(pEnemySetPos)
+EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
+	:EnemyManagement(ENEMY_NUM, ATTACK, LASER_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectLaser(pDrawObject2)
 {
 	m_pEnemyLaser = new EnemyLaser[ENEMY_NUM];
 	m_pLaser = new Laser[ENEMY_NUM];
@@ -113,7 +113,7 @@ bool EnemyLaserManagement::ReduceHP(int index_num, int reduceHP)
 			m_pLaser[m_pEnemyLaser[index_num].GetLaserIndex()].DeleteLaser();
 		}
 
-		m_pEnemySetPos.DeleteEnemy(m_pEnemyLaser[index_num].GetPos());
+		//m_pEnemySetPos.DeleteEnemy(m_pEnemyLaser[index_num].GetPos());
 
 		for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
 			m_pEnemyLaser[i] = m_pEnemyLaser[i + 1];
