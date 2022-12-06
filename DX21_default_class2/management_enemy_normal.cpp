@@ -112,17 +112,25 @@ bool EnemyNormalManagement::ReduceHP(int index_num, int reduceHP)
 	if (m_pEnemyNormal[index_num].GetHP() <= 0)
 	{//HP‚ª‚OˆÈ‰º‚È‚ç“G‚ðÁ‚·
 
-		EnemyManagement::DeleteObj(index_num);
-
 		m_pEnemySetPos.DeleteEnemy(m_pEnemyNormal[index_num].GetPos());
-
-		for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
-			m_pEnemyNormal[i] = m_pEnemyNormal[i + 1];
-		}
 
 		return true;
 	}
 	return false;
+}
+
+//======================
+// “G‚ðÁ‚·
+//======================
+void EnemyNormalManagement::DeleteObj(int index_num)
+{
+	//“G‚ðÁ‚·
+	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
+		m_pEnemyNormal[i] = m_pEnemyNormal[i + 1];
+	}
+
+	//Œp³Œ³‚Ì“G‚ðÁ‚·‚ðŒÄ‚Ô
+	EnemyManagement::DeleteObj(index_num);
 }
 
 //======================

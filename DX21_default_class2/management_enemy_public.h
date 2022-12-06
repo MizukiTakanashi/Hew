@@ -19,18 +19,18 @@ private:
 	EnemySetPos m_pEnemySetPos;
 
 	//ìGÇÃîzóÒ
-	D3DXVECTOR2 m_SetEnemy[MAX_NUM] = { D3DXVECTOR2(52.5f + (105 * 1 - 1), -EnemyPublic::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyPublic::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 3 - 1), -EnemyPublic::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 4 - 1), -EnemyPublic::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 5 - 1), -EnemyPublic::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 6 - 1), -EnemyPublic::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 7 - 1), -EnemyPublic::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 8 - 1), -EnemyPublic::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 9 - 1), -EnemyPublic::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 10 - 1), -EnemyPublic::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyPublic::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyPublic::SIZE_Y / 2) };
+	D3DXVECTOR2 m_SetEnemy[MAX_NUM] = { D3DXVECTOR2(52.5f + (105 * (1 - 1)), -EnemyPublic::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (2 - 1)), -EnemyPublic::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (3 - 1)), -EnemyPublic::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (4 - 1)), -EnemyPublic::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (5 - 1)), -EnemyPublic::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (6 - 1)), -EnemyPublic::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (7 - 1)), -EnemyPublic::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (8 - 1)), -EnemyPublic::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (9 - 1)), -EnemyPublic::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (10 - 1)), -EnemyPublic::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (11 - 1)), -EnemyPublic::SIZE_Y / 2)
+										,D3DXVECTOR2(52.5f + (105 * (12 - 1)), -EnemyPublic::SIZE_Y / 2) };
 
 	int m_SetEnemyTime[MAX_NUM] = { 60 * 3,
 								60 * 6,
@@ -63,8 +63,11 @@ public:
 	//ï`âÊèàóù
 	void Draw(void)const;
 
-	//éwíËÇµÇΩìGÇè¡Ç∑
+	//éwíËÇµÇΩìGÇÃHPÇå∏ÇÁÇ∑
 	bool ReduceHP(int index_num, int reduceHP)override;
+
+	//éwíËÇµÇΩìGÇè¡Ç∑
+	void DeleteObj(int index_num)override;
 
 	//éwíËÇµÇΩíeÇè¡Ç∑
 	void DeleteBullet(int index_num)override {}

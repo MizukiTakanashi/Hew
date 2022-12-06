@@ -37,16 +37,24 @@ bool Management_EnemyPublic::ReduceHP(int index_num, int reduceHP)
 	m_pEnemyPublic[index_num].ReduceHP(reduceHP);
 	if (m_pEnemyPublic[index_num].GetHP() <= 0)
 	{//HP‚ª‚OˆÈ‰º‚È‚ç“G‚ðÁ‚·
-
-		EnemyManagement::DeleteObj(index_num);
-
 		m_pEnemySetPos.DeleteEnemy(m_pEnemyPublic[index_num].GetPos());
 
-		for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
-			m_pEnemyPublic[i] = m_pEnemyPublic[i + 1];
-		}
 
 		return true;
 	}
 	return false;
+}
+
+//==========================
+// “G‚ðÁ‚·
+//==========================
+void Management_EnemyPublic::DeleteObj(int index_num)
+{
+	//“G‚ðÁ‚·
+	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
+		m_pEnemyPublic[i] = m_pEnemyPublic[i + 1];
+	}
+
+	//Œp³Œ³‚Ì“G‚ðÁ‚·‚ðŒÄ‚Ô
+	EnemyManagement::DeleteObj(index_num);
 }

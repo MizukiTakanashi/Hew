@@ -103,25 +103,36 @@ void EnemyLaserManagement::Draw(void)const
 bool EnemyLaserManagement::ReduceHP(int index_num, int reduceHP)
 {
 	m_pEnemyLaser[index_num].ReduceHP(reduceHP);
+
 	if (m_pEnemyLaser[index_num].GetHP() <= 0)
 	{//HPÇ™ÇOà»â∫Ç»ÇÁìGÇè¡Ç∑
 
-		EnemyManagement::DeleteObj(index_num);
-
-		if (m_pEnemyLaser[index_num].GetLaserIndex() >= 0)
-		{
-			m_pLaser[m_pEnemyLaser[index_num].GetLaserIndex()].DeleteLaser();
-		}
-
 		m_pEnemySetPos.DeleteEnemy(m_pEnemyLaser[index_num].GetPos());
 
-		for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
-			m_pEnemyLaser[i] = m_pEnemyLaser[i + 1];
-
-		}
+		
 		return true;
 	}
 	return false;
+}
+
+//======================
+// ìGÇè¡Ç∑
+//======================
+void EnemyLaserManagement::DeleteObj(int index_num)
+{
+	//ÉåÅ[ÉUÅ[Çè¡Ç∑
+	if (m_pEnemyLaser[index_num].GetLaserIndex() >= 0)
+	{
+		m_pLaser[m_pEnemyLaser[index_num].GetLaserIndex()].DeleteLaser();
+	}
+
+	//ìGÇè¡Ç∑
+	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
+		m_pEnemyLaser[i] = m_pEnemyLaser[i + 1];
+	}
+
+	//åpè≥å≥ÇÃìGÇè¡Ç∑ÇåƒÇ‘
+	EnemyManagement::DeleteObj(index_num);
 }
 
 //======================

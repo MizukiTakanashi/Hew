@@ -69,18 +69,22 @@ int CollisionAll::Collision(void)
 						m_pPlayer->DeleteBullet(i);
 						i--;
 
+						//爆発をセット
+						m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
+
 						//敵のHPを減らす
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
-						{
-							//爆発をセット
-							m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
-							
+						{							
 							//ドロップする敵であれば...
 							if (k != (int)TYPE::PUBLIC) {
 								//敵アイテムのドロップ
 								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 							}
+
+							//敵を消す
+							m_pEnemy[k]->DeleteObj(j);
+
 							j--;
 
 							//倒した敵の数を増やす
@@ -117,18 +121,22 @@ int CollisionAll::Collision(void)
 					if (Collision::ColBox(m_pPlayer->GetBomPos(i), m_pEnemy[k]->GetObjPos(j),
 						m_pPlayer->GetBomSize(), m_pEnemy[k]->GetObjSize())) {
 						
+						//爆発をセット
+						m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
+
 						//敵のHPを減らす
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
-						{
-							//爆発をセット
-							m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
-							
+						{							
 							//ドロップする敵であれば...
 							if (k != (int)TYPE::PUBLIC) {
 								//敵アイテムのドロップ
 								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 							}
+
+							//敵を消す
+							m_pEnemy[k]->DeleteObj(j);
+
 							j--;
 
 							//倒した敵の数を増やす
@@ -157,18 +165,22 @@ int CollisionAll::Collision(void)
 						//TYPE_OLDにセット
 						pArm->SetType(inhPlayerArmBoth::TYPE::TYPE_OLD);
 
+						//爆発をセット
+						m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
+
 						//敵のHPを減らす
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
-							//爆発をセット
-							m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
-
 							//ドロップする敵であれば...
 							if (k != (int)TYPE::PUBLIC) {
 								//敵アイテムのドロップ
 								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 							}
+							
+							//敵を消す
+							m_pEnemy[k]->DeleteObj(j);
+
 							j--;
 
 							//倒した敵の数を増やす
@@ -213,18 +225,22 @@ int CollisionAll::Collision(void)
 									i--;
 								}
 
+								//爆発をセット
+								m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
+
 								//敵のHPを減らす
 								//敵が死んだら...
 								if (m_pEnemy[k]->ReduceHP(j, 1))
 								{
-									//爆発をセット
-									m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
-
 									//ドロップする敵であれば...
 									if (k != (int)TYPE::PUBLIC) {
 										//敵アイテムのドロップ
 										m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 									}
+
+									//敵を消す
+									m_pEnemy[k]->DeleteObj(j);
+
 									j--;
 
 									//倒した敵の数を増やす

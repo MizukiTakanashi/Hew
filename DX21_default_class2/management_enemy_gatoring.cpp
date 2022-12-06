@@ -93,17 +93,25 @@ bool EnemyGatoringManagement::ReduceHP(int index_num, int reduceHP)
 	if (m_pEnemyGatoring[index_num].GetHP() <= 0)
 	{//HP‚ª‚OˆÈ‰º‚È‚ç“G‚ðÁ‚·
 
-		EnemyManagement::DeleteObj(index_num);
-
 		m_pEnemySetPos.DeleteEnemy(m_pEnemyGatoring[index_num].GetPos());
-
-		for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
-			m_pEnemyGatoring[i] = m_pEnemyGatoring[i + 1];
-		}
 
 		return true;
 	}
 	return false;
+}
+
+//==========================
+// “G‚ðÁ‚·
+//==========================
+void EnemyGatoringManagement::DeleteObj(int index_num)
+{
+	//“G‚ðÁ‚·
+	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
+		m_pEnemyGatoring[i] = m_pEnemyGatoring[i + 1];
+	}
+
+	//Œp³Œ³‚Ì“G‚ðÁ‚·‚ðŒÄ‚Ô
+	EnemyManagement::DeleteObj(index_num);
 }
 
 //======================
