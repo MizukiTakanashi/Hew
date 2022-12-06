@@ -46,7 +46,7 @@ private:
 
 	int m_EnemyItem_num = 0;	//敵のアイテムの数
 
-	//敵の配列
+	//敵の位置配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
 										 D3DXVECTOR2(52.5f + (105 * 6 - 1), -EnemyGatoring::SIZE_Y / 2)
 										,D3DXVECTOR2(52.5f + (105 * 7 - 1), -EnemyGatoring::SIZE_Y / 2)
@@ -71,6 +71,7 @@ private:
 										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyGatoring::SIZE_Y / 2)
 										,D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyGatoring::SIZE_Y / 2)
 	};
+
 	//敵を出す時間
 	int m_SetEnemyTime[ENEMY_NUM] = {
 								60 * 5,

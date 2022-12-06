@@ -66,7 +66,7 @@ void Result::Update(void)
 {
 	//SPACEキーが入力されたらタイトル画面に戻る
 	if (InputGetKeyDown(KK_SPACE)){
-		SetScene(SCENE::SCENE_TITLE);
+		Fade(SCENE::SCENE_TITLE);
 	}
 }
 

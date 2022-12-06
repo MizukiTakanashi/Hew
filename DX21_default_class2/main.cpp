@@ -221,7 +221,7 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	srand(timeGetTime());
 
 	InitScene2(SCENE::SCENE_TITLE);	//シーンの初期化処理、好きなシーンを設定できる
-
+	InitFade();
 	return S_OK;
 }
 
@@ -246,6 +246,7 @@ void Uninit(void)
 void Update(void)
 {
 	UpdateScene();		//シーンの更新処理
+	UpdateFade();		//シーンの更新処理
 
 	UpdateInput();		//入力処理の更新処理
 
@@ -267,6 +268,7 @@ void Draw(void)
 	SetWorldViewProjection2D();
 
 	DrawScene();	//シーンの描画処理
+	DrawFade();	//シーンの描画処理
 
 	// バックバッファ、フロントバッファ入れ替え
 	Present();

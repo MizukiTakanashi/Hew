@@ -59,8 +59,7 @@
     <ClCompile Include="stage_select_mars.cpp" />
     <ClCompile Include="stage_select_planet.cpp" />
     <ClCompile Include="stage_select_planet_make.cpp" />
-    <ClCompile Include="enemy_missile.cpp" />
-    <ClCompile Include="management_enemy_missile.cpp" />
+    <ClCompile Include="Fade.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
@@ -121,7 +120,6 @@
     <ClInclude Include="stage_select_planet.h" />
     <ClInclude Include="stage_select_mars.h" />
     <ClInclude Include="stage_select_planet_make.h" />
-    <ClInclude Include="enemy_missile.h" />
-    <ClInclude Include="management_enemy_missile.h" />
+    <ClInclude Include="Fade.h" />
   </ItemGroup>
 </Project>

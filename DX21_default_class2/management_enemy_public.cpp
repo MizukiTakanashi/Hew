@@ -10,7 +10,6 @@ void Management_EnemyPublic::Update()
 {
 	m_FlameNum++; //ƒtƒŒ[ƒ€”‚ğ‘‰Á
 
-	int i = m_FlameNum;
 	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
 	{
 		EnemyPublic temp(m_pDrawObjectEnemyPublic, m_SetEnemy[m_EnemyNum]);
@@ -39,14 +38,13 @@ bool Management_EnemyPublic::ReduceHP(int index_num, int reduceHP)
 	if (m_pEnemyPublic[index_num].GetHP() <= 0)
 	{//HP‚ª‚OˆÈ‰º‚È‚ç“G‚ğÁ‚·
 
-		EnemyManagement::DeleteObj(index_num, reduceHP);
+		EnemyManagement::DeleteObj(index_num);
 
 		m_pEnemySetPos.DeleteEnemy(m_pEnemyPublic[index_num].GetPos());
 
 		for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
 			m_pEnemyPublic[i] = m_pEnemyPublic[i + 1];
 		}
-		EnemyManagement::IncreaseObjNum(-1);
 
 		return true;
 	}

@@ -31,6 +31,12 @@ private:
 		NUM			//惑星の数
 	};
 
+	//ここで初期化
+	static const int MOVE_TIME_LIMIT = 100;	//惑星が動く時間
+
+	//cppで初期化
+	static const float MOVE_SPEED;			//動くスピード
+
 
 //メンバ変数
 private:	
@@ -42,6 +48,8 @@ private:
 	int m_planet_index_before = 0;							//惑星の前のインデックス番号
 
 	int m_thumb_before = 0;									//前フレームのスティックの値
+
+	int m_move_time = -1;									//動く時間カウント
 
 
 //メンバ関数

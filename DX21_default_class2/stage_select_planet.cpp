@@ -9,10 +9,15 @@
 #include "keyboard.h"
 
 //==========================
+// 定数の初期化
+//==========================
+const float StageSelectPlanet::MOVE_SPEED = 1.0f;
+
+//==========================
 // 引数付きコンストラクタ
 //==========================
 StageSelectPlanet::StageSelectPlanet(DrawObject& mars, DrawObject& mercury, DrawObject& jupiter, 
-	DrawObject& venus, DrawObject& saturn, DrawObject& sun, bool sun_appearance) 
+	DrawObject& venus, DrawObject& saturn, DrawObject& sun, bool sun_appearance) :m_sun_appearance(sun_appearance)
 {
 	//惑星のセット
 	m_planets[(int)PLANET::MARS] = new StageSelectMars(mars);
@@ -22,7 +27,26 @@ StageSelectPlanet::StageSelectPlanet(DrawObject& mars, DrawObject& mercury, Draw
 	m_planets[(int)PLANET::SATURN] = new StageSelectSaturn(saturn);
 	m_planets[(int)PLANET::SUN] = new StageSelectSun(sun);
 
-	m_planets[0]->SetSizeBigger();
+	//太陽が来るのであれば...
+	if (sun_appearance) {
+		//太陽以外の惑星を小さくする
+		for (int i = 0; i < (int)PLANET::SUN; i++) {
+			m_planets[i]->SetSunSizeSmaller();
+		}
+		//太陽を大きくする(選択中)
+		m_planets[(int)PLANET::SUN]->SetSizeBigger();
+
+		//インデックス番号を太陽にセット
+		m_planet_index = (int)PLANET::SUN;
+		m_planet_index_before = (int)PLANET::SUN;
+
+		//動く時間カウントをセット
+		m_move_time = 0;
+	}
+	else {
+		//最初の惑星を大きくする(選択中)
+		m_planets[0]->SetSizeBigger();
+	}
 }
 
 //==========================
@@ -30,6 +54,22 @@ StageSelectPlanet::StageSelectPlanet(DrawObject& mars, DrawObject& mercury, Draw
 //==========================
 void StageSelectPlanet::Update()
 {
+	//惑星が動く時間であれば...
+	if (m_move_time >= 0) {
+		//惑星を動かす
+		for (int i = 0; i < (int)PLANET::NUM; i++) {
+			m_planets[i]->MovePos(D3DXVECTOR2(StageSelectPlanet::MOVE_SPEED, 0.0f));
+		}
+
+		//惑星が止まる時間が来たら...
+		if (m_move_time++ >= StageSelectPlanet::MOVE_TIME_LIMIT) {
+			//カウントをストップ
+			m_move_time = -1;
+		}
+
+		return;
+	}
+
 	//=======================
 	// キーボード
 
@@ -108,11 +148,36 @@ void StageSelectPlanet::Update()
 	//サイズを更新する
 	//前のインデックス番号から変更があれば...
 	if (m_planet_index != m_planet_index_before) {
-		//現在のインデックス番号の惑星を大きくする
-		m_planets[m_planet_index]->SetSizeBigger();
 
-		//前のインデックス番号の惑星を小さくする
-		m_planets[m_planet_index_before]->SetSizeSmaller();
+		//太陽があれば...
+		if (m_sun_appearance) {
+			//太陽が次のインデックス番号であれば...
+			if (m_planet_index == (int)PLANET::SUN) {
+				//現在のインデックス番号の惑星を大きくする
+				m_planets[m_planet_index]->SetSizeBigger();
+			}
+			else {
+				//現在のインデックス番号の惑星を大きくする
+				m_planets[m_planet_index]->SetSunSizeBigger();
+			}
+
+			//太陽が前のインデックス番号であれば...
+			if (m_planet_index_before == (int)PLANET::SUN) {
+				//前のインデックス番号の惑星を小さくする
+				m_planets[m_planet_index_before]->SetSizeSmaller();
+			}
+			else {
+				//前のインデックス番号の惑星を小さくする
+				m_planets[m_planet_index_before]->SetSunSizeSmaller();
+			}
+		}
+		else {
+			//現在のインデックス番号の惑星を大きくする
+			m_planets[m_planet_index]->SetSizeBigger();
+
+			//前のインデックス番号の惑星を小さくする
+			m_planets[m_planet_index_before]->SetSizeSmaller();
+		}
 	}
 
 	//現在の惑星インデックス番号を保存

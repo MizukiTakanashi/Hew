@@ -23,7 +23,7 @@
 #define DIRECTINPUT_VERSION 0x0800		// 警告対処
 #include "dinput.h"
 #include "mmsystem.h"
-
+#include "Fade.h"
 #pragma warning(pop)
 
 //Xinputの導入
@@ -33,7 +33,7 @@
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
-#define SCREEN_WIDTH	(1260)				// ウインドウの幅
+#define SCREEN_WIDTH	(1280)				// ウインドウの幅
 #define SCREEN_HEIGHT	(720)				// ウインドウの高さ
 
 
