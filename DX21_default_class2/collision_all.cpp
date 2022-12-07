@@ -6,6 +6,7 @@
 #include "collision_all.h"
 #include "collision.h"
 #include "inh_player_arm.h"
+#include "sound.h"
 
 //==========================
 // デフォルトコンストラクタ
@@ -15,6 +16,8 @@ CollisionAll::CollisionAll()
 	for (int i = 0; i < ENEMY_NUM; i++) {
 		m_pEnemy[i] = nullptr;
 	}
+
+	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//サウンドのロード
 }
 
 //==========================
@@ -28,6 +31,8 @@ CollisionAll::CollisionAll(Player* pPlayer, inhPlayerArmBoth* pL, inhPlayerArmBo
 	for (int i = 0; i < ENEMY_NUM; i++) {
 		m_pEnemy[i] = nullptr;
 	}
+
+	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//サウンドのロード
 }
 
 //================================================
@@ -37,6 +42,9 @@ int CollisionAll::Collision(void)
 {
 	//プレイヤー自身が受けたダメージ数
 	int attacked = 0;
+
+	//爆発音を鳴らすか否か
+	bool explosion_sound = false;
 
 	//=================================================
 	// 敵と○○
@@ -71,13 +79,14 @@ int CollisionAll::Collision(void)
 
 						//爆発をセット
 						m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
+						explosion_sound = true;
 
 						//敵のHPを減らす
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{							
 							//ドロップする敵であれば...
-							if (k != (int)TYPE::PUBLIC) {
+							if (k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE) {
 								//敵アイテムのドロップ
 								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 							}
@@ -105,6 +114,7 @@ int CollisionAll::Collision(void)
 
 					//ダメージ数を増やす
 					attacked += m_pEnemy[k]->GetObjAttack();
+
 					//コンボを途切れさせる
 					m_pScore->InitCombo();
 				}
@@ -112,6 +122,9 @@ int CollisionAll::Collision(void)
 			else {
 				m_player_enemy_col = false;
 			}
+
+				//ボム
+				//自身
 			for (int i = 0; i < m_pPlayer->GetBomNum(); i++) {
 				//もしも画面外にいたら壊せないようにする
 				if (!ScreenOut::GetScreenOut(m_pEnemy[k]->GetObjPos(j),
@@ -123,13 +136,14 @@ int CollisionAll::Collision(void)
 						
 						//爆発をセット
 						m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
+						explosion_sound = true;
 
 						//敵のHPを減らす
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{							
 							//ドロップする敵であれば...
-							if (k != (int)TYPE::PUBLIC) {
+							if (k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE) {
 								//敵アイテムのドロップ
 								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 							}
@@ -145,6 +159,7 @@ int CollisionAll::Collision(void)
 					}
 				}
 			}
+
 			//=================================================
 			// プレイヤーの腕と敵
 
@@ -167,13 +182,14 @@ int CollisionAll::Collision(void)
 
 						//爆発をセット
 						m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
+						explosion_sound = true;
 
 						//敵のHPを減らす
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
 							//ドロップする敵であれば...
-							if (k != (int)TYPE::PUBLIC) {
+							if (k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE) {
 								//敵アイテムのドロップ
 								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 							}
@@ -227,13 +243,14 @@ int CollisionAll::Collision(void)
 
 								//爆発をセット
 								m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
+								explosion_sound = true;
 
 								//敵のHPを減らす
 								//敵が死んだら...
 								if (m_pEnemy[k]->ReduceHP(j, 1))
 								{
 									//ドロップする敵であれば...
-									if (k != (int)TYPE::PUBLIC) {
+									if (k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE) {
 										//敵アイテムのドロップ
 										m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 									}
@@ -273,6 +290,7 @@ int CollisionAll::Collision(void)
 					m_pPlayer->GetBulletSize(), m_pEnemy[k]->GetBulletSize())) {
 					//爆発をセット
 					m_pExplosion->SetExplosion(m_pEnemy[k]->GetBulletPos(j));
+					explosion_sound = true;
 
 					//プレイヤーの弾を消す
 					m_pPlayer->DeleteBullet(i);
@@ -319,6 +337,7 @@ int CollisionAll::Collision(void)
 							pArmItem->GetBulletSize(), m_pEnemy[k]->GetBulletSize())) {
 							//爆発をセット
 							m_pExplosion->SetExplosion(m_pEnemy[k]->GetBulletPos(j));
+							explosion_sound = true;
 
 							//腕についている種類がTYPE2(レーザー)でなければ...
 							if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
@@ -369,6 +388,19 @@ int CollisionAll::Collision(void)
 		}
 	}
 
+	//爆発の音の間隔を一定時間過ぎていたら(ここでカウント)...
+	//一回でも爆発がセットされていたら...
+	if (m_SE_interval_count++ > SE_INTERVAL && explosion_sound) {
+
+		//音を鳴らす
+		PlaySound(m_SE, 0);
+		SetVolume(m_SE, 0.1f);
+
+		//爆発の音の間隔をリセット
+		m_SE_interval_count = 0;
+	}
+
+	//受けたダメージを返す
 	return attacked;
 }
 

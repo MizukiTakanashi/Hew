@@ -21,7 +21,7 @@ const int PlayerHP::INVINCIBLE__FRAME = 30;	//無敵時間
 //==========================
 // HPを減らす
 //==========================
-void PlayerHP::ReduceHP(float reduce_num, D3DXVECTOR2 ppos)
+void PlayerHP::ReduceHP(float reduce_num)
 {
 	//無敵かどうか
 	if (m_invincible > 0)
@@ -31,8 +31,7 @@ void PlayerHP::ReduceHP(float reduce_num, D3DXVECTOR2 ppos)
 	else
 	{//無敵じゃない
 		m_hp -= reduce_num;
-		//爆発をセット
-		m_pExplosionManagement->SetExplosion(ppos);
+
 		//ヒットストップ
 		HitStop(30);
 		SetInvincibleFrame();
@@ -48,7 +47,7 @@ void PlayerHP::ReduceHP(float reduce_num, D3DXVECTOR2 ppos)
 //=====================================
 //回復処理
 //=====================================
-void PlayerHP::HeelHP(float heel_num, D3DXVECTOR2 ppos)
+void PlayerHP::HeelHP(float heel_num)
 {
 	//回復処理
 	m_hp += heel_num;
@@ -72,6 +71,7 @@ void PlayerHP::Update(void)
 	}
 
 }
+
 //==========================
 // 描画処理
 //==========================

@@ -134,6 +134,7 @@
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="draw_object.cpp" />
+    <ClCompile Include="enemy_attack.cpp" />
     <ClCompile Include="enemy_gatoring.cpp" />
     <ClCompile Include="enemy_public.cpp" />
     <ClCompile Include="Fade.cpp" />
@@ -143,6 +144,7 @@
     </ClCompile>
     <ClCompile Include="inputx.cpp" />
     <ClCompile Include="keyboard.cpp" />
+    <ClCompile Include="management_enemy_attack.cpp" />
     <ClCompile Include="management_enemy_gatoring.cpp" />
     <ClCompile Include="enemy_laser.cpp" />
     <ClCompile Include="management_enemy_laser.cpp" />
@@ -199,6 +201,7 @@
     <ClInclude Include="bullet.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="draw_object.h" />
+    <ClInclude Include="enemy_attack.h" />
     <ClInclude Include="enemy_gatoring.h" />
     <ClInclude Include="enemy_public.h" />
     <ClInclude Include="Fade.h" />
@@ -208,6 +211,7 @@
     </ClInclude>
     <ClInclude Include="inputx.h" />
     <ClInclude Include="keyboard.h" />
+    <ClInclude Include="management_enemy_attack.h" />
     <ClInclude Include="management_enemy_gatoring.h" />
     <ClInclude Include="enemy_laser.h" />
     <ClInclude Include="management_enemy_laser.h" />

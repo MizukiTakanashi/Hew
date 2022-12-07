@@ -20,8 +20,6 @@ private:
 
 //ƒƒ“ƒo•Ï”
 private:
-	int m_SE = 0;
-
 	DrawObject m_DrawObject;
 	Explosion* m_pExplosion = nullptr;
 	int m_ExplosionNum = 0;

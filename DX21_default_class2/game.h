@@ -31,12 +31,12 @@
 #include "management_meteo.h"
 #include "management_enemy_public.h"
 #include "player_center.h"
-
+#include "management_enemy_attack.h"
 
 
 class Game
 {
-//定数
+	//定数
 private:
 	//ここで初期化
 	static const int NUMBER_DIGIT = 10;		//数字の桁
@@ -72,6 +72,7 @@ private:
 		ENEMY_GATORING,
 		ENEMY_PUBLIC,
 		ENEMY_METEO,
+		ENEMY_ATTCK,
 		ENEMY_ITEM,
 		PLAYER_BULLET,
 		BULLET_ENEMY,
@@ -92,7 +93,7 @@ private:
 	};
 
 
-//メンバ変数
+	//メンバ変数
 private:
 	int m_BGM = 0;
 
@@ -108,6 +109,7 @@ private:
 	EnemyLaserManagement* m_pEnemyLaserManagement = nullptr;
 	EnemyGatoringManagement* m_pEnemyGatoringManagement = nullptr;
 	EnemyMissileManagement* m_pEnemyMissileManagement = nullptr;
+	EnemyAttackManagement* m_pEnemyAttackManagement = nullptr;
 	Management_EnemyPublic* m_pEnemyPublicManagement = nullptr;
 	Management_Meteo* m_pMeteoManagement = nullptr;
 	PlayerHP* m_pPlayerHP = nullptr;
@@ -132,7 +134,7 @@ private:
 	CollisionAll* m_pColAll = nullptr;		//全ての当たり判定
 
 
-//メンバ関数
+	//メンバ関数
 public:
 	Game();	//デフォルトコンストラクタ
 

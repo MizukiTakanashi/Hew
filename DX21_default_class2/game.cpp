@@ -113,7 +113,7 @@ Game::Game()
 //=========================
 // 引数付きコンストラクタ
 //=========================
-Game::Game(Score * pNumber):m_pScore(pNumber)
+Game::Game(Score* pNumber) :m_pScore(pNumber)
 {
 	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);	//BGM再生
@@ -138,17 +138,17 @@ Game::Game(Score * pNumber):m_pScore(pNumber)
 		D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 	//敵側の弾
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_RED]);
-	
+
 	//=======================
 	// レーザー
 	m_pTexUseful[(int)TEXTURE_TYPE::LASER].SetTextureName((char*)"data\\texture\\laser00.png");
 
 	//敵側のレーザー
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER]);
-	
+
 	//プレイヤー
-	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER].SetTextureName((char*)"data\\texture\\player_anime.png");
-	m_pDrawObject[(int)DRAW_TYPE::PLAYER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER], 1.0f, 0.25f, 1.0f, 4);
+	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER].SetTextureName((char*)"data\\texture\\player_00.png");
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER]);
 	m_pPlayer = new Player(m_pDrawObject[(int)DRAW_TYPE::PLAYER], m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET], m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET]);
 
 	//敵の配置場所
@@ -160,6 +160,7 @@ Game::Game(Score * pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 1.0f, 0.33f, 1.0f, 3);
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 2.0f, 0.33f, 1.0f, 3);
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ATTCK].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 2.0f, 0.33f, 1.0f, 3);
 	//雑魚
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_PUBLIC].SetTextureName((char*)"data\\texture\\UFO.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_PUBLIC].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_PUBLIC], 1.0f, 1.0f, 1.0f, 3);
@@ -172,8 +173,9 @@ Game::Game(Score * pNumber):m_pScore(pNumber)
 	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER_LASER]);
 	m_pEnemyGatoringManagement = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY]);
 	m_pEnemyPublicManagement = new Management_EnemyPublic(m_pDrawObject[(int)DRAW_TYPE::ENEMY_PUBLIC]);
+	m_pEnemyAttackManagement = new EnemyAttackManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ATTCK]);
 	m_pMeteoManagement = new Management_Meteo(m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO]);
-	
+
 	//=======================
 	// 残弾表示
 	m_pTexUseful[(int)TEXTURE_TYPE::NUMBER].SetTextureName((char*)"data\\texture\\number.png");
@@ -233,8 +235,8 @@ Game::Game(Score * pNumber):m_pScore(pNumber)
 		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER_LASER], m_pPlayer->GetPos(), m_pRemaining_Center, D3DXVECTOR2(30.0f, 520.0f));
 
 	//腕の交換
-	m_pPlayerArmChange=new PlayerArmChange(m_pPlayerLeft, m_pPlayerRight, m_pPlayerCenter);
-	
+	m_pPlayerArmChange = new PlayerArmChange(m_pPlayerLeft, m_pPlayerRight, m_pPlayerCenter);
+
 	//爆発
 	m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION].SetTextureName((char*)"data\\texture\\explosion000.png");
 	m_pDrawObject[(int)DRAW_TYPE::EXPLOSION].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION], 0.0f, 0.125f, 1.0f, 7);
@@ -242,7 +244,7 @@ Game::Game(Score * pNumber):m_pScore(pNumber)
 
 	//敵のアイテム
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ITEM].SetTextureName((char*)"data\\texture\\EnemyItem.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ITEM].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ITEM], 0.0f, 1.0f, 1.0f,1 );
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ITEM].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ITEM], 0.0f, 1.0f, 1.0f, 1);
 	m_pItemManagement = new ItemManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ITEM]);
 
 	//数字の初期化
@@ -255,7 +257,7 @@ Game::Game(Score * pNumber):m_pScore(pNumber)
 	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER_HP].SetTextureName((char*)"data\\texture\\hp.png");
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_BAR].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER_HP], 0.0f, 1.0f, 1.0f, 1);
 
-	m_pPlayerHP = new PlayerHP(m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_BAR], m_pExplosionManagement, m_pPlayer);
+	m_pPlayerHP = new PlayerHP(m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_BAR]);
 
 	//敵の管理
 	m_pAllEnemyManagement = new AllEnemyManagement;
@@ -264,7 +266,7 @@ Game::Game(Score * pNumber):m_pScore(pNumber)
 	m_pAllEnemyManagement->AddPointer(m_pEnemyGatoringManagement);
 
 	//全ての当たり判定(今のところ敵とプレイヤーだけ)
-	m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement, 
+	m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
 		m_pItemManagement, m_pScore);
 	//敵のポインタをセット
 	m_pColAll->AddEnemyPointer(m_pEnemyNormalManagement);
@@ -272,6 +274,7 @@ Game::Game(Score * pNumber):m_pScore(pNumber)
 	m_pColAll->AddEnemyPointer(m_pEnemyGatoringManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyPublicManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyMissileManagement);
+	//m_pColAll->AddEnemyPointer(m_pEnemyAttackManagement);
 	//m_pColAll->AddEnemyPointer(m_pMeteoManagement);
 
 }
@@ -295,6 +298,7 @@ Game::~Game()
 	delete m_pEnemyGatoringManagement;
 	delete m_pEnemyPublicManagement;
 	delete m_pEnemyMissileManagement;
+	delete m_pEnemyAttackManagement;
 	delete m_pMeteoManagement;
 	delete m_pItemManagement;
 	delete m_pPlayer;
@@ -335,7 +339,7 @@ void Game::Update(void)
 	//プレイヤー
 	m_pPlayer->Update(m_pPlayerHP->IsPlayerInvincible());
 
-	m_pPlayerHP->Update(); //プレイヤーUpdateの後に呼ぶ
+	m_pPlayerHP->Update();
 
 	//爆発
 	m_pExplosionManagement->Update();
@@ -349,6 +353,7 @@ void Game::Update(void)
 	m_pEnemyMissileManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyLaserManagement->Update();
 	m_pEnemyGatoringManagement->Update(m_pPlayer->GetPos());
+	m_pEnemyAttackManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyPublicManagement->Update();
 	m_pMeteoManagement->Update();
 
@@ -358,7 +363,7 @@ void Game::Update(void)
 	int heel_num = 0;
 
 	//プレイヤーの腕
-	
+
 	//ホーミング弾用
 	D3DXVECTOR2 temp_pos = m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerLeft->GetPos());
 
@@ -371,7 +376,7 @@ void Game::Update(void)
 	m_pPlayerCenter->ButtonPress();
 	//切り離されたらHPを減らす
 	attack_num += m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
-	
+
 	//敵とプレイヤーの当たり判定
 	attack_num += m_pColAll->Collision();
 
@@ -380,12 +385,12 @@ void Game::Update(void)
 
 	//プレイヤーのHPを攻撃数によって減らす
 	if (attack_num != 0) {
-		m_pPlayerHP->ReduceHP((float)attack_num, m_pPlayer->GetPos());
+		m_pPlayerHP->ReduceHP((float)attack_num);
 	}
 	if (heel_num != 0) {
-		m_pPlayerHP->HeelHP((float)heel_num, m_pPlayer->GetPos());
+		m_pPlayerHP->HeelHP((float)heel_num);
 	}
-	
+
 	//プレイヤーのHPが0になったら...
 	if (m_pPlayerHP->GetHP0Flag()) {
 		Fade(SCENE::SCENE_RESULT);
@@ -409,6 +414,7 @@ void Game::Draw(void)const
 	m_pEnemyLaserManagement->Draw();
 	m_pEnemyGatoringManagement->Draw();
 	m_pEnemyPublicManagement->Draw();
+	m_pEnemyAttackManagement->Draw();
 	m_pMeteoManagement->Draw();
 	m_pEnemyMissileManagement->Draw();
 

@@ -26,12 +26,14 @@ private:
 		LASER,
 		GATORING,
 		PUBLIC,
+		MISSILE,
 		NUM
 	};
 
 
 	//ここで初期化
-	static const int ENEMY_NUM = 10;		//全敵の種類数の制限数	
+	static const int ENEMY_NUM = 10;		//全敵の種類数の制限数
+	static const int SE_INTERVAL = 30;		//爆発の音の間隔
 
 //メンバ変数
 private:
@@ -45,10 +47,13 @@ private:
 	
 	ExplosionManagement* m_pExplosion = nullptr;	//爆発
 	ItemManagement* m_pItem = nullptr;				//アイテム
-	Score* m_pScore = nullptr;					//倒した敵の数表示
-	Number* m_pCombo = nullptr;					//コンボのポインタ
+	Score* m_pScore = nullptr;						//倒した敵の数表示
+	Number* m_pCombo = nullptr;						//コンボのポインタ
 
-	bool m_player_enemy_col = false;				//プレイヤーと
+	bool m_player_enemy_col = false;				//プレイヤーと敵が当たったか判定
+
+	int m_SE = 0;									//爆発の音
+	int m_SE_interval_count = 0;					//爆発の音の間隔カウント
 
 //メンバ関数
 public:
