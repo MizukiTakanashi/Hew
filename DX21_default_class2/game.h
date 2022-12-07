@@ -29,6 +29,7 @@
 #include "collision_all.h"
 #include "management_meteo.h"
 #include "management_enemy_public.h"
+#include "management_enemy_attack.h"
 #include "player_center.h"
 
 class Game
@@ -69,6 +70,7 @@ private:
 		ENEMY_GATORING,
 		ENEMY_PUBLIC,
 		ENEMY_METEO,
+		ENEMY_ATTCK,
 		ENEMY_ITEM,
 		PLAYER_BULLET,
 		BULLET_ENEMY,
@@ -106,6 +108,7 @@ private:
 	EnemyGatoringManagement* m_pEnemyGatoringManagement = nullptr;
 	Management_EnemyPublic* m_pEnemyPublicManagement = nullptr;
 	Management_Meteo* m_pMeteoManagement = nullptr;
+	EnemyAttackManagement* m_pEnemyAttackManagement = nullptr;
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;
 	ItemManagement* m_pItemManagement = nullptr;
