@@ -11,6 +11,7 @@
 #include "draw_object.h"
 #include "UI.h"
 #include "management_explosion.h"
+#include "player.h"
 
 //======================
 // マクロ定義
@@ -34,6 +35,7 @@ private:
 
 
 private:
+	Player* m_pPlayer = nullptr; //プレイヤーのポインタ
 	bool m_HP0 = false;				//プレイヤーのHPが0か判断
 	float m_hp = HP_MAX;			//プレイヤーのHP
 	int m_invincible = 0;			//無敵時間
@@ -44,9 +46,9 @@ public:
 	PlayerHP() { m_hp = HP_MAX; }	//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
-	PlayerHP(DrawObject& DrawObject1, ExplosionManagement* pEM)
+	PlayerHP(DrawObject& DrawObject1, ExplosionManagement* pEM, Player* pPlayer)
 		:UI(DrawObject1, D3DXVECTOR2(POS_X, POS_Y),
-			D3DXVECTOR2(SIZE_X, SIZE_Y)), m_pExplosionManagement(pEM) {}
+			D3DXVECTOR2(SIZE_X, SIZE_Y)), m_pExplosionManagement(pEM), m_pPlayer(pPlayer){}
 
 	~PlayerHP()override {}							//デストラクタ
 

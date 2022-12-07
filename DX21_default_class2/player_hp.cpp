@@ -59,6 +59,12 @@ void PlayerHP::HeelHP(float heel_num, D3DXVECTOR2 ppos)
 //==========================
 void PlayerHP::Update(void)
 {
+	if (m_hp < 3)
+	{//HPが少なくなったら
+		//プレイヤーの見た目変更
+		m_pPlayer->SetAnimationNum(2);
+	}
+
 	//無敵時間減少
 	if (m_invincible > 0)
 	{

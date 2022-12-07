@@ -100,6 +100,17 @@ void Player::Update(bool isinvincible)
 		temp.x += SPEED_X;
 	}
 
+	if (temp.x != 0.0f || temp.y != 0.0f)
+	{//移動してたら
+		//アニメーションセット
+		Player::SetAnimationNum(0);
+	}
+	else
+	{//移動してなかったら
+		//アニメーションセット
+		Player::SetAnimationNum(1);
+	}
+
 	//正規化
 	D3DXVec2Normalize(&temp, &temp);
 	temp *= SPEED;
