@@ -60,6 +60,8 @@
     <ClCompile Include="title.cpp" />
     <ClCompile Include="ui.cpp" />
     <ClCompile Include="management_enemy_missile.cpp" />
+    <ClCompile Include="enemy_attack.cpp" />
+    <ClCompile Include="management_enemy_attack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h" />
@@ -121,5 +123,7 @@
     <ClInclude Include="title.h" />
     <ClInclude Include="ui.h" />
     <ClInclude Include="management_enemy_missile.h" />
+    <ClInclude Include="enemy_attack.h" />
+    <ClInclude Include="management_enemy_attack.h" />
   </ItemGroup>
 </Project>
