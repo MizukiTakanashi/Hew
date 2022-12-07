@@ -26,12 +26,8 @@ const float Player::BULLET_SIZE_X = 15.0f;
 const float Player::BULLET_SIZE_Y = 40.0f;
 const float Player::BULLET_SPEED_X = 0.0f;
 const float Player::BULLET_SPEED_Y = -10.5f;
-const float Player::BOM_SIZE_X = 1260.0f;
-const float Player::BOM_SIZE_Y = 720.0f;
 const D3DXCOLOR Player::INVINCIBLE__COLOR = D3DXCOLOR(1.0f, 0.3f, 0.3f, 1.0f);			//プレイヤー無敵時間の色
-int a = 0;
-int b = 0;
-int Bom_Count = 0;
+
 //======================
 // 更新処理
 //======================
@@ -140,18 +136,7 @@ void Player::Update(bool isinvincible)
 		}
 
 	}
-	if ((InputGetKeyDown(KK_ENTER)))
-	{
-		Bom_Count++;
-		if (Bom_Count < 4) {
-			if (m_BomNum < BOM_MAX_NUM) {
-				Bom temp1(m_BomDrawObject, D3DXVECTOR2(BOM_SIZE_X / 2, BOM_SIZE_Y / 2), D3DXVECTOR2(BOM_SIZE_X, BOM_SIZE_Y),
-					0.0f);
-				m_pBom[m_BomNum] = temp1;
-				m_BomNum++;
-			}
-		}
-	}
+	
 	for (int i = 0; i < m_BulletNum; i++) {
 		m_pBullet[i].Update();
 
@@ -161,17 +146,6 @@ void Player::Update(bool isinvincible)
 			DeleteBullet(i);
 		}
 	}
-
-	a++;
-	for (int i = 0; i < m_BomNum; i++)
-	{
-		m_pBom[i].Update();
-		if (b == 0)
-		{
-			DeleteBom(i);
-		}
-	}
-	b = a % 60;
 
 	//無敵時間は色変更
 	if (isinvincible)
@@ -203,24 +177,4 @@ void Player::DeleteBullet(int index_num)
 		m_pBullet[i] = m_pBullet[i + 1];
 	}
 	m_BulletNum--;
-}
-//==========================
-// 爆弾の描画処理
-//==========================
-void Player::DrawBom(void)const
-{
-	for (int i = 0; i < m_BomNum; i++) {
-		m_pBom[i].Draw();
-	}
-}
-
-//==========================
-// 爆弾を消す
-//==========================
-void Player::DeleteBom(int index_num)
-{
-	for (int i = index_num; i < m_BomNum - 1; i++) {
-		m_pBom[i] = m_pBom[i + 1];
-	}
-	m_BomNum--;
 }

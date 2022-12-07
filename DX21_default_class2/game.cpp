@@ -259,22 +259,28 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 
 	m_pPlayerHP = new PlayerHP(m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_BAR], m_pExplosionManagement, m_pPlayer);
 
+	//ボム
+	m_pDrawObject[(int)DRAW_TYPE::BOMB].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN]);
+	m_pBom = new Bom(m_pDrawObject[(int)DRAW_TYPE::BOMB], 3);
+
 	//敵の管理
 	m_pAllEnemyManagement = new AllEnemyManagement;
 	m_pAllEnemyManagement->AddPointer(m_pEnemyNormalManagement);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyLaserManagement);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyGatoringManagement);
 
-	//全ての当たり判定(今のところ敵とプレイヤーだけ)
+	//========================================================
+	// 全ての当たり判定
 	m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
-		m_pItemManagement, m_pScore);
+		m_pItemManagement, m_pScore, m_pBom);
+
 	//敵のポインタをセット
 	m_pColAll->AddEnemyPointer(m_pEnemyNormalManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyLaserManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyGatoringManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyPublicManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyMissileManagement);
-	//m_pColAll->AddEnemyPointer(m_pEnemyAttackManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemyAttackManagement);
 	//m_pColAll->AddEnemyPointer(m_pMeteoManagement);
 
 }
@@ -285,12 +291,12 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 Game::~Game()
 {
 	//描画がない物から消していく
-	//delete m_pEnemySetPos;
 	delete m_pAllEnemyManagement;
 	delete m_pPlayerArmChange;
 	delete m_pColAll;
 
 	//ゲームオブジェクトを消す
+	delete m_pBom;
 	delete m_pBG;
 	delete m_pExplosionManagement;
 	delete m_pEnemyNormalManagement;
@@ -311,6 +317,7 @@ Game::~Game()
 	delete m_pPlayerCenter;
 	delete m_pComboNum;
 	delete m_pMultiply;
+
 	//そのほか
 	delete[] m_pDrawObject;
 	delete[] m_pTexUseful;
@@ -348,7 +355,7 @@ void Game::Update(void)
 	m_pItemManagement->Update();
 
 	//=======================
-	// 敵の更新処理
+	// 敵
 	m_pEnemyNormalManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyMissileManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyLaserManagement->Update();
@@ -356,6 +363,9 @@ void Game::Update(void)
 	m_pEnemyAttackManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyPublicManagement->Update();
 	m_pMeteoManagement->Update();
+
+	//ボム
+	m_pBom->Update();
 
 	//====================================
 	//プレイヤーのHPに対する処理
@@ -410,6 +420,7 @@ void Game::Draw(void)const
 	m_pPlayerRight->ArmDraw();
 	m_pPlayerCenter->ArmDraw();
 
+	//敵の描画
 	m_pEnemyNormalManagement->Draw();
 	m_pEnemyLaserManagement->Draw();
 	m_pEnemyGatoringManagement->Draw();
@@ -418,11 +429,15 @@ void Game::Draw(void)const
 	m_pMeteoManagement->Draw();
 	m_pEnemyMissileManagement->Draw();
 
+	//プレイヤーの弾の表示
 	m_pPlayer->DrawBullet();
-	m_pPlayer->DrawBom();
+
 	m_pExplosionManagement->Draw();
 
 	m_pItemManagement->Draw();
+
+	//ボムの描画
+	m_pBom->BomDraw();
 
 	//UIの描画
 	m_pPlayerHP->DrawHP();
