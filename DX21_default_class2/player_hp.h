@@ -56,10 +56,10 @@ public:
 	void Update(void);
 
 	//HP‚ðŒ¸‚ç‚·
-	void ReduceHP(float reduce_num, D3DXVECTOR2 ppos);
+	void ReduceHP(float reduce_num);
 
 	//HP‚ð‰ñ•œ
-	void HeelHP(float heel_num, D3DXVECTOR2 ppos);
+	void HeelHP(float heel_num);
 
 	//•`‰æ
 	void DrawHP(void)const;
