@@ -32,7 +32,7 @@
 #include "management_enemy_public.h"
 #include "player_center.h"
 #include "management_enemy_attack.h"
-
+#include "Bom.h"
 
 class Game
 {
@@ -89,6 +89,7 @@ private:
 		PLAYER_ARM_CENTER_LASER,
 		NUMBER,
 		MULTIPLY,
+		BOMB,						//”š’e
 		NUM
 	};
 
@@ -104,7 +105,6 @@ private:
 
 	BG* m_pBG = nullptr;
 	Player* m_pPlayer = nullptr;
-	//EnemySetPos* m_pEnemySetPos = nullptr;
 	EnemyNormalManagement* m_pEnemyNormalManagement = nullptr;
 	EnemyLaserManagement* m_pEnemyLaserManagement = nullptr;
 	EnemyGatoringManagement* m_pEnemyGatoringManagement = nullptr;
@@ -133,6 +133,7 @@ private:
 
 	CollisionAll* m_pColAll = nullptr;		//‘S‚Ä‚Ì“–‚½‚è”»’è
 
+	Bom* m_pBom = nullptr;					//ƒ{ƒ€
 
 	//ƒƒ“ƒoŠÖ”
 public:

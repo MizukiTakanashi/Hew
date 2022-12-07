@@ -11,10 +11,10 @@
 #include "player.h"
 #include "management_enemy.h"
 #include "inh_player_arm_both.h"
-
 #include "management_explosion.h"
 #include "management_item.h"
 #include "score.h"
+#include "Bom.h"
 
 class CollisionAll
 {
@@ -27,6 +27,7 @@ private:
 		GATORING,
 		PUBLIC,
 		MISSILE,
+		ATTACK,
 		NUM
 	};
 
@@ -55,6 +56,8 @@ private:
 	int m_SE = 0;									//爆発の音
 	int m_SE_interval_count = 0;					//爆発の音の間隔カウント
 
+	Bom* m_pBom = nullptr;							//ボム
+
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
@@ -62,7 +65,7 @@ public:
 
 	//引数付きコンストラクタ
 	CollisionAll(Player* pPlayer, inhPlayerArmBoth* pL, inhPlayerArmBoth* pR, 
-		ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber);
+		ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber, Bom* pBom);
 
 	//デストラクタ
 	~CollisionAll(){}
