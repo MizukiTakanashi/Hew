@@ -149,40 +149,6 @@ int CollisionAll::Collision(void)
 					m_pScore->AddScore(1);
 				}
 			}
-			//for (int i = 0; i < m_pPlayer->GetBomNum(); i++) {
-			//	//もしも画面外にいたら壊せないようにする
-			//	if (!ScreenOut::GetScreenOut(m_pEnemy[k]->GetObjPos(j),
-			//		m_pEnemy[k]->GetObjSize())) {
-
-			//		//当たったか判定
-			//		if (Collision::ColBox(m_pPlayer->GetBomPos(i), m_pEnemy[k]->GetObjPos(j),
-			//			m_pPlayer->GetBomSize(), m_pEnemy[k]->GetObjSize())) {
-			//			
-			//			//爆発をセット
-			//			m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
-			//			explosion_sound = true;
-
-			//			//敵のHPを減らす
-			//			//敵が死んだら...
-			//			if (m_pEnemy[k]->ReduceHP(j, 1))
-			//			{							
-			//				//ドロップする敵であれば...
-			//				if (k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE && k != (int)TYPE::ATTACK) {
-			//					//敵アイテムのドロップ
-			//					m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
-			//				}
-
-			//				//敵を消す
-			//				m_pEnemy[k]->DeleteObj(j);
-
-			//				j--;
-
-			//				//倒した敵の数を増やす
-			//				m_pScore->AddScore(1);
-			//			}
-			//		}
-			//	}
-			//}
 
 			//=================================================
 			// プレイヤーの腕と敵
