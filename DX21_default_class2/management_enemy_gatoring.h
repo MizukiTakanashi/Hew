@@ -1,5 +1,5 @@
 //=======================================
-// 普通の敵の管理関係(ヘッダファイル)
+// 高速発射の敵の管理関係(ヘッダファイル)
 // 作成日：2022/09/13
 // 作成者：高梨水希
 //=======================================
@@ -13,7 +13,6 @@
 #include "enemy_gatoring.h"
 #include "bullet.h"
 #include "draw_object.h"
-//#include "enemy_set_pos.h"
 
 class EnemyGatoringManagement:public EnemyManagement
 {
@@ -42,9 +41,6 @@ private:
 	Bullet* m_pBullet = nullptr;				//弾のクラス
 	DrawObject m_pDrawObjectEnemy;				//敵の描画オブジェクト
 	DrawObject m_pDrawObjectBullet;				//弾の描画オブジェクト
-	//EnemySetPos m_pEnemySetPos;					//そこにセットしていいのかクラス
-
-	int m_EnemyItem_num = 0;	//敵のアイテムの数
 
 	//敵の位置配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {

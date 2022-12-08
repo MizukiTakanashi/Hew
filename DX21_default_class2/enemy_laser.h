@@ -69,12 +69,6 @@ public:
 	//弾を作った
 	void BulletMake() { m_laser_make = false; }
 
-	//敵のアイテムを作るか否かのフラグを返す
-	bool GetFlagEnemyItemMake()const { return m_enemyitem_make; }
-
-	//敵のアイテムを作った
-	void EnemyItemMake() { m_enemyitem_make = false; }
-
 	//レーザー番号をセット
 	void SetLaserIndex(int num) { m_laser_index = num; }
 

@@ -1,18 +1,16 @@
+#pragma once
 //=======================================
-// 普通の敵関係(ヘッダファイル)
-// 作成日：2022/09/13
+// バリアの敵関係(ヘッダファイル)
+// 作成日：2022/12/08
 // 作成者：高梨水希
 //=======================================
-#pragma once
 
-#ifndef _ENEMY_NORMAL_H_
-#define _ENEMY_NORMAL_H_
+#ifndef _ENEMY_BARRIER_H_
+#define _ENEMY_BARRIER_H_
 
-#include "main.h"
-#include "draw_object.h"
 #include "game_object.h"
 
-class EnemyNormal:public GameObject
+class EnemyBarrier:public GameObject
 {
 //定数
 public:
@@ -26,20 +24,16 @@ public:
 
 private:
 	//ここで初期化
-	static const int BULLET_TIME = 200;	//弾の発射間隔
 	static const int INVINCIBLE_FLAME = 30;	//敵の無敵時間
+	static const int HP_MAX = 2;			//敵のHP最大値
 
 	//cppで初期化
 	static const float SPEED_X;			//敵のスピードY
 	static const float SPEED_Y;			//敵のスピードY
-	static const int HP_MAX;			//敵のHP最大値
 
 
 //メンバ変数
 private:
-	int m_bullet_count = 0;				//弾を発射するまでのカウント
-	bool m_bullet_make = false;			//弾を作るか否か
-
 	float m_move_width = 0.0f;			//敵が動く時のcosカーブ
 	float m_init_posx = 0.0f;			//敵の初期位置X
 
@@ -48,23 +42,18 @@ private:
 	int m_hp = HP_MAX;					//敵の現在のHP
 	int m_invincible_flame = 0;			//無敵時間の残り
 
+
 //メンバ関数
 public:
-	EnemyNormal(){}		//デフォルトコンストラクタ
+	EnemyBarrier() {}		//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
-	EnemyNormal(DrawObject& pDrawObject, const D3DXVECTOR2& pos)
+	EnemyBarrier(DrawObject& pDrawObject, const D3DXVECTOR2& pos)
 		:GameObject(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)), m_init_posx(pos.x) {}
 
-	~EnemyNormal()override{}	//デストラクタ
+	~EnemyBarrier()override {}	//デストラクタ
 
 	void Update(void);	//更新処理
-
-	//弾を作るか否かのフラグを返す
-	bool GetFlagBulletMake()const { return m_bullet_make; }
-
-	//弾を作った
-	void BulletMake() { m_bullet_make = false; }
 
 	//HPを減らす
 	void ReduceHP(int amount)
@@ -80,4 +69,4 @@ public:
 	int GetHP(void) { return m_hp; }
 };
 
-#endif // !_ENEMY_NORMAL_H_
+#endif // !_ENEMY_BARRIER_H_

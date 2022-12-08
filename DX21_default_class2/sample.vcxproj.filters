@@ -62,6 +62,8 @@
     <ClCompile Include="management_enemy_missile.cpp" />
     <ClCompile Include="enemy_attack.cpp" />
     <ClCompile Include="management_enemy_attack.cpp" />
+    <ClCompile Include="management_enemy_barrier.cpp" />
+    <ClCompile Include="enemy_barrier.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h" />
@@ -125,5 +127,7 @@
     <ClInclude Include="management_enemy_missile.h" />
     <ClInclude Include="enemy_attack.h" />
     <ClInclude Include="management_enemy_attack.h" />
+    <ClInclude Include="management_enemy_barrier.h" />
+    <ClInclude Include="enemy_barrier.h" />
   </ItemGroup>
 </Project>
