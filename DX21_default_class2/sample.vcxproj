@@ -249,6 +249,7 @@
     <ClInclude Include="player_left.h" />
     <ClInclude Include="player_right.h" />
     <ClInclude Include="renderer.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="result.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="score.h" />
@@ -265,6 +266,9 @@
     <ClInclude Include="texture_useful.h" />
     <ClInclude Include="title.h" />
     <ClInclude Include="ui.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="sample.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
