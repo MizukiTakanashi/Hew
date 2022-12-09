@@ -16,6 +16,17 @@
 
 class Result
 {
+	enum class STAGE_NUM : int
+	{
+		STAGE1,
+		STAGE2,
+		STAGE3,
+		STAGE4,
+		STAGE5,
+		STAGE6,
+		STAGE7,
+		STAGE_NUM,
+	};
 //定数
 private:
 	//ここで初期化
@@ -30,15 +41,19 @@ private:
 private:
 	int m_BGM = 0;
 
-	TextureUseful* m_pTexUse = nullptr;
-	DrawObject* m_pDrawOb = nullptr;
+	TextureUseful* m_pTexUse[4] = { nullptr, nullptr , nullptr , nullptr };
+	DrawObject* m_pDrawOb[4] = { nullptr, nullptr , nullptr , nullptr };
 	UI* m_pBG = nullptr;
+	UI* m_pTitle = nullptr;
+	UI* m_pContinue = nullptr;
+	UI* m_pRetry = nullptr;
 	Score* m_pScore = nullptr;
 
 public:
 	Result();	//デフォルトコンストラクタ
 
 	Result(Score* pNumber);
+	Result(Score* pNumber, STAGE_NUM stagenum);
 
 	~Result();	//デストラクタ
 
