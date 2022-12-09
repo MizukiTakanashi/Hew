@@ -35,15 +35,15 @@ private:
 
 	//敵の位置配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
+		D3DXVECTOR2(52.5f + (105 * 4), -EnemyBarrier::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 1), -EnemyBarrier::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 10), -EnemyBarrier::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 5), -EnemyBarrier::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 0), -EnemyBarrier::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 11), -EnemyBarrier::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 4), -EnemyBarrier::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 7), -EnemyBarrier::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 2), -EnemyBarrier::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 6), -EnemyBarrier::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 3), -EnemyBarrier::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 4), -EnemyBarrier::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 5), -EnemyBarrier::SIZE_Y / 2)
+		D3DXVECTOR2(52.5f + (105 * 2), -EnemyBarrier::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 5), -EnemyBarrier::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 8), -EnemyBarrier::SIZE_Y / 2)
 	};
 
 	//敵を出す時間
@@ -75,7 +75,7 @@ public:
 	}
 
 	//更新処理
-	void Update(const D3DXVECTOR2& PlayerPos);
+	void Update();
 
 	//描画処理
 	void Draw(void)const;
@@ -96,10 +96,10 @@ public:
 	const D3DXVECTOR2& GetObjSize(int index_num = 0)const override { return m_pEnemy[0].GetSize(); }
 
 	//指定した弾の座標を返す
-	//const D3DXVECTOR2& GetBulletPos(int index_num)const override { return m_pBarrier[index_num].GetPos(); }
+	const D3DXVECTOR2& GetBulletPos(int index_num)const override { return m_pEnemy[index_num].GetBarrierPos(); }
 
 	//弾のサイズを返す
-	//const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override { return m_pBarrier[index_num].GetSize(); }
+	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override { return EnemyBarrier::BARRIER_SIZE; }
 };
 
 #endif // !_MANAGEMENT_ENEMY_BARRIER_H_

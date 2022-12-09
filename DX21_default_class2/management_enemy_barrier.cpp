@@ -22,7 +22,7 @@ EnemyBarrierManagement::EnemyBarrierManagement(DrawObject& pDrawObject1, DrawObj
 //======================
 // 更新処理
 //======================
-void EnemyBarrierManagement::Update(const D3DXVECTOR2& PlayerPos)
+void EnemyBarrierManagement::Update()
 {
 	m_FlameNum++; //フレーム数を増加
 
@@ -33,6 +33,9 @@ void EnemyBarrierManagement::Update(const D3DXVECTOR2& PlayerPos)
 		EnemyBarrier temp(m_pDrawObjectEnemy, m_pDrawObjectBarrier, m_SetEnemy[m_EnemyNum]);
 		m_pEnemy[EnemyManagement::GetObjNum()] = temp;
 		EnemyManagement::IncreaseObjNum(1);
+
+		//バリア数を増やす
+		EnemyManagement::IncreaseBulletNum(1);
 
 		//セットした敵の数を増やす
 		m_EnemyNum++;
@@ -51,6 +54,7 @@ void EnemyBarrierManagement::Draw(void)const
 {
 	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
 		m_pEnemy[i].Draw();
+		m_pEnemy[i].DrawBarrier();
 	}
 }
 
@@ -91,8 +95,8 @@ void EnemyBarrierManagement::DeleteObj(int index_num)
 //======================
 void EnemyBarrierManagement::DeleteBullet(int index_num)
 {
-	for (int i = index_num; i < EnemyManagement::GetBulletNum() - 1; i++) {
-		//m_pBarrier[i] = m_pBarrier[i + 1];
-	}
+	//バリアを消す
+	m_pEnemy->DeleteBarrier();
+
 	EnemyManagement::IncreaseBulletNum(-1);
 }

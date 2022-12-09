@@ -13,11 +13,12 @@ const float EnemyBarrier::SIZE_X = 50.0f;
 const float EnemyBarrier::SIZE_Y = 60.0f;
 const float EnemyBarrier::STOP_POS_Y = 100.0f;
 const float EnemyBarrier::RANGE = 20.0f;
+const D3DXVECTOR2 EnemyBarrier::BARRIER_SIZE = D3DXVECTOR2(50.0f, 10.0f);
+
 //private
 const float EnemyBarrier::SPEED_X = 1.5f;
 const float EnemyBarrier::SPEED_Y = 2.5f;
-const D3DXVECTOR2 EnemyBarrier::BARRIER_SIZE = D3DXVECTOR2(50.0f, 50.0f);
-const D3DXVECTOR2 EnemyBarrier::INTERVAL_POS = D3DXVECTOR2(0.0f, 10.0f);
+const D3DXVECTOR2 EnemyBarrier::INTERVAL_POS = D3DXVECTOR2(0.0f, 60.0f);
 
 //======================
 // 更新処理
@@ -38,25 +39,41 @@ void EnemyBarrier::Update(void)
 	//============================
 	// バリア
 
-	//バリアが出現していたら...
 	if (m_barrier_time >= 0) {
 		//バリアの座標を敵の隣にセット
 		m_pBarrier->SetPos(GameObject::GetPos() + INTERVAL_POS);
-
-		//バリアの時間が制限時間を過ぎていたら...
-		if (m_barrier_time++ > BARRIER_TIME_LIMIT) {
-			//バリアを消す
-			m_barrier_time = -1;
-			m_barrier_interval_time = 0;
-		}
 	}
-	//バリアが出現していなかったら...
-	else {
-		//次のバリアの出現時間が制限時間を過ぎていたら...
-		if (m_barrier_interval_time++ > BARRIER_INTERVAL) {
-			//バリアを出す
-			m_barrier_interval_time = -1;
-			m_barrier_time = 0;
-		}
+
+	//バリアが出現していたら...
+	//if (m_barrier_time >= 0) {
+	//	//バリアの座標を敵の隣にセット
+	//	m_pBarrier->SetPos(GameObject::GetPos() + INTERVAL_POS);
+
+	//	//バリアの時間が制限時間を過ぎていたら...
+	//	if (m_barrier_time++ > BARRIER_TIME_LIMIT) {
+	//		//バリアを消す
+	//		m_barrier_time = -1;
+	//		m_barrier_interval_time = 0;
+	//	}
+	//}
+	////バリアが出現していなかったら...
+	//else {
+	//	//次のバリアの出現時間が制限時間を過ぎていたら...
+	//	if (m_barrier_interval_time++ > BARRIER_INTERVAL) {
+	//		//バリアを出す
+	//		m_barrier_interval_time = -1;
+	//		m_barrier_time = 0;
+	//	}
+	//}
+}
+
+//==========================
+// バリアの描画処理
+//==========================
+void EnemyBarrier::DrawBarrier(void) const
+{
+	//バリアが出現していたら...
+	if (m_barrier_time >= 0) {
+		m_pBarrier->Draw();
 	}
 }

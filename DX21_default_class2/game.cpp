@@ -146,13 +146,14 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 	//敵側のレーザー
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER]);
 
+
+	//バリア
+	m_pTexUseful[(int)TEXTURE_TYPE::BARRIER].SetTextureName((char*)"data\\texture\\Barrier.png");
+
 	//プレイヤー
 	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER].SetTextureName((char*)"data\\texture\\player_anime.png");
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER], 1.0f, 0.25f, 1.0f, 4);
 	m_pPlayer = new Player(m_pDrawObject[(int)DRAW_TYPE::PLAYER], m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET], m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET]);
-
-	//敵の配置場所
-	//m_pEnemySetPos = new EnemySetPos;
 
 	//=======================
 	// 敵
@@ -164,6 +165,12 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 	//雑魚
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_PUBLIC].SetTextureName((char*)"data\\texture\\UFO.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_PUBLIC].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_PUBLIC], 1.0f, 1.0f, 1.0f, 3);
+	
+	//バリアの敵
+	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_BARRIER].SetTextureName((char*)"data\\texture\\monster11.png");
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_BARRIER]);
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BARRIER]);
+
 	//隕石
 	m_pTexUseful[(int)TEXTURE_TYPE::METEO].SetTextureName((char*)"data\\texture\\Meteo.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::METEO], 2.0f, 1.0, 1.0f, 3);
@@ -175,6 +182,7 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 	m_pEnemyPublicManagement = new Management_EnemyPublic(m_pDrawObject[(int)DRAW_TYPE::ENEMY_PUBLIC]);
 	m_pEnemyAttackManagement = new EnemyAttackManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ATTCK]);
 	m_pMeteoManagement = new Management_Meteo(m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO]);
+	m_pEnemyBarrierManagement = new EnemyBarrierManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER], m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
 
 	//=======================
 	// 残弾表示
@@ -281,6 +289,7 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 	m_pColAll->AddEnemyPointer(m_pEnemyPublicManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyMissileManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyAttackManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
 	//m_pColAll->AddEnemyPointer(m_pMeteoManagement);
 
 }
@@ -305,6 +314,7 @@ Game::~Game()
 	delete m_pEnemyPublicManagement;
 	delete m_pEnemyMissileManagement;
 	delete m_pEnemyAttackManagement;
+	delete m_pEnemyBarrierManagement;
 	delete m_pMeteoManagement;
 	delete m_pItemManagement;
 	delete m_pPlayer;
@@ -362,6 +372,7 @@ void Game::Update(void)
 	m_pEnemyGatoringManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyAttackManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyPublicManagement->Update();
+	m_pEnemyBarrierManagement->Update();
 	m_pMeteoManagement->Update();
 
 	//ボム
@@ -428,6 +439,7 @@ void Game::Draw(void)const
 	m_pEnemyAttackManagement->Draw();
 	m_pMeteoManagement->Draw();
 	m_pEnemyMissileManagement->Draw();
+	m_pEnemyBarrierManagement->Draw();
 
 	//プレイヤーの弾の表示
 	m_pPlayer->DrawBullet();
