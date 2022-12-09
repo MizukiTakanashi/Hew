@@ -266,6 +266,7 @@ int CollisionAll::Collision(void)
 		//=================================================
 		// 敵の弾分ループ
 		for (int j = 0; j < m_pEnemy[k]->GetBulletNum(); j++) {
+			bool next = false;
 
 			//=================================================
 			// プレイヤーと敵の弾
@@ -288,7 +289,16 @@ int CollisionAll::Collision(void)
 					//敵の弾を消す
 					m_pEnemy[k]->DeleteBullet(j);
 					j--;
+
+					if (j < 0) {
+						next = true;
+						break;
+					}
 				}
+			}
+
+			if (next) {
+				break;
 			}
 
 				//自身
@@ -307,6 +317,11 @@ int CollisionAll::Collision(void)
 				attacked += m_pEnemy[k]->GetBulletAttack();
 				//コンボを途切れさせる
 				m_pScore->InitCombo();
+
+				if (j < 0) {
+					next = true;
+					break;
+				}
 			}
 
 				//ボム
@@ -319,6 +334,11 @@ int CollisionAll::Collision(void)
 				//敵の弾を消す
 				m_pEnemy[k]->DeleteBullet(j);
 				j--;
+
+				if (j < 0) {
+					next = true;
+					break;
+				}
 			}
 
 			//=================================================
@@ -354,7 +374,16 @@ int CollisionAll::Collision(void)
 							//敵の弾を消す
 							m_pEnemy[k]->DeleteBullet(j);
 							j--;
+
+							if (j < 0) {
+								next = true;
+								break;
+							}
 						}
+					}
+
+					if (next) {
+						break;
 					}
 				}
 
@@ -364,7 +393,8 @@ int CollisionAll::Collision(void)
 		}
 	}
 
-	//攻撃を受けたら、腕の切り離しを行う
+	//=======================================
+	// 攻撃を受けたら、腕の切り離しを行う
 	if (attacked > 0) {
 		//片方から切り離し
 		if (m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_NONE &&

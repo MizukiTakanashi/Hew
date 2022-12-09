@@ -12,11 +12,12 @@
 #include "BG.h"
 #include "player.h"
 #include "draw_object.h"
-//#include "enemy_set_pos.h"
 #include "management_enemy_normal.h"
 #include "management_enemy_laser.h"
 #include "management_enemy_gatoring.h"
 #include "management_enemy_missile.h"
+#include "management_enemy_attack.h"
+#include "management_enemy_barrier.h"
 #include "texture_useful.h"
 #include "player_hp.h"
 #include "management_explosion.h"
@@ -31,7 +32,6 @@
 #include "management_meteo.h"
 #include "management_enemy_public.h"
 #include "player_center.h"
-#include "management_enemy_attack.h"
 #include "Bom.h"
 
 class Game
@@ -52,10 +52,12 @@ private:
 		ENEMY,
 		ENEMY_PUBLIC,
 		ENEMY_ITEM,
+		ENEMY_BARRIER,
 		BULLET_CIRCLE_RED,
 		BULLET_CIRCLE_GREEN,
 		BULLET_SQUARE_GREEN,
 		LASER,
+		BARRIER,
 		EXPLOSION,
 		NUMBER,
 		MULTIPLY,
@@ -73,6 +75,8 @@ private:
 		ENEMY_PUBLIC,
 		ENEMY_METEO,
 		ENEMY_ATTCK,
+		ENEMY_BARRIER,
+		ENEMY_BARRIER_BARRIER,
 		ENEMY_ITEM,
 		PLAYER_BULLET,
 		BULLET_ENEMY,
@@ -112,6 +116,8 @@ private:
 	EnemyAttackManagement* m_pEnemyAttackManagement = nullptr;
 	Management_EnemyPublic* m_pEnemyPublicManagement = nullptr;
 	Management_Meteo* m_pMeteoManagement = nullptr;
+	EnemyBarrierManagement* m_pEnemyBarrierManagement = nullptr;
+	
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;
 	ItemManagement* m_pItemManagement = nullptr;
