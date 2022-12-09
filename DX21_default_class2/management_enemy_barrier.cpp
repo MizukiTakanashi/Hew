@@ -5,11 +5,16 @@
 //=======================================
 #include "management_enemy_barrier.h"
 
+//==========================
+// 定数の初期化
+//==========================
+const D3DXVECTOR2 EnemyBarrierManagement::BARRIER_SIZE = D3DXVECTOR2(50.0f, 50.0f);
+
 //=========================
 // 引数付きコンストラクタ
 //=========================
-EnemyBarrierManagement::EnemyBarrierManagement(DrawObject& pDrawObject1)
-	:EnemyManagement(ENEMY_NUM, ATTACK, 0), m_pDrawObjectEnemy(pDrawObject1)
+EnemyBarrierManagement::EnemyBarrierManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
+	:EnemyManagement(ENEMY_NUM, ATTACK, 0), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBarrier(pDrawObject2)
 {
 	m_pEnemy = new EnemyBarrier[ENEMY_NUM];
 }
@@ -25,7 +30,7 @@ void EnemyBarrierManagement::Update(const D3DXVECTOR2& PlayerPos)
 	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
 	{
 		//敵をセットする
-		EnemyBarrier temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
+		EnemyBarrier temp(m_pDrawObjectEnemy, m_pDrawObjectBarrier, m_SetEnemy[m_EnemyNum]);
 		m_pEnemy[EnemyManagement::GetObjNum()] = temp;
 		EnemyManagement::IncreaseObjNum(1);
 
@@ -34,7 +39,7 @@ void EnemyBarrierManagement::Update(const D3DXVECTOR2& PlayerPos)
 	}
 
 	//今いる敵の処理
-	for (int i = 0; i < GetObjNum(); i++) {
+	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
 		m_pEnemy[i].Update();
 	}
 }
@@ -79,4 +84,15 @@ void EnemyBarrierManagement::DeleteObj(int index_num)
 
 	//継承元の敵を消すを呼ぶ
 	EnemyManagement::DeleteObj(index_num);
+}
+
+//======================
+// バリア(弾)を消す
+//======================
+void EnemyBarrierManagement::DeleteBullet(int index_num)
+{
+	for (int i = index_num; i < EnemyManagement::GetBulletNum() - 1; i++) {
+		//m_pBarrier[i] = m_pBarrier[i + 1];
+	}
+	EnemyManagement::IncreaseBulletNum(-1);
 }

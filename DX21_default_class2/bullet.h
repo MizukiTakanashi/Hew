@@ -21,7 +21,7 @@ public:
 	Bullet(){}	//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
-	Bullet(DrawObject& pDrawObject, const D3DXVECTOR2& pos, const D3DXVECTOR2& size, const D3DXVECTOR2& mov, float rot)
+	Bullet(DrawObject& pDrawObject, const D3DXVECTOR2& pos, const D3DXVECTOR2& size, const D3DXVECTOR2& mov, float rot = 0.0f)
 		:GameObject(pDrawObject, pos, size, rot), m_mov(mov){}
 
 	~Bullet()override {}	//デストラクタ
