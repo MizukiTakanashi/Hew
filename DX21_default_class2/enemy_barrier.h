@@ -24,32 +24,45 @@ public:
 
 private:
 	//ここで初期化
-	static const int INVINCIBLE_FLAME = 30;	//敵の無敵時間
-	static const int HP_MAX = 2;			//敵のHP最大値
+	static const int INVINCIBLE_FLAME = 30;		//敵の無敵時間
+	static const int HP_MAX = 2;				//敵のHP最大値
+	static const int BARRIER_TIME_LIMIT = 200;	//バリアの時間
+	static const int BARRIER_INTERVAL = 0;		//バリアの出現間隔
 
 	//cppで初期化
-	static const float SPEED_X;			//敵のスピードY
-	static const float SPEED_Y;			//敵のスピードY
+	static const float SPEED_X;					//敵のスピードY
+	static const float SPEED_Y;					//敵のスピードY
+
+	static const D3DXVECTOR2 BARRIER_SIZE;		//バリアのサイズ
+	static const D3DXVECTOR2 INTERVAL_POS;			//敵とバリアの間隔
 
 
 //メンバ変数
 private:
+	GameObject* m_pBarrier = nullptr;	//バリア
+
 	float m_move_width = 0.0f;			//敵が動く時のcosカーブ
 	float m_init_posx = 0.0f;			//敵の初期位置X
-
-	bool m_enemyitem_make = false;		//アイテムを作るか否か
 
 	int m_hp = HP_MAX;					//敵の現在のHP
 	int m_invincible_flame = 0;			//無敵時間の残り
 
+	int m_barrier_time = -1;			//バリアがある時間のカウント
+	int m_barrier_interval_time = 0;	//次のバリアが生成される時間のカウント
+
+	int m_barrier_index = 0;			//バリア管理の方で作る、バリアのインデックス番号を記録
+
 
 //メンバ関数
 public:
-	EnemyBarrier() {}		//デフォルトコンストラクタ
+	//デフォルトコンストラクタ
+	EnemyBarrier() {}		
 
 	//引数付きコンストラクタ
-	EnemyBarrier(DrawObject& pDrawObject, const D3DXVECTOR2& pos)
-		:GameObject(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)), m_init_posx(pos.x) {}
+	EnemyBarrier(DrawObject& pDrawObject, DrawObject& pDrawObject2, const D3DXVECTOR2& pos)
+		:GameObject(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)),
+		m_pBarrier(new GameObject(pDrawObject2, pos + INTERVAL_POS, BARRIER_SIZE)),
+		m_init_posx(pos.x) {}
 
 	~EnemyBarrier()override {}	//デストラクタ
 
@@ -67,6 +80,12 @@ public:
 
 	//HPを返す
 	int GetHP(void) { return m_hp; }
+	
+	//バリアの描画
+	void DrawBarrier(void)const;
+
+	//バリアの座標を返す
+	const D3DXVECTOR2& GetBarrierPos(void)const { return m_pBarrier->GetPos(); }
 };
 
 #endif // !_ENEMY_BARRIER_H_

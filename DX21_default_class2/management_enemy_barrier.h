@@ -10,24 +10,28 @@
 
 #include "management_enemy.h"
 #include "enemy_barrier.h"
+#include "bullet.h"
 
 class EnemyBarrierManagement:public EnemyManagement
 {
 //定数
-private:
-	//ここで初期化
-	//敵自身
-	static const int ENEMY_NUM = 9;		//敵を出現させる数
-
 public:
 	//ここで初期化
-	//敵自身
-	static const int ATTACK = 5;		//攻撃値
+	static const int ATTACK = 5;			//敵自身の攻撃値
 
-	//メンバ変数
+private:
+	//ここで初期化
+	static const int ENEMY_NUM = 9;			//敵を出現させる数
+
+	//cppで初期化
+	static const D3DXVECTOR2 BARRIER_SIZE;	//バリアの大きさ
+
+
+//メンバ変数
 private:
 	EnemyBarrier* m_pEnemy = nullptr;	//敵のクラス
 	DrawObject m_pDrawObjectEnemy;		//敵の描画オブジェクト
+	DrawObject m_pDrawObjectBarrier;	//バリアの描画オブジェクト
 
 	//敵の位置配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
@@ -63,10 +67,12 @@ public:
 	}
 
 	//引数付きコンストラクタ
-	EnemyBarrierManagement(DrawObject& pDrawObject1);
+	EnemyBarrierManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2);
 
 	//デストラクタ
-	~EnemyBarrierManagement()override { delete[] m_pEnemy; }
+	~EnemyBarrierManagement()override { 
+		delete[] m_pEnemy;
+	}
 
 	//更新処理
 	void Update(const D3DXVECTOR2& PlayerPos);
@@ -80,11 +86,20 @@ public:
 	//指定した敵を消す
 	void DeleteObj(int index_num)override;
 
+	//指定したバリア(弾)を消す
+	void DeleteBullet(int index_num)override;
+
 	//指定した番号の敵の座標を返す(オーバーライド)
 	const D3DXVECTOR2& GetObjPos(int index_num)const override { return m_pEnemy[index_num].GetPos(); }
 
 	//指定した番号の敵のサイズを返す(オーバーライド)
 	const D3DXVECTOR2& GetObjSize(int index_num = 0)const override { return m_pEnemy[0].GetSize(); }
+
+	//指定した弾の座標を返す
+	//const D3DXVECTOR2& GetBulletPos(int index_num)const override { return m_pBarrier[index_num].GetPos(); }
+
+	//弾のサイズを返す
+	//const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override { return m_pBarrier[index_num].GetSize(); }
 };
 
 #endif // !_MANAGEMENT_ENEMY_BARRIER_H_
