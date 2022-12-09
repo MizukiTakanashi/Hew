@@ -95,8 +95,8 @@ void EnemyBarrierManagement::DeleteObj(int index_num)
 //======================
 void EnemyBarrierManagement::DeleteBullet(int index_num)
 {
-	//バリアを消す
-	m_pEnemy->DeleteBarrier();
-
-	EnemyManagement::IncreaseBulletNum(-1);
+	//バリアのHPがなくなったらバリアを消す
+	if (m_pEnemy->DeleteBarrier()) {
+		EnemyManagement::IncreaseBulletNum(-1);
+	}	
 }

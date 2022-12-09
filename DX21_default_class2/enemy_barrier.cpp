@@ -77,3 +77,19 @@ void EnemyBarrier::DrawBarrier(void) const
 		m_pBarrier->Draw();
 	}
 }
+
+//==========================
+// バリアを消す
+//==========================
+bool EnemyBarrier::DeleteBarrier(void)
+{
+	m_barrier_hp--;
+	
+	//バリアのHPがなくなったら...
+	if (m_barrier_hp < 0) {
+		m_barrier_interval_time = 0; 
+		m_barrier_time = -1;
+		return true;
+	}
+	return false;
+}

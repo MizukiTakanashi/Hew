@@ -28,6 +28,7 @@ private:
 	//ここで初期化
 	static const int INVINCIBLE_FLAME = 30;		//敵の無敵時間
 	static const int HP_MAX = 1;				//敵のHP最大値
+	static const int BARRIER_HP_MAX = 5;		//敵のバリアのHP最大値
 	static const int BARRIER_TIME_LIMIT = 200;	//バリアの時間
 	static const int BARRIER_INTERVAL = -2;		//バリアの出現間隔
 
@@ -48,10 +49,10 @@ private:
 	int m_hp = HP_MAX;					//敵の現在のHP
 	int m_invincible_flame = 0;			//無敵時間の残り
 
+	int m_barrier_hp = BARRIER_HP_MAX;	//バリアのHP
 	int m_barrier_time = 0;				//バリアがある時間のカウント
 	int m_barrier_interval_time = -1;	//次のバリアが生成される時間のカウント
-
-	int m_barrier_index = 0;			//バリア管理の方で作る、バリアのインデックス番号を記録
+	//int m_barrier_index = 0;			//バリア管理の方で作る、バリアのインデックス番号を記録
 
 
 //メンバ関数
@@ -89,7 +90,7 @@ public:
 	const D3DXVECTOR2& GetBarrierPos(void)const { return m_pBarrier->GetPos(); }
 
 	//バリアを消す
-	void DeleteBarrier(void) { m_barrier_interval_time = 0; m_barrier_time = -1; }
+	bool DeleteBarrier(void);
 
 	//バリアを作ったか
 	//bool IsBarrierMake(void) { return m_barrier_time == 0; }
