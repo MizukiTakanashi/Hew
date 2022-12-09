@@ -9,7 +9,6 @@
 #ifndef _BOM_H_
 #define _BOM_H_
 
-
 #include "game_object.h"
 #include "draw_object.h"
 

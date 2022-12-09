@@ -55,6 +55,7 @@ int CollisionAll::Collision(void)
 		//=================================================
 		// 敵の数分ループ
 		for (int j = 0; j < m_pEnemy[k]->GetObjNum(); j++) {
+			bool next = false;
 
 			//=================================================
 			// プレイヤーと敵
@@ -95,12 +96,20 @@ int CollisionAll::Collision(void)
 							m_pEnemy[k]->DeleteObj(j);
 
 							j--;
+							if (j < 0) {
+								next = true;
+								break;
+							}
 
 							//倒した敵の数を増やす
 							m_pScore->AddScore(1);
 						}
 					}
 				}
+			}
+
+			if (next) {
+				break;
 			}
 
 				//自身
@@ -144,6 +153,11 @@ int CollisionAll::Collision(void)
 					m_pEnemy[k]->DeleteObj(j);
 
 					j--;
+
+					if (j < 0) {
+						next = true;
+						break;
+					}
 
 					//倒した敵の数を増やす
 					m_pScore->AddScore(1);
@@ -189,6 +203,11 @@ int CollisionAll::Collision(void)
 
 							j--;
 
+							if (j < 0) {
+								next = true;
+								break;
+							}
+
 							//倒した敵の数を増やす
 							m_pScore->AddScore(1);
 						}
@@ -197,6 +216,10 @@ int CollisionAll::Collision(void)
 
 				//腕のポインタを取ってくる(二回目は右)
 				pArm = m_pPlayerRight;
+			}
+
+			if (next) {
+				break;
 			}
 
 			//=================================================
@@ -250,11 +273,20 @@ int CollisionAll::Collision(void)
 
 									j--;
 
+									if (j < 0) {
+										next = true;
+										break;
+									}
+
 									//倒した敵の数を増やす
 									m_pScore->AddScore(1);
 								}
 							}
 						}
+					}
+
+					if (next) {
+						break;
 					}
 				}
 
