@@ -32,22 +32,22 @@ void EnemyAttackManagement::Update(const D3DXVECTOR2& PlayerPos)
 	//今いる敵の処理
 	for (int i = 0; i < GetObjNum(); i++) {
 		m_pEnemyAttack[i].Update();
-
-		//時間になったら突っ込む
-		if (m_pEnemyAttack[i].GetFlagAttack()) {
-			//プレイヤーの後を追う(ホーミング弾)
-			D3DXVECTOR2 movTemp = PlayerPos - m_pEnemyAttack[i].GetPos();
-			D3DXVECTOR2 rotposTemp = m_pEnemyAttack[i].GetPos() - PlayerPos;
-			D3DXVec2Normalize(&movTemp, &movTemp);
-			movTemp *= ATTACK_SPEED;
-			m_pEnemyAttack[i].MovePos(movTemp);
-		
-			if (m_pEnemyAttack[i].GetFlagExplosion())
-			{
-				
-				m_pEnemyAttack[i].MovePos(D3DXVECTOR2(0.0f, 0.0f));
-				//DeleteObj(i);
+		if (m_pEnemyAttack[i].GetFlagExplosion() == false) {
+			//時間になったら突っ込む
+			if (m_pEnemyAttack[i].GetFlagAttack()) {
+				//プレイヤーの後を追う(ホーミング弾)
+				D3DXVECTOR2 movTemp = PlayerPos - m_pEnemyAttack[i].GetPos();
+				D3DXVECTOR2 rotposTemp = m_pEnemyAttack[i].GetPos() - PlayerPos;
+				D3DXVec2Normalize(&movTemp, &movTemp);
+				movTemp *= ATTACK_SPEED;
+				m_pEnemyAttack[i].MovePos(movTemp);
 			}
+		}
+		if (m_pEnemyAttack[i].GetFlagExplosion()==true)
+		{
+
+			m_pEnemyAttack[i].MovePos(D3DXVECTOR2(0.0f, 0.0f));
+			DeleteObj(i);
 		}
 	}
 }

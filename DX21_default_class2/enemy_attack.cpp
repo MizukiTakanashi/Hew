@@ -35,13 +35,12 @@ void EnemyAttack::Update(void)
 		float rad = D3DXToRadian(m_move_width);
 		SetPos(D3DXVECTOR2(m_init_posx + cosf(rad) * RANGE, GetPos().y));
 		m_move_width += SPEED_X;
-
 		//ŽžŠÔ‚ª—ˆ‚½‚ç“ËŒ‚‚·‚é
-		if (m_attack_count++ > ATTACK_TIME) {
+		if (m_attack_count++ == ATTACK_TIME) {
 			m_shot = true;
-			m_attack_count = 0;
 		}
 	}
+
 	//“ËŒ‚‚ðŽn‚ß‚½‚ç
 	if (m_shot == true)
 	{
@@ -50,7 +49,7 @@ void EnemyAttack::Update(void)
 		{
 			//”š”­ƒtƒ‰ƒO‚ðtrue‚É‚·‚é
 			m_explosion = true;
-
+			m_shot = false;
 		}
 	}
 }
