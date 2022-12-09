@@ -132,7 +132,7 @@ int CollisionAll::Collision(void)
 
 				//敵のHPを減らす
 				//敵が死んだら...
-				if (m_pEnemy[k]->ReduceHP(j, 100))
+				if (m_pEnemy[k]->ReduceHP(j, m_pBom->GetBombAttack()))
 				{
 					//ドロップする敵であれば...
 					if (k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE && k != (int)TYPE::ATTACK) {

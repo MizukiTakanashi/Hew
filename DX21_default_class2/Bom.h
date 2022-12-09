@@ -19,6 +19,7 @@ class Bom :public GameObject
 private:
 	//ここで初期化
 	static const int TIME_LIMIT = 60;	//ボムを出してる時間
+	static const int ATTACK = 10;		//ボムの攻撃力
 
 
 //メンバ変数
@@ -52,6 +53,9 @@ public:
 		}
 		return true;
 	}
+
+	//ボムの攻撃力を返す
+	int GetBombAttack(void)const { return ATTACK; }
 };
 
 #endif // !_BOM_H_
