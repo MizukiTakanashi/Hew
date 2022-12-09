@@ -12,7 +12,6 @@
 #include "BG.h"
 #include "player.h"
 #include "draw_object.h"
-//#include "enemy_set_pos.h"
 #include "management_enemy_normal.h"
 #include "management_enemy_laser.h"
 #include "management_enemy_gatoring.h"

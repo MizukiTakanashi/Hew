@@ -2,7 +2,6 @@
 #include "enemy_public.h"
 #include "draw_object.h"
 #include "management.h"
-//#include"enemy_set_pos.h"
 #include "management_enemy.h"
 class Management_EnemyPublic :public EnemyManagement
 {
@@ -16,7 +15,6 @@ private:
 	//ƒƒ“ƒo•Ï”
 	EnemyPublic* m_pEnemyPublic = nullptr;
 	DrawObject m_pDrawObjectEnemyPublic;
-	//EnemySetPos m_pEnemySetPos;
 
 	//“G‚Ì”z—ñ
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {

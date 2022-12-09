@@ -13,7 +13,6 @@
 #include "enemy_laser.h"
 #include "laser.h"
 #include "draw_object.h"
-//#include "enemy_set_pos.h"
 
 class EnemyLaserManagement:public EnemyManagement
 {
@@ -42,7 +41,6 @@ private:
 	Laser* m_pLaser = nullptr;
 	DrawObject m_pDrawObjectEnemy;
 	DrawObject m_pDrawObjectLaser;
-	//EnemySetPos m_pEnemySetPos;
 
 	int m_EnemyItem_num = 0;	//“G‚ÌƒAƒCƒeƒ€‚Ì”
 
