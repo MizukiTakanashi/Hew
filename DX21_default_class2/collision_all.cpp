@@ -276,7 +276,7 @@ int CollisionAll::Collision(void)
 			
 				//弾
 				//弾
-			for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
+			/*for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
 				if (Collision::ColBox(m_pPlayer->GetBulletPos(i), m_pEnemy[k]->GetBulletPos(j),
 					m_pPlayer->GetBulletSize(), m_pEnemy[k]->GetBulletSize())) {
 					//爆発をセット
@@ -295,7 +295,7 @@ int CollisionAll::Collision(void)
 						break;
 					}
 				}
-			}
+			}*/
 
 			if (next) {
 				break;
@@ -351,10 +351,10 @@ int CollisionAll::Collision(void)
 				//弾
 
 			//腕についているアイテムのポインタを取ってくる(初期は左から)
-			inhPlayerArm* pArmItem = m_pPlayerLeft->GetArmPointer();
+			//inhPlayerArm* pArmItem = m_pPlayerLeft->GetArmPointer();
 
 			//右と左、両方行う
-			for (int m = 0; m < 2; m++) {
+			/*for (int m = 0; m < 2; m++) {
 				//ポインターがヌルであれば処理を行わない
 				if (pArmItem != nullptr) {
 					for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
@@ -389,7 +389,7 @@ int CollisionAll::Collision(void)
 
 				//腕についているアイテムのポインタを取ってくる(二回目は右)
 				pArmItem = m_pPlayerRight->GetArmPointer();
-			}
+			}*/
 		}
 	}
 
