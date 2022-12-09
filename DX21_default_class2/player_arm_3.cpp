@@ -10,7 +10,7 @@
 //==========================
 const float PlayerArm3::BULLET_SIZE_X = 20.0f;
 const float PlayerArm3::BULLET_SIZE_Y = 20.0f;
-const float PlayerArm3::BULLET_SPEED = 10.0f;
+const float PlayerArm3::BULLET_SPEED = 20.0f;
 
 //==========================
 // çXêVèàóù
