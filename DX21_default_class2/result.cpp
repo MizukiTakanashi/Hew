@@ -23,13 +23,13 @@ const D3DXVECTOR2 Result::NUMBER_SIZE = D3DXVECTOR2(50.0f, 50.0f);
 //==========================
 Result::Result()
 {
-	m_BGM = LoadSound((char*)"data\\BGM\\silky_sky_away (online-audio-converter.com).wav");	//サウンドのロード
-	PlaySound(m_BGM, -1);
-	SetVolume(m_BGM, 0.05f);
+	//m_BGM = LoadSound((char*)"data\\BGM\\silky_sky_away (online-audio-converter.com).wav");	//サウンドのロード
+	//PlaySound(m_BGM, -1);
+	//SetVolume(m_BGM, 0.05f);
 
-	m_pTexUse = new TextureUseful((char*)"data\\texture\\result.png");
-	m_pDrawOb = new DrawObject(*m_pTexUse);
-	m_pBG = new UI(*m_pDrawOb, D3DXVECTOR2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT));
+	//m_pTexUse = new TextureUseful((char*)"data\\texture\\result.png");
+	//m_pDrawOb = new DrawObject(*m_pTexUse);
+	//m_pBG = new UI(*m_pDrawOb, D3DXVECTOR2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT));
 }
 
 //=========================
