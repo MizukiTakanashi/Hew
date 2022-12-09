@@ -32,14 +32,15 @@ private:
 	static const int HP_MAX;			//敵のHP最大値
 	D3DXVECTOR2 m_mov = D3DXVECTOR2(0.0f, 0.0f);	//移動量
 	int m_time = 0;									//弾が出来てからの経過時間
-	int explosion_time = 0;
+	
 
 
 	//メンバ変数
 private:
-	int m_attack_count = 0;				//突撃するまでのカウント
-	bool m_attack_time = false;			//突撃するか否か
-	bool m_Attack_time;
+	int m_attack_count = 0;			//突撃するまでのカウント
+	bool m_shot = false;			//突撃するか否か
+	int explosion_time = 0;			//突撃してから爆発するまでの時間計算
+	bool m_explosion = false;		//爆発するか否か
 	float m_move_width = 0.0f;			//敵が動く時のcosカーブ
 	float m_init_posx = 0.0f;			//敵の初期位置X
 
@@ -60,8 +61,8 @@ public:
 	void Update(void);	//更新処理
 
 	//弾を作るか否かのフラグを返す
-	bool GetFlagAttack()const { return m_attack_time; }
-	bool GetFlagExplosion()const { return m_Attack_time; }
+	bool GetFlagAttack()const { return m_shot; }
+	bool GetFlagExplosion()const { return m_explosion; }
 
 	//HPを減らす
 	void ReduceHP(int amount) { m_hp -= amount; }
@@ -75,5 +76,5 @@ public:
 	//弾が出来てからの経過時間を返す
 
 	//突撃してからの時間を返す
-	int GetAttackTime(void)const { return m_Attack_time; }
+	int GetAttackTime(void)const { return m_explosion; }
 };

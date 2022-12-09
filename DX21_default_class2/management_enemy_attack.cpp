@@ -41,6 +41,13 @@ void EnemyAttackManagement::Update(const D3DXVECTOR2& PlayerPos)
 			D3DXVec2Normalize(&movTemp, &movTemp);
 			movTemp *= ATTACK_SPEED;
 			m_pEnemyAttack[i].MovePos(movTemp);
+		
+			if (m_pEnemyAttack[i].GetFlagExplosion())
+			{
+				
+				m_pEnemyAttack[i].MovePos(D3DXVECTOR2(0.0f, 0.0f));
+				//DeleteObj(i);
+			}
 		}
 	}
 }

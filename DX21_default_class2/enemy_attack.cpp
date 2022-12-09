@@ -25,11 +25,12 @@ void EnemyAttack::Update(void)
 {
 	GameObject::MovePos(m_mov); m_time++;
 	//止まる場所まで移動する
-	if (GameObject::GetPos().y < STOP_POS_Y) {
-		GameObject::MovePos(D3DXVECTOR2(0.0f, SPEED_Y));
-	}
-	if (m_attack_time == false) {
-
+	
+	//発射されてないとき
+	if (m_shot == false) {
+		if (GameObject::GetPos().y < STOP_POS_Y) {
+			GameObject::MovePos(D3DXVECTOR2(0.0f, SPEED_Y));
+		}
 		//左右に動く
 		float rad = D3DXToRadian(m_move_width);
 		SetPos(D3DXVECTOR2(m_init_posx + cosf(rad) * RANGE, GetPos().y));
@@ -37,16 +38,19 @@ void EnemyAttack::Update(void)
 
 		//時間が来たら突撃する
 		if (m_attack_count++ > ATTACK_TIME) {
-			m_attack_time = true;
+			m_shot = true;
 			m_attack_count = 0;
 		}
 	}
-	if (m_attack_time == true)
+	//突撃を始めたら
+	if (m_shot == true)
 	{
 		explosion_time++;
-		if (explosion_time == 300)
+		if (explosion_time >= 300)
 		{
-			m_Attack_time = true;
+			//爆発フラグをtrueにする
+			m_explosion = true;
+
 		}
 	}
 }
