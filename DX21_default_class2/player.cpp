@@ -25,7 +25,7 @@ const float Player::SPEED = 10.0f;
 const float Player::BULLET_SIZE_X = 15.0f;
 const float Player::BULLET_SIZE_Y = 40.0f;
 const float Player::BULLET_SPEED_X = 0.0f;
-const float Player::BULLET_SPEED_Y = -10.5f;
+const float Player::BULLET_SPEED_Y = -30.0f;
 const D3DXCOLOR Player::INVINCIBLE__COLOR = D3DXCOLOR(1.0f, 0.3f, 0.3f, 1.0f);			//プレイヤー無敵時間の色
 
 //======================

@@ -13,7 +13,6 @@
 #include "enemy_normal.h"
 #include "bullet.h"
 #include "draw_object.h"
-//#include "enemy_set_pos.h"
 
 class EnemyNormalManagement :public EnemyManagement
 {
@@ -43,7 +42,6 @@ private:
 	Bullet* m_pBullet = nullptr;
 	DrawObject m_pDrawObjectEnemy;
 	DrawObject m_pDrawObjectBullet;
-	//EnemySetPos m_pEnemySetPos;
 
 	int m_EnemyItem_num = 0;	//“G‚ÌƒAƒCƒeƒ€‚Ì”
 

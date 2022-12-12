@@ -43,7 +43,6 @@ private:
 	Bullet* m_pBullet = nullptr;
 	DrawObject m_pDrawObjectEnemy;
 	DrawObject m_pDrawObjectBullet;
-	//EnemySetPos m_pEnemySetPos;
 
 	int m_EnemyItem_num = 0;	//“G‚ÌƒAƒCƒeƒ€‚Ì”
 
