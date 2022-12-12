@@ -30,15 +30,21 @@ private:
 private:
 	int m_BGM = 0;
 
-	TextureUseful* m_pTexUse = nullptr;
-	DrawObject* m_pDrawOb = nullptr;
+	TextureUseful* m_pTexUse[5] = { nullptr, nullptr , nullptr , nullptr };
+	DrawObject* m_pDrawOb[5] = { nullptr, nullptr , nullptr , nullptr };
 	UI* m_pBG = nullptr;
+	UI* m_pStageTitle = nullptr;
+	UI* m_pText_title = nullptr;
+	UI* m_pText_Retry = nullptr;
+	UI* m_pCursor = nullptr;
 	Score* m_pScore = nullptr;
+
+	bool m_select_retry = false; //どっちを選択しているか
 
 public:
 	Result();	//デフォルトコンストラクタ
 
-	Result(Score* pNumber);
+	Result(Score* pNumber, STAGE stagenum);
 
 	~Result();	//デストラクタ
 
@@ -47,6 +53,19 @@ public:
 
 	//描画処理
 	void Draw(void)const;
+
+	//選択を変える
+	void Select(void)
+	{
+		if (m_select_retry)
+		{
+			m_select_retry = false;
+		}
+		else
+		{
+			m_select_retry = true;
+		}
+	}
 };
 
 #endif // !_RESULT_H_
