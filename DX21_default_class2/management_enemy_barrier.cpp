@@ -8,7 +8,8 @@
 //==========================
 // 定数の初期化
 //==========================
-const D3DXVECTOR2 EnemyBarrierManagement::BARRIER_SIZE = D3DXVECTOR2(50.0f, 50.0f);
+const D3DXVECTOR2 EnemyBarrierManagement::BARRIER_SIZE = D3DXVECTOR2(50.0f, 10.0f);
+const D3DXVECTOR2 EnemyBarrierManagement::INTERVAL_POS = D3DXVECTOR2(0.0f, 60.0f);
 
 //=========================
 // 引数付きコンストラクタ
@@ -17,6 +18,12 @@ EnemyBarrierManagement::EnemyBarrierManagement(DrawObject& pDrawObject1, DrawObj
 	:EnemyManagement(ENEMY_NUM, ATTACK, 0, BARRIER_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBarrier(pDrawObject2)
 {
 	m_pEnemy = new EnemyBarrier[ENEMY_NUM];
+	m_pBarrier = new GameObject[ENEMY_NUM];
+
+	//バリアのHP初期化
+	for (int i = 0; i < ENEMY_NUM; i++) {
+		m_BarrierHP[i] = BARRIER_HP_MAX;
+	}
 }
 
 //======================
@@ -30,11 +37,16 @@ void EnemyBarrierManagement::Update()
 	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
 	{
 		//敵をセットする
-		EnemyBarrier temp(m_pDrawObjectEnemy, m_pDrawObjectBarrier, m_SetEnemy[m_EnemyNum]);
+		EnemyBarrier temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
 		m_pEnemy[EnemyManagement::GetObjNum()] = temp;
-		EnemyManagement::IncreaseObjNum(1);
 
-		//バリア数を増やす
+		//バリアをセットする
+		GameObject temp1(m_pDrawObjectBarrier, m_SetEnemy[m_EnemyNum], BARRIER_SIZE);
+		m_pBarrier[EnemyManagement::GetOtherNum()] = temp1;
+		m_BarrierHP[EnemyManagement::GetOtherNum()] = BARRIER_HP_MAX;
+		m_pEnemy[EnemyManagement::GetObjNum()].SetBarrierIndex(EnemyManagement::GetOtherNum());
+		
+		EnemyManagement::IncreaseObjNum(1);
 		EnemyManagement::IncreaseOtherNum(1);
 
 		//セットした敵の数を増やす
@@ -44,6 +56,15 @@ void EnemyBarrierManagement::Update()
 	//今いる敵の処理
 	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
 		m_pEnemy[i].Update();
+
+		//今あるバリアの処理
+		for (int j = 0; j < EnemyManagement::GetOtherNum(); j++) {
+			//敵が持っているバリアのインデックス番号と同じであれば...
+			if (m_pEnemy[i].GetBarrierIndex() == j) {
+				//バリアを敵の前に置く
+				m_pBarrier[j].SetPos(m_pEnemy[i].GetPos() + INTERVAL_POS);
+			}
+		}
 	}
 }
 
@@ -54,7 +75,10 @@ void EnemyBarrierManagement::Draw(void)const
 {
 	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
 		m_pEnemy[i].Draw();
-		m_pEnemy[i].DrawBarrier();
+	}
+
+	for (int i = 0; i < EnemyManagement::GetOtherNum(); i++) {
+		m_pBarrier[i].Draw();
 	}
 }
 
@@ -81,8 +105,10 @@ bool EnemyBarrierManagement::ReduceHP(int index_num, int reduceHP)
 //======================
 bool EnemyBarrierManagement::ReduceOtherHP(int index_num, int reduceHP)
 {
+	m_BarrierHP[index_num] -= reduceHP;
+
 	//HPが0以下なら...
-	if (m_pEnemy[index_num].DeleteBarrier())
+	if (m_BarrierHP[index_num] <= 0)
 	{
 		//敵が死んだフラグを返す
 		return true;
@@ -97,6 +123,9 @@ bool EnemyBarrierManagement::ReduceOtherHP(int index_num, int reduceHP)
 //======================
 void EnemyBarrierManagement::DeleteObj(int index_num)
 {
+	//敵に付随しているバリアを消す
+	DeleteOther(m_pEnemy[index_num].GetBarrierIndex());
+
 	//敵を消す
 	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
 		m_pEnemy[i] = m_pEnemy[i + 1];
@@ -104,4 +133,26 @@ void EnemyBarrierManagement::DeleteObj(int index_num)
 
 	//継承元の敵を消すを呼ぶ
 	EnemyManagement::DeleteObj(index_num);
+}
+
+//======================
+// バリアを消す
+//======================
+void EnemyBarrierManagement::DeleteOther(int index_num)
+{
+	for (int i = index_num; i < EnemyManagement::GetOtherNum() - 1; i++) {
+		m_pBarrier[i] = m_pBarrier[i + 1];
+
+		//バリアのインデックス番号を書き換え
+		for (int j = 0; j < EnemyManagement::GetObjNum(); j++) {
+			if (m_pEnemy[j].GetBarrierIndex() == i + 1) {
+				m_pEnemy[j].SetBarrierIndex(m_pEnemy[j].GetBarrierIndex() - 1);
+			}
+		}
+
+		m_BarrierHP[i] = m_BarrierHP[i + 1];
+	}
+
+	//継承元の別オブジェクトを消すを呼ぶ
+	EnemyManagement::DeleteOther(index_num);
 }

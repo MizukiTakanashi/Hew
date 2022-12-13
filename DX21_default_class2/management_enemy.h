@@ -51,7 +51,7 @@ public:
 
 	//指定した番号の別オブジェクトのHPを減らす 敵が死んだらtrueを返す
 	//(オーバーライド用)
-	virtual bool ReduceOtherHP(int index_num, int reduceHP) = 0;
+	virtual bool ReduceOtherHP(int index_num, int reduceHP) { return false; }
 
 	//消したオブジェクトの番号を返す(ホーミング弾用)
 	int GetDeleteObjIndex(void)const { return m_obj_delete_index; }
@@ -106,10 +106,10 @@ public:
 	virtual const D3DXVECTOR2& GetBulletSize(int index_num = 0)const = 0;
 
 	//指定した番号の別オブジェクトの座標を返す(オーバーライド用)
-	virtual const D3DXVECTOR2& GetOtherPos(int index_num)const{};
+	virtual const D3DXVECTOR2& GetOtherPos(int index_num)const { return D3DXVECTOR2(-30.0f, -30.0f); };
 
 	//指定した番号の別オブジェクトのサイズを返す(オーバーライド用)
-	virtual const D3DXVECTOR2& GetOtherSize(int index_num = 0)const{};
+	virtual const D3DXVECTOR2& GetOtherSize(int index_num = 0)const{ return D3DXVECTOR2(0.0f, 0.0f); };
 
 };
 

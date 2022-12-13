@@ -18,6 +18,7 @@ public:
 	//ここで初期化
 	static const int ATTACK = 5;			//敵自身の攻撃値
 	static const int BARRIER_ATTACK = 0;	//バリアの攻撃値
+	static const int BARRIER_HP_MAX = 5;	//敵のバリアのHP最大値
 
 private:
 	//ここで初期化
@@ -25,12 +26,13 @@ private:
 
 	//cppで初期化
 	static const D3DXVECTOR2 BARRIER_SIZE;	//バリアの大きさ
-
+	static const D3DXVECTOR2 INTERVAL_POS;	//敵とバリアの間隔
 
 //メンバ変数
 private:
 	EnemyBarrier* m_pEnemy = nullptr;	//敵のクラス
 	GameObject* m_pBarrier = nullptr;	//バリア
+	int m_BarrierHP[ENEMY_NUM];			//バリアのHP
 	DrawObject m_pDrawObjectEnemy;		//敵の描画オブジェクト
 	DrawObject m_pDrawObjectBarrier;	//バリアの描画オブジェクト
 
@@ -65,6 +67,11 @@ public:
 	//デフォルトコンストラクタ
 	EnemyBarrierManagement() {
 		m_pEnemy = new EnemyBarrier[ENEMY_NUM];
+		m_pBarrier = new GameObject[ENEMY_NUM];
+
+		for (int i = 0; i < ENEMY_NUM; i++) {
+			m_BarrierHP[i] = BARRIER_HP_MAX;
+		}
 	}
 
 	//引数付きコンストラクタ
@@ -73,6 +80,7 @@ public:
 	//デストラクタ
 	~EnemyBarrierManagement()override { 
 		delete[] m_pEnemy;
+		delete[] m_pBarrier;
 	}
 
 	//更新処理
@@ -91,8 +99,11 @@ public:
 	//指定した敵を消す
 	void DeleteObj(int index_num)override;
 
-	//指定したバリア(弾)を消す
+	//指定した弾を消す(尚使ってない)
 	void DeleteBullet(int index_num)override{}
+
+	//指定したバリアを消す
+	void DeleteOther(int index_num)override;
 
 	//指定した番号の敵の座標を返す(オーバーライド)
 	const D3DXVECTOR2& GetObjPos(int index_num)const override { return m_pEnemy[index_num].GetPos(); }
@@ -101,10 +112,16 @@ public:
 	const D3DXVECTOR2& GetObjSize(int index_num = 0)const override { return m_pEnemy[0].GetSize(); }
 
 	//指定した弾の座標を返す
-	const D3DXVECTOR2& GetBulletPos(int index_num)const override { return m_pEnemy[index_num].GetBarrierPos(); }
+	const D3DXVECTOR2& GetBulletPos(int index_num)const override { return D3DXVECTOR2(-30.0f, -30.0f); }
 
 	//弾のサイズを返す
-	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override { return EnemyBarrier::BARRIER_SIZE; }
+	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override { return D3DXVECTOR2(0.0f, 0.0f);}
+
+	//指定した番号のバリアの座標を返す(オーバーライド)
+	const D3DXVECTOR2& GetOtherPos(int index_num)const override { return m_pBarrier[index_num].GetPos(); };
+
+	//指定した番号のバリアのサイズを返す(オーバーライド)
+	const D3DXVECTOR2& GetOtherSize(int index_num = 0)const override { return m_pBarrier[index_num].GetSize(); };
 };
 
 #endif // !_MANAGEMENT_ENEMY_BARRIER_H_
