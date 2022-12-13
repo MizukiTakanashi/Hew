@@ -50,6 +50,7 @@ void EnemyAttack::Update(void)
 			//”š”­ƒtƒ‰ƒO‚ðtrue‚É‚·‚é
 			m_explosion = true;
 			m_shot = false;
+			m_bullet_make = true;
 		}
 	}
 }

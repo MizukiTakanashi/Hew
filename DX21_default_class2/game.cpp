@@ -180,7 +180,7 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER_LASER]);
 	m_pEnemyGatoringManagement = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY]);
 	m_pEnemyPublicManagement = new Management_EnemyPublic(m_pDrawObject[(int)DRAW_TYPE::ENEMY_PUBLIC]);
-	m_pEnemyAttackManagement = new EnemyAttackManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ATTCK]);
+	m_pEnemyAttackManagement = new EnemyAttackManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ATTCK], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY]);
 	m_pMeteoManagement = new Management_Meteo(m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO]);
 	m_pEnemyBarrierManagement = new EnemyBarrierManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER], m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
 
