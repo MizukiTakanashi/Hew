@@ -48,6 +48,8 @@ private:
 
 	int m_hp = HP_MAX;					//敵の現在のHP
 
+
+	bool m_bullet_make = false;			//弾を作るか否か
 	//メンバ関数
 public:
 	EnemyAttack() {}		//デフォルトコンストラクタ
@@ -77,4 +79,8 @@ public:
 
 	//突撃してからの時間を返す
 	int GetAttackTime(void)const { return m_explosion; }
+	//弾を作った
+	void BulletMake() { m_bullet_make = false; }
+	//弾を作るか否かのフラグを返す
+	bool GetFlagBulletMake()const { return m_bullet_make; }
 };
