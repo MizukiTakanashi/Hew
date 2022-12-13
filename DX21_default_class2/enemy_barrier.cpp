@@ -38,12 +38,7 @@ void EnemyBarrier::Update(void)
 
 	//============================
 	// バリア
-
-	if (m_barrier_time >= 0) {
-		//バリアの座標を敵の隣にセット
-		m_pBarrier->SetPos(GameObject::GetPos() + INTERVAL_POS);
-	}
-
+	
 	//バリアが出現していたら...
 	//if (m_barrier_time >= 0) {
 	//	//バリアの座標を敵の隣にセット
@@ -68,28 +63,18 @@ void EnemyBarrier::Update(void)
 }
 
 //==========================
-// バリアの描画処理
+// バリアのHPを減らす
 //==========================
-void EnemyBarrier::DrawBarrier(void) const
+bool EnemyBarrier::ReduceBarrierHP(int reduce)
 {
-	//バリアが出現していたら...
-	if (m_barrier_time >= 0) {
-		m_pBarrier->Draw();
-	}
-}
+	m_barrier_hp -= reduce;
 
-//==========================
-// バリアを消す
-//==========================
-bool EnemyBarrier::DeleteBarrier(void)
-{
-	m_barrier_hp--;
-	
-	//バリアのHPがなくなったら...
+	//HPがなくなったら...
 	if (m_barrier_hp < 0) {
-		m_barrier_interval_time = 0; 
-		m_barrier_time = -1;
+		//死んだフラグをオン
 		return true;
 	}
+
+	//死んでいないフラグをオン
 	return false;
 }

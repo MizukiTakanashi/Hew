@@ -14,7 +14,7 @@ const D3DXVECTOR2 EnemyBarrierManagement::BARRIER_SIZE = D3DXVECTOR2(50.0f, 50.0
 // 引数付きコンストラクタ
 //=========================
 EnemyBarrierManagement::EnemyBarrierManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
-	:EnemyManagement(ENEMY_NUM, ATTACK, 0), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBarrier(pDrawObject2)
+	:EnemyManagement(ENEMY_NUM, ATTACK, 0, BARRIER_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBarrier(pDrawObject2)
 {
 	m_pEnemy = new EnemyBarrier[ENEMY_NUM];
 }
@@ -35,7 +35,7 @@ void EnemyBarrierManagement::Update()
 		EnemyManagement::IncreaseObjNum(1);
 
 		//バリア数を増やす
-		EnemyManagement::IncreaseBulletNum(1);
+		EnemyManagement::IncreaseOtherNum(1);
 
 		//セットした敵の数を増やす
 		m_EnemyNum++;
@@ -77,6 +77,22 @@ bool EnemyBarrierManagement::ReduceHP(int index_num, int reduceHP)
 }
 
 //======================
+// バリアのHPを減らす
+//======================
+bool EnemyBarrierManagement::ReduceOtherHP(int index_num, int reduceHP)
+{
+	//HPが0以下なら...
+	if (m_pEnemy[index_num].DeleteBarrier())
+	{
+		//敵が死んだフラグを返す
+		return true;
+	}
+
+	//敵が死んでないフラグを返す
+	return false;
+}
+
+//======================
 // 敵を消す
 //======================
 void EnemyBarrierManagement::DeleteObj(int index_num)
@@ -88,15 +104,4 @@ void EnemyBarrierManagement::DeleteObj(int index_num)
 
 	//継承元の敵を消すを呼ぶ
 	EnemyManagement::DeleteObj(index_num);
-}
-
-//======================
-// バリア(弾)を消す
-//======================
-void EnemyBarrierManagement::DeleteBullet(int index_num)
-{
-	//バリアのHPがなくなったらバリアを消す
-	if (m_pEnemy->DeleteBarrier()) {
-		EnemyManagement::IncreaseBulletNum(-1);
-	}	
 }

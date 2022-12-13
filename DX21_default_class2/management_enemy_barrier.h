@@ -10,7 +10,6 @@
 
 #include "management_enemy.h"
 #include "enemy_barrier.h"
-#include "bullet.h"
 
 class EnemyBarrierManagement:public EnemyManagement
 {
@@ -18,6 +17,7 @@ class EnemyBarrierManagement:public EnemyManagement
 public:
 	//ここで初期化
 	static const int ATTACK = 5;			//敵自身の攻撃値
+	static const int BARRIER_ATTACK = 0;	//バリアの攻撃値
 
 private:
 	//ここで初期化
@@ -30,6 +30,7 @@ private:
 //メンバ変数
 private:
 	EnemyBarrier* m_pEnemy = nullptr;	//敵のクラス
+	GameObject* m_pBarrier = nullptr;	//バリア
 	DrawObject m_pDrawObjectEnemy;		//敵の描画オブジェクト
 	DrawObject m_pDrawObjectBarrier;	//バリアの描画オブジェクト
 
@@ -83,11 +84,15 @@ public:
 	//指定したのHPを減らす　敵が死んだらtrueを返す
 	bool ReduceHP(int index_num, int reduceHP)override;
 
+	//指定した番号の別オブジェクトのHPを減らす 敵が死んだらtrueを返す
+	//(オーバーライド用)
+	bool ReduceOtherHP(int index_num, int reduceHP)override;
+
 	//指定した敵を消す
 	void DeleteObj(int index_num)override;
 
 	//指定したバリア(弾)を消す
-	void DeleteBullet(int index_num)override;
+	void DeleteBullet(int index_num)override{}
 
 	//指定した番号の敵の座標を返す(オーバーライド)
 	const D3DXVECTOR2& GetObjPos(int index_num)const override { return m_pEnemy[index_num].GetPos(); }
