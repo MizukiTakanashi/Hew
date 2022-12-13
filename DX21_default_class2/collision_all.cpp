@@ -329,10 +329,6 @@ int CollisionAll::Collision(void)
 				}
 			}*/
 
-			if (next) {
-				break;
-			}
-
 				//自身
 				//弾
 			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetBulletPos(j),
