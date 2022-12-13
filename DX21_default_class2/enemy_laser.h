@@ -45,10 +45,10 @@ private:
 
 	bool m_enemyitem_make = false;		//アイテムを作るか否か
 
-	int m_laser_index = -1;	//レーザー番号
+	int m_laser_index = -1;				//レーザー番号
 
 	int m_hp = HP_MAX;					//敵の現在のHP
-	int m_invincible_flame = 0; //無敵時間の残り
+	int m_invincible_flame = 0;			//無敵時間の残り
 
 
 //メンバ関数
