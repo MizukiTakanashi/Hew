@@ -15,16 +15,24 @@ private:
 
 	static const float ATTACK_SPEED;		//スピード
 
+	//cppで初期化
+	//弾
+	static const float BULLET_SIZE_X;		//サイズX
+	static const float BULLET_SIZE_Y;		//サイズY
+	static const float BULLET_SPEED;		//スピード
 public:
 	//ここで初期化
 	//敵自身
 	static const int ATTACK = 1;			//攻撃値
-
+	//弾
+	static const int BULLET_ATTACK = 1;		//攻撃値
 
 	//メンバ変数
 private:
-	EnemyAttack* m_pEnemyAttack = nullptr;
-	DrawObject m_pDrawObjectEnemy;
+	EnemyAttack* m_pEnemyAttack = nullptr;		//敵のクラス
+	Bullet* m_pBullet = nullptr;				//弾のクラス
+	DrawObject m_pDrawObjectEnemy;				//敵の描画オブジェクト
+	DrawObject m_pDrawObjectBullet;				//弾の描画オブジェクト
 
 	int m_EnemyItem_num = 0;	//敵のアイテムの数
 
@@ -63,10 +71,11 @@ public:
 	//デフォルトコンストラクタ
 	EnemyAttackManagement() {
 		m_pEnemyAttack = new EnemyAttack[ENEMY_NUM];
+		m_pBullet = new Bullet[ENEMY_NUM];
 	}
 
 	//引数付きコンストラクタ
-	EnemyAttackManagement(DrawObject& pDrawObject1);
+	EnemyAttackManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2);
 
 	//デストラクタ
 	~EnemyAttackManagement()override {  }
@@ -85,15 +94,15 @@ public:
 
 	//指定した番号のサイズを返す(オーバーライド)
 	const D3DXVECTOR2& GetObjSize(int index_num = 0)const override { return m_pEnemyAttack[index_num].GetSize(); }
-	//指定した弾の座標を返す
-	const D3DXVECTOR2& GetBulletPos(int index_num)const override { return D3DXVECTOR2(-330, -300); }
 
-	//弾のサイズを返す
-	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override { return D3DXVECTOR2(-330, -300); }
+	//指定した番号の弾の座標を返す(オーバーライド)
+	const D3DXVECTOR2& GetBulletPos(int index_num)const override { return m_pBullet[index_num].GetPos(); }
 
+	//指定した番号の弾のサイズを返す(オーバーライド)
+	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override { return m_pBullet[0].GetSize(); }
 	//指定した敵を消す
 	void DeleteObj(int index_num)override;
 
 	//指定した弾を消す
-	void DeleteBullet(int index_num)override {}
+	void DeleteBullet(int index_num)override;
 };
