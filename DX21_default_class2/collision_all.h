@@ -81,7 +81,7 @@ public:
 	int Collision(void);
 
 	//ƒvƒŒƒCƒ„[‚ÌHP‚ª‰ñ•œ‚·‚é“–‚½‚è”»’è
-	int HeelCollision(void);
+	void HeelCollision(void);
 };
 
 #endif // !_COLLISION_ALL_H_
