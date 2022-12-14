@@ -140,6 +140,7 @@
     <ClCompile Include="enemy_gatoring.cpp" />
     <ClCompile Include="enemy_public.cpp" />
     <ClCompile Include="Fade.cpp" />
+    <ClCompile Include="inh_enemy.cpp" />
     <ClCompile Include="inh_player_arm_both.cpp" />
     <ClCompile Include="input.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -209,6 +210,7 @@
     <ClInclude Include="enemy_gatoring.h" />
     <ClInclude Include="enemy_public.h" />
     <ClInclude Include="Fade.h" />
+    <ClInclude Include="inh_enemy.h" />
     <ClInclude Include="inh_player_arm_both.h" />
     <ClInclude Include="input.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>

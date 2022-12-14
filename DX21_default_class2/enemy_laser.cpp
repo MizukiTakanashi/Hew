@@ -16,7 +16,6 @@ const float EnemyLaser::RANGE = 240.0f;
 //private
 const float EnemyLaser::SPEED_X = 0.5f;
 const float EnemyLaser::SPEED_Y = 2.5f;
-const int EnemyLaser::HP_MAX = 3;
 
 //======================
 // 更新処理
@@ -35,9 +34,9 @@ void EnemyLaser::Update(void)
 	m_move_width += SPEED_X;
 
 	//時間が来たらレーザーを作る
-	if (m_laser_count++ > LASER_BETWEEN) {
-		m_laser_make = true;
-		m_laser_count = 0;
+	if (m_bullet_count++ > LASER_BETWEEN) {
+		m_bullet_make = true;
+		m_bullet_count = 0;
 	}
 
 	//画面外に出ないようにする

@@ -16,7 +16,6 @@ const float EnemyAttack::RANGE = 20.0f;
 //private
 const float EnemyAttack::SPEED_X = 1.5f;
 const float EnemyAttack::SPEED_Y = 2.5f;
-const int EnemyAttack::HP_MAX = 1;
 
 //======================
 // XVˆ—

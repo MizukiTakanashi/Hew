@@ -1,86 +1,64 @@
 //=======================================
-// •’Ê‚Ì“GŠÖŒW(ƒwƒbƒ_ƒtƒ@ƒCƒ‹)
-// ì¬“úF2022/12/02
-// ì¬ÒF–î–ìãÄ‘å
+// æ™®é€šã®æ•µé–¢ä¿‚(ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š2022/12/02
+// ä½œæˆè€…ï¼šçŸ¢é‡ç¿”å¤§
 //=======================================
 #pragma once
 
 #include "main.h"
-#include "bullet.h"
-#include "draw_object.h"
-#include "game_object.h"
+#include "inh_enemy.h"
 
-class EnemyAttack :public GameObject
+class EnemyAttack :public Inh_Enemy
 {
-	//’è”
+//å®šæ•°
 public:
-	//cpp‚Å‰Šú‰»
-	static const float SIZE_X;			//ƒTƒCƒYX
-	static const float SIZE_Y;			//ƒTƒCƒYY
-
-	static const float STOP_POS_Y;		//“G‚ª~‚Ü‚éêŠ
-
-	static const float RANGE;			//“G‚ª“®‚­”ÍˆÍ
+	//cppã§åˆæœŸåŒ–
+	static const float SIZE_X;			//ã‚µã‚¤ã‚ºX
+	static const float SIZE_Y;			//ã‚µã‚¤ã‚ºY
+	static const float STOP_POS_Y;		//æ•µãŒæ­¢ã¾ã‚‹å ´æ‰€
+	static const float RANGE;			//æ•µãŒå‹•ãç¯„å›²
 
 private:
-	//‚±‚±‚Å‰Šú‰»
-	static const int ATTACK_TIME = 300;	//’e‚Ì”­ËŠÔŠu
+	//ã“ã“ã§åˆæœŸåŒ–
+	static const int ATTACK_TIME = 300;	//å¼¾ã®ç™ºå°„é–“éš”
+	static const int HP_MAX = 1;			//æ•µã®HPæœ€å¤§å€¤
 
-	//cpp‚Å‰Šú‰»
-	static const float SPEED_X;			//“G‚ÌƒXƒs[ƒhY
-	static const float SPEED_Y;			//“G‚ÌƒXƒs[ƒhY
-	static const int HP_MAX;			//“G‚ÌHPÅ‘å’l
-	D3DXVECTOR2 m_mov = D3DXVECTOR2(0.0f, 0.0f);	//ˆÚ“®—Ê
-	int m_time = 0;									//’e‚ªo—ˆ‚Ä‚©‚ç‚ÌŒo‰ßŠÔ
-	
+	//cppã§åˆæœŸåŒ–
+	static const float SPEED_X;			//æ•µã®ã‚¹ãƒ”ãƒ¼ãƒ‰Y
+	static const float SPEED_Y;			//æ•µã®ã‚¹ãƒ”ãƒ¼ãƒ‰Y
 
-
-	//ƒƒ“ƒo•Ï”
+//ãƒ¡ãƒ³ãƒå¤‰æ•°
 private:
-	int m_attack_count = 0;			//“ËŒ‚‚·‚é‚Ü‚Å‚ÌƒJƒEƒ“ƒg
-	bool m_shot = false;			//“ËŒ‚‚·‚é‚©”Û‚©
-	int explosion_time = 0;			//“ËŒ‚‚µ‚Ä‚©‚ç”š”­‚·‚é‚Ü‚Å‚ÌŠÔŒvZ
-	bool m_explosion = false;		//”š”­‚·‚é‚©”Û‚©
-	float m_move_width = 0.0f;			//“G‚ª“®‚­‚ÌcosƒJ[ƒu
-	float m_init_posx = 0.0f;			//“G‚Ì‰ŠúˆÊ’uX
-
-	bool m_enemyitem_make = false;		//ƒAƒCƒeƒ€‚ğì‚é‚©”Û‚©
-
-	int m_hp = HP_MAX;					//“G‚ÌŒ»İ‚ÌHP
-
-
-	bool m_bullet_make = false;			//’e‚ğì‚é‚©”Û‚©
-	//ƒƒ“ƒoŠÖ”
+	D3DXVECTOR2 m_mov = D3DXVECTOR2(0.0f, 0.0f);	//ç§»å‹•é‡
+	int m_time = 0;					//å¼¾ãŒå‡ºæ¥ã¦ã‹ã‚‰ã®çµŒéæ™‚é–“
+	int m_attack_count = 0;			//çªæ’ƒã™ã‚‹ã¾ã§ã®ã‚«ã‚¦ãƒ³ãƒˆ
+	bool m_shot = false;			//çªæ’ƒã™ã‚‹ã‹å¦ã‹
+	int explosion_time = 0;			//çªæ’ƒã—ã¦ã‹ã‚‰çˆ†ç™ºã™ã‚‹ã¾ã§ã®æ™‚é–“è¨ˆç®—
+	bool m_explosion = false;		//çˆ†ç™ºã™ã‚‹ã‹å¦ã‹
+  
+	//ãƒ¡ãƒ³ãƒé–¢æ•°
 public:
-	EnemyAttack() {}		//ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	EnemyAttack() {}		//ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 
-	//ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//å¼•æ•°ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	EnemyAttack(DrawObject& pDrawObject, const D3DXVECTOR2& pos)
-		:GameObject(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)), m_init_posx(pos.x) {}
+		:Inh_Enemy(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y), HP_MAX) {}
 
-	~EnemyAttack()override {}	//ƒfƒXƒgƒ‰ƒNƒ^
+	~EnemyAttack()override {}	//ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 
-	void Update(void);	//XVˆ—
+	void Update(void);	//æ›´æ–°å‡¦ç†
 
-	//’e‚ğì‚é‚©”Û‚©‚Ìƒtƒ‰ƒO‚ğ•Ô‚·
+	//å¼¾ã‚’ä½œã‚‹ã‹å¦ã‹ã®ãƒ•ãƒ©ã‚°ã‚’è¿”ã™
 	bool GetFlagAttack()const { return m_shot; }
 	bool GetFlagExplosion()const { return m_explosion; }
 
-	//HP‚ğŒ¸‚ç‚·
-	void ReduceHP(int amount) { m_hp -= amount; }
-
-	//HP‚ğ•Ô‚·
-	int GetHP(void) { return m_hp; }
-
-	//’e‚ÌˆÚ“®‚ğÄƒZƒbƒg(ƒz[ƒ~ƒ“ƒO’e—p‚©‚ÈH)
+	//å¼¾ã®ç§»å‹•ã‚’å†ã‚»ãƒƒãƒˆ(ãƒ›ãƒ¼ãƒŸãƒ³ã‚°å¼¾ç”¨ã‹ãªï¼Ÿ)
 	void SetMove(const D3DXVECTOR2& mov) { m_mov = mov; }
 
-	//’e‚ªo—ˆ‚Ä‚©‚ç‚ÌŒo‰ßŠÔ‚ğ•Ô‚·
-
-	//“ËŒ‚‚µ‚Ä‚©‚ç‚ÌŠÔ‚ğ•Ô‚·
+	//çªæ’ƒã—ã¦ã‹ã‚‰ã®æ™‚é–“ã‚’è¿”ã™
 	int GetAttackTime(void)const { return m_explosion; }
-	//’e‚ğì‚Á‚½
+	//å¼¾ã‚’ä½œã£ãŸ
 	void BulletMake() { m_bullet_make = false; }
-	//’e‚ğì‚é‚©”Û‚©‚Ìƒtƒ‰ƒO‚ğ•Ô‚·
+	//å¼¾ã‚’ä½œã‚‹ã‹å¦ã‹ã®ãƒ•ãƒ©ã‚°ã‚’è¿”ã™
 	bool GetFlagBulletMake()const { return m_bullet_make; }
 };

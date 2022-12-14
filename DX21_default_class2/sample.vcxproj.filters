@@ -190,6 +190,9 @@
     <ClCompile Include="screen_out.cpp">
       <Filter>02_Game</Filter>
     </ClCompile>
+    <ClCompile Include="inh_enemy.cpp">
+      <Filter>02_Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -383,6 +386,9 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>%3f</Filter>
+    </ClInclude>
+    <ClInclude Include="inh_enemy.h">
+      <Filter>02_Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

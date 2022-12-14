@@ -6,7 +6,6 @@ const float EnemyPublic::SIZE_Y = 60.0f;
 //private
 const float EnemyPublic::SPEED_X = 1.5f;
 const float EnemyPublic::SPEED_Y = 2.5f;
-const int EnemyPublic::HP_MAX = 1;
 
 void EnemyPublic::Update(void)
 {

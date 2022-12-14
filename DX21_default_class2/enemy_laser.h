@@ -1,93 +1,53 @@
 //=======================================
-// ƒŒ[ƒU[‚Ì“GŠÖŒW(ƒwƒbƒ_ƒtƒ@ƒCƒ‹)
-// ì¬“úF
-// ì¬ÒF‰¶“c—ms
+// ãƒ¬ãƒ¼ã‚¶ãƒ¼ã®æ•µé–¢ä¿‚(ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š
+// ä½œæˆè€…ï¼šæ©ç”°æ´‹è¡Œ
 //=======================================
 #pragma once
 
-#ifndef _ENEMY_LASER_H_
-#define _ENEMY_LASER_H_
-
 #include "main.h"
-#include "draw_object.h"
-#include "game_object.h"
+#include "inh_enemy.h"
 
-class EnemyLaser:public GameObject
+class EnemyLaser:public Inh_Enemy
 {
-//’è”
+//å®šæ•°
 public:
-	//cpp‚Å‰Šú‰»
-	static const float SIZE_X;			//ƒTƒCƒYX
-	static const float SIZE_Y;			//ƒTƒCƒYY
-
-	static const float STOP_POS_Y;		//“G‚ª~‚Ü‚éêŠ
-
-	static const float RANGE;			//“G‚ª“®‚­”ÍˆÍ
+	//cppã§åˆæœŸåŒ–
+	static const float SIZE_X;			//ã‚µã‚¤ã‚ºX
+	static const float SIZE_Y;			//ã‚µã‚¤ã‚ºY
+	static const float STOP_POS_Y;		//æ•µãŒæ­¢ã¾ã‚‹å ´æ‰€
+	static const float RANGE;			//æ•µãŒå‹•ãç¯„å›²
 
 private:
-	//‚±‚±‚Å‰Šú‰»
-	static const int LASER_BETWEEN = 300;	//ƒŒ[ƒU[‚Ì”­ËŠÔŠu
-	static const int INVINCIBLE_FLAME = 30;			//“G‚Ì–³“GŠÔ
+	//ã“ã“ã§åˆæœŸåŒ–
+	static const int LASER_BETWEEN = 300;	//ãƒ¬ãƒ¼ã‚¶ãƒ¼ã®ç™ºå°„é–“éš”
+	static const int INVINCIBLE_FLAME = 30;			//æ•µã®ç„¡æ•µæ™‚é–“
+	static const int HP_MAX = 3;			//æ•µã®HPæœ€å¤§å€¤
 
+	//cppã§åˆæœŸåŒ–
+	static const float SPEED_X;			//æ•µã®ã‚¹ãƒ”ãƒ¼ãƒ‰Y
+	static const float SPEED_Y;			//æ•µã®ã‚¹ãƒ”ãƒ¼ãƒ‰Y
 
-	//cpp‚Å‰Šú‰»
-	static const float SPEED_X;			//“G‚ÌƒXƒs[ƒhY
-	static const float SPEED_Y;			//“G‚ÌƒXƒs[ƒhY
-	static const int HP_MAX;			//“G‚ÌHPÅ‘å’l
-
-//ƒƒ“ƒo•Ï”
+//ãƒ¡ãƒ³ãƒå¤‰æ•°
 private:
-	int m_laser_count = 0;				//’e‚ğ”­Ë‚·‚é‚Ü‚Å‚ÌƒJƒEƒ“ƒg
-	bool m_laser_make = false;			//’e‚ğì‚é‚©”Û‚©
+	int m_laser_index = -1;	//ãƒ¬ãƒ¼ã‚¶ãƒ¼ç•ªå·
 
-	float m_move_width = 0.0f;			//“G‚ª“®‚­‚ÌcosƒJ[ƒu
-	float m_init_posx = 0.0f;			//“G‚Ì‰ŠúˆÊ’uX
-
-	bool m_enemyitem_make = false;		//ƒAƒCƒeƒ€‚ğì‚é‚©”Û‚©
-
-	int m_laser_index = -1;				//ƒŒ[ƒU[”Ô†
-
-	int m_hp = HP_MAX;					//“G‚ÌŒ»İ‚ÌHP
-	int m_invincible_flame = 0;			//–³“GŠÔ‚Ìc‚è
-
-
-//ƒƒ“ƒoŠÖ”
+//ãƒ¡ãƒ³ãƒé–¢æ•°
 public:
-	EnemyLaser(){}		//ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	EnemyLaser(){}		//ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 
-	//ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//å¼•æ•°ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	EnemyLaser(DrawObject& pDrawObject, const D3DXVECTOR2& pos)
-		:GameObject(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)), m_init_posx(pos.x) {}
+		:Inh_Enemy(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y), HP_MAX) {}
 
-	~EnemyLaser()override{}	//ƒfƒXƒgƒ‰ƒNƒ^
+	~EnemyLaser()override{}	//ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 
-	void Update(void);	//XVˆ—
+	void Update(void);	//æ›´æ–°å‡¦ç†
 
-	//’e‚ğì‚é‚©”Û‚©‚Ìƒtƒ‰ƒO‚ğ•Ô‚·
-	bool GetFlagBulletMake()const { return m_laser_make; }
-
-	//’e‚ğì‚Á‚½
-	void BulletMake() { m_laser_make = false; }
-
-	//ƒŒ[ƒU[”Ô†‚ğƒZƒbƒg
+	//ãƒ¬ãƒ¼ã‚¶ãƒ¼ç•ªå·ã‚’ã‚»ãƒƒãƒˆ
 	void SetLaserIndex(int num) { m_laser_index = num; }
 
-	//ƒŒ[ƒU[”Ô†‚ğ•Ô‚·
+	//ãƒ¬ãƒ¼ã‚¶ãƒ¼ç•ªå·ã‚’è¿”ã™
 	int GetLaserIndex() const { return m_laser_index; }
 
-	//HP‚ğŒ¸‚ç‚·
-	void ReduceHP(int amount) 
-	{
-		if (m_invincible_flame <= 0)
-		{
-			m_hp -= amount;
-			m_invincible_flame = INVINCIBLE_FLAME;
-		}
-	}
-
-	//HP‚ğ•Ô‚·
-	int GetHP(void) { return m_hp; }
-
 };
-
-#endif // !_ENEMY_LASER_H_
