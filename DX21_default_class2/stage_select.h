@@ -37,6 +37,7 @@ private:
 		VENUS,
 		SATURN,
 		SUN,
+		WHITE_CIRCLE,
 		NUM
 	};
 
@@ -50,6 +51,7 @@ private:
 		VENUS,
 		SATURN,
 		SUN,
+		WHITE_CIRCLE,
 		NUM
 	};
 

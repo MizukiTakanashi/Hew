@@ -17,7 +17,8 @@ const float StageSelectPlanet::MOVE_SPEED = 1.0f;
 // 引数付きコンストラクタ
 //==========================
 StageSelectPlanet::StageSelectPlanet(DrawObject& mars, DrawObject& mercury, DrawObject& jupiter, 
-	DrawObject& venus, DrawObject& saturn, DrawObject& sun, bool sun_appearance) :m_sun_appearance(sun_appearance)
+	DrawObject& venus, DrawObject& saturn, DrawObject& sun, DrawObject& white_line, 
+	bool sun_appearance) :m_sun_appearance(sun_appearance)
 {
 	//惑星のセット
 	m_planets[(int)PLANET::MARS] = new StageSelectMars(mars);
@@ -26,6 +27,11 @@ StageSelectPlanet::StageSelectPlanet(DrawObject& mars, DrawObject& mercury, Draw
 	m_planets[(int)PLANET::VENUS] = new StageSelectVenus(venus);
 	m_planets[(int)PLANET::SATURN] = new StageSelectSaturn(saturn);
 	m_planets[(int)PLANET::SUN] = new StageSelectSun(sun);
+
+	//白い線の初期化
+	for (int i = 0; i < (int)PLANET::NUM - 1; i++) {
+		m_pWhiteLine[i] = new GameObject(white_line, D3DXVECTOR2(SCREEN_WIDTH, 0.0f), D3DXVECTOR2(0.0f, 0.0f));
+	}
 
 	//太陽が来るのであれば...
 	if (sun_appearance) {
@@ -46,6 +52,11 @@ StageSelectPlanet::StageSelectPlanet(DrawObject& mars, DrawObject& mercury, Draw
 	else {
 		//最初の惑星を大きくする(選択中)
 		m_planets[0]->SetSizeBigger();
+	}
+
+	//白い線をセット
+	for (int i = 0; i < (int)PLANET::NUM - 1; i++) {
+		WhiteLineSet(m_planets[i]->GetPos(), i);
 	}
 }
 
@@ -76,12 +87,12 @@ void StageSelectPlanet::Update()
 	//Aキーを押したら...
 	if (InputGetKeyDown(KK_A)) {
 		//左にずらす
-		m_planet_index--;
+		m_planet_index++;
 	}
 	//Dキーを押したら...
 	if (InputGetKeyDown(KK_D)) {
 		//右にずらす
-		m_planet_index++;
+		m_planet_index--;
 	}
 
 
@@ -91,12 +102,12 @@ void StageSelectPlanet::Update()
 	//十字キー左を押したら...
 	if (IsButtonTriggered(0, XINPUT_GAMEPAD_DPAD_LEFT)) {
 		//左にずらす
-		m_planet_index--;
+		m_planet_index++;
 	}
 	//十字キー右を押したら...
 	if (IsButtonTriggered(0, XINPUT_GAMEPAD_DPAD_RIGHT)) {
 		//右にずらす
-		m_planet_index++;
+		m_planet_index--;
 	}
 
 	//左スティックで左に倒されたら...
@@ -104,7 +115,7 @@ void StageSelectPlanet::Update()
 		//前フレームのスティックが右に倒されてたら...(連続押しを拒否)
 		if (m_thumb_before >= 0) {
 			//左にずらす
-			m_planet_index--;
+			m_planet_index++;
 		}
 	}
 	//左スティックで右に倒されたら...
@@ -112,7 +123,7 @@ void StageSelectPlanet::Update()
 		//前フレームのスティックが左に倒されてたら...(連続押しを拒否)
 		if (m_thumb_before <= 0) {
 			//右にずらす
-			m_planet_index++;
+			m_planet_index--;
 		}
 	}
 	//スティックの値を保存
@@ -189,6 +200,11 @@ void StageSelectPlanet::Update()
 //==========================
 void StageSelectPlanet::Draw() const
 {
+	//白い線の描画
+	for (int i = 0; i < (int)PLANET::SUN; i++) {
+		m_pWhiteLine[i]->Draw();
+	}
+
 	//太陽以外の描画
 	for (int i = 0; i < (int)PLANET::SUN; i++) {
 		m_planets[i]->Draw();
@@ -199,4 +215,24 @@ void StageSelectPlanet::Draw() const
 		//太陽を描画
 		m_planets[(int)PLANET::SUN]->Draw();
 	}
+}
+
+//==========================
+// 白い線をセットする
+//==========================
+void StageSelectPlanet::WhiteLineSet(const D3DXVECTOR2& planet_pos, int type)
+{
+	//ベクトル確保
+	D3DXVECTOR2 vec = m_pWhiteLine[type]->GetPos() - planet_pos;
+
+	if (vec.x < 0) {
+		vec.x *= -1;
+	}
+	if (vec.y < 0) {
+		vec.y *= -1;
+	}
+
+	float length = D3DXVec2Length(&vec);
+
+	m_pWhiteLine[type]->SetSize(D3DXVECTOR2(length * 2, length * 2));
 }

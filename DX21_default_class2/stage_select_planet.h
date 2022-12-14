@@ -22,10 +22,10 @@ private:
 	//惑星(左から並ぶ)(SUNは最後)
 	enum class PLANET :int
 	{
-		MARS,		//火星
 		MERCURY,	//水星
-		JUPITER,	//木星
 		VENUS,		//金星
+		MARS,		//火星
+		JUPITER,	//木星
 		SATURN,		//土星
 		SUN,		//太陽
 		NUM			//惑星の数
@@ -41,6 +41,7 @@ private:
 //メンバ変数
 private:	
 	inhStageSelectPlanetMake* m_planets[(int)PLANET::NUM];	//惑星達
+	GameObject* m_pWhiteLine[(int)PLANET::NUM - 1];			//白い線
 
 	bool m_sun_appearance = false;							//太陽が出てるかどうか
 
@@ -59,11 +60,16 @@ public:
 		for (int i = 0; i < (int)PLANET::NUM; i++) {
 			m_planets[i] = nullptr;
 		}
+
+		for (int i = 0; i < (int)PLANET::NUM - 1; i++) {
+			m_pWhiteLine[i] = nullptr;
+		}
 	}
 
 	//引数付きコンストラクタ
 	StageSelectPlanet(DrawObject& mars, DrawObject& mercury, DrawObject& jupiter,
-		DrawObject& venus, DrawObject& saturn, DrawObject& sun, bool sun_appearance = false);
+		DrawObject& venus, DrawObject& saturn, DrawObject& sun, DrawObject& white_line, 
+		bool sun_appearance = false);
 
 	//デストラクタ
 	~StageSelectPlanet() {
@@ -77,6 +83,10 @@ public:
 
 	//描画処理
 	void Draw()const;
+
+private:
+	//白い線をセットする
+	void WhiteLineSet(const D3DXVECTOR2& planet_pos, int type);
 };
 
 #endif // !_STAGE_SELECT_PLANET_H_
