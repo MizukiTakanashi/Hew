@@ -130,6 +130,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="all_enemy_management.cpp" />
+    <ClCompile Include="bgplanet.cpp" />
     <ClCompile Include="Bom.cpp" />
     <ClCompile Include="collision_all.cpp" />
     <ClCompile Include="bullet.cpp" />
@@ -200,6 +201,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h" />
+    <ClInclude Include="bg_planet.h" />
     <ClInclude Include="Bom.h" />
     <ClInclude Include="collision_all.h" />
     <ClInclude Include="bullet.h" />

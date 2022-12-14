@@ -10,6 +10,7 @@
 #include "main.h"
 #include "sprite.h"
 #include "BG.h"
+#include "bg_planet.h"
 #include "player.h"
 #include "draw_object.h"
 #include "management_enemy_normal.h"
@@ -108,6 +109,7 @@ private:
 	DrawObject* m_pDrawObject = nullptr;
 
 	BG* m_pBG = nullptr;
+	BGPlanet* m_pBG_Moon = nullptr;
 	Player* m_pPlayer = nullptr;
 	EnemyNormalManagement* m_pEnemyNormalManagement = nullptr;
 	EnemyLaserManagement* m_pEnemyLaserManagement = nullptr;
