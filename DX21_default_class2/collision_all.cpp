@@ -433,24 +433,28 @@ int CollisionAll::Collision(void)
 			m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_OLD &&
 			m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
 			m_pPlayerLeft->SetType(inhPlayerArmBoth::TYPE::TYPE_SHOOT, false);
+			attacked--;
 		}
 		else if (m_pPlayerRight->GetType() != inhPlayerArmBoth::TYPE::TYPE_NONE &&
 			m_pPlayerRight->GetType() != inhPlayerArmBoth::TYPE::TYPE_OLD &&
 			m_pPlayerRight->GetType() != inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
 			m_pPlayerRight->SetType(inhPlayerArmBoth::TYPE::TYPE_SHOOT, false);
+			attacked--;
 		}
 
 		//2回食らっていたら次にもう片方を切り離し
-		if (attacked > 1) {
+		if (attacked > 0) {
 			if (m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_NONE &&
 				m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_OLD &&
 				m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
 				m_pPlayerLeft->SetType(inhPlayerArmBoth::TYPE::TYPE_SHOOT, false);
+				attacked--;
 			}
 			else if (m_pPlayerRight->GetType() != inhPlayerArmBoth::TYPE::TYPE_NONE &&
 				m_pPlayerRight->GetType() != inhPlayerArmBoth::TYPE::TYPE_OLD &&
 				m_pPlayerRight->GetType() != inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
 				m_pPlayerRight->SetType(inhPlayerArmBoth::TYPE::TYPE_SHOOT, false);
+				attacked--;
 			}
 		}
 	}
@@ -474,10 +478,8 @@ int CollisionAll::Collision(void)
 //=======================================
 // プレイヤーのHPが回復する当たり判定
 //=======================================
-int CollisionAll::HeelCollision(void)
+void CollisionAll::HeelCollision(void)
 {
-	//プレイヤーの回復数
-	int heel = 0;
 
 	//=================================================
 	// 腕と○○
@@ -505,7 +507,6 @@ int CollisionAll::HeelCollision(void)
 				if (pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE_NONE ||
 					pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE_OLD)
 				{
-					heel++;
 				}
 				//タイプが同じだったら残弾数を回復する
 				if (pArm->GetType() == (inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i) + 1))
@@ -522,5 +523,4 @@ int CollisionAll::HeelCollision(void)
 		pArm = m_pPlayerRight;
 	}
 
-	return heel;
 }

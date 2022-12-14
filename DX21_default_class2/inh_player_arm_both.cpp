@@ -19,7 +19,7 @@ const D3DXVECTOR2 inhPlayerArmBoth::ICON_SIZE = D3DXVECTOR2(50.0f, 50.0f);
 //==========================
 // XVˆ—
 //==========================
-int inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_pos)
+void inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_pos)
 {
 	int hp_reduce = 0;
 
@@ -38,8 +38,6 @@ int inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& e
 			}
 			m_type = TYPE::TYPE_SHOOT;
 
-			//HP‚ª-1‚³‚ê‚é
-			hp_reduce++;
 		}
 	}
 
@@ -108,8 +106,6 @@ int inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& e
 			if (m_pEnemyItem->IsBulletUsed() && m_type != TYPE::TYPE_OLD && m_type != TYPE::TYPE_SHOOT) {
 				m_shot = true;
 				m_type = TYPE::TYPE_SHOOT;
-				//HP‚ª-1‚³‚ê‚é
-				hp_reduce++;
 			}
 		}
 	}
@@ -120,7 +116,6 @@ int inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& e
 		m_pRemaining_Bullet->SetNumber(m_pEnemyItem->GetRemainingBullet());
 	}
 
-	return hp_reduce;
 }
 
 //==========================

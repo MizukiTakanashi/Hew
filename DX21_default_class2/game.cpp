@@ -381,35 +381,29 @@ void Game::Update(void)
 	//====================================
 	//プレイヤーのHPに対する処理
 	int attack_num = 0;
-	int heel_num = 0;
 
 	//プレイヤーの腕
 
 	//ホーミング弾用
 	D3DXVECTOR2 temp_pos = m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerLeft->GetPos());
 
+	//腕のアップデート
 	m_pPlayerLeft->ButtonPress();
-	//切り離されたらHPを減らす
-	attack_num += m_pPlayerLeft->Update(m_pPlayer->GetPos(), temp_pos);
+	m_pPlayerLeft->Update(m_pPlayer->GetPos(), temp_pos);
 	m_pPlayerRight->ButtonPress();
-	//切り離されたらHPを減らす
-	attack_num += m_pPlayerRight->Update(m_pPlayer->GetPos(), temp_pos);
+	m_pPlayerRight->Update(m_pPlayer->GetPos(), temp_pos);
 	m_pPlayerCenter->ButtonPress();
-	//切り離されたらHPを減らす
-	attack_num += m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
+	m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
 
 	//敵とプレイヤーの当たり判定
 	attack_num += m_pColAll->Collision();
 
 	//回復
-	heel_num = m_pColAll->HeelCollision();
+	m_pColAll->HeelCollision();
 
 	//プレイヤーのHPを攻撃数によって減らす
 	if (attack_num != 0) {
 		m_pPlayerHP->ReduceHP((float)attack_num);
-	}
-	if (heel_num != 0) {
-		m_pPlayerHP->HeelHP((float)heel_num);
 	}
 
 	//プレイヤーのHPが0になったら...

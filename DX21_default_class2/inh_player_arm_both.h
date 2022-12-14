@@ -74,7 +74,7 @@ public:
 
 	//更新処理
 	// player_pos：プレイヤーの座標　enemy_pos：一番近い敵の座標
-	int Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_pos);
+	void Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_pos);
 
 	//描画処理
 	void ArmDraw(void)const;
