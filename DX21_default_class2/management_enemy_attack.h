@@ -2,8 +2,8 @@
 #include "main.h"
 #include "management_enemy.h"
 #include "enemy_attack.h"
+#include "draw_object.h"
 #include "bullet.h"
-
 
 class EnemyAttackManagement :public EnemyManagement
 {

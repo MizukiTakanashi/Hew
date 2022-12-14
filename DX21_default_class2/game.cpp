@@ -123,7 +123,8 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 	m_pDrawObject = new DrawObject[(int)DRAW_TYPE::NUM];
 
 	//背景の初期化処理
-	m_pBG = new BG((char*)"data\\texture\\moon_bg.png");
+	m_pBG = new BG((char*)"data\\texture\\stage_select_bg.jpg");
+	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\earth.png");
 
 	//=======================
 	// 弾
@@ -307,6 +308,7 @@ Game::~Game()
 	//ゲームオブジェクトを消す
 	delete m_pBom;
 	delete m_pBG;
+	delete m_pBG_Moon;
 	delete m_pExplosionManagement;
 	delete m_pEnemyNormalManagement;
 	delete m_pEnemyLaserManagement;
@@ -349,6 +351,7 @@ void Game::Update(void)
 	}
 	//背景
 	m_pBG->Update();
+	m_pBG_Moon->Update();
 
 	//腕の切り替え
 	m_pPlayerArmChange->Change();
@@ -418,6 +421,7 @@ void Game::Update(void)
 void Game::Draw(void)const
 {
 	m_pBG->DrawBG();
+	m_pBG_Moon->DrawBG();
 	m_pPlayer->Draw();
 
 	//プレイヤーの腕の描画処理
