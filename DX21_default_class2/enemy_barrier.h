@@ -22,37 +22,25 @@ public:
 
 	static const float RANGE;					//敵が動く範囲
 
-	static const D3DXVECTOR2 BARRIER_SIZE;		//バリアのサイズ
-
 private:
 	//ここで初期化
 	static const int INVINCIBLE_FLAME = 30;		//敵の無敵時間
 	static const int HP_MAX = 1;				//敵のHP最大値
-	static const int BARRIER_HP_MAX = 5;		//敵のバリアのHP最大値
-	static const int BARRIER_TIME_LIMIT = 200;	//バリアの時間
-	static const int BARRIER_INTERVAL = -2;		//バリアの出現間隔
 
 	//cppで初期化
 	static const float SPEED_X;					//敵のスピードY
 	static const float SPEED_Y;					//敵のスピードY
 
-	static const D3DXVECTOR2 INTERVAL_POS;		//敵とバリアの間隔
-
 
 //メンバ変数
 private:
-	GameObject* m_pBarrier = nullptr;	//バリア
-
 	float m_move_width = 0.0f;			//敵が動く時のcosカーブ
 	float m_init_posx = 0.0f;			//敵の初期位置X
 
+	int m_barrier_index = -1;			//バリアのインデックス番号
+
 	int m_hp = HP_MAX;					//敵の現在のHP
 	int m_invincible_flame = 0;			//無敵時間の残り
-
-	int m_barrier_hp = BARRIER_HP_MAX;	//バリアのHP
-	int m_barrier_time = 0;				//バリアがある時間のカウント
-	int m_barrier_interval_time = -1;	//次のバリアが生成される時間のカウント
-	//int m_barrier_index = 0;			//バリア管理の方で作る、バリアのインデックス番号を記録
 
 
 //メンバ関数
@@ -61,9 +49,8 @@ public:
 	EnemyBarrier() {}		
 
 	//引数付きコンストラクタ
-	EnemyBarrier(DrawObject& pDrawObject, DrawObject& pDrawObject2, const D3DXVECTOR2& pos)
+	EnemyBarrier(DrawObject& pDrawObject, const D3DXVECTOR2& pos)
 		:GameObject(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)),
-		m_pBarrier(new GameObject(pDrawObject2, pos + INTERVAL_POS, BARRIER_SIZE)),
 		m_init_posx(pos.x) {}
 
 	~EnemyBarrier()override {}	//デストラクタ
@@ -82,21 +69,12 @@ public:
 
 	//HPを返す
 	int GetHP(void) { return m_hp; }
-	
-	//バリアの描画
-	void DrawBarrier(void)const;
 
-	//バリアの座標を返す
-	const D3DXVECTOR2& GetBarrierPos(void)const { return m_pBarrier->GetPos(); }
+	//レーザー番号をセット
+	void SetBarrierIndex(int num) { m_barrier_index = num; }
 
-	//バリアを消す
-	bool DeleteBarrier(void);
-
-	//バリアを作ったか
-	//bool IsBarrierMake(void) { return m_barrier_time == 0; }
-
-	//バリアを壊したか
-	//bool IsBarrierBreak(void) { return m_barrier_interval_time == 0; }
+	//レーザー番号を返す
+	int GetBarrierIndex() const { return m_barrier_index; }
 };
 
 #endif // !_ENEMY_BARRIER_H_

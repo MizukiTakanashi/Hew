@@ -28,6 +28,7 @@ private:
 		PUBLIC,
 		MISSILE,
 		ATTACK,
+		BARRIER,
 		NUM
 	};
 
