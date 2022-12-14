@@ -11,7 +11,8 @@
 //==========================
 // 定数の初期化
 //==========================
-const float StageSelectPlanet::MOVE_SPEED = 1.0f;
+const float StageSelectPlanet::MOVE_SPEED = -1.0f;
+const float StageSelectPlanet::SUN_MOVE_SPEED_Y = 0.6f;
 
 //==========================
 // 引数付きコンストラクタ
@@ -69,7 +70,15 @@ void StageSelectPlanet::Update()
 	if (m_move_time >= 0) {
 		//惑星を動かす
 		for (int i = 0; i < (int)PLANET::NUM; i++) {
+			if (i == (int)PLANET::SUN) {
+				m_planets[i]->MovePos(D3DXVECTOR2(0.0f, StageSelectPlanet::SUN_MOVE_SPEED_Y));
+			}
 			m_planets[i]->MovePos(D3DXVECTOR2(StageSelectPlanet::MOVE_SPEED, 0.0f));
+		}
+
+		//白い線をセット
+		for (int i = 0; i < (int)PLANET::NUM - 1; i++) {
+			WhiteLineSet(m_planets[i]->GetPos(), i);
 		}
 
 		//惑星が止まる時間が来たら...

@@ -36,6 +36,7 @@ private:
 
 	//cppで初期化
 	static const float MOVE_SPEED;			//動くスピード
+	static const float SUN_MOVE_SPEED_Y;	//太陽が動くスピードY
 
 
 //メンバ変数
