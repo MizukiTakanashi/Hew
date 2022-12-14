@@ -583,22 +583,6 @@ int CollisionAll::Collision(void)
 			m_pPlayerRight->SetType(inhPlayerArmBoth::TYPE::TYPE_SHOOT, false);
 			attacked--;
 		}
-
-		//2回食らっていたら次にもう片方を切り離し
-		if (attacked > 0) {
-			if (m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_NONE &&
-				m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_OLD &&
-				m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
-				m_pPlayerLeft->SetType(inhPlayerArmBoth::TYPE::TYPE_SHOOT, false);
-				attacked--;
-			}
-			else if (m_pPlayerRight->GetType() != inhPlayerArmBoth::TYPE::TYPE_NONE &&
-				m_pPlayerRight->GetType() != inhPlayerArmBoth::TYPE::TYPE_OLD &&
-				m_pPlayerRight->GetType() != inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
-				m_pPlayerRight->SetType(inhPlayerArmBoth::TYPE::TYPE_SHOOT, false);
-				attacked--;
-			}
-		}
 	}
 
 	//爆発の音の間隔を一定時間過ぎていたら(ここでカウント)...
