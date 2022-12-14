@@ -6,55 +6,44 @@
 #pragma once
 
 #include "main.h"
-#include "bullet.h"
-#include "draw_object.h"
-#include "game_object.h"
+#include "inh_enemy.h"
 
-class EnemyAttack :public GameObject
+class EnemyAttack :public Inh_Enemy
 {
-	//定数
+//定数
 public:
 	//cppで初期化
 	static const float SIZE_X;			//サイズX
 	static const float SIZE_Y;			//サイズY
-
 	static const float STOP_POS_Y;		//敵が止まる場所
-
 	static const float RANGE;			//敵が動く範囲
 
 private:
 	//ここで初期化
 	static const int ATTACK_TIME = 300;	//弾の発射間隔
+	static const int HP_MAX = 1;			//敵のHP最大値
 
 	//cppで初期化
 	static const float SPEED_X;			//敵のスピードY
 	static const float SPEED_Y;			//敵のスピードY
-	static const int HP_MAX;			//敵のHP最大値
-	D3DXVECTOR2 m_mov = D3DXVECTOR2(0.0f, 0.0f);	//移動量
-	int m_time = 0;									//弾が出来てからの経過時間
-	
 
-
-	//メンバ変数
+//メンバ変数
 private:
+	D3DXVECTOR2 m_mov = D3DXVECTOR2(0.0f, 0.0f);	//移動量
+	int m_time = 0;					//弾が出来てからの経過時間
 	int m_attack_count = 0;			//突撃するまでのカウント
 	bool m_shot = false;			//突撃するか否か
 	int explosion_time = 0;			//突撃してから爆発するまでの時間計算
 	bool m_explosion = false;		//爆発するか否か
-	float m_move_width = 0.0f;			//敵が動く時のcosカーブ
-	float m_init_posx = 0.0f;			//敵の初期位置X
 
-	bool m_enemyitem_make = false;		//アイテムを作るか否か
 
-	int m_hp = HP_MAX;					//敵の現在のHP
-
-	//メンバ関数
+//メンバ関数
 public:
 	EnemyAttack() {}		//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
 	EnemyAttack(DrawObject& pDrawObject, const D3DXVECTOR2& pos)
-		:GameObject(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)), m_init_posx(pos.x) {}
+		:Inh_Enemy(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y), HP_MAX) {}
 
 	~EnemyAttack()override {}	//デストラクタ
 
@@ -64,16 +53,8 @@ public:
 	bool GetFlagAttack()const { return m_shot; }
 	bool GetFlagExplosion()const { return m_explosion; }
 
-	//HPを減らす
-	void ReduceHP(int amount) { m_hp -= amount; }
-
-	//HPを返す
-	int GetHP(void) { return m_hp; }
-
 	//弾の移動を再セット(ホーミング弾用かな？)
 	void SetMove(const D3DXVECTOR2& mov) { m_mov = mov; }
-
-	//弾が出来てからの経過時間を返す
 
 	//突撃してからの時間を返す
 	int GetAttackTime(void)const { return m_explosion; }

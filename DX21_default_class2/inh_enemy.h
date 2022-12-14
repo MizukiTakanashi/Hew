@@ -22,13 +22,13 @@ private:
 //メンバ変数
 private:
 	bool m_enemyitem_make = false;		//アイテムを作るか否か
-	int m_hp = 0;					//敵の現在のHP
+	int m_hp = 0;						//敵の現在のHP
 
 protected:
 	int m_bullet_count = 0;				//弾を発射するまでのカウント
 	bool m_bullet_make = false;			//弾を作るか否か
 	float m_move_width = 0.0f;			//敵が動く時のcosカーブ
-	int m_invincible_flame = 0; //無敵時間の残り
+	int m_invincible_flame = 0;			//無敵時間の残り
 	float m_init_posx = 0.0f;			//敵の初期位置X
 
 //メンバ関数
