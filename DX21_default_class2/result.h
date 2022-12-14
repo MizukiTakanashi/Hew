@@ -39,7 +39,7 @@ private:
 	UI* m_pCursor = nullptr;
 	Score* m_pScore = nullptr;
 
-	bool m_select_retry = false; //どっちを選択しているか
+	bool m_select_retry = true; //どっちを選択しているか
 
 public:
 	Result();	//デフォルトコンストラクタ
