@@ -123,8 +123,11 @@ bool EnemyBarrierManagement::ReduceOtherHP(int index_num, int reduceHP)
 //======================
 void EnemyBarrierManagement::DeleteObj(int index_num)
 {
-	//敵に付随しているバリアを消す
-	DeleteOther(m_pEnemy[index_num].GetBarrierIndex());
+	//敵に付随しているバリアがまだ壊れていなかったら...
+	if (m_BarrierHP[m_pEnemy[index_num].GetBarrierIndex()] != -1) {
+		//敵に付随しているバリアを消す
+		DeleteOther(m_pEnemy[index_num].GetBarrierIndex());
+	}
 
 	//敵を消す
 	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
@@ -140,6 +143,9 @@ void EnemyBarrierManagement::DeleteObj(int index_num)
 //======================
 void EnemyBarrierManagement::DeleteOther(int index_num)
 {
+	//壊された事を記録
+	m_BarrierHP[index_num] = -1;
+
 	for (int i = index_num; i < EnemyManagement::GetOtherNum() - 1; i++) {
 		m_pBarrier[i] = m_pBarrier[i + 1];
 

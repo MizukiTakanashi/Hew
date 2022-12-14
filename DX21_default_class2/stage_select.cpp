@@ -69,10 +69,14 @@ StageSelect::StageSelect(int stage_score[])
 	m_pTexUseful[(int)TEXTURE_TYPE::SUN].SetTextureName((char*)"data\\texture\\sun.png");
 	m_pDrawObject[(int)DRAW_TYPE::SUN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::SUN]);
 
+	//îíÇ¢ãOìπÇÃê¸
+	m_pTexUseful[(int)TEXTURE_TYPE::WHITE_CIRCLE].SetTextureName((char*)"data\\texture\\stage_select_circle.png");
+	m_pDrawObject[(int)DRAW_TYPE::WHITE_CIRCLE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::WHITE_CIRCLE]);
+
 	//òfêØ
 	m_pPlanet = new StageSelectPlanet(m_pDrawObject[(int)DRAW_TYPE::MARS], m_pDrawObject[(int)DRAW_TYPE::MERCURY],
 		m_pDrawObject[(int)DRAW_TYPE::JUPITER], m_pDrawObject[(int)DRAW_TYPE::VENUS], m_pDrawObject[(int)DRAW_TYPE::SATURN],
-		m_pDrawObject[(int)DRAW_TYPE::SUN], stage_clear);
+		m_pDrawObject[(int)DRAW_TYPE::SUN], m_pDrawObject[(int)DRAW_TYPE::WHITE_CIRCLE], stage_clear);
 }
 
 //==========================
