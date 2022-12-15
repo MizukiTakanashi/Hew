@@ -40,7 +40,10 @@ public:
 	//描画
 	void Draw(const D3DXVECTOR2& pos, const D3DXVECTOR2& size, float rot = 0.0f)const;
 
-//アニメーション番号指定
+	//色をセット
+	void SetDrawColor(const D3DXCOLOR& col) { m_color = col; }
+
+	//アニメーション番号指定
 	void SetPaterNo(float patenNo) { m_paternNo = patenNo; }
 };
 

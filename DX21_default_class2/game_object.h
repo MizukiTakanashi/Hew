@@ -59,7 +59,10 @@ public:
 	const D3DXVECTOR2& GetSize(void)const { return m_size; }
 
 	//色をセット
-	void SetColor(D3DXCOLOR color) { m_color = color; }
+	void SetColor(D3DXCOLOR color) { 
+		m_color = color; 
+		m_pDrawObject.SetDrawColor(color);
+	}
 };
 
 #endif // !_GAME_OBJECT_H_

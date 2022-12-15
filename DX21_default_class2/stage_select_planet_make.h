@@ -51,6 +51,9 @@ public:
 
 	//‘å‚«‚­‚·‚é
 	void SetSunSizeBigger(void) { GameObject::SetSize(m_sun_big_size); }
+
+	//˜f¯‚ÌF‚ğˆÃ‚­‚·‚é
+	void SetDarker(void) { GameObject::SetColor(D3DXCOLOR(0.5f, 0.5f, 0.5f, 1.0f)); }
 };
 
 //==========================

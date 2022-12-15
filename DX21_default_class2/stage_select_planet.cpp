@@ -29,6 +29,14 @@ StageSelectPlanet::StageSelectPlanet(DrawObject& mars, DrawObject& mercury, Draw
 	m_planets[(int)PLANET::SATURN] = new StageSelectSaturn(saturn);
 	m_planets[(int)PLANET::SUN] = new StageSelectSun(sun);
 
+	//惑星の色のセット(クリアしてなかったら黒目にする)
+	for(int i = 0; i < STAGE_MOON; i++) {
+		if (!stage_clear[i]) {
+			//暗い色にする
+			m_planets[i]->SetDarker();
+		}
+	}
+
 	//白い線の初期化
 	for (int i = 0; i < (int)PLANET::NUM - 1; i++) {
 		m_pWhiteLine[i] = new GameObject(white_line, D3DXVECTOR2(SCREEN_WIDTH, 0.0f), D3DXVECTOR2(0.0f, 0.0f));
