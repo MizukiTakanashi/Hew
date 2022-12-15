@@ -188,6 +188,7 @@
     <ClCompile Include="screen_out.cpp" />
     <ClCompile Include="sound.cpp" />
     <ClCompile Include="sprite.cpp" />
+    <ClCompile Include="stage_mars.cpp" />
     <ClCompile Include="stage_select.cpp" />
     <ClCompile Include="stage_select_mars.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -260,6 +261,7 @@
     <ClInclude Include="screen_out.h" />
     <ClInclude Include="sound.h" />
     <ClInclude Include="sprite.h" />
+    <ClInclude Include="stage_mars.h" />
     <ClInclude Include="stage_select.h" />
     <ClInclude Include="stage_select_mars.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>

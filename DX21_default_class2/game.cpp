@@ -13,6 +13,9 @@
 const D3DXVECTOR2 Game::NUMBER_POS = D3DXVECTOR2(1230.0f, 30.0f);
 const D3DXVECTOR2 Game::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
 
+//==========================
+// グローバル変数
+//==========================
 int StopFlame = 0; //ヒットストップ用
 
 

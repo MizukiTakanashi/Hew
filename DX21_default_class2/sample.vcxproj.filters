@@ -196,6 +196,7 @@
     <ClCompile Include="bgplanet.cpp">
       <Filter>02_Game</Filter>
     </ClCompile>
+    <ClCompile Include="stage_mars.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -396,6 +397,7 @@
     <ClInclude Include="bg_planet.h">
       <Filter>02_Game</Filter>
     </ClInclude>
+    <ClInclude Include="stage_mars.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01_Title">
