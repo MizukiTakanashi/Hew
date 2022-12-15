@@ -20,7 +20,7 @@ class EnemyLaserManagement:public EnemyManagement
 private:
 	//‚±‚±‚Å‰Šú‰»
 	//“G©g
-	static const int ENEMY_NUM = 4;		//“G‚ğoŒ»‚³‚¹‚é”
+	static const int ENEMY_NUM = 3;		//“G‚ğoŒ»‚³‚¹‚é”
 
 	//cpp‚Å‰Šú‰»
 	//’e
@@ -46,17 +46,15 @@ private:
 
 	//“G‚Ì”z—ñ
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = { 
-										D3DXVECTOR2(52.5f + (105 *  4), -EnemyLaser::SIZE_Y / 2),
-										D3DXVECTOR2(52.5f + (105 *  7), -EnemyLaser::SIZE_Y / 2),
-										D3DXVECTOR2(52.5f + (105 *  0), -EnemyLaser::SIZE_Y / 2),
-										D3DXVECTOR2(52.5f + (105 * 11), -EnemyLaser::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  4), -EnemyLaser::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  6), -EnemyLaser::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  5), -EnemyLaser::SIZE_Y / 2),
 	};
 	//“G‚ğo‚·ŠÔ
 	int m_SetEnemyTime[ENEMY_NUM] = { 
-								60 * 25,
-								60 * 35,
-								60 * 60,
-								60 * 60 + 1,
+		60 * 60,
+		60 * 60 + 1,
+		60 * 80,
 	};
 
 public:

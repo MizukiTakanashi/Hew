@@ -1,4 +1,5 @@
 #include "management_enemy_public.h"
+#include "screen_out.h"
 
 Management_EnemyPublic::Management_EnemyPublic(DrawObject& pDrawObject)
 	:EnemyManagement(ENEMY_NUM, ATTACK, 0), m_pDrawObjectEnemyPublic(pDrawObject)
@@ -13,15 +14,23 @@ void Management_EnemyPublic::Update()
 	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
 	{
 		EnemyPublic temp(m_pDrawObjectEnemyPublic, m_SetEnemy[m_EnemyNum]);
-		m_pEnemyPublic[GetObjNum()] = temp;
+		m_pEnemyPublic[EnemyManagement::GetObjNum()] = temp;
 		EnemyManagement::IncreaseObjNum(1);
 
 		m_EnemyNum++;
 	}
 	//今いる敵の処理
-	for (int i = 0; i < GetObjNum(); i++)
+	for (int i = 0; i < EnemyManagement::GetObjNum(); i++)
 	{
 		m_pEnemyPublic[i].Update();
+
+		//画面外に出たら消す
+		if (ScreenOut::GetScreenOut(m_pEnemyPublic[i].GetPos(), m_pEnemyPublic[i].GetSize())) {
+			DeleteObj(i);
+
+			//同じやつの処理をしないためここのフレームは処理中止
+			break;
+		}
 	}
 }
 

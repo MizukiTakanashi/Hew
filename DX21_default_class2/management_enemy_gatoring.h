@@ -20,7 +20,7 @@ class EnemyGatoringManagement:public EnemyManagement
 private:
 	//Ç±Ç±Ç≈èâä˙âª
 	//ìGé©êg
-	static const int ENEMY_NUM = 9;		//ìGÇèoåªÇ≥ÇπÇÈêî
+	static const int ENEMY_NUM = 5;		//ìGÇèoåªÇ≥ÇπÇÈêî
 
 	//cppÇ≈èâä˙âª
 	//íe
@@ -44,28 +44,20 @@ private:
 
 	//ìGÇÃà íuîzóÒ
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-										D3DXVECTOR2(52.5f + (105 *  5), -EnemyGatoring::SIZE_Y / 2),
-										D3DXVECTOR2(52.5f + (105 *  0), -EnemyGatoring::SIZE_Y / 2),
-										D3DXVECTOR2(52.5f + (105 * 11), -EnemyGatoring::SIZE_Y / 2),
-										D3DXVECTOR2(52.5f + (105 *  4), -EnemyGatoring::SIZE_Y / 2),
-										D3DXVECTOR2(52.5f + (105 *  7), -EnemyGatoring::SIZE_Y / 2),
-										D3DXVECTOR2(52.5f + (105 *  2), -EnemyGatoring::SIZE_Y / 2),
-										D3DXVECTOR2(52.5f + (105 *  3), -EnemyGatoring::SIZE_Y / 2),
-										D3DXVECTOR2(52.5f + (105 *  4), -EnemyGatoring::SIZE_Y / 2),
-										D3DXVECTOR2(52.5f + (105 *  5), -EnemyGatoring::SIZE_Y / 2)
+		D3DXVECTOR2(52.5f + (105 *  5), -EnemyGatoring::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  2), -EnemyGatoring::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  8), -EnemyGatoring::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  3), -EnemyGatoring::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  7), -EnemyGatoring::SIZE_Y / 2)
 	};
 
 	//ìGÇèoÇ∑éûä‘
 	int m_SetEnemyTime[ENEMY_NUM] = {
-								60 * 5,
-								60 * 35,
-								60 * 35 + 1,
-								60 * 55,
-								60 * 55 + 1,
-								60 * 85,
-								60 * 85 + 1,
-								60 * 85 + 2,
-								60 * 85 + 3,
+								60 * 15,
+								60 * 20,
+								60 * 20 + 1,
+								60 * 80,
+								60 * 80 + 1
 	};
 
 //ÉÅÉìÉoä÷êî
