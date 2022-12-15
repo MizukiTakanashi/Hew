@@ -70,7 +70,7 @@ public:
 	//引数付きコンストラクタ
 	StageSelectPlanet(DrawObject& mars, DrawObject& mercury, DrawObject& jupiter,
 		DrawObject& venus, DrawObject& saturn, DrawObject& sun, DrawObject& white_line, 
-		bool sun_appearance = false);
+		bool stage_clear[], bool sun_appearance = false);
 
 	//デストラクタ
 	~StageSelectPlanet() {

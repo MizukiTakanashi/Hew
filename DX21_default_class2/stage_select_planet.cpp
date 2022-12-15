@@ -19,7 +19,7 @@ const float StageSelectPlanet::SUN_MOVE_SPEED_Y = 0.6f;
 //==========================
 StageSelectPlanet::StageSelectPlanet(DrawObject& mars, DrawObject& mercury, DrawObject& jupiter, 
 	DrawObject& venus, DrawObject& saturn, DrawObject& sun, DrawObject& white_line, 
-	bool sun_appearance) :m_sun_appearance(sun_appearance)
+	bool stage_clear[], bool sun_appearance) :m_sun_appearance(sun_appearance)
 {
 	//òfêØÇÃÉZÉbÉg
 	m_planets[(int)PLANET::MARS] = new StageSelectMars(mars);

@@ -106,9 +106,9 @@ void UninitScene(void)
 
 	case SCENE::SCENE_GAME:
 		//前のスコアよりも超えそうであれば...
-		if (pGame->GetScore() > g_Score[SCENE_GAME]) {
+		if (pGame->GetScore() > g_Score[STAGE_MOON]) {
 			//スコアを更新
-			g_Score[SCENE_GAME] = pGame->GetScore();
+			g_Score[STAGE_MOON] = pGame->GetScore();
 		}
 		delete pGame;
 		break;
