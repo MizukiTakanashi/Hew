@@ -12,7 +12,8 @@ public:
 private:
 	float m_move_width = 0.0f;			//敵が動く時のcosカーブ
 	float m_init_posx = 0.0f;			//敵の初期位置X
-	static const int INVINCIBLE_FLAME = 30;			//敵の無敵時間
+	static const int INVINCIBLE_FLAME = 30;	//敵の無敵時間
+
 	//cppで初期化
 	static const float SPEED_X;			//敵のスピードY
 	static const float SPEED_Y;			//敵のスピードY
