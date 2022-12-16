@@ -197,7 +197,12 @@
       <Filter>02_Game</Filter>
     </ClCompile>
     <ClCompile Include="stage_mercury.cpp" />
-    <ClCompile Include="stage_mars.cpp" />
+    <ClCompile Include="stage_mars.cpp">
+      <Filter>05_Mars</Filter>
+    </ClCompile>
+    <ClCompile Include="title_score.cpp">
+      <Filter>01_Title</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -399,7 +404,12 @@
       <Filter>02_Game</Filter>
     </ClInclude>
     <ClInclude Include="stage_mercury.h" />
-    <ClInclude Include="stage_mars.h" />
+    <ClInclude Include="stage_mars.h">
+      <Filter>05_Mars</Filter>
+    </ClInclude>
+    <ClInclude Include="title_score.h">
+      <Filter>01_Title</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01_Title">
@@ -416,6 +426,9 @@
     </Filter>
     <Filter Include="%3f">
       <UniqueIdentifier>{7c43303e-3fc7-40c1-b451-5c06c3cda157}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05_Mars">
+      <UniqueIdentifier>{c4943b1e-4973-4156-a432-f168a71ba7d8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

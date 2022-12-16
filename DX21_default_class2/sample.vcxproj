@@ -199,6 +199,7 @@
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="texture_useful.cpp" />
     <ClCompile Include="title.cpp" />
+    <ClCompile Include="title_score.cpp" />
     <ClCompile Include="ui.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -273,6 +274,7 @@
     <ClInclude Include="texture.h" />
     <ClInclude Include="texture_useful.h" />
     <ClInclude Include="title.h" />
+    <ClInclude Include="title_score.h" />
     <ClInclude Include="ui.h" />
   </ItemGroup>
   <ItemGroup>
