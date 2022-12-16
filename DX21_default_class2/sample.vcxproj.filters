@@ -198,6 +198,9 @@
     </ClCompile>
     <ClCompile Include="stage_mercury.cpp" />
     <ClCompile Include="stage_mars.cpp" />
+    <ClCompile Include="text_management.cpp">
+      <Filter>02_Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -400,6 +403,9 @@
     </ClInclude>
     <ClInclude Include="stage_mercury.h" />
     <ClInclude Include="stage_mars.h" />
+    <ClInclude Include="text_management.h">
+      <Filter>02_Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01_Title">
