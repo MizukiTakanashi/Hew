@@ -17,6 +17,7 @@ const D3DXVECTOR2 Game::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
 // グローバル変数
 //==========================
 int StopFlame = 0; //ヒットストップ用
+bool isText = false; //チュートリアルテキスト用
 
 
 //==========================
@@ -42,6 +43,8 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 	//背景の初期化処理
 	m_pBG = new BG((char*)"data\\texture\\stage_select_bg.jpg");
 	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\earth.png");
+
+	m_pTextManagement = new TextManagement();
 
 	//=======================
 	// 弾
@@ -246,6 +249,7 @@ Game::~Game()
 	delete m_pPlayerCenter;
 	delete m_pComboNum;
 	delete m_pMultiply;
+	delete m_pTextManagement;
 
 	//そのほか
 	delete[] m_pDrawObject;
@@ -266,6 +270,14 @@ void Game::Update(void)
 		StopFlame--;
 		return;
 	}
+
+	//チュートリアルテキスト
+	if (isText)
+	{
+		m_pTextManagement->Update();
+		return;
+	}
+
 	//背景
 	m_pBG->Update();
 	m_pBG_Moon->Update();
@@ -337,6 +349,10 @@ void Game::Update(void)
 //==========================
 void Game::Draw(void)const
 {
+	if (isText)
+	{
+		m_pTextManagement->Draw();
+	}
 	m_pBG->DrawBG();
 	m_pBG_Moon->DrawBG();
 	m_pPlayer->Draw();
@@ -382,4 +398,14 @@ void Game::Draw(void)const
 void HitStop(int flame)
 {
 	StopFlame = flame;
+}
+
+void StartText(void)
+{
+	isText = true;
+}
+
+void EndText(void)
+{
+	isText = false;
 }
