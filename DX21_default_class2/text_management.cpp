@@ -4,3 +4,12 @@
 // ì¬ÒF‰¶“c—ms
 //====================================================
 #include "text_management.h"
+
+
+//==========================
+// ’è”‰Šú‰»
+//==========================
+//public
+const float TextManagement::FLAME_SIZE_X = 900.0f;
+const float TextManagement::FLAME_SIZE_Y = 300.0f;
+//private
