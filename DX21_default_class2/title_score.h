@@ -16,12 +16,22 @@ class TitleScore
 {
 //’è”
 private:
+	enum class TEXTURE_TYPE :int 
+	{
+		BG,
+		NUM
+	};
 
+	enum class DRAW_TYPE :int
+	{
+		BG,
+		NUM
+	};
 
 //ƒƒ“ƒo•Ï”
 private:
-	TextureUseful* m_pTexUse[5];
-	DrawObject* m_pDrawOb[5];
+	TextureUseful* m_pTexUse[(int)TEXTURE_TYPE::NUM];
+	DrawObject* m_pDrawOb[(int)DRAW_TYPE::NUM];
 
 	UI* m_pBG = nullptr;
 	Score* m_pScore = nullptr;
