@@ -217,6 +217,7 @@ void UpdateScene(void)
 		break;
 
 	case SCENE::SCENE_MARS:
+		pMars->Update();
 		break;
 
 	case SCENE::SCENE_JUPITER:
@@ -266,6 +267,7 @@ void DrawScene(void)
 		break;
 
 	case SCENE::SCENE_MARS:
+		pMars->Draw();
 		break;
 
 	case SCENE::SCENE_JUPITER:
