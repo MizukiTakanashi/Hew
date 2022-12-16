@@ -3,24 +3,24 @@
 // 作成日：2022/12/15
 // 作成者：高梨水希
 //=======================================
-#include "stage_mars.h"
+#include "stage_mercury.h"
 #include "sound.h"
 
 //==========================
 // 定数初期化
 //==========================
-const D3DXVECTOR2 StageMars::NUMBER_POS = D3DXVECTOR2(1230.0f, 30.0f);
-const D3DXVECTOR2 StageMars::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
+const D3DXVECTOR2 StageMercury::NUMBER_POS = D3DXVECTOR2(1230.0f, 30.0f);
+const D3DXVECTOR2 StageMercury::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
 
 //==========================
 // グローバル変数
 //==========================
-int MarsStopFlame = 0; //ヒットストップ用
+int MercuryStopFlame = 0; //ヒットストップ用
 
 //==========================
 // 引数付きコンストラクタ
 //==========================
-StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
+StageMercury::StageMercury(Score* pNumber)
 {
 	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);	//BGM再生
@@ -156,7 +156,7 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	//敵の管理
 	m_pAllEnemyManagement = new AllEnemyManagement;
 	m_pAllEnemyManagement->AddPointer(m_pEnemyBarrierManagement);
-
+	
 	//========================================================
 	// 全ての当たり判定
 	m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
@@ -169,7 +169,7 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 //==========================
 // デストラクタ
 //==========================
-StageMars::~StageMars()
+StageMercury::~StageMercury()
 {
 	//描画がない物から消していく
 	delete m_pAllEnemyManagement;
@@ -205,12 +205,12 @@ StageMars::~StageMars()
 //==========================
 // 更新処理
 //==========================
-void StageMars::Update(void)
+void StageMercury::Update(void)
 {
 	//ヒットストップ
-	if (MarsStopFlame > 0)
+	if (MercuryStopFlame > 0)
 	{
-		MarsStopFlame--;
+		MercuryStopFlame--;
 		return;
 	}
 	//背景
@@ -275,7 +275,7 @@ void StageMars::Update(void)
 //==========================
 // 描画処理
 //==========================
-void StageMars::Draw(void) const
+void StageMercury::Draw(void) const
 {
 	m_pBG->DrawBG();
 	m_pBG_Moon->DrawBG();
@@ -313,7 +313,7 @@ void StageMars::Draw(void) const
 //==========================
 // ヒットストップ
 //==========================
-void MarsHitStop(int flame)
+void MercuryHitStop(int flame)
 {
-	MarsStopFlame = flame;
+	MercuryStopFlame = flame;
 }

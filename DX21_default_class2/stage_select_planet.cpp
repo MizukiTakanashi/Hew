@@ -210,6 +210,15 @@ void StageSelectPlanet::Update()
 
 	//現在の惑星インデックス番号を保存
 	m_planet_index_before = m_planet_index;
+
+	//パッドのBボタンを押したら...
+	if (IsButtonTriggered(0, XINPUT_GAMEPAD_B)) {
+		Fade((SCENE)(SCENE::SCENE_MERCURY + m_planet_index));
+	}
+	//キーボードのEnterを押したら...
+	else if (InputGetKeyDown(KK_ENTER)) {
+		Fade((SCENE)(SCENE::SCENE_MERCURY + m_planet_index));
+	}
 }
 
 //==========================

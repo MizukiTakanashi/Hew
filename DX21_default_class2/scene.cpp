@@ -13,6 +13,8 @@
 #include "score.h"
 #include "draw_object.h"
 #include "stage_select.h"
+#include "stage_mercury.h"
+#include "stage_mars.h"
 
 //======================
 // グローバル変数
@@ -23,6 +25,9 @@ SCENE g_scene_next;		//次のシーン
 StageSelect* pStageSelect = nullptr;	//ステージ選択画面
 Game* pGame = nullptr;					//ゲーム画面
 Result* pResult = nullptr;				//リザルト画面
+
+StageMercury* pMercury = nullptr;		//水星ステージ
+StageMars* pMars = nullptr;				//火星ステージ
 
 TextureUseful* g_pTexUseful;
 DrawObject* g_pDrawObject;
@@ -53,6 +58,26 @@ void InitScene(SCENE s)
 
 	case SCENE::SCENE_GAME:
 		pGame = new Game(g_pNumber = new Score(g_pDrawObject[0]));
+		break;
+
+	case SCENE::SCENE_MERCURY:
+		pMercury = new StageMercury(new Score(g_pDrawObject[0]));
+		break;
+
+	case SCENE::SCENE_VENUS:
+		break;
+
+	case SCENE::SCENE_MARS:
+		pMars = new StageMars(new Score(g_pDrawObject[0]));
+		break;
+
+	case SCENE::SCENE_JUPITER:
+		break;
+
+	case SCENE::SCENE_SATURN:
+		break;
+
+	case SCENE::SCENE_SUN:
 		break;
 
 	case SCENE::SCENE_RESULT:
@@ -113,6 +138,36 @@ void UninitScene(void)
 		delete pGame;
 		break;
 
+	case SCENE::SCENE_MERCURY:
+		//前のスコアよりも超えそうであれば...
+		if (pMercury->GetScore() > g_Score[STAGE_MERCURY]) {
+			//スコアを更新
+			g_Score[STAGE_MERCURY] = pMercury->GetScore();
+		}
+		delete pMercury;
+		break;
+
+	case SCENE::SCENE_VENUS:
+		break;
+
+	case SCENE::SCENE_MARS:
+		//前のスコアよりも超えそうであれば...
+		if (pMars->GetScore() > g_Score[STAGE_MARS]) {
+			//スコアを更新
+			g_Score[STAGE_MARS] = pMars->GetScore();
+		}
+		delete pMars;
+		break;
+
+	case SCENE::SCENE_JUPITER:
+		break;
+
+	case SCENE::SCENE_SATURN:
+		break;
+
+	case SCENE::SCENE_SUN:
+		break;
+
 	case SCENE::SCENE_RESULT:
 		delete pResult;
 		break;
@@ -154,6 +209,25 @@ void UpdateScene(void)
 		pGame->Update();
 		break;
 
+	case SCENE::SCENE_MERCURY:
+		pMercury->Update();
+		break;
+
+	case SCENE::SCENE_VENUS:
+		break;
+
+	case SCENE::SCENE_MARS:
+		break;
+
+	case SCENE::SCENE_JUPITER:
+		break;
+
+	case SCENE::SCENE_SATURN:
+		break;
+
+	case SCENE::SCENE_SUN:
+		break;
+
 	case SCENE::SCENE_RESULT:
 		pResult->Update();
 		break;
@@ -183,6 +257,24 @@ void DrawScene(void)
 
 	case SCENE::SCENE_GAME:
 		pGame->Draw();
+		break;
+
+	case SCENE::SCENE_MERCURY:
+		break;
+
+	case SCENE::SCENE_VENUS:
+		break;
+
+	case SCENE::SCENE_MARS:
+		break;
+
+	case SCENE::SCENE_JUPITER:
+		break;
+
+	case SCENE::SCENE_SATURN:
+		break;
+
+	case SCENE::SCENE_SUN:
 		break;
 
 	case SCENE::SCENE_RESULT:

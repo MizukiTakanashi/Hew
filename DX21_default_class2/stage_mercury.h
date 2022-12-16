@@ -1,12 +1,12 @@
 #pragma once
 //=======================================
-// 火星のステージ関係(ヘッダファイル)
+// 水星のステージ関係(ヘッダファイル)
 // 作成日：2022/12/15
 // 作成者：高梨水希
 //=======================================
 
-#ifndef _STAGE_MARS_H_
-#define _STAGE_MARS_H_
+#ifndef _STAGE_MERCURY_H_
+#define _STAGE_MERCURY_H_
 
 #include "main.h"
 #include "sprite.h"
@@ -29,7 +29,7 @@
 #include "player_center.h"
 #include "Bom.h"
 
-class StageMars
+class StageMercury
 {
 	//定数
 private:
@@ -123,11 +123,11 @@ private:
 
 	//メンバ関数
 public:
-	StageMars() {}	//デフォルトコンストラクタ
+	StageMercury(){}	//デフォルトコンストラクタ
 
-	StageMars(Score* pNumber);
+	StageMercury(Score* pNumber);
 
-	~StageMars();	//デストラクタ
+	~StageMercury();	//デストラクタ
 
 	//更新
 	void Update(void);
@@ -139,6 +139,6 @@ public:
 	int GetScore(void)const { return m_pScore->GetNumber(); }
 };
 
-void MarsHitStop(int flame);
+void MercuryHitStop(int flame);
 
-#endif // !_STAGE_MARS_H_
+#endif // !_STAGE_MERCURY_H_
