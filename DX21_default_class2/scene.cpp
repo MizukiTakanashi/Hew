@@ -21,7 +21,6 @@
 //======================
 SCENE g_scene;			//現在のシーン
 SCENE g_scene_next;		//次のシーン
-int num;
 
 StageSelect* pStageSelect = nullptr;	//ステージ選択画面
 Game* pGame = nullptr;					//ゲーム画面
