@@ -201,3 +201,12 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 		}
 	}
 }
+
+void inhPlayerArmBoth::BreakShootingArm()
+{
+	//タイプをセット
+	m_type = TYPE::TYPE_NONE;
+
+	delete m_pEnemyItem;
+	m_pEnemyItem = nullptr;
+}

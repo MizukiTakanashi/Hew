@@ -25,10 +25,7 @@ private:
 		NORMAL,
 		LASER,
 		GATORING,
-		PUBLIC,
-		MISSILE,
-		ATTACK,
-		BARRIER,
+		METEO,
 		NUM
 	};
 

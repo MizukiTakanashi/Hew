@@ -103,6 +103,9 @@ public:
 
 	//Žc’e”‰ñ•œ
 	void HeelBullet(void) { if (m_pEnemyItem)m_pEnemyItem->HeelBullet(); }
+
+	//è¦Î‚Æ“–‚½‚Á‚½Žž‚É˜r‚ðÁ‚·
+	void BreakShootingArm();
 };
 
 #endif // !_INH_PLAYER_ARM_BOTH_H_

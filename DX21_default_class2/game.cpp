@@ -208,7 +208,7 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 	//m_pColAll->AddEnemyPointer(m_pEnemyMissileManagement);
 	//m_pColAll->AddEnemyPointer(m_pEnemyAttackManagement);
 	//m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
-	//m_pColAll->AddEnemyPointer(m_pMeteoManagement);
+	m_pColAll->AddEnemyPointer(m_pMeteoManagement);
 
 }
 

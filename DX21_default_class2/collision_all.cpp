@@ -25,7 +25,7 @@ CollisionAll::CollisionAll()
 //==========================
 CollisionAll::CollisionAll(Player* pPlayer, inhPlayerArmBoth* pL, inhPlayerArmBoth* pR,
 	ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber, Bom* pBom)
-	:m_pPlayer(pPlayer), m_pPlayerLeft(pL), m_pPlayerRight(pR), m_pExplosion(pExplosion), 
+	:m_pPlayer(pPlayer), m_pPlayerLeft(pL), m_pPlayerRight(pR), m_pExplosion(pExplosion),
 	m_pItem(pItem), m_pScore(pNumber), m_pBom(pBom)
 {
 	for (int i = 0; i < ENEMY_NUM; i++) {
@@ -85,9 +85,9 @@ int CollisionAll::Collision(void)
 						//敵のHPを減らす
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
-						{							
+						{
 							//ドロップする敵であれば...
-							if (k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE && k != (int)TYPE::ATTACK) {
+							if (/*k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE && k != (int)TYPE::ATTACK &&*/ k != (int)TYPE::METEO) {
 								//敵アイテムのドロップ
 								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 							}
@@ -112,8 +112,8 @@ int CollisionAll::Collision(void)
 				break;
 			}
 
-				//自身
-				//自身
+			//自身
+			//自身
 			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetObjPos(j),
 				m_pPlayer->GetSize(), m_pEnemy[k]->GetObjSize())) {
 				//一度離れてからじゃないともう一度当たった判定にはならない
@@ -132,8 +132,8 @@ int CollisionAll::Collision(void)
 				m_player_enemy_col = false;
 			}
 
-				//ボム
-				//自身
+			//ボム
+			//自身
 			if (m_pBom->IsBomb()) {
 				//爆発をセット
 				m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
@@ -144,7 +144,7 @@ int CollisionAll::Collision(void)
 				if (m_pEnemy[k]->ReduceHP(j, m_pBom->GetBombAttack()))
 				{
 					//ドロップする敵であれば...
-					if (k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE && k != (int)TYPE::ATTACK) {
+					if (/*k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE && k != (int)TYPE::ATTACK &&*/ k != (int)TYPE::METEO) {
 						//敵アイテムのドロップ
 						m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 					}
@@ -181,23 +181,22 @@ int CollisionAll::Collision(void)
 				if (pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
 					if (Collision::ColBox(pArm->GetPos(), m_pEnemy[k]->GetObjPos(j),
 						pArm->GetSize(), m_pEnemy[k]->GetObjSize(j))) {
+						//腕と隕石があたったらタイプを消す
+						if (k == (int)TYPE::METEO) {
+							pArm->BreakShootingArm();
+						}
 						//TYPE_OLDにセット
 						pArm->SetType(inhPlayerArmBoth::TYPE::TYPE_OLD);
-
-						//爆発をセット
-						m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
-						explosion_sound = true;
-
 						//敵のHPを減らす
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
 							//ドロップする敵であれば...
-							if (k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE && k != (int)TYPE::ATTACK) {
+							if (/*k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE && k != (int)TYPE::ATTACK &&*/ k != (int)TYPE::METEO) {
 								//敵アイテムのドロップ
 								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 							}
-							
+
 							//敵を消す
 							m_pEnemy[k]->DeleteObj(j);
 
@@ -263,7 +262,7 @@ int CollisionAll::Collision(void)
 								if (m_pEnemy[k]->ReduceHP(j, 1))
 								{
 									//ドロップする敵であれば...
-									if (k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE && k != (int)TYPE::ATTACK) {
+									if (/*k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE && k != (int)TYPE::ATTACK &&*/ k != (int)TYPE::METEO) {
 										//敵アイテムのドロップ
 										m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 									}
@@ -305,7 +304,7 @@ int CollisionAll::Collision(void)
 
 			//プレイヤーの方
 			//敵の方
-			
+
 				//弾
 				//弾
 			/*for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
@@ -329,8 +328,8 @@ int CollisionAll::Collision(void)
 				}
 			}*/
 
-				//自身
-				//弾
+			//自身
+			//弾
 			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetBulletPos(j),
 				m_pPlayer->GetSize(), m_pEnemy[k]->GetBulletSize())) {
 
@@ -352,8 +351,8 @@ int CollisionAll::Collision(void)
 				}
 			}
 
-				//ボム
-				//弾
+			//ボム
+			//弾
 			if (m_pBom->IsBomb()) {
 				//爆発をセット
 				m_pExplosion->SetExplosion(m_pEnemy[k]->GetBulletPos(j));
@@ -423,10 +422,10 @@ int CollisionAll::Collision(void)
 		//=================================================
 		// 敵の別オブジェクト分ループ
 
-		//バリア以外の敵であれば処理しない
-		if (k != (int)TYPE::BARRIER) {
-			continue;
-		}
+		////バリア以外の敵であれば処理しない
+		//if (k != (int)TYPE::BARRIER) {
+		//	continue;
+		//}
 
 		for (int j = 0; j < m_pEnemy[k]->GetOtherNum(); j++) {
 			bool next = false;
@@ -480,8 +479,8 @@ int CollisionAll::Collision(void)
 			}
 
 
-				//自身
-				//別オブジェクト
+			//自身
+			//別オブジェクト
 			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetOtherPos(j),
 				m_pPlayer->GetSize(), m_pEnemy[k]->GetOtherSize())) {
 
@@ -609,20 +608,20 @@ void CollisionAll::HeelCollision(void)
 
 	//=================================================
 	// 腕と○○
-	
+
 	//腕のポインタを取ってくる(初期は左から)
 	inhPlayerArmBoth* pArm = m_pPlayerLeft;
 
 	for (int m = 0; m < 2; m++) {
 		//=================================================
 		// プレイヤーの腕と敵のアイテム
-		
+
 		//プレイヤーの腕の方
 		//敵のアイテムの方
-		
+
 			//腕の方
 			//敵の方
-		
+
 				//自身
 				//自身
 
