@@ -10,10 +10,13 @@
 //==========================
 const D3DXVECTOR2 TitleScore::NUMBER_SIZE = D3DXVECTOR2(40.0f, 60.0f);
 const float TitleScore::NUMBER_INIT_POS_X = SCREEN_WIDTH / 2 + 200.0f;
+
 const D3DXVECTOR2 TitleScore::FLAME_SIZE = D3DXVECTOR2(1000.0f, 70.0f);
 const float TitleScore::FLAME_POS_X = SCREEN_WIDTH / 2 + 100.0f;
+
 const D3DXVECTOR2 TitleScore::PLANET_SIZE = D3DXVECTOR2(70.0f, 70.0f);
 const float TitleScore::PLANET_POS_X = 100.0f;
+
 const D3DXVECTOR2 TitleScore::WORD_SIZE = D3DXVECTOR2(600.0f, 100.0f);
 const float TitleScore::WORD_POS_Y = 60.0f;
 
@@ -91,13 +94,17 @@ TitleScore::TitleScore(int score[])
 
 	for (int i = (int)UI_TYPE::MERCURY; i < num; i++) {
 		float temp_y = (SCREEN_HEIGHT - (WORD_POS_Y + WORD_SIZE.y / 2)) / 7.0f * (i - 1) + (WORD_POS_Y + WORD_SIZE.y / 2);
+		
+		//òfêØ
 		m_pUI[i] = new UI(m_pDrawObject[i + 1], D3DXVECTOR2(PLANET_POS_X, temp_y),
 			PLANET_SIZE);
 
+		//ÉtÉåÅ[ÉÄ
 		m_pDrawObject[i + 6].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::FLAME]);
 		m_pUI[i + 6] = new UI(m_pDrawObject[i + 6], D3DXVECTOR2(FLAME_POS_X, temp_y),
 			FLAME_SIZE);
 
+		//êîéö
 		m_pScore[i - 2] = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(FLAME_POS_X, temp_y),
 			NUMBER_SIZE, NUMBER_DIGIT);
 		m_pScore[i - 2]->SetNumber(m_score[i - 2]);
@@ -120,15 +127,18 @@ void TitleScore::Draw(void)
 	int num = 0;
 	int num_1 = 0;
 
+	//ëæózÇ™Ç»ÇØÇÍÇŒ
 	if (!m_sun_appearance) {
 		num = (int)UI_TYPE::SUN;
 		num_1 = (int)UI_TYPE::SUN - (int)UI_TYPE::MERCURY;
 	}
+	//ëæózÇ™Ç¢ÇÍÇŒ
 	else {
 		num = (int)UI_TYPE::FLAME_MERCURY;
 		num_1 = (int)UI_TYPE::SUN - (int)UI_TYPE::MERCURY + 1;
 	}
 
+	//òfêØÇ∆ÉtÉåÅ[ÉÄ
 	for (int i = 0; i < num; i++) {
 		//òfêØ
 		m_pUI[i]->Draw();
@@ -138,6 +148,7 @@ void TitleScore::Draw(void)
 		}
 	}
 
+	//êîéö
 	for (int i = 0; i < num_1; i++) {
 		m_pScore[i]->DrawNumber();
 	}
