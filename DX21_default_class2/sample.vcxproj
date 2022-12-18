@@ -153,6 +153,7 @@
     <ClCompile Include="management_enemy_barrier.cpp" />
     <ClCompile Include="management_enemy_gatoring.cpp" />
     <ClCompile Include="enemy_laser.cpp" />
+    <ClCompile Include="management_enemy_icerain.cpp" />
     <ClCompile Include="management_enemy_laser.cpp" />
     <ClCompile Include="management_enemy.cpp" />
     <ClCompile Include="enemy_normal.cpp" />
@@ -228,6 +229,7 @@
     <ClInclude Include="management_enemy_barrier.h" />
     <ClInclude Include="management_enemy_gatoring.h" />
     <ClInclude Include="enemy_laser.h" />
+    <ClInclude Include="management_enemy_icerain.h" />
     <ClInclude Include="management_enemy_laser.h" />
     <ClInclude Include="management_enemy.h" />
     <ClInclude Include="enemy_normal.h" />
