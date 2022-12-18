@@ -203,6 +203,7 @@
     <ClCompile Include="title_score.cpp">
       <Filter>01_Title</Filter>
     </ClCompile>
+    <ClCompile Include="enemy_icerain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -410,6 +411,7 @@
     <ClInclude Include="title_score.h">
       <Filter>01_Title</Filter>
     </ClInclude>
+    <ClInclude Include="enemy_icerain.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01_Title">

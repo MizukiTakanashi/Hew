@@ -139,6 +139,7 @@
     <ClCompile Include="enemy_attack.cpp" />
     <ClCompile Include="enemy_barrier.cpp" />
     <ClCompile Include="enemy_gatoring.cpp" />
+    <ClCompile Include="enemy_icerain.cpp" />
     <ClCompile Include="enemy_public.cpp" />
     <ClCompile Include="Fade.cpp" />
     <ClCompile Include="inh_enemy.cpp" />
@@ -213,6 +214,7 @@
     <ClInclude Include="enemy_attack.h" />
     <ClInclude Include="enemy_barrier.h" />
     <ClInclude Include="enemy_gatoring.h" />
+    <ClInclude Include="enemy_icerain.h" />
     <ClInclude Include="enemy_public.h" />
     <ClInclude Include="Fade.h" />
     <ClInclude Include="inh_enemy.h" />
