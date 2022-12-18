@@ -13,6 +13,7 @@
 typedef enum {
 	SCENE_NONE,
 	SCENE_TITLE,
+	SCENE_TITLE_SCORE,		//惑星別最高スコア表示
 	SCENE_STAGE_SELECT,
 	SCENE_GAME,				//チュートリアル
 	SCENE_MERCURY,

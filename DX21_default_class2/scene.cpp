@@ -15,6 +15,7 @@
 #include "stage_select.h"
 #include "stage_mercury.h"
 #include "stage_mars.h"
+#include "title_score.h"
 
 //======================
 // グローバル変数
@@ -23,6 +24,7 @@ SCENE g_scene;			//現在のシーン
 SCENE g_scene_next;		//次のシーン
 
 StageSelect* pStageSelect = nullptr;	//ステージ選択画面
+TitleScore* pTitleScore = nullptr;		//最高スコア表示画面
 Game* pGame = nullptr;					//ゲーム画面
 Result* pResult = nullptr;				//リザルト画面
 
@@ -50,6 +52,10 @@ void InitScene(SCENE s)
 
 	case SCENE::SCENE_TITLE:
 		InitTitle();
+		break;
+
+	case SCENE::SCENE_TITLE_SCORE:
+		pTitleScore = new TitleScore(g_Score);
 		break;
 
 	case SCENE::SCENE_STAGE_SELECT:
@@ -123,6 +129,10 @@ void UninitScene(void)
 
 	case SCENE::SCENE_TITLE:
 		UninitTitle();
+		break;
+
+	case SCENE::SCENE_TITLE_SCORE:
+		delete pTitleScore;
 		break;
 
 	case SCENE::SCENE_STAGE_SELECT:
@@ -201,6 +211,10 @@ void UpdateScene(void)
 		UpdateTitle();
 		break;
 
+	case SCENE::SCENE_TITLE_SCORE:
+		pTitleScore->Update();
+		break;
+
 	case SCENE::SCENE_STAGE_SELECT:
 		pStageSelect->Update();
 		break;
@@ -250,6 +264,10 @@ void DrawScene(void)
 
 	case SCENE::SCENE_TITLE:
 		DrawTitle();
+		break;
+
+	case SCENE::SCENE_TITLE_SCORE:
+		pTitleScore->Draw();
 		break;
 
 	case SCENE::SCENE_STAGE_SELECT:
