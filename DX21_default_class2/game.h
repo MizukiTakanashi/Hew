@@ -169,9 +169,9 @@ void HitStop(int flame);
 
 //チュートリアルテキスト関連
 //テキスト開始
-void StartText(void) {}
+void StartTextG(void);
 //テキスト終了
-void EndText(void) {}
+void EndTextG(void);
 
 #endif // !_GAME_H_
 

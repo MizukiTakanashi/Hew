@@ -272,9 +272,9 @@ void Game::Update(void)
 	}
 
 	//チュートリアルテキスト
+	m_pTextManagement->Update();
 	if (isText)
 	{
-		m_pTextManagement->Update();
 		return;
 	}
 
@@ -349,10 +349,6 @@ void Game::Update(void)
 //==========================
 void Game::Draw(void)const
 {
-	if (isText)
-	{
-		m_pTextManagement->Draw();
-	}
 	m_pBG->DrawBG();
 	m_pBG_Moon->DrawBG();
 	m_pPlayer->Draw();
@@ -392,6 +388,10 @@ void Game::Draw(void)const
 	m_pComboNum->DrawNumber();
 	m_pMultiply->Draw();
 
+	if (isText)
+	{
+		m_pTextManagement->Draw();
+	}
 }
 
 
@@ -400,12 +400,12 @@ void HitStop(int flame)
 	StopFlame = flame;
 }
 
-void StartText(void)
+void StartTextG(void)
 {
 	isText = true;
 }
 
-void EndText(void)
+void EndTextG(void)
 {
 	isText = false;
 }
