@@ -14,25 +14,25 @@
 
 class PlayerArmBarrier :public inhPlayerArm
 {
-	//定数
+//定数
 private:
 	//ここで初期化
-	static const int BULLET_NUM_MAX = 50;		//弾の制限数　実際に撃てる数はこれより１少ない
-	static const int BULLET_SHOOT_MAX = 20;		//弾の同時最大発射数
-	static const int BULLET_INTERVAL = 10;		//弾の発射間隔
+	static const int BULLET_NUM_MAX = 5;	//弾の制限数　実際に撃てる数はこれより１少ない
+	static const int BULLET_SHOOT_MAX = 1;	//弾の同時最大発射数
 
 	//cppで初期化
 	static const float BULLET_SIZE_X;		//サイズX
 	static const float BULLET_SIZE_Y;		//サイズY
-	static const float BULLET_SPEED;		//スピード
+	static const D3DXVECTOR2 RIGHT_BARRIER_INTERVAL_POS;	//腕バリアと腕の間隔
+	static const D3DXVECTOR2 LEFT_BARRIER_INTERVAL_POS;		//バリアと腕の間隔
 
-	//メンバ変数
+//メンバ変数
 private:
 	DrawObject m_bulletdraw;			//弾の描画オブジェクト
 	Bullet* m_pBullet = nullptr;		//弾のオブジェクト
-	int m_bullet_interval_count = 0;	//発射間隔カウント
 
-	//メンバ関数
+
+//メンバ関数
 public:
 	//デフォルトコンストラクタ
 	PlayerArmBarrier() { m_pBullet = new Bullet[BULLET_SHOOT_MAX]; }
@@ -58,13 +58,13 @@ public:
 	//指定した番号の弾の座標を返す(オーバーライド)
 	const D3DXVECTOR2& GetBulletPos(int index_num)const override
 	{
-		return m_pBullet[index_num].GetPos();
+		return m_pBullet->GetPos();
 	}
 
 	//指定した番号の弾のサイズを返す(オーバーライド)
 	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override
 	{
-		return m_pBullet[index_num].GetSize();
+		return m_pBullet->GetSize();
 	}
 };
 

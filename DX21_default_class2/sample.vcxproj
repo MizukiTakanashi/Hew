@@ -171,6 +171,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="management.cpp" />
     <ClCompile Include="management_meteo.cpp" />
+    <ClCompile Include="mars_collision_all.cpp" />
     <ClCompile Include="meteo.cpp" />
     <ClCompile Include="number.cpp" />
     <ClCompile Include="player.cpp" />
@@ -248,6 +249,7 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="management.h" />
     <ClInclude Include="management_meteo.h" />
+    <ClInclude Include="mars_collision_all.h" />
     <ClInclude Include="meteo.h" />
     <ClInclude Include="number.h" />
     <ClInclude Include="player.h" />

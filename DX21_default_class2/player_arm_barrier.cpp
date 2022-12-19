@@ -8,62 +8,55 @@
 //==========================
 // 定数の初期化
 //==========================
-const float PlayerArmBarrier::BULLET_SIZE_X = 20.0f;
-const float PlayerArmBarrier::BULLET_SIZE_Y = 20.0f;
-const float PlayerArmBarrier::BULLET_SPEED = 20.0f;
+const float PlayerArmBarrier::BULLET_SIZE_X = 50.0f;
+const float PlayerArmBarrier::BULLET_SIZE_Y = 60.0f;
+const D3DXVECTOR2 PlayerArmBarrier::RIGHT_BARRIER_INTERVAL_POS = D3DXVECTOR2(-30.0f, -40.0f);
+const D3DXVECTOR2 PlayerArmBarrier::LEFT_BARRIER_INTERVAL_POS = D3DXVECTOR2(30.0f, -40.0f);
 
 //==========================
 // 更新処理
 //==========================
 void PlayerArmBarrier::Update(const D3DXVECTOR2& arm_pos)
 {
-	//今いる弾の処理
-	for (int i = 0; i < inhPlayerArm::GetBulletNum(); i++) {
-		//弾の更新処理
-		m_pBullet[i].Update();
-
-		//画面外から出たら...
-		if (m_pBullet[i].GetScreenOut()) {
-			DeleteBullet(i);
+	//バリアの処理
+	if (inhPlayerArm::GetBulletNum() == 1) {
+		//ついているのが右であれば
+		if (inhPlayerArm::GetRightLeft()) {
+			m_pBullet->SetPos(RIGHT_BARRIER_INTERVAL_POS);
+		}
+		//左であれば
+		else {
+			m_pBullet->SetPos(LEFT_BARRIER_INTERVAL_POS);
 		}
 	}
 
-	//もしも弾の制限が超えてたら弾を作らない
-	if (inhPlayerArm::IsBulletUsed()) {
+	//もしも弾の制限が超えてたらバリアを作らない
+	//バリアがもうすでに作られていたら
+	if (inhPlayerArm::IsBulletUsed() || inhPlayerArm::GetBulletNum() == 1) {
 		return;
 	}
 
-	//発射間隔カウント
-	m_bullet_interval_count++;
-
 	//ボタンが押されたら
 	if ((inhPlayerArm::GetRightLeft() && inhPlayerArm::IsButtonPush()) ||
-		(!inhPlayerArm::GetRightLeft() && inhPlayerArm::IsButtonPush())) {
-		//発射できる時間になったら...
-		if (m_bullet_interval_count > BULLET_INTERVAL) {
-			m_bullet_interval_count = 0;
-
-			//腕の切り離しと同時に弾を作らないための処理
-			if (inhPlayerArm::GetBulletMaked() == BULLET_NUM_MAX - 1)
-			{
-				//作った弾の数を増やす
-				inhPlayerArm::IncreaseBulletMaked();
-
-				return;
-			}
-
-			//弾を作る
-			Bullet temp(m_bulletdraw, arm_pos,
-				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0.0f, -BULLET_SPEED), 0.0f);
-
-			m_pBullet[inhPlayerArm::GetBulletNum()] = temp;
-
-			//現在の弾の数を増やす
-			inhPlayerArm::IncreaseBulletNum();
-
+		(!inhPlayerArm::GetRightLeft() && inhPlayerArm::IsButtonPush())) {		
+		//腕の切り離しと同時に弾を作らないための処理
+		if (inhPlayerArm::GetBulletMaked() == BULLET_NUM_MAX - 1)
+		{
 			//作った弾の数を増やす
 			inhPlayerArm::IncreaseBulletMaked();
+
+			return;
 		}
+
+		//バリアを作る
+		m_pBullet = new Bullet(m_bulletdraw, arm_pos,
+			D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0.0f, 0.0f), 0.0f);
+
+		//現在の弾の数を増やす
+		inhPlayerArm::IncreaseBulletNum();
+
+		//作った弾の数を増やす
+		inhPlayerArm::IncreaseBulletMaked();
 	}
 }
 
@@ -83,8 +76,7 @@ void PlayerArmBarrier::PlayerArmDraw()const
 void PlayerArmBarrier::DeleteBullet(int index_num)
 {
 	//弾を消す
-	for (int i = index_num; i < inhPlayerArm::GetBulletNum(); i++) {
-		m_pBullet[i] = m_pBullet[i + 1];
-	}
+	delete m_pBullet;
+
 	inhPlayerArm::IncreaseBulletNum(-1);
 }
