@@ -25,9 +25,6 @@
     <ClCompile Include="enemy_attack.cpp">
       <Filter>02_Game</Filter>
     </ClCompile>
-    <ClCompile Include="enemy_barrier.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
     <ClCompile Include="enemy_gatoring.cpp">
       <Filter>02_Game</Filter>
     </ClCompile>
@@ -83,9 +80,6 @@
       <Filter>02_Game</Filter>
     </ClCompile>
     <ClCompile Include="management_enemy_attack.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
-    <ClCompile Include="management_enemy_barrier.cpp">
       <Filter>02_Game</Filter>
     </ClCompile>
     <ClCompile Include="management_enemy_gatoring.cpp">
@@ -203,7 +197,19 @@
     <ClCompile Include="title_score.cpp">
       <Filter>01_Title</Filter>
     </ClCompile>
-    <ClCompile Include="enemy_icerain.cpp" />
+    <ClCompile Include="enemy_icerain.cpp">
+      <Filter>05_Mars</Filter>
+    </ClCompile>
+    <ClCompile Include="management_enemy_icerain.cpp">
+      <Filter>05_Mars</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy_barrier.cpp">
+      <Filter>05_Mars</Filter>
+    </ClCompile>
+    <ClCompile Include="management_enemy_barrier.cpp">
+      <Filter>05_Mars</Filter>
+    </ClCompile>
+    <ClCompile Include="player_arm_barrier.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -228,9 +234,6 @@
       <Filter>04_etc</Filter>
     </ClInclude>
     <ClInclude Include="enemy_attack.h">
-      <Filter>02_Game</Filter>
-    </ClInclude>
-    <ClInclude Include="enemy_barrier.h">
       <Filter>02_Game</Filter>
     </ClInclude>
     <ClInclude Include="enemy_gatoring.h">
@@ -288,9 +291,6 @@
       <Filter>02_Game</Filter>
     </ClInclude>
     <ClInclude Include="management_enemy_attack.h">
-      <Filter>02_Game</Filter>
-    </ClInclude>
-    <ClInclude Include="management_enemy_barrier.h">
       <Filter>02_Game</Filter>
     </ClInclude>
     <ClInclude Include="management_enemy_gatoring.h">
@@ -411,7 +411,19 @@
     <ClInclude Include="title_score.h">
       <Filter>01_Title</Filter>
     </ClInclude>
-    <ClInclude Include="enemy_icerain.h" />
+    <ClInclude Include="enemy_icerain.h">
+      <Filter>05_Mars</Filter>
+    </ClInclude>
+    <ClInclude Include="management_enemy_icerain.h">
+      <Filter>05_Mars</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy_barrier.h">
+      <Filter>05_Mars</Filter>
+    </ClInclude>
+    <ClInclude Include="management_enemy_barrier.h">
+      <Filter>05_Mars</Filter>
+    </ClInclude>
+    <ClInclude Include="player_arm_barrier.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01_Title">

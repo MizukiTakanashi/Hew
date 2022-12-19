@@ -178,6 +178,7 @@
     <ClCompile Include="player_arm_2.cpp" />
     <ClCompile Include="player_arm_3.cpp" />
     <ClCompile Include="player_arm_1.cpp" />
+    <ClCompile Include="player_arm_barrier.cpp" />
     <ClCompile Include="player_arm_change.cpp" />
     <ClCompile Include="player_center.cpp" />
     <ClCompile Include="player_hp.cpp" />
@@ -254,6 +255,7 @@
     <ClInclude Include="player_arm_2.h" />
     <ClInclude Include="player_arm_3.h" />
     <ClInclude Include="player_arm_1.h" />
+    <ClInclude Include="player_arm_barrier.h" />
     <ClInclude Include="player_arm_change.h" />
     <ClInclude Include="player_center.h" />
     <ClInclude Include="player_hp.h" />
