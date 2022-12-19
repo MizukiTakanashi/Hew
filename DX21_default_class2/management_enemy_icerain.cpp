@@ -51,8 +51,8 @@ void EnemyIceRainManagement::Update(const D3DXVECTOR2& PlayerPos)
 		{
 			Bullet temp(m_pDrawObjectBullet, m_pEnemyGatoring[i].GetPos(),
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f); 
-			Bullet temp(m_pDrawObjectBullet, m_pEnemyGatoring[i].GetPos(),
-					D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f);
+			//Bullet temp(m_pDrawObjectBullet, m_pEnemyGatoring[i].GetPos(),
+					//D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f);
 			// ’e‚Ì‘å‚«‚³								’e‚ðŒ‚‚Â•ûŒü		
 			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
 
