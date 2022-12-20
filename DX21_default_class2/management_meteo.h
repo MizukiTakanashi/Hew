@@ -49,7 +49,7 @@ public:
 	Management_Meteo(DrawObject& pDrawObject);
 
 	//デストラクタ
-	~Management_Meteo() override { delete[]m_pMeteo; }
+	~Management_Meteo() override {}
 
 	//更新処理
 	void Update(void);

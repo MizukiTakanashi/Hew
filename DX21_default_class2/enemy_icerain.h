@@ -4,6 +4,8 @@
 // ì¬ŽÒF–î–ìãÄ‘å
 //=======================================
 #pragma once
+#ifndef _ENEMY_ICERAIN_H_
+#define _ENEMY_ICERAIN_H_
 
 
 #include "main.h"
@@ -45,3 +47,4 @@ public:
 
 	void Update(void);	//XVˆ—
 };
+#endif // !_ENEMY_ICERAIN_H_
