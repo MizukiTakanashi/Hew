@@ -9,7 +9,7 @@
 
 #include "main.h"
 #include "management_enemy.h"
-#include "enemy_gatoring.h"
+#include "enemy_icerain.h"
 #include "bullet.h"
 #include "draw_object.h"
 
@@ -36,18 +36,18 @@ public:
 
 	//メンバ変数
 private:
-	EnemyGatoring* m_pEnemyGatoring = nullptr;	//敵のクラス
+	EnemyIceRain* m_pEnemyIceRain = nullptr;	//敵のクラス
 	Bullet* m_pBullet = nullptr;				//弾のクラス
 	DrawObject m_pDrawObjectEnemy;				//敵の描画オブジェクト
 	DrawObject m_pDrawObjectBullet;				//弾の描画オブジェクト
 
 	//敵の位置配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-		D3DXVECTOR2(52.5f + (105 * 5), -EnemyGatoring::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 2), -EnemyGatoring::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 8), -EnemyGatoring::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 3), -EnemyGatoring::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 7), -EnemyGatoring::SIZE_Y / 2)
+		D3DXVECTOR2(52.5f + (105 * 5), -EnemyIceRain::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 2), -EnemyIceRain::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 8), -EnemyIceRain::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 3), -EnemyIceRain::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 7), -EnemyIceRain::SIZE_Y / 2)
 	};
 
 	//敵を出す時間
@@ -63,7 +63,7 @@ private:
 public:
 	//デフォルトコンストラクタ
 	EnemyIceRainManagement() {
-		m_pEnemyGatoring = new EnemyGatoring[ENEMY_NUM];
+		m_pEnemyIceRain = new EnemyIceRain[ENEMY_NUM];
 		m_pBullet = new Bullet[ENEMY_NUM];
 	}
 
@@ -89,10 +89,10 @@ public:
 	void DeleteBullet(int index_num)override;
 
 	//指定した番号の敵の座標を返す(オーバーライド)
-	const D3DXVECTOR2& GetObjPos(int index_num)const override { return m_pEnemyGatoring[index_num].GetPos(); }
+	const D3DXVECTOR2& GetObjPos(int index_num)const override { return m_pEnemyIceRain[index_num].GetPos(); }
 
 	//指定した番号の敵のサイズを返す(オーバーライド)
-	const D3DXVECTOR2& GetObjSize(int index_num = 0)const override { return m_pEnemyGatoring[0].GetSize(); }
+	const D3DXVECTOR2& GetObjSize(int index_num = 0)const override { return m_pEnemyIceRain[0].GetSize(); }
 
 	//指定した番号の弾の座標を返す(オーバーライド)
 	const D3DXVECTOR2& GetBulletPos(int index_num)const override { return m_pBullet[index_num].GetPos(); }
