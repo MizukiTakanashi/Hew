@@ -228,11 +228,17 @@ int MarsCollisionAll::Collision(void)
 
 			//腕についているアイテムのポインタを取ってくる(初期は左から)
 			inhPlayerArm* pArmItem = m_pPlayerLeft->GetArmPointer();
+			//腕のポインタを取ってくる(初期は左から)
+			pArm = m_pPlayerLeft;
 
 			//右と左、両方行う
 			for (int m = 0; m < 2; m++) {
 				//ポインターがヌルであれば処理を行わない
 				if (pArmItem != nullptr) {
+					//バリアであれば何もしない
+					if (pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE4) {
+						continue;
+					}
 					for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
 						//もしも画面外にいたら壊せないようにする
 						if (!ScreenOut::GetScreenOut(m_pEnemy[k]->GetObjPos(j),
@@ -287,6 +293,9 @@ int MarsCollisionAll::Collision(void)
 
 				//腕についているアイテムのポインタを取ってくる(二回目は右)
 				pArmItem = m_pPlayerRight->GetArmPointer();
+
+				//腕のポインタを取ってくる(二回目は右)
+				pArm = m_pPlayerRight;
 			}
 		}
 
@@ -374,12 +383,15 @@ int MarsCollisionAll::Collision(void)
 				//弾
 
 			//腕についているアイテムのポインタを取ってくる(初期は左から)
-			//inhPlayerArm* pArmItem = m_pPlayerLeft->GetArmPointer();
+			inhPlayerArm* pArmItem = m_pPlayerLeft->GetArmPointer();
+			//腕のポインタを取ってくる(初期は左から)
+			inhPlayerArmBoth* pArm = m_pPlayerLeft;
 
 			//右と左、両方行う
-			/*for (int m = 0; m < 2; m++) {
+			for (int m = 0; m < 2; m++) {
 				//ポインターがヌルであれば処理を行わない
-				if (pArmItem != nullptr) {
+				//バリアでなければ処理を行わない
+				if (pArmItem != nullptr && pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE4) {
 					for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
 						if (Collision::ColBox(pArmItem->GetBulletPos(i), m_pEnemy[k]->GetBulletPos(j),
 							pArmItem->GetBulletSize(), m_pEnemy[k]->GetBulletSize())) {
@@ -387,12 +399,17 @@ int MarsCollisionAll::Collision(void)
 							m_pExplosion->SetExplosion(m_pEnemy[k]->GetBulletPos(j));
 							explosion_sound = true;
 
-							//腕についている種類がTYPE2(レーザー)でなければ...
-							if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
-								//プレイヤーの弾を消す
+							//バリアのHPがなくなったら
+							if (pArmItem->ReduceHP(m_pEnemy[k]->GetBulletAttack())) {
 								pArmItem->DeleteBullet(i);
 								i--;
 							}
+							//腕についている種類がTYPE2(レーザー)でなければ...
+							//if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
+							//	//プレイヤーの弾を消す
+							//	pArmItem->DeleteBullet(i);
+							//	i--;
+							//}
 
 							//敵の弾を消す
 							m_pEnemy[k]->DeleteBullet(j);
@@ -412,7 +429,9 @@ int MarsCollisionAll::Collision(void)
 
 				//腕についているアイテムのポインタを取ってくる(二回目は右)
 				pArmItem = m_pPlayerRight->GetArmPointer();
-			}*/
+				//腕のポインタを取ってくる(二回目は右)
+				pArm = m_pPlayerRight;
+			}
 		}
 
 		//=================================================
@@ -514,11 +533,14 @@ int MarsCollisionAll::Collision(void)
 
 			//腕についているアイテムのポインタを取ってくる(初期は左から)
 			inhPlayerArm* pArmItem = m_pPlayerLeft->GetArmPointer();
+			//腕のポインタを取ってくる(初期は左から)
+			inhPlayerArmBoth* pArm = m_pPlayerLeft;
 
 			//右と左、両方行う
 			for (int m = 0; m < 2; m++) {
 				//ポインターがヌルであれば処理を行わない
-				if (pArmItem == nullptr) {
+				//バリアであれば処理を行わない
+				if (pArmItem == nullptr || pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE4) {
 					continue;
 				}
 
@@ -558,6 +580,8 @@ int MarsCollisionAll::Collision(void)
 
 				//腕についているアイテムのポインタを取ってくる(二回目は右)
 				pArmItem = m_pPlayerRight->GetArmPointer();
+				//腕のポインタを取ってくる(二回目は右)
+				pArm = m_pPlayerLeft;
 			}
 		}
 	}
