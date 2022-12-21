@@ -25,7 +25,7 @@
 #include "management_item.h"
 #include "all_enemy_management.h"
 #include "player_arm_change.h"
-#include "collision_all.h"
+#include "mars_collision_all.h"
 #include "player_center.h"
 #include "Bom.h"
 
@@ -117,7 +117,7 @@ private:
 
 	PlayerArmChange* m_pPlayerArmChange = nullptr;	//˜r‚ÌŒðŠ·
 
-	CollisionAll* m_pColAll = nullptr;		//‘S‚Ä‚Ì“–‚½‚è”»’è
+	MarsCollisionAll* m_pColAll = nullptr;		//‘S‚Ä‚Ì“–‚½‚è”»’è
 
 	Bom* m_pBom = nullptr;					//ƒ{ƒ€
 

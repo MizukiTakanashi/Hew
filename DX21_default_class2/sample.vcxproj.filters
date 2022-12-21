@@ -212,7 +212,9 @@
     <ClCompile Include="player_arm_barrier.cpp">
       <Filter>05_Mars</Filter>
     </ClCompile>
-    <ClCompile Include="mars_collision_all.cpp" />
+    <ClCompile Include="mars_collision_all.cpp">
+      <Filter>05_Mars</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -429,7 +431,9 @@
     <ClInclude Include="player_arm_barrier.h">
       <Filter>05_Mars</Filter>
     </ClInclude>
-    <ClInclude Include="mars_collision_all.h" />
+    <ClInclude Include="mars_collision_all.h">
+      <Filter>05_Mars</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01_Title">

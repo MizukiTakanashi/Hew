@@ -7,6 +7,7 @@
 #include "player_arm_1.h"
 #include "player_arm_2.h"
 #include "player_arm_3.h"
+#include "player_arm_barrier.h"
 
 //==========================
 // ’è”‚Ì‰Šú‰»
@@ -90,6 +91,10 @@ void inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& 
 
 				//Arm2‚ÍƒgƒŠƒK[‚É‚È‚Á‚Ä‚é
 			case TYPE::TYPE2:
+				m_pEnemyItem->SetButtonTrigger(m_bullet_shot_trigger);
+				break;
+
+			case TYPE::TYPE4:
 				m_pEnemyItem->SetButtonTrigger(m_bullet_shot_trigger);
 				break;
 
@@ -194,6 +199,10 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 
 		case TYPE::TYPE3:
 			m_pEnemyItem = new PlayerArm3(m_bullet_draw, false, (int)m_type - 1);
+			break;
+
+		case TYPE::TYPE4:
+			m_pEnemyItem = new PlayerArmBarrier(*m_barrier_draw, false, (int)m_type - 1);
 			break;
 
 		default:
