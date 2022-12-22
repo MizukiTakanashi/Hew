@@ -37,13 +37,15 @@ void EnemyIceRain::Update(void)
 	float rad = D3DXToRadian(m_move_width);
 	SetPos(D3DXVECTOR2(m_init_posx + cosf(rad) * RANGE, GetPos().y));
 	m_move_width += SPEED_X;
+
 	m_count++;
 	m_count1++;
 	m_count2++;
 	m_count3++;
 	m_count4++;
+
 	//ŽžŠÔ‚ª—ˆ‚½‚ç’e‚ðì‚é
-	if (m_bullet_count> BULLET_TIME) {
+	if (m_count > BULLET_TIME) {
 		m_bullet_make = true;
 		m_count = 0;
 	}
@@ -61,7 +63,6 @@ void EnemyIceRain::Update(void)
 	}
 	if (m_count4 > BULLET_TIME+4) {
 		m_bullet_make4 = true;
-		m_bullet_count = 0;
 		m_count4 = 0;
 	}
 }

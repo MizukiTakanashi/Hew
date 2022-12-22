@@ -27,10 +27,10 @@ private:
 protected:
 	int m_bullet_count = 0;				//’e‚ğ”­Ë‚·‚é‚Ü‚Å‚ÌƒJƒEƒ“ƒg
 	bool m_bullet_make = false;			//’e‚ğì‚é‚©”Û‚©
-	bool m_bullet_make1 = false;			//’e‚ğì‚é‚©”Û‚©
-	bool m_bullet_make2 = false;			//’e‚ğì‚é‚©”Û‚©
-	bool m_bullet_make3 = false;			//’e‚ğì‚é‚©”Û‚©
-	bool m_bullet_make4 = false;			//’e‚ğì‚é‚©”Û‚©
+	bool m_bullet_make1 = false;			//’e‚ğì‚é‚©”Û‚©i•X‚Ì“G‚Åg‚¤j
+	bool m_bullet_make2 = false;			//’e‚ğì‚é‚©”Û‚©i•X‚Ì“G‚Åg‚¤j
+	bool m_bullet_make3 = false;			//’e‚ğì‚é‚©”Û‚©i•X‚Ì“G‚Åg‚¤j
+	bool m_bullet_make4 = false;			//’e‚ğì‚é‚©”Û‚©i•X‚Ì“G‚Åg‚¤j
 	float m_move_width = 0.0f;			//“G‚ª“®‚­‚ÌcosƒJ[ƒu
 	int m_invincible_flame = 0;			//–³“GŠÔ‚Ìc‚è
 	float m_init_posx = 0.0f;			//“G‚Ì‰ŠúˆÊ’uX
@@ -52,10 +52,10 @@ public:
 
 	//’e‚ğì‚é‚©”Û‚©‚Ìƒtƒ‰ƒO‚ğ•Ô‚·
 	bool GetFlagBulletMake()const { return m_bullet_make; }
-	bool GetFlagBulletMake1()const { return m_bullet_make1; }
-	bool GetFlagBulletMake2()const { return m_bullet_make2; }
-	bool GetFlagBulletMake3()const { return m_bullet_make3; }
-	bool GetFlagBulletMake4()const { return m_bullet_make4; }
+	bool GetFlagBulletMake1()const { return m_bullet_make1; } //i•X‚Ì“G‚Åg‚¤j
+	bool GetFlagBulletMake2()const { return m_bullet_make2; } //i•X‚Ì“G‚Åg‚¤j
+	bool GetFlagBulletMake3()const { return m_bullet_make3; } //i•X‚Ì“G‚Åg‚¤j
+	bool GetFlagBulletMake4()const { return m_bullet_make4; } //i•X‚Ì“G‚Åg‚¤j
 
 	//’e‚ğì‚Á‚½
 	void BulletMake() { m_bullet_make = false; }
