@@ -8,10 +8,11 @@
 //==========================
 // 定数の初期化
 //==========================
-const float PlayerArmBarrier::BULLET_SIZE_X = 50.0f;
-const float PlayerArmBarrier::BULLET_SIZE_Y = 60.0f;
-const D3DXVECTOR2 PlayerArmBarrier::RIGHT_BARRIER_INTERVAL_POS = D3DXVECTOR2(-30.0f, -40.0f);
-const D3DXVECTOR2 PlayerArmBarrier::LEFT_BARRIER_INTERVAL_POS = D3DXVECTOR2(30.0f, -40.0f);
+const float PlayerArmBarrier::BULLET_SIZE_X = 80.0f;
+const float PlayerArmBarrier::BULLET_SIZE_Y = 10.0f;
+const D3DXVECTOR2 PlayerArmBarrier::RIGHT_BARRIER_INTERVAL_POS = D3DXVECTOR2(-30.0f, -45.0f);
+const D3DXVECTOR2 PlayerArmBarrier::LEFT_BARRIER_INTERVAL_POS = D3DXVECTOR2(30.0f, -45.0f);
+const D3DXVECTOR2 PlayerArmBarrier::CENTER_BARRIER_INTERVAL_POS = D3DXVECTOR2(0.0f, -75.0f);
 
 //==========================
 // 更新処理
@@ -20,13 +21,19 @@ void PlayerArmBarrier::Update(const D3DXVECTOR2& arm_pos)
 {
 	//バリアの処理
 	if (inhPlayerArm::GetBulletNum() == 1) {
-		//ついているのが右であれば
-		if (inhPlayerArm::GetRightLeft()) {
-			m_pBullet->SetPos(RIGHT_BARRIER_INTERVAL_POS);
+		//ついているのが中央であれば
+		if (inhPlayerArm::IsCenter()) {
+			m_pBullet->SetPos(arm_pos + CENTER_BARRIER_INTERVAL_POS);
 		}
-		//左であれば
 		else {
-			m_pBullet->SetPos(LEFT_BARRIER_INTERVAL_POS);
+			//右であれば
+			if (inhPlayerArm::GetRightLeft()) {
+				m_pBullet->SetPos(arm_pos + RIGHT_BARRIER_INTERVAL_POS);
+			}
+			//左であれば
+			else {
+				m_pBullet->SetPos(arm_pos + LEFT_BARRIER_INTERVAL_POS);
+			}
 		}
 	}
 
@@ -37,8 +44,8 @@ void PlayerArmBarrier::Update(const D3DXVECTOR2& arm_pos)
 	}
 
 	//ボタンが押されたら
-	if ((inhPlayerArm::GetRightLeft() && inhPlayerArm::IsButtonPush()) ||
-		(!inhPlayerArm::GetRightLeft() && inhPlayerArm::IsButtonPush())) {		
+	if ((inhPlayerArm::GetRightLeft() && inhPlayerArm::IsButtonTrigger()) ||
+		(!inhPlayerArm::GetRightLeft() && inhPlayerArm::IsButtonTrigger())) {
 		//腕の切り離しと同時に弾を作らないための処理
 		if (inhPlayerArm::GetBulletMaked() == BULLET_NUM_MAX - 1)
 		{
@@ -65,8 +72,8 @@ void PlayerArmBarrier::Update(const D3DXVECTOR2& arm_pos)
 //==========================
 void PlayerArmBarrier::PlayerArmDraw()const
 {
-	for (int i = 0; i < inhPlayerArm::GetBulletNum(); i++) {
-		m_pBullet[i].Draw();
+	if (inhPlayerArm::GetBulletNum() == 1) {
+		m_pBullet->Draw();
 	}
 }
 

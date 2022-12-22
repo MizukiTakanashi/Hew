@@ -22,7 +22,7 @@ const float EnemyIceRainManagement::BULLET_SPEED = 2.5f;
 EnemyIceRainManagement::EnemyIceRainManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
 	:EnemyManagement(ENEMY_NUM, ATTACK, BULLET_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
-	m_pEnemyGatoring = new EnemyGatoring[ENEMY_NUM];
+	m_pEnemyIceRain = new EnemyIceRain[ENEMY_NUM];
 	m_pBullet = new Bullet[ENEMY_NUM];
 }
 
@@ -35,8 +35,8 @@ void EnemyIceRainManagement::Update(const D3DXVECTOR2& PlayerPos)
 
 	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
 	{
-		EnemyGatoring temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
-		m_pEnemyGatoring[GetObjNum()] = temp;
+		EnemyIceRain temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
+		m_pEnemyIceRain[GetObjNum()] = temp;
 		EnemyManagement::IncreaseObjNum(1);
 
 		m_EnemyNum++;
@@ -44,21 +44,67 @@ void EnemyIceRainManagement::Update(const D3DXVECTOR2& PlayerPos)
 
 	//ç°Ç¢ÇÈìGÇÃèàóù
 	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
-		m_pEnemyGatoring[i].Update();
+		m_pEnemyIceRain[i].Update();
 
 		//íeÇçÏÇÈ
-		if (m_pEnemyGatoring[i].GetFlagBulletMake())
+		if (m_pEnemyIceRain[i].GetFlagBulletMake())
 		{
-			Bullet temp(m_pDrawObjectBullet, m_pEnemyGatoring[i].GetPos(),
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyIceRain[i].GetPos(),
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f); 
-			//Bullet temp(m_pDrawObjectBullet, m_pEnemyGatoring[i].GetPos(),
-					//D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f);
 			// íeÇÃëÂÇ´Ç≥								íeÇåÇÇ¬ï˚å¸		
 			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
 
 			EnemyManagement::IncreaseBulletNum(1);
 
-			m_pEnemyGatoring[i].BulletMake();
+			m_pEnemyIceRain[i].BulletMake();
+		}
+		//íeÇçÏÇÈ
+		if (m_pEnemyIceRain[i].GetFlagBulletMake1())
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyIceRain[i].GetPos() + D3DXVECTOR2(30.0f, 0.0f), 
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f);
+			// íeÇÃëÂÇ´Ç≥								íeÇåÇÇ¬ï˚å¸		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyIceRain[i].BulletMake1();
+		}
+		//íeÇçÏÇÈ
+		if (m_pEnemyIceRain[i].GetFlagBulletMake2())
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyIceRain[i].GetPos() + D3DXVECTOR2(-30.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f);
+			// íeÇÃëÂÇ´Ç≥								íeÇåÇÇ¬ï˚å¸		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyIceRain[i].BulletMake2();
+		}
+		//íeÇçÏÇÈ
+		if (m_pEnemyIceRain[i].GetFlagBulletMake3())
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyIceRain[i].GetPos() + D3DXVECTOR2(50.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f);
+			// íeÇÃëÂÇ´Ç≥								íeÇåÇÇ¬ï˚å¸		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyIceRain[i].BulletMake3();
+		}
+		//íeÇçÏÇÈ
+		if (m_pEnemyIceRain[i].GetFlagBulletMake4())
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyIceRain[i].GetPos() + D3DXVECTOR2(-50.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f);
+			// íeÇÃëÂÇ´Ç≥								íeÇåÇÇ¬ï˚å¸		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyIceRain[i].BulletMake4();
 		}
 	}
 
@@ -79,7 +125,7 @@ void EnemyIceRainManagement::Update(const D3DXVECTOR2& PlayerPos)
 void EnemyIceRainManagement::Draw(void)const
 {
 	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
-		m_pEnemyGatoring[i].Draw();
+		m_pEnemyIceRain[i].Draw();
 	}
 
 	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {
@@ -92,9 +138,9 @@ void EnemyIceRainManagement::Draw(void)const
 //======================
 bool EnemyIceRainManagement::ReduceHP(int index_num, int reduceHP)
 {
-	m_pEnemyGatoring[index_num].ReduceHP(reduceHP);
+	m_pEnemyIceRain[index_num].ReduceHP(reduceHP);
 
-	if (m_pEnemyGatoring[index_num].GetHP() <= 0)
+	if (m_pEnemyIceRain[index_num].GetHP() <= 0)
 	{//HPÇ™ÇOà»â∫Ç»ÇÁìGÇè¡Ç∑
 
 
@@ -110,7 +156,7 @@ void EnemyIceRainManagement::DeleteObj(int index_num)
 {
 	//ìGÇè¡Ç∑
 	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
-		m_pEnemyGatoring[i] = m_pEnemyGatoring[i + 1];
+		m_pEnemyIceRain[i] = m_pEnemyIceRain[i + 1];
 	}
 
 	//åpè≥å≥ÇÃìGÇè¡Ç∑ÇåƒÇ‘

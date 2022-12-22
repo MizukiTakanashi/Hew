@@ -19,12 +19,15 @@ private:
 	//ここで初期化
 	static const int BULLET_NUM_MAX = 5;	//弾の制限数　実際に撃てる数はこれより１少ない
 	static const int BULLET_SHOOT_MAX = 1;	//弾の同時最大発射数
+	static const int BARRIER_HP_MAX = 5;	//バリアの最大HP
 
 	//cppで初期化
 	static const float BULLET_SIZE_X;		//サイズX
 	static const float BULLET_SIZE_Y;		//サイズY
-	static const D3DXVECTOR2 RIGHT_BARRIER_INTERVAL_POS;	//腕バリアと腕の間隔
-	static const D3DXVECTOR2 LEFT_BARRIER_INTERVAL_POS;		//バリアと腕の間隔
+	static const D3DXVECTOR2 RIGHT_BARRIER_INTERVAL_POS;	//バリアと右腕の間隔
+	static const D3DXVECTOR2 LEFT_BARRIER_INTERVAL_POS;		//バリアと左腕の間隔
+	static const D3DXVECTOR2 CENTER_BARRIER_INTERVAL_POS;	//バリアと中央の間隔
+
 
 //メンバ変数
 private:
@@ -39,7 +42,7 @@ public:
 
 	//引数付きコンストラクタ
 	PlayerArmBarrier(DrawObject bulletdraw, bool right, int type)
-		:inhPlayerArm(BULLET_NUM_MAX, right, type), m_bulletdraw(bulletdraw) {
+		:inhPlayerArm(BULLET_NUM_MAX, right, type, BARRIER_HP_MAX), m_bulletdraw(bulletdraw) {
 		m_pBullet = new Bullet[BULLET_SHOOT_MAX];
 	}
 

@@ -41,6 +41,7 @@ private:
 	Laser* m_pLaser = nullptr;
 	DrawObject m_pDrawObjectEnemy;
 	DrawObject m_pDrawObjectLaser;
+	DrawObject m_pDrawObjectLaser1;
 
 	int m_EnemyItem_num = 0;	//敵のアイテムの数
 
@@ -65,7 +66,7 @@ public:
 	}	
 
 	//引数付きコンストラクタ
-	EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2);
+	EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, DrawObject& pDrawObject3);
 
 	//デストラクタ
 	~EnemyLaserManagement()override{}
