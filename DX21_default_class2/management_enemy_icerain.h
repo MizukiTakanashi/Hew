@@ -5,7 +5,8 @@
 //=======================================
 #pragma once
 
-
+#ifndef _ENEMY_ICERAIN_MANAGEMENT_H_
+#define _ENEMY_ICERAIN_MANAGEMENT_H_
 
 #include "main.h"
 #include "management_enemy.h"
@@ -43,9 +44,9 @@ private:
 
 	//敵の位置配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-		D3DXVECTOR2(52.5f + (105 * 5), -EnemyIceRain::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 2), -EnemyIceRain::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 8), -EnemyIceRain::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 6), -EnemyIceRain::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 3), -EnemyIceRain::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 7), -EnemyIceRain::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 3), -EnemyIceRain::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 7), -EnemyIceRain::SIZE_Y / 2)
 	};
@@ -100,3 +101,5 @@ public:
 	//指定した番号の弾のサイズを返す(オーバーライド)
 	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override { return m_pBullet[0].GetSize(); }
 };
+
+#endif // !_ENEMY_ICERAIN_MANAGEMENT_H_

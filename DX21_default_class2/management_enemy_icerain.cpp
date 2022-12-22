@@ -51,14 +51,60 @@ void EnemyIceRainManagement::Update(const D3DXVECTOR2& PlayerPos)
 		{
 			Bullet temp(m_pDrawObjectBullet, m_pEnemyIceRain[i].GetPos(),
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f); 
-			//Bullet temp(m_pDrawObjectBullet, m_pEnemyGatoring[i].GetPos(),
-					//D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f);
 			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
 			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
 
 			EnemyManagement::IncreaseBulletNum(1);
 
 			m_pEnemyIceRain[i].BulletMake();
+		}
+		//’e‚ğì‚é
+		if (m_pEnemyIceRain[i].GetFlagBulletMake1())
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyIceRain[i].GetPos() + D3DXVECTOR2(30.0f, 0.0f), 
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyIceRain[i].BulletMake1();
+		}
+		//’e‚ğì‚é
+		if (m_pEnemyIceRain[i].GetFlagBulletMake2())
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyIceRain[i].GetPos() + D3DXVECTOR2(-30.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyIceRain[i].BulletMake2();
+		}
+		//’e‚ğì‚é
+		if (m_pEnemyIceRain[i].GetFlagBulletMake3())
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyIceRain[i].GetPos() + D3DXVECTOR2(50.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyIceRain[i].BulletMake3();
+		}
+		//’e‚ğì‚é
+		if (m_pEnemyIceRain[i].GetFlagBulletMake4())
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyIceRain[i].GetPos() + D3DXVECTOR2(-50.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyIceRain[i].BulletMake4();
 		}
 	}
 
