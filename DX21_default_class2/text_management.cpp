@@ -59,10 +59,11 @@ void TextManagement::Update(void)
 	}
 	else
 	{
-		if (InputGetKeyDown(KK_ENTER))
+		if (InputGetKeyDown(KK_ENTER) && GetTextFlg())
 		{
 			EndText();
 		}
+
 	}
 }
 
@@ -95,34 +96,30 @@ void TextManagement::SetText(void)
 
 		break;
 	case 1:	
-		temp.SetTextureName((char*)"data\\texture\\tuto1.png");
-		m_Text = DrawObject(temp, 0, 0.025f, 0.25f, 40);
-		m_PaternMax = 160;
+		temp.SetTextureName((char*)"data\\texture\\tuto2.png");
+		m_Text = DrawObject(temp, 0, 0.025f, 0.5f, 40);
+		m_PaternMax = 80;
 
 		break;
 	case 2:
-		temp.SetTextureName((char*)"data\\texture\\tuto1.png");
-		m_Text = DrawObject(temp, 0, 0.025f, 0.25f, 40);
-		m_PaternMax = 160;
+		temp.SetTextureName((char*)"data\\texture\\tuto3.png");
+		m_Text = DrawObject(temp, 0, 0.025f, 0.2f, 40);
+		m_PaternMax = 200;
 
 		break;
 	case 3:
-		temp.SetTextureName((char*)"data\\texture\\tuto1.png");
-		m_Text = DrawObject(temp, 0, 0.025f, 0.25f, 40);
-		m_PaternMax = 160;
+		temp.SetTextureName((char*)"data\\texture\\tuto4.png");
+		m_Text = DrawObject(temp, 0, 0.025f, 1.0f / 7, 40);
+		m_PaternMax = 280;
 
 		break;
 	case 4:
-		temp.SetTextureName((char*)"data\\texture\\tuto1.png");
-		m_Text = DrawObject(temp, 0, 0.025f, 0.25f, 40);
-		m_PaternMax = 160;
+		temp.SetTextureName((char*)"data\\texture\\tuto5.png");
+		m_Text = DrawObject(temp, 0, 0.025f, 0.2f, 40);
+		m_PaternMax = 200;
 
 		break;
 	default:
-		temp.SetTextureName((char*)"data\\texture\\tuto1.png");
-		m_Text = DrawObject(temp, 0, 0.025f, 0.25f, 40);
-		m_PaternMax = 160;
-
 		break;
 	}
 

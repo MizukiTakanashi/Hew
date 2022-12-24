@@ -172,6 +172,8 @@ void HitStop(int flame);
 void StartTextG(void);
 //テキスト終了
 void EndTextG(void);
+//
+bool GetTextFlg(void);
 
 #endif // !_GAME_H_
 

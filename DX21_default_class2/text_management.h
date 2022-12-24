@@ -37,12 +37,13 @@ private:
 	DrawObject m_Text;
 	DrawObject m_Triangle;
 
+	//ひとつ前のテキストが閉じてからの時間
 	int m_TexTime[5] = {
 		60 * 1,
 		60 * 10,
-		60 * 30,
-		60 * 55,
-		60 * 70
+		60 * 20,
+		60 * 25,
+		60 * 15
 	};
 
 //メンバ関数

@@ -296,6 +296,9 @@ void Game::Update(void)
 	//敵から落ちるアイテム
 	m_pItemManagement->Update();
 
+	//ボム
+	m_pBom->Update();
+
 	//=======================
 	// 敵
 	m_pEnemyNormalManagement->Update(m_pPlayer->GetPos());
@@ -307,8 +310,6 @@ void Game::Update(void)
 	//m_pEnemyBarrierManagement->Update();
 	m_pMeteoManagement->Update();
 
-	//ボム
-	m_pBom->Update();
 
 	//====================================
 	//プレイヤーのHPに対する処理
@@ -408,4 +409,9 @@ void StartTextG(void)
 void EndTextG(void)
 {
 	isText = false;
+}
+
+bool GetTextFlg(void)
+{
+	return isText;
 }
