@@ -25,9 +25,6 @@
     <ClCompile Include="enemy_attack.cpp">
       <Filter>02_Game</Filter>
     </ClCompile>
-    <ClCompile Include="enemy_barrier.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
     <ClCompile Include="enemy_gatoring.cpp">
       <Filter>02_Game</Filter>
     </ClCompile>
@@ -83,9 +80,6 @@
       <Filter>02_Game</Filter>
     </ClCompile>
     <ClCompile Include="management_enemy_attack.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
-    <ClCompile Include="management_enemy_barrier.cpp">
       <Filter>02_Game</Filter>
     </ClCompile>
     <ClCompile Include="management_enemy_gatoring.cpp">
@@ -197,9 +191,29 @@
       <Filter>02_Game</Filter>
     </ClCompile>
     <ClCompile Include="stage_mercury.cpp" />
-    <ClCompile Include="stage_mars.cpp" />
-    <ClCompile Include="text_management.cpp">
-      <Filter>02_Game</Filter>
+    <ClCompile Include="stage_mars.cpp">
+      <Filter>05_Mars</Filter>
+    </ClCompile>
+    <ClCompile Include="title_score.cpp">
+      <Filter>01_Title</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy_icerain.cpp">
+      <Filter>05_Mars</Filter>
+    </ClCompile>
+    <ClCompile Include="management_enemy_icerain.cpp">
+      <Filter>05_Mars</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy_barrier.cpp">
+      <Filter>05_Mars</Filter>
+    </ClCompile>
+    <ClCompile Include="management_enemy_barrier.cpp">
+      <Filter>05_Mars</Filter>
+    </ClCompile>
+    <ClCompile Include="player_arm_barrier.cpp">
+      <Filter>05_Mars</Filter>
+    </ClCompile>
+    <ClCompile Include="mars_collision_all.cpp">
+      <Filter>05_Mars</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -225,9 +239,6 @@
       <Filter>04_etc</Filter>
     </ClInclude>
     <ClInclude Include="enemy_attack.h">
-      <Filter>02_Game</Filter>
-    </ClInclude>
-    <ClInclude Include="enemy_barrier.h">
       <Filter>02_Game</Filter>
     </ClInclude>
     <ClInclude Include="enemy_gatoring.h">
@@ -285,9 +296,6 @@
       <Filter>02_Game</Filter>
     </ClInclude>
     <ClInclude Include="management_enemy_attack.h">
-      <Filter>02_Game</Filter>
-    </ClInclude>
-    <ClInclude Include="management_enemy_barrier.h">
       <Filter>02_Game</Filter>
     </ClInclude>
     <ClInclude Include="management_enemy_gatoring.h">
@@ -402,9 +410,29 @@
       <Filter>02_Game</Filter>
     </ClInclude>
     <ClInclude Include="stage_mercury.h" />
-    <ClInclude Include="stage_mars.h" />
-    <ClInclude Include="text_management.h">
-      <Filter>02_Game</Filter>
+    <ClInclude Include="stage_mars.h">
+      <Filter>05_Mars</Filter>
+    </ClInclude>
+    <ClInclude Include="title_score.h">
+      <Filter>01_Title</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy_icerain.h">
+      <Filter>05_Mars</Filter>
+    </ClInclude>
+    <ClInclude Include="management_enemy_icerain.h">
+      <Filter>05_Mars</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy_barrier.h">
+      <Filter>05_Mars</Filter>
+    </ClInclude>
+    <ClInclude Include="management_enemy_barrier.h">
+      <Filter>05_Mars</Filter>
+    </ClInclude>
+    <ClInclude Include="player_arm_barrier.h">
+      <Filter>05_Mars</Filter>
+    </ClInclude>
+    <ClInclude Include="mars_collision_all.h">
+      <Filter>05_Mars</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -422,6 +450,9 @@
     </Filter>
     <Filter Include="%3f">
       <UniqueIdentifier>{7c43303e-3fc7-40c1-b451-5c06c3cda157}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05_Mars">
+      <UniqueIdentifier>{c4943b1e-4973-4156-a432-f168a71ba7d8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -11,14 +11,15 @@
 // 定数の初期化
 //==========================
 const float EnemyLaserManagement::BULLET_SIZE_X = 20.0f;
-const float EnemyLaserManagement::BULLET_SIZE_Y = 0.0f;
+const float EnemyLaserManagement::BULLET_SIZE_Y = 20.0f;
 
 
 //=========================
 // 引数付きコンストラクタ
 //=========================
-EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
-	:EnemyManagement(ENEMY_NUM, ATTACK, LASER_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectLaser(pDrawObject2)
+EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, DrawObject& pDrawObject3)
+	:EnemyManagement(ENEMY_NUM, ATTACK, LASER_ATTACK), m_pDrawObjectEnemy(pDrawObject1), 
+	m_pDrawObjectLaser(pDrawObject2), m_pDrawObjectLaser1(pDrawObject3)
 {
 	m_pEnemyLaser = new EnemyLaser[ENEMY_NUM];
 	m_pLaser = new Laser[ENEMY_NUM];
@@ -31,6 +32,7 @@ void EnemyLaserManagement::Update()
 {
 	m_FlameNum++; //フレーム数を増加
 
+	//時間が来たら敵をセット
 	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
 	{
 		EnemyLaser temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
@@ -38,6 +40,13 @@ void EnemyLaserManagement::Update()
 		EnemyManagement::IncreaseObjNum(1);
 
 		m_EnemyNum++;
+
+		if (m_EnemyNum == 1) {
+			m_pEnemyLaser[0].SetLaserDirection(2);
+		}
+		else if (m_EnemyNum == 2) {
+			m_pEnemyLaser[1].SetLaserDirection(1);
+		}
 	}
 
 	//今いる敵の処理
@@ -55,9 +64,23 @@ void EnemyLaserManagement::Update()
 		{
 			//レーザー番号をセット
 			m_pEnemyLaser[i].SetLaserIndex(EnemyManagement::GetBulletNum());
-			Laser temp(m_pDrawObjectLaser, m_pEnemyLaser[i].GetPos() + D3DXVECTOR2(0.0f, 10.0f),
-				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y));
+			//レーザーを作る
+			DrawObject* draw_temp;
+			float laser_x = 0.0f;
+			float laser_y = 0.0f;
+			if (m_pEnemyLaser[i].GetLaserDirection() == 0) {
+				laser_x = BULLET_SIZE_X;
+				draw_temp = &m_pDrawObjectLaser;
+			}
+			else {
+				laser_y = BULLET_SIZE_Y;
+				draw_temp = &m_pDrawObjectLaser1;
+			}
+			Laser temp(*draw_temp, m_pEnemyLaser[i].GetPos() + D3DXVECTOR2(0.0f, 10.0f),
+				D3DXVECTOR2(laser_x, laser_y));
 			m_pLaser[EnemyManagement::GetBulletNum()] = temp;
+			m_pLaser[EnemyManagement::GetBulletNum()].SetLaserDirectioon((Laser::DIRECTION)m_pEnemyLaser[i].GetLaserDirection());
+
 			m_pEnemyLaser[i].SetLaserIndex(EnemyManagement::GetBulletNum());
 			EnemyManagement::IncreaseBulletNum(1);
 

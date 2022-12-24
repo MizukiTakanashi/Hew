@@ -17,10 +17,10 @@ public:
 	// 腕に着く敵の種類
 	enum class TYPE :int
 	{
-		TYPE1,
-		TYPE2,
-		TYPE3,
-		TYPE4,
+		TYPE1,		//ホーミング
+		TYPE2,		//レーザー
+		TYPE3,		//ガトリング
+		TYPE4,		//バリア
 		TYPE5,
 		TYPE6,
 		TYPE7,
@@ -33,10 +33,17 @@ private:
 	int m_BulletNum = 0;		//現在の弾の数
 	int m_bullet_maked_num = 0;	//今まで作られた弾の数(アイテムの消費量)
 	int m_bullet_max_num = 0;	//アイテムが出す最大弾数
+	
+	int m_bullet_hp = 0;		//現在の弾のHP
+	
 	bool m_right = false;		//右についてるか左についてるか
+	bool m_center = false;		//中央についているか
+
 	bool m_button_push = false;	//ボタンが押されたか
 	bool m_button_trigger = false;	//ボタンが押されたか(トリガー)
+	
 	bool m_bullet_used = false;	//弾が尽きたかどうか
+	
 	TYPE m_type = TYPE::TYPE1;	//自分のタイプ
 
 	//とある座標取得用
@@ -49,8 +56,9 @@ public:
 	inhPlayerArm(){}
 
 	//引数付きコンストラクタ
-	inhPlayerArm(int bullet_max_num, bool right, int type)
-		:m_bullet_max_num(bullet_max_num), m_right(right), m_type((TYPE)type) {}
+	inhPlayerArm(int bullet_max_num, bool right, int type, int hp_max = 0)
+		:m_bullet_max_num(bullet_max_num), m_right(right), m_type((TYPE)type),
+		m_bullet_hp(hp_max) {}
 
 	//デストラクタ
 	virtual ~inhPlayerArm()override{}
@@ -73,7 +81,10 @@ public:
 	//指定した番号の弾のサイズを返す(オーバーライド用)
 	virtual const D3DXVECTOR2& GetBulletSize(int index_num = 0)const = 0;
 
-
+	
+	//=====================
+	// 弾
+	
 	//弾が尽きたかを返す
 	// true：使い終わった　false：まだ使い終わってない
 	bool IsBulletUsed(void)const;
@@ -93,9 +104,24 @@ public:
 	//弾の数を取得
 	int GetBulletNum(void)const { return m_BulletNum; }
 
+	//==========================
+	// どこの腕についているか
+	
 	//ついているのが右腕か左腕かを返す
 	bool GetRightLeft(void)const { return m_right; }
 
+	//右腕か左腕かをセットする
+	void SetRightLeft(bool right) { m_right = right; }
+
+	//中央についているか
+	bool IsCenter(void)const { return m_center; }
+
+	//中央についているかフラグをセット
+	void SetCenter(bool center) { m_center = center; }
+
+	//=====================
+	// ボタン
+	
 	//ボタンが押されたかフラグをセット
 	void SetButtonPush(bool push) { m_button_push = push; }
 
@@ -108,20 +134,39 @@ public:
 	//ボタンが押されたかを返す　トリガー
 	bool IsButtonTrigger(void)const { return m_button_trigger; }
 
+
 	//タイプを返す
 	TYPE GetType(void)const { return m_type; }
 
+	//=====================
+	// とある座標
+	
 	//とある座標セット用(詳細はメンバ変数のm_something_posのコメントへ)
 	void SetSomethingPos(const D3DXVECTOR2& pos) { m_something_pos = pos; }
 
 	//とある座標取得用(詳細はメンバ変数のm_something_posのコメントへ)
 	const D3DXVECTOR2& GetSomethingPos(void)const { return m_something_pos; }
 
+	//=====================
+	// 残弾数
+	
 	//残弾数回復
 	void HeelBullet(void) { m_bullet_maked_num = 0; }
 
 	//残弾数を返す
 	int GetRemainingBullet(void);
+
+	//=====================
+	// HP
+	
+	//HPを減らす、HPが0以下になったらtrueを返す
+	bool ReduceHP(int num) {
+		m_bullet_hp -= num;
+		if (m_bullet_hp <= 0) {
+			return true;
+		}
+		return false;
+	}
 };
 
 #endif // !_INH_PLAYER_ARM_H_

@@ -98,7 +98,8 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 
 	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY]);
 	//m_pEnemyMissileManagement = new EnemyMissileManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY]);
-	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER_LASER]);
+	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER_LASER], 
+		m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER_LASER]);
 	m_pEnemyGatoringManagement = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY]);
 	//m_pEnemyPublicManagement = new Management_EnemyPublic(m_pDrawObject[(int)DRAW_TYPE::ENEMY_PUBLIC]);
 	//m_pEnemyAttackManagement = new EnemyAttackManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ATTCK], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY]);
@@ -211,7 +212,7 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 	//m_pColAll->AddEnemyPointer(m_pEnemyMissileManagement);
 	//m_pColAll->AddEnemyPointer(m_pEnemyAttackManagement);
 	//m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
-	//m_pColAll->AddEnemyPointer(m_pMeteoManagement);
+	m_pColAll->AddEnemyPointer(m_pMeteoManagement);
 
 }
 

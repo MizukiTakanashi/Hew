@@ -1,4 +1,8 @@
 #pragma once
+#ifndef _METEO_H_
+#define _METEO_H_
+
+
 #include "game_object.h"
 class Meteo :public GameObject
 {
@@ -26,7 +30,7 @@ public:
 	Meteo(){}	//デフォルトコンストラクタ
 	Meteo(DrawObject& pDrawObject, const D3DXVECTOR2& pos)
 		:GameObject(pDrawObject,pos,D3DXVECTOR2(SIZE_X, SIZE_Y)){}
-	~Meteo(){}
+	~Meteo()override {}
 	void Update(void);	//更新処理
 
 	//HPを減らす
@@ -43,3 +47,4 @@ public:
 	int GetHP(void) { return m_hp; }
 
 };
+#endif // !_METEO_H_

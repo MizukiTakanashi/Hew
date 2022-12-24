@@ -25,10 +25,10 @@
 #include "management_item.h"
 #include "all_enemy_management.h"
 #include "player_arm_change.h"
-#include "collision_all.h"
+#include "mars_collision_all.h"
 #include "player_center.h"
 #include "Bom.h"
-
+#include "management_enemy_icerain.h"
 class StageMars
 {
 	//定数
@@ -55,6 +55,8 @@ private:
 		EXPLOSION,
 		NUMBER,
 		MULTIPLY,
+		ENEMY_ICE,	//氷の敵のテクスチャセット
+		BULLET_ICE,	//氷の弾のテクスチャセット
 		NUM
 	};
 
@@ -64,9 +66,11 @@ private:
 		PLAYER_HP_BAR,
 		ENEMY_BARRIER,
 		ENEMY_BARRIER_BARRIER,
+		ENEMY_ICE,
 		ENEMY_ITEM,
 		PLAYER_BULLET,
 		BULLET_ENEMY,
+		BULLET_ENEMY_ICE,
 		EXPLOSION,
 		PLAYER_ARM_LEFT,
 		PLAYER_ARM_LEFT_BULLET,
@@ -97,7 +101,7 @@ private:
 	BGPlanet* m_pBG_Moon = nullptr;
 	Player* m_pPlayer = nullptr;
 	EnemyBarrierManagement* m_pEnemyBarrierManagement = nullptr;
-
+	EnemyIceRainManagement* m_pEnemyIceRainManagement = nullptr;
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;
 	ItemManagement* m_pItemManagement = nullptr;
@@ -117,7 +121,7 @@ private:
 
 	PlayerArmChange* m_pPlayerArmChange = nullptr;	//腕の交換
 
-	CollisionAll* m_pColAll = nullptr;		//全ての当たり判定
+	MarsCollisionAll* m_pColAll = nullptr;		//全ての当たり判定
 
 	Bom* m_pBom = nullptr;					//ボム
 

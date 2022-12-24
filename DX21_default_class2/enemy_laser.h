@@ -30,7 +30,8 @@ private:
 
 //メンバ変数
 private:
-	int m_laser_index = -1;	//レーザー番号
+	int m_laser_index = -1;		//レーザー番号
+	int m_laser_direction = 0;	//レーザーの方向
 
 //メンバ関数
 public:
@@ -44,10 +45,15 @@ public:
 
 	void Update(void);	//更新処理
 
+	//レーザー番号を返す
+	int GetLaserIndex(void) const { return m_laser_index; }
+
 	//レーザー番号をセット
 	void SetLaserIndex(int num) { m_laser_index = num; }
 
-	//レーザー番号を返す
-	int GetLaserIndex() const { return m_laser_index; }
+	//レーザーの方向を返す
+	int GetLaserDirection(void)const { return m_laser_direction; }
 
+	//レーザーの方向をセット
+	void SetLaserDirection(int direction) { m_laser_direction = direction; }
 };

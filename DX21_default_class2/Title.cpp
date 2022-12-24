@@ -83,10 +83,16 @@ void	UpdateTitle()
 		Fade(SCENE::SCENE_GAME);
 	}
 
-	//キー入力のチェック
+	//Aボタンを押したらステージ選択画面に行く
 	if (InputGetKeyDown(KK_A))
 	{
 		Fade(SCENE::SCENE_STAGE_SELECT);
+	}
+
+	//Dボタンを押したらステージ選択画面に行く
+	if (InputGetKeyDown(KK_D))
+	{
+		Fade(SCENE::SCENE_TITLE_SCORE);
 	}
 }
 

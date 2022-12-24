@@ -15,10 +15,10 @@ class Item :public GameObject
 public:
 	enum class Item_NUM :int
 	{
-		ENEMYITEM_TYPE1 = 0, //ホーミング	
-		ENEMYITEM_TYPE2, //レーザー
-		ENEMYITEM_TYPE3, //ガトリング
-		ENEMYITEM_TYPE4, //
+		ENEMYITEM_TYPE1 = 0,	//ホーミング	
+		ENEMYITEM_TYPE2,		//レーザー
+		ENEMYITEM_TYPE3,		//ガトリング
+		ENEMYITEM_TYPE4,		//バリア
 		ENEMYITEM_TYPE5,
 		ENEMYITEM_TYPE6,
 		ENEMYITEM_TYPE7,

@@ -1,29 +1,29 @@
 //============================================================
-// å…¨ã¦ã®ã‚²ãƒ¼ãƒ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å½“ãŸã‚Šåˆ¤å®šé–¢ä¿‚(cppãƒ•ã‚¡ã‚¤ãƒ«)
-// ä½œæˆæ—¥ï¼š2022/11/10
-// ä½œæˆè€…ï¼šé«˜æ¢¨æ°´å¸Œ
+// ‰Î¯‚Ì‘S‚Ä‚ÌƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚Ì“–‚½‚è”»’èŠÖŒW(cppƒtƒ@ƒCƒ‹)
+// ì¬“úF2022/12/19
+// ì¬ŽÒF‚—œ…Šó
 //============================================================
-#include "collision_all.h"
+#include "mars_collision_all.h"
 #include "collision.h"
 #include "inh_player_arm.h"
 #include "sound.h"
 
 //==========================
-// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
+// ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
 //==========================
-CollisionAll::CollisionAll()
+MarsCollisionAll::MarsCollisionAll()
 {
 	for (int i = 0; i < ENEMY_NUM; i++) {
 		m_pEnemy[i] = nullptr;
 	}
 
-	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//ã‚µã‚¦ãƒ³ãƒ‰ã®ãƒ­ãƒ¼ãƒ‰
+	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//ƒTƒEƒ“ƒh‚Ìƒ[ƒh
 }
 
 //==========================
-// å¼•æ•°ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
+// ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
 //==========================
-CollisionAll::CollisionAll(Player* pPlayer, inhPlayerArmBoth* pL, inhPlayerArmBoth* pR,
+MarsCollisionAll::MarsCollisionAll(Player* pPlayer, inhPlayerArmBoth* pL, inhPlayerArmBoth* pR,
 	ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber, Bom* pBom)
 	:m_pPlayer(pPlayer), m_pPlayerLeft(pL), m_pPlayerRight(pR), m_pExplosion(pExplosion),
 	m_pItem(pItem), m_pScore(pNumber), m_pBom(pBom)
@@ -32,67 +32,67 @@ CollisionAll::CollisionAll(Player* pPlayer, inhPlayerArmBoth* pL, inhPlayerArmBo
 		m_pEnemy[i] = nullptr;
 	}
 
-	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//ã‚µã‚¦ãƒ³ãƒ‰ã®ãƒ­ãƒ¼ãƒ‰
+	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//ƒTƒEƒ“ƒh‚Ìƒ[ƒh
 }
 
 //================================================
-// å½“ãŸã‚Šåˆ¤å®š(ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HPãŒå‰Šã‚Œã‚‹å½“ãŸã‚Šåˆ¤å®š)
+// “–‚½‚è”»’è(ƒvƒŒƒCƒ„[‚ÌHP‚ªí‚ê‚é“–‚½‚è”»’è)
 //================================================
-int CollisionAll::Collision(void)
+int MarsCollisionAll::Collision(void)
 {
-	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼è‡ªèº«ãŒå—ã‘ãŸãƒ€ãƒ¡ãƒ¼ã‚¸æ•°
+	//ƒvƒŒƒCƒ„[Ž©g‚ªŽó‚¯‚½ƒ_ƒ[ƒW”
 	int attacked = 0;
 
-	//çˆ†ç™ºéŸ³ã‚’é³´ã‚‰ã™ã‹å¦ã‹
+	//”š”­‰¹‚ð–Â‚ç‚·‚©”Û‚©
 	bool explosion_sound = false;
 
 	//=================================================
-	// æ•µã¨â—‹â—‹
+	// “G‚Æ››
 
-	//æ•µã®ç¨®é¡žã®æ•°åˆ†ãƒ«ãƒ¼ãƒ—
+	//“G‚ÌŽí—Þ‚Ì”•ªƒ‹[ƒv
 	for (int k = 0; k < m_enemy_num; k++) {
 
 		//=================================================
-		// æ•µã®æ•°åˆ†ãƒ«ãƒ¼ãƒ—
+		// “G‚Ì”•ªƒ‹[ƒv
 		for (int j = 0; j < m_pEnemy[k]->GetObjNum(); j++) {
 			bool next = false;
 
 			//=================================================
-			// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¨æ•µ
+			// ƒvƒŒƒCƒ„[‚Æ“G
 
-			//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ–¹
-			//æ•µã®æ–¹
+			//ƒvƒŒƒCƒ„[‚Ì•û
+			//“G‚Ì•û
 
-				//å¼¾
-				//è‡ªèº«
+				//’e
+				//Ž©g
 			for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
-				//ã‚‚ã—ã‚‚ç”»é¢å¤–ã«ã„ãŸã‚‰å£Šã›ãªã„ã‚ˆã†ã«ã™ã‚‹
+				//‚à‚µ‚à‰æ–ÊŠO‚É‚¢‚½‚ç‰ó‚¹‚È‚¢‚æ‚¤‚É‚·‚é
 				if (!ScreenOut::GetScreenOut(m_pEnemy[k]->GetObjPos(j),
 					m_pEnemy[k]->GetObjSize())) {
 
-					//å½“ãŸã£ãŸã‹åˆ¤å®š
+					//“–‚½‚Á‚½‚©”»’è
 					if (Collision::ColBox(m_pPlayer->GetBulletPos(i), m_pEnemy[k]->GetObjPos(j),
 						m_pPlayer->GetBulletSize(), m_pEnemy[k]->GetObjSize())) {
 
-						//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å¼¾ã‚’æ¶ˆã™
+						//ƒvƒŒƒCƒ„[‚Ì’e‚ðÁ‚·
 						m_pPlayer->DeleteBullet(i);
 						i--;
 
-						//çˆ†ç™ºã‚’ã‚»ãƒƒãƒˆ
+						//”š”­‚ðƒZƒbƒg
 						m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
 						explosion_sound = true;
 
-						//æ•µã®HPã‚’æ¸›ã‚‰ã™
-						//æ•µãŒæ­»ã‚“ã ã‚‰...
+						//“G‚ÌHP‚ðŒ¸‚ç‚·
+						//“G‚ªŽ€‚ñ‚¾‚ç...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
-							//ãƒ‰ãƒ­ãƒƒãƒ—ã™ã‚‹æ•µã§ã‚ã‚Œã°...
-							if (/*k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE && k != (int)TYPE::ATTACK &&*/ k != (int)TYPE::METEO) {
-								//æ•µã‚¢ã‚¤ãƒ†ãƒ ã®ãƒ‰ãƒ­ãƒƒãƒ—
-								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
+							//ƒhƒƒbƒv‚·‚é“G‚Å‚ ‚ê‚Î...
+							if (true) {
+								//“GƒAƒCƒeƒ€‚Ìƒhƒƒbƒv
+								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
 							}
 
-							//æ•µã‚’æ¶ˆã™
+							//“G‚ðÁ‚·
 							m_pEnemy[k]->DeleteObj(j);
 
 							j--;
@@ -101,7 +101,7 @@ int CollisionAll::Collision(void)
 								break;
 							}
 
-							//å€’ã—ãŸæ•µã®æ•°ã‚’å¢—ã‚„ã™
+							//“|‚µ‚½“G‚Ì”‚ð‘‚â‚·
 							m_pScore->AddScore(1);
 						}
 					}
@@ -112,19 +112,19 @@ int CollisionAll::Collision(void)
 				break;
 			}
 
-			//è‡ªèº«
-			//è‡ªèº«
+			//Ž©g
+			//Ž©g
 			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetObjPos(j),
 				m_pPlayer->GetSize(), m_pEnemy[k]->GetObjSize())) {
-				//ä¸€åº¦é›¢ã‚Œã¦ã‹ã‚‰ã˜ã‚ƒãªã„ã¨ã‚‚ã†ä¸€åº¦å½“ãŸã£ãŸåˆ¤å®šã«ã¯ãªã‚‰ãªã„
+				//ˆê“x—£‚ê‚Ä‚©‚ç‚¶‚á‚È‚¢‚Æ‚à‚¤ˆê“x“–‚½‚Á‚½”»’è‚É‚Í‚È‚ç‚È‚¢
 				if (!m_player_enemy_col) {
-					//ã¶ã¤ã‹ã£ãŸãƒ•ãƒ©ã‚°ã‚’ã‚ªãƒ³
+					//‚Ô‚Â‚©‚Á‚½ƒtƒ‰ƒO‚ðƒIƒ“
 					m_player_enemy_col = true;
 
-					//ãƒ€ãƒ¡ãƒ¼ã‚¸æ•°ã‚’å¢—ã‚„ã™
+					//ƒ_ƒ[ƒW”‚ð‘‚â‚·
 					attacked += m_pEnemy[k]->GetObjAttack();
 
-					//ã‚³ãƒ³ãƒœã‚’é€”åˆ‡ã‚Œã•ã›ã‚‹
+					//ƒRƒ“ƒ{‚ð“rØ‚ê‚³‚¹‚é
 					m_pScore->InitCombo();
 				}
 			}
@@ -132,24 +132,24 @@ int CollisionAll::Collision(void)
 				m_player_enemy_col = false;
 			}
 
-			//ãƒœãƒ 
-			//è‡ªèº«
+			//ƒ{ƒ€
+			//Ž©g
 			if (m_pBom->IsBomb()) {
-				//çˆ†ç™ºã‚’ã‚»ãƒƒãƒˆ
+				//”š”­‚ðƒZƒbƒg
 				m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
 				explosion_sound = true;
 
-				//æ•µã®HPã‚’æ¸›ã‚‰ã™
-				//æ•µãŒæ­»ã‚“ã ã‚‰...
+				//“G‚ÌHP‚ðŒ¸‚ç‚·
+				//“G‚ªŽ€‚ñ‚¾‚ç...
 				if (m_pEnemy[k]->ReduceHP(j, m_pBom->GetBombAttack()))
 				{
-					//ãƒ‰ãƒ­ãƒƒãƒ—ã™ã‚‹æ•µã§ã‚ã‚Œã°...
-					if (/*k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE && k != (int)TYPE::ATTACK &&*/ k != (int)TYPE::METEO) {
-						//æ•µã‚¢ã‚¤ãƒ†ãƒ ã®ãƒ‰ãƒ­ãƒƒãƒ—
-						m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
+					//ƒhƒƒbƒv‚·‚é“G‚Å‚ ‚ê‚Î...
+					if (true) {
+						//“GƒAƒCƒeƒ€‚Ìƒhƒƒbƒv
+						m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
 					}
 
-					//æ•µã‚’æ¶ˆã™
+					//“G‚ðÁ‚·
 					m_pEnemy[k]->DeleteObj(j);
 
 					j--;
@@ -159,45 +159,41 @@ int CollisionAll::Collision(void)
 						break;
 					}
 
-					//å€’ã—ãŸæ•µã®æ•°ã‚’å¢—ã‚„ã™
+					//“|‚µ‚½“G‚Ì”‚ð‘‚â‚·
 					m_pScore->AddScore(1);
 				}
 			}
 
 			//=================================================
-			// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•ã¨æ•µ
+			// ƒvƒŒƒCƒ„[‚Ì˜r‚Æ“G
 
-			//è…•ã®æ–¹
-			//æ•µã®æ–¹
+			//˜r‚Ì•û
+			//“G‚Ì•û
 
-				//è‡ªèº«
-				//è‡ªèº«
+				//Ž©g
+				//Ž©g
 
-			//è…•ã®ãƒã‚¤ãƒ³ã‚¿ã‚’å–ã£ã¦ãã‚‹(åˆæœŸã¯å·¦ã‹ã‚‰)
+			//˜r‚Ìƒ|ƒCƒ“ƒ^‚ðŽæ‚Á‚Ä‚­‚é(‰Šú‚Í¶‚©‚ç)
 			inhPlayerArmBoth* pArm = m_pPlayerLeft;
 
 			for (int m = 0; m < 2; m++) {
-				//ç™ºå°„ä¸­ã§ã‚ã‚Œã°
+				//”­ŽË’†‚Å‚ ‚ê‚Î
 				if (pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
 					if (Collision::ColBox(pArm->GetPos(), m_pEnemy[k]->GetObjPos(j),
 						pArm->GetSize(), m_pEnemy[k]->GetObjSize(j))) {
-						//è…•ã¨éš•çŸ³ãŒã‚ãŸã£ãŸã‚‰ã‚¿ã‚¤ãƒ—ã‚’æ¶ˆã™
-						if (k == (int)TYPE::METEO) {
-							pArm->BreakShootingArm();
-						}
-						//TYPE_OLDã«ã‚»ãƒƒãƒˆ
+						//TYPE_OLD‚ÉƒZƒbƒg
 						pArm->SetType(inhPlayerArmBoth::TYPE::TYPE_OLD);
-						//æ•µã®HPã‚’æ¸›ã‚‰ã™
-						//æ•µãŒæ­»ã‚“ã ã‚‰...
+						//“G‚ÌHP‚ðŒ¸‚ç‚·
+						//“G‚ªŽ€‚ñ‚¾‚ç...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
-							//ãƒ‰ãƒ­ãƒƒãƒ—ã™ã‚‹æ•µã§ã‚ã‚Œã°...
-							if (/*k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE && k != (int)TYPE::ATTACK &&*/ k != (int)TYPE::METEO) {
-								//æ•µã‚¢ã‚¤ãƒ†ãƒ ã®ãƒ‰ãƒ­ãƒƒãƒ—
-								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
+							//ƒhƒƒbƒv‚·‚é“G‚Å‚ ‚ê‚Î...
+							if (true) {
+								//“GƒAƒCƒeƒ€‚Ìƒhƒƒbƒv
+								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
 							}
 
-							//æ•µã‚’æ¶ˆã™
+							//“G‚ðÁ‚·
 							m_pEnemy[k]->DeleteObj(j);
 
 							j--;
@@ -207,13 +203,13 @@ int CollisionAll::Collision(void)
 								break;
 							}
 
-							//å€’ã—ãŸæ•µã®æ•°ã‚’å¢—ã‚„ã™
+							//“|‚µ‚½“G‚Ì”‚ð‘‚â‚·
 							m_pScore->AddScore(1);
 						}
 					}
 				}
 
-				//è…•ã®ãƒã‚¤ãƒ³ã‚¿ã‚’å–ã£ã¦ãã‚‹(äºŒå›žç›®ã¯å³)
+				//˜r‚Ìƒ|ƒCƒ“ƒ^‚ðŽæ‚Á‚Ä‚­‚é(“ñ‰ñ–Ú‚Í‰E)
 				pArm = m_pPlayerRight;
 			}
 
@@ -222,52 +218,58 @@ int CollisionAll::Collision(void)
 			}
 
 			//=================================================
-			// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•ã®å¼¾ã¨æ•µ
+			// ƒvƒŒƒCƒ„[‚Ì˜r‚Ì’e‚Æ“G
 
-			//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•ã®å¼¾æ–¹
-			//æ•µã®æ–¹
+			//ƒvƒŒƒCƒ„[‚Ì˜r‚Ì’e•û
+			//“G‚Ì•û
 
-				//å¼¾
-				//è‡ªèº«
+				//’e
+				//Ž©g
 
-			//è…•ã«ã¤ã„ã¦ã„ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã®ãƒã‚¤ãƒ³ã‚¿ã‚’å–ã£ã¦ãã‚‹(åˆæœŸã¯å·¦ã‹ã‚‰)
+			//˜r‚É‚Â‚¢‚Ä‚¢‚éƒAƒCƒeƒ€‚Ìƒ|ƒCƒ“ƒ^‚ðŽæ‚Á‚Ä‚­‚é(‰Šú‚Í¶‚©‚ç)
 			inhPlayerArm* pArmItem = m_pPlayerLeft->GetArmPointer();
+			//˜r‚Ìƒ|ƒCƒ“ƒ^‚ðŽæ‚Á‚Ä‚­‚é(‰Šú‚Í¶‚©‚ç)
+			pArm = m_pPlayerLeft;
 
-			//å³ã¨å·¦ã€ä¸¡æ–¹è¡Œã†
+			//‰E‚Æ¶A—¼•ûs‚¤
 			for (int m = 0; m < 2; m++) {
-				//ãƒã‚¤ãƒ³ã‚¿ãƒ¼ãŒãƒŒãƒ«ã§ã‚ã‚Œã°å‡¦ç†ã‚’è¡Œã‚ãªã„
+				//ƒ|ƒCƒ“ƒ^[‚ªƒkƒ‹‚Å‚ ‚ê‚Îˆ—‚ðs‚í‚È‚¢
 				if (pArmItem != nullptr) {
+					//ƒoƒŠƒA‚Å‚ ‚ê‚Î‰½‚à‚µ‚È‚¢
+					if (pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE4) {
+						continue;
+					}
 					for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
-						//ã‚‚ã—ã‚‚ç”»é¢å¤–ã«ã„ãŸã‚‰å£Šã›ãªã„ã‚ˆã†ã«ã™ã‚‹
+						//‚à‚µ‚à‰æ–ÊŠO‚É‚¢‚½‚ç‰ó‚¹‚È‚¢‚æ‚¤‚É‚·‚é
 						if (!ScreenOut::GetScreenOut(m_pEnemy[k]->GetObjPos(j),
 							m_pEnemy[k]->GetObjSize())) {
 
-							//å½“ãŸã£ãŸã‹åˆ¤å®š
+							//“–‚½‚Á‚½‚©”»’è
 							if (Collision::ColBox(pArmItem->GetBulletPos(i), m_pEnemy[k]->GetObjPos(j),
 								pArmItem->GetBulletSize(), m_pEnemy[k]->GetObjSize())) {
 
-								//è…•ã«ã¤ã„ã¦ã„ã‚‹ç¨®é¡žãŒTYPE2(ãƒ¬ãƒ¼ã‚¶ãƒ¼)ã§ãªã‘ã‚Œã°...
+								//˜r‚É‚Â‚¢‚Ä‚¢‚éŽí—Þ‚ªTYPE2(ƒŒ[ƒU[)‚Å‚È‚¯‚ê‚Î...
 								if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
-									//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å¼¾ã‚’æ¶ˆã™
+									//ƒvƒŒƒCƒ„[‚Ì’e‚ðÁ‚·
 									pArmItem->DeleteBullet(i);
 									i--;
 								}
 
-								//çˆ†ç™ºã‚’ã‚»ãƒƒãƒˆ
+								//”š”­‚ðƒZƒbƒg
 								m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
 								explosion_sound = true;
 
-								//æ•µã®HPã‚’æ¸›ã‚‰ã™
-								//æ•µãŒæ­»ã‚“ã ã‚‰...
+								//“G‚ÌHP‚ðŒ¸‚ç‚·
+								//“G‚ªŽ€‚ñ‚¾‚ç...
 								if (m_pEnemy[k]->ReduceHP(j, 1))
 								{
-									//ãƒ‰ãƒ­ãƒƒãƒ—ã™ã‚‹æ•µã§ã‚ã‚Œã°...
-									if (/*k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE && k != (int)TYPE::ATTACK &&*/ k != (int)TYPE::METEO) {
-										//æ•µã‚¢ã‚¤ãƒ†ãƒ ã®ãƒ‰ãƒ­ãƒƒãƒ—
-										m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
+									//ƒhƒƒbƒv‚·‚é“G‚Å‚ ‚ê‚Î...
+									if (true) {
+										//“GƒAƒCƒeƒ€‚Ìƒhƒƒbƒv
+										m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
 									}
 
-									//æ•µã‚’æ¶ˆã™
+									//“G‚ðÁ‚·
 									m_pEnemy[k]->DeleteObj(j);
 
 									j--;
@@ -277,7 +279,7 @@ int CollisionAll::Collision(void)
 										break;
 									}
 
-									//å€’ã—ãŸæ•µã®æ•°ã‚’å¢—ã‚„ã™
+									//“|‚µ‚½“G‚Ì”‚ð‘‚â‚·
 									m_pScore->AddScore(1);
 								}
 							}
@@ -289,35 +291,38 @@ int CollisionAll::Collision(void)
 					}
 				}
 
-				//è…•ã«ã¤ã„ã¦ã„ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã®ãƒã‚¤ãƒ³ã‚¿ã‚’å–ã£ã¦ãã‚‹(äºŒå›žç›®ã¯å³)
+				//˜r‚É‚Â‚¢‚Ä‚¢‚éƒAƒCƒeƒ€‚Ìƒ|ƒCƒ“ƒ^‚ðŽæ‚Á‚Ä‚­‚é(“ñ‰ñ–Ú‚Í‰E)
 				pArmItem = m_pPlayerRight->GetArmPointer();
+
+				//˜r‚Ìƒ|ƒCƒ“ƒ^‚ðŽæ‚Á‚Ä‚­‚é(“ñ‰ñ–Ú‚Í‰E)
+				pArm = m_pPlayerRight;
 			}
 		}
 
 		//=================================================
-		// æ•µã®å¼¾åˆ†ãƒ«ãƒ¼ãƒ—
+		// “G‚Ì’e•ªƒ‹[ƒv
 		for (int j = 0; j < m_pEnemy[k]->GetBulletNum(); j++) {
 			bool next = false;
 
 			//=================================================
-			// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¨æ•µã®å¼¾
+			// ƒvƒŒƒCƒ„[‚Æ“G‚Ì’e
 
-			//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ–¹
-			//æ•µã®æ–¹
+			//ƒvƒŒƒCƒ„[‚Ì•û
+			//“G‚Ì•û
 
-				//å¼¾
-				//å¼¾
+				//’e
+				//’e
 			/*for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
 				if (Collision::ColBox(m_pPlayer->GetBulletPos(i), m_pEnemy[k]->GetBulletPos(j),
 					m_pPlayer->GetBulletSize(), m_pEnemy[k]->GetBulletSize())) {
-					//çˆ†ç™ºã‚’ã‚»ãƒƒãƒˆ
+					//”š”­‚ðƒZƒbƒg
 					m_pExplosion->SetExplosion(m_pEnemy[k]->GetBulletPos(j));
 					explosion_sound = true;
 
-					//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å¼¾ã‚’æ¶ˆã™
+					//ƒvƒŒƒCƒ„[‚Ì’e‚ðÁ‚·
 					m_pPlayer->DeleteBullet(i);
 					i--;
-					//æ•µã®å¼¾ã‚’æ¶ˆã™
+					//“G‚Ì’e‚ðÁ‚·
 					m_pEnemy[k]->DeleteBullet(j);
 					j--;
 
@@ -328,21 +333,21 @@ int CollisionAll::Collision(void)
 				}
 			}*/
 
-			//è‡ªèº«
-			//å¼¾
+			//Ž©g
+			//’e
 			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetBulletPos(j),
 				m_pPlayer->GetSize(), m_pEnemy[k]->GetBulletSize())) {
 
-				//çˆ†ç™ºã‚’ã‚»ãƒƒãƒˆ
+				//”š”­‚ðƒZƒbƒg
 				m_pExplosion->SetExplosion(m_pEnemy[k]->GetBulletPos(j));
 				explosion_sound = true;
 
-				//æ•µã®å¼¾ã‚’æ¶ˆã™
+				//“G‚Ì’e‚ðÁ‚·
 				m_pEnemy[k]->DeleteBullet(j);
 				j--;
-				//ãƒ€ãƒ¡ãƒ¼ã‚¸æ•°ã‚’å¢—ã‚„ã™
+				//ƒ_ƒ[ƒW”‚ð‘‚â‚·
 				attacked += m_pEnemy[k]->GetBulletAttack();
-				//ã‚³ãƒ³ãƒœã‚’é€”åˆ‡ã‚Œã•ã›ã‚‹
+				//ƒRƒ“ƒ{‚ð“rØ‚ê‚³‚¹‚é
 				m_pScore->InitCombo();
 
 				if (j < 0) {
@@ -351,14 +356,14 @@ int CollisionAll::Collision(void)
 				}
 			}
 
-			//ãƒœãƒ 
-			//å¼¾
+			//ƒ{ƒ€
+			//’e
 			if (m_pBom->IsBomb()) {
-				//çˆ†ç™ºã‚’ã‚»ãƒƒãƒˆ
+				//”š”­‚ðƒZƒbƒg
 				m_pExplosion->SetExplosion(m_pEnemy[k]->GetBulletPos(j));
 				explosion_sound = true;
 
-				//æ•µã®å¼¾ã‚’æ¶ˆã™
+				//“G‚Ì’e‚ðÁ‚·
 				m_pEnemy[k]->DeleteBullet(j);
 				j--;
 
@@ -369,36 +374,44 @@ int CollisionAll::Collision(void)
 			}
 
 			//=================================================
-			// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•ã®å¼¾ã¨æ•µ
+			// ƒvƒŒƒCƒ„[‚Ì˜r‚Ì’e‚Æ“G
 
-			//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•ã®å¼¾æ–¹
-			//æ•µã®æ–¹
+			//ƒvƒŒƒCƒ„[‚Ì˜r‚Ì’e•û
+			//“G‚Ì•û
 
-				//å¼¾
-				//å¼¾
+				//’e
+				//’e
 
-			//è…•ã«ã¤ã„ã¦ã„ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã®ãƒã‚¤ãƒ³ã‚¿ã‚’å–ã£ã¦ãã‚‹(åˆæœŸã¯å·¦ã‹ã‚‰)
-			//inhPlayerArm* pArmItem = m_pPlayerLeft->GetArmPointer();
+			//˜r‚É‚Â‚¢‚Ä‚¢‚éƒAƒCƒeƒ€‚Ìƒ|ƒCƒ“ƒ^‚ðŽæ‚Á‚Ä‚­‚é(‰Šú‚Í¶‚©‚ç)
+			inhPlayerArm* pArmItem = m_pPlayerLeft->GetArmPointer();
+			//˜r‚Ìƒ|ƒCƒ“ƒ^‚ðŽæ‚Á‚Ä‚­‚é(‰Šú‚Í¶‚©‚ç)
+			inhPlayerArmBoth* pArm = m_pPlayerLeft;
 
-			//å³ã¨å·¦ã€ä¸¡æ–¹è¡Œã†
-			/*for (int m = 0; m < 2; m++) {
-				//ãƒã‚¤ãƒ³ã‚¿ãƒ¼ãŒãƒŒãƒ«ã§ã‚ã‚Œã°å‡¦ç†ã‚’è¡Œã‚ãªã„
-				if (pArmItem != nullptr) {
+			//‰E‚Æ¶A—¼•ûs‚¤
+			for (int m = 0; m < 2; m++) {
+				//ƒ|ƒCƒ“ƒ^[‚ªƒkƒ‹‚Å‚ ‚ê‚Îˆ—‚ðs‚í‚È‚¢
+				//ƒoƒŠƒA‚Å‚È‚¯‚ê‚Îˆ—‚ðs‚í‚È‚¢
+				if (pArmItem != nullptr && pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE4) {
 					for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
 						if (Collision::ColBox(pArmItem->GetBulletPos(i), m_pEnemy[k]->GetBulletPos(j),
 							pArmItem->GetBulletSize(), m_pEnemy[k]->GetBulletSize())) {
-							//çˆ†ç™ºã‚’ã‚»ãƒƒãƒˆ
+							//”š”­‚ðƒZƒbƒg
 							m_pExplosion->SetExplosion(m_pEnemy[k]->GetBulletPos(j));
 							explosion_sound = true;
 
-							//è…•ã«ã¤ã„ã¦ã„ã‚‹ç¨®é¡žãŒTYPE2(ãƒ¬ãƒ¼ã‚¶ãƒ¼)ã§ãªã‘ã‚Œã°...
-							if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
-								//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å¼¾ã‚’æ¶ˆã™
+							//ƒoƒŠƒA‚ÌHP‚ª‚È‚­‚È‚Á‚½‚ç
+							if (pArmItem->ReduceHP(m_pEnemy[k]->GetBulletAttack())) {
 								pArmItem->DeleteBullet(i);
 								i--;
 							}
+							//˜r‚É‚Â‚¢‚Ä‚¢‚éŽí—Þ‚ªTYPE2(ƒŒ[ƒU[)‚Å‚È‚¯‚ê‚Î...
+							//if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
+							//	//ƒvƒŒƒCƒ„[‚Ì’e‚ðÁ‚·
+							//	pArmItem->DeleteBullet(i);
+							//	i--;
+							//}
 
-							//æ•µã®å¼¾ã‚’æ¶ˆã™
+							//“G‚Ì’e‚ðÁ‚·
 							m_pEnemy[k]->DeleteBullet(j);
 							j--;
 
@@ -414,15 +427,17 @@ int CollisionAll::Collision(void)
 					}
 				}
 
-				//è…•ã«ã¤ã„ã¦ã„ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã®ãƒã‚¤ãƒ³ã‚¿ã‚’å–ã£ã¦ãã‚‹(äºŒå›žç›®ã¯å³)
+				//˜r‚É‚Â‚¢‚Ä‚¢‚éƒAƒCƒeƒ€‚Ìƒ|ƒCƒ“ƒ^‚ðŽæ‚Á‚Ä‚­‚é(“ñ‰ñ–Ú‚Í‰E)
 				pArmItem = m_pPlayerRight->GetArmPointer();
-			}*/
+				//˜r‚Ìƒ|ƒCƒ“ƒ^‚ðŽæ‚Á‚Ä‚­‚é(“ñ‰ñ–Ú‚Í‰E)
+				pArm = m_pPlayerRight;
+			}
 		}
 
 		//=================================================
-		// æ•µã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåˆ†ãƒ«ãƒ¼ãƒ—
+		// “G‚Ì•ÊƒIƒuƒWƒFƒNƒg•ªƒ‹[ƒv
 
-		////ãƒãƒªã‚¢ä»¥å¤–ã®æ•µã§ã‚ã‚Œã°å‡¦ç†ã—ãªã„
+		////ƒoƒŠƒAˆÈŠO‚Ì“G‚Å‚ ‚ê‚Îˆ—‚µ‚È‚¢
 		//if (k != (int)TYPE::BARRIER) {
 		//	continue;
 		//}
@@ -431,39 +446,39 @@ int CollisionAll::Collision(void)
 			bool next = false;
 
 			//=================================================
-			// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¨æ•µã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+			// ƒvƒŒƒCƒ„[‚Æ“G‚Ì•ÊƒIƒuƒWƒFƒNƒg
 
-			//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ–¹
-			//æ•µã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æ–¹
+			//ƒvƒŒƒCƒ„[‚Ì•û
+			//“G‚Ì•ÊƒIƒuƒWƒFƒNƒg‚Ì•û
 
-				//å¼¾
-				//åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+				//’e
+				//•ÊƒIƒuƒWƒFƒNƒg
 			for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
-				//ã‚‚ã—ã‚‚ç”»é¢å¤–ã«ã„ãŸã‚‰å£Šã›ãªã„ã‚ˆã†ã«ã™ã‚‹
+				//‚à‚µ‚à‰æ–ÊŠO‚É‚¢‚½‚ç‰ó‚¹‚È‚¢‚æ‚¤‚É‚·‚é
 				if (ScreenOut::GetScreenOut(m_pEnemy[k]->GetOtherPos(j),
 					m_pEnemy[k]->GetOtherSize())) {
 					continue;
 				}
 
-				//å½“ãŸã£ã¦ãªã‘ã‚Œã°æ¬¡è¡Œã
+				//“–‚½‚Á‚Ä‚È‚¯‚ê‚ÎŽŸs‚­
 				if (!Collision::ColBox(m_pPlayer->GetBulletPos(i), m_pEnemy[k]->GetOtherPos(j),
 					m_pPlayer->GetBulletSize(), m_pEnemy[k]->GetOtherSize())) {
 					continue;
 				}
 
-				//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å¼¾ã‚’æ¶ˆã™
+				//ƒvƒŒƒCƒ„[‚Ì’e‚ðÁ‚·
 				m_pPlayer->DeleteBullet(i);
 				i--;
 
-				//çˆ†ç™ºã‚’ã‚»ãƒƒãƒˆ
+				//”š”­‚ðƒZƒbƒg
 				m_pExplosion->SetExplosion(m_pEnemy[k]->GetOtherPos(j));
 				explosion_sound = true;
 
-				//æ•µã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®HPã‚’æ¸›ã‚‰ã™
-				//æ•µã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®HPãŒãªããªã£ãŸã‚‰...
+				//“G‚Ì•ÊƒIƒuƒWƒFƒNƒg‚ÌHP‚ðŒ¸‚ç‚·
+				//“G‚Ì•ÊƒIƒuƒWƒFƒNƒg‚ÌHP‚ª‚È‚­‚È‚Á‚½‚ç...
 				if (m_pEnemy[k]->ReduceOtherHP(j, 1))
 				{
-					//æ•µã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ¶ˆã™
+					//“G‚Ì•ÊƒIƒuƒWƒFƒNƒg‚ðÁ‚·
 					m_pEnemy[k]->DeleteOther(j);
 
 					j--;
@@ -479,20 +494,20 @@ int CollisionAll::Collision(void)
 			}
 
 
-			//è‡ªèº«
-			//åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+			//Ž©g
+			//•ÊƒIƒuƒWƒFƒNƒg
 			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetOtherPos(j),
 				m_pPlayer->GetSize(), m_pEnemy[k]->GetOtherSize())) {
 
-				//çˆ†ç™ºã‚’ã‚»ãƒƒãƒˆ
+				//”š”­‚ðƒZƒbƒg
 				m_pExplosion->SetExplosion(m_pEnemy[k]->GetOtherPos(j));
 				explosion_sound = true;
 
-				//æ•µã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®HPã‚’æ¸›ã‚‰ã™
-				//æ•µã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®HPãŒãªããªã£ãŸã‚‰...
+				//“G‚Ì•ÊƒIƒuƒWƒFƒNƒg‚ÌHP‚ðŒ¸‚ç‚·
+				//“G‚Ì•ÊƒIƒuƒWƒFƒNƒg‚ÌHP‚ª‚È‚­‚È‚Á‚½‚ç...
 				if (m_pEnemy[k]->ReduceOtherHP(j, 1))
 				{
-					//æ•µã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ¶ˆã™
+					//“G‚Ì•ÊƒIƒuƒWƒFƒNƒg‚ðÁ‚·
 					m_pEnemy[k]->DeleteOther(j);
 
 					j--;
@@ -503,48 +518,51 @@ int CollisionAll::Collision(void)
 				}
 
 				if (m_pEnemy[k]->GetOtherAttack() != 0) {
-					//ãƒ€ãƒ¡ãƒ¼ã‚¸æ•°ã‚’å¢—ã‚„ã™
+					//ƒ_ƒ[ƒW”‚ð‘‚â‚·
 					attacked += m_pEnemy[k]->GetOtherAttack();
-					//ã‚³ãƒ³ãƒœã‚’é€”åˆ‡ã‚Œã•ã›ã‚‹
+					//ƒRƒ“ƒ{‚ð“rØ‚ê‚³‚¹‚é
 					m_pScore->InitCombo();
 				}
 			}
 
 			//=================================================
-			// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•ã®å¼¾ã¨æ•µã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+			// ƒvƒŒƒCƒ„[‚Ì˜r‚Ì’e‚Æ“G‚Ì•ÊƒIƒuƒWƒFƒNƒg
 
-			//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•ã®å¼¾æ–¹
-			//æ•µã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æ–¹
+			//ƒvƒŒƒCƒ„[‚Ì˜r‚Ì’e•û
+			//“G‚Ì•ÊƒIƒuƒWƒFƒNƒg‚Ì•û
 
-			//è…•ã«ã¤ã„ã¦ã„ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã®ãƒã‚¤ãƒ³ã‚¿ã‚’å–ã£ã¦ãã‚‹(åˆæœŸã¯å·¦ã‹ã‚‰)
+			//˜r‚É‚Â‚¢‚Ä‚¢‚éƒAƒCƒeƒ€‚Ìƒ|ƒCƒ“ƒ^‚ðŽæ‚Á‚Ä‚­‚é(‰Šú‚Í¶‚©‚ç)
 			inhPlayerArm* pArmItem = m_pPlayerLeft->GetArmPointer();
+			//˜r‚Ìƒ|ƒCƒ“ƒ^‚ðŽæ‚Á‚Ä‚­‚é(‰Šú‚Í¶‚©‚ç)
+			inhPlayerArmBoth* pArm = m_pPlayerLeft;
 
-			//å³ã¨å·¦ã€ä¸¡æ–¹è¡Œã†
+			//‰E‚Æ¶A—¼•ûs‚¤
 			for (int m = 0; m < 2; m++) {
-				//ãƒã‚¤ãƒ³ã‚¿ãƒ¼ãŒãƒŒãƒ«ã§ã‚ã‚Œã°å‡¦ç†ã‚’è¡Œã‚ãªã„
-				if (pArmItem == nullptr) {
+				//ƒ|ƒCƒ“ƒ^[‚ªƒkƒ‹‚Å‚ ‚ê‚Îˆ—‚ðs‚í‚È‚¢
+				//ƒoƒŠƒA‚Å‚ ‚ê‚Îˆ—‚ðs‚í‚È‚¢
+				if (pArmItem == nullptr || pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE4) {
 					continue;
 				}
 
 				for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
 					if (Collision::ColBox(pArmItem->GetBulletPos(i), m_pEnemy[k]->GetOtherPos(j),
 						pArmItem->GetBulletSize(), m_pEnemy[k]->GetOtherSize())) {
-						//çˆ†ç™ºã‚’ã‚»ãƒƒãƒˆ
+						//”š”­‚ðƒZƒbƒg
 						m_pExplosion->SetExplosion(m_pEnemy[k]->GetOtherPos(j));
 						explosion_sound = true;
 
-						//è…•ã«ã¤ã„ã¦ã„ã‚‹ç¨®é¡žãŒTYPE2(ãƒ¬ãƒ¼ã‚¶ãƒ¼)ã§ãªã‘ã‚Œã°...
+						//˜r‚É‚Â‚¢‚Ä‚¢‚éŽí—Þ‚ªTYPE2(ƒŒ[ƒU[)‚Å‚È‚¯‚ê‚Î...
 						if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
-							//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å¼¾ã‚’æ¶ˆã™
+							//ƒvƒŒƒCƒ„[‚Ì’e‚ðÁ‚·
 							pArmItem->DeleteBullet(i);
 							i--;
 						}
 
-						//æ•µã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®HPã‚’æ¸›ã‚‰ã™
-						//æ•µã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®HPãŒãªããªã£ãŸã‚‰...
+						//“G‚Ì•ÊƒIƒuƒWƒFƒNƒg‚ÌHP‚ðŒ¸‚ç‚·
+						//“G‚Ì•ÊƒIƒuƒWƒFƒNƒg‚ÌHP‚ª‚È‚­‚È‚Á‚½‚ç...
 						if (m_pEnemy[k]->ReduceOtherHP(j, 1))
 						{
-							//æ•µã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ¶ˆã™
+							//“G‚Ì•ÊƒIƒuƒWƒFƒNƒg‚ðÁ‚·
 							m_pEnemy[k]->DeleteOther(j);
 
 							j--;
@@ -560,16 +578,18 @@ int CollisionAll::Collision(void)
 					break;
 				}
 
-				//è…•ã«ã¤ã„ã¦ã„ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã®ãƒã‚¤ãƒ³ã‚¿ã‚’å–ã£ã¦ãã‚‹(äºŒå›žç›®ã¯å³)
+				//˜r‚É‚Â‚¢‚Ä‚¢‚éƒAƒCƒeƒ€‚Ìƒ|ƒCƒ“ƒ^‚ðŽæ‚Á‚Ä‚­‚é(“ñ‰ñ–Ú‚Í‰E)
 				pArmItem = m_pPlayerRight->GetArmPointer();
+				//˜r‚Ìƒ|ƒCƒ“ƒ^‚ðŽæ‚Á‚Ä‚­‚é(“ñ‰ñ–Ú‚Í‰E)
+				pArm = m_pPlayerLeft;
 			}
 		}
 	}
 
 	//=======================================
-	// æ”»æ’ƒã‚’å—ã‘ãŸã‚‰ã€è…•ã®åˆ‡ã‚Šé›¢ã—ã‚’è¡Œã†
+	// UŒ‚‚ðŽó‚¯‚½‚çA˜r‚ÌØ‚è—£‚µ‚ðs‚¤
 	if (attacked > 0) {
-		//ç‰‡æ–¹ã‹ã‚‰åˆ‡ã‚Šé›¢ã—
+		//•Ð•û‚©‚çØ‚è—£‚µ
 		if (m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_NONE &&
 			m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_OLD &&
 			m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
@@ -584,46 +604,46 @@ int CollisionAll::Collision(void)
 		}
 	}
 
-	//çˆ†ç™ºã®éŸ³ã®é–“éš”ã‚’ä¸€å®šæ™‚é–“éŽãŽã¦ã„ãŸã‚‰(ã“ã“ã§ã‚«ã‚¦ãƒ³ãƒˆ)...
-	//ä¸€å›žã§ã‚‚çˆ†ç™ºãŒã‚»ãƒƒãƒˆã•ã‚Œã¦ã„ãŸã‚‰...
+	//”š”­‚Ì‰¹‚ÌŠÔŠu‚ðˆê’èŽžŠÔ‰ß‚¬‚Ä‚¢‚½‚ç(‚±‚±‚ÅƒJƒEƒ“ƒg)...
+	//ˆê‰ñ‚Å‚à”š”­‚ªƒZƒbƒg‚³‚ê‚Ä‚¢‚½‚ç...
 	if (m_SE_interval_count++ > SE_INTERVAL && explosion_sound) {
 
-		//éŸ³ã‚’é³´ã‚‰ã™
+		//‰¹‚ð–Â‚ç‚·
 		PlaySound(m_SE, 0);
 		SetVolume(m_SE, 0.1f);
 
-		//çˆ†ç™ºã®éŸ³ã®é–“éš”ã‚’ãƒªã‚»ãƒƒãƒˆ
+		//”š”­‚Ì‰¹‚ÌŠÔŠu‚ðƒŠƒZƒbƒg
 		m_SE_interval_count = 0;
 	}
 
-	//å—ã‘ãŸãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’è¿”ã™
+	//Žó‚¯‚½ƒ_ƒ[ƒW‚ð•Ô‚·
 	return attacked;
 }
 
 //=======================================
-// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HPãŒå›žå¾©ã™ã‚‹å½“ãŸã‚Šåˆ¤å®š
+// ƒvƒŒƒCƒ„[‚ÌHP‚ª‰ñ•œ‚·‚é“–‚½‚è”»’è
 //=======================================
-void CollisionAll::HeelCollision(void)
+void MarsCollisionAll::HeelCollision(void)
 {
 
 	//=================================================
-	// è…•ã¨â—‹â—‹
+	// ˜r‚Æ››
 
-	//è…•ã®ãƒã‚¤ãƒ³ã‚¿ã‚’å–ã£ã¦ãã‚‹(åˆæœŸã¯å·¦ã‹ã‚‰)
+	//˜r‚Ìƒ|ƒCƒ“ƒ^‚ðŽæ‚Á‚Ä‚­‚é(‰Šú‚Í¶‚©‚ç)
 	inhPlayerArmBoth* pArm = m_pPlayerLeft;
 
 	for (int m = 0; m < 2; m++) {
 		//=================================================
-		// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•ã¨æ•µã®ã‚¢ã‚¤ãƒ†ãƒ 
+		// ƒvƒŒƒCƒ„[‚Ì˜r‚Æ“G‚ÌƒAƒCƒeƒ€
 
-		//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•ã®æ–¹
-		//æ•µã®ã‚¢ã‚¤ãƒ†ãƒ ã®æ–¹
+		//ƒvƒŒƒCƒ„[‚Ì˜r‚Ì•û
+		//“G‚ÌƒAƒCƒeƒ€‚Ì•û
 
-			//è…•ã®æ–¹
-			//æ•µã®æ–¹
+			//˜r‚Ì•û
+			//“G‚Ì•û
 
-				//è‡ªèº«
-				//è‡ªèº«
+				//Ž©g
+				//Ž©g
 
 		for (int i = 0; i < m_pItem->GetItemNum(); i++) {
 			if (Collision::ColBox(pArm->GetPos(), m_pItem->GetItemPos(i),
@@ -633,7 +653,7 @@ void CollisionAll::HeelCollision(void)
 					pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE_OLD)
 				{
 				}
-				//ã‚¿ã‚¤ãƒ—ãŒåŒã˜ã ã£ãŸã‚‰æ®‹å¼¾æ•°ã‚’å›žå¾©ã™ã‚‹
+				//ƒ^ƒCƒv‚ª“¯‚¶‚¾‚Á‚½‚çŽc’e”‚ð‰ñ•œ‚·‚é
 				if (pArm->GetType() == (inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i) + 1))
 				{
 					pArm->HeelBullet();
@@ -644,7 +664,7 @@ void CollisionAll::HeelCollision(void)
 			}
 		}
 
-		//è…•ã®ãƒã‚¤ãƒ³ã‚¿ã‚’å–ã£ã¦ãã‚‹(äºŒå›žç›®ã¯å³)
+		//˜r‚Ìƒ|ƒCƒ“ƒ^‚ðŽæ‚Á‚Ä‚­‚é(“ñ‰ñ–Ú‚Í‰E)
 		pArm = m_pPlayerRight;
 	}
 
