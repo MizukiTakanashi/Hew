@@ -1,26 +1,27 @@
 //=======================================
-// 高速発射の敵の管理関係(ヘッダファイル)
-// 作成日：2022/09/13
-// 作成者：高梨水希
+// 動きを止める敵の管理関係(ヘッダファイル)
+// 作成日：
+// 作成者：恩田洋行
 //=======================================
 #pragma once
 
-#ifndef _ENEMY_GATORING_MANAGEMENT_H_
-#define _ENEMY_GATORING_MANAGEMENT_H_
+#ifndef _ENEMY_STOP_MANAGEMENT_H_
+#define _ENEMY_STOP_MANAGEMENT_H_
 
 #include "main.h"
-#include "management_enemy.h"
-#include "enemy_gatoring.h"
-#include "bullet.h"
+#include "management_enemy.h"6
 #include "draw_object.h"
+#include "enemy_stop.h"
+#include "bullet_stop.h"
 
-class EnemyGatoringManagement:public EnemyManagement
+class EnemyStopManagement:public EnemyManagement
 {
 //定数
 private:
 	//ここで初期化
 	//敵自身
 	static const int ENEMY_NUM = 5;		//敵を出現させる数
+	static const int BULLET_TIME = 60;		//敵を出現させる数
 
 	//cppで初期化
 	//弾
@@ -37,18 +38,18 @@ public:
 
 //メンバ変数
 private:
-	EnemyGatoring* m_pEnemyStop = nullptr;	//敵のクラス
-	Bullet* m_pBullet = nullptr;				//弾のクラス
+	EnemyStop* m_pEnemyStop = nullptr;	//敵のクラス
+	BulletStop* m_pBullet = nullptr;				//弾のクラス
 	DrawObject m_pDrawObjectEnemy;				//敵の描画オブジェクト
 	DrawObject m_pDrawObjectBullet;				//弾の描画オブジェクト
 
 	//敵の位置配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-		D3DXVECTOR2(52.5f + (105 *  5), -EnemyGatoring::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  2), -EnemyGatoring::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  8), -EnemyGatoring::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  3), -EnemyGatoring::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  7), -EnemyGatoring::SIZE_Y / 2)
+		D3DXVECTOR2(52.5f + (105 *  5), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  2), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  8), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  3), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  7), -EnemyStop::SIZE_Y / 2)
 	};
 
 	//敵を出す時間
@@ -63,19 +64,19 @@ private:
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
-	EnemyGatoringManagement() {
-		m_pEnemyStop = new EnemyGatoring[ENEMY_NUM];
-		m_pBullet = new Bullet[ENEMY_NUM];
+	EnemyStopManagement() {
+		m_pEnemyStop = new EnemyStop[ENEMY_NUM];
+		m_pBullet = new BulletStop[ENEMY_NUM];
 	}
 
 	//引数付きコンストラクタ
-	EnemyGatoringManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2);
+	EnemyStopManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2);
 
 	//デストラクタ
-	~EnemyGatoringManagement()override{}
+	~EnemyStopManagement()override{}
 
 	//更新処理
-	void Update(const D3DXVECTOR2& PlayerPos);
+	void Update(void);
 
 	//描画処理
 	void Draw(void)const;
@@ -102,4 +103,4 @@ public:
 	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override{ return m_pBullet[0].GetSize(); }
 };
 
-#endif // !_ENEMY_Gatoring_MANAGEMENT_H_
+#endif // !_ENEMY_STOP_MANAGEMENT_H_
