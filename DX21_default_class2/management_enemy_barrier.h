@@ -22,7 +22,7 @@ public:
 
 private:
 	//ここで初期化
-	static const int ENEMY_NUM = 9;			//敵を出現させる数
+	static const int ENEMY_NUM = 4;			//敵を出現させる数
 
 	//cppで初期化
 	static const D3DXVECTOR2 BARRIER_SIZE;	//バリアの大きさ
@@ -38,28 +38,18 @@ private:
 
 	//敵の位置配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-		D3DXVECTOR2(52.5f + (105 * 4), -EnemyBarrier::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 1), -EnemyBarrier::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 10), -EnemyBarrier::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 5), -EnemyBarrier::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 6), -EnemyBarrier::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 3), -EnemyBarrier::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 2), -EnemyBarrier::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 5), -EnemyBarrier::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 8), -EnemyBarrier::SIZE_Y / 2)
+		D3DXVECTOR2(52.5f + (105 * 2), -EnemyBarrier::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 4), -EnemyBarrier::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 10), -EnemyBarrier::SIZE_Y / 2)
 	};
 
 	//敵を出す時間
 	int m_SetEnemyTime[ENEMY_NUM] = {
 		60 * 5,
-		60 * 35,
-		60 * 35 + 1,
-		60 * 55,
-		60 * 55 + 1,
-		60 * 85,
-		60 * 85 + 1,
-		60 * 85 + 2,
-		60 * 85 + 3,
+		60 * 80,
+		60 * 160,
+		60 * 170
 	};
 
 	//メンバ関数

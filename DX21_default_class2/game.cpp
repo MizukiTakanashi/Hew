@@ -342,6 +342,14 @@ void Game::Update(void)
 
 	//プレイヤーのHPが0になったら...
 	if (m_pPlayerHP->GetHP0Flag()) {
+		//リザルト画面に行く
+		Fade(SCENE::SCENE_RESULT);
+	}
+
+	//最後の列の敵を全て倒したら
+	if (m_pEnemyNormalManagement->IsClear() && m_pEnemyLaserManagement->IsClear() &&
+		m_pEnemyGatoringManagement->IsClear()) {
+		//リザルト画面に行く
 		Fade(SCENE::SCENE_RESULT);
 	}
 }

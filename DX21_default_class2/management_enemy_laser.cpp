@@ -12,7 +12,7 @@
 //==========================
 const float EnemyLaserManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyLaserManagement::BULLET_SIZE_Y = 20.0f;
-
+const float EnemyLaserManagement::EXIT_MOVE_SPEED_X = 2.5f;
 
 //=========================
 // 引数付きコンストラクタ
@@ -35,7 +35,13 @@ void EnemyLaserManagement::Update()
 	//時間が来たら敵をセット
 	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
 	{
-		EnemyLaser temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
+		//退出方向を決める
+		bool right = true;
+		if (m_EnemyNum == 0) {
+			right = false;
+		}
+
+		EnemyLaser temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum], right);
 		m_pEnemyLaser[GetObjNum()] = temp;
 		EnemyManagement::IncreaseObjNum(1);
 
@@ -57,6 +63,22 @@ void EnemyLaserManagement::Update()
 		if (m_pEnemyLaser[i].GetLaserIndex() >= 0)
 		{
 			m_pLaser[m_pEnemyLaser[i].GetLaserIndex()].Update(m_pEnemyLaser[i].GetPos());
+		}
+
+		//退出時間来たら...
+		if (m_pEnemyLaser[i].GetAppearanceTime() > EXIT_TIME) {
+			//退出フラグオン
+			m_pEnemyLaser[i].OnExitFlag();
+
+			//右に退出
+			if (m_pEnemyLaser[i].IsExitDirectionRight()) {
+				m_pEnemyLaser[i].MovePos(D3DXVECTOR2(EXIT_MOVE_SPEED_X, 0.0f));
+			}
+			//左に退出
+			else {
+				m_pEnemyLaser[i].MovePos(D3DXVECTOR2(-EXIT_MOVE_SPEED_X, 0.0f));
+			}
+			continue;
 		}
 
 		//弾を作る
@@ -158,6 +180,10 @@ void EnemyLaserManagement::DeleteObj(int index_num)
 
 	//継承元の敵を消すを呼ぶ
 	EnemyManagement::DeleteObj(index_num);
+
+	if (m_EnemyNum == ENEMY_NUM) {
+		m_tutorial_clear = true;
+	}
 }
 
 //======================

@@ -20,13 +20,16 @@ class EnemyGatoringManagement:public EnemyManagement
 private:
 	//ここで初期化
 	//敵自身
-	static const int ENEMY_NUM = 5;		//敵を出現させる数
+	static const int ENEMY_NUM = 5;			//敵を出現させる数
+	static const int EXIT_TIME = 60 * 10;	//退出時間
 
 	//cppで初期化
 	//弾
 	static const float BULLET_SIZE_X;		//サイズX
 	static const float BULLET_SIZE_Y;		//サイズY
 	static const float BULLET_SPEED;		//スピード
+
+	static const float EXIT_MOVE_SPEED_Y;	//退出スピードY
 
 public:
 	//ここで初期化
@@ -41,6 +44,7 @@ private:
 	Bullet* m_pBullet = nullptr;				//弾のクラス
 	DrawObject m_pDrawObjectEnemy;				//敵の描画オブジェクト
 	DrawObject m_pDrawObjectBullet;				//弾の描画オブジェクト
+	bool m_tutorial_clear = false;	//最後の敵を倒したかどうか(チュートリアル)
 
 	//敵の位置配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
@@ -100,6 +104,9 @@ public:
 
 	//指定した番号の弾のサイズを返す(オーバーライド)
 	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override{ return m_pBullet[0].GetSize(); }
+
+	//チュートリアルのクリア判定
+	bool IsClear(void)const { return m_tutorial_clear; }
 };
 
 #endif // !_ENEMY_Gatoring_MANAGEMENT_H_
