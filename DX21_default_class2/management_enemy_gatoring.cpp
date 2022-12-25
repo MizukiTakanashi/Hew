@@ -21,7 +21,7 @@ const float EnemyGatoringManagement::EXIT_MOVE_SPEED_Y = 5.0f;
 EnemyGatoringManagement::EnemyGatoringManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
 	:EnemyManagement(ENEMY_NUM, ATTACK, BULLET_ATTACK),m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
-	m_pEnemyStop = new EnemyGatoring[ENEMY_NUM];
+	m_pEnemyGatoring = new EnemyGatoring[ENEMY_NUM];
 	m_pBullet = new Bullet[ENEMY_NUM];
 }
 
@@ -35,7 +35,7 @@ void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
 	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
 	{
 		EnemyGatoring temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
-		m_pEnemyStop[GetObjNum()] = temp;
+		m_pEnemyGatoring[GetObjNum()] = temp;
 		EnemyManagement::IncreaseObjNum(1);
 
 		m_EnemyNum++;
@@ -43,7 +43,7 @@ void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
 
 	//今いる敵の処理
 	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
-		m_pEnemyStop[i].Update();
+		m_pEnemyGatoring[i].Update();
 
 		//退出時間来たら...
 		if (m_pEnemyGatoring[i].GetAppearanceTime() > EXIT_TIME) {
@@ -53,16 +53,16 @@ void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
 		}
 
 		//弾を作る
-		if (m_pEnemyStop[i].GetFlagBulletMake())
+		if (m_pEnemyGatoring[i].GetFlagBulletMake())
 		{
-			Bullet temp(m_pDrawObjectBullet, m_pEnemyStop[i].GetPos(),
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyGatoring[i].GetPos(),
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y),D3DXVECTOR2(0, 10.0f), 0.0f);
 						   // 弾の大きさ								弾を撃つ方向		
 			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
 
 			EnemyManagement::IncreaseBulletNum(1);
 
-			m_pEnemyStop[i].BulletMake();
+			m_pEnemyGatoring[i].BulletMake();
 		}
 	}
 
@@ -83,7 +83,7 @@ void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
 void EnemyGatoringManagement::Draw(void)const
 {
 	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
-		m_pEnemyStop[i].Draw();
+		m_pEnemyGatoring[i].Draw();
 	}
 
 	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {
@@ -96,9 +96,9 @@ void EnemyGatoringManagement::Draw(void)const
 //======================
 bool EnemyGatoringManagement::ReduceHP(int index_num, int reduceHP)
 {
-	m_pEnemyStop[index_num].ReduceHP(reduceHP);
+	m_pEnemyGatoring[index_num].ReduceHP(reduceHP);
 
-	if (m_pEnemyStop[index_num].GetHP() <= 0)
+	if (m_pEnemyGatoring[index_num].GetHP() <= 0)
 	{//HPが０以下なら敵を消す
 
 
@@ -114,7 +114,7 @@ void EnemyGatoringManagement::DeleteObj(int index_num)
 {
 	//敵を消す
 	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
-		m_pEnemyStop[i] = m_pEnemyStop[i + 1];
+		m_pEnemyGatoring[i] = m_pEnemyGatoring[i + 1];
 	}
 
 	//継承元の敵を消すを呼ぶ

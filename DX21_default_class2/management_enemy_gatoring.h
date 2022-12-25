@@ -40,7 +40,7 @@ public:
 
 //メンバ変数
 private:
-	EnemyGatoring* m_pEnemyStop = nullptr;	//敵のクラス
+	EnemyGatoring* m_pEnemyGatoring = nullptr;	//敵のクラス
 	Bullet* m_pBullet = nullptr;				//弾のクラス
 	DrawObject m_pDrawObjectEnemy;				//敵の描画オブジェクト
 	DrawObject m_pDrawObjectBullet;				//弾の描画オブジェクト
@@ -68,7 +68,7 @@ private:
 public:
 	//デフォルトコンストラクタ
 	EnemyGatoringManagement() {
-		m_pEnemyStop = new EnemyGatoring[ENEMY_NUM];
+		m_pEnemyGatoring = new EnemyGatoring[ENEMY_NUM];
 		m_pBullet = new Bullet[ENEMY_NUM];
 	}
 
@@ -94,10 +94,10 @@ public:
 	void DeleteBullet(int index_num)override;
 
 	//指定した番号の敵の座標を返す(オーバーライド)
-	const D3DXVECTOR2& GetObjPos(int index_num)const override{ return m_pEnemyStop[index_num].GetPos(); }
+	const D3DXVECTOR2& GetObjPos(int index_num)const override{ return m_pEnemyGatoring[index_num].GetPos(); }
 
 	//指定した番号の敵のサイズを返す(オーバーライド)
-	const D3DXVECTOR2& GetObjSize(int index_num = 0)const override{ return m_pEnemyStop[0].GetSize(); }
+	const D3DXVECTOR2& GetObjSize(int index_num = 0)const override{ return m_pEnemyGatoring[0].GetSize(); }
 
 	//指定した番号の弾の座標を返す(オーバーライド)
 	const D3DXVECTOR2& GetBulletPos(int index_num)const override { return m_pBullet[index_num].GetPos(); }
