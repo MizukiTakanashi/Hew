@@ -20,7 +20,7 @@ class EnemyIceRainManagement :public EnemyManagement
 private:
 	//ここで初期化
 	//敵自身
-	static const int ENEMY_NUM = 5;		//敵を出現させる数
+	static const int ENEMY_NUM = 7;		//敵を出現させる数
 
 	//cppで初期化
 	//弾
@@ -44,20 +44,24 @@ private:
 
 	//敵の位置配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-		D3DXVECTOR2(52.5f + (105 * 6), -EnemyIceRain::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 5), -EnemyIceRain::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 3), -EnemyIceRain::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 7), -EnemyIceRain::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 3), -EnemyIceRain::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 7), -EnemyIceRain::SIZE_Y / 2)
+		D3DXVECTOR2(52.5f + (105 * 5), -EnemyIceRain::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 1), -EnemyIceRain::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 9), -EnemyIceRain::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 5), -EnemyIceRain::SIZE_Y / 2)
 	};
 
 	//敵を出す時間
 	int m_SetEnemyTime[ENEMY_NUM] = {
-								60 * 15,
-								60 * 20,
-								60 * 20 + 1,
+								60 * 5,
+								60 * 50,
+								60 * 50 + 1,
 								60 * 80,
-								60 * 80 + 1
+								60 * 125,
+								60 * 125 + 1,
+								60 * 135,
 	};
 
 	//メンバ関数
