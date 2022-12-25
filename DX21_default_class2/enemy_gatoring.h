@@ -33,7 +33,7 @@ private:
 
 //メンバ変数
 private:
-
+	int m_appearance_time = 0;			//出現してからのカウント
 
 //メンバ関数
 public:
@@ -46,6 +46,9 @@ public:
 	~EnemyGatoring()override {}	//デストラクタ
 
 	void Update(void);	//更新処理
+
+	//出現してからのカウントを数える
+	int GetAppearanceTime(void)const { return m_appearance_time; }
 };
 
 #endif // !_ENEMY_GATORING_H_

@@ -16,6 +16,7 @@ const float EnemyNormal::RANGE = 20.0f;
 //private
 const float EnemyNormal::SPEED_X = 1.5f;
 const float EnemyNormal::SPEED_Y = 2.5f;
+const float EnemyNormal::ALPHA_SPEED = 0.01f;
 
 //======================
 // 更新処理
@@ -39,5 +40,16 @@ void EnemyNormal::Update(void)
 	if (m_bullet_count++ > BULLET_TIME) {
 		m_bullet_make = true;
 		m_bullet_count = 0;
+	}
+
+	//出現してからのカウントを数える
+	m_appearance_time++;
+
+	if (m_alpha_flag) {
+		m_alpha -= ALPHA_SPEED;
+		if (m_alpha < 0.0f) {
+			m_alpha = 0.0f;
+		}
+		GameObject::SetColor(D3DXCOLOR(1.0f, 1.0f, 1.0f, m_alpha));
 	}
 }

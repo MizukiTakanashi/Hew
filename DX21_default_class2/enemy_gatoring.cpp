@@ -38,4 +38,7 @@ void EnemyGatoring::Update(void)
 		m_bullet_make = true;
 		m_bullet_count = 0;
 	}
+
+	//出現してからのカウントを数える
+	m_appearance_time++;
 }

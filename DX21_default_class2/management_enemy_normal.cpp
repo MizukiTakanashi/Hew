@@ -44,6 +44,16 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 	for (int i = 0; i < GetObjNum(); i++) {
 		m_pEnemyNormal[i].Update();
 
+		//退出時間来たら...
+		if (m_pEnemyNormal[i].GetAppearanceTime() > EXIT_TIME) {
+			//消えてく
+			m_pEnemyNormal[i].OnAlphaFlag();
+			if (m_pEnemyNormal[i].GetAlpha() <= 0.0f) {
+				DeleteObj(i);
+			}
+			continue;
+		}
+
 		//弾を作る
 		if (m_pEnemyNormal[i].GetFlagBulletMake()) {
 			//プレイヤーの後を追うようにして、弾を生成

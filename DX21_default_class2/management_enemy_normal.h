@@ -22,6 +22,7 @@ private:
 	//敵自身
 	static const int ENEMY_NUM = 5;		//敵を出現させる数
 	static const int BULLET_BREAK_TIME = 200;	//ホーミング弾が壊れる時間
+	static const int EXIT_TIME = 60 * 10;		//退出時間
 
 	//cppで初期化
 	//弾

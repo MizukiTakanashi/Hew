@@ -20,13 +20,16 @@ class EnemyGatoringManagement:public EnemyManagement
 private:
 	//ここで初期化
 	//敵自身
-	static const int ENEMY_NUM = 5;		//敵を出現させる数
+	static const int ENEMY_NUM = 5;			//敵を出現させる数
+	static const int EXIT_TIME = 60 * 10;	//退出時間
 
 	//cppで初期化
 	//弾
 	static const float BULLET_SIZE_X;		//サイズX
 	static const float BULLET_SIZE_Y;		//サイズY
 	static const float BULLET_SPEED;		//スピード
+
+	static const float EXIT_MOVE_SPEED_Y;	//退出スピードY
 
 public:
 	//ここで初期化
