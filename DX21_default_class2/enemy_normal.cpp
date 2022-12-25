@@ -45,7 +45,9 @@ void EnemyNormal::Update(void)
 	//出現してからのカウントを数える
 	m_appearance_time++;
 
+	//退出のフラグが立ったら
 	if (m_alpha_flag) {
+		//どんどんアルファ値を低くしていく
 		m_alpha -= ALPHA_SPEED;
 		if (m_alpha < 0.0f) {
 			m_alpha = 0.0f;
