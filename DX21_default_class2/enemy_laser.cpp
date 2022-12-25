@@ -29,9 +29,12 @@ void EnemyLaser::Update(void)
 	}
 
 	//左右に動く
-	float rad = D3DXToRadian(m_move_width);
-	SetPos(D3DXVECTOR2(m_init_posx + cosf(rad) * RANGE, GetPos().y));
-	m_move_width += SPEED_X;
+	//退出時間になったら動かない
+	if (!m_exit_flag) {
+		float rad = D3DXToRadian(m_move_width);
+		SetPos(D3DXVECTOR2(m_init_posx + cosf(rad) * RANGE, GetPos().y));
+		m_move_width += SPEED_X;
+	}
 
 	//時間が来たらレーザーを作る
 	if (m_bullet_count++ > LASER_BETWEEN) {
@@ -39,6 +42,6 @@ void EnemyLaser::Update(void)
 		m_bullet_count = 0;
 	}
 
-	//画面外に出ないようにする
-	GameObject::SetPos(ScreenOut::GetScreenIn(GameObject::GetPos(), GameObject::GetSize()));
+	//出現してからのカウントを数える
+	m_appearance_time++;
 }
