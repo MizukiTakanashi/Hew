@@ -79,7 +79,7 @@ void TextManagement::Draw(void)
 		x = i % TEXT_NUM_X;
 		y = i / TEXT_NUM_X;
 
-		m_Text.SetPaterNo(i);
+		m_Text.SetPaterNo((float)i);
 		m_Text.Draw(D3DXVECTOR2(TEXT_POS_X + TEXT_BET_X * x, TEXT_POS_Y + TEXT_BET_Y * y), D3DXVECTOR2(TEXT_SIZE_X, TEXT_SIZE_Y));
 	}
 }

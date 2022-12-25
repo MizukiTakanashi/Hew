@@ -20,23 +20,17 @@ public:
 
 	static const float STOP_POS_Y;				//敵が止まる場所
 
-	static const float RANGE;					//敵が動く範囲
-
 private:
 	//ここで初期化
 	static const int INVINCIBLE_FLAME = 30;		//敵の無敵時間
 	static const int HP_MAX = 1;				//敵のHP最大値
 
 	//cppで初期化
-	static const float SPEED_X;					//敵のスピードY
 	static const float SPEED_Y;					//敵のスピードY
 
 
 //メンバ変数
 private:
-	float m_move_width = 0.0f;			//敵が動く時のcosカーブ
-	float m_init_posx = 0.0f;			//敵の初期位置X
-
 	int m_barrier_index = -1;			//バリアのインデックス番号
 
 	int m_hp = HP_MAX;					//敵の現在のHP
@@ -50,8 +44,7 @@ public:
 
 	//引数付きコンストラクタ
 	EnemyBarrier(DrawObject& pDrawObject, const D3DXVECTOR2& pos)
-		:GameObject(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)),
-		m_init_posx(pos.x) {}
+		:GameObject(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)){}
 
 	~EnemyBarrier()override {}	//デストラクタ
 
