@@ -30,16 +30,20 @@ private:
 
 //メンバ変数
 private:
-	int m_laser_index = -1;		//レーザー番号
-	int m_laser_direction = 0;	//レーザーの方向
+	int m_laser_index = -1;				//レーザー番号
+	int m_laser_direction = 0;			//レーザーの方向
+	int m_appearance_time = 0;			//出現してからのカウント
+	bool m_exit_direction_right = true;	//退出方向
+	bool m_exit_flag = false;			//退出になったかフラグ
 
 //メンバ関数
 public:
 	EnemyLaser(){}		//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
-	EnemyLaser(DrawObject& pDrawObject, const D3DXVECTOR2& pos)
-		:Inh_Enemy(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y), HP_MAX) {}
+	EnemyLaser(DrawObject& pDrawObject, const D3DXVECTOR2& pos, bool exit_direction_right = true)
+		:Inh_Enemy(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y), HP_MAX),
+		m_exit_direction_right(exit_direction_right) {}
 
 	~EnemyLaser()override{}	//デストラクタ
 
@@ -56,4 +60,14 @@ public:
 
 	//レーザーの方向をセット
 	void SetLaserDirection(int direction) { m_laser_direction = direction; }
+
+	//出現してからのカウントを数える
+	int GetAppearanceTime(void)const { return m_appearance_time; }
+
+	//退出時間になったかフラグをオン
+	void OnExitFlag(void) { m_exit_flag = true; }
+
+	//退出方向を返す
+	//true：右　false：左
+	bool IsExitDirectionRight(void)const { return m_exit_direction_right; }
 };

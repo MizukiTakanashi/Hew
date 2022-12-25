@@ -21,11 +21,14 @@ private:
 	//ここで初期化
 	//敵自身
 	static const int ENEMY_NUM = 3;		//敵を出現させる数
+	static const int EXIT_TIME = 60 * 15;	//退出時間
 
 	//cppで初期化
 	//弾
 	static const float BULLET_SIZE_X;		//サイズX
 	static const float BULLET_SIZE_Y;		//サイズY
+	
+	static const float EXIT_MOVE_SPEED_X;	//退出スピードX
 
 public:
 	//ここで初期化
