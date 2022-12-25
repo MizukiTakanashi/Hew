@@ -74,6 +74,14 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ICE].SetTextureName((char*)"data\\texture\\IceEnemy.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ICE]);
 	m_pEnemyIceRainManagement = new EnemyIceRainManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY_ICE]);
+
+	//“®‚«‚ðŽ~‚ß‚é“G
+	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_STOP].SetTextureName((char*)"data\\texture\\enemy_stop.png");
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_STOP].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_STOP]);
+	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_STOP].SetTextureName((char*)"data\\texture\\bullet_stop.jpg");
+	m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_STOP]);
+	m_pEnemyStopManagement = new EnemyStopManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_STOP], m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
+	
 	
 	//=======================
 	// Žc’e•\Ž¦
@@ -213,6 +221,7 @@ StageMars::~StageMars()
 	delete m_pComboNum;
 	delete m_pMultiply;
 	delete m_pEnemyIceRainManagement;
+	delete m_pEnemyStopManagement;
 	//‚»‚Ì‚Ù‚©
 	delete[] m_pDrawObject;
 	delete[] m_pTexUseful;
@@ -254,6 +263,7 @@ void StageMars::Update(void)
 	// “G
 	m_pEnemyBarrierManagement->Update();
 	m_pEnemyIceRainManagement->Update(m_pPlayer->GetPos());
+	m_pEnemyStopManagement->Update();
 	//ƒ{ƒ€
 	m_pBom->Update();
 
@@ -308,6 +318,7 @@ void StageMars::Draw(void) const
 	//“G‚Ì•`‰æ
 	m_pEnemyBarrierManagement->Draw();
 	m_pEnemyIceRainManagement->Draw();
+	m_pEnemyStopManagement->Draw();
 	//ƒvƒŒƒCƒ„[‚Ì’e‚Ì•\Ž¦
 	m_pPlayer->DrawBullet();
 

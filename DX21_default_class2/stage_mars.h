@@ -29,6 +29,8 @@
 #include "player_center.h"
 #include "Bom.h"
 #include "management_enemy_icerain.h"
+#include "management_enemy_stop.h"
+
 class StageMars
 {
 	//定数
@@ -57,6 +59,8 @@ private:
 		MULTIPLY,
 		ENEMY_ICE,	//氷の敵のテクスチャセット
 		BULLET_ICE,	//氷の弾のテクスチャセット
+		ENEMY_STOP,
+		BULLET_STOP,
 		NUM
 	};
 
@@ -67,6 +71,8 @@ private:
 		ENEMY_BARRIER,
 		ENEMY_BARRIER_BARRIER,
 		ENEMY_ICE,
+		ENEMY_STOP,
+		BULLET_STOP,
 		ENEMY_ITEM,
 		PLAYER_BULLET,
 		BULLET_ENEMY,
@@ -102,6 +108,7 @@ private:
 	Player* m_pPlayer = nullptr;
 	EnemyBarrierManagement* m_pEnemyBarrierManagement = nullptr;
 	EnemyIceRainManagement* m_pEnemyIceRainManagement = nullptr;
+	EnemyStopManagement* m_pEnemyStopManagement = nullptr;
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;
 	ItemManagement* m_pItemManagement = nullptr;

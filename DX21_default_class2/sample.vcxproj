@@ -132,6 +132,7 @@
     <ClCompile Include="all_enemy_management.cpp" />
     <ClCompile Include="bgplanet.cpp" />
     <ClCompile Include="Bom.cpp" />
+    <ClCompile Include="bullet_stop.cpp" />
     <ClCompile Include="collision_all.cpp" />
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="collision.cpp" />
@@ -141,6 +142,7 @@
     <ClCompile Include="enemy_gatoring.cpp" />
     <ClCompile Include="enemy_icerain.cpp" />
     <ClCompile Include="enemy_public.cpp" />
+    <ClCompile Include="enemy_stop.cpp" />
     <ClCompile Include="Fade.cpp" />
     <ClCompile Include="inh_enemy.cpp" />
     <ClCompile Include="inh_player_arm_both.cpp" />
@@ -161,6 +163,7 @@
     <ClCompile Include="management_enemy_normal.cpp" />
     <ClCompile Include="explosion.cpp" />
     <ClCompile Include="management_enemy_public.cpp" />
+    <ClCompile Include="management_enemy_stop.cpp" />
     <ClCompile Include="management_explosion.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="game_object.cpp" />
@@ -211,6 +214,7 @@
     <ClInclude Include="all_enemy_management.h" />
     <ClInclude Include="bg_planet.h" />
     <ClInclude Include="Bom.h" />
+    <ClInclude Include="bullet_stop.h" />
     <ClInclude Include="collision_all.h" />
     <ClInclude Include="bullet.h" />
     <ClInclude Include="collision.h" />
@@ -220,6 +224,7 @@
     <ClInclude Include="enemy_gatoring.h" />
     <ClInclude Include="enemy_icerain.h" />
     <ClInclude Include="enemy_public.h" />
+    <ClInclude Include="enemy_stop.h" />
     <ClInclude Include="Fade.h" />
     <ClInclude Include="inh_enemy.h" />
     <ClInclude Include="inh_player_arm_both.h" />
@@ -240,6 +245,7 @@
     <ClInclude Include="management_enemy_normal.h" />
     <ClInclude Include="explosion.h" />
     <ClInclude Include="management_enemy_public.h" />
+    <ClInclude Include="management_enemy_stop.h" />
     <ClInclude Include="management_explosion.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="game_object.h" />

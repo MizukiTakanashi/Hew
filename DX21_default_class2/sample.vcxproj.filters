@@ -215,6 +215,16 @@
     <ClCompile Include="mars_collision_all.cpp">
       <Filter>05_Mars</Filter>
     </ClCompile>
+    <ClCompile Include="text_management.cpp" />
+    <ClCompile Include="management_enemy_stop.cpp">
+      <Filter>05_Mars</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy_stop.cpp">
+      <Filter>05_Mars</Filter>
+    </ClCompile>
+    <ClCompile Include="bullet_stop.cpp">
+      <Filter>05_Mars</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -432,6 +442,16 @@
       <Filter>05_Mars</Filter>
     </ClInclude>
     <ClInclude Include="mars_collision_all.h">
+      <Filter>05_Mars</Filter>
+    </ClInclude>
+    <ClInclude Include="text_management.h" />
+    <ClInclude Include="management_enemy_stop.h">
+      <Filter>05_Mars</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy_stop.h">
+      <Filter>05_Mars</Filter>
+    </ClInclude>
+    <ClInclude Include="bullet_stop.h">
       <Filter>05_Mars</Filter>
     </ClInclude>
   </ItemGroup>
