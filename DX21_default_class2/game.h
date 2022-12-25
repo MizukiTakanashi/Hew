@@ -34,6 +34,7 @@
 #include "management_meteo.h"
 #include "player_center.h"
 #include "Bom.h"
+#include "text_management.h"
 
 class Game
 {
@@ -143,6 +144,8 @@ private:
 
 	Bom* m_pBom = nullptr;					//ボム
 
+	TextManagement* m_pTextManagement = nullptr; //チュートリアルテキスト
+
 	//メンバ関数
 public:
 	Game();	//デフォルトコンストラクタ
@@ -161,7 +164,16 @@ public:
 	int GetScore(void)const { return m_pScore->GetNumber(); }
 };
 
+//ヒットストップ
 void HitStop(int flame);
+
+//チュートリアルテキスト関連
+//テキスト開始
+void StartTextG(void);
+//テキスト終了
+void EndTextG(void);
+//
+bool GetTextFlg(void);
 
 #endif // !_GAME_H_
 

@@ -5,6 +5,8 @@
 //=======================================
 #pragma once
 
+#ifndef _ENEMY_ICERAIN_H_
+#define _ENEMY_ICERAIN_H_
 
 #include "main.h"
 #include "inh_enemy.h"
@@ -21,7 +23,7 @@ public:
 
 private:
 	//‚±‚±‚Å‰Šú‰»
-	static const int BULLET_TIME = 30;	//’e‚Ì”­ËŠÔŠu
+	static const int BULLET_TIME =120;	//’e‚Ì”­ËŠÔŠu
 	static const int INVINCIBLE_FLAME = 30;	//“G‚Ì–³“GŠÔ
 
 	//cpp‚Å‰Šú‰»
@@ -45,3 +47,4 @@ public:
 
 	void Update(void);	//XVˆ—
 };
+#endif // !_ENEMY_ICERAIN_H_

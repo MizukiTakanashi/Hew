@@ -27,6 +27,10 @@ private:
 protected:
 	int m_bullet_count = 0;				//弾を発射するまでのカウント
 	bool m_bullet_make = false;			//弾を作るか否か
+	bool m_bullet_make1 = false;			//弾を作るか否か（氷の敵で使う）
+	bool m_bullet_make2 = false;			//弾を作るか否か（氷の敵で使う）
+	bool m_bullet_make3 = false;			//弾を作るか否か（氷の敵で使う）
+	bool m_bullet_make4 = false;			//弾を作るか否か（氷の敵で使う）
 	float m_move_width = 0.0f;			//敵が動く時のcosカーブ
 	int m_invincible_flame = 0;			//無敵時間の残り
 	float m_init_posx = 0.0f;			//敵の初期位置X
@@ -48,9 +52,17 @@ public:
 
 	//弾を作るか否かのフラグを返す
 	bool GetFlagBulletMake()const { return m_bullet_make; }
+	bool GetFlagBulletMake1()const { return m_bullet_make1; } //（氷の敵で使う）
+	bool GetFlagBulletMake2()const { return m_bullet_make2; } //（氷の敵で使う）
+	bool GetFlagBulletMake3()const { return m_bullet_make3; } //（氷の敵で使う）
+	bool GetFlagBulletMake4()const { return m_bullet_make4; } //（氷の敵で使う）
 
 	//弾を作った
 	void BulletMake() { m_bullet_make = false; }
+	void BulletMake1() { m_bullet_make1 = false; }
+	void BulletMake2() { m_bullet_make2 = false; }
+	void BulletMake3() { m_bullet_make3 = false; }
+	void BulletMake4() { m_bullet_make4 = false; }
 
 	//敵のアイテムを作るか否かのフラグを返す
 	bool GetFlagEnemyItemMake()const { return m_enemyitem_make; }

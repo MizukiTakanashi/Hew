@@ -38,6 +38,7 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_RED].SetTextureName((char*)"data\\texture\\bullet_red.png");
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN].SetTextureName((char*)"data\\texture\\bullet_green.png");
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_SQUARE_GREEN].SetTextureName((char*)"data\\texture\\bullet02.png");
+	
 	//ƒvƒŒƒCƒ„[‘¤‚Ì’e
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_SQUARE_GREEN], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
@@ -66,6 +67,14 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 
 	m_pEnemyBarrierManagement = new EnemyBarrierManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER], m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
 
+	//•X‚Ì“G
+	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_ICE].SetTextureName((char*)"data\\texture\\Ice.png");	//•X‚Ì’e‚ÌƒZƒbƒg
+	//“G‘¤‚Ì’e
+	m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY_ICE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_ICE]);	//“G‚ÌƒAƒCƒX’e
+	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ICE].SetTextureName((char*)"data\\texture\\IceEnemy.png");
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ICE]);
+	m_pEnemyIceRainManagement = new EnemyIceRainManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY_ICE]);
+	
 	//=======================
 	// Žc’e•\Ž¦
 	m_pTexUseful[(int)TEXTURE_TYPE::NUMBER].SetTextureName((char*)"data\\texture\\number.png");
@@ -203,7 +212,7 @@ StageMars::~StageMars()
 	delete m_pPlayerCenter;
 	delete m_pComboNum;
 	delete m_pMultiply;
-
+	delete m_pEnemyIceRainManagement;
 	//‚»‚Ì‚Ù‚©
 	delete[] m_pDrawObject;
 	delete[] m_pTexUseful;
@@ -244,7 +253,7 @@ void StageMars::Update(void)
 	//=======================
 	// “G
 	m_pEnemyBarrierManagement->Update();
-
+	m_pEnemyIceRainManagement->Update(m_pPlayer->GetPos());
 	//ƒ{ƒ€
 	m_pBom->Update();
 
@@ -298,7 +307,7 @@ void StageMars::Draw(void) const
 
 	//“G‚Ì•`‰æ
 	m_pEnemyBarrierManagement->Draw();
-
+	m_pEnemyIceRainManagement->Draw();
 	//ƒvƒŒƒCƒ„[‚Ì’e‚Ì•\Ž¦
 	m_pPlayer->DrawBullet();
 
