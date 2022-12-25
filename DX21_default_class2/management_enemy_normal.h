@@ -42,8 +42,7 @@ private:
 	Bullet* m_pBullet = nullptr;
 	DrawObject m_pDrawObjectEnemy;
 	DrawObject m_pDrawObjectBullet;
-
-	int m_EnemyItem_num = 0;	//敵のアイテムの数
+	bool m_tutorial_clear = false;	//最後の敵を倒したかどうか(チュートリアル)
 
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
@@ -102,6 +101,9 @@ public:
 
 	//弾のサイズを返す
 	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override { return m_pBullet[index_num].GetSize(); }
+
+	//チュートリアルのクリア判定
+	bool IsClear(void)const { return m_tutorial_clear; }
 };
 
 #endif // !_ENEMY_NORMAL_MANAGEMENT_H_
