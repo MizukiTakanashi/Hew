@@ -49,12 +49,6 @@
     <ClCompile Include="game.cpp">
       <Filter>02_Moon</Filter>
     </ClCompile>
-    <ClCompile Include="inh_player_arm.cpp">
-      <Filter>02_Moon</Filter>
-    </ClCompile>
-    <ClCompile Include="inh_player_arm_both.cpp">
-      <Filter>02_Moon</Filter>
-    </ClCompile>
     <ClCompile Include="input.cpp">
       <Filter>11_etc</Filter>
     </ClCompile>
@@ -71,12 +65,6 @@
       <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="laser.cpp">
-      <Filter>02_Moon</Filter>
-    </ClCompile>
-    <ClCompile Include="management.cpp">
-      <Filter>02_Moon</Filter>
-    </ClCompile>
-    <ClCompile Include="management_enemy.cpp">
       <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="management_enemy_attack.cpp">
@@ -111,9 +99,6 @@
     </ClCompile>
     <ClCompile Include="number.cpp">
       <Filter>11_etc</Filter>
-    </ClCompile>
-    <ClCompile Include="player.cpp">
-      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="player_arm_1.cpp">
       <Filter>02_Moon</Filter>
@@ -184,9 +169,6 @@
     <ClCompile Include="screen_out.cpp">
       <Filter>02_Moon</Filter>
     </ClCompile>
-    <ClCompile Include="inh_enemy.cpp">
-      <Filter>02_Moon</Filter>
-    </ClCompile>
     <ClCompile Include="bgplanet.cpp">
       <Filter>02_Moon</Filter>
     </ClCompile>
@@ -228,6 +210,24 @@
     </ClCompile>
     <ClCompile Include="stage_mercury.cpp">
       <Filter>04_Mercury</Filter>
+    </ClCompile>
+    <ClCompile Include="inh_enemy.cpp">
+      <Filter>11_etc</Filter>
+    </ClCompile>
+    <ClCompile Include="inh_player_arm.cpp">
+      <Filter>11_etc</Filter>
+    </ClCompile>
+    <ClCompile Include="inh_player_arm_both.cpp">
+      <Filter>11_etc</Filter>
+    </ClCompile>
+    <ClCompile Include="management.cpp">
+      <Filter>11_etc</Filter>
+    </ClCompile>
+    <ClCompile Include="management_enemy.cpp">
+      <Filter>11_etc</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>11_etc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -279,12 +279,6 @@
     <ClInclude Include="game.h">
       <Filter>02_Moon</Filter>
     </ClInclude>
-    <ClInclude Include="inh_player_arm.h">
-      <Filter>02_Moon</Filter>
-    </ClInclude>
-    <ClInclude Include="inh_player_arm_both.h">
-      <Filter>02_Moon</Filter>
-    </ClInclude>
     <ClInclude Include="input.h">
       <Filter>11_etc</Filter>
     </ClInclude>
@@ -301,12 +295,6 @@
       <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="laser.h">
-      <Filter>02_Moon</Filter>
-    </ClInclude>
-    <ClInclude Include="management.h">
-      <Filter>02_Moon</Filter>
-    </ClInclude>
-    <ClInclude Include="management_enemy.h">
       <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="management_enemy_attack.h">
@@ -341,9 +329,6 @@
     </ClInclude>
     <ClInclude Include="number.h">
       <Filter>11_etc</Filter>
-    </ClInclude>
-    <ClInclude Include="player.h">
-      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="player_arm_1.h">
       <Filter>02_Moon</Filter>
@@ -417,9 +402,6 @@
     <ClInclude Include="resource.h">
       <Filter>99_%3f</Filter>
     </ClInclude>
-    <ClInclude Include="inh_enemy.h">
-      <Filter>02_Moon</Filter>
-    </ClInclude>
     <ClInclude Include="bg_planet.h">
       <Filter>02_Moon</Filter>
     </ClInclude>
@@ -461,6 +443,24 @@
     </ClInclude>
     <ClInclude Include="stage_mercury.h">
       <Filter>04_Mercury</Filter>
+    </ClInclude>
+    <ClInclude Include="inh_enemy.h">
+      <Filter>11_etc</Filter>
+    </ClInclude>
+    <ClInclude Include="inh_player_arm.h">
+      <Filter>11_etc</Filter>
+    </ClInclude>
+    <ClInclude Include="inh_player_arm_both.h">
+      <Filter>11_etc</Filter>
+    </ClInclude>
+    <ClInclude Include="management.h">
+      <Filter>11_etc</Filter>
+    </ClInclude>
+    <ClInclude Include="management_enemy.h">
+      <Filter>11_etc</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>11_etc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

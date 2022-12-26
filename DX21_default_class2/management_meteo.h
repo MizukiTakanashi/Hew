@@ -75,5 +75,9 @@ public:
 	//指定した番号のサイズを返す(オーバーライド)
 	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override { return m_pMeteo[index_num].GetSize(); }
 
+	//指定した番号の敵を止める
+	void StopEnemy(int index_num, int time) override { m_pMeteo[index_num].StopEnemy(time); }
+
+
 };
 

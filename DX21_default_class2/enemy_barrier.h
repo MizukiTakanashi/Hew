@@ -8,9 +8,9 @@
 #ifndef _ENEMY_BARRIER_H_
 #define _ENEMY_BARRIER_H_
 
-#include "game_object.h"
+#include "inh_enemy.h"
 
-class EnemyBarrier:public GameObject
+class EnemyBarrier:public Inh_Enemy
 {
 //定数
 public:
@@ -50,7 +50,7 @@ public:
 
 	//引数付きコンストラクタ
 	EnemyBarrier(DrawObject& pDrawObject, const D3DXVECTOR2& pos)
-		:GameObject(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)),
+		:Inh_Enemy(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y), HP_MAX),
 		m_init_posx(pos.x) {}
 
 	~EnemyBarrier()override {}	//デストラクタ

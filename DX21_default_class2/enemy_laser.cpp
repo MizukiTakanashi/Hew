@@ -23,6 +23,13 @@ const float EnemyLaser::SPEED_Y = 2.5f;
 void EnemyLaser::Update(void)
 {
 	m_invincible_flame--;
+
+	if (m_stop_time > 0)
+	{
+		m_stop_time--;
+		return;
+	}
+
 	//~‚Ü‚éêŠ‚Ü‚ÅˆÚ“®‚·‚é
 	if (GameObject::GetPos().y < STOP_POS_Y) {
 		GameObject::MovePos(D3DXVECTOR2(0.0f, SPEED_Y));

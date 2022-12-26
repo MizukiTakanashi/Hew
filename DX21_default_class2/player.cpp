@@ -33,6 +33,11 @@ const D3DXCOLOR Player::INVINCIBLE__COLOR = D3DXCOLOR(1.0f, 0.3f, 0.3f, 1.0f);		
 //======================
 void Player::Update(bool isinvincible)
 {
+	if (m_stop_time > 0)
+	{
+		m_stop_time--;
+		return;
+	}
 	D3DXVECTOR2 temp = D3DXVECTOR2(0.0f, 0.0f);
 
 	//==========================
