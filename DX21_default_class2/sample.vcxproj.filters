@@ -415,7 +415,7 @@
       <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>%3f</Filter>
+      <Filter>99_%3f</Filter>
     </ClInclude>
     <ClInclude Include="inh_enemy.h">
       <Filter>02_Moon</Filter>
@@ -467,9 +467,6 @@
     <Filter Include="01_Title">
       <UniqueIdentifier>{3a71814c-52cb-492e-ba0c-55c56c1d3954}</UniqueIdentifier>
     </Filter>
-    <Filter Include="%3f">
-      <UniqueIdentifier>{7c43303e-3fc7-40c1-b451-5c06c3cda157}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02_Moon">
       <UniqueIdentifier>{e2b52ddb-4c60-46a2-98b4-5b3ddc44338a}</UniqueIdentifier>
     </Filter>
@@ -485,10 +482,13 @@
     <Filter Include="04_Mercury">
       <UniqueIdentifier>{08876253-5c74-4943-a090-457f69e23b87}</UniqueIdentifier>
     </Filter>
+    <Filter Include="99_%3f">
+      <UniqueIdentifier>{7c43303e-3fc7-40c1-b451-5c06c3cda157}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="sample.rc">
-      <Filter>%3f</Filter>
+      <Filter>99_%3f</Filter>
     </ResourceCompile>
   </ItemGroup>
 </Project>
