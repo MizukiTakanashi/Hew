@@ -45,8 +45,7 @@ public:
 	//引数付きコンストラクタ
 	EnemyBarrier(DrawObject& pDrawObject, const D3DXVECTOR2& pos)
 
-		:Inh_Enemy(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y), HP_MAX),
-		m_init_posx(pos.x) {}
+		:Inh_Enemy(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y), HP_MAX) {}
 
 	~EnemyBarrier()override {}	//デストラクタ
 
