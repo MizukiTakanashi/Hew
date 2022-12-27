@@ -88,8 +88,14 @@ int MarsCollisionAll::Collision(void)
 						{
 							//ドロップする敵であれば...
 							if (true) {
-								//敵アイテムのドロップ
-								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
+								if (k == (int)TYPE::NORMAL) {
+									//敵アイテムのドロップ
+									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
+								}
+								else {
+									//敵アイテムのドロップ
+									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
+								}
 							}
 
 							//敵を消す
@@ -145,8 +151,14 @@ int MarsCollisionAll::Collision(void)
 				{
 					//ドロップする敵であれば...
 					if (true) {
-						//敵アイテムのドロップ
-						m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
+						if (k == (int)TYPE::NORMAL) {
+							//敵アイテムのドロップ
+							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
+						}
+						else {
+							//敵アイテムのドロップ
+							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
+						}
 					}
 
 					//敵を消す
@@ -189,8 +201,14 @@ int MarsCollisionAll::Collision(void)
 						{
 							//ドロップする敵であれば...
 							if (true) {
-								//敵アイテムのドロップ
-								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
+								if (k == (int)TYPE::NORMAL) {
+									//敵アイテムのドロップ
+									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
+								}
+								else {
+									//敵アイテムのドロップ
+									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
+								}
 							}
 
 							//敵を消す
@@ -272,8 +290,14 @@ int MarsCollisionAll::Collision(void)
 								{
 									//ドロップする敵であれば...
 									if (true) {
-										//敵アイテムのドロップ
-										m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
+										if (k == (int)TYPE::NORMAL) {
+											//敵アイテムのドロップ
+											m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
+										}
+										else {
+											//敵アイテムのドロップ
+											m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
+										}
 									}
 
 									//敵を消す

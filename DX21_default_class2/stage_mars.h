@@ -15,6 +15,9 @@
 #include "player.h"
 #include "draw_object.h"
 #include "management_enemy_barrier.h"
+#include "management_enemy_normal.h"
+#include "management_enemy_icerain.h"
+#include "management_enemy_stop.h"
 #include "texture_useful.h"
 #include "player_hp.h"
 #include "management_explosion.h"
@@ -28,8 +31,6 @@
 #include "mars_collision_all.h"
 #include "player_center.h"
 #include "Bom.h"
-#include "management_enemy_icerain.h"
-#include "management_enemy_stop.h"
 
 class StageMars
 {
@@ -72,6 +73,7 @@ private:
 		ENEMY_BARRIER_BARRIER,
 		ENEMY_ICE,
 		ENEMY_STOP,
+		ENEMY_NOREMAL,
 		BULLET_STOP,
 		ENEMY_ITEM,
 		PLAYER_BULLET,
@@ -106,9 +108,12 @@ private:
 	BG* m_pBG = nullptr;
 	BGPlanet* m_pBG_Moon = nullptr;
 	Player* m_pPlayer = nullptr;
+
 	EnemyBarrierManagement* m_pEnemyBarrierManagement = nullptr;
 	EnemyIceRainManagement* m_pEnemyIceRainManagement = nullptr;
 	EnemyStopManagement* m_pEnemyStopManagement = nullptr;
+	EnemyNormalManagement* m_pEnemyNormalManagement = nullptr;
+
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;
 	ItemManagement* m_pItemManagement = nullptr;

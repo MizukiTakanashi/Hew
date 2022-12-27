@@ -10,6 +10,7 @@
 //==========================
 // 定数の初期化
 //==========================
+const int EnemyNormalManagement::ENEMY_NUM[(int)STAGE::NUM] = {5, 6};
 const float EnemyNormalManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyNormalManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyNormalManagement::BULLET_SPEED = 5.0f;
@@ -17,11 +18,12 @@ const float EnemyNormalManagement::BULLET_SPEED = 5.0f;
 //=========================
 // 引数付きコンストラクタ
 //=========================
-EnemyNormalManagement::EnemyNormalManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
-	:EnemyManagement(ENEMY_NUM, ATTACK, BULLET_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
+EnemyNormalManagement::EnemyNormalManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, int stage)
+	:EnemyManagement(ENEMY_NUM[stage], ATTACK, BULLET_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2),
+	m_stage_num(stage)
 {
-	m_pEnemyNormal = new EnemyNormal[ENEMY_NUM];
-	m_pBullet = new Bullet[ENEMY_NUM];
+	m_pEnemyNormal = new EnemyNormal[ENEMY_NUM[stage]];
+	m_pBullet = new Bullet[ENEMY_NUM[stage]];
 }
 
 //======================
@@ -31,9 +33,10 @@ void EnemyNormalManagement::Update(const D3DXVECTOR2& PlayerPos)
 {
 	m_FlameNum++; //フレーム数を増加
 
-	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
+	if (m_FlameNum == m_SetEnemyTime[m_stage_num][m_EnemyNum] && 
+		m_EnemyNum < ENEMY_NUM[m_stage_num])
 	{
-		EnemyNormal temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
+		EnemyNormal temp(m_pDrawObjectEnemy, m_SetEnemy[m_stage_num][m_EnemyNum]);
 		m_pEnemyNormal[GetObjNum()] = temp;
 		EnemyManagement::IncreaseObjNum(1);
 
@@ -140,7 +143,7 @@ void EnemyNormalManagement::DeleteObj(int index_num)
 	//継承元の敵を消すを呼ぶ
 	EnemyManagement::DeleteObj(index_num);
 
-	if (m_EnemyNum == ENEMY_NUM) {
+	if (m_EnemyNum == ENEMY_NUM[m_stage_num]) {
 		m_tutorial_clear = true;
 	}
 }

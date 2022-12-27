@@ -12,10 +12,8 @@
 const float EnemyBarrier::SIZE_X = 50.0f;
 const float EnemyBarrier::SIZE_Y = 60.0f;
 const float EnemyBarrier::STOP_POS_Y = 100.0f;
-const float EnemyBarrier::RANGE = 20.0f;
 
 //private
-const float EnemyBarrier::SPEED_X = 1.5f;
 const float EnemyBarrier::SPEED_Y = 2.5f;
 
 //======================
@@ -28,9 +26,4 @@ void EnemyBarrier::Update(void)
 	if (GameObject::GetPos().y < STOP_POS_Y) {
 		GameObject::MovePos(D3DXVECTOR2(0.0f, SPEED_Y));
 	}
-
-	//¶‰E‚É“®‚­
-	float rad = D3DXToRadian(m_move_width);
-	SetPos(D3DXVECTOR2(m_init_posx + cosf(rad) * RANGE, GetPos().y));
-	m_move_width += SPEED_X;
 }

@@ -144,7 +144,7 @@ void StageSelectPlanet::Update()
 		}
 	}
 	//スティックの値を保存
-	m_thumb_before = GetThumbLeftX(0);
+	m_thumb_before = (int)GetThumbLeftX(0);
 
 	//太陽がなかったら...
 	if (!m_sun_appearance) {

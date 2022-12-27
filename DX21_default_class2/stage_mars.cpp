@@ -82,6 +82,9 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_STOP]);
 	m_pEnemyStopManagement = new EnemyStopManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_STOP], m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
 	
+	//ホーミングの敵
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
+	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 1);
 	
 	//=======================
 	// 残弾表示
@@ -198,6 +201,7 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 		m_pItemManagement, m_pScore, m_pBom);
 
 	//敵のポインタをセット（順番変えるのNG）
+	m_pColAll->AddEnemyPointer(m_pEnemyNormalManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyStopManagement);
 }
@@ -218,6 +222,7 @@ StageMars::~StageMars()
 	delete m_pBG_Moon;
 	delete m_pExplosionManagement;
 	delete m_pEnemyBarrierManagement;
+	delete m_pEnemyNormalManagement;
 	delete m_pItemManagement;
 	delete m_pPlayer;
 	delete m_pPlayerHP;
@@ -270,9 +275,11 @@ void StageMars::Update(void)
 
 	//=======================
 	// 敵
+	m_pEnemyNormalManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyBarrierManagement->Update();
 	m_pEnemyIceRainManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyStopManagement->Update();
+
 	//ボム
 	m_pBom->Update();
 
@@ -325,9 +332,11 @@ void StageMars::Draw(void) const
 	m_pPlayerCenter->ArmDraw();
 
 	//敵の描画
+	m_pEnemyNormalManagement->Draw();
 	m_pEnemyBarrierManagement->Draw();
 	m_pEnemyIceRainManagement->Draw();
 	m_pEnemyStopManagement->Draw();
+
 	//プレイヤーの弾の表示
 	m_pPlayer->DrawBullet();
 

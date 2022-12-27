@@ -22,7 +22,7 @@ Score::Score(DrawObject& pDrawObject, const D3DXVECTOR2& pos, const D3DXVECTOR2&
 
 void Score::AddScore(int num)
 {
-	AddNumber(num * m_ComboMagnification);
+	AddNumber(num * (int)m_ComboMagnification);
 	m_ComboMagnification *= Score::COMBO_MAGNIFICATION;
 	m_ComboNum++;
 }

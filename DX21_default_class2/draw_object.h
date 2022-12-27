@@ -45,7 +45,9 @@ public:
 
 	//アニメーション番号指定
 	void SetPaterNo(float patenNo) { m_paternNo = patenNo; }
-	int GetPaterNo(void) { return m_paternNo; }
+	
+	//アニメーション番号を返す
+	int GetPaterNo(void) { return (int)m_paternNo; }
 };
 
 #endif // !_DRAW_OBJECT_H_

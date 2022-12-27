@@ -16,15 +16,22 @@
 
 class EnemyNormalManagement :public EnemyManagement
 {
-	//定数
+//定数
 private:
+	//ステージ
+	enum class STAGE :int {
+		TUTORIAL,
+		MARS,
+		NUM
+	};
+
 	//ここで初期化
 	//敵自身
-	static const int ENEMY_NUM = 5;		//敵を出現させる数
 	static const int BULLET_BREAK_TIME = 200;	//ホーミング弾が壊れる時間
 	static const int EXIT_TIME = 60 * 10;		//退出時間
 
 	//cppで初期化
+	static const int ENEMY_NUM[(int)STAGE::NUM];	//敵を出現させる数W
 	//弾
 	static const float BULLET_SIZE_X;		//サイズX
 	static const float BULLET_SIZE_Y;		//サイズY
@@ -37,41 +44,66 @@ public:
 	//弾
 	static const int BULLET_ATTACK = 1;		//攻撃値
 
-	//メンバ変数
+//メンバ変数
 private:
 	EnemyNormal* m_pEnemyNormal = nullptr;
 	Bullet* m_pBullet = nullptr;
+
 	DrawObject m_pDrawObjectEnemy;
 	DrawObject m_pDrawObjectBullet;
+
 	bool m_tutorial_clear = false;	//最後の敵を倒したかどうか(チュートリアル)
 
+	int m_stage_num = 0;			//ステージ
+
 	//敵の配列
-	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
+	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][6] = {
+	{//チュートリアル
 		D3DXVECTOR2(52.5f + (105 * 1), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 9), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 5), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 1), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 9), -EnemyNormal::SIZE_Y / 2)
+	},
+
+	{//火星
+		D3DXVECTOR2(52.5f + (105 *  8), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 10), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  8), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  2), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  6), -EnemyNormal::SIZE_Y / 2)
+	}
+
 	};
 
-	int m_SetEnemyTime[ENEMY_NUM] = {
+	int m_SetEnemyTime[(int)STAGE::NUM][6] = {
+	{//チュートリアル
 		60 * 40,
 		60 * 40 + 1,
 		60 * 45,
 		60 * 80,
 		60 * 80 + 1
-	};
+	},
 
-	//メンバ関数
-public:
-	//デフォルトコンストラクタ
-	EnemyNormalManagement() {
-		m_pEnemyNormal = new EnemyNormal[ENEMY_NUM];
-		m_pBullet = new Bullet[ENEMY_NUM];
+	{//火星
+		60 * 5,
+		60 * 60,
+		60 * 60 + 1,
+		60 * 80,
+		60 * 145,
+		60 * 160
 	}
 
+	};
+
+//メンバ関数
+public:
+	//デフォルトコンストラクタ
+	EnemyNormalManagement() {}
+
 	//引数付きコンストラクタ
-	EnemyNormalManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2);
+	EnemyNormalManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, int stage);
 
 	//デストラクタ
 	~EnemyNormalManagement()override { delete[] m_pEnemyNormal; delete[] m_pBullet; }
