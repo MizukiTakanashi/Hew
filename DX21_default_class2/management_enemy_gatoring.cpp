@@ -4,8 +4,6 @@
 // 作成者：高梨水希
 //=======================================
 #include "management_enemy_gatoring.h"
-#define _USE_MATH_DEFINES
-#include <math.h>
 
 //==========================
 // 定数の初期化
