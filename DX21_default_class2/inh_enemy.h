@@ -34,6 +34,7 @@ protected:
 	float m_move_width = 0.0f;			//敵が動く時のcosカーブ
 	int m_invincible_flame = 0;			//無敵時間の残り
 	float m_init_posx = 0.0f;			//敵の初期位置X
+	int m_stop_time = 0; //敵のアップデートを止める時間
 
 //メンバ関数
 public:
@@ -88,6 +89,9 @@ public:
 
 	//HPを返す
 	int GetHP(void) { return m_hp; }
+
+	//敵を止める時間をセット
+	void StopEnemy(int time) { m_stop_time = time; }
 
 };
 

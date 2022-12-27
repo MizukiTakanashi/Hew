@@ -2,166 +2,115 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="bg.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
-    <ClCompile Include="all_enemy_management.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Bom.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="bullet.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
-    <ClCompile Include="collision.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="collision_all.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="draw_object.cpp">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClCompile>
     <ClCompile Include="enemy_attack.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="enemy_gatoring.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="enemy_laser.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="enemy_normal.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="enemy_public.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
-    <ClCompile Include="explosion.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="Fade.cpp">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClCompile>
     <ClCompile Include="game_object.cpp">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClCompile>
     <ClCompile Include="game.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
-    <ClCompile Include="inh_player_arm.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
-    <ClCompile Include="inh_player_arm_both.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="input.cpp">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClCompile>
     <ClCompile Include="inputx.cpp">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClCompile>
     <ClCompile Include="keyboard.cpp">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>04_etc</Filter>
-    </ClCompile>
-    <ClCompile Include="item_p.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClCompile>
     <ClCompile Include="laser.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
-    <ClCompile Include="management.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
-    <ClCompile Include="management_enemy.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="management_enemy_attack.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="management_enemy_gatoring.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="management_enemy_laser.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="management_enemy_missile.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="management_enemy_normal.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="management_enemy_public.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
-    <ClCompile Include="management_explosion.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
-    <ClCompile Include="management_item.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="management_meteo.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="meteo.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="number.cpp">
-      <Filter>04_etc</Filter>
-    </ClCompile>
-    <ClCompile Include="player.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClCompile>
     <ClCompile Include="player_arm_1.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="player_arm_2.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="player_arm_3.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
-    <ClCompile Include="player_arm_change.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
-    <ClCompile Include="player_center.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
-    <ClCompile Include="player_hp.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
-    <ClCompile Include="player_left.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
-    <ClCompile Include="player_right.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
     <ClCompile Include="renderer.cpp">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClCompile>
     <ClCompile Include="ui.cpp">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClCompile>
     <ClCompile Include="texture_useful.cpp">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClCompile>
     <ClCompile Include="texture.cpp">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClCompile>
     <ClCompile Include="sprite.cpp">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClCompile>
     <ClCompile Include="sound.cpp">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClCompile>
     <ClCompile Include="scene.cpp">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClCompile>
     <ClCompile Include="result.cpp">
-      <Filter>03_Result</Filter>
+      <Filter>10_Result</Filter>
     </ClCompile>
     <ClCompile Include="stage_select.cpp">
       <Filter>01_Title</Filter>
@@ -179,215 +128,225 @@
       <Filter>01_Title</Filter>
     </ClCompile>
     <ClCompile Include="score.cpp">
-      <Filter>04_etc</Filter>
-    </ClCompile>
-    <ClCompile Include="screen_out.cpp">
-      <Filter>02_Game</Filter>
-    </ClCompile>
-    <ClCompile Include="inh_enemy.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClCompile>
     <ClCompile Include="bgplanet.cpp">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClCompile>
-    <ClCompile Include="stage_mercury.cpp" />
     <ClCompile Include="stage_mars.cpp">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
     </ClCompile>
     <ClCompile Include="title_score.cpp">
       <Filter>01_Title</Filter>
     </ClCompile>
     <ClCompile Include="enemy_icerain.cpp">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
     </ClCompile>
     <ClCompile Include="management_enemy_icerain.cpp">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
     </ClCompile>
     <ClCompile Include="enemy_barrier.cpp">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
     </ClCompile>
     <ClCompile Include="management_enemy_barrier.cpp">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
     </ClCompile>
     <ClCompile Include="player_arm_barrier.cpp">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
     </ClCompile>
     <ClCompile Include="mars_collision_all.cpp">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
     </ClCompile>
-    <ClCompile Include="text_management.cpp" />
     <ClCompile Include="management_enemy_stop.cpp">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
     </ClCompile>
     <ClCompile Include="enemy_stop.cpp">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
     </ClCompile>
     <ClCompile Include="bullet_stop.cpp">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
+    </ClCompile>
+    <ClCompile Include="text_management.cpp">
+      <Filter>02_Moon</Filter>
+    </ClCompile>
+    <ClCompile Include="stage_mercury.cpp">
+      <Filter>04_Mercury</Filter>
+    </ClCompile>
+    <ClCompile Include="inh_enemy.cpp">
+      <Filter>11_MultiScene</Filter>
+    </ClCompile>
+    <ClCompile Include="inh_player_arm.cpp">
+      <Filter>11_MultiScene</Filter>
+    </ClCompile>
+    <ClCompile Include="inh_player_arm_both.cpp">
+      <Filter>11_MultiScene</Filter>
+    </ClCompile>
+    <ClCompile Include="management.cpp">
+      <Filter>11_MultiScene</Filter>
+    </ClCompile>
+    <ClCompile Include="management_enemy.cpp">
+      <Filter>11_MultiScene</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>11_MultiScene</Filter>
+    </ClCompile>
+    <ClCompile Include="management_explosion.cpp">
+      <Filter>11_MultiScene</Filter>
+    </ClCompile>
+    <ClCompile Include="management_item.cpp">
+      <Filter>11_MultiScene</Filter>
+    </ClCompile>
+    <ClCompile Include="item_p.cpp">
+      <Filter>11_MultiScene</Filter>
+    </ClCompile>
+    <ClCompile Include="explosion.cpp">
+      <Filter>11_MultiScene</Filter>
+    </ClCompile>
+    <ClCompile Include="player_right.cpp">
+      <Filter>11_MultiScene</Filter>
+    </ClCompile>
+    <ClCompile Include="player_left.cpp">
+      <Filter>11_MultiScene</Filter>
+    </ClCompile>
+    <ClCompile Include="player_hp.cpp">
+      <Filter>11_MultiScene</Filter>
+    </ClCompile>
+    <ClCompile Include="player_center.cpp">
+      <Filter>11_MultiScene</Filter>
+    </ClCompile>
+    <ClCompile Include="player_arm_change.cpp">
+      <Filter>11_MultiScene</Filter>
+    </ClCompile>
+    <ClCompile Include="screen_out.cpp">
+      <Filter>11_MultiScene</Filter>
+    </ClCompile>
+    <ClCompile Include="collision.cpp">
+      <Filter>11_MultiScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Bom.cpp">
+      <Filter>11_MultiScene</Filter>
+    </ClCompile>
+    <ClCompile Include="all_enemy_management.cpp">
+      <Filter>11_MultiScene</Filter>
+    </ClCompile>
+    <ClCompile Include="player_arm_stop.cpp">
+      <Filter>03_Mars</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="bg.h">
-      <Filter>02_Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Bom.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="bullet.h">
-      <Filter>02_Game</Filter>
-    </ClInclude>
-    <ClInclude Include="collision.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="collision_all.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="draw_object.h">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClInclude>
     <ClInclude Include="enemy_attack.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="enemy_gatoring.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="enemy_laser.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="enemy_normal.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="enemy_public.h">
-      <Filter>02_Game</Filter>
-    </ClInclude>
-    <ClInclude Include="explosion.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="Fade.h">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClInclude>
     <ClInclude Include="game_object.h">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClInclude>
     <ClInclude Include="game.h">
-      <Filter>02_Game</Filter>
-    </ClInclude>
-    <ClInclude Include="inh_player_arm.h">
-      <Filter>02_Game</Filter>
-    </ClInclude>
-    <ClInclude Include="inh_player_arm_both.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="input.h">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClInclude>
     <ClInclude Include="inputx.h">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClInclude>
     <ClInclude Include="keyboard.h">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClInclude>
     <ClInclude Include="main.h">
-      <Filter>04_etc</Filter>
-    </ClInclude>
-    <ClInclude Include="item_p.h">
-      <Filter>02_Game</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClInclude>
     <ClInclude Include="laser.h">
-      <Filter>02_Game</Filter>
-    </ClInclude>
-    <ClInclude Include="management.h">
-      <Filter>02_Game</Filter>
-    </ClInclude>
-    <ClInclude Include="management_enemy.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="management_enemy_attack.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="management_enemy_gatoring.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="management_enemy_laser.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="management_enemy_missile.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="management_enemy_normal.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="management_enemy_public.h">
-      <Filter>02_Game</Filter>
-    </ClInclude>
-    <ClInclude Include="management_explosion.h">
-      <Filter>02_Game</Filter>
-    </ClInclude>
-    <ClInclude Include="management_item.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="management_meteo.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="meteo.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="number.h">
-      <Filter>04_etc</Filter>
-    </ClInclude>
-    <ClInclude Include="player.h">
-      <Filter>02_Game</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClInclude>
     <ClInclude Include="player_arm_1.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="player_arm_2.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="player_arm_3.h">
-      <Filter>02_Game</Filter>
-    </ClInclude>
-    <ClInclude Include="player_arm_change.h">
-      <Filter>02_Game</Filter>
-    </ClInclude>
-    <ClInclude Include="player_center.h">
-      <Filter>02_Game</Filter>
-    </ClInclude>
-    <ClInclude Include="player_hp.h">
-      <Filter>02_Game</Filter>
-    </ClInclude>
-    <ClInclude Include="player_left.h">
-      <Filter>02_Game</Filter>
-    </ClInclude>
-    <ClInclude Include="player_right.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="renderer.h">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClInclude>
     <ClInclude Include="ui.h">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClInclude>
     <ClInclude Include="texture_useful.h">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClInclude>
     <ClInclude Include="texture.h">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClInclude>
     <ClInclude Include="sprite.h">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClInclude>
     <ClInclude Include="sound.h">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClInclude>
     <ClInclude Include="scene.h">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClInclude>
     <ClInclude Include="result.h">
-      <Filter>03_Result</Filter>
+      <Filter>10_Result</Filter>
     </ClInclude>
     <ClInclude Include="stage_select.h">
       <Filter>01_Title</Filter>
@@ -405,79 +364,137 @@
       <Filter>01_Title</Filter>
     </ClInclude>
     <ClInclude Include="score.h">
-      <Filter>04_etc</Filter>
+      <Filter>11_MultiScene</Filter>
     </ClInclude>
     <ClInclude Include="screen_out.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>%3f</Filter>
-    </ClInclude>
-    <ClInclude Include="inh_enemy.h">
-      <Filter>02_Game</Filter>
+      <Filter>99_%3f</Filter>
     </ClInclude>
     <ClInclude Include="bg_planet.h">
-      <Filter>02_Game</Filter>
+      <Filter>02_Moon</Filter>
     </ClInclude>
-    <ClInclude Include="stage_mercury.h" />
     <ClInclude Include="stage_mars.h">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
     </ClInclude>
     <ClInclude Include="title_score.h">
       <Filter>01_Title</Filter>
     </ClInclude>
     <ClInclude Include="enemy_icerain.h">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
     </ClInclude>
     <ClInclude Include="management_enemy_icerain.h">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
     </ClInclude>
     <ClInclude Include="enemy_barrier.h">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
     </ClInclude>
     <ClInclude Include="management_enemy_barrier.h">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
     </ClInclude>
     <ClInclude Include="player_arm_barrier.h">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
     </ClInclude>
     <ClInclude Include="mars_collision_all.h">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
     </ClInclude>
-    <ClInclude Include="text_management.h" />
     <ClInclude Include="management_enemy_stop.h">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
     </ClInclude>
     <ClInclude Include="enemy_stop.h">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
     </ClInclude>
     <ClInclude Include="bullet_stop.h">
-      <Filter>05_Mars</Filter>
+      <Filter>03_Mars</Filter>
+    </ClInclude>
+    <ClInclude Include="text_management.h">
+      <Filter>02_Moon</Filter>
+    </ClInclude>
+    <ClInclude Include="stage_mercury.h">
+      <Filter>04_Mercury</Filter>
+    </ClInclude>
+    <ClInclude Include="inh_enemy.h">
+      <Filter>11_MultiScene</Filter>
+    </ClInclude>
+    <ClInclude Include="inh_player_arm.h">
+      <Filter>11_MultiScene</Filter>
+    </ClInclude>
+    <ClInclude Include="inh_player_arm_both.h">
+      <Filter>11_MultiScene</Filter>
+    </ClInclude>
+    <ClInclude Include="management.h">
+      <Filter>11_MultiScene</Filter>
+    </ClInclude>
+    <ClInclude Include="management_enemy.h">
+      <Filter>11_MultiScene</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>11_MultiScene</Filter>
+    </ClInclude>
+    <ClInclude Include="management_item.h">
+      <Filter>11_MultiScene</Filter>
+    </ClInclude>
+    <ClInclude Include="management_explosion.h">
+      <Filter>11_MultiScene</Filter>
+    </ClInclude>
+    <ClInclude Include="item_p.h">
+      <Filter>11_MultiScene</Filter>
+    </ClInclude>
+    <ClInclude Include="explosion.h">
+      <Filter>11_MultiScene</Filter>
+    </ClInclude>
+    <ClInclude Include="player_right.h">
+      <Filter>11_MultiScene</Filter>
+    </ClInclude>
+    <ClInclude Include="player_left.h">
+      <Filter>11_MultiScene</Filter>
+    </ClInclude>
+    <ClInclude Include="player_hp.h">
+      <Filter>11_MultiScene</Filter>
+    </ClInclude>
+    <ClInclude Include="player_center.h">
+      <Filter>11_MultiScene</Filter>
+    </ClInclude>
+    <ClInclude Include="player_arm_change.h">
+      <Filter>11_MultiScene</Filter>
+    </ClInclude>
+    <ClInclude Include="collision.h">
+      <Filter>11_MultiScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Bom.h">
+      <Filter>11_MultiScene</Filter>
+    </ClInclude>
+    <ClInclude Include="player_arm_stop.h">
+      <Filter>03_Mars</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01_Title">
       <UniqueIdentifier>{3a71814c-52cb-492e-ba0c-55c56c1d3954}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02_Game">
+    <Filter Include="02_Moon">
       <UniqueIdentifier>{e2b52ddb-4c60-46a2-98b4-5b3ddc44338a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03_Result">
+    <Filter Include="10_Result">
       <UniqueIdentifier>{f4cc1323-96b0-4762-b5c8-2bbea59f3c96}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04_etc">
-      <UniqueIdentifier>{e374412b-d803-41db-830d-bbb87ec9d386}</UniqueIdentifier>
+    <Filter Include="03_Mars">
+      <UniqueIdentifier>{c4943b1e-4973-4156-a432-f168a71ba7d8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="%3f">
+    <Filter Include="04_Mercury">
+      <UniqueIdentifier>{08876253-5c74-4943-a090-457f69e23b87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99_%3f">
       <UniqueIdentifier>{7c43303e-3fc7-40c1-b451-5c06c3cda157}</UniqueIdentifier>
     </Filter>
-    <Filter Include="05_Mars">
-      <UniqueIdentifier>{c4943b1e-4973-4156-a432-f168a71ba7d8}</UniqueIdentifier>
+    <Filter Include="11_MultiScene">
+      <UniqueIdentifier>{e374412b-d803-41db-830d-bbb87ec9d386}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="sample.rc">
-      <Filter>%3f</Filter>
+      <Filter>99_%3f</Filter>
     </ResourceCompile>
   </ItemGroup>
 </Project>

@@ -3,8 +3,9 @@
 #define _METEO_H_
 
 
-#include "game_object.h"
-class Meteo :public GameObject
+#include "inh_enemy.h"
+
+class Meteo :public Inh_Enemy
 {
 	//定数
 public:
@@ -29,7 +30,7 @@ private:
 public:
 	Meteo(){}	//デフォルトコンストラクタ
 	Meteo(DrawObject& pDrawObject, const D3DXVECTOR2& pos)
-		:GameObject(pDrawObject,pos,D3DXVECTOR2(SIZE_X, SIZE_Y)){}
+		:Inh_Enemy(pDrawObject,pos,D3DXVECTOR2(SIZE_X, SIZE_Y), HP_MAX){}
 	~Meteo()override {}
 	void Update(void);	//更新処理
 

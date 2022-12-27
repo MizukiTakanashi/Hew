@@ -102,6 +102,10 @@ public:
 
 	//チュートリアルのクリア判定
 	bool IsClear(void)const { return m_tutorial_clear; }
+
+	//指定した番号の敵を止める
+	void StopEnemy(int index_num, int time) override { m_pEnemyLaser[index_num].StopEnemy(time); }
+
 };
 
 #endif // !_ENEMY_LASER_MANAGEMENT_H_

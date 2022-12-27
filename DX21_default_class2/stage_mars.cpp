@@ -122,6 +122,8 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER], m_pPlayer->GetPos(), m_pRemaining_Left, D3DXVECTOR2(30.0f, 600.0f));
 		//バリア
 	m_pPlayerLeft->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
+		//動きを止める敵
+	m_pPlayerLeft->DrawSetBulleStop(&m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
 
 	//=======================
 	// プレイヤーの腕の右
@@ -137,6 +139,9 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER], m_pPlayer->GetPos(), m_pRemaining_Right, D3DXVECTOR2(30.0f, 680.0f));
 		//バリア
 	m_pPlayerRight->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
+	//動きを止める敵
+	m_pPlayerRight->DrawSetBulleStop(&m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
+
 
 	//=======================
 	// プレイヤーの腕の真ん中
@@ -152,6 +157,9 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER_LASER], m_pPlayer->GetPos(), m_pRemaining_Center, D3DXVECTOR2(30.0f, 520.0f));
 		//バリア
 	m_pPlayerCenter->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
+	//動きを止める敵
+	m_pPlayerCenter->DrawSetBulleStop(&m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
+
 
 
 	//腕の交換
@@ -195,6 +203,7 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	//敵のポインタをセット（順番変えるのNG）
 	m_pColAll->AddEnemyPointer(m_pEnemyNormalManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemyStopManagement);
 }
 
 //==========================

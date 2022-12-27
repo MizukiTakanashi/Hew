@@ -22,6 +22,14 @@ const float EnemyAttack::SPEED_Y = 2.5f;
 //======================
 void EnemyAttack::Update(void)
 {
+	m_invincible_flame--;
+
+	if (m_stop_time > 0)
+	{
+		m_stop_time--;
+		return;
+	}
+
 	GameObject::MovePos(m_mov); m_time++;
 	//~‚Ü‚éêŠ‚Ü‚ÅˆÚ“®‚·‚é
 	

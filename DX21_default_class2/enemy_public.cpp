@@ -10,6 +10,13 @@ const float EnemyPublic::SPEED_Y = 2.5f;
 void EnemyPublic::Update(void)
 {
 	m_invincible_flame--;
+
+	if (m_stop_time > 0)
+	{
+		m_stop_time--;
+		return;
+	}
+
 	GameObject::MovePos(D3DXVECTOR2(0.0f, SPEED_Y));
 
 }
