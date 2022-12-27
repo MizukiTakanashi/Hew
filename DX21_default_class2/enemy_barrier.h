@@ -1,56 +1,57 @@
 #pragma once
 //=======================================
-// ƒoƒŠƒA‚Ì“GŠÖŒW(ƒwƒbƒ_ƒtƒ@ƒCƒ‹)
-// ì¬“úF2022/12/08
-// ì¬ÒF‚—œ…Šó
+// ãƒãƒªã‚¢ã®æ•µé–¢ä¿‚(ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š2022/12/08
+// ä½œæˆè€…ï¼šé«˜æ¢¨æ°´å¸Œ
 //=======================================
 
 #ifndef _ENEMY_BARRIER_H_
 #define _ENEMY_BARRIER_H_
 
-#include "game_object.h"
+#include "inh_enemy.h"
 
-class EnemyBarrier:public GameObject
+class EnemyBarrier:public Inh_Enemy
 {
-//’è”
+//å®šæ•°
 public:
-	//cpp‚Å‰Šú‰»
-	static const float SIZE_X;					//ƒTƒCƒYX
-	static const float SIZE_Y;					//ƒTƒCƒYY
+	//cppã§åˆæœŸåŒ–
+	static const float SIZE_X;					//ã‚µã‚¤ã‚ºX
+	static const float SIZE_Y;					//ã‚µã‚¤ã‚ºY
 
-	static const float STOP_POS_Y;				//“G‚ª~‚Ü‚éêŠ
+	static const float STOP_POS_Y;				//æ•µãŒæ­¢ã¾ã‚‹å ´æ‰€
 
 private:
-	//‚±‚±‚Å‰Šú‰»
-	static const int INVINCIBLE_FLAME = 30;		//“G‚Ì–³“GŠÔ
-	static const int HP_MAX = 1;				//“G‚ÌHPÅ‘å’l
+	//ã“ã“ã§åˆæœŸåŒ–
+	static const int INVINCIBLE_FLAME = 30;		//æ•µã®ç„¡æ•µæ™‚é–“
+	static const int HP_MAX = 1;				//æ•µã®HPæœ€å¤§å€¤
 
-	//cpp‚Å‰Šú‰»
-	static const float SPEED_Y;					//“G‚ÌƒXƒs[ƒhY
+	//cppã§åˆæœŸåŒ–
+	static const float SPEED_Y;					//æ•µã®ã‚¹ãƒ”ãƒ¼ãƒ‰Y
 
 
-//ƒƒ“ƒo•Ï”
+//ãƒ¡ãƒ³ãƒå¤‰æ•°
 private:
-	int m_barrier_index = -1;			//ƒoƒŠƒA‚ÌƒCƒ“ƒfƒbƒNƒX”Ô†
+	int m_barrier_index = -1;			//ãƒãƒªã‚¢ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ç•ªå·
 
-	int m_hp = HP_MAX;					//“G‚ÌŒ»İ‚ÌHP
-	int m_invincible_flame = 0;			//–³“GŠÔ‚Ìc‚è
+	int m_hp = HP_MAX;					//æ•µã®ç¾åœ¨ã®HP
+	int m_invincible_flame = 0;			//ç„¡æ•µæ™‚é–“ã®æ®‹ã‚Š
 
 
-//ƒƒ“ƒoŠÖ”
+//ãƒ¡ãƒ³ãƒé–¢æ•°
 public:
-	//ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	EnemyBarrier() {}		
 
-	//ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//å¼•æ•°ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	EnemyBarrier(DrawObject& pDrawObject, const D3DXVECTOR2& pos)
-		:GameObject(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)){}
 
-	~EnemyBarrier()override {}	//ƒfƒXƒgƒ‰ƒNƒ^
+		:Inh_Enemy(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y), HP_MAX) {}
 
-	void Update(void);	//XVˆ—
+	~EnemyBarrier()override {}	//ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 
-	//HP‚ğŒ¸‚ç‚·
+	void Update(void);	//æ›´æ–°å‡¦ç†
+
+	//HPã‚’æ¸›ã‚‰ã™
 	void ReduceHP(int amount)
 	{
 		if (m_invincible_flame <= 0)
@@ -60,13 +61,13 @@ public:
 		}
 	}
 
-	//HP‚ğ•Ô‚·
+	//HPã‚’è¿”ã™
 	int GetHP(void) { return m_hp; }
 
-	//ƒŒ[ƒU[”Ô†‚ğƒZƒbƒg
+	//ãƒ¬ãƒ¼ã‚¶ãƒ¼ç•ªå·ã‚’ã‚»ãƒƒãƒˆ
 	void SetBarrierIndex(int num) { m_barrier_index = num; }
 
-	//ƒŒ[ƒU[”Ô†‚ğ•Ô‚·
+	//ãƒ¬ãƒ¼ã‚¶ãƒ¼ç•ªå·ã‚’è¿”ã™
 	int GetBarrierIndex() const { return m_barrier_index; }
 };
 

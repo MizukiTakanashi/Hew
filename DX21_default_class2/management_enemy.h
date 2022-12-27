@@ -63,6 +63,9 @@ public:
 	//指定した番号の弾を消す 
 	virtual void DeleteBullet(int index_num) = 0;
 
+	//指定した番号の敵を止める
+	virtual void StopEnemy(int index_num, int time) = 0;
+
 	//指定した番号の別オブジェクトを消す 
 	virtual void DeleteOther(int index_num) { m_other_num--; }
 
@@ -88,7 +91,7 @@ public:
 	int GetObjAttack(void)const { return m_obj_attack; }
 
 	//弾の攻撃力を返す
-	int GetBulletAttack(void)const { return m_bullet_attack; }
+	virtual int GetBulletAttack(void)const { return m_bullet_attack; }
 
 	//別オブジェクトの攻撃力を返す
 	int GetOtherAttack(void)const { return m_other_attack; }

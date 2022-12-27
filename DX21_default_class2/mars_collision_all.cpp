@@ -266,6 +266,13 @@ int MarsCollisionAll::Collision(void)
 							if (Collision::ColBox(pArmItem->GetBulletPos(i), m_pEnemy[k]->GetObjPos(j),
 								pArmItem->GetBulletSize(), m_pEnemy[k]->GetObjSize())) {
 
+								//腕の弾がSTOPなら
+								if (pArmItem->GetType() == inhPlayerArm::TYPE::TYPE5)
+								{
+									//敵の動きを１２０F止める
+									m_pEnemy[k]->StopEnemy(j, 120);
+									continue;
+								}
 								//腕についている種類がTYPE2(レーザー)でなければ...
 								if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
 									//プレイヤーの弾を消す
@@ -362,13 +369,22 @@ int MarsCollisionAll::Collision(void)
 			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetBulletPos(j),
 				m_pPlayer->GetSize(), m_pEnemy[k]->GetBulletSize())) {
 
-				//爆発をセット
-				m_pExplosion->SetExplosion(m_pEnemy[k]->GetBulletPos(j));
-				explosion_sound = true;
+				if (k == (int)TYPE::STOP)
+				{
+					//プレイヤーを動けなくする
+					m_pPlayer->StopPlayer(60);
+				}
+				else
+				{
+					//爆発をセット
+					m_pExplosion->SetExplosion(m_pEnemy[k]->GetBulletPos(j));
+					explosion_sound = true;
 
-				//敵の弾を消す
-				m_pEnemy[k]->DeleteBullet(j);
-				j--;
+					//敵の弾を消す
+					m_pEnemy[k]->DeleteBullet(j);
+					j--;
+
+				}
 				//ダメージ数を増やす
 				attacked += m_pEnemy[k]->GetBulletAttack();
 				//コンボを途切れさせる

@@ -54,7 +54,7 @@ void ItemManagement::DeleteItem(int index_num)
 //==========================
 void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem)
 {
-	Item Temp(m_DrawObject, pos, typeitem);
+    	Item Temp(m_DrawObject, pos, typeitem);
 	m_pItem[m_ItemNum] = Temp;
 	m_ItemNum++;
 }

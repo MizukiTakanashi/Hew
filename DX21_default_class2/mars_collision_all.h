@@ -22,8 +22,9 @@ class MarsCollisionAll
 private:
 	enum class TYPE :int
 	{
-		NORMAL,
 		BARRIER,
+		STOP,
+		NORMAL,
 		NUM
 	};
 

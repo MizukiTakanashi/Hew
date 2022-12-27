@@ -110,6 +110,10 @@ public:
 
 	//’e‚ÌƒTƒCƒY‚ğ•Ô‚·
 	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override { return m_pBullet[index_num].GetSize(); }
+
+	//w’è‚µ‚½”Ô†‚Ì“G‚ğ~‚ß‚é
+	void StopEnemy(int index_num, int time) override { m_pEnemyMissile[index_num].StopEnemy(time); }
+
 };
 
 #endif // !_ENEMY_NORMAL_MISSILE_H_

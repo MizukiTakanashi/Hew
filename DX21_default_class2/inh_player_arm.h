@@ -21,7 +21,7 @@ public:
 		TYPE2,		//レーザー
 		TYPE3,		//ガトリング
 		TYPE4,		//バリア
-		TYPE5,
+		TYPE5,		//STOP
 		TYPE6,
 		TYPE7,
 		TYPE8,
@@ -45,6 +45,9 @@ private:
 	bool m_bullet_used = false;	//弾が尽きたかどうか
 	
 	TYPE m_type = TYPE::TYPE1;	//自分のタイプ
+
+protected:
+	int m_bullet_interval_count = 0;	//発射間隔カウント
 
 	//とある座標取得用
 	//現在はPlayerArm1のホーミング弾の敵の位置取得用

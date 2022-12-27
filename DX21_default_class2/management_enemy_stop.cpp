@@ -18,7 +18,7 @@ const float EnemyStopManagement::BULLET_SPEED = 2.5f;
 EnemyStopManagement::EnemyStopManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
 	:EnemyManagement(ENEMY_NUM, ATTACK, BULLET_ATTACK),m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
-	m_pEnemyStop = new EnemyStop[ENEMY_NUM];
+	m_pEnemy = new EnemyStop[ENEMY_NUM];
 	m_pBullet = new BulletStop[ENEMY_NUM];
 }
 
@@ -32,7 +32,7 @@ void EnemyStopManagement::Update(void)
 	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
 	{
 		EnemyStop temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
-		m_pEnemyStop[GetObjNum()] = temp;
+		m_pEnemy[GetObjNum()] = temp;
 		EnemyManagement::IncreaseObjNum(1);
 
 		m_EnemyNum++;
@@ -40,19 +40,19 @@ void EnemyStopManagement::Update(void)
 
 	//今いる敵の処理
 	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
-		m_pEnemyStop[i].Update();
+		m_pEnemy[i].Update();
 
 		//弾を作る
-		if (m_pEnemyStop[i].GetFlagBulletMake())
+		if (m_pEnemy[i].GetFlagBulletMake())
 		{
-			BulletStop temp(m_pDrawObjectBullet, m_pEnemyStop[i].GetPos() + D3DXVECTOR2(0, 300),
+			BulletStop temp(m_pDrawObjectBullet, m_pEnemy[i].GetPos() + D3DXVECTOR2(0, 300),
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), 0.0f);
 						   // 弾の大きさ	
 			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
 
 			EnemyManagement::IncreaseBulletNum(1);
 
-			m_pEnemyStop[i].BulletMake();
+			m_pEnemy[i].BulletMake();
 		}
 	}
 
@@ -73,7 +73,7 @@ void EnemyStopManagement::Update(void)
 void EnemyStopManagement::Draw(void)const
 {
 	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
-		m_pEnemyStop[i].Draw();
+		m_pEnemy[i].Draw();
 	}
 
 	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {
@@ -86,9 +86,9 @@ void EnemyStopManagement::Draw(void)const
 //======================
 bool EnemyStopManagement::ReduceHP(int index_num, int reduceHP)
 {
-	m_pEnemyStop[index_num].ReduceHP(reduceHP);
+	m_pEnemy[index_num].ReduceHP(reduceHP);
 
-	if (m_pEnemyStop[index_num].GetHP() <= 0)
+	if (m_pEnemy[index_num].GetHP() <= 0)
 	{//HPが０以下なら敵を消す
 
 
@@ -104,7 +104,7 @@ void EnemyStopManagement::DeleteObj(int index_num)
 {
 	//敵を消す
 	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
-		m_pEnemyStop[i] = m_pEnemyStop[i + 1];
+		m_pEnemy[i] = m_pEnemy[i + 1];
 	}
 
 	//継承元の敵を消すを呼ぶ

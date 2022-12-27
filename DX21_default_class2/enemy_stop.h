@@ -23,13 +23,13 @@ public:
 
 private:
 	//ここで初期化
-	static const int BULLET_TIME = 120;	//弾の発射間隔
+	static const int BULLET_TIME = 240;	//弾の発射間隔
 	static const int INVINCIBLE_FLAME = 30;	//敵の無敵時間
 
 	//cppで初期化
 	static const float SPEED_X;			//敵のスピードY
 	static const float SPEED_Y;			//敵のスピードY
-	static const int HP_MAX = 1;		//敵のHP最大値
+	static const int HP_MAX = 3;		//敵のHP最大値
 
 //メンバ変数
 private:

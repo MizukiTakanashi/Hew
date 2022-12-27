@@ -52,6 +52,7 @@ private:
 	int m_BomNum = 0;				//爆弾の現在の数
 	DrawObject m_BomDrawObject;
 	int m_BomInterval = 0;			//爆弾の発射間隔
+	int m_stop_time = 0; //playerのアップデートを止める時間
 
 //メンバ関数
 public:
@@ -93,6 +94,9 @@ public:
 
 	//現在爆弾の数を返す
 	int GetBomNum(void)const { return m_BomNum; }
+
+	//止める時間をセット
+	void StopPlayer(int time) { m_stop_time = time; }
 };
 
 #endif // !_PLAYER_H_

@@ -105,4 +105,8 @@ public:
 
 	//w’è‚µ‚½’e‚ğÁ‚·
 	void DeleteBullet(int index_num)override;
+
+	//w’è‚µ‚½”Ô†‚Ì“G‚ğ~‚ß‚é
+	void StopEnemy(int index_num, int time) override { m_pEnemyAttack[index_num].StopEnemy(time); }
+
 };
