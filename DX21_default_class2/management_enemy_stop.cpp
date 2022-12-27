@@ -4,8 +4,6 @@
 // 作成者：恩田洋行
 //=======================================
 #include "management_enemy_stop.h"
-#define _USE_MATH_DEFINES
-#include <math.h>
 
 //==========================
 // 定数の初期化
