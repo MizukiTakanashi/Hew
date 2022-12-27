@@ -30,21 +30,23 @@ private:
 private:
 	int m_BGM = 0;
 
-	TextureUseful* m_pTexUse[5] = { nullptr, nullptr , nullptr , nullptr };
-	DrawObject* m_pDrawOb[5] = { nullptr, nullptr , nullptr , nullptr };
+	TextureUseful* m_pTexUse[6] = { nullptr, nullptr , nullptr , nullptr, nullptr, nullptr };
+	DrawObject* m_pDrawOb[6] = { nullptr, nullptr , nullptr , nullptr, nullptr, nullptr };
 	UI* m_pBG = nullptr;
+	UI* m_pText_Clear = nullptr;
 	UI* m_pStageTitle = nullptr;
 	UI* m_pText_title = nullptr;
 	UI* m_pText_Retry = nullptr;
 	UI* m_pCursor = nullptr;
 	Score* m_pScore = nullptr;
 
+	bool m_isClear = false; //CLEARしたかどうか
 	bool m_select_retry = true; //どっちを選択しているか
 
 public:
 	Result();	//デフォルトコンストラクタ
 
-	Result(Score* pNumber, STAGE stagenum);
+	Result(bool isClear, Score* pNumber, STAGE stagenum);
 
 	~Result();	//デストラクタ
 
