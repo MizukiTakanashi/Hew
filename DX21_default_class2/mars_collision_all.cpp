@@ -248,6 +248,13 @@ int MarsCollisionAll::Collision(void)
 							if (Collision::ColBox(pArmItem->GetBulletPos(i), m_pEnemy[k]->GetObjPos(j),
 								pArmItem->GetBulletSize(), m_pEnemy[k]->GetObjSize())) {
 
+								//˜r‚Ì’e‚ªSTOP‚È‚ç
+								if (pArmItem->GetType() == inhPlayerArm::TYPE::TYPE5)
+								{
+									//“G‚Ì“®‚«‚ğ‚P‚Q‚OF~‚ß‚é
+									m_pEnemy[k]->StopEnemy(j, 120);
+									continue;
+								}
 								//˜r‚É‚Â‚¢‚Ä‚¢‚éí—Ş‚ªTYPE2(ƒŒ[ƒU[)‚Å‚È‚¯‚ê‚Î...
 								if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
 									//ƒvƒŒƒCƒ„[‚Ì’e‚ğÁ‚·

@@ -30,7 +30,6 @@ private:
 private:
 	DrawObject m_bulletdraw;			//弾の描画オブジェクト
 	Bullet* m_pBullet = nullptr;		//弾のオブジェクト
-	int m_bullet_interval_count = 0;	//発射間隔カウント
 
 //メンバ関数
 public:

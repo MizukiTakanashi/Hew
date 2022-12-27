@@ -23,8 +23,8 @@ public:
 		TYPE1, //ホーミング
 		TYPE2, //レーザー
 		TYPE3, //ガトリング
-		TYPE4,
-		TYPE5,
+		TYPE4, //バリア
+		TYPE5, //動きを止める
 		TYPE6,
 		TYPE7,
 		TYPE8,
@@ -51,6 +51,7 @@ private:
 	DrawObject m_bullet_draw;				//弾の描画オブジェクト
 	DrawObject m_laser_draw;				//レーザーの描画オブジェクト
 	DrawObject* m_barrier_draw = nullptr;	//バリアの描画オブジェクト
+	DrawObject* m_bullet_stop_draw = nullptr;	//動きを止める敵の弾の描画オブジェクト
 
 	bool m_separation_button = false;		//切り離しボタンが押されたか
 	bool m_bullet_shot = false;				//弾発射のボタンが押されたか(押している間)
@@ -110,6 +111,9 @@ public:
 
 	//バリアの描画オブジェクトをセット
 	void DrawSetBarrier(DrawObject* pDraw) { m_barrier_draw = pDraw; }
+
+	//動きを止める敵の弾描画オブジェクトをセット
+	void DrawSetBulleStop(DrawObject* pDraw) { m_bullet_stop_draw = pDraw; }
 };
 
 #endif // !_INH_PLAYER_ARM_BOTH_H_

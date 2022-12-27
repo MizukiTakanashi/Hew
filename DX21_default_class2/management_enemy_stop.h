@@ -21,7 +21,7 @@ private:
 	//ここで初期化
 	//敵自身
 	static const int ENEMY_NUM = 5;		//敵を出現させる数
-	static const int BULLET_TIME = 120;		
+	static const int BULLET_TIME = 60;		
 
 	//cppで初期化
 	//弾
@@ -54,11 +54,11 @@ private:
 
 	//敵を出す時間
 	int m_SetEnemyTime[ENEMY_NUM] = {
-								60 * 15,
+								60 * 5,
+								60 * 10,
+								60 * 15 + 1,
 								60 * 20,
-								60 * 20 + 1,
-								60 * 80,
-								60 * 80 + 1
+								60 * 25 + 1
 	};
 
 //メンバ関数

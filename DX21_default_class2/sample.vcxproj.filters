@@ -229,6 +229,9 @@
     <ClCompile Include="all_enemy_management.cpp">
       <Filter>11_MultiScene</Filter>
     </ClCompile>
+    <ClCompile Include="player_arm_stop.cpp">
+      <Filter>03_Mars</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -461,6 +464,9 @@
     </ClInclude>
     <ClInclude Include="Bom.h">
       <Filter>11_MultiScene</Filter>
+    </ClInclude>
+    <ClInclude Include="player_arm_stop.h">
+      <Filter>03_Mars</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

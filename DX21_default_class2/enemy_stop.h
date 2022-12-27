@@ -29,7 +29,7 @@ private:
 	//cppで初期化
 	static const float SPEED_X;			//敵のスピードY
 	static const float SPEED_Y;			//敵のスピードY
-	static const int HP_MAX = 1;		//敵のHP最大値
+	static const int HP_MAX = 3;		//敵のHP最大値
 
 //メンバ変数
 private:

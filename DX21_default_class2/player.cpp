@@ -33,6 +33,18 @@ const D3DXCOLOR Player::INVINCIBLE__COLOR = D3DXCOLOR(1.0f, 0.3f, 0.3f, 1.0f);		
 //======================
 void Player::Update(bool isinvincible)
 {
+	//ç°Ç†ÇÈíeÇÃèàóù
+	for (int i = 0; i < m_BulletNum; i++) {
+		m_pBullet[i].Update();
+
+		//âÊñ äOÇ…èoÇΩÇÁ
+		if (m_pBullet[i].GetScreenOut()) {
+			//íeÇè¡Ç∑
+			DeleteBullet(i);
+		}
+	}
+
+	//ìÆÇ´Çé~ÇﬂÇÈìGä÷òA
 	if (m_stop_time > 0)
 	{
 		m_stop_time--;
@@ -142,15 +154,6 @@ void Player::Update(bool isinvincible)
 
 	}
 	
-	for (int i = 0; i < m_BulletNum; i++) {
-		m_pBullet[i].Update();
-
-		//âÊñ äOÇ…èoÇΩÇÁ
-		if (m_pBullet[i].GetScreenOut()) {
-			//íeÇè¡Ç∑
-			DeleteBullet(i);
-		}
-	}
 
 	//ñ≥ìGéûä‘ÇÕêFïœçX
 	if (isinvincible)
