@@ -9,7 +9,7 @@
 #define _ENEMY_STOP_MANAGEMENT_H_
 
 #include "main.h"
-#include "management_enemy.h"6
+#include "management_enemy.h"
 #include "draw_object.h"
 #include "enemy_stop.h"
 #include "bullet_stop.h"
