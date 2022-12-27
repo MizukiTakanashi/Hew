@@ -35,8 +35,10 @@ Result::Result()
 //=========================
 // 引数付きコンストラクタ
 //=========================
-Result::Result(Score * pNumber, STAGE stagenum):m_pScore(pNumber)
+Result::Result(bool isClear,  Score* pNumber, STAGE stagenum) :m_pScore(pNumber)
 {
+	m_isClear = isClear;
+
 	m_BGM = LoadSound((char*)"data\\BGM\\silky_sky_away (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);
 	SetVolume(m_BGM, 0.05f);
@@ -77,6 +79,15 @@ Result::Result(Score * pNumber, STAGE stagenum):m_pScore(pNumber)
 		break;
 	}
 
+	if (isClear)
+	{
+		m_pTexUse[5] = new TextureUseful((char*)"data\\texture\\clear_text.png");
+	}
+	else
+	{
+		m_pTexUse[5] = new TextureUseful((char*)"data\\texture\\faile_text.png");
+	}
+
 	m_pTexUse[2] = new TextureUseful((char*)"data\\texture\\retry_text.png");
 	m_pTexUse[3] = new TextureUseful((char*)"data\\texture\\title_text.png");
 	m_pTexUse[4] = new TextureUseful((char*)"data\\texture\\cursor.png");
@@ -86,12 +97,14 @@ Result::Result(Score * pNumber, STAGE stagenum):m_pScore(pNumber)
 	m_pDrawOb[2] = new DrawObject(*m_pTexUse[2]);
 	m_pDrawOb[3] = new DrawObject(*m_pTexUse[3]);
 	m_pDrawOb[4] = new DrawObject(*m_pTexUse[4]);
+	m_pDrawOb[5] = new DrawObject(*m_pTexUse[5]);
 
 	m_pBG = new UI(*m_pDrawOb[0], D3DXVECTOR2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT));
 	m_pStageTitle = new UI(*m_pDrawOb[1], D3DXVECTOR2(200, 100), D3DXVECTOR2(300, 150));
 	m_pText_Retry = new UI(*m_pDrawOb[2], D3DXVECTOR2(SCREEN_WIDTH / 2 + 100, SCREEN_HEIGHT / 2 + 200), D3DXVECTOR2(300, 100));
 	m_pText_title = new UI(*m_pDrawOb[3], D3DXVECTOR2(SCREEN_WIDTH / 2 + 100, SCREEN_HEIGHT / 2 + 300), D3DXVECTOR2(300, 100));
 	m_pCursor = new UI(*m_pDrawOb[4], D3DXVECTOR2(SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 + 300), D3DXVECTOR2(50, 50));
+	m_pText_Clear = new UI(*m_pDrawOb[5], D3DXVECTOR2(SCREEN_WIDTH / 2, 100), D3DXVECTOR2(400, 100));
 
 	m_pScore->SetDigit(NUMBER_DIGIT);
 	m_pScore->SetInitPos(NUMBER_POS);
@@ -104,6 +117,16 @@ Result::~Result()
 	m_pScore->SetNumber(0);
 
 	StopSound(m_BGM);
+
+	//delete m_pTexUse;
+	//delete m_pDrawOb;
+	delete m_pBG;
+	delete m_pText_Clear;
+	delete m_pStageTitle;
+	delete m_pText_title;
+	delete m_pText_Retry;
+	delete m_pCursor;
+
 }
 
 //======================
@@ -112,7 +135,7 @@ Result::~Result()
 void Result::Update(void)
 {
 	//上下のボタンが押されたら選択を変更
-	if (InputGetKeyDown(KK_DOWN) || InputGetKeyDown(KK_UP)){
+	if (InputGetKeyDown(KK_DOWN) && m_isClear || InputGetKeyDown(KK_UP) && m_isClear){
 		Select();
 	}
 
@@ -149,8 +172,12 @@ void Result::Draw(void)const
 	m_pBG->Draw();
 	m_pStageTitle->Draw();
 	m_pText_Retry->Draw();
-	m_pText_title->Draw();
+	if (m_isClear)
+	{
+		m_pText_title->Draw();
+	}
 	m_pCursor->Draw();
+	m_pText_Clear->Draw();
 
 	m_pScore->DrawNumber();
 

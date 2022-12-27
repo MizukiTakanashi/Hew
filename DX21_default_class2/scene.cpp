@@ -87,7 +87,7 @@ void InitScene(SCENE s)
 		break;
 
 	case SCENE::SCENE_RESULT:
-		pResult = new Result(g_pNumber, STAGE::STAGE_MOON);
+		pResult = new Result(true, g_pNumber, STAGE::STAGE_MOON);
 		break;
 
 	default:
