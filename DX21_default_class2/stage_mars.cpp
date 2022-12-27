@@ -201,9 +201,10 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 		m_pItemManagement, m_pScore, m_pBom);
 
 	//敵のポインタをセット（順番変えるのNG）
-	m_pColAll->AddEnemyPointer(m_pEnemyNormalManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyStopManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemyNormalManagement);
+
 }
 
 //==========================
