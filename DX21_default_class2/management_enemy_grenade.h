@@ -16,7 +16,20 @@
 
 class EnemyGrenadeManagement :public EnemyManagement
 {
-	//定数
+//定数
+public:
+	//ここで初期化
+	//敵自身
+	static const int ATTACK = 1;			//攻撃値
+	//弾
+	static const int BULLET_ATTACK = 1;		//弾の攻撃値
+
+	//cppで初期化
+	//※注意！この下の二つを一緒の値にしないこと！
+	static const D3DXVECTOR2 FIND_RANGE;		//プレイヤーを見つける範囲
+	static const D3DXVECTOR2 EXPLOSION_RANGE;	//爆破範囲(プレイヤーが中入ったら爆発)
+	static const D3DXVECTOR2 EXPLOSION_RANGE;	//爆破範囲(プレイヤーが中入ったら爆発)
+
 private:
 	//ステージ
 	enum class STAGE :int {
@@ -32,24 +45,21 @@ private:
 	//cppで初期化
 	static const int ENEMY_NUM[(int)STAGE::NUM];	//敵を出現させる数W
 	//弾
-	static const float BULLET_SIZE_X;		//サイズX
-	static const float BULLET_SIZE_Y;		//サイズY
 	static const float BULLET_SPEED;		//スピード
 
-public:
-	//ここで初期化
-	//敵自身
-	static const int ATTACK = 1;			//攻撃値
-	//弾
-	static const int BULLET_ATTACK = 1;		//攻撃値
+	static const D3DXVECTOR2 VISION_FIND_RANGE;			//プレイヤーを見つける間のビジュアルサイズ
+	static const D3DXVECTOR2 VISION_EXPLOSION_RANGE;	//爆発している間のビジュアルサイズ
 
-	//メンバ変数
+
+//メンバ変数
 private:
-	EnemyGrenade* m_pEnemy = nullptr;
-	Bullet* m_pBullet = nullptr;
+	EnemyGrenade* m_pEnemy = nullptr;		//敵自身
+	Bullet* m_pBullet = nullptr;			//弾
+	Bullet* m_pExplosion[5];				//爆発
 
 	DrawObject m_pDrawObjectEnemy;
 	DrawObject m_pDrawObjectBullet;
+	DrawObject m_pDrawObjectExplosion;
 
 	int m_stage_num = 0;			//ステージ
 
@@ -76,13 +86,15 @@ private:
 
 	};
 
-	//メンバ関数
+
+//メンバ関数
 public:
 	//デフォルトコンストラクタ
 	EnemyGrenadeManagement() {}
 
 	//引数付きコンストラクタ
-	EnemyGrenadeManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, int stage);
+	EnemyGrenadeManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, 
+		DrawObject& pDrawObject3, int stage);
 
 	//デストラクタ
 	~EnemyGrenadeManagement()override { delete[] m_pEnemy; delete[] m_pBullet; }

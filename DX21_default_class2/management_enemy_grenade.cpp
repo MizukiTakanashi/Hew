@@ -10,20 +10,30 @@
 //==========================
 // 定数の初期化
 //==========================
+//public
+const D3DXVECTOR2 EnemyGrenadeManagement::FIND_RANGE = D3DXVECTOR2(50.0f, 50.0f);
+const D3DXVECTOR2 EnemyGrenadeManagement::EXPLOSION_RANGE = D3DXVECTOR2(70.0f, 70.0f);
+
+//private
+const D3DXVECTOR2 EnemyGrenadeManagement::VISION_FIND_RANGE = D3DXVECTOR2(20.0f, 20.0f);
+const D3DXVECTOR2 EnemyGrenadeManagement::VISION_EXPLOSION_RANGE = D3DXVECTOR2(60.0f, 60.0f);
 const int EnemyGrenadeManagement::ENEMY_NUM[(int)STAGE::NUM] = { 5 };
-const float EnemyGrenadeManagement::BULLET_SIZE_X = 20.0f;
-const float EnemyGrenadeManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyGrenadeManagement::BULLET_SPEED = 5.0f;
 
 //=========================
 // 引数付きコンストラクタ
 //=========================
-EnemyGrenadeManagement::EnemyGrenadeManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, int stage)
+EnemyGrenadeManagement::EnemyGrenadeManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, 
+	DrawObject& pDrawObject3, int stage)
 	:EnemyManagement(ENEMY_NUM[stage], ATTACK, BULLET_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2),
-	m_stage_num(stage)
+	m_pDrawObjectExplosion(pDrawObject3), m_stage_num(stage)
 {
 	m_pEnemy = new EnemyGrenade[ENEMY_NUM[stage]];
 	m_pBullet = new Bullet[ENEMY_NUM[stage]];
+
+	for (int i = 0; i < ENEMY_NUM[stage]; i++) {
+		m_pExplosion[i] = nullptr;
+	}
 }
 
 //======================
@@ -69,7 +79,7 @@ void EnemyGrenadeManagement::Update(const D3DXVECTOR2& PlayerPos)
 			//float rotTemp = atan2(rotposTemp.y, rotposTemp.x) * (180 / M_PI) + 90.0f;
 
 			Bullet temp(m_pDrawObjectBullet, m_pEnemy[i].GetPos(),
-				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), movTemp, 0.0f);
+				FIND_RANGE, movTemp, 0.0f);
 			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
 
 			EnemyManagement::IncreaseBulletNum(1);
@@ -80,17 +90,6 @@ void EnemyGrenadeManagement::Update(const D3DXVECTOR2& PlayerPos)
 
 	//今いる弾の処理
 	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {
-		//プレイヤーの後を追う(ホーミング弾)
-		D3DXVECTOR2 movTemp = PlayerPos - m_pBullet[i].GetPos();
-		D3DXVECTOR2 rotposTemp = m_pEnemy[i].GetPos() - PlayerPos;
-		D3DXVec2Normalize(&movTemp, &movTemp);
-		movTemp *= BULLET_SPEED;
-
-		//float rotTemp = atan2(rotposTemp.y, rotposTemp.x) * (180 / M_PI) + 90.0f;
-
-		m_pBullet[i].SetRot(0.0f);
-		m_pBullet[i].SetMove(movTemp);
-
 		//弾の更新処理
 		m_pBullet[i].Update();
 
