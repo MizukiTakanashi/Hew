@@ -31,6 +31,7 @@ private:
 protected:
 	int m_EnemyNum = 0;				//出現させた敵の数
 	int m_FlameNum = 0;				//現在のフレーム数
+	bool m_tutorial_clear = false;	//最後の敵を倒したかどうか(チュートリアル)
 
 
 //メンバ関数
@@ -113,6 +114,10 @@ public:
 
 	//指定した番号の別オブジェクトのサイズを返す(オーバーライド用)
 	virtual const D3DXVECTOR2& GetOtherSize(int index_num = 0)const{ return D3DXVECTOR2(0.0f, 0.0f); };
+
+	//チュートリアルのクリア判定
+	bool IsClear(void)const { return m_tutorial_clear; }
+
 };
 
 #endif // !_ENEMY_MANAGEMENT_H_
