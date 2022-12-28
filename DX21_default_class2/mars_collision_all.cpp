@@ -121,7 +121,7 @@ int MarsCollisionAll::Collision(void)
 			//自身
 			//自身
 			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetObjPos(j),
-				m_pPlayer->GetSize(), m_pEnemy[k]->GetObjSize())) {
+				m_pPlayer->GetSize() / 3, m_pEnemy[k]->GetObjSize())) {
 				//一度離れてからじゃないともう一度当たった判定にはならない
 				if (!m_player_enemy_col) {
 					//ぶつかったフラグをオン
@@ -367,7 +367,7 @@ int MarsCollisionAll::Collision(void)
 			//自身
 			//弾
 			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetBulletPos(j),
-				m_pPlayer->GetSize(), m_pEnemy[k]->GetBulletSize())) {
+				m_pPlayer->GetSize() / 3, m_pEnemy[k]->GetBulletSize())) {
 
 				if (k == (int)TYPE::STOP)
 				{
@@ -537,7 +537,7 @@ int MarsCollisionAll::Collision(void)
 			//自身
 			//別オブジェクト
 			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetOtherPos(j),
-				m_pPlayer->GetSize(), m_pEnemy[k]->GetOtherSize())) {
+				m_pPlayer->GetSize() / 3, m_pEnemy[k]->GetOtherSize())) {
 
 				//爆発をセット
 				m_pExplosion->SetExplosion(m_pEnemy[k]->GetOtherPos(j));
