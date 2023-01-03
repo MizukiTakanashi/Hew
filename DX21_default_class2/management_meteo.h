@@ -4,20 +4,29 @@
 // 作成者：矢野翔大
 //=======================================
 #pragma once
+
+#ifndef _MANAGEMENT_METEO_H_
+#define _MANAGEMENT_METEO_H_
+
 #include"meteo.h"
 #include "draw_object.h"
-#include "management.h"
 #include "management_enemy.h"
-class Management_Meteo:public EnemyManagement
+
+class Management_Meteo :public EnemyManagement
 {
+//定数
 public:
 	//敵自身
 	static const int ATTACK = 1;			//攻撃値
+
 private:
 	//敵自身
 	static const int ENEMY_NUM = 6;				//敵の最大数
 	static const int APPEARANCE_TIME = 200;		//敵の出現スピード
-	//メンバ変数
+
+
+//メンバ変数
+private:	
 	Meteo* m_pMeteo = nullptr;
 	DrawObject m_pDrawObjectMeteo;
 
@@ -39,6 +48,9 @@ private:
 		60 * 70,
 		60 * 70 + 1,
 	};
+
+
+//メンバ関数
 public:
 	//デフォルトコンストラクタ
 	Management_Meteo() {
@@ -49,7 +61,7 @@ public:
 	Management_Meteo(DrawObject& pDrawObject);
 
 	//デストラクタ
-	~Management_Meteo() override {}
+	~Management_Meteo() override { delete m_pMeteo; }
 
 	//更新処理
 	void Update(void);
@@ -61,7 +73,7 @@ public:
 	bool ReduceHP(int index_num, int reduceHP)override;
 
 	//指定した弾を消す
-	void DeleteBullet(int index_num)override{}
+	void DeleteBullet(int index_num)override {}
 
 	//指定した番号の座標を返す(オーバーライド)
 	const D3DXVECTOR2& GetObjPos(int index_num)const override { return m_pMeteo[index_num].GetPos(); }
@@ -77,7 +89,6 @@ public:
 
 	//指定した番号の敵を止める
 	void StopEnemy(int index_num, int time) override { m_pMeteo[index_num].StopEnemy(time); }
-
-
 };
 
+#endif // !_MANAGEMENT_METEO_H_

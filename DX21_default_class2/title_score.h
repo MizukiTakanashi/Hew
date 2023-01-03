@@ -97,6 +97,8 @@ private:
 	int m_score[STAGE_NUM];
 	bool m_sun_appearance = true;
 
+	int m_SE_02 = 0;	//キャンセル音
+
 //メンバ関数
 public:
 	//デフォルトコンストラクタ

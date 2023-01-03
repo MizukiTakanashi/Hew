@@ -22,6 +22,7 @@
 static	ID3D11ShaderResourceView	*g_TitleTexture = NULL;//テクスチャ情報
 static	char	*g_TitleTextureName = (char*)"data\\texture\\Title.png";
 int		g_TitleSoundNo;
+int		g_SE = 0;
 BG* p_title_bg;
 Sprite* g_p1Sprite;
 
@@ -45,6 +46,10 @@ void	InitTitle()
 {
 	TitleTextureNo = LoadTexture(g_TitleTextureName);				//テクスチャのロード
 	g_TitleSoundNo = LoadSound((char*)"data\\BGM\\sample000.wav");	//サウンドのロード
+	
+	//決定音
+	g_SE = LoadSound((char*)"data\\SE\\2_01.wav");
+	//SetVolume(g_SE, 0.1f);
 
 	if (TitleTextureNo == -1)
 	{//読み込みエラー
@@ -81,18 +86,28 @@ void	UpdateTitle()
 	if (InputGetKeyDown(KK_SPACE))
 	{
 		Fade(SCENE::SCENE_GAME);
+		PlaySound(g_SE, 0);
 	}
 
 	//Aボタンを押したらステージ選択画面に行く
 	if (InputGetKeyDown(KK_A))
 	{
 		Fade(SCENE::SCENE_STAGE_SELECT);
+		PlaySound(g_SE, 0);
 	}
 
 	//Dボタンを押したらステージ選択画面に行く
 	if (InputGetKeyDown(KK_D))
 	{
 		Fade(SCENE::SCENE_TITLE_SCORE);
+		PlaySound(g_SE, 0);
+	}
+
+	//Wボタンを押したらリザルト画面に行く
+	if (InputGetKeyDown(KK_S))
+	{
+		Fade(SCENE::SCENE_RESULT);
+		PlaySound(g_SE, 0);
 	}
 }
 

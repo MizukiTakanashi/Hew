@@ -39,9 +39,21 @@ Result::Result(bool isClear,  Score* pNumber, STAGE stagenum) :m_pScore(pNumber)
 {
 	m_isClear = isClear;
 
+	//=================
+	// 音
+
+	//BGM
 	m_BGM = LoadSound((char*)"data\\BGM\\silky_sky_away (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);
 	SetVolume(m_BGM, 0.05f);
+
+	//決定音
+	m_SE_01 = LoadSound((char*)"data\\SE\\2_01.wav");
+	//SetVolume(g_SE, 0.1f);
+
+	//カーソル移動音
+	m_SE_03 = LoadSound((char*)"data\\SE\\2_03.wav");
+	//SetVolume(g_SE, 0.1f);
 
 	switch (stagenum)
 	{
@@ -137,6 +149,7 @@ void Result::Update(void)
 	//上下のボタンが押されたら選択を変更
 	if (InputGetKeyDown(KK_DOWN) && m_isClear || InputGetKeyDown(KK_UP) && m_isClear){
 		Select();
+		PlaySound(m_SE_03, 0);
 	}
 
 	//選択によってカーソル位置を変更
@@ -152,6 +165,8 @@ void Result::Update(void)
 	//シーンを変更
 	if (InputGetKeyDown(KK_ENTER))
 	{
+		PlaySound(m_SE_01, 0);
+
 		if (m_select_retry)
 		{
 			Fade(SCENE::SCENE_GAME);

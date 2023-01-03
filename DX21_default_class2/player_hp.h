@@ -20,8 +20,8 @@
 
 class PlayerHP :public UI
 {
+//定数
 private:
-	//定数
 	//cppで初期化
 	static const float HP_MAX;			//最大HP
 	static const float SIZE_X;			//サイズX
@@ -30,25 +30,26 @@ private:
 	static const float POS_Y;			//表示位置
 	static const float BET_X;			//ハートの表示間隔
 
-	//無敵時間
-	static const int INVINCIBLE__FRAME;
+	//ここで初期化
+	static const int INVINCIBLE__FRAME = 40;	//無敵時間
 
 
+//メンバー変数
 private:
 	Player* m_pPlayer = nullptr; //プレイヤーのポインタ
 	bool m_HP0 = false;				//プレイヤーのHPが0か判断
 	float m_hp = HP_MAX;			//プレイヤーのHP
 	int m_invincible = 0;			//無敵時間
 	ExplosionManagement* m_pExplosionManagement = nullptr; //爆発管理のポインタ
-	//Score* m_pScore = nullptr; //ナンバーのポインタ
 
+	int m_SE_04 = 0;				//プレイヤーダメージ音
+
+//メンバー関数
 public:
 	PlayerHP() { m_hp = HP_MAX; }	//デフォルトコンストラクタ
 
 	//引数付きコンストラクタ
-	PlayerHP(DrawObject& DrawObject1, ExplosionManagement* pEM, Player* pPlayer)
-		:UI(DrawObject1, D3DXVECTOR2(POS_X, POS_Y),
-			D3DXVECTOR2(SIZE_X, SIZE_Y)), m_pExplosionManagement(pEM), m_pPlayer(pPlayer){}
+	PlayerHP(DrawObject& DrawObject1, ExplosionManagement* pEM, Player* pPlayer);
 
 	~PlayerHP()override {}							//デストラクタ
 
@@ -72,7 +73,6 @@ public:
 
 	//無敵かどうかを返す true:無敵じゃない  false:無敵
 	bool IsPlayerInvincible(void) { if (m_invincible <= 0) { return true; }return false; }
-
 };
 
 #endif // !_PLAYER_HP_H_

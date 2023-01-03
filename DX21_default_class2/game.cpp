@@ -208,10 +208,6 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 	m_pColAll->AddEnemyPointer(m_pEnemyNormalManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyLaserManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyGatoringManagement);
-	//m_pColAll->AddEnemyPointer(m_pEnemyPublicManagement);
-	//m_pColAll->AddEnemyPointer(m_pEnemyMissileManagement);
-	//m_pColAll->AddEnemyPointer(m_pEnemyAttackManagement);
-	//m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
 	m_pColAll->AddEnemyPointer(m_pMeteoManagement);
 
 }
@@ -234,10 +230,6 @@ Game::~Game()
 	delete m_pEnemyNormalManagement;
 	delete m_pEnemyLaserManagement;
 	delete m_pEnemyGatoringManagement;
-	//delete m_pEnemyPublicManagement;
-	//delete m_pEnemyMissileManagement;
-	//delete m_pEnemyAttackManagement;
-	//delete m_pEnemyBarrierManagement;
 	delete m_pMeteoManagement;
 	delete m_pItemManagement;
 	delete m_pPlayer;

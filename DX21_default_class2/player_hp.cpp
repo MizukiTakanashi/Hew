@@ -5,6 +5,7 @@
 //=======================================
 #include "player_hp.h"
 #include "game.h"
+#include "sound.h"
 
 //==========================
 // 定数初期化
@@ -15,8 +16,18 @@ const float PlayerHP::SIZE_Y = 25.0f;
 const float PlayerHP::POS_X = 30;
 const float PlayerHP::POS_Y = 30;
 const float PlayerHP::BET_X = 40;
-const int PlayerHP::INVINCIBLE__FRAME = 30;	//無敵時間
 
+//==========================
+// 引数付きコンストラクタ
+//==========================
+PlayerHP::PlayerHP(DrawObject& DrawObject1, ExplosionManagement* pEM, Player* pPlayer)
+	:UI(DrawObject1, D3DXVECTOR2(POS_X, POS_Y),D3DXVECTOR2(SIZE_X, SIZE_Y)), 
+	m_pExplosionManagement(pEM), m_pPlayer(pPlayer)
+{
+	//プレイヤーダメージ音
+	m_SE_04 = LoadSound((char*)"data\\SE\\1_04_2.wav");
+	//SetVolume(g_SE, 0.1f);
+}
 
 //==========================
 // HPを減らす
@@ -35,6 +46,8 @@ void PlayerHP::ReduceHP(float reduce_num)
 		//ヒットストップ
 		HitStop(30);
 		SetInvincibleFrame();
+
+		PlaySound(m_SE_04, 0);
 	}
 
 	//もしもHPが0であれば
@@ -45,7 +58,7 @@ void PlayerHP::ReduceHP(float reduce_num)
 	}
 }
 //=====================================
-//回復処理
+// 回復処理
 //=====================================
 void PlayerHP::HeelHP(float heel_num)
 {

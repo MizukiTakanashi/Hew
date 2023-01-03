@@ -4,6 +4,9 @@
 // 作成者：高梨水希
 //=======================================
 #include "title_score.h"
+#include "sound.h"
+#include "inputx.h"
+#include "keyboard.h"
 
 //==========================
 // 定数の初期化
@@ -110,6 +113,13 @@ TitleScore::TitleScore(int score[])
 		m_pScore[i - 2]->SetNumber(m_score[i - 2]);
 		m_pScore[i - 2]->SetInitPos(D3DXVECTOR2(NUMBER_INIT_POS_X, temp_y));
 	}
+
+	//=================
+	// 音
+
+	//キャンセル音
+	m_SE_02 = LoadSound((char*)"data\\SE\\2_02.wav");
+	//SetVolume(g_SE, 0.1f);
 }
 
 //==========================
@@ -117,6 +127,15 @@ TitleScore::TitleScore(int score[])
 //==========================
 void TitleScore::Update(void)
 {
+	//キーボードのSpaceを押したら...
+	//パッドのAボタンを押したら...
+	if (InputGetKeyDown(KK_SPACE) ||
+		IsButtonTriggered(0, XINPUT_GAMEPAD_A))
+	{
+		//タイトル画面に行く
+		PlaySound(m_SE_02, 0);
+		Fade(SCENE::SCENE_TITLE);
+	}
 }
 
 //==========================
