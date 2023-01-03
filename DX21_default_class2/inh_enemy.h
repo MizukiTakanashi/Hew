@@ -27,10 +27,10 @@ private:
 protected:
 	int m_bullet_count = 0;				//弾を発射するまでのカウント
 	bool m_bullet_make = false;			//弾を作るか否か
-	bool m_bullet_make1 = false;			//弾を作るか否か（氷の敵で使う）
-	bool m_bullet_make2 = false;			//弾を作るか否か（氷の敵で使う）
-	bool m_bullet_make3 = false;			//弾を作るか否か（氷の敵で使う）
-	bool m_bullet_make4 = false;			//弾を作るか否か（氷の敵で使う）
+	bool m_bullet_make1 = false;		//弾を作るか否か（氷の敵で使う）
+	bool m_bullet_make2 = false;		//弾を作るか否か（氷の敵で使う）
+	bool m_bullet_make3 = false;		//弾を作るか否か（氷の敵で使う）
+	bool m_bullet_make4 = false;		//弾を作るか否か（氷の敵で使う）
 	float m_move_width = 0.0f;			//敵が動く時のcosカーブ
 	int m_invincible_flame = 0;			//無敵時間の残り
 	float m_init_posx = 0.0f;			//敵の初期位置X
@@ -92,7 +92,6 @@ public:
 
 	//敵を止める時間をセット
 	void StopEnemy(int time) { m_stop_time = time; }
-
 };
 
 #endif // !_INH_ENEMY_H_

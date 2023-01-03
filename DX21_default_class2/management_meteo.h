@@ -8,7 +8,7 @@
 #ifndef _MANAGEMENT_METEO_H_
 #define _MANAGEMENT_METEO_H_
 
-#include"meteo.h"
+#include "meteo.h"
 #include "draw_object.h"
 #include "management_enemy.h"
 
@@ -27,7 +27,7 @@ private:
 
 //メンバ変数
 private:	
-	Meteo* m_pMeteo = nullptr;
+	Meteo* m_pMeteo[ENEMY_NUM];
 	DrawObject m_pDrawObjectMeteo;
 
 	//敵の配列
@@ -54,7 +54,9 @@ private:
 public:
 	//デフォルトコンストラクタ
 	Management_Meteo() {
-		m_pMeteo = new Meteo[ENEMY_NUM];
+		for (int i = 0; i < ENEMY_NUM; i++) {
+			m_pMeteo[i] = nullptr;
+		}
 	}
 
 	//引数付きコンストラクタ
@@ -76,19 +78,19 @@ public:
 	void DeleteBullet(int index_num)override {}
 
 	//指定した番号の座標を返す(オーバーライド)
-	const D3DXVECTOR2& GetObjPos(int index_num)const override { return m_pMeteo[index_num].GetPos(); }
+	const D3DXVECTOR2& GetObjPos(int index_num)const override { return m_pMeteo[index_num]->GetPos(); }
 
 	//指定した番号のサイズを返す(オーバーライド)
-	const D3DXVECTOR2& GetObjSize(int index_num = 0)const override { return m_pMeteo[index_num].GetSize(); }
+	const D3DXVECTOR2& GetObjSize(int index_num = 0)const override { return m_pMeteo[index_num]->GetSize(); }
 
 	//指定した番号の座標を返す(オーバーライド)
-	const D3DXVECTOR2& GetBulletPos(int index_num)const override { return m_pMeteo[index_num].GetPos(); }
+	const D3DXVECTOR2& GetBulletPos(int index_num)const override { return m_pMeteo[index_num]->GetPos(); }
 
 	//指定した番号のサイズを返す(オーバーライド)
-	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override { return m_pMeteo[index_num].GetSize(); }
+	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override { return m_pMeteo[index_num]->GetSize(); }
 
 	//指定した番号の敵を止める
-	void StopEnemy(int index_num, int time) override { m_pMeteo[index_num].StopEnemy(time); }
+	void StopEnemy(int index_num, int time) override { m_pMeteo[index_num]->StopEnemy(time); }
 };
 
 #endif // !_MANAGEMENT_METEO_H_

@@ -372,9 +372,6 @@
     <ClInclude Include="score.h">
       <Filter>11_MultiScene</Filter>
     </ClInclude>
-    <ClInclude Include="screen_out.h">
-      <Filter>02_Moon</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>99_%3f</Filter>
     </ClInclude>
@@ -479,6 +476,9 @@
     </ClInclude>
     <ClInclude Include="management_enemy_grenade.h">
       <Filter>03_Mars</Filter>
+    </ClInclude>
+    <ClInclude Include="screen_out.h">
+      <Filter>11_MultiScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
