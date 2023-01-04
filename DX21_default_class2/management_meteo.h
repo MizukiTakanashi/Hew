@@ -22,7 +22,6 @@ public:
 private:
 	//敵自身
 	static const int ENEMY_NUM = 6;				//敵の最大数
-	static const int APPEARANCE_TIME = 200;		//敵の出現スピード
 
 
 //メンバ変数
@@ -63,7 +62,11 @@ public:
 	Management_Meteo(DrawObject& pDrawObject);
 
 	//デストラクタ
-	~Management_Meteo() override { delete m_pMeteo; }
+	~Management_Meteo() override {
+		for (int i = 0; i < ENEMY_NUM; i++) {
+			delete m_pMeteo[i];
+		}
+	}
 
 	//更新処理
 	void Update(void);

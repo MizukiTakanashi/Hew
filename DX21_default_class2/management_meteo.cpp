@@ -10,7 +10,7 @@
 // 引数付きコンストラクタ
 //==========================
 Management_Meteo::Management_Meteo(DrawObject& pDrawObject)
-	:EnemyManagement(ENEMY_NUM, ATTACK,0), m_pDrawObjectMeteo(pDrawObject)
+	:EnemyManagement(ENEMY_NUM, ATTACK,1), m_pDrawObjectMeteo(pDrawObject)
 {
 	for (int i = 0; i < ENEMY_NUM; i++) {
 		m_pMeteo[i] = nullptr;
@@ -54,8 +54,6 @@ bool Management_Meteo::ReduceHP(int index_num, int reduceHP)
 	m_pMeteo[index_num]->ReduceHP(reduceHP);
 	if (m_pMeteo[index_num]->GetHP() <= 0)
 	{//HPが０以下なら敵を消す
-
-
 		return true;
 	}
 	return false;
