@@ -41,8 +41,8 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 	m_pDrawObject = new DrawObject[(int)DRAW_TYPE::NUM];
 
 	//背景の初期化処理
-	m_pBG = new BG((char*)"data\\texture\\stage_select_bg.jpg");
-	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\earth.png");
+	m_pBG = new BG((char*)"data\\texture\\game_bg_scroll.jpg");
+	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\moon.png");
 
 	m_pTextManagement = new TextManagement();
 
