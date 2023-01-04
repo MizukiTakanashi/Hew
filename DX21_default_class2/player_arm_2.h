@@ -15,7 +15,7 @@
 
 class PlayerArm2 :public inhPlayerArm
 {
-	//定数
+//定数
 private:
 	//ここで初期化
 	static const int BULLET_NUM_MAX = 5;		//弾の制限数　実際に撃てる数はこれより１少ない
@@ -29,7 +29,8 @@ private:
 	static const float BULLET_SIZE_Y;		//サイズY
 	static const float BULLET_SPEED;		//スピード
 
-	static const float SPEED_Y;			//レーザーのスピードY
+	static const float SPEED_Y;				//レーザーのスピードY
+
 
 //メンバ変数
 private:
@@ -38,14 +39,17 @@ private:
 	int m_bullet_interval_count = 0;	//発射間隔カウント
 	int m_lasertime = LASER_TIME;		//レーザーの射出時間
 
+	int m_SE_06 = 0;	//ビーム音
+	int m_SE_07 = 0;	//ビーム発射音
+
+
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
 	PlayerArm2() { m_pLaser = new Laser[BULLET_SHOOT_MAX]; }
 
 	//引数付きコンストラクタ
-	PlayerArm2(DrawObject& bulletdraw, bool right, int type) 
-		:inhPlayerArm(BULLET_NUM_MAX, right, type), m_laser_draw(bulletdraw) { m_pLaser = new Laser[BULLET_SHOOT_MAX]; }
+	PlayerArm2(DrawObject& bulletdraw, bool right, int type);
 
 	//デストラクタ
 	~PlayerArm2()override { delete[] m_pLaser; }

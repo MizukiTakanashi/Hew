@@ -50,10 +50,13 @@ private:
 
 	bool m_player_enemy_col = false;				//プレイヤーと敵が当たったか判定
 
+	Bom* m_pBom = nullptr;							//ボム
+
 	int m_SE = 0;									//爆発の音
 	int m_SE_interval_count = 0;					//爆発の音の間隔カウント
-
-	Bom* m_pBom = nullptr;							//ボム
+	int m_SE_08 = 0;								//バリアが弾を跳ね返す音
+	int m_SE_09 = 0;								//バリアが壊れる音
+	int m_SE_10 = 0;								//冷気を浴びた音
 
 	//メンバ関数
 public:

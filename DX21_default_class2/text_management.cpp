@@ -7,12 +7,12 @@
 #include "inputx.h"
 #include "keyboard.h"
 #include "game.h"
-
+#include "sound.h"
 
 //==========================
 // 定数初期化
 //==========================
-//public
+//private
 const float TextManagement::FLAME_SIZE_X = 900.0f;
 const float TextManagement::FLAME_SIZE_Y = 200.0f;
 const float TextManagement::FLAME_POS_X = SCREEN_WIDTH / 2;
@@ -24,16 +24,28 @@ const float TextManagement::TEXT_BET_X = 20.0f;
 const float TextManagement::TEXT_BET_Y = 20.0f;
 const float TextManagement::TEXT_SIZE_X = 20.0f;
 const float TextManagement::TEXT_SIZE_Y = 20.0f;
-//private
 
+//==========================
+// デフォルトコンストラクタ
+//==========================
 TextManagement::TextManagement()
 {
 	TextureUseful temp((char*)"data\\texture\\text_flame.png");
 	m_TextFrame = DrawObject(temp);
 	temp.SetTextureName((char*)"data\\texture\\triangle.png");
 	m_Triangle = DrawObject(temp);
+
+	//================
+	// 音
+
+	//テキスト送る際の音(カーソル移動音)
+	m_SE_01 = LoadSound((char*)"data\\SE\\1_03.wav");
+	//SetVolume(m_BGM, 0.1f);
 }
 
+//==========================
+// 更新処理
+//==========================
 void TextManagement::Update(void)
 {
 	m_FlameCount++;
@@ -50,7 +62,11 @@ void TextManagement::Update(void)
 		{
 			m_PaternNum++;
 		}
-		if (InputGetKeyDown(KK_ENTER) || m_PaternNum == m_PaternMax)
+
+		//キーボードのEnterキーを押されたら...
+		//パッドのBボタンを押されたら...
+		if ((IsButtonTriggered(0, XINPUT_GAMEPAD_B) || InputGetKeyDown(KK_ENTER)) 
+			|| m_PaternNum == m_PaternMax)
 		{
 			m_PaternNum = m_PaternMax;
 			m_RunText = false;
@@ -59,14 +75,21 @@ void TextManagement::Update(void)
 	}
 	else
 	{
-		if (InputGetKeyDown(KK_ENTER) && GetTextFlg())
+		//キーボードのEnterキーを押されたら...
+		//パッドのBボタンを押されたら...
+		if ((IsButtonTriggered(0, XINPUT_GAMEPAD_B) || InputGetKeyDown(KK_ENTER)) 
+			&& GetTextFlg())
 		{
 			EndText();
+			PlaySound(m_SE_01, 0);
 		}
 
 	}
 }
 
+//==========================
+// 描画処理
+//==========================
 void TextManagement::Draw(void)
 {
 	m_TextFrame.Draw(D3DXVECTOR2(FLAME_POS_X, FLAME_POS_Y), D3DXVECTOR2(FLAME_SIZE_X, FLAME_SIZE_Y));

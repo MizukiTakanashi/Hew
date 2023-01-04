@@ -32,7 +32,21 @@ MarsCollisionAll::MarsCollisionAll(Player* pPlayer, inhPlayerArmBoth* pL, inhPla
 		m_pEnemy[i] = nullptr;
 	}
 
+	//================
+	// 音
+	
+	//爆発の音
 	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//サウンドのロード
+
+	//バリアが弾を跳ね返す音
+	m_SE_08 = LoadSound((char*)"data\\SE\\2_08.wav");
+	//SetVolume(m_SE_06, 0.4f);
+
+	//バリアが壊れる音
+	m_SE_09 = LoadSound((char*)"data\\SE\\1_09.wav");
+
+	//冷気を浴びた音
+	m_SE_10 = LoadSound((char*)"data\\SE\\1_10.wav");
 }
 
 //================================================
@@ -270,6 +284,7 @@ int MarsCollisionAll::Collision(void)
 								if (pArmItem->GetType() == inhPlayerArm::TYPE::TYPE5)
 								{
 									//敵の動きを１２０F止める
+									PlaySound(m_SE_10, 0);
 									m_pEnemy[k]->StopEnemy(j, 120);
 									continue;
 								}
@@ -372,6 +387,7 @@ int MarsCollisionAll::Collision(void)
 				if (k == (int)TYPE::STOP)
 				{
 					//プレイヤーを動けなくする
+					PlaySound(m_SE_10, 0);
 					m_pPlayer->StopPlayer(60);
 				}
 				else
@@ -441,19 +457,17 @@ int MarsCollisionAll::Collision(void)
 
 							//バリアのHPがなくなったら
 							if (pArmItem->ReduceHP(m_pEnemy[k]->GetBulletAttack())) {
+								//バリアを壊す
 								pArmItem->DeleteBullet(i);
+								PlaySound(m_SE_09, 0);
 								i--;
 							}
-							//腕についている種類がTYPE2(レーザー)でなければ...
-							//if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
-							//	//プレイヤーの弾を消す
-							//	pArmItem->DeleteBullet(i);
-							//	i--;
-							//}
 
 							//敵の弾を消す
 							m_pEnemy[k]->DeleteBullet(j);
 							j--;
+
+							PlaySound(m_SE_08, 0);
 
 							if (j < 0) {
 								next = true;
@@ -477,11 +491,7 @@ int MarsCollisionAll::Collision(void)
 		//=================================================
 		// 敵の別オブジェクト分ループ
 
-		////バリア以外の敵であれば処理しない
-		//if (k != (int)TYPE::BARRIER) {
-		//	continue;
-		//}
-
+		//バリア
 		for (int j = 0; j < m_pEnemy[k]->GetOtherNum(); j++) {
 			bool next = false;
 
@@ -520,12 +530,16 @@ int MarsCollisionAll::Collision(void)
 				{
 					//敵の別オブジェクトを消す
 					m_pEnemy[k]->DeleteOther(j);
+					PlaySound(m_SE_09, 0);
 
 					j--;
 					if (j < 0) {
 						next = true;
 						break;
 					}
+				}
+				else {
+					PlaySound(m_SE_08, 0);
 				}
 			}
 
@@ -538,26 +552,11 @@ int MarsCollisionAll::Collision(void)
 			//別オブジェクト
 			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetOtherPos(j),
 				m_pPlayer->GetSize() / 3, m_pEnemy[k]->GetOtherSize())) {
-
-				//爆発をセット
-				m_pExplosion->SetExplosion(m_pEnemy[k]->GetOtherPos(j));
-				explosion_sound = true;
-
-				//敵の別オブジェクトのHPを減らす
-				//敵の別オブジェクトのHPがなくなったら...
-				if (m_pEnemy[k]->ReduceOtherHP(j, 1))
-				{
-					//敵の別オブジェクトを消す
-					m_pEnemy[k]->DeleteOther(j);
-
-					j--;
-					if (j < 0) {
-						next = true;
-						break;
-					}
-				}
-
 				if (m_pEnemy[k]->GetOtherAttack() != 0) {
+					//爆発をセット
+					m_pExplosion->SetExplosion(m_pEnemy[k]->GetOtherPos(j));
+					explosion_sound = true;
+
 					//ダメージ数を増やす
 					attacked += m_pEnemy[k]->GetOtherAttack();
 					//コンボを途切れさせる
@@ -604,12 +603,16 @@ int MarsCollisionAll::Collision(void)
 						{
 							//敵の別オブジェクトを消す
 							m_pEnemy[k]->DeleteOther(j);
+							PlaySound(m_SE_09, 0);
 
 							j--;
 							if (j < 0) {
 								next = true;
 								break;
 							}
+						}
+						else {
+							PlaySound(m_SE_08, 0);
 						}
 					}
 				}

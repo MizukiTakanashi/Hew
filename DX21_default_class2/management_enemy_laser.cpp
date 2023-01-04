@@ -27,8 +27,11 @@ EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject&
 	// 音
 
 	//ビーム音
-	m_SE_06 = LoadSound((char*)"data\\SE\\1_06.wav");
-	//SetVolume(g_SE, 0.1f);
+	m_SE_06 = LoadSound((char*)"data\\SE\\2_06.wav");
+	SetVolume(m_SE_06, 0.4f);
+
+	//ビーム発射音
+	m_SE_07 = LoadSound((char*)"data\\SE\\2_07.wav");
 }
 
 //======================
@@ -115,6 +118,7 @@ void EnemyLaserManagement::Update()
 			m_pEnemyLaser[i].BulletMake();
 
 			PlaySound(m_SE_06, 0);
+			PlaySound(m_SE_07, 0);
 		}
 	}
 
