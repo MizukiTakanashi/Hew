@@ -24,9 +24,10 @@ CollisionAll::CollisionAll()
 // 引数付きコンストラクタ
 //==========================
 CollisionAll::CollisionAll(Player* pPlayer, inhPlayerArmBoth* pL, inhPlayerArmBoth* pR,
-	ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber, Bom* pBom)
+	ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber, Bom* pBom, 
+	Management_Meteo* pMeteo)
 	:m_pPlayer(pPlayer), m_pPlayerLeft(pL), m_pPlayerRight(pR), m_pExplosion(pExplosion),
-	m_pItem(pItem), m_pScore(pNumber), m_pBom(pBom)
+	m_pItem(pItem), m_pScore(pNumber), m_pBom(pBom), m_pMeteo(pMeteo)
 {
 	for (int i = 0; i < ENEMY_NUM; i++) {
 		m_pEnemy[i] = nullptr;
@@ -86,11 +87,8 @@ int CollisionAll::Collision(void)
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
-							//ドロップする敵であれば...
-							if (/*k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE && k != (int)TYPE::ATTACK &&*/ k != (int)TYPE::METEO) {
-								//敵アイテムのドロップ
-								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
-							}
+							//敵アイテムのドロップ
+							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 
 							//敵を消す
 							m_pEnemy[k]->DeleteObj(j);
@@ -143,11 +141,8 @@ int CollisionAll::Collision(void)
 				//敵が死んだら...
 				if (m_pEnemy[k]->ReduceHP(j, m_pBom->GetBombAttack()))
 				{
-					//ドロップする敵であれば...
-					if (/*k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE && k != (int)TYPE::ATTACK &&*/ k != (int)TYPE::METEO) {
-						//敵アイテムのドロップ
-						m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
-					}
+					//敵アイテムのドロップ
+					m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 
 					//敵を消す
 					m_pEnemy[k]->DeleteObj(j);
@@ -181,21 +176,15 @@ int CollisionAll::Collision(void)
 				if (pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
 					if (Collision::ColBox(pArm->GetPos(), m_pEnemy[k]->GetObjPos(j),
 						pArm->GetSize(), m_pEnemy[k]->GetObjSize(j))) {
-						//腕と隕石があたったらタイプを消す
-						if (k == (int)TYPE::METEO) {
-							pArm->BreakShootingArm();
-						}
 						//TYPE_OLDにセット
 						pArm->SetType(inhPlayerArmBoth::TYPE::TYPE_OLD);
+
 						//敵のHPを減らす
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
-							//ドロップする敵であれば...
-							if (/*k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE && k != (int)TYPE::ATTACK &&*/ k != (int)TYPE::METEO) {
-								//敵アイテムのドロップ
-								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
-							}
+							//敵アイテムのドロップ
+							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 
 							//敵を消す
 							m_pEnemy[k]->DeleteObj(j);
@@ -261,11 +250,8 @@ int CollisionAll::Collision(void)
 								//敵が死んだら...
 								if (m_pEnemy[k]->ReduceHP(j, 1))
 								{
-									//ドロップする敵であれば...
-									if (/*k != (int)TYPE::PUBLIC && k != (int)TYPE::MISSILE && k != (int)TYPE::ATTACK &&*/ k != (int)TYPE::METEO) {
-										//敵アイテムのドロップ
-										m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
-									}
+									//敵アイテムのドロップ
+									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k);
 
 									//敵を消す
 									m_pEnemy[k]->DeleteObj(j);
@@ -427,145 +413,273 @@ int CollisionAll::Collision(void)
 		//	continue;
 		//}
 
-		for (int j = 0; j < m_pEnemy[k]->GetOtherNum(); j++) {
-			bool next = false;
+		//for (int j = 0; j < m_pEnemy[k]->GetOtherNum(); j++) {
+		//	bool next = false;
 
-			//=================================================
-			// プレイヤーと敵の別オブジェクト
+		//	//=================================================
+		//	// プレイヤーと敵の別オブジェクト
 
-			//プレイヤーの方
-			//敵の別オブジェクトの方
+		//	//プレイヤーの方
+		//	//敵の別オブジェクトの方
 
-				//弾
-				//別オブジェクト
-			for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
-				//もしも画面外にいたら壊せないようにする
-				if (ScreenOut::GetScreenOut(m_pEnemy[k]->GetOtherPos(j),
-					m_pEnemy[k]->GetOtherSize())) {
-					continue;
-				}
+		//		//弾
+		//		//別オブジェクト
+		//	for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
+		//		//もしも画面外にいたら壊せないようにする
+		//		if (ScreenOut::GetScreenOut(m_pEnemy[k]->GetOtherPos(j),
+		//			m_pEnemy[k]->GetOtherSize())) {
+		//			continue;
+		//		}
 
-				//当たってなければ次行く
-				if (!Collision::ColBox(m_pPlayer->GetBulletPos(i), m_pEnemy[k]->GetOtherPos(j),
-					m_pPlayer->GetBulletSize(), m_pEnemy[k]->GetOtherSize())) {
-					continue;
-				}
+		//		//当たってなければ次行く
+		//		if (!Collision::ColBox(m_pPlayer->GetBulletPos(i), m_pEnemy[k]->GetOtherPos(j),
+		//			m_pPlayer->GetBulletSize(), m_pEnemy[k]->GetOtherSize())) {
+		//			continue;
+		//		}
 
-				//プレイヤーの弾を消す
-				m_pPlayer->DeleteBullet(i);
-				i--;
+		//		//プレイヤーの弾を消す
+		//		m_pPlayer->DeleteBullet(i);
+		//		i--;
 
-				//爆発をセット
-				m_pExplosion->SetExplosion(m_pEnemy[k]->GetOtherPos(j));
-				explosion_sound = true;
+		//		//爆発をセット
+		//		m_pExplosion->SetExplosion(m_pEnemy[k]->GetOtherPos(j));
+		//		explosion_sound = true;
 
-				//敵の別オブジェクトのHPを減らす
-				//敵の別オブジェクトのHPがなくなったら...
-				if (m_pEnemy[k]->ReduceOtherHP(j, 1))
-				{
-					//敵の別オブジェクトを消す
-					m_pEnemy[k]->DeleteOther(j);
+		//		//敵の別オブジェクトのHPを減らす
+		//		//敵の別オブジェクトのHPがなくなったら...
+		//		if (m_pEnemy[k]->ReduceOtherHP(j, 1))
+		//		{
+		//			//敵の別オブジェクトを消す
+		//			m_pEnemy[k]->DeleteOther(j);
 
-					j--;
-					if (j < 0) {
-						next = true;
-						break;
-					}
+		//			j--;
+		//			if (j < 0) {
+		//				next = true;
+		//				break;
+		//			}
+		//		}
+		//	}
+
+		//	if (next) {
+		//		break;
+		//	}
+
+
+		//	//自身
+		//	//別オブジェクト
+		//	if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetOtherPos(j),
+		//		m_pPlayer->GetSize() / 3, m_pEnemy[k]->GetOtherSize())) {
+
+		//		//爆発をセット
+		//		m_pExplosion->SetExplosion(m_pEnemy[k]->GetOtherPos(j));
+		//		explosion_sound = true;
+
+		//		//敵の別オブジェクトのHPを減らす
+		//		//敵の別オブジェクトのHPがなくなったら...
+		//		if (m_pEnemy[k]->ReduceOtherHP(j, 1))
+		//		{
+		//			//敵の別オブジェクトを消す
+		//			m_pEnemy[k]->DeleteOther(j);
+
+		//			j--;
+		//			if (j < 0) {
+		//				next = true;
+		//				break;
+		//			}
+		//		}
+
+		//		if (m_pEnemy[k]->GetOtherAttack() != 0) {
+		//			//ダメージ数を増やす
+		//			attacked += m_pEnemy[k]->GetOtherAttack();
+		//			//コンボを途切れさせる
+		//			m_pScore->InitCombo();
+		//		}
+		//	}
+
+		//	//=================================================
+		//	// プレイヤーの腕の弾と敵の別オブジェクト
+
+		//	//プレイヤーの腕の弾方
+		//	//敵の別オブジェクトの方
+
+		//	//腕についているアイテムのポインタを取ってくる(初期は左から)
+		//	inhPlayerArm* pArmItem = m_pPlayerLeft->GetArmPointer();
+
+		//	//右と左、両方行う
+		//	for (int m = 0; m < 2; m++) {
+		//		//ポインターがヌルであれば処理を行わない
+		//		if (pArmItem == nullptr) {
+		//			continue;
+		//		}
+
+		//		for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
+		//			if (Collision::ColBox(pArmItem->GetBulletPos(i), m_pEnemy[k]->GetOtherPos(j),
+		//				pArmItem->GetBulletSize(), m_pEnemy[k]->GetOtherSize())) {
+		//				//爆発をセット
+		//				m_pExplosion->SetExplosion(m_pEnemy[k]->GetOtherPos(j));
+		//				explosion_sound = true;
+
+		//				//腕についている種類がTYPE2(レーザー)でなければ...
+		//				if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
+		//					//プレイヤーの弾を消す
+		//					pArmItem->DeleteBullet(i);
+		//					i--;
+		//				}
+
+		//				//敵の別オブジェクトのHPを減らす
+		//				//敵の別オブジェクトのHPがなくなったら...
+		//				if (m_pEnemy[k]->ReduceOtherHP(j, 1))
+		//				{
+		//					//敵の別オブジェクトを消す
+		//					m_pEnemy[k]->DeleteOther(j);
+
+		//					j--;
+		//					if (j < 0) {
+		//						next = true;
+		//						break;
+		//					}
+		//				}
+		//			}
+		//		}
+
+		//		if (next) {
+		//			break;
+		//		}
+
+		//		//腕についているアイテムのポインタを取ってくる(二回目は右)
+		//		pArmItem = m_pPlayerRight->GetArmPointer();
+		//	}
+		//}
+	}
+
+	//===========================
+	// 隕石
+	for (int j = 0; j < m_pMeteo->GetMeteoNum(); j++) {
+		for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
+			//もしも画面外にいたら壊せないようにする
+			if (!ScreenOut::GetScreenOut(m_pMeteo->GetObjPos(j),
+				m_pMeteo->GetObjSize())) {
+
+				//当たったか判定
+				if (Collision::ColBox(m_pPlayer->GetBulletPos(i), m_pMeteo->GetObjPos(j),
+					m_pPlayer->GetBulletSize(), m_pMeteo->GetObjSize())) {
+					//爆発をセット
+					m_pExplosion->SetExplosion(m_pPlayer->GetBulletPos(i));
+					explosion_sound = true;
+
+					//プレイヤーの弾を消す
+					m_pPlayer->DeleteBullet(i);
+					i--;
 				}
 			}
+		}
 
-			if (next) {
+		//自身
+		//自身
+		if (Collision::ColBox(m_pPlayer->GetPos(), m_pMeteo->GetObjPos(j),
+			m_pPlayer->GetSize() / 3, m_pMeteo->GetObjSize())) {
+			//一度離れてからじゃないともう一度当たった判定にはならない
+			if (!m_player_enemy_col) {
+				//ぶつかったフラグをオン
+				m_player_enemy_col = true;
+
+				//ダメージ数を増やす
+				attacked += m_pMeteo->GetMeteoAttack();
+
+				//コンボを途切れさせる
+				m_pScore->InitCombo();
+			}
+		}
+		else {
+			m_player_enemy_col = false;
+		}
+
+		//ボム
+		//自身
+		if (m_pBom->IsBomb()) {
+			//爆発をセット
+			m_pExplosion->SetExplosion(m_pMeteo->GetObjPos(j));
+			explosion_sound = true;
+
+			//敵を消す
+			m_pMeteo->DeleteObj(j);
+
+			j--;
+			if (j < 0) {
 				break;
 			}
+		}
 
+		//=================================================
+		// プレイヤーの腕と敵
+
+		//腕の方
+		//敵の方
 
 			//自身
-			//別オブジェクト
-			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetOtherPos(j),
-				m_pPlayer->GetSize() / 3, m_pEnemy[k]->GetOtherSize())) {
+			//自身
 
-				//爆発をセット
-				m_pExplosion->SetExplosion(m_pEnemy[k]->GetOtherPos(j));
-				explosion_sound = true;
+		//腕のポインタを取ってくる(初期は左から)
+		inhPlayerArmBoth* pArm = m_pPlayerLeft;
 
-				//敵の別オブジェクトのHPを減らす
-				//敵の別オブジェクトのHPがなくなったら...
-				if (m_pEnemy[k]->ReduceOtherHP(j, 1))
-				{
-					//敵の別オブジェクトを消す
-					m_pEnemy[k]->DeleteOther(j);
-
-					j--;
-					if (j < 0) {
-						next = true;
-						break;
-					}
-				}
-
-				if (m_pEnemy[k]->GetOtherAttack() != 0) {
-					//ダメージ数を増やす
-					attacked += m_pEnemy[k]->GetOtherAttack();
-					//コンボを途切れさせる
-					m_pScore->InitCombo();
+		for (int m = 0; m < 2; m++) {
+			//発射中であれば
+			if (pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
+				if (Collision::ColBox(pArm->GetPos(), m_pMeteo->GetObjPos(j),
+					pArm->GetSize(), m_pMeteo->GetObjSize())) {
+					//腕と隕石があたったらタイプを消す
+					pArm->BreakShootingArm();
 				}
 			}
 
-			//=================================================
-			// プレイヤーの腕の弾と敵の別オブジェクト
+			//腕のポインタを取ってくる(二回目は右)
+			pArm = m_pPlayerRight;
+		}
 
-			//プレイヤーの腕の弾方
-			//敵の別オブジェクトの方
+		//=================================================
+		// プレイヤーの腕の弾と敵
 
-			//腕についているアイテムのポインタを取ってくる(初期は左から)
-			inhPlayerArm* pArmItem = m_pPlayerLeft->GetArmPointer();
+		//プレイヤーの腕の弾方
+		//敵の方
 
-			//右と左、両方行う
-			for (int m = 0; m < 2; m++) {
-				//ポインターがヌルであれば処理を行わない
-				if (pArmItem == nullptr) {
-					continue;
-				}
+			//弾
+			//自身
 
+		//腕についているアイテムのポインタを取ってくる(初期は左から)
+		inhPlayerArm* pArmItem = m_pPlayerLeft->GetArmPointer();
+
+		//右と左、両方行う
+		for (int m = 0; m < 2; m++) {
+			//ポインターがヌルであれば処理を行わない
+			if (pArmItem != nullptr) {
 				for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
-					if (Collision::ColBox(pArmItem->GetBulletPos(i), m_pEnemy[k]->GetOtherPos(j),
-						pArmItem->GetBulletSize(), m_pEnemy[k]->GetOtherSize())) {
-						//爆発をセット
-						m_pExplosion->SetExplosion(m_pEnemy[k]->GetOtherPos(j));
-						explosion_sound = true;
+					//もしも画面外にいたら壊せないようにする
+					if (!ScreenOut::GetScreenOut(m_pMeteo->GetObjPos(j),
+						m_pMeteo->GetObjSize())) {
 
-						//腕についている種類がTYPE2(レーザー)でなければ...
-						if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
-							//プレイヤーの弾を消す
-							pArmItem->DeleteBullet(i);
-							i--;
-						}
+						//当たったか判定
+						if (Collision::ColBox(pArmItem->GetBulletPos(i), m_pMeteo->GetObjPos(j),
+							pArmItem->GetBulletSize(), m_pMeteo->GetObjSize())) {
+							//爆発をセット
+							m_pExplosion->SetExplosion(pArmItem->GetBulletPos(i));
+							explosion_sound = true;
 
-						//敵の別オブジェクトのHPを減らす
-						//敵の別オブジェクトのHPがなくなったら...
-						if (m_pEnemy[k]->ReduceOtherHP(j, 1))
-						{
-							//敵の別オブジェクトを消す
-							m_pEnemy[k]->DeleteOther(j);
-
-							j--;
-							if (j < 0) {
-								next = true;
-								break;
+							//腕についている種類がTYPE2(レーザー)でなければ...
+							if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
+								//プレイヤーの弾を消す
+								pArmItem->DeleteBullet(i);
+								i--;
 							}
 						}
 					}
 				}
-
-				if (next) {
-					break;
-				}
-
-				//腕についているアイテムのポインタを取ってくる(二回目は右)
-				pArmItem = m_pPlayerRight->GetArmPointer();
 			}
+
+			//腕についているアイテムのポインタを取ってくる(二回目は右)
+			pArmItem = m_pPlayerRight->GetArmPointer();
 		}
 	}
-
+	
 	//=======================================
 	// 攻撃を受けたら、腕の切り離しを行う
 	if (attacked > 0) {

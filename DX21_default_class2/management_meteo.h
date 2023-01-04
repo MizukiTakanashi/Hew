@@ -10,9 +10,8 @@
 
 #include "meteo.h"
 #include "draw_object.h"
-#include "management_enemy.h"
 
-class Management_Meteo :public EnemyManagement
+class Management_Meteo
 {
 //定数
 public:
@@ -28,6 +27,10 @@ private:
 private:	
 	Meteo* m_pMeteo[ENEMY_NUM];
 	DrawObject m_pDrawObjectMeteo;
+
+	int m_FlameNum = 0;						//現在のフレーム数
+	int m_EnemyNum = 0;						//現在の敵の数
+	int m_EnemyMakedNum = 0;
 
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
@@ -62,7 +65,7 @@ public:
 	Management_Meteo(DrawObject& pDrawObject);
 
 	//デストラクタ
-	~Management_Meteo() override {
+	~Management_Meteo() {
 		for (int i = 0; i < ENEMY_NUM; i++) {
 			delete m_pMeteo[i];
 		}
@@ -74,26 +77,32 @@ public:
 	//描画処理
 	void Draw(void)const;
 
+	//隕石の攻撃値を返す
+	int GetMeteoAttack(void)const { return ATTACK; }
+
+	//隕石の数を返す
+	int GetMeteoNum(void)const { return m_EnemyNum; }
+
+	//隕石の数を変動する
+	void AddMeteoNum(int num) { m_EnemyNum += num; }
+
 	//指定した敵を消す
-	bool ReduceHP(int index_num, int reduceHP)override;
+	void DeleteObj(int index_num) {
+		for (int i = index_num; i < m_EnemyNum - 1; i++) {
+			m_pMeteo[i] = m_pMeteo[i + 1];
+		}
 
-	//指定した弾を消す
-	void DeleteBullet(int index_num)override {}
-
-	//指定した番号の座標を返す(オーバーライド)
-	const D3DXVECTOR2& GetObjPos(int index_num)const override { return m_pMeteo[index_num]->GetPos(); }
-
-	//指定した番号のサイズを返す(オーバーライド)
-	const D3DXVECTOR2& GetObjSize(int index_num = 0)const override { return m_pMeteo[index_num]->GetSize(); }
+		m_EnemyNum--;
+	}
 
 	//指定した番号の座標を返す(オーバーライド)
-	const D3DXVECTOR2& GetBulletPos(int index_num)const override { return m_pMeteo[index_num]->GetPos(); }
+	const D3DXVECTOR2& GetObjPos(int index_num)const { return m_pMeteo[index_num]->GetPos(); }
 
 	//指定した番号のサイズを返す(オーバーライド)
-	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override { return m_pMeteo[index_num]->GetSize(); }
+	const D3DXVECTOR2& GetObjSize(int index_num = 0)const { return m_pMeteo[index_num]->GetSize(); }
 
 	//指定した番号の敵を止める
-	void StopEnemy(int index_num, int time) override { m_pMeteo[index_num]->StopEnemy(time); }
+	void StopEnemy(int index_num, int time) { m_pMeteo[index_num]->StopEnemy(time); }
 };
 
 #endif // !_MANAGEMENT_METEO_H_

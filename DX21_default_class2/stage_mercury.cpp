@@ -159,8 +159,8 @@ StageMercury::StageMercury(Score* pNumber)
 	
 	//========================================================
 	// 全ての当たり判定
-	m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
-		m_pItemManagement, m_pScore, m_pBom);
+	/*m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
+		m_pItemManagement, m_pScore, m_pBom);*/
 
 	//敵のポインタをセット（順番変えるのNG）
 	m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);

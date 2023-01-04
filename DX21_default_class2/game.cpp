@@ -198,14 +198,13 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 	//========================================================
 	// 全ての当たり判定
 	m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
-		m_pItemManagement, m_pScore, m_pBom);
+		m_pItemManagement, m_pScore, m_pBom, m_pMeteoManagement);
 
 	//敵のポインタをセット（順番変えるのNG）
 	m_pColAll->AddEnemyPointer(m_pEnemyNormalManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyLaserManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyGatoringManagement);
-	m_pColAll->AddEnemyPointer(m_pMeteoManagement);
-
+	//m_pColAll->AddEnemyPointer(m_pMeteoManagement);
 }
 
 //==========================
