@@ -195,6 +195,7 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pAllEnemyManagement = new AllEnemyManagement;
 	m_pAllEnemyManagement->AddPointer(m_pEnemyBarrierManagement);
 
+
 	//========================================================
 	// 全ての当たり判定
 	m_pColAll = new MarsCollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
@@ -219,6 +220,8 @@ StageMars::~StageMars()
 	delete m_pColAll;
 
 	//ゲームオブジェクトを消す
+	if(m_pBoss)
+	delete m_pBoss;
 	delete m_pBom;
 	delete m_pBG;
 	delete m_pBG_Moon;
@@ -302,6 +305,17 @@ void StageMars::Update(void)
 	m_pPlayerCenter->ButtonPress();
 	m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
 
+	//ボス処理
+	if (m_pBoss)
+	{
+		m_pBoss->Update();
+	}
+	else if(m_pEnemyBarrierManagement->IsClear() && m_pEnemyStopManagement->IsClear())
+	{
+		m_pBoss = new Boss(m_pDrawObject[(int)DRAW_TYPE::ENEMY_STOP]);
+	}
+
+
 	//敵とプレイヤーの当たり判定
 	attack_num += m_pColAll->Collision();
 
@@ -338,6 +352,9 @@ void StageMars::Draw(void) const
 	m_pEnemyBarrierManagement->Draw();
 	m_pEnemyIceRainManagement->Draw();
 	m_pEnemyStopManagement->Draw();
+
+	if(m_pBoss)
+	m_pBoss->Draw();
 
 	//プレイヤーの弾の表示
 	m_pPlayer->DrawBullet();

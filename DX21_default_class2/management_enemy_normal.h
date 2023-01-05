@@ -52,7 +52,6 @@ private:
 	DrawObject m_pDrawObjectEnemy;
 	DrawObject m_pDrawObjectBullet;
 
-	bool m_tutorial_clear = false;	//最後の敵を倒したかどうか(チュートリアル)
 
 	int m_stage_num = 0;			//ステージ
 
@@ -134,9 +133,6 @@ public:
 
 	//弾のサイズを返す
 	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override { return m_pBullet[index_num].GetSize(); }
-
-	//チュートリアルのクリア判定
-	bool IsClear(void)const { return m_tutorial_clear; }
 
 	//指定した番号の敵を止める
 	void StopEnemy(int index_num, int time) override { m_pEnemyNormal[index_num].StopEnemy(time); }

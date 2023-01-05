@@ -31,6 +31,7 @@
 #include "mars_collision_all.h"
 #include "player_center.h"
 #include "Bom.h"
+#include "boss.h"
 
 class StageMars
 {
@@ -136,6 +137,8 @@ private:
 	MarsCollisionAll* m_pColAll = nullptr;		//‘S‚Ä‚Ì“–‚½‚è”»’è
 
 	Bom* m_pBom = nullptr;					//ƒ{ƒ€
+
+	Boss* m_pBoss = nullptr;
 
 	//ƒƒ“ƒoŠÖ”
 public:

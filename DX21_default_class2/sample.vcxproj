@@ -132,6 +132,7 @@
     <ClCompile Include="all_enemy_management.cpp" />
     <ClCompile Include="bgplanet.cpp" />
     <ClCompile Include="Bom.cpp" />
+    <ClCompile Include="boss.cpp" />
     <ClCompile Include="bullet_stop.cpp" />
     <ClCompile Include="collision_all.cpp" />
     <ClCompile Include="bullet.cpp" />
@@ -218,6 +219,7 @@
     <ClInclude Include="all_enemy_management.h" />
     <ClInclude Include="bg_planet.h" />
     <ClInclude Include="Bom.h" />
+    <ClInclude Include="boss.h" />
     <ClInclude Include="bullet_stop.h" />
     <ClInclude Include="collision_all.h" />
     <ClInclude Include="bullet.h" />

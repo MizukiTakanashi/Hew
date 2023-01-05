@@ -150,6 +150,7 @@ bool EnemyIceRainManagement::ReduceHP(int index_num, int reduceHP)
 //==========================
 void EnemyIceRainManagement::DeleteObj(int index_num)
 {
+	m_delete_enemy++;
 	//“G‚ğÁ‚·
 	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
 		m_pEnemyIceRain[i] = m_pEnemyIceRain[i + 1];
@@ -157,6 +158,11 @@ void EnemyIceRainManagement::DeleteObj(int index_num)
 
 	//Œp³Œ³‚Ì“G‚ğÁ‚·‚ğŒÄ‚Ô
 	EnemyManagement::DeleteObj(index_num);
+
+	if (m_delete_enemy == ENEMY_NUM) {
+		m_tutorial_clear = true;
+	}
+
 }
 
 //======================
