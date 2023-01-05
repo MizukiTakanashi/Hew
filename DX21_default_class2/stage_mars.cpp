@@ -20,7 +20,7 @@ int MarsStopFlame = 0; //ヒットストップ用
 //==========================
 // 引数付きコンストラクタ
 //==========================
-StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
+StageMars::StageMars(Score* pNumber) :m_pScore(pNumber)
 {
 	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);	//BGM再生
@@ -38,7 +38,7 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_RED].SetTextureName((char*)"data\\texture\\bullet_red.png");
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN].SetTextureName((char*)"data\\texture\\bullet_green.png");
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_SQUARE_GREEN].SetTextureName((char*)"data\\texture\\bullet02.png");
-	
+
 	//プレイヤー側の弾
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_SQUARE_GREEN], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
@@ -74,7 +74,7 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ICE].SetTextureName((char*)"data\\texture\\IceEnemy.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ICE]);
 	m_pEnemyIceRainManagement = new EnemyIceRainManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY_ICE]);
-	
+
 	//=======================
 	// 残弾表示
 	m_pTexUseful[(int)TEXTURE_TYPE::NUMBER].SetTextureName((char*)"data\\texture\\number.png");
@@ -101,45 +101,45 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	// プレイヤーの腕の左
 		//自身
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
-		//弾
+	//弾
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.2f, 1.0f, 0.2f, 1.0f));
-		//レーザー
+	//レーザー
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
 	m_pPlayerLeft = new PlayerLeft(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_BULLET],
 		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER], m_pPlayer->GetPos(), m_pRemaining_Left, D3DXVECTOR2(30.0f, 600.0f));
-		//バリア
+	//バリア
 	m_pPlayerLeft->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
 
 	//=======================
 	// プレイヤーの腕の右
 		//自身
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
-		//弾
+	//弾
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.2f, 1.0f, 0.2f, 1.0f));
-		//レーザー
+	//レーザー
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
 	m_pPlayerRight = new PlayerRight(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_BULLET],
 		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER], m_pPlayer->GetPos(), m_pRemaining_Right, D3DXVECTOR2(30.0f, 680.0f));
-		//バリア
+	//バリア
 	m_pPlayerRight->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
 
 	//=======================
 	// プレイヤーの腕の真ん中
 		//自身
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
-		//弾
+	//弾
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTTER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.2f, 1.0f, 0.2f, 1.0f));
-		//レーザー
+	//レーザー
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
 	m_pPlayerCenter = new PlayerCenter(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTTER_BULLET],
 		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER_LASER], m_pPlayer->GetPos(), m_pRemaining_Center, D3DXVECTOR2(30.0f, 520.0f));
-		//バリア
+	//バリア
 	m_pPlayerCenter->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
 
 
@@ -183,6 +183,7 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 
 	//敵のポインタをセット（順番変えるのNG）
 	m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemyIceRainManagement);
 }
 
 //==========================

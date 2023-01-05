@@ -24,6 +24,7 @@ private:
 	{
 		NORMAL,
 		BARRIER,
+		ICERAIN,
 		NUM
 	};
 
