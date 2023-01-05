@@ -159,5 +159,6 @@ public:
 };
 
 void MarsHitStop(int flame);
+void BossDown();
 
 #endif // !_STAGE_MARS_H_

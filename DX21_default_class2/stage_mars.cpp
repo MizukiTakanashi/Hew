@@ -16,6 +16,7 @@ const D3DXVECTOR2 StageMars::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
 // グローバル変数
 //==========================
 int MarsStopFlame = 0; //ヒットストップ用
+bool isDownBoss = false; //ボスが死んだか
 
 //==========================
 // 引数付きコンストラクタ
@@ -331,6 +332,10 @@ void StageMars::Update(void)
 	if (m_pPlayerHP->GetHP0Flag()) {
 		Fade(SCENE::SCENE_RESULT);
 	}
+
+	//ボスが死んだら
+	if(isDownBoss)
+		Fade(SCENE::SCENE_RESULT);
 }
 
 //==========================
@@ -383,4 +388,9 @@ void StageMars::Draw(void) const
 void MarsHitStop(int flame)
 {
 	MarsStopFlame = flame;
+}
+
+void BossDown()
+{
+	isDownBoss = true;
 }
