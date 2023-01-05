@@ -238,6 +238,7 @@
     <ClCompile Include="management_enemy_grenade.cpp">
       <Filter>03_Mars</Filter>
     </ClCompile>
+    <ClCompile Include="player_arm_icerain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -480,6 +481,7 @@
     <ClInclude Include="screen_out.h">
       <Filter>11_MultiScene</Filter>
     </ClInclude>
+    <ClInclude Include="player_arm_icerain.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01_Title">
