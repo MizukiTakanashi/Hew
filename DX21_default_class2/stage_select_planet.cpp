@@ -7,6 +7,7 @@
 #include "stage_select_planet.h"
 #include "inputx.h"
 #include "keyboard.h"
+#include "sound.h"
 
 //==========================
 // 定数の初期化
@@ -67,6 +68,16 @@ StageSelectPlanet::StageSelectPlanet(DrawObject& mars, DrawObject& mercury, Draw
 	for (int i = 0; i < (int)PLANET::NUM - 1; i++) {
 		WhiteLineSet(m_planets[i]->GetPos(), i);
 	}
+
+	//=====================
+	// 音
+
+	//決定音
+	m_SE_01 = LoadSound((char*)"data\\SE\\2_01.wav");
+	//SetVolume(g_SE, 0.1f);
+
+	//カーソル移動音
+	m_SE_03 = LoadSound((char*)"data\\SE\\2_03.wav");
 }
 
 //==========================
@@ -105,11 +116,13 @@ void StageSelectPlanet::Update()
 	if (InputGetKeyDown(KK_A)) {
 		//左にずらす
 		m_planet_index++;
+		PlaySound(m_SE_03, 0);
 	}
 	//Dキーを押したら...
 	if (InputGetKeyDown(KK_D)) {
 		//右にずらす
 		m_planet_index--;
+		PlaySound(m_SE_03, 0);
 	}
 
 
@@ -120,11 +133,13 @@ void StageSelectPlanet::Update()
 	if (IsButtonTriggered(0, XINPUT_GAMEPAD_DPAD_LEFT)) {
 		//左にずらす
 		m_planet_index++;
+		PlaySound(m_SE_03, 0);
 	}
 	//十字キー右を押したら...
 	if (IsButtonTriggered(0, XINPUT_GAMEPAD_DPAD_RIGHT)) {
 		//右にずらす
 		m_planet_index--;
+		PlaySound(m_SE_03, 0);
 	}
 
 	//左スティックで左に倒されたら...
@@ -133,6 +148,7 @@ void StageSelectPlanet::Update()
 		if (m_thumb_before >= 0) {
 			//左にずらす
 			m_planet_index++;
+			PlaySound(m_SE_03, 0);
 		}
 	}
 	//左スティックで右に倒されたら...
@@ -141,6 +157,7 @@ void StageSelectPlanet::Update()
 		if (m_thumb_before <= 0) {
 			//右にずらす
 			m_planet_index--;
+			PlaySound(m_SE_03, 0);
 		}
 	}
 	//スティックの値を保存
@@ -213,10 +230,12 @@ void StageSelectPlanet::Update()
 
 	//パッドのBボタンを押したら...
 	if (IsButtonTriggered(0, XINPUT_GAMEPAD_B)) {
+		PlaySound(m_SE_01, 0);
 		Fade((SCENE)(SCENE::SCENE_MERCURY + m_planet_index));
 	}
 	//キーボードのEnterを押したら...
 	else if (InputGetKeyDown(KK_ENTER)) {
+		PlaySound(m_SE_01, 0);
 		Fade((SCENE)(SCENE::SCENE_MERCURY + m_planet_index));
 	}
 }

@@ -4,6 +4,7 @@
 // 作成者：恩田洋行
 //=======================================
 #include "management_enemy_stop.h"
+#include "sound.h"
 
 //==========================
 // 定数の初期化
@@ -20,6 +21,10 @@ EnemyStopManagement::EnemyStopManagement(DrawObject& pDrawObject1, DrawObject& p
 {
 	m_pEnemy = new EnemyStop[ENEMY_NUM];
 	m_pBullet = new BulletStop[ENEMY_NUM];
+
+	//冷気を出す音
+	m_SE_11 = LoadSound((char*)"data\\SE\\1_11.wav");
+	//SetVolume(m_SE_06, 0.4f);
 }
 
 //======================
@@ -53,6 +58,8 @@ void EnemyStopManagement::Update(void)
 			EnemyManagement::IncreaseBulletNum(1);
 
 			m_pEnemy[i].BulletMake();
+
+			PlaySound(m_SE_11, 0);
 		}
 	}
 

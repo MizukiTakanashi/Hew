@@ -16,10 +16,6 @@
 #include "management_enemy_normal.h"
 #include "management_enemy_laser.h"
 #include "management_enemy_gatoring.h"
-//#include "management_enemy_missile.h"
-//#include "management_enemy_attack.h"
-//#include "management_enemy_public.h"
-//#include "management_enemy_barrier.h"
 #include "texture_useful.h"
 #include "player_hp.h"
 #include "management_explosion.h"
@@ -115,11 +111,7 @@ private:
 	EnemyNormalManagement* m_pEnemyNormalManagement = nullptr;
 	EnemyLaserManagement* m_pEnemyLaserManagement = nullptr;
 	EnemyGatoringManagement* m_pEnemyGatoringManagement = nullptr;
-	//EnemyMissileManagement* m_pEnemyMissileManagement = nullptr;
-	//EnemyAttackManagement* m_pEnemyAttackManagement = nullptr;
-	//Management_EnemyPublic* m_pEnemyPublicManagement = nullptr;
 	Management_Meteo* m_pMeteoManagement = nullptr;
-	//EnemyBarrierManagement* m_pEnemyBarrierManagement = nullptr;
 	
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;

@@ -38,10 +38,11 @@ public:
 
 //メンバ変数
 private:
-	EnemyStop* m_pEnemy = nullptr;	//敵のクラス
-	BulletStop* m_pBullet = nullptr;				//弾のクラス
-	DrawObject m_pDrawObjectEnemy;				//敵の描画オブジェクト
-	DrawObject m_pDrawObjectBullet;				//弾の描画オブジェクト
+	EnemyStop* m_pEnemy = nullptr;			//敵のクラス
+	BulletStop* m_pBullet = nullptr;		//弾のクラス
+	DrawObject m_pDrawObjectEnemy;			//敵の描画オブジェクト
+	DrawObject m_pDrawObjectBullet;			//弾の描画オブジェクト
+	int m_SE_11 = 0;						//冷気を出した時の音
 
 	//敵の位置配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {

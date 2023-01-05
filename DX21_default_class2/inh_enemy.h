@@ -1,7 +1,7 @@
 //=======================================
-// Œp³—p“GƒNƒ‰ƒX(ƒwƒbƒ_ƒtƒ@ƒCƒ‹)
-// ì¬“úF
-// ì¬ÒF‰¶“c—ms
+// ç¶™æ‰¿ç”¨æ•µã‚¯ãƒ©ã‚¹(ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š
+// ä½œæˆè€…ï¼šæ©ç”°æ´‹è¡Œ
 //=======================================
 #pragma once
 
@@ -12,72 +12,72 @@
 
 class Inh_Enemy :public GameObject
 {
-//’è”
+//å®šæ•°
 public:
 
 private:
-	//cpp‚Å‰Šú‰»
-	static const int INVINCIBLE_FLAME = 30;			//“G‚Ì–³“GŠÔ
+	//cppã§åˆæœŸåŒ–
+	static const int INVINCIBLE_FLAME = 30;			//æ•µã®ç„¡æ•µæ™‚é–“
 
-//ƒƒ“ƒo•Ï”
+//ãƒ¡ãƒ³ãƒå¤‰æ•°
 private:
-	bool m_enemyitem_make = false;		//ƒAƒCƒeƒ€‚ğì‚é‚©”Û‚©
-	int m_hp = 0;						//“G‚ÌŒ»İ‚ÌHP
+	bool m_enemyitem_make = false;		//ã‚¢ã‚¤ãƒ†ãƒ ã‚’ä½œã‚‹ã‹å¦ã‹
+	int m_hp = 0;						//æ•µã®ç¾åœ¨ã®HP
 
 protected:
-	int m_bullet_count = 0;				//’e‚ğ”­Ë‚·‚é‚Ü‚Å‚ÌƒJƒEƒ“ƒg
-	bool m_bullet_make = false;			//’e‚ğì‚é‚©”Û‚©
-	bool m_bullet_make1 = false;			//’e‚ğì‚é‚©”Û‚©i•X‚Ì“G‚Åg‚¤j
-	bool m_bullet_make2 = false;			//’e‚ğì‚é‚©”Û‚©i•X‚Ì“G‚Åg‚¤j
-	bool m_bullet_make3 = false;			//’e‚ğì‚é‚©”Û‚©i•X‚Ì“G‚Åg‚¤j
-	bool m_bullet_make4 = false;			//’e‚ğì‚é‚©”Û‚©i•X‚Ì“G‚Åg‚¤j
-	float m_move_width = 0.0f;			//“G‚ª“®‚­‚ÌcosƒJ[ƒu
-	int m_invincible_flame = 0;			//–³“GŠÔ‚Ìc‚è
-	float m_init_posx = 0.0f;			//“G‚Ì‰ŠúˆÊ’uX
-	int m_stop_time = 0; //“G‚ÌƒAƒbƒvƒf[ƒg‚ğ~‚ß‚éŠÔ
+	int m_bullet_count = 0;				//å¼¾ã‚’ç™ºå°„ã™ã‚‹ã¾ã§ã®ã‚«ã‚¦ãƒ³ãƒˆ
+	bool m_bullet_make = false;			//å¼¾ã‚’ä½œã‚‹ã‹å¦ã‹
+	bool m_bullet_make1 = false;		//å¼¾ã‚’ä½œã‚‹ã‹å¦ã‹ï¼ˆæ°·ã®æ•µã§ä½¿ã†ï¼‰
+	bool m_bullet_make2 = false;		//å¼¾ã‚’ä½œã‚‹ã‹å¦ã‹ï¼ˆæ°·ã®æ•µã§ä½¿ã†ï¼‰
+	bool m_bullet_make3 = false;		//å¼¾ã‚’ä½œã‚‹ã‹å¦ã‹ï¼ˆæ°·ã®æ•µã§ä½¿ã†ï¼‰
+	bool m_bullet_make4 = false;		//å¼¾ã‚’ä½œã‚‹ã‹å¦ã‹ï¼ˆæ°·ã®æ•µã§ä½¿ã†ï¼‰
+	float m_move_width = 0.0f;			//æ•µãŒå‹•ãæ™‚ã®cosã‚«ãƒ¼ãƒ–
+	int m_invincible_flame = 0;			//ç„¡æ•µæ™‚é–“ã®æ®‹ã‚Š
+	float m_init_posx = 0.0f;			//æ•µã®åˆæœŸä½ç½®X
+	int m_stop_time = 0; //æ•µã®ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆã‚’æ­¢ã‚ã‚‹æ™‚é–“
 
-	int m_appearance_time = 0;			//oŒ»‚µ‚Ä‚©‚ç‚ÌƒJƒEƒ“ƒg
-	float m_alpha = 1.0f;				//ƒAƒ‹ƒtƒ@’l
-	bool m_alpha_flag = false;			//ƒAƒ‹ƒtƒ@’l‚ğ•Ï‚¦‚Ä‚¢‚¢‚©
+	int m_appearance_time = 0;			//å‡ºç¾ã—ã¦ã‹ã‚‰ã®ã‚«ã‚¦ãƒ³ãƒˆ
+	float m_alpha = 1.0f;				//ã‚¢ãƒ«ãƒ•ã‚¡å€¤
+	bool m_alpha_flag = false;			//ã‚¢ãƒ«ãƒ•ã‚¡å€¤ã‚’å¤‰ãˆã¦ã„ã„ã‹
 
 
 
-//ƒƒ“ƒoŠÖ”
+//ãƒ¡ãƒ³ãƒé–¢æ•°
 public:
-	//ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	Inh_Enemy() {}		
 
-	//ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//å¼•æ•°ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	Inh_Enemy(DrawObject& pDrawObject, const D3DXVECTOR2& pos, D3DXVECTOR2 size, int hp)
 		:GameObject(pDrawObject, pos, size), m_hp(hp), m_init_posx(pos.x) {}
 
-	//ƒfƒXƒgƒ‰ƒNƒ^
+	//ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	~Inh_Enemy()override {}	
 
-	//XVˆ—
+	//æ›´æ–°å‡¦ç†
 	virtual void Update(void) {}	
 
-	//’e‚ğì‚é‚©”Û‚©‚Ìƒtƒ‰ƒO‚ğ•Ô‚·
+	//å¼¾ã‚’ä½œã‚‹ã‹å¦ã‹ã®ãƒ•ãƒ©ã‚°ã‚’è¿”ã™
 	bool GetFlagBulletMake()const { return m_bullet_make; }
-	bool GetFlagBulletMake1()const { return m_bullet_make1; } //i•X‚Ì“G‚Åg‚¤j
-	bool GetFlagBulletMake2()const { return m_bullet_make2; } //i•X‚Ì“G‚Åg‚¤j
-	bool GetFlagBulletMake3()const { return m_bullet_make3; } //i•X‚Ì“G‚Åg‚¤j
-	bool GetFlagBulletMake4()const { return m_bullet_make4; } //i•X‚Ì“G‚Åg‚¤j
+	bool GetFlagBulletMake1()const { return m_bullet_make1; } //ï¼ˆæ°·ã®æ•µã§ä½¿ã†ï¼‰
+	bool GetFlagBulletMake2()const { return m_bullet_make2; } //ï¼ˆæ°·ã®æ•µã§ä½¿ã†ï¼‰
+	bool GetFlagBulletMake3()const { return m_bullet_make3; } //ï¼ˆæ°·ã®æ•µã§ä½¿ã†ï¼‰
+	bool GetFlagBulletMake4()const { return m_bullet_make4; } //ï¼ˆæ°·ã®æ•µã§ä½¿ã†ï¼‰
 
-	//’e‚ğì‚Á‚½
+	//å¼¾ã‚’ä½œã£ãŸ
 	void BulletMake() { m_bullet_make = false; }
 	void BulletMake1() { m_bullet_make1 = false; }
 	void BulletMake2() { m_bullet_make2 = false; }
 	void BulletMake3() { m_bullet_make3 = false; }
 	void BulletMake4() { m_bullet_make4 = false; }
 
-	//“G‚ÌƒAƒCƒeƒ€‚ğì‚é‚©”Û‚©‚Ìƒtƒ‰ƒO‚ğ•Ô‚·
+	//æ•µã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’ä½œã‚‹ã‹å¦ã‹ã®ãƒ•ãƒ©ã‚°ã‚’è¿”ã™
 	bool GetFlagEnemyItemMake()const { return m_enemyitem_make; }
 
-	//“G‚ÌƒAƒCƒeƒ€‚ğì‚Á‚½
+	//æ•µã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’ä½œã£ãŸ
 	void EnemyItemMake() { m_enemyitem_make = false; }
 
-	//HP‚ğŒ¸‚ç‚·
+	//HPã‚’æ¸›ã‚‰ã™
 	bool ReduceHP(int amount) 
 	{
 		if (m_invincible_flame <= 0)
@@ -93,19 +93,19 @@ public:
 		}
 	}
 
-	//HP‚ğ•Ô‚·
+	//HPã‚’è¿”ã™
 	int GetHP(void) { return m_hp; }
 
-	//“G‚ğ~‚ß‚éŠÔ‚ğƒZƒbƒg
+	//æ•µã‚’æ­¢ã‚ã‚‹æ™‚é–“ã‚’ã‚»ãƒƒãƒˆ
 	void StopEnemy(int time) { m_stop_time = time; }
 
-	//oŒ»‚µ‚Ä‚©‚ç‚ÌƒJƒEƒ“ƒg‚ğ”‚¦‚é
+	//å‡ºç¾ã—ã¦ã‹ã‚‰ã®ã‚«ã‚¦ãƒ³ãƒˆã‚’æ•°ãˆã‚‹
 	int GetAppearanceTime(void)const { return m_appearance_time; }
 
-	//ƒAƒ‹ƒtƒ@’l‚ğ‹A‚éƒtƒ‰ƒO‚ğƒIƒ“
+	//ã‚¢ãƒ«ãƒ•ã‚¡å€¤ã‚’å¸°ã‚‹ãƒ•ãƒ©ã‚°ã‚’ã‚ªãƒ³
 	void OnAlphaFlag(void) { m_alpha_flag = true; }
 
-	//Œ»İ‚ÌƒAƒ‹ƒtƒ@’l‚ğ•Ô‚·
+	//ç¾åœ¨ã®ã‚¢ãƒ«ãƒ•ã‚¡å€¤ã‚’è¿”ã™
 	float GetAlpha(void)const { return m_alpha; }
 
 

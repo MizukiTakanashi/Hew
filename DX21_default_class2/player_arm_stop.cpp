@@ -4,12 +4,26 @@
 // 作成者：恩田洋行
 //=======================================
 #include "player_arm_stop.h"
+#include "sound.h"
 
 //==========================
 // 定数の初期化
 //==========================
 const float PlayerArmStop::BULLET_SIZE_X = 100.0f;
 const float PlayerArmStop::BULLET_SIZE_Y = 300.0f;
+
+//==========================
+// 引数付きコンストラクタ
+//==========================
+PlayerArmStop::PlayerArmStop(DrawObject bulletdraw, bool right, int type)
+	:inhPlayerArm(BULLET_NUM_MAX, right, type), m_bulletdraw(bulletdraw) 
+{
+	m_pBullet = new BulletStop[BULLET_SHOOT_MAX];
+
+	//冷気を出す音
+	m_SE_11 = LoadSound((char*)"data\\SE\\1_11.wav");
+	//SetVolume(m_SE_06, 0.4f);
+}
 
 //==========================
 // 更新処理
@@ -64,6 +78,8 @@ void PlayerArmStop::Update(const D3DXVECTOR2& arm_pos)
 
 			//作った弾の数を増やす
 			inhPlayerArm::IncreaseBulletMaked();
+
+			PlaySound(m_SE_11, 0);
 		}
 	}
 }

@@ -30,7 +30,8 @@ private:
 //メンバ変数
 private:
 	DrawObject m_bulletdraw;			//弾の描画オブジェクト
-	BulletStop* m_pBullet = nullptr;		//弾のオブジェクト
+	BulletStop* m_pBullet = nullptr;	//弾のオブジェクト
+	int m_SE_11 = 0;					//冷気を出す音
 
 
 //メンバ関数
@@ -39,10 +40,7 @@ public:
 	PlayerArmStop() { m_pBullet = new BulletStop[BULLET_SHOOT_MAX]; }
 
 	//引数付きコンストラクタ
-	PlayerArmStop(DrawObject bulletdraw, bool right, int type)
-		:inhPlayerArm(BULLET_NUM_MAX, right, type), m_bulletdraw(bulletdraw) {
-		m_pBullet = new BulletStop[BULLET_SHOOT_MAX];
-	}
+	PlayerArmStop(DrawObject bulletdraw, bool right, int type);
 
 	//デストラクタ
 	~PlayerArmStop()override { delete[] m_pBullet; }

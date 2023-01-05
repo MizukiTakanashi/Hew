@@ -38,13 +38,16 @@ public:
 	static const int LASER_ATTACK = 1;		//攻撃値
 
 
+//メンバ変数
 private:
-	//メンバ変数
 	EnemyLaser* m_pEnemyLaser = nullptr;
 	Laser* m_pLaser = nullptr;
 	DrawObject m_pDrawObjectEnemy;
 	DrawObject m_pDrawObjectLaser;
 	DrawObject m_pDrawObjectLaser1;
+
+	int m_SE_06 = 0;	//ビーム音
+	int m_SE_07 = 0;	//ビーム発射音
 
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = { 
@@ -59,6 +62,8 @@ private:
 		60 * 80,
 	};
 
+
+//メンバー関数
 public:
 	//デフォルトコンストラクタ
 	EnemyLaserManagement(){

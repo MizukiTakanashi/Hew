@@ -30,8 +30,8 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject = new DrawObject[(int)DRAW_TYPE::NUM];
 
 	//”wŒi‚Ì‰Šú‰»ˆ—
-	m_pBG = new BG((char*)"data\\texture\\stage_select_bg.jpg");
-	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\earth.png");
+	m_pBG = new BG((char*)"data\\texture\\game_bg_scroll.jpg");
+	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\mars.png");
 
 	//=======================
 	// ’e
@@ -205,6 +205,7 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyStopManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyNormalManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemyIceRainManagement);
 
 }
 

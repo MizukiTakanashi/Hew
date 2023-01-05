@@ -41,8 +41,8 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 	m_pDrawObject = new DrawObject[(int)DRAW_TYPE::NUM];
 
 	//背景の初期化処理
-	m_pBG = new BG((char*)"data\\texture\\stage_select_bg.jpg");
-	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\earth.png");
+	m_pBG = new BG((char*)"data\\texture\\game_bg_scroll.jpg");
+	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\moon.png");
 
 	m_pTextManagement = new TextManagement();
 
@@ -97,14 +97,10 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::METEO], 2.0f, 1.0, 1.0f, 3);
 
 	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 0);
-	//m_pEnemyMissileManagement = new EnemyMissileManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY]);
 	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER_LASER], 
 		m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER_LASER]);
 	m_pEnemyGatoringManagement = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY]);
-	//m_pEnemyPublicManagement = new Management_EnemyPublic(m_pDrawObject[(int)DRAW_TYPE::ENEMY_PUBLIC]);
-	//m_pEnemyAttackManagement = new EnemyAttackManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ATTCK], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY]);
 	m_pMeteoManagement = new Management_Meteo(m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO]);
-	//m_pEnemyBarrierManagement = new EnemyBarrierManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER], m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
 
 	//=======================
 	// 残弾表示
@@ -202,18 +198,13 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 	//========================================================
 	// 全ての当たり判定
 	m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
-		m_pItemManagement, m_pScore, m_pBom);
+		m_pItemManagement, m_pScore, m_pBom, m_pMeteoManagement);
 
 	//敵のポインタをセット（順番変えるのNG）
 	m_pColAll->AddEnemyPointer(m_pEnemyNormalManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyLaserManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyGatoringManagement);
-	//m_pColAll->AddEnemyPointer(m_pEnemyPublicManagement);
-	//m_pColAll->AddEnemyPointer(m_pEnemyMissileManagement);
-	//m_pColAll->AddEnemyPointer(m_pEnemyAttackManagement);
-	//m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
-	m_pColAll->AddEnemyPointer(m_pMeteoManagement);
-
+	//m_pColAll->AddEnemyPointer(m_pMeteoManagement);
 }
 
 //==========================
@@ -234,10 +225,6 @@ Game::~Game()
 	delete m_pEnemyNormalManagement;
 	delete m_pEnemyLaserManagement;
 	delete m_pEnemyGatoringManagement;
-	//delete m_pEnemyPublicManagement;
-	//delete m_pEnemyMissileManagement;
-	//delete m_pEnemyAttackManagement;
-	//delete m_pEnemyBarrierManagement;
 	delete m_pMeteoManagement;
 	delete m_pItemManagement;
 	delete m_pPlayer;

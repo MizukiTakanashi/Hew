@@ -53,6 +53,8 @@ private:
 
 	int m_move_time = -1;									//動く時間カウント
 
+	int m_SE_01 = 0;										//決定音
+	int m_SE_03 = 0;										//カーソル移動音
 
 //メンバ関数
 public:

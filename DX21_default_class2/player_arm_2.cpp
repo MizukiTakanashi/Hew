@@ -4,6 +4,7 @@
 // 作成者：高梨水希
 //=======================================
 #include "player_arm_2.h"
+#include "sound.h"
 
 //==========================
 // 定数の初期化
@@ -12,6 +13,25 @@ const float PlayerArm2::BULLET_SIZE_X = 20.0f;
 const float PlayerArm2::BULLET_SIZE_Y = 0.0f;
 const float PlayerArm2::BULLET_SPEED = 2.5f;
 const float PlayerArm2::SPEED_Y = 15.0f;
+
+//==========================
+// 引数付きコンストラクタ
+//==========================
+PlayerArm2::PlayerArm2(DrawObject& bulletdraw, bool right, int type)
+	:inhPlayerArm(BULLET_NUM_MAX, right, type), m_laser_draw(bulletdraw) 
+{
+	m_pLaser = new Laser[BULLET_SHOOT_MAX];
+
+	//===================
+	// 音
+
+	//ビーム音
+	m_SE_06 = LoadSound((char*)"data\\SE\\2_06.wav");
+	SetVolume(m_SE_06, 0.4f);
+
+	//ビーム発射音
+	m_SE_07 = LoadSound((char*)"data\\SE\\2_07.wav");
+}
 
 //==========================
 // 更新処理
@@ -60,6 +80,9 @@ void PlayerArm2::Update(const D3DXVECTOR2& arm_pos)
 
 			//作った弾の数を増やす
 			inhPlayerArm::IncreaseBulletMaked();
+
+			PlaySound(m_SE_06, 0);
+			PlaySound(m_SE_07, 0);
 		}
 	}
 }

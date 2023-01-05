@@ -15,6 +15,7 @@
 #include "management_item.h"
 #include "score.h"
 #include "Bom.h"
+#include "management_meteo.h"
 
 class CollisionAll
 {
@@ -25,7 +26,6 @@ private:
 		NORMAL,
 		LASER,
 		GATORING,
-		METEO,
 		NUM
 	};
 
@@ -56,6 +56,8 @@ private:
 
 	Bom* m_pBom = nullptr;							//ボム
 
+	Management_Meteo* m_pMeteo = nullptr;			//隕石
+
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
@@ -63,7 +65,8 @@ public:
 
 	//引数付きコンストラクタ
 	CollisionAll(Player* pPlayer, inhPlayerArmBoth* pL, inhPlayerArmBoth* pR, 
-		ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber, Bom* pBom);
+		ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber, 
+		Bom* pBom, Management_Meteo* pMeteo);
 
 	//デストラクタ
 	~CollisionAll(){}

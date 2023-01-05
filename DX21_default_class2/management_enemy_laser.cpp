@@ -4,6 +4,7 @@
 // 作成者：恩田洋行
 //=======================================
 #include "management_enemy_laser.h"
+#include "sound.h"
 
 //==========================
 // 定数の初期化
@@ -21,6 +22,16 @@ EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject&
 {
 	m_pEnemyLaser = new EnemyLaser[ENEMY_NUM];
 	m_pLaser = new Laser[ENEMY_NUM];
+
+	//===================
+	// 音
+
+	//ビーム音
+	m_SE_06 = LoadSound((char*)"data\\SE\\2_06.wav");
+	SetVolume(m_SE_06, 0.4f);
+
+	//ビーム発射音
+	m_SE_07 = LoadSound((char*)"data\\SE\\2_07.wav");
 }
 
 //======================
@@ -105,6 +116,9 @@ void EnemyLaserManagement::Update()
 			EnemyManagement::IncreaseBulletNum(1);
 
 			m_pEnemyLaser[i].BulletMake();
+
+			PlaySound(m_SE_06, 0);
+			PlaySound(m_SE_07, 0);
 		}
 	}
 
