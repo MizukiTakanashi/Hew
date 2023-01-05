@@ -8,8 +8,8 @@
 // ’è”‰Šú‰»
 //==========================
 //public
-const float Boss::SIZE_X = 50.0f;
-const float Boss::SIZE_Y = 60.0f;
+const float Boss::SIZE_X = 200.0f;
+const float Boss::SIZE_Y = 200.0f;
 const float Boss::STOP_POS_Y = 100.0f;
 const float Boss::RANGE = 20.0f;
 //private
@@ -64,3 +64,4 @@ void Boss::Update(void)
 		}
 		GameObject::SetColor(D3DXCOLOR(1.0f, 1.0f, 1.0f, m_alpha));
 	}
+}

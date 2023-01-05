@@ -32,7 +32,7 @@ protected:
 	int m_EnemyNum = 0;				//出現させた敵の数
 	int m_FlameNum = 0;				//現在のフレーム数
 	bool m_tutorial_clear = false;	//最後の敵を倒したかどうか(チュートリアル)
-
+	int m_delete_enemy = 0; //消した敵の数
 
 //メンバ関数
 public:

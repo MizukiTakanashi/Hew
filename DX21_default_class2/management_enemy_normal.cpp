@@ -135,6 +135,7 @@ bool EnemyNormalManagement::ReduceHP(int index_num, int reduceHP)
 //======================
 void EnemyNormalManagement::DeleteObj(int index_num)
 {
+	m_delete_enemy++;
 	//敵を消す
 	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
 		m_pEnemyNormal[i] = m_pEnemyNormal[i + 1];
@@ -143,7 +144,7 @@ void EnemyNormalManagement::DeleteObj(int index_num)
 	//継承元の敵を消すを呼ぶ
 	EnemyManagement::DeleteObj(index_num);
 
-	if (m_EnemyNum == ENEMY_NUM[m_stage_num]) {
+	if (m_delete_enemy == ENEMY_NUM[m_stage_num]) {
 		m_tutorial_clear = true;
 	}
 }

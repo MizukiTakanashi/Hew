@@ -9,6 +9,7 @@
 #define _BOSS_H_
 
 #include "game_object.h"
+#include "management.h"
 
 class Boss :public GameObject
 {
@@ -50,7 +51,6 @@ protected:
 	float m_alpha = 1.0f;				//アルファ値
 	bool m_alpha_flag = false;			//アルファ値を変えていいか
 
-
 	//メンバ関数
 public:
 	//デフォルトコンストラクタ
@@ -58,13 +58,13 @@ public:
 
 	//引数付きコンストラクタ
 	Boss(DrawObject& pDrawObject)
-		:GameObject(pDrawObject, D3DXVECTOR2(POS_X, POS_Y), D3DXVECTOR2(SIZE_X, SIZE_Y)), m_hp(HP_MAX), m_init_posx(POS_X) {}
+		: GameObject(pDrawObject, D3DXVECTOR2(POS_X, POS_Y), D3DXVECTOR2(SIZE_X, SIZE_Y)), m_hp(HP_MAX), m_init_posx(POS_X) {}
 
 	//デストラクタ
 	~Boss()override {}
 
 	//更新処理
-	virtual void Update(void) {}
+	void Update(void);
 
 	//弾を作るか否かのフラグを返す
 	bool GetFlagBulletMake()const { return m_bullet_make; }
