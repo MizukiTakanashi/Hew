@@ -261,6 +261,11 @@ void StageMars::Update(void)
 		MarsStopFlame--;
 		return;
 	}
+
+	//ボスが死んだら
+	if (isDownBoss)
+		Fade(SCENE::SCENE_RESULT);
+
 	//背景
 	m_pBG->Update();
 	m_pBG_Moon->Update();
@@ -333,9 +338,6 @@ void StageMars::Update(void)
 		Fade(SCENE::SCENE_RESULT);
 	}
 
-	//ボスが死んだら
-	if(isDownBoss)
-		Fade(SCENE::SCENE_RESULT);
 }
 
 //==========================
