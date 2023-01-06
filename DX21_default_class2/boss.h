@@ -9,8 +9,6 @@
 #define _BOSS_H_
 
 #include "game_object.h"
-#include "management.h"
-#include "game.h"
 
 class Boss :public GameObject
 {
@@ -74,21 +72,7 @@ public:
 	void BulletMake() { m_bullet_make = false; }
 
 	//HP‚ðŒ¸‚ç‚·
-	void ReduceHP(int amount)
-	{
-		if (m_invincible_flame <= 0)
-		{
-			m_hp -= amount;
-			m_invincible_flame = INVINCIBLE_FLAME;
-
-			if (m_hp <= 0)
-				BossDown();
-				HitStop(180);
-		}
-		else
-		{
-		}
-	}
+	void ReduceHP(int amount);
 
 	//HP‚ð•Ô‚·
 	int GetHP(void) { return m_hp; }

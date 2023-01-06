@@ -392,7 +392,7 @@ void MarsHitStop(int flame)
 	MarsStopFlame = flame;
 }
 
-void BossDown()
+void MarsBossDown()
 {
 	isDownBoss = true;
 }

@@ -4,6 +4,8 @@
 // ì¬ÒF‰¶“c—ms
 //=======================================
 #include "boss.h"
+#include "stage_mars.h"
+
 //==========================
 // ’è”‰Šú‰»
 //==========================
@@ -63,5 +65,21 @@ void Boss::Update(void)
 			m_alpha = 0.0f;
 		}
 		GameObject::SetColor(D3DXCOLOR(1.0f, 1.0f, 1.0f, m_alpha));
+	}
+}
+
+void Boss::ReduceHP(int amount)
+{
+	if (m_invincible_flame <= 0)
+	{
+		m_hp -= amount;
+		m_invincible_flame = INVINCIBLE_FLAME;
+
+		if (m_hp <= 0)
+			MarsBossDown();
+			MarsHitStop(180);
+	}
+	else
+	{
 	}
 }
