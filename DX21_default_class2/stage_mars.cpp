@@ -125,6 +125,8 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pPlayerLeft->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
 		//動きを止める敵
 	m_pPlayerLeft->DrawSetBulleStop(&m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
+	//氷の敵
+	m_pPlayerLeft->DrawSetIceRain(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE]);
 
 	//=======================
 	// プレイヤーの腕の右
@@ -143,7 +145,8 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	//動きを止める敵
 	m_pPlayerRight->DrawSetBulleStop(&m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
 
-
+	//氷の敵
+	m_pPlayerRight->DrawSetIceRain(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE]);
 	//=======================
 	// プレイヤーの腕の真ん中
 		//自身
