@@ -87,10 +87,6 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
 	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 1);
 
-	//ˆÚA—\’èƒKƒX‚Ì“G
-	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_GAS].SetTextureName((char*)"data\\texture\\bullet_gass.png");
-	m_pDrawObject[(int)DRAW_TYPE::BULLET__GAS].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_GAS]);
-	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::BULLET__GAS], m_pDrawObject[(int)DRAW_TYPE::BULLET__GAS], m_pDrawObject[(int)DRAW_TYPE::BULLET__GAS], 1);
 
 	//=======================
 	// Žc’e•\Ž¦
@@ -250,7 +246,6 @@ StageMars::~StageMars()
 	delete m_pMultiply;
 	delete m_pEnemyIceRainManagement;
 	delete m_pEnemyStopManagement;
-	delete m_pEnemyLaserManagement;//ˆÚA—\’è
 	//‚»‚Ì‚Ù‚©
 	delete[] m_pDrawObject;
 	delete[] m_pTexUseful;
@@ -299,7 +294,6 @@ void StageMars::Update(void)
 	m_pEnemyBarrierManagement->Update();
 	m_pEnemyIceRainManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyStopManagement->Update();
-	m_pEnemyLaserManagement->Update();//ˆÚA—\’è
 
 	//ƒ{ƒ€
 	m_pBom->Update();
@@ -369,7 +363,6 @@ void StageMars::Draw(void) const
 	m_pEnemyBarrierManagement->Draw();
 	m_pEnemyIceRainManagement->Draw();
 	m_pEnemyStopManagement->Draw();
-	m_pEnemyLaserManagement->Draw();//ˆÚA—\’è
 
 	if(m_pBoss)
 	m_pBoss->Draw();
