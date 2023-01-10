@@ -33,10 +33,6 @@ private:
 
 //メンバ変数
 private:
-	int m_appearance_time = 0;			//出現してからのカウント
-	float m_alpha = 1.0f;				//アルファ値
-	bool m_alpha_flag = false;			//アルファ値を変えていいか
-
 //メンバ関数
 public:
 	EnemyNormal(){}		//デフォルトコンストラクタ
@@ -49,14 +45,6 @@ public:
 
 	void Update(void);	//更新処理
 
-	//出現してからのカウントを数える
-	int GetAppearanceTime(void)const { return m_appearance_time; }
-
-	//アルファ値を帰るフラグをオン
-	void OnAlphaFlag(void) { m_alpha_flag = true; }
-
-	//現在のアルファ値を返す
-	float GetAlpha(void)const { return m_alpha; }
 };
 
 #endif // !_ENEMY_NORMAL_H_

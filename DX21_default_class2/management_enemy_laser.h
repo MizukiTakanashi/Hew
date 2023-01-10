@@ -45,7 +45,6 @@ private:
 	DrawObject m_pDrawObjectEnemy;
 	DrawObject m_pDrawObjectLaser;
 	DrawObject m_pDrawObjectLaser1;
-	bool m_tutorial_clear = false;	//最後の敵を倒したかどうか(チュートリアル)
 
 	int m_SE_06 = 0;	//ビーム音
 	int m_SE_07 = 0;	//ビーム発射音
@@ -104,9 +103,6 @@ public:
 
 	//弾のサイズを返す
 	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override{ return m_pLaser[index_num].GetSize(); }
-
-	//チュートリアルのクリア判定
-	bool IsClear(void)const { return m_tutorial_clear; }
 
 	//指定した番号の敵を止める
 	void StopEnemy(int index_num, int time) override { m_pEnemyLaser[index_num].StopEnemy(time); }

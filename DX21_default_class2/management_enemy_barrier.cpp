@@ -123,6 +123,7 @@ bool EnemyBarrierManagement::ReduceOtherHP(int index_num, int reduceHP)
 //======================
 void EnemyBarrierManagement::DeleteObj(int index_num)
 {
+	m_delete_enemy++;
 	//“G‚É•t‚µ‚Ä‚¢‚éƒoƒŠƒA‚ª‚Ü‚¾‰ó‚ê‚Ä‚¢‚È‚©‚Á‚½‚ç...
 	if (m_BarrierHP[m_pEnemy[index_num].GetBarrierIndex()] != -1) {
 		//“G‚É•t‚µ‚Ä‚¢‚éƒoƒŠƒA‚ğÁ‚·
@@ -136,6 +137,11 @@ void EnemyBarrierManagement::DeleteObj(int index_num)
 
 	//Œp³Œ³‚Ì“G‚ğÁ‚·‚ğŒÄ‚Ô
 	EnemyManagement::DeleteObj(index_num);
+
+	if (m_delete_enemy == ENEMY_NUM) {
+		m_tutorial_clear = true;
+	}
+
 }
 
 //======================

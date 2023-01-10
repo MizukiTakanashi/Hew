@@ -16,6 +16,7 @@ const D3DXVECTOR2 StageMars::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
 // グローバル変数
 //==========================
 int MarsStopFlame = 0; //ヒットストップ用
+bool isDownBoss = false; //ボスが死んだか
 
 //==========================
 // 引数付きコンストラクタ
@@ -124,6 +125,8 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pPlayerLeft->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
 		//動きを止める敵
 	m_pPlayerLeft->DrawSetBulleStop(&m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
+	//氷の敵
+	m_pPlayerLeft->DrawSetIceRain(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE]);
 
 	//=======================
 	// プレイヤーの腕の右
@@ -142,7 +145,8 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	//動きを止める敵
 	m_pPlayerRight->DrawSetBulleStop(&m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
 
-
+	//氷の敵
+	m_pPlayerRight->DrawSetIceRain(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE]);
 	//=======================
 	// プレイヤーの腕の真ん中
 		//自身
@@ -195,6 +199,7 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pAllEnemyManagement = new AllEnemyManagement;
 	m_pAllEnemyManagement->AddPointer(m_pEnemyBarrierManagement);
 
+
 	//========================================================
 	// 全ての当たり判定
 	m_pColAll = new MarsCollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
@@ -219,6 +224,8 @@ StageMars::~StageMars()
 	delete m_pColAll;
 
 	//ゲームオブジェクトを消す
+	if(m_pBoss)
+	delete m_pBoss;
 	delete m_pBom;
 	delete m_pBG;
 	delete m_pBG_Moon;
@@ -257,6 +264,11 @@ void StageMars::Update(void)
 		MarsStopFlame--;
 		return;
 	}
+
+	//ボスが死んだら
+	if (isDownBoss)
+		Fade(SCENE::SCENE_RESULT);
+
 	//背景
 	m_pBG->Update();
 	m_pBG_Moon->Update();
@@ -302,6 +314,17 @@ void StageMars::Update(void)
 	m_pPlayerCenter->ButtonPress();
 	m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
 
+	//ボス処理
+	if (m_pBoss)
+	{
+		m_pBoss->Update();
+	}
+	else if(m_pEnemyBarrierManagement->IsClear() && m_pEnemyStopManagement->IsClear())
+	{
+		m_pBoss = new Boss(m_pDrawObject[(int)DRAW_TYPE::ENEMY_STOP]);
+	}
+
+
 	//敵とプレイヤーの当たり判定
 	attack_num += m_pColAll->Collision();
 
@@ -317,6 +340,7 @@ void StageMars::Update(void)
 	if (m_pPlayerHP->GetHP0Flag()) {
 		Fade(SCENE::SCENE_RESULT);
 	}
+
 }
 
 //==========================
@@ -338,6 +362,9 @@ void StageMars::Draw(void) const
 	m_pEnemyBarrierManagement->Draw();
 	m_pEnemyIceRainManagement->Draw();
 	m_pEnemyStopManagement->Draw();
+
+	if(m_pBoss)
+	m_pBoss->Draw();
 
 	//プレイヤーの弾の表示
 	m_pPlayer->DrawBullet();
@@ -366,4 +393,9 @@ void StageMars::Draw(void) const
 void MarsHitStop(int flame)
 {
 	MarsStopFlame = flame;
+}
+
+void MarsBossDown()
+{
+	isDownBoss = true;
 }

@@ -31,6 +31,7 @@
 #include "mars_collision_all.h"
 #include "player_center.h"
 #include "Bom.h"
+#include "boss.h"
 
 class StageMars
 {
@@ -137,6 +138,8 @@ private:
 
 	Bom* m_pBom = nullptr;					//ボム
 
+	Boss* m_pBoss = nullptr;
+
 	//メンバ関数
 public:
 	StageMars() {}	//デフォルトコンストラクタ
@@ -156,5 +159,6 @@ public:
 };
 
 void MarsHitStop(int flame);
+void MarsBossDown();
 
 #endif // !_STAGE_MARS_H_

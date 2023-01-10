@@ -25,7 +25,7 @@ public:
 		TYPE3, //ガトリング
 		TYPE4, //バリア
 		TYPE5, //動きを止める
-		TYPE6,
+		TYPE6,	//氷の敵
 		TYPE7,
 		TYPE8,
 		TYPE_SHOOT,	// 前のタイプの弾の処理 & 自身発射中
@@ -52,6 +52,7 @@ private:
 	DrawObject m_laser_draw;				//レーザーの描画オブジェクト
 	DrawObject* m_barrier_draw = nullptr;	//バリアの描画オブジェクト
 	DrawObject* m_bullet_stop_draw = nullptr;	//動きを止める敵の弾の描画オブジェクト
+	DrawObject* m_bullet_icerain_draw = nullptr;	//氷の敵の描画
 
 	bool m_separation_button = false;		//切り離しボタンが押されたか
 	bool m_bullet_shot = false;				//弾発射のボタンが押されたか(押している間)
@@ -114,6 +115,9 @@ public:
 
 	//動きを止める敵の弾描画オブジェクトをセット
 	void DrawSetBulleStop(DrawObject* pDraw) { m_bullet_stop_draw = pDraw; }
+
+	//氷の敵の腕の描画
+	void DrawSetIceRain(DrawObject* pDraw) { m_bullet_icerain_draw = pDraw; }
 };
 
 #endif // !_INH_PLAYER_ARM_BOTH_H_
