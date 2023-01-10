@@ -20,7 +20,7 @@ class EnemyLaserManagement:public EnemyManagement
 private:
 	//ここで初期化
 	//敵自身
-	static const int ENEMY_NUM = 3;		//敵を出現させる数
+	static const int ENEMY_NUM[(int)STAGE::NUM];	//敵を出現させる数W
 	static const int EXIT_TIME = 60 * 15;	//退出時間
 
 	//cppで初期化
@@ -50,29 +50,37 @@ private:
 	int m_SE_07 = 0;	//ビーム発射音
 
 	//敵の配列
-	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = { 
-		D3DXVECTOR2(52.5f + (105 *  4), -EnemyLaser::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  6), -EnemyLaser::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  5), -EnemyLaser::SIZE_Y / 2),
+	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][3] = {
+		{
+			D3DXVECTOR2(52.5f + (105 * 4), -EnemyLaser::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 6), -EnemyLaser::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 5), -EnemyLaser::SIZE_Y / 2),
+		},
+		{
+			D3DXVECTOR2(52.5f + (105 * 4), -EnemyLaser::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 6), -EnemyLaser::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 5), -EnemyLaser::SIZE_Y / 2),
+		}
 	};
 	//敵を出す時間
-	int m_SetEnemyTime[ENEMY_NUM] = { 
-		60 * 60,
-		60 * 60 + 1,
-		60 * 80,
+	int m_SetEnemyTime[(int)STAGE::NUM][3] = {
+		{
+			60 * 60,
+			60 * 60 + 1,
+			60 * 80,
+		},
+		{
+			60 * 5,
+			60 * 10,
+			60 * 20,
+		}
 	};
 
 
 //メンバー関数
 public:
-	//デフォルトコンストラクタ
-	EnemyLaserManagement(){
-		m_pEnemyLaser = new EnemyLaser[ENEMY_NUM];
-		m_pLaser = new Laser[ENEMY_NUM];
-	}	
-
 	//引数付きコンストラクタ
-	EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, DrawObject& pDrawObject3);
+	EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, DrawObject& pDrawObject3, int stage);
 
 	//デストラクタ
 	~EnemyLaserManagement()override{}

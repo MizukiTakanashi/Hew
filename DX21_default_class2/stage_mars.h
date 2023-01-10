@@ -32,6 +32,7 @@
 #include "player_center.h"
 #include "Bom.h"
 #include "boss.h"
+#include "management_enemy_laser.h"//ˆÚA—\’è
 
 class StageMars
 {
