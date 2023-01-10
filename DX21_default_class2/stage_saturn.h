@@ -1,12 +1,12 @@
 #pragma once
 //=======================================
-// 火星のステージ関係(ヘッダファイル)
-// 作成日：2022/12/15
-// 作成者：高梨水希
+// 土星のステージ関係(ヘッダファイル)
+// 作成日：
+// 作成者：恩田洋行
 //=======================================
 
-#ifndef _STAGE_MARS_H_
-#define _STAGE_MARS_H_
+#ifndef _STAGE_SATURN_H_
+#define _STAGE_SATURN_H_
 
 #include "main.h"
 #include "sprite.h"
@@ -15,9 +15,6 @@
 #include "player.h"
 #include "draw_object.h"
 #include "management_enemy_barrier.h"
-#include "management_enemy_normal.h"
-#include "management_enemy_icerain.h"
-#include "management_enemy_stop.h"
 #include "texture_useful.h"
 #include "player_hp.h"
 #include "management_explosion.h"
@@ -28,13 +25,11 @@
 #include "management_item.h"
 #include "all_enemy_management.h"
 #include "player_arm_change.h"
-#include "mars_collision_all.h"
+#include "collision_all.h"
 #include "player_center.h"
 #include "Bom.h"
-#include "boss.h"
-#include "management_enemy_laser.h"//移植予定
 
-class StageMars
+class StageSaturn
 {
 	//定数
 private:
@@ -60,10 +55,6 @@ private:
 		EXPLOSION,
 		NUMBER,
 		MULTIPLY,
-		ENEMY_ICE,	//氷の敵のテクスチャセット
-		BULLET_ICE,	//氷の弾のテクスチャセット
-		ENEMY_STOP,
-		BULLET_STOP,
 		NUM
 	};
 
@@ -73,14 +64,9 @@ private:
 		PLAYER_HP_BAR,
 		ENEMY_BARRIER,
 		ENEMY_BARRIER_BARRIER,
-		ENEMY_ICE,
-		ENEMY_STOP,
-		ENEMY_NOREMAL,
-		BULLET_STOP,
 		ENEMY_ITEM,
 		PLAYER_BULLET,
 		BULLET_ENEMY,
-		BULLET_ENEMY_ICE,
 		EXPLOSION,
 		PLAYER_ARM_LEFT,
 		PLAYER_ARM_LEFT_BULLET,
@@ -110,11 +96,7 @@ private:
 	BG* m_pBG = nullptr;
 	BGPlanet* m_pBG_Moon = nullptr;
 	Player* m_pPlayer = nullptr;
-
 	EnemyBarrierManagement* m_pEnemyBarrierManagement = nullptr;
-	EnemyIceRainManagement* m_pEnemyIceRainManagement = nullptr;
-	EnemyStopManagement* m_pEnemyStopManagement = nullptr;
-	EnemyNormalManagement* m_pEnemyNormalManagement = nullptr;
 
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;
@@ -135,19 +117,17 @@ private:
 
 	PlayerArmChange* m_pPlayerArmChange = nullptr;	//腕の交換
 
-	MarsCollisionAll* m_pColAll = nullptr;		//全ての当たり判定
+	CollisionAll* m_pColAll = nullptr;		//全ての当たり判定
 
 	Bom* m_pBom = nullptr;					//ボム
 
-	Boss* m_pBoss = nullptr;
-
 	//メンバ関数
 public:
-	StageMars() {}	//デフォルトコンストラクタ
+	StageSaturn(){}	//デフォルトコンストラクタ
 
-	StageMars(Score* pNumber);
+	StageSaturn(Score* pNumber);
 
-	~StageMars();	//デストラクタ
+	~StageSaturn();	//デストラクタ
 
 	//更新
 	void Update(void);
@@ -159,7 +139,8 @@ public:
 	int GetScore(void)const { return m_pScore->GetNumber(); }
 };
 
-void MarsHitStop(int flame);
-void MarsBossDown();
+void SaturnHitStop(int flame);
+void SaturnBossDown();
 
-#endif // !_STAGE_MARS_H_
+
+#endif // !_STAGE_SATURN_H_

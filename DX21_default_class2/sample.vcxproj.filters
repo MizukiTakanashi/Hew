@@ -241,8 +241,9 @@
     <ClCompile Include="boss.cpp">
       <Filter>11_MultiScene</Filter>
     </ClCompile>
-    <ClCompile Include="player_arm_icerain.cpp">
-      <Filter>03_Mars</Filter>
+    <ClCompile Include="player_arm_icerain.cpp" />
+    <ClCompile Include="stage_saturn.cpp">
+      <Filter>05_Saturn</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -489,8 +490,9 @@
     <ClInclude Include="screen_out.h">
       <Filter>11_MultiScene</Filter>
     </ClInclude>
-    <ClInclude Include="player_arm_icerain.h">
-      <Filter>03_Mars</Filter>
+    <ClInclude Include="player_arm_icerain.h" />
+    <ClInclude Include="stage_saturn.h">
+      <Filter>05_Saturn</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -514,6 +516,9 @@
     </Filter>
     <Filter Include="11_MultiScene">
       <UniqueIdentifier>{e374412b-d803-41db-830d-bbb87ec9d386}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05_Saturn">
+      <UniqueIdentifier>{43fc8ab1-608c-41bf-a72a-5623b5ff6fd4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -10,15 +10,11 @@
 //==========================
 // 定数の初期化
 //==========================
-//public
-const D3DXVECTOR2 EnemyGrenadeManagement::FIND_RANGE = D3DXVECTOR2(50.0f, 50.0f);
-const D3DXVECTOR2 EnemyGrenadeManagement::EXPLOSION_RANGE = D3DXVECTOR2(70.0f, 70.0f);
-
 //private
-const D3DXVECTOR2 EnemyGrenadeManagement::VISION_FIND_RANGE = D3DXVECTOR2(20.0f, 20.0f);
-const D3DXVECTOR2 EnemyGrenadeManagement::VISION_EXPLOSION_RANGE = D3DXVECTOR2(60.0f, 60.0f);
 const int EnemyGrenadeManagement::ENEMY_NUM[(int)STAGE::NUM] = { 5 };
 const float EnemyGrenadeManagement::BULLET_SPEED = 5.0f;
+const D3DXVECTOR2 EnemyGrenadeManagement::BULLET_SIZE = D3DXVECTOR2(50.0f, 50.0f);
+const D3DXVECTOR2 EnemyGrenadeManagement::EXPLOSION_RANGE = D3DXVECTOR2(200.0f, 200.0f);
 
 //=========================
 // 引数付きコンストラクタ
@@ -79,23 +75,42 @@ void EnemyGrenadeManagement::Update(const D3DXVECTOR2& PlayerPos)
 			//float rotTemp = atan2(rotposTemp.y, rotposTemp.x) * (180 / M_PI) + 90.0f;
 
 			Bullet temp(m_pDrawObjectBullet, m_pEnemy[i].GetPos(),
-				FIND_RANGE, movTemp, 0.0f);
+				BULLET_SIZE, movTemp, 0.0f);
 			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
 
-			EnemyManagement::IncreaseBulletNum(1);
+			EnemyManagement::IncreaseObjNum(1);
 
 			m_pEnemy[i].BulletMake();
 		}
 	}
 
-	//今いる弾の処理
-	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {
+	//今いる弾の処理(別オブジェクト)
+	for (int i = 0; i < EnemyManagement::GetOtherNum(); i++) {
 		//弾の更新処理
 		m_pBullet[i].Update();
 
 		//画面外から出たら、時間経過したら...
 		if (m_pBullet[i].GetScreenOut() || m_pBullet[i].GetTime() > BULLET_BREAK_TIME) {
-			//弾を消す
+			for (int j = i; i < EnemyManagement::GetOtherNum() - 1; i++) {
+				m_pBullet[i] = m_pBullet[i + 1];
+			}
+
+			EnemyManagement::IncreaseOtherNum(-1);
+		}
+	}
+
+	//今いる弾の処理(爆発)
+	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {
+		//弾の更新処理
+		m_pExplosion[i]->Update();
+
+		//爆発時間になったら...
+		if (m_pExplosion[i]->GetTime() > EXPLOSION_WAIT_TIME) {
+			m_pExplosion[i]->SetSize(EXPLOSION_RANGE);
+		}
+
+		//爆発時間が終わったら...
+		if (m_pExplosion[i]->GetTime() > EXPLOSION_WAIT_TIME + EXPLOSION_TIME) {
 			DeleteBullet(i);
 		}
 	}
@@ -113,6 +128,17 @@ void EnemyGrenadeManagement::Draw(void)const
 	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {
 		m_pBullet[i].Draw();
 	}
+}
+
+//======================
+// 爆発をセット
+//======================
+void EnemyGrenadeManagement::SetExplosion(D3DXVECTOR2 pos) 
+{
+	m_pExplosion[EnemyManagement::GetBulletNum()] =
+		new Bullet(m_pDrawObjectExplosion, pos, D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(0.0f, 0.0f), 0.0f);
+
+	EnemyManagement::IncreaseBulletNum(1);
 }
 
 //======================
@@ -150,7 +176,7 @@ void EnemyGrenadeManagement::DeleteObj(int index_num)
 void EnemyGrenadeManagement::DeleteBullet(int index_num)
 {
 	for (int i = index_num; i < EnemyManagement::GetBulletNum() - 1; i++) {
-		m_pBullet[i] = m_pBullet[i + 1];
+		m_pExplosion[i] = m_pExplosion[i + 1];
 	}
 	EnemyManagement::IncreaseBulletNum(-1);
 }

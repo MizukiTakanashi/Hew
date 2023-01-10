@@ -4,6 +4,7 @@
 // ì¬ÒF‚—œ…Šó
 //=======================================
 #include "management_enemy_icerain.h"
+#include "sound.h"
 
 //==========================
 // ’è”‚Ì‰Šú‰»
@@ -20,6 +21,10 @@ EnemyIceRainManagement::EnemyIceRainManagement(DrawObject& pDrawObject1, DrawObj
 {
 	m_pEnemyIceRain = new EnemyIceRain[ENEMY_NUM];
 	m_pBullet = new Bullet[ENEMY_NUM];
+
+	//•X’Œ‚ğ~‚ç‚¹‚é‰¹
+	m_SE_13 = LoadSound((char*)"data\\SE\\1_13.wav");
+	//SetVolume(m_SE_06, 0.4f);
 }
 
 //======================
@@ -53,6 +58,8 @@ void EnemyIceRainManagement::Update(const D3DXVECTOR2& PlayerPos)
 			EnemyManagement::IncreaseBulletNum(1);
 
 			m_pEnemyIceRain[i].BulletMake();
+
+			PlaySound(m_SE_13, 0);
 		}
 		//’e‚ğì‚é
 		if (m_pEnemyIceRain[i].GetFlagBulletMake1())

@@ -16,7 +16,7 @@ const D3DXVECTOR2 StageMars::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
 // グローバル変数
 //==========================
 int MarsStopFlame = 0; //ヒットストップ用
-bool isDownBoss = false; //ボスが死んだか
+bool isDownMars = false; //ボスが死んだか
 
 //==========================
 // 引数付きコンストラクタ
@@ -25,7 +25,7 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 {
 	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);	//BGM再生
-	SetVolume(m_BGM, 0.1f);
+	SetVolume(m_BGM, 0.01f);
 
 	m_pTexUseful = new TextureUseful[(int)TEXTURE_TYPE::NUM];
 	m_pDrawObject = new DrawObject[(int)DRAW_TYPE::NUM];
@@ -86,7 +86,8 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	//ホーミングの敵
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
 	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 1);
-	
+
+
 	//=======================
 	// 残弾表示
 	m_pTexUseful[(int)TEXTURE_TYPE::NUMBER].SetTextureName((char*)"data\\texture\\number.png");
@@ -268,7 +269,7 @@ void StageMars::Update(void)
 	}
 
 	//ボスが死んだら
-	if (isDownBoss)
+	if (isDownMars)
 		Fade(SCENE::SCENE_RESULT);
 
 	//背景
@@ -399,5 +400,5 @@ void MarsHitStop(int flame)
 
 void MarsBossDown()
 {
-	isDownBoss = true;
+	isDownMars = true;
 }

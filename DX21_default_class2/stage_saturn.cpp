@@ -1,109 +1,75 @@
 //=======================================
-// ã‚²ãƒ¼ãƒ ç”»é¢é–¢ä¿‚(cppãƒ•ã‚¡ã‚¤ãƒ«)
-// ä½œæˆæ—¥ï¼š2022/07/14
-// ä½œæˆè€…ï¼šé«˜æ¢¨æ°´å¸Œ
+// “y¯‚ÌƒXƒe[ƒWŠÖŒW(cppƒtƒ@ƒCƒ‹)
+// ì¬“úF
+// ì¬ŽÒF‰¶“c—ms
 //=======================================
-#include "game.h"
-#include "scene.h"
+#include "stage_saturn.h"
 #include "sound.h"
 
 //==========================
-// å®šæ•°åˆæœŸåŒ–
+// ’è”‰Šú‰»
 //==========================
-const D3DXVECTOR2 Game::NUMBER_POS = D3DXVECTOR2(1230.0f, 30.0f);
-const D3DXVECTOR2 Game::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
+const D3DXVECTOR2 StageSaturn::NUMBER_POS = D3DXVECTOR2(1230.0f, 30.0f);
+const D3DXVECTOR2 StageSaturn::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
 
 //==========================
-// ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°
+// ƒOƒ[ƒoƒ‹•Ï”
 //==========================
-int StopFlame = 0; //ãƒ’ãƒƒãƒˆã‚¹ãƒˆãƒƒãƒ—ç”¨
-bool isText = false; //ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«ãƒ†ã‚­ã‚¹ãƒˆç”¨
+int SaturnStopFlame = 0; //ƒqƒbƒgƒXƒgƒbƒv—p
+bool isDownSaturn = false; //ƒ{ƒX‚ªŽ€‚ñ‚¾‚©
 
 
 //==========================
-// åˆæœŸåŒ–å‡¦ç†
+// ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
 //==========================
-Game::Game()
+StageSaturn::StageSaturn(Score* pNumber):m_pScore(pNumber)
 {
-	
-}
-
-//=========================
-// å¼•æ•°ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
-//=========================
-Game::Game(Score* pNumber) :m_pScore(pNumber)
-{
-	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//ã‚µã‚¦ãƒ³ãƒ‰ã®ãƒ­ãƒ¼ãƒ‰
-	PlaySound(m_BGM, -1);	//BGMå†ç”Ÿ
+	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//ƒTƒEƒ“ƒh‚Ìƒ[ƒh
+	PlaySound(m_BGM, -1);	//BGMÄ¶
 	SetVolume(m_BGM, 0.1f);
 
 	m_pTexUseful = new TextureUseful[(int)TEXTURE_TYPE::NUM];
 	m_pDrawObject = new DrawObject[(int)DRAW_TYPE::NUM];
 
-	//èƒŒæ™¯ã®åˆæœŸåŒ–å‡¦ç†
-	m_pBG = new BG((char*)"data\\texture\\game_bg_scroll.jpg");
-	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\moon.png");
-
-	m_pTextManagement = new TextManagement();
+	//”wŒi‚Ì‰Šú‰»ˆ—
+	m_pBG = new BG((char*)"data\\texture\\stage_select_bg.jpg");
+	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\earth.png");
 
 	//=======================
-	// å¼¾
+	// ’e
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_RED].SetTextureName((char*)"data\\texture\\bullet_red.png");
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN].SetTextureName((char*)"data\\texture\\bullet_green.png");
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_SQUARE_GREEN].SetTextureName((char*)"data\\texture\\bullet02.png");
-	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼å´ã®å¼¾
+	//ƒvƒŒƒCƒ„[‘¤‚Ì’e
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_SQUARE_GREEN], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
-	//çˆ†å¼¾
+	//”š’e
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
-	//æ•µå´ã®å¼¾
+	//“G‘¤‚Ì’e
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_RED]);
 
-	//=======================
-	// ãƒ¬ãƒ¼ã‚¶ãƒ¼
-	m_pTexUseful[(int)TEXTURE_TYPE::LASER].SetTextureName((char*)"data\\texture\\laser00.png");
-
-	//æ•µå´ã®ãƒ¬ãƒ¼ã‚¶ãƒ¼
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER]);
-
-
-	//ãƒãƒªã‚¢
+	//ƒoƒŠƒA
 	m_pTexUseful[(int)TEXTURE_TYPE::BARRIER].SetTextureName((char*)"data\\texture\\Barrier.png");
 
-	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
+	//ƒvƒŒƒCƒ„[
 	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER].SetTextureName((char*)"data\\texture\\player_anime.png");
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER], 1.0f, 0.25f, 1.0f, 4);
 	m_pPlayer = new Player(m_pDrawObject[(int)DRAW_TYPE::PLAYER], m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET], m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET]);
 
 	//=======================
-	// æ•µ
+	// “G
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY].SetTextureName((char*)"data\\texture\\teki2.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 1.0f, 0.33f, 1.0f, 3);
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 2.0f, 0.33f, 1.0f, 3);
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ATTCK].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 2.0f, 0.33f, 1.0f, 3);
-	//é›‘é­š
-	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_PUBLIC].SetTextureName((char*)"data\\texture\\UFO.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_PUBLIC].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_PUBLIC], 1.0f, 1.0f, 1.0f, 3);
-	
-	//ãƒãƒªã‚¢ã®æ•µ
+
+	//ƒoƒŠƒA‚Ì“G
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_BARRIER].SetTextureName((char*)"data\\texture\\monster11.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_BARRIER]);
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BARRIER]);
 
-	//éš•çŸ³
-	m_pTexUseful[(int)TEXTURE_TYPE::METEO].SetTextureName((char*)"data\\texture\\Meteo.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::METEO], 2.0f, 1.0, 1.0f, 3);
-
-	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 0);
-	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER_LASER], 
-		m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER_LASER], 1);
-	m_pEnemyGatoringManagement = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY]);
-	m_pMeteoManagement = new Management_Meteo(m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO]);
+	m_pEnemyBarrierManagement = new EnemyBarrierManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER], m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
 
 	//=======================
-	// æ®‹å¼¾è¡¨ç¤º
+	// Žc’e•\Ž¦
 	m_pTexUseful[(int)TEXTURE_TYPE::NUMBER].SetTextureName((char*)"data\\texture\\number.png");
 	m_pDrawObject[(int)DRAW_TYPE::NUMBER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::NUMBER], 0.0f, 0.0909f, 1.0f, 11);
 	m_pRemaining_Left = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(40.0f, 60.0f), 2);
@@ -114,118 +80,110 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 	m_pRemaining_Center->SetInitPos(D3DXVECTOR2(130.0f, 520.0f));
 
 	//=======================
-	// ã‚³ãƒ³ãƒœæ•°ã®æ¨ªã®Ã—
+	// ƒRƒ“ƒ{”‚Ì‰¡‚Ì~
 	m_pTexUseful[(int)TEXTURE_TYPE::MULTIPLY].SetTextureName((char*)"data\\texture\\multiply.png");
 	m_pDrawObject[(int)DRAW_TYPE::MULTIPLY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::MULTIPLY], 0.0f, 1.0f, 1.0f, 1);
 	m_pMultiply = new UI(m_pDrawObject[(int)DRAW_TYPE::MULTIPLY], D3DXVECTOR2(SCREEN_WIDTH - 130, SCREEN_HEIGHT - 40), D3DXVECTOR2(40.0f, 40.0f), D3DXCOLOR());
 
 	//=======================
-	// ã‚³ãƒ³ãƒœç¶™ç¶šæ•°è¡¨ç¤º
+	// ƒRƒ“ƒ{Œp‘±”•\Ž¦
 	m_pComboNum = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(40.0f, 60.0f), 2);
 	m_pComboNum->SetInitPos(D3DXVECTOR2(SCREEN_WIDTH - 30, SCREEN_HEIGHT - 40));
 
 	//=======================
-	// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•ã®å·¦
+	// ƒvƒŒƒCƒ„[‚Ì˜r‚Ì¶
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
-	//å¼¾
+	//’e
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.2f, 1.0f, 0.2f, 1.0f));
-	//ãƒ¬ãƒ¼ã‚¶ãƒ¼
+	//ƒŒ[ƒU[
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
 	m_pPlayerLeft = new PlayerLeft(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_BULLET],
 		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER], m_pPlayer->GetPos(), m_pRemaining_Left, D3DXVECTOR2(30.0f, 600.0f));
 
 	//=======================
-	// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•ã®å³
+	// ƒvƒŒƒCƒ„[‚Ì˜r‚Ì‰E
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
-	//å¼¾
+	//’e
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.2f, 1.0f, 0.2f, 1.0f));
-	//ãƒ¬ãƒ¼ã‚¶ãƒ¼
+	//ƒŒ[ƒU[
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
 	m_pPlayerRight = new PlayerRight(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_BULLET],
 		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER], m_pPlayer->GetPos(), m_pRemaining_Right, D3DXVECTOR2(30.0f, 680.0f));
 
 	//=======================
-	// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•ã®çœŸã‚“ä¸­
+	// ƒvƒŒƒCƒ„[‚Ì˜r‚Ì^‚ñ’†
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
-	//å¼¾
+	//’e
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTTER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.2f, 1.0f, 0.2f, 1.0f));
-	//ãƒ¬ãƒ¼ã‚¶ãƒ¼
+	//ƒŒ[ƒU[
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
 	m_pPlayerCenter = new PlayerCenter(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTTER_BULLET],
 		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER_LASER], m_pPlayer->GetPos(), m_pRemaining_Center, D3DXVECTOR2(30.0f, 520.0f));
 
-	//è…•ã®äº¤æ›
+	//˜r‚ÌŒðŠ·
 	m_pPlayerArmChange = new PlayerArmChange(m_pPlayerLeft, m_pPlayerRight, m_pPlayerCenter);
 
-	//çˆ†ç™º
+	//”š”­
 	m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION].SetTextureName((char*)"data\\texture\\explosion000.png");
 	m_pDrawObject[(int)DRAW_TYPE::EXPLOSION].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION], 0.0f, 0.125f, 1.0f, 7);
 	m_pExplosionManagement = new ExplosionManagement(m_pDrawObject[(int)DRAW_TYPE::EXPLOSION]);
 
-	//æ•µã®ã‚¢ã‚¤ãƒ†ãƒ 
+	//“G‚ÌƒAƒCƒeƒ€
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ITEM].SetTextureName((char*)"data\\texture\\EnemyItem.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ITEM].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ITEM], 0.0f, 1.0f, 1.0f, 1);
 	m_pItemManagement = new ItemManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ITEM]);
 
-	//æ•°å­—ã®åˆæœŸåŒ–
+	//”Žš‚Ì‰Šú‰»
 	m_pScore->SetInitPos(NUMBER_POS);
 	m_pScore->SetPos(NUMBER_POS);
 	m_pScore->SetSize(NUMBER_SIZE);
 	m_pScore->SetDigit(NUMBER_DIGIT);
 
-	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HP
+	//ƒvƒŒƒCƒ„[‚ÌHP
 	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER_HP].SetTextureName((char*)"data\\texture\\hp.png");
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_BAR].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER_HP], 0.0f, 1.0f, 1.0f, 1);
 
 	m_pPlayerHP = new PlayerHP(m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_BAR], m_pExplosionManagement, m_pPlayer);
 
-	//ãƒœãƒ 
+	//ƒ{ƒ€
 	m_pDrawObject[(int)DRAW_TYPE::BOMB].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN]);
 	m_pBom = new Bom(m_pDrawObject[(int)DRAW_TYPE::BOMB], 3);
 
-	//æ•µã®ç®¡ç†
+	//“G‚ÌŠÇ—
 	m_pAllEnemyManagement = new AllEnemyManagement;
-	m_pAllEnemyManagement->AddPointer(m_pEnemyNormalManagement);
-	m_pAllEnemyManagement->AddPointer(m_pEnemyLaserManagement);
-	m_pAllEnemyManagement->AddPointer(m_pEnemyGatoringManagement);
-
+	m_pAllEnemyManagement->AddPointer(m_pEnemyBarrierManagement);
+	
 	//========================================================
-	// å…¨ã¦ã®å½“ãŸã‚Šåˆ¤å®š
-	m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
-		m_pItemManagement, m_pScore, m_pBom, m_pMeteoManagement);
+	// ‘S‚Ä‚Ì“–‚½‚è”»’è
+	//m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
+	//	m_pItemManagement, m_pScore, m_pBom, );
 
-	//æ•µã®ãƒã‚¤ãƒ³ã‚¿ã‚’ã‚»ãƒƒãƒˆï¼ˆé †ç•ªå¤‰ãˆã‚‹ã®NGï¼‰
-	m_pColAll->AddEnemyPointer(m_pEnemyNormalManagement);
-	m_pColAll->AddEnemyPointer(m_pEnemyLaserManagement);
-	m_pColAll->AddEnemyPointer(m_pEnemyGatoringManagement);
-	//m_pColAll->AddEnemyPointer(m_pMeteoManagement);
+	//“G‚Ìƒ|ƒCƒ“ƒ^‚ðƒZƒbƒgi‡”Ô•Ï‚¦‚é‚ÌNGj
+	//m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
 }
 
 //==========================
-// çµ‚äº†å‡¦ç†
+// ƒfƒXƒgƒ‰ƒNƒ^
 //==========================
-Game::~Game()
+StageSaturn::~StageSaturn()
 {
-	//æç”»ãŒãªã„ç‰©ã‹ã‚‰æ¶ˆã—ã¦ã„ã
+	//•`‰æ‚ª‚È‚¢•¨‚©‚çÁ‚µ‚Ä‚¢‚­
 	delete m_pAllEnemyManagement;
 	delete m_pPlayerArmChange;
-	delete m_pColAll;
+	//delete m_pColAll;
 
-	//ã‚²ãƒ¼ãƒ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ¶ˆã™
+	//ƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ðÁ‚·
 	delete m_pBom;
 	delete m_pBG;
 	delete m_pBG_Moon;
 	delete m_pExplosionManagement;
-	delete m_pEnemyNormalManagement;
-	delete m_pEnemyLaserManagement;
-	delete m_pEnemyGatoringManagement;
-	delete m_pMeteoManagement;
+	delete m_pEnemyBarrierManagement;
 	delete m_pItemManagement;
 	delete m_pPlayer;
 	delete m_pPlayerHP;
@@ -237,78 +195,66 @@ Game::~Game()
 	delete m_pPlayerCenter;
 	delete m_pComboNum;
 	delete m_pMultiply;
-	delete m_pTextManagement;
 
-	//ãã®ã»ã‹
+	//‚»‚Ì‚Ù‚©
 	delete[] m_pDrawObject;
 	delete[] m_pTexUseful;
 
-	//BGMã‚’ã‚¹ãƒˆãƒƒãƒ—
+	//BGM‚ðƒXƒgƒbƒv
 	StopSound(m_BGM);
 }
 
-//======================
-// æ›´æ–°å‡¦ç†
-//======================
-void Game::Update(void)
+//==========================
+// XVˆ—
+//==========================
+void StageSaturn::Update(void)
 {
-	//ãƒ’ãƒƒãƒˆã‚¹ãƒˆãƒƒãƒ—
-	if (StopFlame > 0)
+	//ƒqƒbƒgƒXƒgƒbƒv
+	if (SaturnStopFlame > 0)
 	{
-		StopFlame--;
+		SaturnStopFlame--;
 		return;
 	}
 
-	//ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«ãƒ†ã‚­ã‚¹ãƒˆ
-	m_pTextManagement->Update();
-	if (isText)
-	{
-		return;
-	}
+	//ƒ{ƒX‚ªŽ€‚ñ‚¾‚ç
+	if (isDownSaturn)
+		Fade(SCENE::SCENE_RESULT);
 
-	//èƒŒæ™¯
+	//”wŒi
 	m_pBG->Update();
 	m_pBG_Moon->Update();
 
-	//è…•ã®åˆ‡ã‚Šæ›¿ãˆ
+	//˜r‚ÌØ‚è‘Ö‚¦
 	m_pPlayerArmChange->Change();
 
-	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
+	//ƒvƒŒƒCƒ„[
 	m_pPlayer->Update(m_pPlayerHP->IsPlayerInvincible());
 
 	m_pPlayerHP->Update();
 
-	//çˆ†ç™º
+	//”š”­
 	m_pExplosionManagement->Update();
 
-	//æ•µã‹ã‚‰è½ã¡ã‚‹ã‚¢ã‚¤ãƒ†ãƒ 
+	//“G‚©‚ç—Ž‚¿‚éƒAƒCƒeƒ€
 	m_pItemManagement->Update();
 
-	//ãƒœãƒ 
+	//=======================
+	// “G
+	m_pEnemyBarrierManagement->Update();
+
+	//ƒ{ƒ€
 	m_pBom->Update();
 
-	//=======================
-	// æ•µ
-	m_pEnemyNormalManagement->Update(m_pPlayer->GetPos());
-	//m_pEnemyMissileManagement->Update(m_pPlayer->GetPos());
-	m_pEnemyLaserManagement->Update();
-	m_pEnemyGatoringManagement->Update(m_pPlayer->GetPos());
-	//m_pEnemyAttackManagement->Update(m_pPlayer->GetPos());
-	//m_pEnemyPublicManagement->Update();
-	//m_pEnemyBarrierManagement->Update();
-	m_pMeteoManagement->Update();
-
-
 	//====================================
-	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HPã«å¯¾ã™ã‚‹å‡¦ç†
+	//ƒvƒŒƒCƒ„[‚ÌHP‚É‘Î‚·‚éˆ—
 	int attack_num = 0;
 
-	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•
+	//ƒvƒŒƒCƒ„[‚Ì˜r
 
-	//ãƒ›ãƒ¼ãƒŸãƒ³ã‚°å¼¾ç”¨
+	//ƒz[ƒ~ƒ“ƒO’e—p
 	D3DXVECTOR2 temp_pos = m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerLeft->GetPos());
 
-	//è…•ã®ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆ
+	//˜r‚ÌƒAƒbƒvƒf[ƒg
 	m_pPlayerLeft->ButtonPress();
 	m_pPlayerLeft->Update(m_pPlayer->GetPos(), temp_pos);
 	m_pPlayerRight->ButtonPress();
@@ -316,66 +262,51 @@ void Game::Update(void)
 	m_pPlayerCenter->ButtonPress();
 	m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
 
-	//æ•µã¨ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å½“ãŸã‚Šåˆ¤å®š
-	attack_num += m_pColAll->Collision();
+	//“G‚ÆƒvƒŒƒCƒ„[‚Ì“–‚½‚è”»’è
+	//attack_num += m_pColAll->Collision();
 
-	//å›žå¾©
-	m_pColAll->HeelCollision();
+	//‰ñ•œ
+	//m_pColAll->HeelCollision();
 
-	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HPã‚’æ”»æ’ƒæ•°ã«ã‚ˆã£ã¦æ¸›ã‚‰ã™
+	//ƒvƒŒƒCƒ„[‚ÌHP‚ðUŒ‚”‚É‚æ‚Á‚ÄŒ¸‚ç‚·
 	if (attack_num != 0) {
 		m_pPlayerHP->ReduceHP((float)attack_num);
 	}
 
-	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HPãŒ0ã«ãªã£ãŸã‚‰...
+	//ƒvƒŒƒCƒ„[‚ÌHP‚ª0‚É‚È‚Á‚½‚ç...
 	if (m_pPlayerHP->GetHP0Flag()) {
-		//ãƒªã‚¶ãƒ«ãƒˆç”»é¢ã«è¡Œã
-		Fade(SCENE::SCENE_RESULT);
-	}
-
-	//æœ€å¾Œã®åˆ—ã®æ•µã‚’å…¨ã¦å€’ã—ãŸã‚‰
-	if (m_pEnemyNormalManagement->IsClear() && m_pEnemyLaserManagement->IsClear() &&
-		m_pEnemyGatoringManagement->IsClear()) {
-		//ãƒªã‚¶ãƒ«ãƒˆç”»é¢ã«è¡Œã
 		Fade(SCENE::SCENE_RESULT);
 	}
 }
 
 //==========================
-// æç”»å‡¦ç†
+// •`‰æˆ—
 //==========================
-void Game::Draw(void)const
+void StageSaturn::Draw(void) const
 {
 	m_pBG->DrawBG();
 	m_pBG_Moon->DrawBG();
 	m_pPlayer->Draw();
 
-	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•ã®æç”»å‡¦ç†
+	//ƒvƒŒƒCƒ„[‚Ì˜r‚Ì•`‰æˆ—
 	m_pPlayerLeft->ArmDraw();
 	m_pPlayerRight->ArmDraw();
 	m_pPlayerCenter->ArmDraw();
 
-	//æ•µã®æç”»
-	m_pEnemyNormalManagement->Draw();
-	m_pEnemyLaserManagement->Draw();
-	m_pEnemyGatoringManagement->Draw();
-	//m_pEnemyPublicManagement->Draw();
-	//m_pEnemyAttackManagement->Draw();
-	m_pMeteoManagement->Draw();
-	//m_pEnemyMissileManagement->Draw();
-	//m_pEnemyBarrierManagement->Draw();
+	//“G‚Ì•`‰æ
+	m_pEnemyBarrierManagement->Draw();
 
-	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å¼¾ã®è¡¨ç¤º
+	//ƒvƒŒƒCƒ„[‚Ì’e‚Ì•\Ž¦
 	m_pPlayer->DrawBullet();
 
 	m_pExplosionManagement->Draw();
 
 	m_pItemManagement->Draw();
 
-	//ãƒœãƒ ã®æç”»
+	//ƒ{ƒ€‚Ì•`‰æ
 	m_pBom->BomDraw();
 
-	//UIã®æç”»
+	//UI‚Ì•`‰æ
 	m_pPlayerHP->DrawHP();
 	m_pScore->DrawNumber();
 	m_pRemaining_Left->DrawNumber();
@@ -384,30 +315,17 @@ void Game::Draw(void)const
 	m_pComboNum->SetNumber(m_pScore->GetComboNum());
 	m_pComboNum->DrawNumber();
 	m_pMultiply->Draw();
-
-	if (isText)
-	{
-		m_pTextManagement->Draw();
-	}
 }
 
-
-void HitStop(int flame)
+//==========================
+// ƒqƒbƒgƒXƒgƒbƒv
+//==========================
+void SaturnHitStop(int flame)
 {
-	StopFlame = flame;
+	SaturnStopFlame = flame;
 }
 
-void StartTextG(void)
+void SaturnBossDown()
 {
-	isText = true;
-}
-
-void EndTextG(void)
-{
-	isText = false;
-}
-
-bool GetTextFlg(void)
-{
-	return isText;
+	isDownSaturn = true;
 }

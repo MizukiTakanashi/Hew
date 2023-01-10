@@ -16,11 +16,12 @@ const D3DXVECTOR2 StageMercury::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
 // グローバル変数
 //==========================
 int MercuryStopFlame = 0; //ヒットストップ用
+bool isDownMercury = false; //ボスが死んだか
 
 //==========================
 // 引数付きコンストラクタ
 //==========================
-StageMercury::StageMercury(Score* pNumber)
+StageMercury::StageMercury(Score* pNumber):m_pScore(pNumber)
 {
 	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);	//BGM再生
@@ -159,11 +160,11 @@ StageMercury::StageMercury(Score* pNumber)
 	
 	//========================================================
 	// 全ての当たり判定
-	/*m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
-		m_pItemManagement, m_pScore, m_pBom);*/
+	//m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
+	//	m_pItemManagement, m_pScore, m_pBom, );
 
 	//敵のポインタをセット（順番変えるのNG）
-	m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
+	//m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
 }
 
 //==========================
@@ -174,7 +175,7 @@ StageMercury::~StageMercury()
 	//描画がない物から消していく
 	delete m_pAllEnemyManagement;
 	delete m_pPlayerArmChange;
-	delete m_pColAll;
+	//delete m_pColAll;
 
 	//ゲームオブジェクトを消す
 	delete m_pBom;
@@ -213,6 +214,11 @@ void StageMercury::Update(void)
 		MercuryStopFlame--;
 		return;
 	}
+
+	//ボスが死んだら
+	if (isDownMercury)
+		Fade(SCENE::SCENE_RESULT);
+
 	//背景
 	m_pBG->Update();
 	m_pBG_Moon->Update();
@@ -256,10 +262,10 @@ void StageMercury::Update(void)
 	m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
 
 	//敵とプレイヤーの当たり判定
-	attack_num += m_pColAll->Collision();
+	//attack_num += m_pColAll->Collision();
 
 	//回復
-	m_pColAll->HeelCollision();
+	//m_pColAll->HeelCollision();
 
 	//プレイヤーのHPを攻撃数によって減らす
 	if (attack_num != 0) {
@@ -316,4 +322,9 @@ void StageMercury::Draw(void) const
 void MercuryHitStop(int flame)
 {
 	MercuryStopFlame = flame;
+}
+
+void MercuryBossDown()
+{
+	isDownMercury = true;
 }

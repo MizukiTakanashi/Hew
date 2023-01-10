@@ -140,5 +140,7 @@ public:
 };
 
 void MercuryHitStop(int flame);
+void MercuryBossDown();
+
 
 #endif // !_STAGE_MERCURY_H_
