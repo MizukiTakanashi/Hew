@@ -19,9 +19,9 @@ const float EnemyNormalManagement::BULLET_SPEED = 5.0f;
 // 引数付きコンストラクタ
 //=========================
 EnemyNormalManagement::EnemyNormalManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, int stage)
-	:EnemyManagement(ENEMY_NUM[stage], ATTACK, BULLET_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2),
-	m_stage_num(stage)
+	:EnemyManagement(ENEMY_NUM[stage], ATTACK, BULLET_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
+	m_stage_num = stage;
 	m_pEnemyNormal = new EnemyNormal[ENEMY_NUM[stage]];
 	m_pBullet = new Bullet[ENEMY_NUM[stage]];
 }

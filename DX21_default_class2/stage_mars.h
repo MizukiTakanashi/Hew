@@ -32,6 +32,7 @@
 #include "player_center.h"
 #include "Bom.h"
 #include "boss.h"
+#include "management_enemy_laser.h"//ˆÚA—\’è
 
 class StageMars
 {
@@ -63,6 +64,7 @@ private:
 		BULLET_ICE,	//•X‚Ì’e‚ÌƒeƒNƒXƒ`ƒƒƒZƒbƒg
 		ENEMY_STOP,
 		BULLET_STOP,
+		BULLET_GAS,//ˆÚA—\’è
 		NUM
 	};
 
@@ -93,6 +95,7 @@ private:
 		NUMBER,
 		MULTIPLY,
 		BOMB,						//”š’e
+		BULLET__GAS,//ˆÚA—\’è
 		NUM
 	};
 
@@ -114,6 +117,7 @@ private:
 	EnemyIceRainManagement* m_pEnemyIceRainManagement = nullptr;
 	EnemyStopManagement* m_pEnemyStopManagement = nullptr;
 	EnemyNormalManagement* m_pEnemyNormalManagement = nullptr;
+	EnemyLaserManagement* m_pEnemyLaserManagement = nullptr;//ˆÚA—\’è
 
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;
