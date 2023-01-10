@@ -1,12 +1,12 @@
 #pragma once
 //=======================================
-// 水星のステージ関係(ヘッダファイル)
-// 作成日：2022/12/15
-// 作成者：高梨水希
+// 土星のステージ関係(ヘッダファイル)
+// 作成日：
+// 作成者：恩田洋行
 //=======================================
 
-#ifndef _STAGE_MERCURY_H_
-#define _STAGE_MERCURY_H_
+#ifndef _STAGE_SATURN_H_
+#define _STAGE_SATURN_H_
 
 #include "main.h"
 #include "sprite.h"
@@ -29,7 +29,7 @@
 #include "player_center.h"
 #include "Bom.h"
 
-class StageMercury
+class StageSaturn
 {
 	//定数
 private:
@@ -123,11 +123,11 @@ private:
 
 	//メンバ関数
 public:
-	StageMercury(){}	//デフォルトコンストラクタ
+	StageSaturn(){}	//デフォルトコンストラクタ
 
-	StageMercury(Score* pNumber);
+	StageSaturn(Score* pNumber);
 
-	~StageMercury();	//デストラクタ
+	~StageSaturn();	//デストラクタ
 
 	//更新
 	void Update(void);
@@ -139,8 +139,8 @@ public:
 	int GetScore(void)const { return m_pScore->GetNumber(); }
 };
 
-void MercuryHitStop(int flame);
-void MercuryBossDown();
+void SaturnHitStop(int flame);
+void SaturnBossDown();
 
 
-#endif // !_STAGE_MERCURY_H_
+#endif // !_STAGE_SATURN_H_

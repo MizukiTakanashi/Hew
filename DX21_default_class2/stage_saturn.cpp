@@ -1,45 +1,45 @@
 //=======================================
-// 火星のステージ関係(cppファイル)
-// 作成日：2022/12/15
-// 作成者：高梨水希
+// 土星のステージ関係(cppファイル)
+// 作成日：
+// 作成者：恩田洋行
 //=======================================
-#include "stage_mars.h"
+#include "stage_saturn.h"
 #include "sound.h"
 
 //==========================
 // 定数初期化
 //==========================
-const D3DXVECTOR2 StageMars::NUMBER_POS = D3DXVECTOR2(1230.0f, 30.0f);
-const D3DXVECTOR2 StageMars::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
+const D3DXVECTOR2 StageSaturn::NUMBER_POS = D3DXVECTOR2(1230.0f, 30.0f);
+const D3DXVECTOR2 StageSaturn::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
 
 //==========================
 // グローバル変数
 //==========================
-int MarsStopFlame = 0; //ヒットストップ用
-bool isDownMars = false; //ボスが死んだか
+int SaturnStopFlame = 0; //ヒットストップ用
+bool isDownSaturn = false; //ボスが死んだか
+
 
 //==========================
 // 引数付きコンストラクタ
 //==========================
-StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
+StageSaturn::StageSaturn(Score* pNumber):m_pScore(pNumber)
 {
 	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);	//BGM再生
-	SetVolume(m_BGM, 0.01f);
+	SetVolume(m_BGM, 0.1f);
 
 	m_pTexUseful = new TextureUseful[(int)TEXTURE_TYPE::NUM];
 	m_pDrawObject = new DrawObject[(int)DRAW_TYPE::NUM];
 
 	//背景の初期化処理
-	m_pBG = new BG((char*)"data\\texture\\game_bg_scroll.jpg");
-	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\mars.png");
+	m_pBG = new BG((char*)"data\\texture\\stage_select_bg.jpg");
+	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\earth.png");
 
 	//=======================
 	// 弾
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_RED].SetTextureName((char*)"data\\texture\\bullet_red.png");
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN].SetTextureName((char*)"data\\texture\\bullet_green.png");
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_SQUARE_GREEN].SetTextureName((char*)"data\\texture\\bullet02.png");
-	
 	//プレイヤー側の弾
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_SQUARE_GREEN], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
@@ -68,26 +68,6 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 
 	m_pEnemyBarrierManagement = new EnemyBarrierManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER], m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
 
-	//氷の敵
-	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_ICE].SetTextureName((char*)"data\\texture\\Ice.png");	//氷の弾のセット
-	//敵側の弾
-	m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY_ICE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_ICE]);	//敵のアイス弾
-	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ICE].SetTextureName((char*)"data\\texture\\IceEnemy.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ICE]);
-	m_pEnemyIceRainManagement = new EnemyIceRainManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY_ICE]);
-
-	//動きを止める敵
-	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_STOP].SetTextureName((char*)"data\\texture\\enemy_stop.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_STOP].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_STOP]);
-	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_STOP].SetTextureName((char*)"data\\texture\\bullet_stop.jpg");
-	m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_STOP]);
-	m_pEnemyStopManagement = new EnemyStopManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_STOP], m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
-	
-	//ホーミングの敵
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
-	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 1);
-
-
 	//=======================
 	// 残弾表示
 	m_pTexUseful[(int)TEXTURE_TYPE::NUMBER].SetTextureName((char*)"data\\texture\\number.png");
@@ -112,60 +92,39 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 
 	//=======================
 	// プレイヤーの腕の左
-		//自身
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
-		//弾
+	//弾
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.2f, 1.0f, 0.2f, 1.0f));
-		//レーザー
+	//レーザー
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
 	m_pPlayerLeft = new PlayerLeft(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_BULLET],
 		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER], m_pPlayer->GetPos(), m_pRemaining_Left, D3DXVECTOR2(30.0f, 600.0f));
-		//バリア
-	m_pPlayerLeft->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
-		//動きを止める敵
-	m_pPlayerLeft->DrawSetBulleStop(&m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
-	//氷の敵
-	m_pPlayerLeft->DrawSetIceRain(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE]);
 
 	//=======================
 	// プレイヤーの腕の右
-		//自身
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
-		//弾
+	//弾
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.2f, 1.0f, 0.2f, 1.0f));
-		//レーザー
+	//レーザー
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
 	m_pPlayerRight = new PlayerRight(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_BULLET],
 		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER], m_pPlayer->GetPos(), m_pRemaining_Right, D3DXVECTOR2(30.0f, 680.0f));
-		//バリア
-	m_pPlayerRight->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
-	//動きを止める敵
-	m_pPlayerRight->DrawSetBulleStop(&m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
 
-	//氷の敵
-	m_pPlayerRight->DrawSetIceRain(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE]);
 	//=======================
 	// プレイヤーの腕の真ん中
-		//自身
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
-		//弾
+	//弾
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTTER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.2f, 1.0f, 0.2f, 1.0f));
-		//レーザー
+	//レーザー
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::LASER], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
 	m_pPlayerCenter = new PlayerCenter(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTTER_BULLET],
 		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER_LASER], m_pPlayer->GetPos(), m_pRemaining_Center, D3DXVECTOR2(30.0f, 520.0f));
-		//バリア
-	m_pPlayerCenter->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
-	//動きを止める敵
-	m_pPlayerCenter->DrawSetBulleStop(&m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
-
-
 
 	//腕の交換
 	m_pPlayerArmChange = new PlayerArmChange(m_pPlayerLeft, m_pPlayerRight, m_pPlayerCenter);
@@ -199,40 +158,32 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	//敵の管理
 	m_pAllEnemyManagement = new AllEnemyManagement;
 	m_pAllEnemyManagement->AddPointer(m_pEnemyBarrierManagement);
-
-
+	
 	//========================================================
 	// 全ての当たり判定
-	m_pColAll = new MarsCollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
-		m_pItemManagement, m_pScore, m_pBom);
+	//m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
+	//	m_pItemManagement, m_pScore, m_pBom, );
 
 	//敵のポインタをセット（順番変えるのNG）
-	m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
-	m_pColAll->AddEnemyPointer(m_pEnemyStopManagement);
-	m_pColAll->AddEnemyPointer(m_pEnemyNormalManagement);
-	m_pColAll->AddEnemyPointer(m_pEnemyIceRainManagement);
-
+	//m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
 }
 
 //==========================
 // デストラクタ
 //==========================
-StageMars::~StageMars()
+StageSaturn::~StageSaturn()
 {
 	//描画がない物から消していく
 	delete m_pAllEnemyManagement;
 	delete m_pPlayerArmChange;
-	delete m_pColAll;
+	//delete m_pColAll;
 
 	//ゲームオブジェクトを消す
-	if(m_pBoss)
-	delete m_pBoss;
 	delete m_pBom;
 	delete m_pBG;
 	delete m_pBG_Moon;
 	delete m_pExplosionManagement;
 	delete m_pEnemyBarrierManagement;
-	delete m_pEnemyNormalManagement;
 	delete m_pItemManagement;
 	delete m_pPlayer;
 	delete m_pPlayerHP;
@@ -244,8 +195,7 @@ StageMars::~StageMars()
 	delete m_pPlayerCenter;
 	delete m_pComboNum;
 	delete m_pMultiply;
-	delete m_pEnemyIceRainManagement;
-	delete m_pEnemyStopManagement;
+
 	//そのほか
 	delete[] m_pDrawObject;
 	delete[] m_pTexUseful;
@@ -257,17 +207,17 @@ StageMars::~StageMars()
 //==========================
 // 更新処理
 //==========================
-void StageMars::Update(void)
+void StageSaturn::Update(void)
 {
 	//ヒットストップ
-	if (MarsStopFlame > 0)
+	if (SaturnStopFlame > 0)
 	{
-		MarsStopFlame--;
+		SaturnStopFlame--;
 		return;
 	}
 
 	//ボスが死んだら
-	if (isDownMars)
+	if (isDownSaturn)
 		Fade(SCENE::SCENE_RESULT);
 
 	//背景
@@ -290,10 +240,7 @@ void StageMars::Update(void)
 
 	//=======================
 	// 敵
-	m_pEnemyNormalManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyBarrierManagement->Update();
-	m_pEnemyIceRainManagement->Update(m_pPlayer->GetPos());
-	m_pEnemyStopManagement->Update();
 
 	//ボム
 	m_pBom->Update();
@@ -315,22 +262,11 @@ void StageMars::Update(void)
 	m_pPlayerCenter->ButtonPress();
 	m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
 
-	//ボス処理
-	if (m_pBoss)
-	{
-		m_pBoss->Update();
-	}
-	else if(m_pEnemyBarrierManagement->IsClear() && m_pEnemyStopManagement->IsClear())
-	{
-		m_pBoss = new Boss(m_pDrawObject[(int)DRAW_TYPE::ENEMY_STOP]);
-	}
-
-
 	//敵とプレイヤーの当たり判定
-	attack_num += m_pColAll->Collision();
+	//attack_num += m_pColAll->Collision();
 
 	//回復
-	m_pColAll->HeelCollision();
+	//m_pColAll->HeelCollision();
 
 	//プレイヤーのHPを攻撃数によって減らす
 	if (attack_num != 0) {
@@ -341,13 +277,12 @@ void StageMars::Update(void)
 	if (m_pPlayerHP->GetHP0Flag()) {
 		Fade(SCENE::SCENE_RESULT);
 	}
-
 }
 
 //==========================
 // 描画処理
 //==========================
-void StageMars::Draw(void) const
+void StageSaturn::Draw(void) const
 {
 	m_pBG->DrawBG();
 	m_pBG_Moon->DrawBG();
@@ -359,13 +294,7 @@ void StageMars::Draw(void) const
 	m_pPlayerCenter->ArmDraw();
 
 	//敵の描画
-	m_pEnemyNormalManagement->Draw();
 	m_pEnemyBarrierManagement->Draw();
-	m_pEnemyIceRainManagement->Draw();
-	m_pEnemyStopManagement->Draw();
-
-	if(m_pBoss)
-	m_pBoss->Draw();
 
 	//プレイヤーの弾の表示
 	m_pPlayer->DrawBullet();
@@ -391,12 +320,12 @@ void StageMars::Draw(void) const
 //==========================
 // ヒットストップ
 //==========================
-void MarsHitStop(int flame)
+void SaturnHitStop(int flame)
 {
-	MarsStopFlame = flame;
+	SaturnStopFlame = flame;
 }
 
-void MarsBossDown()
+void SaturnBossDown()
 {
-	isDownMars = true;
+	isDownSaturn = true;
 }
