@@ -44,7 +44,8 @@ MarsCollisionAll::MarsCollisionAll(Player* pPlayer, inhPlayerArmBoth* pL, inhPla
 
 	//ƒoƒŠƒA‚ª‰ó‚ê‚é‰¹
 	m_SE_09 = LoadSound((char*)"data\\SE\\1_09.wav");
-
+	//SetVolume(m_SE_09, 2.0f);
+	
 	//—â‹C‚ğ—‚Ñ‚½‰¹
 	m_SE_10 = LoadSound((char*)"data\\SE\\1_10.wav");
 }
