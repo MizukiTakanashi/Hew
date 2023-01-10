@@ -165,6 +165,8 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	//“®‚«‚ðŽ~‚ß‚é“G
 	m_pPlayerCenter->DrawSetBulleStop(&m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
 
+	//•X‚Ì“G
+	m_pPlayerCenter->DrawSetIceRain(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE]);
 
 
 	//˜r‚ÌŒðŠ·

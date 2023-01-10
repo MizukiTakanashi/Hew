@@ -25,6 +25,7 @@ private:
 		BARRIER,
 		STOP,
 		NORMAL,
+		ICERAIN,
 		NUM
 	};
 
