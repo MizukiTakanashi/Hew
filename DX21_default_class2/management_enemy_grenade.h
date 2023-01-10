@@ -24,12 +24,6 @@ public:
 	//弾
 	static const int BULLET_ATTACK = 1;		//弾の攻撃値
 
-	//cppで初期化
-	//※注意！この下の二つを一緒の値にしないこと！
-	static const D3DXVECTOR2 FIND_RANGE;		//プレイヤーを見つける範囲
-	static const D3DXVECTOR2 EXPLOSION_RANGE;	//爆破範囲(プレイヤーが中入ったら爆発)
-	static const D3DXVECTOR2 EXPLOSION_RANGE;	//爆破範囲(プレイヤーが中入ったら爆発)
-
 private:
 	//ステージ
 	enum class STAGE :int {
@@ -42,19 +36,20 @@ private:
 	static const int BULLET_BREAK_TIME = 200;	//ホーミング弾が壊れる時間
 	static const int EXIT_TIME = 60 * 10;		//退出時間
 
+	static const int EXPLOSION_WAIT_TIME = 200;	//爆発待ち時間
+	static const int EXPLOSION_TIME = 100;		//爆発時間
+
 	//cppで初期化
 	static const int ENEMY_NUM[(int)STAGE::NUM];	//敵を出現させる数W
 	//弾
-	static const float BULLET_SPEED;		//スピード
-
-	static const D3DXVECTOR2 VISION_FIND_RANGE;			//プレイヤーを見つける間のビジュアルサイズ
-	static const D3DXVECTOR2 VISION_EXPLOSION_RANGE;	//爆発している間のビジュアルサイズ
-
+	static const float BULLET_SPEED;			//スピード
+	static const D3DXVECTOR2 BULLET_SIZE;		//弾のサイズ
+	static const D3DXVECTOR2 EXPLOSION_RANGE;	//爆発のサイズ
 
 //メンバ変数
 private:
 	EnemyGrenade* m_pEnemy = nullptr;		//敵自身
-	Bullet* m_pBullet = nullptr;			//弾
+	Bullet* m_pBullet = nullptr;			//弾(別オブジェクト)
 	Bullet* m_pExplosion[5];				//爆発
 
 	DrawObject m_pDrawObjectEnemy;
@@ -104,6 +99,9 @@ public:
 
 	//描画処理
 	void Draw(void)const;
+
+	//爆発をセット
+	void SetExplosion(D3DXVECTOR2 pos);
 
 	//指定したのHPを減らす
 	bool ReduceHP(int index_num, int reduceHP)override;
