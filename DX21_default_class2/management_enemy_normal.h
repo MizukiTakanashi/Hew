@@ -18,12 +18,6 @@ class EnemyNormalManagement :public EnemyManagement
 {
 //定数
 private:
-	//ステージ
-	enum class STAGE :int {
-		TUTORIAL,
-		MARS,
-		NUM
-	};
 
 	//ここで初期化
 	//敵自身
@@ -53,7 +47,6 @@ private:
 	DrawObject m_pDrawObjectBullet;
 
 
-	int m_stage_num = 0;			//ステージ
 
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][6] = {
