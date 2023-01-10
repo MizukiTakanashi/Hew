@@ -241,7 +241,9 @@
     <ClCompile Include="boss.cpp">
       <Filter>11_MultiScene</Filter>
     </ClCompile>
-    <ClCompile Include="player_arm_icerain.cpp" />
+    <ClCompile Include="player_arm_icerain.cpp">
+      <Filter>03_Mars</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -487,7 +489,9 @@
     <ClInclude Include="screen_out.h">
       <Filter>11_MultiScene</Filter>
     </ClInclude>
-    <ClInclude Include="player_arm_icerain.h" />
+    <ClInclude Include="player_arm_icerain.h">
+      <Filter>03_Mars</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01_Title">

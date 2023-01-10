@@ -9,6 +9,7 @@
 #include "player_arm_3.h"
 #include "player_arm_barrier.h"
 #include "player_arm_stop.h"
+#include "player_arm_icerain.h"
 
 //==========================
 // ’è”‚Ì‰Šú‰»
@@ -210,6 +211,8 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 			m_pEnemyItem = new PlayerArmStop(*m_bullet_stop_draw, false, (int)m_type - 1);
 			break;
 
+		case TYPE::TYPE6:
+			m_pEnemyItem = new PlayerArmIceRain(*m_bullet_icerain_draw, false, (int)m_type - 1);
 		default:
 			break;
 		}

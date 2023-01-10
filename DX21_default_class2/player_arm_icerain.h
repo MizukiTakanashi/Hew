@@ -1,12 +1,9 @@
-#pragma once
 //=======================================
 // ƒvƒŒƒCƒ„[‚Ì˜rA•X‚Ì’eŠÖŒW(ƒwƒbƒ_ƒtƒ@ƒCƒ‹)
 // ì¬“úF2022/1/1
 // ì¬ÒF–î–ìãÄ‘å
 //=======================================
-
-#ifndef _PLAYER_ARM_3_H_
-#define _PLAYER_ARM_3_H_
+#pragma once
 
 #include "inh_player_arm.h"
 #include "draw_object.h"
@@ -18,7 +15,7 @@ class PlayerArmIceRain :public inhPlayerArm
 private:
 	//‚±‚±‚Å‰Šú‰»
 	static const int BULLET_NUM_MAX = 50;		//’e‚Ì§ŒÀ”@ÀÛ‚ÉŒ‚‚Ä‚é”‚Í‚±‚ê‚æ‚è‚P­‚È‚¢
-	static const int BULLET_SHOOT_MAX = 20;		//’e‚Ì“¯Å‘å”­Ë”
+	static const int BULLET_SHOOT_MAX = 100;		//’e‚Ì“¯Å‘å”­Ë”
 	static const int BULLET_INTERVAL = 10;		//’e‚Ì”­ËŠÔŠu
 	static const int BULLET_INTERVAL1 = 11;		//’e‚Ì”­ËŠÔŠu
 	static const int BULLET_INTERVAL2 = 12;		//’e‚Ì”­ËŠÔŠu
@@ -75,5 +72,3 @@ public:
 		return m_pBullet[index_num].GetSize();
 	}
 };
-
-#endif // !_PLAYER_ARM_1_H_

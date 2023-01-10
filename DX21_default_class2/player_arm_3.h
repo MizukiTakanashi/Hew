@@ -38,7 +38,8 @@ public:
 
 	//引数付きコンストラクタ
 	PlayerArm3(DrawObject bulletdraw, bool right, int type) 
-		:inhPlayerArm(BULLET_NUM_MAX, right, type), m_bulletdraw(bulletdraw) { m_pBullet = new Bullet[BULLET_SHOOT_MAX]; }
+		:inhPlayerArm(BULLET_NUM_MAX, right, type), m_bulletdraw(bulletdraw) { 
+		m_pBullet = new Bullet[BULLET_SHOOT_MAX]; }
 
 	//デストラクタ
 	~PlayerArm3()override { delete[] m_pBullet; }
