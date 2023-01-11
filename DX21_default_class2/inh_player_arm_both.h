@@ -20,12 +20,12 @@ public:
 	enum class TYPE :int
 	{
 		TYPE_NONE,	//	何もついていない
-		TYPE1, //ホーミング
-		TYPE2, //レーザー
-		TYPE3, //ガトリング
-		TYPE4, //バリア
-		TYPE5, //動きを止める
-		TYPE6,	//氷の敵
+		TYPE1,		//ホーミング
+		TYPE2,		//レーザー
+		TYPE3,		//ガトリング
+		TYPE4,		//バリア
+		TYPE5,		//動きを止める
+		TYPE6,		//氷の敵
 		TYPE7,
 		TYPE8,
 		TYPE_SHOOT,	// 前のタイプの弾の処理 & 自身発射中
