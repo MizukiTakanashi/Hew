@@ -162,6 +162,7 @@
     <ClCompile Include="management_enemy_laser.cpp" />
     <ClCompile Include="management_enemy.cpp" />
     <ClCompile Include="enemy_normal.cpp" />
+    <ClCompile Include="management_enemy_megumin.cpp" />
     <ClCompile Include="management_enemy_missile.cpp" />
     <ClCompile Include="management_enemy_normal.cpp" />
     <ClCompile Include="explosion.cpp" />
@@ -252,6 +253,7 @@
     <ClInclude Include="management_enemy_laser.h" />
     <ClInclude Include="management_enemy.h" />
     <ClInclude Include="enemy_normal.h" />
+    <ClInclude Include="management_enemy_megumin.h" />
     <ClInclude Include="management_enemy_missile.h" />
     <ClInclude Include="management_enemy_normal.h" />
     <ClInclude Include="explosion.h" />

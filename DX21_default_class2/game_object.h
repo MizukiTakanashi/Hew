@@ -31,9 +31,9 @@ public:
 	virtual ~GameObject(){}	//デストラクタ
 
 	//描画処理
-	void Draw()const { m_pDrawObject.Draw(m_pos, m_size, m_rot); }
-	void Draw(D3DXVECTOR2 pos, D3DXVECTOR2 size)const { m_pDrawObject.Draw(pos, size, m_rot); }
-
+	virtual void Draw()const { m_pDrawObject.Draw(m_pos, m_size, m_rot); }
+	virtual void Draw(D3DXVECTOR2 pos, D3DXVECTOR2 size)const { m_pDrawObject.Draw(pos, size, m_rot); }
+	
 	//座標を動かす
 	void MovePos(const D3DXVECTOR2& mov) { m_pos += mov; }
 

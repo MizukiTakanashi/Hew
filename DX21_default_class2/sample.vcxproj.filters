@@ -245,6 +245,8 @@
     <ClCompile Include="stage_saturn.cpp">
       <Filter>05_Saturn</Filter>
     </ClCompile>
+    <ClCompile Include="management_enemy_megumin.cpp">
+      <Filter>05_Saturn</Filter>
     <ClCompile Include="mars_gimmick.cpp">
       <Filter>03_Mars</Filter>
     </ClCompile>
@@ -498,6 +500,8 @@
     <ClInclude Include="stage_saturn.h">
       <Filter>05_Saturn</Filter>
     </ClInclude>
+    <ClInclude Include="management_enemy_megumin.h">
+      <Filter>05_Saturn</Filter>
     <ClInclude Include="mars_gimmick.h">
       <Filter>03_Mars</Filter>
     </ClInclude>

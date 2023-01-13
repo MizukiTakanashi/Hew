@@ -10,6 +10,7 @@
 #include <time.h>
 #include "game_object.h"
 #include "draw_object.h"
+#include "renderer.h"
 
 class BulletStop:public GameObject
 {
@@ -27,6 +28,13 @@ public:
 
 	//更新処理(弾を移動)(経過時間を計測)
 	void Update(void) {m_time++; }
+
+	void Draw(void)const override
+	{
+		SetBlendState(BLEND_MODE_ADD);
+		GameObject::Draw();
+		SetBlendState(BLEND_MODE_ALPHABLEND);
+	}
 
 	//弾が出来てからの経過時間を返す
 	int GetTime(void)const { return m_time; }

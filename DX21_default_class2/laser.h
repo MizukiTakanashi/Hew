@@ -55,6 +55,14 @@ public:
 
 	//XVˆ—(’e‚ğˆÚ“®)
 	void Update(const D3DXVECTOR2& pos, bool down = true); 
+
+	void Draw(void)const override
+	{
+		SetBlendState(BLEND_MODE_ADD);
+		GameObject::Draw();
+		SetBlendState(BLEND_MODE_ALPHABLEND);
+	}
+
 };
 
 #endif // !_LASER_H_

@@ -33,7 +33,7 @@ StageSaturn::StageSaturn(Score* pNumber):m_pScore(pNumber)
 
 	//”wŒi‚Ì‰Šú‰»ˆ—
 	m_pBG = new BG((char*)"data\\texture\\stage_select_bg.jpg");
-	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\earth.png");
+	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\saturn.png");
 
 	//=======================
 	// ’e
@@ -59,10 +59,18 @@ StageSaturn::StageSaturn(Score* pNumber):m_pScore(pNumber)
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY].SetTextureName((char*)"data\\texture\\teki2.png");
 
 	//ƒŒ[ƒU[‚Ì“G
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 1.0f, 0.25f, 1.0f, 4);
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY]);
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER].SetTextureName((char*)"data\\texture\\bullet_gass.png");
-	m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER], 1.0f, 0.25f, 1.0f, 4);
+	m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER]);
 	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER], m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER], 1);
+
+	//‚ß‚®‚Ý‚ñ
+	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_MEGUMIN].SetTextureName((char*)"data\\texture\\megumin.png");
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_MEGUMIN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_MEGUMIN]);
+	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MEGUMIN].SetTextureName((char*)"data\\texture\\bullet_megumin.png");
+	m_pDrawObject[(int)DRAW_TYPE::BULLET_MEGUMIN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MEGUMIN]);
+	m_pEnemyMeguminManagement = new EnemyMeguminManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_MEGUMIN], m_pDrawObject[(int)DRAW_TYPE::BULLET_MEGUMIN]);
+
 
 	//=======================
 	// Žc’e•\Ž¦
@@ -180,6 +188,7 @@ StageSaturn::~StageSaturn()
 	delete m_pBG_Moon;
 	delete m_pExplosionManagement;
 	delete m_pEnemyLaserManagement;
+	delete m_pEnemyMeguminManagement;
 	delete m_pItemManagement;
 	delete m_pPlayer;
 	delete m_pPlayerHP;
@@ -237,6 +246,7 @@ void StageSaturn::Update(void)
 	//=======================
 	// “G
 	m_pEnemyLaserManagement->Update();
+	m_pEnemyMeguminManagement->Update();
 
 	//ƒ{ƒ€
 	m_pBom->Update();
@@ -291,6 +301,7 @@ void StageSaturn::Draw(void) const
 
 	//“G‚Ì•`‰æ
 	m_pEnemyLaserManagement->Draw();
+	m_pEnemyMeguminManagement->Draw();
 
 	//ƒvƒŒƒCƒ„[‚Ì’e‚Ì•\Ž¦
 	m_pPlayer->DrawBullet();
