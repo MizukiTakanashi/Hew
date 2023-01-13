@@ -33,7 +33,7 @@ StageSaturn::StageSaturn(Score* pNumber):m_pScore(pNumber)
 
 	//”wŒi‚Ì‰Šú‰»ˆ—
 	m_pBG = new BG((char*)"data\\texture\\stage_select_bg.jpg");
-	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\earth.png");
+	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\saturn.png");
 
 	//=======================
 	// ’e
