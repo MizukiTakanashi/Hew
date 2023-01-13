@@ -9,11 +9,9 @@
 #define _STAGE_SELECT_H_
 
 #include "main.h"
-#include "sprite.h"
 #include "BG.h"
 #include "draw_object.h"
 #include "number.h"
-#include "scene.h"
 #include "stage_select_planet.h"
 
 class StageSelect

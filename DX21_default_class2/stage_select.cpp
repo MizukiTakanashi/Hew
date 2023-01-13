@@ -36,6 +36,7 @@ StageSelect::StageSelect(int stage_score[])
 	}
 
 	bool sun_appearance = true;
+
 	//スコアから全ステージクリアしているか確認
 	for (int i = 0; i < STAGE::STAGE_SUN; i++) {
 		//スコアが一つでも0の物があれば...
