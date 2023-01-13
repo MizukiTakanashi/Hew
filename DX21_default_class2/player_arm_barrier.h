@@ -38,7 +38,7 @@ private:
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
-	PlayerArmBarrier() { m_pBullet = new Bullet[BULLET_SHOOT_MAX]; }
+	PlayerArmBarrier() { m_pBullet = new Bullet; }
 
 	//引数付きコンストラクタ
 	PlayerArmBarrier(DrawObject bulletdraw, bool right, int type)
@@ -47,7 +47,11 @@ public:
 	}
 
 	//デストラクタ
-	~PlayerArmBarrier()override { delete[] m_pBullet; }
+	~PlayerArmBarrier()override { 
+		if (m_pBullet != nullptr) {
+			delete m_pBullet;
+		}
+	}
 
 	//更新処理(オーバーライド)
 	void Update(const D3DXVECTOR2& arm_pos)override;

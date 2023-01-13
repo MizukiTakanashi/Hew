@@ -46,20 +46,20 @@ private:
 
 	//敵の位置配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-		D3DXVECTOR2(52.5f + (105 *  5), -EnemyStop::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  2), -EnemyStop::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  8), -EnemyStop::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  3), -EnemyStop::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  7), -EnemyStop::SIZE_Y / 2)
+		D3DXVECTOR2(52.5f + (105 *  1), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  9), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  1), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  9), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  0), -EnemyStop::SIZE_Y / 2)
 	};
 
 	//敵を出す時間
 	int m_SetEnemyTime[ENEMY_NUM] = {
-								60 * 5,
-								60 * 10,
-								60 * 15 + 1,
-								60 * 20,
-								60 * 25 + 1
+								60 * 30,
+								60 * 30 + 1,
+								60 * 105,
+								60 * 105 + 1,
+								60 * 170
 	};
 
 //メンバ関数

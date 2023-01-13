@@ -15,6 +15,10 @@ class ExplosionManagement
 {
 //’è”
 private:
+	//cpp‚Å‰Šú‰»
+	static const D3DXVECTOR2 CLOTH_INTERVAL;
+
+	//‚±‚±‚Å‰Šú‰»
 	static const int ENEMY_NUM = 50;	//”š”­‚ÌÅ‘å”
 
 

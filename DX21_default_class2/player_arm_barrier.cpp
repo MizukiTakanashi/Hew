@@ -84,6 +84,7 @@ void PlayerArmBarrier::DeleteBullet(int index_num)
 {
 	//’e‚ğÁ‚·
 	delete m_pBullet;
+	m_pBullet = nullptr;
 
 	inhPlayerArm::IncreaseBulletNum(-1);
 }

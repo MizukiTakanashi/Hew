@@ -64,10 +64,8 @@ public:
 	//引数付きコンストラクタ
 	Player(DrawObject& pDrawObject, DrawObject& BulletDrawObject,DrawObject& BomDrawObject)
 		:GameObject(pDrawObject, D3DXVECTOR2(START_POS_X, START_POS_Y), D3DXVECTOR2(BOX_W, BOX_H)),
-		m_BulletDrawObject(BulletDrawObject),m_BomDrawObject(BomDrawObject)
-	{
+		m_BulletDrawObject(BulletDrawObject),m_BomDrawObject(BomDrawObject){
 		m_pBullet = new Bullet[BULLET_MAX_NUM];
-		
 	}
 
 	~Player()override {

@@ -5,6 +5,12 @@
 //=======================================
 #include "management_explosion.h"
 #include "sound.h"
+#include "collision.h"
+
+//==========================
+// 定数の初期化
+//==========================
+const D3DXVECTOR2 ExplosionManagement::CLOTH_INTERVAL = D3DXVECTOR2(5.0f, 5.0f);
 
 //============================
 // デフォルトコンストラクタ
@@ -45,6 +51,13 @@ void ExplosionManagement::Update(void)
 //==========================
 void ExplosionManagement::SetExplosion(const D3DXVECTOR2& pos)
 {
+	for (int i = 0; i < m_ExplosionNum; i++) {
+		//どこかの爆発と被ってたら...
+		if (Collision::ColBox(m_pExplosion[i].GetPos(), pos,
+			m_pExplosion[i].GetSize(), CLOTH_INTERVAL)) {
+			return;
+		}
+	}
 	Explosion Temp(m_DrawObject, pos);
 	m_pExplosion[m_ExplosionNum] = Temp;
 	m_ExplosionNum++;
