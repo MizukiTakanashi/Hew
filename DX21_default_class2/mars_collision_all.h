@@ -15,6 +15,7 @@
 #include "management_item.h"
 #include "score.h"
 #include "Bom.h"
+#include "management_enemy_grenade.h"
 
 class MarsCollisionAll
 {
@@ -25,6 +26,7 @@ private:
 		BARRIER,
 		STOP,
 		ICERAIN,
+		GRENADE,
 		NORMAL,
 		NUM
 	};
@@ -40,6 +42,7 @@ private:
 
 	int m_enemy_num = 0;							//敵の種類の数
 	EnemyManagement* m_pEnemy[ENEMY_NUM];			//敵全クラス
+	EnemyGrenadeManagement* m_pGrenade;				//グレネード敵
 
 	inhPlayerArmBoth* m_pPlayerLeft = nullptr;		//プレイヤーの左腕
 	inhPlayerArmBoth* m_pPlayerRight = nullptr;		//プレイヤーの右腕
@@ -66,7 +69,8 @@ public:
 
 	//引数付きコンストラクタ
 	MarsCollisionAll(Player* pPlayer, inhPlayerArmBoth* pL, inhPlayerArmBoth* pR,
-		ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber, Bom* pBom);
+		ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber, 
+		Bom* pBom, EnemyGrenadeManagement* pGrenade);
 
 	//デストラクタ
 	~MarsCollisionAll() {}

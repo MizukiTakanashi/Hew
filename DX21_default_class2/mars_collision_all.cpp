@@ -7,6 +7,7 @@
 #include "collision.h"
 #include "inh_player_arm.h"
 #include "sound.h"
+#include "management_enemy_grenade.h"
 
 //==========================
 // デフォルトコンストラクタ
@@ -24,9 +25,10 @@ MarsCollisionAll::MarsCollisionAll()
 // 引数付きコンストラクタ
 //==========================
 MarsCollisionAll::MarsCollisionAll(Player* pPlayer, inhPlayerArmBoth* pL, inhPlayerArmBoth* pR,
-	ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber, Bom* pBom)
+	ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber, Bom* pBom
+	, EnemyGrenadeManagement* pGrenade)
 	:m_pPlayer(pPlayer), m_pPlayerLeft(pL), m_pPlayerRight(pR), m_pExplosion(pExplosion),
-	m_pItem(pItem), m_pScore(pNumber), m_pBom(pBom)
+	m_pItem(pItem), m_pScore(pNumber), m_pBom(pBom), m_pGrenade(pGrenade)
 {
 	for (int i = 0; i < ENEMY_NUM; i++) {
 		m_pEnemy[i] = nullptr;
@@ -493,15 +495,52 @@ int MarsCollisionAll::Collision(void)
 		// 敵の別オブジェクト分ループ
 
 		//バリア
+		//グレネード敵
 		for (int j = 0; j < m_pEnemy[k]->GetOtherNum(); j++) {
 			bool next = false;
 
 			//=================================================
 			// プレイヤーと敵の別オブジェクト
 
-			//プレイヤーの方
-			//敵の別オブジェクトの方
+			//プレイヤー
+			//敵の別オブジェクト
 
+				//自身
+				//別オブジェクト
+			switch (k) {
+
+			case (int)TYPE::BARRIER:
+				if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetOtherPos(j),
+					m_pPlayer->GetSize() / 3, m_pEnemy[k]->GetOtherSize())) {
+					if (m_pEnemy[k]->GetOtherAttack() != 0) {
+						//爆発をセット
+						m_pExplosion->SetExplosion(m_pEnemy[k]->GetOtherPos(j));
+						explosion_sound = true;
+
+						//ダメージ数を増やす
+						attacked += m_pEnemy[k]->GetOtherAttack();
+						//コンボを途切れさせる
+						m_pScore->InitCombo();
+					}
+				}
+				break;
+
+			case (int)TYPE::GRENADE:
+				if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetOtherPos(j),
+					m_pPlayer->GetSize() / 3, EnemyGrenadeManagement::OTHER_RANGE)) {
+					m_pGrenade->SetExplosion(m_pEnemy[k]->GetOtherPos(j));
+					m_pEnemy[k]->DeleteOther(j);
+				}
+				break;
+
+			default:
+				break;
+			}
+
+			//グレネード敵であればこれ以降の処理を行わない
+			if (k == (int)TYPE::GRENADE) {
+				break;
+			}
 				//弾
 				//別オブジェクト
 			for (int i = 0; i < m_pPlayer->GetBulletNum(); i++) {
@@ -546,23 +585,6 @@ int MarsCollisionAll::Collision(void)
 
 			if (next) {
 				break;
-			}
-
-
-			//自身
-			//別オブジェクト
-			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetOtherPos(j),
-				m_pPlayer->GetSize() / 3, m_pEnemy[k]->GetOtherSize())) {
-				if (m_pEnemy[k]->GetOtherAttack() != 0) {
-					//爆発をセット
-					m_pExplosion->SetExplosion(m_pEnemy[k]->GetOtherPos(j));
-					explosion_sound = true;
-
-					//ダメージ数を増やす
-					attacked += m_pEnemy[k]->GetOtherAttack();
-					//コンボを途切れさせる
-					m_pScore->InitCombo();
-				}
 			}
 
 			//=================================================

@@ -34,6 +34,9 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pBG = new BG((char*)"data\\texture\\game_bg_scroll.jpg");
 	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\mars.png");
 
+	//爆発
+	m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION].SetTextureName((char*)"data\\texture\\explosion000.png");
+
 	//=======================
 	// 弾
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_RED].SetTextureName((char*)"data\\texture\\bullet_red.png");
@@ -87,6 +90,12 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
 	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 1);
 
+	//グレネード敵
+	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_GREANADE].SetTextureName((char*)"data\\texture\\grenade.png");
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_GRENADE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_GREANADE]);
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_GRENADE_EXPLOSION].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION], 0.0f, 0.125f, 1.0f, 7);
+	m_pEnemyGrenadeManagement = new EnemyGrenadeManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GRENADE],
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], m_pDrawObject[(int)DRAW_TYPE::ENEMY_GRENADE_EXPLOSION], 0);
 
 	//=======================
 	// 残弾表示
@@ -173,7 +182,6 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pPlayerArmChange = new PlayerArmChange(m_pPlayerLeft, m_pPlayerRight, m_pPlayerCenter);
 
 	//爆発
-	m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION].SetTextureName((char*)"data\\texture\\explosion000.png");
 	m_pDrawObject[(int)DRAW_TYPE::EXPLOSION].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION], 0.0f, 0.125f, 1.0f, 7);
 	m_pExplosionManagement = new ExplosionManagement(m_pDrawObject[(int)DRAW_TYPE::EXPLOSION]);
 
@@ -206,14 +214,14 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	//========================================================
 	// 全ての当たり判定
 	m_pColAll = new MarsCollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
-		m_pItemManagement, m_pScore, m_pBom);
+		m_pItemManagement, m_pScore, m_pBom, m_pEnemyGrenadeManagement);
 
 	//敵のポインタをセット（順番変えるのNG）
 	m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyStopManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyIceRainManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemyGrenadeManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyNormalManagement);
-
 }
 
 //==========================
@@ -235,6 +243,7 @@ StageMars::~StageMars()
 	delete m_pExplosionManagement;
 	delete m_pEnemyBarrierManagement;
 	delete m_pEnemyNormalManagement;
+	delete m_pEnemyGrenadeManagement;
 	delete m_pItemManagement;
 	delete m_pPlayer;
 	delete m_pPlayerHP;
@@ -296,6 +305,7 @@ void StageMars::Update(void)
 	m_pEnemyBarrierManagement->Update();
 	m_pEnemyIceRainManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyStopManagement->Update();
+	m_pEnemyGrenadeManagement->Update(m_pPlayer->GetPos());
 
 	//ボム
 	m_pBom->Update();
@@ -365,6 +375,7 @@ void StageMars::Draw(void) const
 	m_pEnemyBarrierManagement->Draw();
 	m_pEnemyIceRainManagement->Draw();
 	m_pEnemyStopManagement->Draw();
+	m_pEnemyGrenadeManagement->Draw();
 
 	if(m_pBoss)
 	m_pBoss->Draw();
