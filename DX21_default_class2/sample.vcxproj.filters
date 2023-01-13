@@ -248,6 +248,7 @@
     <ClCompile Include="mars_gimmick.cpp">
       <Filter>03_Mars</Filter>
     </ClCompile>
+    <ClCompile Include="player_arm_grenade.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -500,6 +501,7 @@
     <ClInclude Include="mars_gimmick.h">
       <Filter>03_Mars</Filter>
     </ClInclude>
+    <ClInclude Include="player_arm_grenade.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01_Title">
