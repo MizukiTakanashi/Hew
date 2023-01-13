@@ -29,6 +29,7 @@
 #include "Bom.h"
 
 #include "management_enemy_laser.h"
+#include "management_enemy_megumin.h"
 
 class StageSaturn
 {
@@ -48,6 +49,8 @@ private:
 		ENEMY,
 		ENEMY_ITEM,
 		ENEMY_BARRIER,
+		ENEMY_MEGUMIN,
+		BULLET_MEGUMIN,
 		BULLET_CIRCLE_RED,
 		BULLET_CIRCLE_GREEN,
 		BULLET_SQUARE_GREEN,
@@ -66,6 +69,8 @@ private:
 		ENEMY_BARRIER_BARRIER,
 		ENEMY_ITEM,
 		ENEMY_LASER,
+		ENEMY_MEGUMIN,
+		BULLET_MEGUMIN,
 		BULLET_LASER,
 		PLAYER_BULLET,
 		BULLET_ENEMY,
@@ -99,6 +104,7 @@ private:
 	BGPlanet* m_pBG_Moon = nullptr;
 	Player* m_pPlayer = nullptr;
 	EnemyLaserManagement* m_pEnemyLaserManagement = nullptr;
+	EnemyMeguminManagement* m_pEnemyMeguminManagement = nullptr;
 
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;
