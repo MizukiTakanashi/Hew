@@ -14,7 +14,6 @@
 #include "bg_planet.h"
 #include "player.h"
 #include "draw_object.h"
-#include "management_enemy_barrier.h"
 #include "texture_useful.h"
 #include "player_hp.h"
 #include "management_explosion.h"
@@ -28,6 +27,8 @@
 #include "collision_all.h"
 #include "player_center.h"
 #include "Bom.h"
+
+#include "management_enemy_laser.h"
 
 class StageSaturn
 {
@@ -50,8 +51,8 @@ private:
 		BULLET_CIRCLE_RED,
 		BULLET_CIRCLE_GREEN,
 		BULLET_SQUARE_GREEN,
-		LASER,
-		BARRIER,
+		ENEMY_LASER,
+		BULLET_LASER,
 		EXPLOSION,
 		NUMBER,
 		MULTIPLY,
@@ -62,9 +63,10 @@ private:
 	{
 		PLAYER,
 		PLAYER_HP_BAR,
-		ENEMY_BARRIER,
 		ENEMY_BARRIER_BARRIER,
 		ENEMY_ITEM,
+		ENEMY_LASER,
+		BULLET_LASER,
 		PLAYER_BULLET,
 		BULLET_ENEMY,
 		EXPLOSION,
@@ -96,7 +98,7 @@ private:
 	BG* m_pBG = nullptr;
 	BGPlanet* m_pBG_Moon = nullptr;
 	Player* m_pPlayer = nullptr;
-	EnemyBarrierManagement* m_pEnemyBarrierManagement = nullptr;
+	EnemyLaserManagement* m_pEnemyLaserManagement = nullptr;
 
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;

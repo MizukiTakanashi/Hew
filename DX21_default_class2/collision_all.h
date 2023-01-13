@@ -24,7 +24,7 @@ private:
 	enum class TYPE :int
 	{
 		NORMAL,
-		LASER,
+		BULLET_LASER,
 		GATORING,
 		NUM
 	};
