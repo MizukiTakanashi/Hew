@@ -18,6 +18,7 @@
 #include "management_enemy_normal.h"
 #include "management_enemy_icerain.h"
 #include "management_enemy_stop.h"
+#include "management_enemy_grenade.h"
 #include "texture_useful.h"
 #include "player_hp.h"
 #include "management_explosion.h"
@@ -52,6 +53,7 @@ private:
 		ENEMY,
 		ENEMY_ITEM,
 		ENEMY_BARRIER,
+		ENEMY_GREANADE,
 		BULLET_CIRCLE_RED,
 		BULLET_CIRCLE_GREEN,
 		BULLET_SQUARE_GREEN,
@@ -76,6 +78,8 @@ private:
 		ENEMY_ICE,
 		ENEMY_STOP,
 		ENEMY_NOREMAL,
+		ENEMY_GRENADE,
+		ENEMY_GRENADE_EXPLOSION,
 		BULLET_STOP,
 		ENEMY_ITEM,
 		PLAYER_BULLET,
@@ -115,6 +119,7 @@ private:
 	EnemyIceRainManagement* m_pEnemyIceRainManagement = nullptr;
 	EnemyStopManagement* m_pEnemyStopManagement = nullptr;
 	EnemyNormalManagement* m_pEnemyNormalManagement = nullptr;
+	EnemyGrenadeManagement* m_pEnemyGrenadeManagement = nullptr;
 
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;

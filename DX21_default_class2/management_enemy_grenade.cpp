@@ -10,10 +10,13 @@
 //==========================
 // 定数の初期化
 //==========================
+//public
+const D3DXVECTOR2 EnemyGrenadeManagement::OTHER_RANGE = D3DXVECTOR2(100.0f, 100.0f);
+
 //private
 const int EnemyGrenadeManagement::ENEMY_NUM[(int)STAGE::NUM] = { 5 };
 const float EnemyGrenadeManagement::BULLET_SPEED = 5.0f;
-const D3DXVECTOR2 EnemyGrenadeManagement::BULLET_SIZE = D3DXVECTOR2(50.0f, 50.0f);
+const D3DXVECTOR2 EnemyGrenadeManagement::BULLET_SIZE = D3DXVECTOR2(20.0f, 20.0f);
 const D3DXVECTOR2 EnemyGrenadeManagement::EXPLOSION_RANGE = D3DXVECTOR2(200.0f, 200.0f);
 
 //=========================
@@ -29,6 +32,25 @@ EnemyGrenadeManagement::EnemyGrenadeManagement(DrawObject& pDrawObject1, DrawObj
 
 	for (int i = 0; i < ENEMY_NUM[stage]; i++) {
 		m_pExplosion[i] = nullptr;
+		m_pExplosionDraw[i] = nullptr;
+	}
+}
+
+//==========================
+// デストラクタ
+//==========================
+EnemyGrenadeManagement::~EnemyGrenadeManagement()
+{
+	delete[] m_pEnemy; 
+	delete[] m_pBullet;
+
+	for (int i = 0; i < ENEMY_NUM[m_stage_num]; i++) {
+		if (m_pExplosion[i] != nullptr) {
+			delete m_pExplosion[i];
+		}
+		if (m_pExplosionDraw[i] != nullptr) {
+			delete m_pExplosionDraw[i];
+		}
 	}
 }
 
@@ -76,9 +98,9 @@ void EnemyGrenadeManagement::Update(const D3DXVECTOR2& PlayerPos)
 
 			Bullet temp(m_pDrawObjectBullet, m_pEnemy[i].GetPos(),
 				BULLET_SIZE, movTemp, 0.0f);
-			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+			m_pBullet[EnemyManagement::GetOtherNum()] = temp;
 
-			EnemyManagement::IncreaseObjNum(1);
+			EnemyManagement::IncreaseOtherNum(1);
 
 			m_pEnemy[i].BulletMake();
 		}
@@ -106,11 +128,12 @@ void EnemyGrenadeManagement::Update(const D3DXVECTOR2& PlayerPos)
 
 		//爆発時間になったら...
 		if (m_pExplosion[i]->GetTime() > EXPLOSION_WAIT_TIME) {
+			m_pExplosionDraw[i]->Update();
 			m_pExplosion[i]->SetSize(EXPLOSION_RANGE);
 		}
 
 		//爆発時間が終わったら...
-		if (m_pExplosion[i]->GetTime() > EXPLOSION_WAIT_TIME + EXPLOSION_TIME) {
+		if (m_pExplosionDraw[i]->GetEndAnimation()) {
 			DeleteBullet(i);
 		}
 	}
@@ -125,8 +148,14 @@ void EnemyGrenadeManagement::Draw(void)const
 		m_pEnemy[i].Draw();
 	}
 
-	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {
+	for (int i = 0; i < EnemyManagement::GetOtherNum(); i++) {
 		m_pBullet[i].Draw();
+	}
+
+	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {
+		if (m_pExplosion[i]->GetSize() == EXPLOSION_RANGE) {
+			m_pExplosionDraw[i]->Draw();
+		}
 	}
 }
 
@@ -137,6 +166,10 @@ void EnemyGrenadeManagement::SetExplosion(D3DXVECTOR2 pos)
 {
 	m_pExplosion[EnemyManagement::GetBulletNum()] =
 		new Bullet(m_pDrawObjectExplosion, pos, D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(0.0f, 0.0f), 0.0f);
+
+	m_pExplosionDraw[EnemyManagement::GetBulletNum()] =
+		new Explosion(m_pDrawObjectExplosion, pos);
+	m_pExplosionDraw[EnemyManagement::GetBulletNum()]->SetSize(EXPLOSION_RANGE);
 
 	EnemyManagement::IncreaseBulletNum(1);
 }
@@ -177,6 +210,20 @@ void EnemyGrenadeManagement::DeleteBullet(int index_num)
 {
 	for (int i = index_num; i < EnemyManagement::GetBulletNum() - 1; i++) {
 		m_pExplosion[i] = m_pExplosion[i + 1];
+		m_pExplosion[i + 1] = nullptr;
+		m_pExplosionDraw[i] = m_pExplosionDraw[i + 1];
+		m_pExplosionDraw[i + 1] = nullptr;
 	}
 	EnemyManagement::IncreaseBulletNum(-1);
+}
+
+//======================
+// 別オブジェクトを消す
+//======================
+void EnemyGrenadeManagement::DeleteOther(int index_num)
+{
+	for (int i = index_num; i < EnemyManagement::GetOtherNum() - 1; i++) {
+		m_pBullet[i] = m_pBullet[i + 1];
+	}
+	EnemyManagement::IncreaseOtherNum(-1);
 }
