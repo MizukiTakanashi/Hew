@@ -245,7 +245,9 @@
     <ClCompile Include="stage_saturn.cpp">
       <Filter>05_Saturn</Filter>
     </ClCompile>
-    <ClCompile Include="mars_gimmick.cpp" />
+    <ClCompile Include="mars_gimmick.cpp">
+      <Filter>03_Mars</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -495,7 +497,9 @@
     <ClInclude Include="stage_saturn.h">
       <Filter>05_Saturn</Filter>
     </ClInclude>
-    <ClInclude Include="mars_gimmick.h" />
+    <ClInclude Include="mars_gimmick.h">
+      <Filter>03_Mars</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01_Title">
