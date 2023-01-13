@@ -209,7 +209,10 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	//“G‚ÌŠÇ—
 	m_pAllEnemyManagement = new AllEnemyManagement;
 	m_pAllEnemyManagement->AddPointer(m_pEnemyBarrierManagement);
-
+	m_pAllEnemyManagement->AddPointer(m_pEnemyStopManagement);
+	m_pAllEnemyManagement->AddPointer(m_pEnemyIceRainManagement);
+	m_pAllEnemyManagement->AddPointer(m_pEnemyGrenadeManagement);
+	m_pAllEnemyManagement->AddPointer(m_pEnemyNormalManagement);
 
 	//========================================================
 	// ‘S‚Ä‚Ì“–‚½‚è”»’è
