@@ -90,6 +90,7 @@ public:
 	void DeleteObj(int index_num) {
 		for (int i = index_num; i < m_EnemyNum - 1; i++) {
 			m_pMeteo[i] = m_pMeteo[i + 1];
+			m_pMeteo[i + 1] = nullptr;
 		}
 
 		m_EnemyNum--;

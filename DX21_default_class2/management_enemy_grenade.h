@@ -64,7 +64,7 @@ private:
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][5] = {
 	{//チュートリアル
-		D3DXVECTOR2(52.5f + (105 * 1), -EnemyGrenade::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 4), -EnemyGrenade::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 6), -EnemyGrenade::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 4), -EnemyGrenade::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 6), -EnemyGrenade::SIZE_Y / 2),
@@ -75,7 +75,7 @@ private:
 
 	int m_SetEnemyTime[(int)STAGE::NUM][5] = {
 	{//チュートリアル
-		60 * 1,
+		60 * 25,
 		60 * 25 + 1,
 		60 * 100,
 		60 * 100 + 1,
