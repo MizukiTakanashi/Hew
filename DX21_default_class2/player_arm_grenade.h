@@ -11,8 +11,9 @@
 #include "inh_player_arm.h"
 #include "draw_object.h"
 #include "bullet.h"
+#include "explosion.h"
 
-class PlayerArmGrenad :public inhPlayerArm
+class PlayerArmGrenade :public inhPlayerArm
 {
 //定数
 public:
@@ -23,41 +24,36 @@ private:
 	//ここで初期化
 	static const int BULLET_NUM_MAX = 50;	//弾の制限数　実際に撃てる数はこれより１少ない
 	static const int BULLET_SHOOT_MAX = 10;	//弾の同時最大発射数
+	static const int BULLET_BREAK_TIME = 200;	//ホーミング弾が壊れる時間
+	static const int BULLET_INTERVAL = 20;	//弾の発射間隔
+	static const int EXPLOSION_WAIT_TIME = 200;	//爆発待ち時間
+	static const int EXPLOSION_TIME = 100;		//爆発時間
 
 	//cppで初期化
-	static const D3DXVECTOR2 BULLET_SIZE;	//サイズ
+	static const D3DXVECTOR2 BULLET_SIZE;		//サイズ
+	static const float BULLET_SPEED;			//スピード
+	static const D3DXVECTOR2 EXPLOSION_RANGE;	//爆発のサイズ
 
 //メンバ変数
 private:
 	DrawObject m_bulletdraw;				//弾の描画オブジェクト
+	DrawObject m_explosiondraw;				//爆発の描画オブジェクト
 	Bullet* m_pBullet[BULLET_SHOOT_MAX];	//弾のオブジェクト
+	Explosion* m_pExplosionDraw[BULLET_SHOOT_MAX];	//描画用の爆発
+	int m_interval_count = 0;				//発射間隔のカウント
+	int m_attack_count[BULLET_SHOOT_MAX];	//爆発開始からをカウント
 
 
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
-	PlayerArmGrenad() {
-		for (int i = 0; i < BULLET_SHOOT_MAX; i++) {
-			m_pBullet[i] = nullptr;
-		}	
-	}
+	PlayerArmGrenade();
 
 	//引数付きコンストラクタ
-	PlayerArmGrenad(DrawObject bulletdraw, bool right, int type)
-		:inhPlayerArm(BULLET_NUM_MAX, right, type), m_bulletdraw(bulletdraw) {
-		for (int i = 0; i < BULLET_SHOOT_MAX; i++) {
-			m_pBullet[i] = nullptr;
-		}
-	}
+	PlayerArmGrenade(DrawObject bulletdraw, DrawObject explosiondraw, bool right, int type);
 
 	//デストラクタ
-	~PlayerArmGrenad()override {
-		for (int i = 0; i < BULLET_SHOOT_MAX; i++) {
-			if (m_pBullet[i] != nullptr) {
-				delete m_pBullet[i];
-			}
-		}
-	}
+	~PlayerArmGrenade()override;
 
 	//更新処理(オーバーライド)
 	void Update(const D3DXVECTOR2& arm_pos)override;
@@ -77,6 +73,17 @@ public:
 	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override{
 		return m_pBullet[index_num]->GetSize();
 	}
+
+	//指定した番号の弾の爆発するフラグを返す
+	bool GetIsAttack(int index_num) {
+		if (m_attack_count[index_num] == -1) {
+			return false;
+		}
+		return true;
+	}
+
+	//指定した番号の弾の爆発するかフラグをオン
+	void SetIsAttack(int index_num);
 };
 
 #endif // !_PLAYER_ARM_GRENADE_H_

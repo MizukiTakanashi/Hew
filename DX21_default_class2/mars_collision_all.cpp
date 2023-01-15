@@ -8,6 +8,7 @@
 #include "inh_player_arm.h"
 #include "sound.h"
 #include "management_enemy_grenade.h"
+#include "player_arm_grenade.h"
 
 //==========================
 // デフォルトコンストラクタ
@@ -271,9 +272,31 @@ int MarsCollisionAll::Collision(void)
 				//ポインターがヌルであれば処理を行わない
 				if (pArmItem != nullptr) {
 					//バリアであれば何もしない
-					if (pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE4) {
+					if (pArm->GetType() != inhPlayerArmBoth::TYPE::TYPE4) {
+						//腕についているアイテムのポインタを取ってくる(二回目は右)
+						pArmItem = m_pPlayerRight->GetArmPointer();
+
+						//腕のポインタを取ってくる(二回目は右)
+						pArm = m_pPlayerRight;
+
 						continue;
 					}
+
+					//グレネード敵であれば何もしない
+					//if (pArm->GetType() != inhPlayerArmBoth::TYPE::TYPE7) {
+					//	//PlayerArmGrenade* pGrenade = m_pPlayerLeft->GetArmPointer();
+					//	for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
+
+					//	}
+					//	//腕についているアイテムのポインタを取ってくる(二回目は右)
+					//	pArmItem = m_pPlayerRight->GetArmPointer();
+
+					//	//腕のポインタを取ってくる(二回目は右)
+					//	pArm = m_pPlayerRight;
+
+					//	continue;
+					//}
+
 					for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
 						//もしも画面外にいたら壊せないようにする
 						if (!ScreenOut::GetScreenOut(m_pEnemy[k]->GetObjPos(j),
@@ -603,6 +626,11 @@ int MarsCollisionAll::Collision(void)
 				//ポインターがヌルであれば処理を行わない
 				//バリアであれば処理を行わない
 				if (pArmItem == nullptr || pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE4) {
+					//腕についているアイテムのポインタを取ってくる(二回目は右)
+					pArmItem = m_pPlayerRight->GetArmPointer();
+					//腕のポインタを取ってくる(二回目は右)
+					pArm = m_pPlayerLeft;
+
 					continue;
 				}
 

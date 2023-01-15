@@ -26,7 +26,7 @@ public:
 		TYPE4,		//バリア
 		TYPE5,		//動きを止める
 		TYPE6,		//氷の敵
-		TYPE7,
+		TYPE7,		//グレネード敵
 		TYPE8,
 		TYPE_SHOOT,	// 前のタイプの弾の処理 & 自身発射中
 		TYPE_OLD,	// 前のタイプの弾の処理中
@@ -53,6 +53,7 @@ private:
 	DrawObject* m_barrier_draw = nullptr;	//バリアの描画オブジェクト
 	DrawObject* m_bullet_stop_draw = nullptr;	//動きを止める敵の弾の描画オブジェクト
 	DrawObject* m_bullet_icerain_draw = nullptr;	//氷の敵の描画
+	DrawObject m_explosion_draw;			//爆発の描画オブジェクト
 
 	bool m_separation_button = false;		//切り離しボタンが押されたか
 	bool m_bullet_shot = false;				//弾発射のボタンが押されたか(押している間)
@@ -118,6 +119,9 @@ public:
 
 	//氷の敵の腕の描画
 	void DrawSetIceRain(DrawObject* pDraw) { m_bullet_icerain_draw = pDraw; }
+
+	//爆発の描画セット
+	void DrawSetExplosion(DrawObject& pDraw) { m_explosion_draw = pDraw; }
 };
 
 #endif // !_INH_PLAYER_ARM_BOTH_H_
