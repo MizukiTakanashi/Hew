@@ -1,16 +1,16 @@
 //=======================================
-// 金星のステージ関係(cppファイル)
+// 継承用のステージ関係(cppファイル)
 // 作成日：
 // 作成者：恩田洋行
 //=======================================
-#include "stage_venus.h"
+#include "inh_stage.h"
 #include "sound.h"
 
 //==========================
 // 定数初期化
 //==========================
-const D3DXVECTOR2 StageVenus::NUMBER_POS = D3DXVECTOR2(1230.0f, 30.0f);
-const D3DXVECTOR2 StageVenus::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
+const D3DXVECTOR2 InhStage::NUMBER_POS = D3DXVECTOR2(1230.0f, 30.0f);
+const D3DXVECTOR2 InhStage::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
 
 //==========================
 // グローバル変数
@@ -21,7 +21,7 @@ bool isDownVenus = false; //ボスが死んだか
 //==========================
 // 引数付きコンストラクタ
 //==========================
-StageVenus::StageVenus(Score* pNumber):InhStage(pNumber), m_pScore(pNumber)
+InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 {
 	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);	//BGM再生
@@ -163,7 +163,7 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber), m_pScore(pNumber)
 //==========================
 // デストラクタ
 //==========================
-StageVenus::~StageVenus()
+InhStage::~InhStage()
 {
 	//描画がない物から消していく
 	delete m_pAllEnemyManagement;
@@ -191,127 +191,4 @@ StageVenus::~StageVenus()
 
 	//BGMをストップ
 	StopSound(m_BGM);
-}
-
-//==========================
-// 更新処理
-//==========================
-void StageVenus::Update(void)
-{
-	//ヒットストップ
-	if (VenusStopFlame > 0)
-	{
-		VenusStopFlame--;
-		return;
-	}
-
-	//ボスが死んだら
-	if (isDownVenus)
-		Fade(SCENE::SCENE_RESULT);
-
-	//背景
-	m_pBG->Update();
-	m_pBG_Moon->Update();
-
-	//腕の切り替え
-	m_pPlayerArmChange->Change();
-
-	//プレイヤー
-	m_pPlayer->Update(m_pPlayerHP->IsPlayerInvincible());
-
-	m_pPlayerHP->Update();
-
-	//爆発
-	m_pExplosionManagement->Update();
-
-	//敵から落ちるアイテム
-	m_pItemManagement->Update();
-
-	//=======================
-	// 敵
-	m_pEnemyFireballManagement->Update(m_pPlayer->GetPos());
-
-	//ボム
-	m_pBom->Update();
-
-	//====================================
-	//プレイヤーのHPに対する処理
-	int attack_num = 0;
-
-	//プレイヤーの腕
-
-	//ホーミング弾用
-	D3DXVECTOR2 temp_pos = m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerLeft->GetPos());
-
-	//腕のアップデート
-	m_pPlayerLeft->ButtonPress();
-	m_pPlayerLeft->Update(m_pPlayer->GetPos(), temp_pos);
-	m_pPlayerRight->ButtonPress();
-	m_pPlayerRight->Update(m_pPlayer->GetPos(), temp_pos);
-	m_pPlayerCenter->ButtonPress();
-	m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
-
-	//敵とプレイヤーの当たり判定
-	//attack_num += m_pColAll->Collision();
-
-	//回復
-	//m_pColAll->HeelCollision();
-
-	//プレイヤーのHPを攻撃数によって減らす
-	if (attack_num != 0) {
-		m_pPlayerHP->ReduceHP((float)attack_num);
-	}
-
-	//プレイヤーのHPが0になったら...
-	if (m_pPlayerHP->GetHP0Flag()) {
-		Fade(SCENE::SCENE_RESULT);
-	}
-}
-
-//==========================
-// 描画処理
-//==========================
-void StageVenus::Draw(void) const
-{
-	m_pBG->DrawBG();
-	m_pBG_Moon->DrawBG();
-	m_pPlayer->Draw();
-
-	//プレイヤーの腕の描画処理
-	m_pPlayerLeft->ArmDraw();
-	m_pPlayerRight->ArmDraw();
-	m_pPlayerCenter->ArmDraw();
-
-	//敵の描画
-	m_pEnemyFireballManagement->Draw();
-
-	//プレイヤーの弾の表示
-	m_pPlayer->DrawBullet();
-
-	m_pExplosionManagement->Draw();
-
-	m_pItemManagement->Draw();
-
-	//ボムの描画
-	m_pBom->BomDraw();
-
-	//UIの描画
-	m_pPlayerHP->DrawHP();
-	m_pScore->DrawNumber();
-	m_pComboNum->SetNumber(m_pScore->GetComboNum());
-	m_pComboNum->DrawNumber();
-	m_pMultiply->Draw();
-}
-
-//==========================
-// ヒットストップ
-//==========================
-void VenusHitStop(int flame)
-{
-	VenusStopFlame = flame;
-}
-
-void VenusBossDown()
-{
-	isDownVenus = true;
 }

@@ -1,11 +1,9 @@
 //=======================================
-// 金星のステージ関係(ヘッダファイル)
+// 継承用のステージ関係(ヘッダファイル)
 // 作成日：
 // 作成者：恩田洋行
 //=======================================
 #pragma once
-
-#include "inh_stage.h"
 
 #include "main.h"
 #include "sprite.h"
@@ -29,10 +27,10 @@
 
 #include "management_enemy_fireball.h"
 
-class StageVenus : public InhStage
+class InhStage
 {
-	//定数
-private:
+//定数
+protected:
 	//ここで初期化
 	static const int NUMBER_DIGIT = 10;		//数字の桁
 
@@ -86,8 +84,8 @@ private:
 	};
 
 
-	//メンバ変数
-private:
+//メンバ変数
+protected:
 	int m_BGM = 0;
 
 	Score* m_pScore = nullptr;
@@ -111,17 +109,17 @@ private:
 
 	EnemyFireballManagement* m_pEnemyFireballManagement = nullptr;
 
-	//メンバ関数
+//メンバ関数
 public:
-	StageVenus(Score* pNumber);
+	InhStage(Score* pNumber);
 
-	~StageVenus();	//デストラクタ
+	~InhStage();	//デストラクタ
 
 	//更新
-	void Update(void) override;
+	virtual void Update(void) = 0;
 
 	//描画
-	void Draw(void)const override;
+	virtual void Draw(void)const = 0;
 
 	//スコアを返す
 	int GetScore(void)const { return m_pScore->GetNumber(); }

@@ -262,6 +262,9 @@
     <ClCompile Include="management_enemy_fireball.cpp">
       <Filter>29_Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="inh_stage.cpp">
+      <Filter>30_Multi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -527,6 +530,9 @@
     </ClInclude>
     <ClInclude Include="management_enemy_fireball.h">
       <Filter>29_Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="inh_stage.h">
+      <Filter>30_Multi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
