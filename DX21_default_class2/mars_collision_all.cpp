@@ -271,7 +271,7 @@ int MarsCollisionAll::Collision(void)
 				//ポインターがヌルであれば処理を行わない
 				if (pArmItem != nullptr) {
 					//バリアであれば何もしない
-					if (pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE4) {
+					if (pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE_BARRIAR) {
 						continue;
 					}
 					for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
@@ -284,15 +284,15 @@ int MarsCollisionAll::Collision(void)
 								pArmItem->GetBulletSize(), m_pEnemy[k]->GetObjSize())) {
 
 								//腕の弾がSTOPなら
-								if (pArmItem->GetType() == inhPlayerArm::TYPE::TYPE5)
+								if (pArmItem->GetType() == inhPlayerArm::TYPE::TYPE_STOP)
 								{
 									//敵の動きを１２０F止める
 									PlaySound(m_SE_10, 0);
 									m_pEnemy[k]->StopEnemy(j, 120);
 									continue;
 								}
-								//腕についている種類がTYPE2(レーザー)でなければ...
-								if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
+								//腕についている種類がレーザーでなければ...
+								if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE_LASER) {
 									//プレイヤーの弾を消す
 									pArmItem->DeleteBullet(i);
 									i--;
@@ -450,7 +450,7 @@ int MarsCollisionAll::Collision(void)
 			for (int m = 0; m < 2; m++) {
 				//ポインターがヌルであれば処理を行わない
 				//バリアでなければ処理を行わない
-				if (pArmItem != nullptr && pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE4) {
+				if (pArmItem != nullptr && pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE_BARRIAR) {
 					for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
 						if (Collision::ColBox(pArmItem->GetBulletPos(i), m_pEnemy[k]->GetBulletPos(j),
 							pArmItem->GetBulletSize(), m_pEnemy[k]->GetBulletSize())) {
@@ -602,7 +602,7 @@ int MarsCollisionAll::Collision(void)
 			for (int m = 0; m < 2; m++) {
 				//ポインターがヌルであれば処理を行わない
 				//バリアであれば処理を行わない
-				if (pArmItem == nullptr || pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE4) {
+				if (pArmItem == nullptr || pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE_BARRIAR) {
 					continue;
 				}
 
@@ -613,8 +613,8 @@ int MarsCollisionAll::Collision(void)
 						m_pExplosion->SetExplosion(m_pEnemy[k]->GetOtherPos(j));
 						explosion_sound = true;
 
-						//腕についている種類がTYPE2(レーザー)でなければ...
-						if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
+						//腕についている種類がレーザーでなければ...
+						if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE_LASER) {
 							//プレイヤーの弾を消す
 							pArmItem->DeleteBullet(i);
 							i--;
@@ -720,11 +720,11 @@ void MarsCollisionAll::HeelCollision(void)
 				{
 				}
 				//タイプが同じだったら残弾数を回復する
-				if (pArm->GetType() == (inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i) + 1))
+				if (pArm->GetType() == (inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i)))
 				{
 					pArm->HeelBullet();
 				}
-				pArm->SetType((inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i) + 1));
+				pArm->SetType((inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i)));
 				m_pItem->DeleteItem(i);
 				i--;
 			}

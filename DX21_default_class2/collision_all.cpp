@@ -235,8 +235,8 @@ int CollisionAll::Collision(void)
 							if (Collision::ColBox(pArmItem->GetBulletPos(i), m_pEnemy[k]->GetObjPos(j),
 								pArmItem->GetBulletSize(), m_pEnemy[k]->GetObjSize())) {
 
-								//腕についている種類がTYPE2(レーザー)でなければ...
-								if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
+								//腕についている種類がレーザーでなければ...
+								if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE_LASER) {
 									//プレイヤーの弾を消す
 									pArmItem->DeleteBullet(i);
 									i--;
@@ -664,8 +664,8 @@ int CollisionAll::Collision(void)
 							m_pExplosion->SetExplosion(pArmItem->GetBulletPos(i));
 							explosion_sound = true;
 
-							//腕についている種類がTYPE2(レーザー)でなければ...
-							if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE2) {
+							//腕についている種類がレーザーでなければ...
+							if (pArmItem->GetType() != inhPlayerArm::TYPE::TYPE_LASER) {
 								//プレイヤーの弾を消す
 								pArmItem->DeleteBullet(i);
 								i--;
@@ -748,11 +748,11 @@ void CollisionAll::HeelCollision(void)
 				{
 				}
 				//タイプが同じだったら残弾数を回復する
-				if (pArm->GetType() == (inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i) + 1))
+				if (pArm->GetType() == (inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i)))
 				{
 					pArm->HeelBullet();
 				}
-				pArm->SetType((inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i) + 1));
+				pArm->SetType((inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i)));
 				m_pItem->DeleteItem(i);
 				i--;
 			}

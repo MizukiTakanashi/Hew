@@ -19,18 +19,18 @@ public:
 	//腕につく敵のタイプ
 	enum class TYPE :int
 	{
-		TYPE_NONE,	//	何もついていない
-		TYPE1,		//ホーミング
-		TYPE2,		//レーザー
-		TYPE3,		//ガトリング
-		TYPE4,		//バリア
-		TYPE5,		//動きを止める
-		TYPE6,		//氷の敵
+		TYPE_HOMING,		//ホーミング
+		TYPE_LASER,		//レーザー
+		TYPE_GATORING,		//ガトリング
+		TYPE_BARRIAR,		//バリア
+		TYPE_STOP,		//動きを止める
+		TYPE_ICERAIN,		//氷の敵
 		TYPE7,
 		TYPE8,
+		TYPE_NUM,
+		TYPE_NONE,	//	何もついていない
 		TYPE_SHOOT,	// 前のタイプの弾の処理 & 自身発射中
 		TYPE_OLD,	// 前のタイプの弾の処理中
-		TYPE_NUM,
 	};
 
 //定数

@@ -92,11 +92,11 @@ void inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& 
 			switch (m_type) {
 
 				//Arm2はトリガーになってる
-			case TYPE::TYPE2:
+			case TYPE::TYPE_LASER:
 				m_pEnemyItem->SetButtonTrigger(m_bullet_shot_trigger);
 				break;
 
-			case TYPE::TYPE4:
+			case TYPE::TYPE_BARRIAR:
 				m_pEnemyItem->SetButtonTrigger(m_bullet_shot_trigger);
 				break;
 
@@ -201,27 +201,27 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 		//タイプに沿って腕のアイテムをセット
 		switch (m_type) {
 
-		case TYPE::TYPE1:
+		case TYPE::TYPE_HOMING:
 			m_pEnemyItem = new PlayerArm1(m_bullet_draw, false, (int)m_type - 1);
 			break;
 
-		case TYPE::TYPE2:
+		case TYPE::TYPE_LASER:
 			m_pEnemyItem = new PlayerArm2(m_laser_draw, false, (int)m_type - 1);
 			break;
 
-		case TYPE::TYPE3:
+		case TYPE::TYPE_GATORING:
 			m_pEnemyItem = new PlayerArm3(m_bullet_draw, false, (int)m_type - 1);
 			break;
 
-		case TYPE::TYPE4:
+		case TYPE::TYPE_BARRIAR:
 			m_pEnemyItem = new PlayerArmBarrier(*m_barrier_draw, false, (int)m_type - 1);
 			break;
 
-		case TYPE::TYPE5:
+		case TYPE::TYPE_STOP:
 			m_pEnemyItem = new PlayerArmStop(*m_bullet_stop_draw, false, (int)m_type - 1);
 			break;
 
-		case TYPE::TYPE6:
+		case TYPE::TYPE_ICERAIN:
 			m_pEnemyItem = new PlayerArmIceRain(*m_bullet_icerain_draw, false, (int)m_type - 1);
 		default:
 			break;
