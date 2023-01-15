@@ -70,12 +70,6 @@ StageVenus::StageVenus(Score* pNumber):m_pScore(pNumber)
 	// Žc’e•\Ž¦
 	m_pTexUseful[(int)TEXTURE_TYPE::NUMBER].SetTextureName((char*)"data\\texture\\number.png");
 	m_pDrawObject[(int)DRAW_TYPE::NUMBER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::NUMBER], 0.0f, 0.0909f, 1.0f, 11);
-	//m_pRemaining_Left = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(40.0f, 60.0f), 2);
-	//m_pRemaining_Right = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(40.0f, 60.0f), 2);
-	//m_pRemaining_Center = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(40.0f, 60.0f), 2);
-	//m_pRemaining_Left->SetInitPos(D3DXVECTOR2(130.0f, 600.0f));
-	//m_pRemaining_Right->SetInitPos(D3DXVECTOR2(130.0f, 680.0f));
-	//m_pRemaining_Center->SetInitPos(D3DXVECTOR2(130.0f, 520.0f));
 
 	//=======================
 	// ƒRƒ“ƒ{”‚Ì‰¡‚Ì~
@@ -187,9 +181,6 @@ StageVenus::~StageVenus()
 	delete m_pPlayerHP;
 	delete m_pPlayerLeft;
 	delete m_pPlayerRight;
-	//delete m_pRemaining_Left;
-	//delete m_pRemaining_Right;
-	//delete m_pRemaining_Center;
 	delete m_pPlayerCenter;
 	delete m_pComboNum;
 	delete m_pMultiply;
@@ -307,9 +298,6 @@ void StageVenus::Draw(void) const
 	//UI‚Ì•`‰æ
 	m_pPlayerHP->DrawHP();
 	m_pScore->DrawNumber();
-	//m_pRemaining_Left->DrawNumber();
-	//m_pRemaining_Right->DrawNumber();
-	//m_pRemaining_Center->DrawNumber();
 	m_pComboNum->SetNumber(m_pScore->GetComboNum());
 	m_pComboNum->DrawNumber();
 	m_pMultiply->Draw();

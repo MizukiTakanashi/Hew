@@ -103,9 +103,6 @@ private:
 	PlayerLeft* m_pPlayerLeft = nullptr;
 	PlayerRight* m_pPlayerRight = nullptr;
 	PlayerCenter* m_pPlayerCenter = nullptr;
-	//Number* m_pRemaining_Left = nullptr;
-	//Number* m_pRemaining_Right = nullptr;
-	//Number* m_pRemaining_Center = nullptr;
 	UI* m_pMultiply = nullptr;
 	Number* m_pComboNum = nullptr;
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;

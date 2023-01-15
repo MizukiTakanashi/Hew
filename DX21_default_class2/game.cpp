@@ -78,14 +78,16 @@ Game::Game(Score* pNumber) :m_pScore(pNumber)
 
 	//=======================
 	// 敵
-	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY].SetTextureName((char*)"data\\texture\\teki2.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 1.0f, 0.33f, 1.0f, 3);
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 2.0f, 0.33f, 1.0f, 3);
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ATTCK].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 2.0f, 0.33f, 1.0f, 3);
+	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_NORMAL].SetTextureName((char*)"data\\texture\\enemy_missile.png");
+	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_LASER].SetTextureName((char*)"data\\texture\\enemy_laser.png");
+	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_GATORING].SetTextureName((char*)"data\\texture\\enemy_gatoring.png");
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_NORMAL]);
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_LASER]);
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_GATORING]);
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ATTCK].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_NORMAL]);
 	//雑魚
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_PUBLIC].SetTextureName((char*)"data\\texture\\UFO.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_PUBLIC].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_PUBLIC], 1.0f, 1.0f, 1.0f, 3);
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_PUBLIC].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_PUBLIC]);
 	
 	//バリアの敵
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_BARRIER].SetTextureName((char*)"data\\texture\\monster11.png");
