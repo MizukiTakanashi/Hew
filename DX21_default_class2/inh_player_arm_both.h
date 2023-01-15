@@ -58,8 +58,8 @@ private:
 	bool m_bullet_shot = false;				//弾発射のボタンが押されたか(押している間)
 	bool m_bullet_shot_trigger = false;		//弾発射のボタンが押されたか(押した時)
 
-	Number* m_pRemaining_Bullet = nullptr;	//残弾数表示オブジェクト
-	D3DXVECTOR2 m_Remaining_Bullet_Pos = D3DXVECTOR2(0.0f, 0.0f);	//敵アイコン表示場所
+	Number* m_pRemaining_Num = nullptr;	//残弾数表示オブジェクト
+	D3DXVECTOR2 m_Remaining_Icon_Pos = D3DXVECTOR2(0.0f, 0.0f);	//敵アイコン表示場所
 
 //メンバ関数
 public:
@@ -68,12 +68,19 @@ public:
 
 	//引数付きコンストラクタ
 	inhPlayerArmBoth(DrawObject& pDrawObject, DrawObject& pBullet, DrawObject& pLaser, const D3DXVECTOR2& pos,
-		const D3DXVECTOR2& from_player, Number* pNum, D3DXVECTOR2 icon_pos)
+		const D3DXVECTOR2& from_player, DrawObject& pDrawobNumber, D3DXVECTOR2 num_pos, D3DXVECTOR2 icon_pos)
 		:GameObject(pDrawObject, pos, SIZE), m_bullet_draw(pBullet), m_laser_draw(pLaser),
-		m_from_player(from_player), m_pRemaining_Bullet(pNum), m_Remaining_Bullet_Pos(icon_pos) {}
+		m_from_player(from_player), m_Remaining_Icon_Pos(icon_pos) 
+	{
+		m_pRemaining_Num = new Number(pDrawobNumber, num_pos, D3DXVECTOR2(40.0f, 60.0f), 2);
+	}
 
 	//デストラクタ
-	virtual ~inhPlayerArmBoth()override { delete m_pEnemyItem; }
+	virtual ~inhPlayerArmBoth()override 
+	{
+		delete m_pEnemyItem; 
+		delete m_pRemaining_Num;
+	}
 
 	//更新処理
 	// player_pos：プレイヤーの座標　enemy_pos：一番近い敵の座標

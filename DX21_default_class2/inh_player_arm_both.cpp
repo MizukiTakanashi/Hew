@@ -118,9 +118,9 @@ void inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& 
 	}
 
 	//Žc’e”‚ðXV
-	if (m_pRemaining_Bullet && m_pEnemyItem)
+	if (m_pRemaining_Num && m_pEnemyItem)
 	{
-		m_pRemaining_Bullet->SetNumber(m_pEnemyItem->GetRemainingBullet());
+		m_pRemaining_Num->SetNumber(m_pEnemyItem->GetRemainingBullet());
 	}
 
 }
@@ -137,13 +137,23 @@ void inhPlayerArmBoth::ArmDraw(void) const
 			//˜r‚É‚Â‚¢‚Ä‚¢‚éƒAƒCƒeƒ€Ž©g‚Ì•`‰æ
 			Draw();
 			//Žc’e”‰¡‚Ì“GƒAƒCƒRƒ“•\Ž¦
-			Draw(m_Remaining_Bullet_Pos, ICON_SIZE);
+			Draw(m_Remaining_Icon_Pos, ICON_SIZE);
 		}
 
 		if (m_pEnemyItem != nullptr) {
 			//˜r‚É‚Â‚¢‚Ä‚¢‚éƒAƒCƒeƒ€‚Ì’e“™•`‰æ
 			m_pEnemyItem->PlayerArmDraw();
+			if (m_type != TYPE::TYPE_OLD)
+			{
+				m_pRemaining_Num->DrawNumber();
+			}
 		}
+
+	}
+
+
+	if (m_pRemaining_Num)
+	{
 	}
 }
 

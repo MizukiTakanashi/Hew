@@ -101,12 +101,6 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	// Žc’e•\Ž¦
 	m_pTexUseful[(int)TEXTURE_TYPE::NUMBER].SetTextureName((char*)"data\\texture\\number.png");
 	m_pDrawObject[(int)DRAW_TYPE::NUMBER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::NUMBER], 0.0f, 0.0909f, 1.0f, 11);
-	m_pRemaining_Left = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(40.0f, 60.0f), 2);
-	m_pRemaining_Right = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(40.0f, 60.0f), 2);
-	m_pRemaining_Center = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(40.0f, 60.0f), 2);
-	m_pRemaining_Left->SetInitPos(D3DXVECTOR2(130.0f, 600.0f));
-	m_pRemaining_Right->SetInitPos(D3DXVECTOR2(130.0f, 680.0f));
-	m_pRemaining_Center->SetInitPos(D3DXVECTOR2(130.0f, 520.0f));
 
 	//=======================
 	// ƒRƒ“ƒ{”‚Ì‰¡‚Ì~
@@ -130,8 +124,8 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
 	m_pPlayerLeft = new PlayerLeft(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_BULLET],
-		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER], m_pPlayer->GetPos(), m_pRemaining_Left, D3DXVECTOR2(30.0f, 600.0f));
-		//ƒoƒŠƒA
+		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER], m_pPlayer->GetPos(), m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(130.0f, 600.0f), D3DXVECTOR2(30.0f, 600.0f));
+	//ƒoƒŠƒA
 	m_pPlayerLeft->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
 		//“®‚«‚ðŽ~‚ß‚é“G
 	m_pPlayerLeft->DrawSetBulleStop(&m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
@@ -149,8 +143,8 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
 	m_pPlayerRight = new PlayerRight(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_BULLET],
-		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER], m_pPlayer->GetPos(), m_pRemaining_Right, D3DXVECTOR2(30.0f, 680.0f));
-		//ƒoƒŠƒA
+		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER], m_pPlayer->GetPos(), m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(130.0f, 680.0f), D3DXVECTOR2(30.0f, 680.0f));
+	//ƒoƒŠƒA
 	m_pPlayerRight->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
 	//“®‚«‚ðŽ~‚ß‚é“G
 	m_pPlayerRight->DrawSetBulleStop(&m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
@@ -168,8 +162,8 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
 	m_pPlayerCenter = new PlayerCenter(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER], m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTTER_BULLET],
-		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER_LASER], m_pPlayer->GetPos(), m_pRemaining_Center, D3DXVECTOR2(30.0f, 520.0f));
-		//ƒoƒŠƒA
+		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER_LASER], m_pPlayer->GetPos(), m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(130.0f, 520.0f), D3DXVECTOR2(30.0f, 520.0f));
+	//ƒoƒŠƒA
 	m_pPlayerCenter->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
 	//“®‚«‚ðŽ~‚ß‚é“G
 	m_pPlayerCenter->DrawSetBulleStop(&m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
@@ -252,9 +246,6 @@ StageMars::~StageMars()
 	delete m_pPlayerHP;
 	delete m_pPlayerLeft;
 	delete m_pPlayerRight;
-	delete m_pRemaining_Left;
-	delete m_pRemaining_Right;
-	delete m_pRemaining_Center;
 	delete m_pPlayerCenter;
 	delete m_pComboNum;
 	delete m_pMultiply;
@@ -396,9 +387,6 @@ void StageMars::Draw(void) const
 	//UI‚Ì•`‰æ
 	m_pPlayerHP->DrawHP();
 	m_pScore->DrawNumber();
-	m_pRemaining_Left->DrawNumber();
-	m_pRemaining_Right->DrawNumber();
-	m_pRemaining_Center->DrawNumber();
 	m_pComboNum->SetNumber(m_pScore->GetComboNum());
 	m_pComboNum->DrawNumber();
 	m_pMultiply->Draw();
