@@ -180,6 +180,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="management.cpp" />
     <ClCompile Include="management_meteo.cpp" />
+    <ClCompile Include="management_poisonfield.cpp" />
     <ClCompile Include="mars_collision_all.cpp" />
     <ClCompile Include="mars_gimmick.cpp" />
     <ClCompile Include="meteo.cpp" />
@@ -198,6 +199,7 @@
     <ClCompile Include="player_hp.cpp" />
     <ClCompile Include="player_left.cpp" />
     <ClCompile Include="player_right.cpp" />
+    <ClCompile Include="poisonfield.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="result.cpp" />
     <ClCompile Include="scene.cpp" />
@@ -274,6 +276,7 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="management.h" />
     <ClInclude Include="management_meteo.h" />
+    <ClInclude Include="management_poisonfield.h" />
     <ClInclude Include="mars_collision_all.h" />
     <ClInclude Include="mars_gimmick.h" />
     <ClInclude Include="meteo.h" />
@@ -292,6 +295,7 @@
     <ClInclude Include="player_hp.h" />
     <ClInclude Include="player_left.h" />
     <ClInclude Include="player_right.h" />
+    <ClInclude Include="poisonfield.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="result.h" />

@@ -265,6 +265,8 @@
     <ClCompile Include="bullet_stop.cpp">
       <Filter>29_Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="management_poisonfield.cpp" />
+    <ClCompile Include="poisonfield.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -534,6 +536,8 @@
     <ClInclude Include="bullet_stop.h">
       <Filter>29_Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="management_poisonfield.h" />
+    <ClInclude Include="poisonfield.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01_Title">

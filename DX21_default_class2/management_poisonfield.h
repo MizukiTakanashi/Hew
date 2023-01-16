@@ -5,8 +5,6 @@
 //=======================================
 #pragma once
 
-#ifndef _MANAGEMENT_METEO_H_
-#define _MANAGEMENT_METEO_H_
 
 #include "poisonfield.h"
 #include "draw_object.h"
@@ -104,5 +102,3 @@ public:
 	//Žw’è‚µ‚½”Ô†‚Ì“G‚ðŽ~‚ß‚é
 	void StopEnemy(int index_num, int time) { m_pPoisonField[index_num]->StopEnemy(time); }
 };
-
-#endif // !_MANAGEMENT_METEO_H_
