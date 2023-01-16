@@ -15,8 +15,6 @@ const D3DXVECTOR2 InhStage::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
 //==========================
 // グローバル変数
 //==========================
-int VenusStopFlame = 0; //ヒットストップ用
-bool isDownVenus = false; //ボスが死んだか
 
 //==========================
 // 引数付きコンストラクタ
@@ -27,12 +25,18 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	PlaySound(m_BGM, -1);	//BGM再生
 	SetVolume(m_BGM, 0.1f);
 
+	//背景の初期化処理
+	m_pBG = new BG((char*)"data\\texture\\game_bg_scroll.jpg");
+
+	//画像読み込み
 	m_pTexUseful = new TextureUseful[(int)TEXTURE_TYPE::NUM];
 	m_pDrawObject = new DrawObject[(int)DRAW_TYPE::NUM];
 
-	//背景の初期化処理
-	m_pBG = new BG((char*)"data\\texture\\game_bg_scroll.jpg");
-	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\venus.png");
+
+
+	//各オブジェクトインスタンス化
+
+
 
 	//=======================
 	// 弾
@@ -147,17 +151,18 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::BOMB].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN]);
 	m_pBom = new Bom(m_pDrawObject[(int)DRAW_TYPE::BOMB], 3);
 
+	//m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_METEO].SetTextureName((char*)"data\\texture\\Meteo.png");
+	//m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_METEO]);
+	//m_pMeteoManagement = new Management_Meteo();
+
 	//敵の管理
 	m_pAllEnemyManagement = new AllEnemyManagement;
-	//m_pAllEnemyManagement->AddPointer(m_pEnemyBarrierManagement);
-	
-	//========================================================
-	// 全ての当たり判定
-	//m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
-	//	m_pItemManagement, m_pScore, m_pBom, );
 
-	//敵のポインタをセット（順番変えるのNG）
-	//m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
+	//========================================================
+	 //全ての当たり判定
+	//m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
+	//	m_pItemManagement, m_pScore, m_pBom, m_pMeteoManagement);
+
 }
 
 //==========================
@@ -168,7 +173,7 @@ InhStage::~InhStage()
 	//描画がない物から消していく
 	delete m_pAllEnemyManagement;
 	delete m_pPlayerArmChange;
-	//delete m_pColAll;
+	delete m_pColAll;
 
 	//ゲームオブジェクトを消す
 	delete m_pBom;
@@ -176,6 +181,7 @@ InhStage::~InhStage()
 	delete m_pBG_Moon;
 	delete m_pExplosionManagement;
 	delete m_pEnemyFireballManagement;
+	delete m_pMeteoManagement;
 	delete m_pItemManagement;
 	delete m_pPlayer;
 	delete m_pPlayerHP;

@@ -24,6 +24,7 @@
 #include "collision_all.h"
 #include "player_center.h"
 #include "Bom.h"
+#include "management_meteo.h"
 
 #include "management_enemy_fireball.h"
 
@@ -45,6 +46,7 @@ protected:
 		ENEMY,
 		ENEMY_ITEM,
 		ENEMY_BARRIER,
+		ENEMY_METEO,
 		BULLET_CIRCLE_RED,
 		BULLET_CIRCLE_GREEN,
 		BULLET_SQUARE_GREEN,
@@ -65,6 +67,7 @@ protected:
 		ENEMY_FIREBALL,
 		BULLET_FIREBALL,
 		ENEMY_ITEM,
+		ENEMY_METEO,
 		PLAYER_BULLET,
 		BULLET_ENEMY,
 		EXPLOSION,
@@ -106,6 +109,7 @@ protected:
 	PlayerArmChange* m_pPlayerArmChange = nullptr;	//˜r‚ÌŒðŠ·
 	CollisionAll* m_pColAll = nullptr;		//‘S‚Ä‚Ì“–‚½‚è”»’è
 	Bom* m_pBom = nullptr;					//ƒ{ƒ€
+	Management_Meteo* m_pMeteoManagement = nullptr;
 
 	EnemyFireballManagement* m_pEnemyFireballManagement = nullptr;
 
@@ -125,5 +129,3 @@ public:
 	int GetScore(void)const { return m_pScore->GetNumber(); }
 };
 
-void VenusHitStop(int flame);
-void VenusBossDown();
