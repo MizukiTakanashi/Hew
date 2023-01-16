@@ -13,9 +13,6 @@
 #include "bg_planet.h"
 #include "player.h"
 #include "draw_object.h"
-#include "management_enemy_normal.h"
-#include "management_enemy_laser.h"
-#include "management_enemy_gatoring.h"
 #include "texture_useful.h"
 #include "player_hp.h"
 #include "management_explosion.h"
@@ -27,10 +24,15 @@
 #include "all_enemy_management.h"
 #include "player_arm_change.h"
 #include "collision_all.h"
-#include "management_meteo.h"
 #include "player_center.h"
+#include "management_meteo.h"
 #include "Bom.h"
+
 #include "text_management.h"
+#include "management_enemy_normal.h"
+#include "management_enemy_laser.h"
+#include "management_enemy_gatoring.h"
+
 
 class Game
 {

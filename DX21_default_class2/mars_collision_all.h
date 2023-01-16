@@ -70,7 +70,7 @@ public:
 	//引数付きコンストラクタ
 	MarsCollisionAll(Player* pPlayer, inhPlayerArmBoth* pL, inhPlayerArmBoth* pR,
 		ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber, 
-		Bom* pBom, EnemyGrenadeManagement* pGrenade);
+		Bom* pBom);
 
 	//デストラクタ
 	~MarsCollisionAll() {}
