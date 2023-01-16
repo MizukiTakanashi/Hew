@@ -144,19 +144,19 @@ public:
 
 
 	//ホーミングの敵の腕の描画
-	void DrawSetIceRainE(DrawObject* pDraw) { m_enemy_normal_draw = pDraw; }
+	void DrawSetHomingE(DrawObject* pDraw) { m_enemy_normal_draw = pDraw; }
 
 	//レーザーの敵の腕の描画
-	void DrawSetIceRainE(DrawObject* pDraw) { m_enemy_gatoring_draw = pDraw; }
+	void DrawSetLaserE(DrawObject* pDraw) { m_enemy_gatoring_draw = pDraw; }
 
 	//ガトリングの敵の腕の描画
-	void DrawSetIceRainE(DrawObject* pDraw) { m_enemy_laser_draw = pDraw; }
+	void DrawSetGatoringE(DrawObject* pDraw) { m_enemy_laser_draw = pDraw; }
 
 	//バリアの敵の腕の描画
-	void DrawSetIceRainE(DrawObject* pDraw) { m_enemy_barrier_draw = pDraw; }
+	void DrawSetBarriarE(DrawObject* pDraw) { m_enemy_barrier_draw = pDraw; }
 
 	//STOPの敵の腕の描画
-	void DrawSetIceRainE(DrawObject* pDraw) { m_enemy_stop_draw = pDraw; }
+	void DrawSetStopE(DrawObject* pDraw) { m_enemy_stop_draw = pDraw; }
 
 	//氷の敵の腕の描画
 	void DrawSetIceRainE(DrawObject* pDraw) { m_enemy_icerain_draw = pDraw; }

@@ -9,8 +9,6 @@
 //==========================
 // 定数初期化
 //==========================
-//const D3DXVECTOR2 StageVenus::NUMBER_POS = D3DXVECTOR2(1230.0f, 30.0f);
-//const D3DXVECTOR2 StageVenus::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
 
 //==========================
 // グローバル変数
@@ -53,6 +51,7 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 StageVenus::~StageVenus()
 {
 	delete m_pEnemyFireballManagement;
+	delete m_pColAll;
 }
 
 //==========================
@@ -102,16 +101,13 @@ void StageVenus::Update(void)
 
 	//プレイヤーの腕
 
-	//ホーミング弾用
-	D3DXVECTOR2 temp_pos = m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerLeft->GetPos());
-
 	//腕のアップデート
 	m_pPlayerLeft->ButtonPress();
-	m_pPlayerLeft->Update(m_pPlayer->GetPos(), temp_pos);
+	m_pPlayerLeft->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
 	m_pPlayerRight->ButtonPress();
-	m_pPlayerRight->Update(m_pPlayer->GetPos(), temp_pos);
+	m_pPlayerRight->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
 	m_pPlayerCenter->ButtonPress();
-	m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
+	m_pPlayerCenter->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
 
 	//敵とプレイヤーの当たり判定
 	//attack_num += m_pColAll->Collision();

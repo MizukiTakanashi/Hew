@@ -100,7 +100,7 @@ void PlayerArmGrenade::Update(const D3DXVECTOR2& arm_pos)
 
 			//”š”­‚ªI‚í‚Á‚½‚ç...
 			if (m_pExplosionDraw[i]->GetEndAnimation()) {
-				DeleteBullet(i);a
+				DeleteBullet(i);
 			}
 		}
 	}
