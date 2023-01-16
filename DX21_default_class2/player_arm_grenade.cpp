@@ -12,10 +12,11 @@
 // 定数の初期化
 //==========================
 //public
-const D3DXVECTOR2 PlayerArmGrenade::FINAD_RANGE = D3DXVECTOR2(100.0f, 100.0f);
+const D3DXVECTOR2 PlayerArmGrenade::BULLET_SIZE = D3DXVECTOR2(21.0f, 21.0f);
+const D3DXVECTOR2 PlayerArmGrenade::FIND_BULLET_SIZE = D3DXVECTOR2(20.0f, 20.0f);
+const D3DXVECTOR2 PlayerArmGrenade::FIND_RANGE = D3DXVECTOR2(100.0f, 100.0f);
 
 //private
-const D3DXVECTOR2 PlayerArmGrenade::BULLET_SIZE = D3DXVECTOR2(20.0f, 20.0f);
 const float PlayerArmGrenade::BULLET_SPEED = 15.0f;
 const D3DXVECTOR2 PlayerArmGrenade::EXPLOSION_RANGE = D3DXVECTOR2(200.0f, 200.0f);
 
@@ -99,7 +100,7 @@ void PlayerArmGrenade::Update(const D3DXVECTOR2& arm_pos)
 
 			//爆発が終わったら...
 			if (m_pExplosionDraw[i]->GetEndAnimation()) {
-				DeleteBullet(i);
+				DeleteBullet(i);a
 			}
 		}
 	}
@@ -144,7 +145,7 @@ void PlayerArmGrenade::Update(const D3DXVECTOR2& arm_pos)
 			}
 
 			m_pBullet[inhPlayerArm::GetBulletNum()] = new Bullet(m_bulletdraw, arm_pos, 
-				BULLET_SIZE, movTemp, rotTemp);
+				FIND_BULLET_SIZE, movTemp, rotTemp);
 
 			//現在の弾の数を増やす
 			inhPlayerArm::IncreaseBulletNum();
@@ -161,12 +162,13 @@ void PlayerArmGrenade::Update(const D3DXVECTOR2& arm_pos)
 void PlayerArmGrenade::PlayerArmDraw()const
 {
 	for (int i = 0; i < inhPlayerArm::GetBulletNum(); i++) {
-		//弾
-		m_pBullet[i]->Draw();
-
 		//爆発
 		if (m_pExplosionDraw[i] != nullptr) {
 			m_pExplosionDraw[i]->Draw();
+		}
+		else {
+			//弾
+			m_pBullet[i]->Draw();
 		}
 	}
 }
@@ -176,8 +178,19 @@ void PlayerArmGrenade::PlayerArmDraw()const
 //==========================
 void PlayerArmGrenade::DeleteBullet(int index_num)
 {
+	if (m_pExplosionDraw[index_num] != nullptr) {
+		if (!m_pExplosionDraw[index_num]->GetEndAnimation()) {
+			return;
+		}
+	}
+
 	delete m_pBullet[index_num];
-	delete m_pExplosionDraw[index_num];
+	m_pBullet[index_num] = nullptr;
+
+	if (m_pExplosionDraw[index_num] != nullptr) {
+		delete m_pExplosionDraw[index_num];
+		m_pExplosionDraw[index_num] = nullptr;
+	}
 
 	//弾を消す
 	for (int i = index_num; i < inhPlayerArm::GetBulletNum() - 1; i++) {
@@ -193,13 +206,12 @@ void PlayerArmGrenade::DeleteBullet(int index_num)
 	inhPlayerArm::IncreaseBulletNum(-1);
 }
 
-//==========================================
-// 指定した番号の弾の爆発するかフラグをオン
-//==========================================
-void PlayerArmGrenade::SetIsAttack(int index_num)
+//==========================================================
+// アクションを起こす(指定した番号の弾の爆発をセット)
+//==========================================================s
+void PlayerArmGrenade::Action(int index_num)
 {
-	//動きを止める
-	m_pBullet[index_num]->SetMove(D3DXVECTOR2(0.0f, 0.0f));
-
+	m_pBullet[index_num]->SetSize(BULLET_SIZE);
 	m_attack_count[index_num] = m_pBullet[index_num]->GetTime();
+	m_pBullet[index_num]->SetMove(D3DXVECTOR2(0.0f, 0.0f));
 }

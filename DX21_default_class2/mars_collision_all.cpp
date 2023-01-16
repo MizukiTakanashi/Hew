@@ -279,7 +279,6 @@ int MarsCollisionAll::Collision(void)
 						pArm = m_pPlayerRight;
 						continue;
 					}
-
 					//グレネード敵であれば何もしない
 					//if (pArm->GetType() != inhPlayerArmBoth::TYPE::TYPE7) {
 					//	//PlayerArmGrenade* pGrenade = m_pPlayerLeft->GetArmPointer();
@@ -292,8 +291,8 @@ int MarsCollisionAll::Collision(void)
 					//	//腕のポインタを取ってくる(二回目は右)
 					//	pArm = m_pPlayerRight;
 
-					//	continue;
-					//}
+						continue;
+					}
 
 					for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
 						//もしも画面外にいたら壊せないようにする
