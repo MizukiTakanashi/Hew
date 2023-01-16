@@ -4,9 +4,7 @@
 // ì¬ÒF‚—œ…Šó
 //=======================================
 #include	"main.h"
-#include	"renderer.h"
 #include	"texture.h"
-#include	"sprite.h"
 
 //#include	"input.h"
 #include "inputx.h"

@@ -102,15 +102,7 @@ private:
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
-	TitleScore(){
-		for (int i = 0; i < STAGE_NUM; i++) {
-			m_score[i] = 0;
-		}
-
-		for (int i = 0; i < (int)UI_TYPE::NUM; i++) {
-			m_pUI[i] = nullptr;
-		}
-	}
+	TitleScore();
 
 	//引数付きコンストラクタ
 	TitleScore(int score[]);

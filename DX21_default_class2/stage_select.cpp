@@ -7,17 +7,6 @@
 #include "stage_select.h"
 
 //==========================
-// デフォルトコンストラクタ
-//==========================
-StageSelect::StageSelect()
-{
-	//スコアを初期化
-	for (int i = 0; i < STAGE_NUM; i++) {
-		m_stage_score[i] = 0;
-	}
-}
-
-//==========================
 // 引数付きコンストラクタ
 //==========================
 StageSelect::StageSelect(int stage_score[])
@@ -26,8 +15,7 @@ StageSelect::StageSelect(int stage_score[])
 
 	//スコアを初期化
 	for (int i = 0; i < STAGE_NUM; i++) {
-		m_stage_score[i] = stage_score[i];
-		if (m_stage_score[i] == 0) {
+		if (stage_score[i] == 0) {
 			stage_clear[i] = false;
 		}
 		else {
@@ -40,7 +28,7 @@ StageSelect::StageSelect(int stage_score[])
 	//スコアから全ステージクリアしているか確認
 	for (int i = 0; i < STAGE::STAGE_SUN; i++) {
 		//スコアが一つでも0の物があれば...
-		if (m_stage_score[i] == 0) {
+		if (stage_score[i] == 0) {
 			//ステージクリアしていないをセット
 			sun_appearance = false;
 			break;
@@ -86,15 +74,6 @@ StageSelect::StageSelect(int stage_score[])
 	m_pPlanet = new StageSelectPlanet(m_pDrawObject[(int)DRAW_TYPE::MARS], m_pDrawObject[(int)DRAW_TYPE::MERCURY],
 		m_pDrawObject[(int)DRAW_TYPE::JUPITER], m_pDrawObject[(int)DRAW_TYPE::VENUS], m_pDrawObject[(int)DRAW_TYPE::SATURN],
 		m_pDrawObject[(int)DRAW_TYPE::SUN], m_pDrawObject[(int)DRAW_TYPE::WHITE_CIRCLE], stage_clear, sun_appearance);
-}
-
-//==========================
-// 更新処理
-//==========================
-void StageSelect::Update(void)
-{
-	//惑星
-	m_pPlanet->Update();
 }
 
 //==========================

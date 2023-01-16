@@ -16,6 +16,20 @@ const float StageSelectPlanet::MOVE_SPEED = -1.0f;
 const float StageSelectPlanet::SUN_MOVE_SPEED_Y = 0.6f;
 
 //==========================
+// デフォルトコンストラクタ
+//==========================
+StageSelectPlanet::StageSelectPlanet()
+{
+	for (int i = 0; i < (int)PLANET::NUM; i++) {
+		m_planets[i] = nullptr;
+	}
+
+	for (int i = 0; i < (int)PLANET::NUM - 1; i++) {
+		m_pWhiteLine[i] = nullptr;
+	}
+}
+
+//==========================
 // 引数付きコンストラクタ
 //==========================
 StageSelectPlanet::StageSelectPlanet(DrawObject& mars, DrawObject& mercury, DrawObject& jupiter, 
@@ -78,6 +92,22 @@ StageSelectPlanet::StageSelectPlanet(DrawObject& mars, DrawObject& mercury, Draw
 
 	//カーソル移動音
 	m_SE_03 = LoadSound((char*)"data\\SE\\2_03.wav");
+}
+
+//==========================
+// デストラクタ
+//==========================
+StageSelectPlanet::~StageSelectPlanet()
+{
+	for (int i = 0; i < (int)PLANET::NUM; i++) {
+		delete m_planets[i];
+	}
+
+	for (int i = 0; i < (int)PLANET::NUM - 1; i++) {
+		if (m_pWhiteLine[i] != nullptr) {
+			delete m_pWhiteLine[i];
+		}
+	}
 }
 
 //==========================

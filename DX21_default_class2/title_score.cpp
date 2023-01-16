@@ -24,6 +24,24 @@ const D3DXVECTOR2 TitleScore::WORD_SIZE = D3DXVECTOR2(600.0f, 100.0f);
 const float TitleScore::WORD_POS_Y = 60.0f;
 
 //==========================
+// デフォルトコンストラクタ
+//==========================
+TitleScore::TitleScore()
+{
+	for (int i = 0; i < STAGE_NUM; i++) {
+		m_score[i] = 0;
+	}
+
+	for (int i = 0; i < (int)UI_TYPE::NUM; i++) {
+		m_pUI[i] = nullptr;
+	}
+
+	for (int i = 0; i < (int)UI_TYPE::SUN - (int)UI_TYPE::MERCURY + 1; i++) {
+		m_pScore[i] = nullptr;
+	}
+}
+
+//==========================
 // 引数付きコンストラクタ
 //==========================
 TitleScore::TitleScore(int score[])

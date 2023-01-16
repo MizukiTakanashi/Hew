@@ -44,30 +44,23 @@ private:
 	inhStageSelectPlanetMake* m_planets[(int)PLANET::NUM];	//惑星達
 	GameObject* m_pWhiteLine[(int)PLANET::NUM - 1];			//白い線
 
-	bool m_sun_appearance = false;							//太陽が出てるかどうか
+	bool m_sun_appearance = false;	//太陽が出てるかどうか
 
-	int m_planet_index = 0;									//惑星の現在のインデックス番号
-	int m_planet_index_before = 0;							//惑星の前のインデックス番号
+	int m_planet_index = 0;			//惑星の現在のインデックス番号
+	int m_planet_index_before = 0;	//惑星の前のインデックス番号
 
-	int m_thumb_before = 0;									//前フレームのスティックの値
+	int m_thumb_before = 0;			//前フレームのスティックの値
 
-	int m_move_time = -1;									//動く時間カウント
+	int m_move_time = -1;			//動く時間カウント
 
-	int m_SE_01 = 0;										//決定音
-	int m_SE_03 = 0;										//カーソル移動音
+	int m_SE_01 = 0;				//決定音
+	int m_SE_03 = 0;				//カーソル移動音
+
 
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
-	StageSelectPlanet(){
-		for (int i = 0; i < (int)PLANET::NUM; i++) {
-			m_planets[i] = nullptr;
-		}
-
-		for (int i = 0; i < (int)PLANET::NUM - 1; i++) {
-			m_pWhiteLine[i] = nullptr;
-		}
-	}
+	StageSelectPlanet();
 
 	//引数付きコンストラクタ
 	StageSelectPlanet(DrawObject& mars, DrawObject& mercury, DrawObject& jupiter,
@@ -75,11 +68,7 @@ public:
 		bool stage_clear[], bool sun_appearance = false);
 
 	//デストラクタ
-	~StageSelectPlanet() {
-		for (int i = 0; i < (int)PLANET::NUM; i++) {
-			delete m_planets[i];
-		}
-	}
+	~StageSelectPlanet();
 
 	//更新処理
 	void Update();
