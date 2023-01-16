@@ -48,11 +48,20 @@ private:
 	TYPE m_type = TYPE::TYPE_NONE;			//ついた敵のタイプ
 
 	inhPlayerArm* m_pEnemyItem = nullptr;	//腕についている敵のクラス
+	//弾
 	DrawObject* m_bullet_draw = nullptr;				//弾の描画オブジェクト
 	DrawObject* m_laser_draw = nullptr;				//レーザーの描画オブジェクト
 	DrawObject* m_barrier_draw = nullptr;	//バリアの描画オブジェクト
 	DrawObject* m_bullet_stop_draw = nullptr;	//動きを止める敵の弾の描画オブジェクト
 	DrawObject* m_bullet_icerain_draw = nullptr;	//氷の敵の描画
+	//敵
+	DrawObject* m_enemy_normal_draw = nullptr;				//弾の描画オブジェクト
+	DrawObject* m_enemy_gatoring_draw = nullptr;				//弾の描画オブジェクト
+	DrawObject* m_enemy_laser_draw = nullptr;				//レーザーの描画オブジェクト
+	DrawObject* m_enemy_barrier_draw = nullptr;	//バリアの描画オブジェクト
+	DrawObject* m_enemy_stop_draw = nullptr;	//動きを止める敵の弾の描画オブジェクト
+	DrawObject* m_enemy_icerain_draw = nullptr;	//氷の敵の描画
+
 	DrawObject m_explosion_draw;			//爆発の描画オブジェクト
 
 	bool m_separation_button = false;		//切り離しボタンが押されたか
@@ -131,6 +140,28 @@ public:
 
 	//氷の敵の腕の描画
 	void DrawSetIceRain(DrawObject* pDraw) { m_bullet_icerain_draw = pDraw; }
+
+
+
+	//ホーミングの敵の腕の描画
+	void DrawSetIceRainE(DrawObject* pDraw) { m_enemy_normal_draw = pDraw; }
+
+	//レーザーの敵の腕の描画
+	void DrawSetIceRainE(DrawObject* pDraw) { m_enemy_gatoring_draw = pDraw; }
+
+	//ガトリングの敵の腕の描画
+	void DrawSetIceRainE(DrawObject* pDraw) { m_enemy_laser_draw = pDraw; }
+
+	//バリアの敵の腕の描画
+	void DrawSetIceRainE(DrawObject* pDraw) { m_enemy_barrier_draw = pDraw; }
+
+	//STOPの敵の腕の描画
+	void DrawSetIceRainE(DrawObject* pDraw) { m_enemy_stop_draw = pDraw; }
+
+	//氷の敵の腕の描画
+	void DrawSetIceRainE(DrawObject* pDraw) { m_enemy_icerain_draw = pDraw; }
+
+
 
 	//爆発の描画セット
 	void DrawSetExplosion(DrawObject& pDraw) { m_explosion_draw = pDraw; }
