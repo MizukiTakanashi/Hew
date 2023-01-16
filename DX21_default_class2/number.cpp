@@ -15,7 +15,7 @@ const float Number::SPACE_RATIO = 0.2f;
 // 引数付きコンストラクタ
 //=========================
 Number::Number(DrawObject& pDrawObject, const D3DXVECTOR2& pos, const D3DXVECTOR2& size, int digit)
-	:UI(pDrawObject, pos, size), m_digit(digit)
+	:UI(pDrawObject, pos, size), m_digit(digit), m_init_pos(pos)
 {
 	m_space = size.x * SPACE_RATIO;
 }

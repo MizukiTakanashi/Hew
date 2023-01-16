@@ -1,0 +1,128 @@
+//=======================================
+// 金星のステージ関係(ヘッダファイル)
+// 作成日：
+// 作成者：恩田洋行
+//=======================================
+#pragma once
+
+#include "inh_stage.h"
+
+//#include "main.h"
+//#include "sprite.h"
+//#include "BG.h"
+//#include "bg_planet.h"
+//#include "player.h"
+//#include "draw_object.h"
+//#include "texture_useful.h"
+//#include "player_hp.h"
+//#include "management_explosion.h"
+//#include "score.h"
+//#include "number.h"
+//#include "player_left.h"
+//#include "player_right.h"
+//#include "management_item.h"
+//#include "all_enemy_management.h"
+//#include "player_arm_change.h"
+//#include "collision_all.h"
+//#include "player_center.h"
+//#include "Bom.h"
+
+#include "management_enemy_fireball.h"
+
+class StageVenus : public InhStage
+{
+//定数
+private:
+	//ここで初期化
+
+	//cppで初期化
+
+	//enum class TEXTURE_TYPE :int
+	//{
+	//	PLAYER,
+	//	PLAYER_HP,
+	//	ENEMY,
+	//	ENEMY_ITEM,
+	//	ENEMY_BARRIER,
+	//	BULLET_CIRCLE_RED,
+	//	BULLET_CIRCLE_GREEN,
+	//	BULLET_SQUARE_GREEN,
+	//	BULLET_FIREBALL,
+	//	ENEMY_FIREBALL,
+	//	BULLET_LASER,
+	//	BARRIER,
+	//	EXPLOSION,
+	//	NUMBER,
+	//	MULTIPLY,
+	//	NUM
+	//};
+
+	//enum class DRAW_TYPE :int
+	//{
+	//	PLAYER,
+	//	PLAYER_HP_BAR,
+	//	ENEMY_FIREBALL,
+	//	BULLET_FIREBALL,
+	//	ENEMY_ITEM,
+	//	PLAYER_BULLET,
+	//	BULLET_ENEMY,
+	//	EXPLOSION,
+	//	PLAYER_ARM_LEFT,
+	//	PLAYER_ARM_LEFT_BULLET,
+	//	PLAYER_ARM_LEFT_LASER,
+	//	PLAYER_ARM_RIGHT,
+	//	PLAYER_ARM_RIGHT_BULLET,
+	//	PLAYER_ARM_RIGHT_LASER,
+	//	PLAYER_ARM_CENTER,
+	//	PLAYER_ARM_CENTTER_BULLET,
+	//	PLAYER_ARM_CENTER_LASER,
+	//	NUMBER,
+	//	MULTIPLY,
+	//	BOMB,						//爆弾
+	//	NUM
+	//};
+
+
+//メンバ変数
+private:
+	//int m_BGM = 0;
+
+	//Score* m_pScore = nullptr;
+	//TextureUseful* m_pTexUseful = nullptr;
+	//DrawObject* m_pDrawObject = nullptr;
+	//BG* m_pBG = nullptr;
+	//BGPlanet* m_pBG_Moon = nullptr;
+	//Player* m_pPlayer = nullptr;
+	//PlayerHP* m_pPlayerHP = nullptr;
+	//ExplosionManagement* m_pExplosionManagement = nullptr;
+	//ItemManagement* m_pItemManagement = nullptr;
+	//PlayerLeft* m_pPlayerLeft = nullptr;
+	//PlayerRight* m_pPlayerRight = nullptr;
+	//PlayerCenter* m_pPlayerCenter = nullptr;
+	//UI* m_pMultiply = nullptr;
+	//Number* m_pComboNum = nullptr;
+	//AllEnemyManagement* m_pAllEnemyManagement = nullptr;
+	//PlayerArmChange* m_pPlayerArmChange = nullptr;	//腕の交換
+	//CollisionAll* m_pColAll = nullptr;		//全ての当たり判定
+	//Bom* m_pBom = nullptr;					//ボム
+
+	EnemyFireballManagement* m_pEnemyFireballManagement = nullptr;
+
+	//メンバ関数
+public:
+	StageVenus(Score* pNumber);
+
+	~StageVenus();	//デストラクタ
+
+	//更新
+	void Update(void) override;
+
+	//描画
+	void Draw(void)const override;
+
+	//スコアを返す
+	int GetScore(void)const { return m_pScore->GetNumber(); }
+};
+
+void VenusHitStop(int flame);
+void VenusBossDown();

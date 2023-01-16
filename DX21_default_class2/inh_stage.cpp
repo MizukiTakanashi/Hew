@@ -1,39 +1,42 @@
 //=======================================
-// 土星のステージ関係(cppファイル)
+// 継承用のステージ関係(cppファイル)
 // 作成日：
 // 作成者：恩田洋行
 //=======================================
-#include "stage_saturn.h"
+#include "inh_stage.h"
 #include "sound.h"
 
 //==========================
 // 定数初期化
 //==========================
-const D3DXVECTOR2 StageSaturn::NUMBER_POS = D3DXVECTOR2(1230.0f, 30.0f);
-const D3DXVECTOR2 StageSaturn::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
+const D3DXVECTOR2 InhStage::NUMBER_POS = D3DXVECTOR2(1230.0f, 30.0f);
+const D3DXVECTOR2 InhStage::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
 
 //==========================
 // グローバル変数
 //==========================
-int SaturnStopFlame = 0; //ヒットストップ用
-bool isDownSaturn = false; //ボスが死んだか
-
 
 //==========================
 // 引数付きコンストラクタ
 //==========================
-StageSaturn::StageSaturn(Score* pNumber):m_pScore(pNumber)
+InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 {
 	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);	//BGM再生
 	SetVolume(m_BGM, 0.1f);
 
+	//背景の初期化処理
+	m_pBG = new BG((char*)"data\\texture\\game_bg_scroll.jpg");
+
+	//画像読み込み
 	m_pTexUseful = new TextureUseful[(int)TEXTURE_TYPE::NUM];
 	m_pDrawObject = new DrawObject[(int)DRAW_TYPE::NUM];
 
-	//背景の初期化処理
-	m_pBG = new BG((char*)"data\\texture\\game_bg_scroll.jpg");
-	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\saturn.png");
+
+
+	//各オブジェクトインスタンス化
+
+
 
 	//=======================
 	// 弾
@@ -49,6 +52,9 @@ StageSaturn::StageSaturn(Score* pNumber):m_pScore(pNumber)
 	//敵側の弾
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_RED]);
 
+	//バリア
+	m_pTexUseful[(int)TEXTURE_TYPE::BARRIER].SetTextureName((char*)"data\\texture\\Barrier.png");
+
 	//プレイヤー
 	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER].SetTextureName((char*)"data\\texture\\player_anime.png");
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER], 1.0f, 0.25f, 1.0f, 4);
@@ -56,22 +62,13 @@ StageSaturn::StageSaturn(Score* pNumber):m_pScore(pNumber)
 
 	//=======================
 	// 敵
-	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY].SetTextureName((char*)"data\\texture\\teki2.png");
+	//火球の敵
+	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_FIREBALL].SetTextureName((char*)"data\\texture\\enemy_fireball.png");
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_FIREBALL]);
+	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_FIREBALL].SetTextureName((char*)"data\\texture\\sun.png");
+	m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_FIREBALL]);
 
-	//レーザーの敵
-	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_LASER].SetTextureName((char*)"data\\texture\\enemy_laser.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY]);
-	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER].SetTextureName((char*)"data\\texture\\bullet_gass.png");
-	m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER]);
-	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER], m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER], 1);
-
-	//めぐみん
-	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_MEGUMIN].SetTextureName((char*)"data\\texture\\megumin.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_MEGUMIN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_MEGUMIN]);
-	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MEGUMIN].SetTextureName((char*)"data\\texture\\bullet_megumin.png");
-	m_pDrawObject[(int)DRAW_TYPE::BULLET_MEGUMIN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MEGUMIN]);
-	m_pEnemyMeguminManagement = new EnemyMeguminManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_MEGUMIN], m_pDrawObject[(int)DRAW_TYPE::BULLET_MEGUMIN]);
-
+	m_pEnemyFireballManagement = new EnemyFireballManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL], m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL]);
 
 	//=======================
 	// 残弾表示
@@ -154,36 +151,37 @@ StageSaturn::StageSaturn(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::BOMB].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN]);
 	m_pBom = new Bom(m_pDrawObject[(int)DRAW_TYPE::BOMB], 3);
 
+	//m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_METEO].SetTextureName((char*)"data\\texture\\Meteo.png");
+	//m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_METEO]);
+	//m_pMeteoManagement = new Management_Meteo();
+
 	//敵の管理
 	m_pAllEnemyManagement = new AllEnemyManagement;
-	m_pAllEnemyManagement->AddPointer(m_pEnemyLaserManagement);
-	
-	//========================================================
-	// 全ての当たり判定
-	//m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
-	//	m_pItemManagement, m_pScore, m_pBom, );
 
-	//敵のポインタをセット（順番変えるのNG）
-	//m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
+	//========================================================
+	 //全ての当たり判定
+	//m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
+	//	m_pItemManagement, m_pScore, m_pBom, m_pMeteoManagement);
+
 }
 
 //==========================
 // デストラクタ
 //==========================
-StageSaturn::~StageSaturn()
+InhStage::~InhStage()
 {
 	//描画がない物から消していく
 	delete m_pAllEnemyManagement;
 	delete m_pPlayerArmChange;
-	//delete m_pColAll;
+	delete m_pColAll;
 
 	//ゲームオブジェクトを消す
 	delete m_pBom;
 	delete m_pBG;
 	delete m_pBG_Moon;
 	delete m_pExplosionManagement;
-	delete m_pEnemyLaserManagement;
-	delete m_pEnemyMeguminManagement;
+	delete m_pEnemyFireballManagement;
+	delete m_pMeteoManagement;
 	delete m_pItemManagement;
 	delete m_pPlayer;
 	delete m_pPlayerHP;
@@ -199,129 +197,4 @@ StageSaturn::~StageSaturn()
 
 	//BGMをストップ
 	StopSound(m_BGM);
-}
-
-//==========================
-// 更新処理
-//==========================
-void StageSaturn::Update(void)
-{
-	//ヒットストップ
-	if (SaturnStopFlame > 0)
-	{
-		SaturnStopFlame--;
-		return;
-	}
-
-	//ボスが死んだら
-	if (isDownSaturn)
-		Fade(SCENE::SCENE_RESULT);
-
-	//背景
-	m_pBG->Update();
-	m_pBG_Moon->Update();
-
-	//腕の切り替え
-	m_pPlayerArmChange->Change();
-
-	//プレイヤー
-	m_pPlayer->Update(m_pPlayerHP->IsPlayerInvincible());
-
-	m_pPlayerHP->Update();
-
-	//爆発
-	m_pExplosionManagement->Update();
-
-	//敵から落ちるアイテム
-	m_pItemManagement->Update();
-
-	//=======================
-	// 敵
-	m_pEnemyLaserManagement->Update();
-	m_pEnemyMeguminManagement->Update();
-
-	//ボム
-	m_pBom->Update();
-
-	//====================================
-	//プレイヤーのHPに対する処理
-	int attack_num = 0;
-
-	//プレイヤーの腕
-
-	//ホーミング弾用
-	D3DXVECTOR2 temp_pos = m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerLeft->GetPos());
-
-	//腕のアップデート
-	m_pPlayerLeft->ButtonPress();
-	m_pPlayerLeft->Update(m_pPlayer->GetPos(), temp_pos);
-	m_pPlayerRight->ButtonPress();
-	m_pPlayerRight->Update(m_pPlayer->GetPos(), temp_pos);
-	m_pPlayerCenter->ButtonPress();
-	m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
-
-	//敵とプレイヤーの当たり判定
-	//attack_num += m_pColAll->Collision();
-
-	//回復
-	//m_pColAll->HeelCollision();
-
-	//プレイヤーのHPを攻撃数によって減らす
-	if (attack_num != 0) {
-		m_pPlayerHP->ReduceHP((float)attack_num);
-	}
-
-	//プレイヤーのHPが0になったら...
-	if (m_pPlayerHP->GetHP0Flag()) {
-		Fade(SCENE::SCENE_RESULT);
-	}
-}
-
-//==========================
-// 描画処理
-//==========================
-void StageSaturn::Draw(void) const
-{
-	m_pBG->DrawBG();
-	m_pBG_Moon->DrawBG();
-	m_pPlayer->Draw();
-
-	//プレイヤーの腕の描画処理
-	m_pPlayerLeft->ArmDraw();
-	m_pPlayerRight->ArmDraw();
-	m_pPlayerCenter->ArmDraw();
-
-	//敵の描画
-	m_pEnemyLaserManagement->Draw();
-	m_pEnemyMeguminManagement->Draw();
-
-	//プレイヤーの弾の表示
-	m_pPlayer->DrawBullet();
-
-	m_pExplosionManagement->Draw();
-
-	m_pItemManagement->Draw();
-
-	//ボムの描画
-	m_pBom->BomDraw();
-
-	//UIの描画
-	m_pPlayerHP->DrawHP();
-	m_pScore->DrawNumber();
-	m_pComboNum->SetNumber(m_pScore->GetComboNum());
-	m_pComboNum->DrawNumber();
-	m_pMultiply->Draw();
-}
-
-//==========================
-// ヒットストップ
-//==========================
-void SaturnHitStop(int flame)
-{
-	SaturnStopFlame = flame;
-}
-
-void SaturnBossDown()
-{
-	isDownSaturn = true;
 }

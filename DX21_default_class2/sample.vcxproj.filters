@@ -256,6 +256,15 @@
     <ClCompile Include="laser.cpp">
       <Filter>30_Multi</Filter>
     </ClCompile>
+    <ClCompile Include="stage_venus.cpp">
+      <Filter>06_Venus</Filter>
+    </ClCompile>
+    <ClCompile Include="management_enemy_fireball.cpp">
+      <Filter>29_Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="inh_stage.cpp">
+      <Filter>30_Multi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -516,6 +525,15 @@
     <ClInclude Include="laser.h">
       <Filter>30_Multi</Filter>
     </ClInclude>
+    <ClInclude Include="stage_venus.h">
+      <Filter>06_Venus</Filter>
+    </ClInclude>
+    <ClInclude Include="management_enemy_fireball.h">
+      <Filter>29_Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="inh_stage.h">
+      <Filter>30_Multi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01_Title">
@@ -547,6 +565,9 @@
     </Filter>
     <Filter Include="28_Player">
       <UniqueIdentifier>{fabc2407-9ce7-4e98-8ce6-1a1f4cc61987}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06_Venus">
+      <UniqueIdentifier>{3b82c351-66bc-4e48-8525-78e192d02b62}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

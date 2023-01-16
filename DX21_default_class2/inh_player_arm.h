@@ -17,12 +17,12 @@ public:
 	// 腕に着く敵の種類
 	enum class TYPE :int
 	{
-		TYPE1,		//ホーミング
-		TYPE2,		//レーザー
-		TYPE3,		//ガトリング
-		TYPE4,		//バリア
-		TYPE5,		//STOP
-		TYPE6,
+		TYPE_HOMING,		//ホーミング
+		TYPE_LASER,		//レーザー
+		TYPE_GATORING,		//ガトリング
+		TYPE_BARRIAR,		//バリア
+		TYPE_STOP,		//STOP
+		TYPE_ICERAIN,
 		TYPE7,
 		TYPE8,
 		TYPE_NUM,
@@ -44,7 +44,7 @@ private:
 	
 	bool m_bullet_used = false;	//弾が尽きたかどうか
 	
-	TYPE m_type = TYPE::TYPE1;	//自分のタイプ
+	TYPE m_type = TYPE::TYPE_HOMING;	//自分のタイプ
 
 protected:
 	int m_bullet_interval_count = 0;	//発射間隔カウント

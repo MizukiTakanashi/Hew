@@ -1,8 +1,8 @@
 #pragma once
 //===================================================
-// ƒvƒŒƒCƒ„[‚Ì˜r‚Ì‰E¶ŠÖŒW(Œp³—p)(ƒwƒbƒ_ƒtƒ@ƒCƒ‹)
-// ì¬“úF2022/11/08
-// ì¬ÒF‚—œ…Šó
+// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•ã®å³å·¦é–¢ä¿‚(ç¶™æ‰¿ç”¨)(ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š2022/11/08
+// ä½œæˆè€…ï¼šé«˜æ¢¨æ°´å¸Œ
 //===================================================
 
 #ifndef _INH_PLAYER_ARM_BOTH_H_
@@ -14,113 +14,120 @@
 
 class inhPlayerArmBoth :public GameObject
 {
-//’è”
+//å®šæ•°
 public:
-	//˜r‚É‚Â‚­“G‚Ìƒ^ƒCƒv
+	//è…•ã«ã¤ãæ•µã®ã‚¿ã‚¤ãƒ—
 	enum class TYPE :int
 	{
-		TYPE_NONE,	//	‰½‚à‚Â‚¢‚Ä‚¢‚È‚¢
-		TYPE1,		//ƒz[ƒ~ƒ“ƒO
-		TYPE2,		//ƒŒ[ƒU[
-		TYPE3,		//ƒKƒgƒŠƒ“ƒO
-		TYPE4,		//ƒoƒŠƒA
-		TYPE5,		//“®‚«‚ğ~‚ß‚é
-		TYPE6,		//•X‚Ì“G
-		TYPE7,		//ƒOƒŒƒl[ƒh“G
+		TYPE_HOMING,		//ãƒ›ãƒ¼ãƒŸãƒ³ã‚°
+		TYPE_LASER,		//ãƒ¬ãƒ¼ã‚¶ãƒ¼
+		TYPE_GATORING,		//ã‚¬ãƒˆãƒªãƒ³ã‚°
+		TYPE_BARRIAR,		//ãƒãƒªã‚¢
+		TYPE_STOP,		//å‹•ãã‚’æ­¢ã‚ã‚‹
+		TYPE_ICERAIN,		//æ°·ã®æ•µ
+		TYPE7,
 		TYPE8,
-		TYPE_SHOOT,	// ‘O‚Ìƒ^ƒCƒv‚Ì’e‚Ìˆ— & ©g”­Ë’†
-		TYPE_OLD,	// ‘O‚Ìƒ^ƒCƒv‚Ì’e‚Ìˆ—’†
 		TYPE_NUM,
+		TYPE_NONE,	//	ä½•ã‚‚ã¤ã„ã¦ã„ãªã„
+		TYPE_SHOOT,	// å‰ã®ã‚¿ã‚¤ãƒ—ã®å¼¾ã®å‡¦ç† & è‡ªèº«ç™ºå°„ä¸­
+		TYPE_OLD,	// å‰ã®ã‚¿ã‚¤ãƒ—ã®å¼¾ã®å‡¦ç†ä¸­
 	};
 
-//’è”
+//å®šæ•°
 private:
-	//cpp‚Å‰Šú‰»
-	static const D3DXVECTOR2 SIZE;				//ƒTƒCƒY
-	static const float SHOT_SPEED;				//Ø‚è—£‚µ”­ËƒXƒs[ƒh
-	static const D3DXVECTOR2 ICON_SIZE;			//“GƒAƒCƒRƒ“‚Ì•\¦êŠ
+	//cppã§åˆæœŸåŒ–
+	static const D3DXVECTOR2 SIZE;				//ã‚µã‚¤ã‚º
+	static const float SHOT_SPEED;				//åˆ‡ã‚Šé›¢ã—ç™ºå°„ã‚¹ãƒ”ãƒ¼ãƒ‰
+	static const D3DXVECTOR2 ICON_SIZE;			//æ•µã‚¢ã‚¤ã‚³ãƒ³ã®è¡¨ç¤ºå ´æ‰€
 
-//ƒƒ“ƒo•Ï”
+//ãƒ¡ãƒ³ãƒå¤‰æ•°
 private: 
-	D3DXVECTOR2 m_from_player = D3DXVECTOR2(0.0f, 0.0f);	//ƒvƒŒƒCƒ„[‚©‚ç‚Ç‚ê‚­‚ç‚¢—£‚ê‚Ä‚¢‚é‚©
+	D3DXVECTOR2 m_from_player = D3DXVECTOR2(0.0f, 0.0f);	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‹ã‚‰ã©ã‚Œãã‚‰ã„é›¢ã‚Œã¦ã„ã‚‹ã‹
 
-	bool m_shot = false;					//©•ª©g‚ª”­Ë‚³‚ê‚Ä‚é‚©”Û‚©
-	TYPE m_type = TYPE::TYPE_NONE;			//‚Â‚¢‚½“G‚Ìƒ^ƒCƒv
+	bool m_shot = false;					//è‡ªåˆ†è‡ªèº«ãŒç™ºå°„ã•ã‚Œã¦ã‚‹ã‹å¦ã‹
+	TYPE m_type = TYPE::TYPE_NONE;			//ã¤ã„ãŸæ•µã®ã‚¿ã‚¤ãƒ—
 
-	inhPlayerArm* m_pEnemyItem = nullptr;	//˜r‚É‚Â‚¢‚Ä‚¢‚é“G‚ÌƒNƒ‰ƒX
-	DrawObject m_bullet_draw;				//’e‚Ì•`‰æƒIƒuƒWƒFƒNƒg
-	DrawObject m_laser_draw;				//ƒŒ[ƒU[‚Ì•`‰æƒIƒuƒWƒFƒNƒg
-	DrawObject* m_barrier_draw = nullptr;	//ƒoƒŠƒA‚Ì•`‰æƒIƒuƒWƒFƒNƒg
-	DrawObject* m_bullet_stop_draw = nullptr;	//“®‚«‚ğ~‚ß‚é“G‚Ì’e‚Ì•`‰æƒIƒuƒWƒFƒNƒg
-	DrawObject* m_bullet_icerain_draw = nullptr;	//•X‚Ì“G‚Ì•`‰æ
-	DrawObject m_explosion_draw;			//”š”­‚Ì•`‰æƒIƒuƒWƒFƒNƒg
+	inhPlayerArm* m_pEnemyItem = nullptr;	//è…•ã«ã¤ã„ã¦ã„ã‚‹æ•µã®ã‚¯ãƒ©ã‚¹
+	DrawObject m_bullet_draw;				//å¼¾ã®æç”»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	DrawObject m_laser_draw;				//ãƒ¬ãƒ¼ã‚¶ãƒ¼ã®æç”»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	DrawObject* m_barrier_draw = nullptr;	//ãƒãƒªã‚¢ã®æç”»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	DrawObject* m_bullet_stop_draw = nullptr;	//å‹•ãã‚’æ­¢ã‚ã‚‹æ•µã®å¼¾ã®æç”»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	DrawObject* m_bullet_icerain_draw = nullptr;	//æ°·ã®æ•µã®æç”»
+	DrawObject m_explosion_draw;			//çˆ†ç™ºã®æç”»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 
-	bool m_separation_button = false;		//Ø‚è—£‚µƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚©
-	bool m_bullet_shot = false;				//’e”­Ë‚Ìƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚©(‰Ÿ‚µ‚Ä‚¢‚éŠÔ)
-	bool m_bullet_shot_trigger = false;		//’e”­Ë‚Ìƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚©(‰Ÿ‚µ‚½)
+	bool m_separation_button = false;		//åˆ‡ã‚Šé›¢ã—ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸã‹
+	bool m_bullet_shot = false;				//å¼¾ç™ºå°„ã®ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸã‹(æŠ¼ã—ã¦ã„ã‚‹é–“)
+	bool m_bullet_shot_trigger = false;		//å¼¾ç™ºå°„ã®ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸã‹(æŠ¼ã—ãŸæ™‚)
 
-	Number* m_pRemaining_Bullet = nullptr;	//c’e”•\¦ƒIƒuƒWƒFƒNƒg
-	D3DXVECTOR2 m_Remaining_Bullet_Pos = D3DXVECTOR2(0.0f, 0.0f);	//“GƒAƒCƒRƒ“•\¦êŠ
+	Number* m_pRemaining_Num = nullptr;	//æ®‹å¼¾æ•°è¡¨ç¤ºã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	D3DXVECTOR2 m_Remaining_Icon_Pos = D3DXVECTOR2(0.0f, 0.0f);	//æ•µã‚¢ã‚¤ã‚³ãƒ³è¡¨ç¤ºå ´æ‰€
 
-//ƒƒ“ƒoŠÖ”
+//ãƒ¡ãƒ³ãƒé–¢æ•°
 public:
-	//ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	inhPlayerArmBoth(){}
 
-	//ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//å¼•æ•°ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	inhPlayerArmBoth(DrawObject& pDrawObject, DrawObject& pBullet, DrawObject& pLaser, const D3DXVECTOR2& pos,
-		const D3DXVECTOR2& from_player, Number* pNum, D3DXVECTOR2 icon_pos)
+		const D3DXVECTOR2& from_player, DrawObject& pDrawobNumber, D3DXVECTOR2 num_pos, D3DXVECTOR2 icon_pos)
 		:GameObject(pDrawObject, pos, SIZE), m_bullet_draw(pBullet), m_laser_draw(pLaser),
-		m_from_player(from_player), m_pRemaining_Bullet(pNum), m_Remaining_Bullet_Pos(icon_pos) {}
+		m_from_player(from_player), m_Remaining_Icon_Pos(icon_pos) 
+	{
+		m_pRemaining_Num = new Number(pDrawobNumber, num_pos, D3DXVECTOR2(40.0f, 60.0f), 2);
+	}
 
-	//ƒfƒXƒgƒ‰ƒNƒ^
-	virtual ~inhPlayerArmBoth()override { delete m_pEnemyItem; }
+	//ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
+	virtual ~inhPlayerArmBoth()override 
+	{
+		delete m_pEnemyItem; 
+		delete m_pRemaining_Num;
+	}
 
-	//XVˆ—
-	// player_posFƒvƒŒƒCƒ„[‚ÌÀ•W@enemy_posFˆê”Ô‹ß‚¢“G‚ÌÀ•W
+	//æ›´æ–°å‡¦ç†
+	// player_posï¼šãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®åº§æ¨™ã€€enemy_posï¼šä¸€ç•ªè¿‘ã„æ•µã®åº§æ¨™
 	void Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_pos);
 
-	//•`‰æˆ—
+	//æç”»å‡¦ç†
 	void ArmDraw(void)const;
 
-	//˜r‚Ìƒ^ƒCƒv‚ğİ’è
+	//è…•ã®ã‚¿ã‚¤ãƒ—ã‚’è¨­å®š
 	void SetType(TYPE type, bool newtype = true);
 
-	//ƒ^ƒCƒv‚ğ•Ô‚·
+	//ã‚¿ã‚¤ãƒ—ã‚’è¿”ã™
 	TYPE GetType(void)const { return m_type; }
 
-	// ˜r‚ÌƒNƒ‰ƒX‚Ìƒ|ƒCƒ“ƒ^‚ğ•Ô‚·
+	// è…•ã®ã‚¯ãƒ©ã‚¹ã®ãƒã‚¤ãƒ³ã‚¿ã‚’è¿”ã™
 	inhPlayerArm* GetArmPointer(void)const { return m_pEnemyItem; }
 
-	//˜r‚ÌƒNƒ‰ƒX‚Ìƒ|ƒCƒ“ƒ^‚ÌƒZƒbƒg
+	//è…•ã®ã‚¯ãƒ©ã‚¹ã®ãƒã‚¤ãƒ³ã‚¿ã®ã‚»ãƒƒãƒˆ
 	void SetArmPointer(inhPlayerArm* ArmPointer) { m_pEnemyItem = ArmPointer; }
 
 
-	//Ø‚è—£‚µƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚©ƒtƒ‰ƒO‚ğƒZƒbƒg
+	//åˆ‡ã‚Šé›¢ã—ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸã‹ãƒ•ãƒ©ã‚°ã‚’ã‚»ãƒƒãƒˆ
 	void SetSeparationButton(bool flag) { m_separation_button = flag; }
 
-	//’e”­Ë‚Ìƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚©ƒtƒ‰ƒO(‰Ÿ‚µ‚Ä‚¢‚éŠÔ)‚ğƒZƒbƒg
+	//å¼¾ç™ºå°„ã®ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸã‹ãƒ•ãƒ©ã‚°(æŠ¼ã—ã¦ã„ã‚‹é–“)ã‚’ã‚»ãƒƒãƒˆ
 	void SetBulletShotButton(bool flag) { m_bullet_shot = flag; }
 
-	//’e”­Ë‚Ìƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚©ƒtƒ‰ƒO(‰Ÿ‚µ‚½)‚ğƒZƒbƒg
+	//å¼¾ç™ºå°„ã®ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸã‹ãƒ•ãƒ©ã‚°(æŠ¼ã—ãŸæ™‚)ã‚’ã‚»ãƒƒãƒˆ
 	void SetBulletShotButtonTrigger(bool flag) { m_bullet_shot_trigger = flag; }
 
-	//c’e”‰ñ•œ
+	//æ®‹å¼¾æ•°å›å¾©
 	void HeelBullet(void) { if (m_pEnemyItem)m_pEnemyItem->HeelBullet(); }
 
-	//è¦Î‚Æ“–‚½‚Á‚½‚É˜r‚ğÁ‚·
+	//éš•çŸ³ã¨å½“ãŸã£ãŸæ™‚ã«è…•ã‚’æ¶ˆã™
 	void BreakShootingArm();
 
-	//ƒoƒŠƒA‚Ì•`‰æƒIƒuƒWƒFƒNƒg‚ğƒZƒbƒg
+	//ãƒãƒªã‚¢ã®æç”»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚»ãƒƒãƒˆ
 	void DrawSetBarrier(DrawObject* pDraw) { m_barrier_draw = pDraw; }
 
-	//“®‚«‚ğ~‚ß‚é“G‚Ì’e•`‰æƒIƒuƒWƒFƒNƒg‚ğƒZƒbƒg
+	//å‹•ãã‚’æ­¢ã‚ã‚‹æ•µã®å¼¾æç”»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚»ãƒƒãƒˆ
 	void DrawSetBulleStop(DrawObject* pDraw) { m_bullet_stop_draw = pDraw; }
 
-	//•X‚Ì“G‚Ì˜r‚Ì•`‰æ
+	//æ°·ã®æ•µã®è…•ã®æç”»
 	void DrawSetIceRain(DrawObject* pDraw) { m_bullet_icerain_draw = pDraw; }
 
-	//”š”­‚Ì•`‰æƒZƒbƒg
+	//çˆ†ç™ºã®æç”»ã‚»ãƒƒãƒˆ
 	void DrawSetExplosion(DrawObject& pDraw) { m_explosion_draw = pDraw; }
 };
 
