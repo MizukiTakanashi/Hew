@@ -62,13 +62,8 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 
 	//=======================
 	// “G
-	//‰Î‹…‚Ì“G
-	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_FIREBALL].SetTextureName((char*)"data\\texture\\enemy_fireball.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_FIREBALL]);
-	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_FIREBALL].SetTextureName((char*)"data\\texture\\sun.png");
-	m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_FIREBALL]);
+	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY].SetTextureName((char*)"data\\texture\\teki2.png");
 
-	m_pEnemyFireballManagement = new EnemyFireballManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL], m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL]);
 
 	//=======================
 	// Žc’e•\Ž¦
@@ -180,7 +175,6 @@ InhStage::~InhStage()
 	delete m_pBG;
 	delete m_pBG_Moon;
 	delete m_pExplosionManagement;
-	delete m_pEnemyFireballManagement;
 	delete m_pMeteoManagement;
 	delete m_pItemManagement;
 	delete m_pPlayer;

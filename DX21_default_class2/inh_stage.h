@@ -110,8 +110,6 @@ protected:
 	Bom* m_pBom = nullptr;					//ƒ{ƒ€
 	Management_Meteo* m_pMeteoManagement = nullptr;
 
-	EnemyFireballManagement* m_pEnemyFireballManagement = nullptr;
-
 //ƒƒ“ƒoŠÖ”
 public:
 	InhStage(Score* pNumber);
