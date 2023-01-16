@@ -100,7 +100,7 @@ void PlayerArmGrenade::Update(const D3DXVECTOR2& arm_pos)
 
 			//îöî≠Ç™èIÇÌÇ¡ÇΩÇÁ...
 			if (m_pExplosionDraw[i]->GetEndAnimation()) {
-				DeleteBullet(i);
+				DeleteBullet(i);a
 			}
 		}
 	}
@@ -185,7 +185,12 @@ void PlayerArmGrenade::DeleteBullet(int index_num)
 	}
 
 	delete m_pBullet[index_num];
-	delete m_pExplosionDraw[index_num];
+	m_pBullet[index_num] = nullptr;
+
+	if (m_pExplosionDraw[index_num] != nullptr) {
+		delete m_pExplosionDraw[index_num];
+		m_pExplosionDraw[index_num] = nullptr;
+	}
 
 	//íeÇè¡Ç∑
 	for (int i = index_num; i < inhPlayerArm::GetBulletNum() - 1; i++) {

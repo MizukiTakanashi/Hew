@@ -182,6 +182,7 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 		//•X‚Ì“G
 	m_pPlayerCenter->DrawSetIceRain(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE]);
 		//”š”­
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER_GRENADE_EXPLOSION].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION], 0.0f, 0.125f, 1.0f, 7);
 	m_pPlayerCenter->DrawSetExplosion(m_pDrawObject[(int)DRAW_TYPE::EXPLOSION]);
 
 
