@@ -130,8 +130,10 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pPlayerLeft->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
 		//“®‚«‚ðŽ~‚ß‚é“G
 	m_pPlayerLeft->DrawSetBulleStop(&m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
-	//•X‚Ì“G
+		//•X‚Ì“G
 	m_pPlayerLeft->DrawSetIceRain(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE]);
+		//”š”­
+	m_pPlayerLeft->DrawSetExplosion(m_pDrawObject[(int)DRAW_TYPE::EXPLOSION]);
 
 	//=======================
 	// ƒvƒŒƒCƒ„[‚Ì˜r‚Ì‰E
@@ -147,11 +149,13 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_LASER], m_pPlayer->GetPos(), m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(130.0f, 680.0f), D3DXVECTOR2(30.0f, 680.0f));
 	//ƒoƒŠƒA
 	m_pPlayerRight->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
-	//“®‚«‚ðŽ~‚ß‚é“G
+		//“®‚«‚ðŽ~‚ß‚é“G
 	m_pPlayerRight->DrawSetBulleStop(&m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
-
-	//•X‚Ì“G
+		//•X‚Ì“G
 	m_pPlayerRight->DrawSetIceRain(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE]);
+		//”š”­
+	m_pPlayerRight->DrawSetExplosion(m_pDrawObject[(int)DRAW_TYPE::EXPLOSION]);
+	
 	//=======================
 	// ƒvƒŒƒCƒ„[‚Ì˜r‚Ì^‚ñ’†
 		//Ž©g
@@ -166,11 +170,12 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 		m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER_LASER], m_pPlayer->GetPos(), m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(130.0f, 520.0f), D3DXVECTOR2(30.0f, 520.0f));
 	//ƒoƒŠƒA
 	m_pPlayerCenter->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
-	//“®‚«‚ðŽ~‚ß‚é“G
+		//“®‚«‚ðŽ~‚ß‚é“G
 	m_pPlayerCenter->DrawSetBulleStop(&m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
-
-	//•X‚Ì“G
+		//•X‚Ì“G
 	m_pPlayerCenter->DrawSetIceRain(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE]);
+		//”š”­
+	m_pPlayerCenter->DrawSetExplosion(m_pDrawObject[(int)DRAW_TYPE::EXPLOSION]);
 
 
 	//˜r‚ÌŒðŠ·

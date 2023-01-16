@@ -1,7 +1,7 @@
 //=======================================
-// ”š”­ŠÖŒW(ƒwƒbƒ_ƒtƒ@ƒCƒ‹)
-// ì¬“úF2022/07/14
-// ì¬ŽÒF‚—œ…Šó
+// çˆ†ç™ºé–¢ä¿‚(ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š2022/07/14
+// ä½œæˆè€…ï¼šé«˜æ¢¨æ°´å¸Œ
 //=======================================
 #pragma once
 
@@ -15,38 +15,38 @@ class Item :public GameObject
 public:
 	enum class Item_NUM :int
 	{
-		ENEMYITEM_TYPE_HOMING = 0,	//ƒz[ƒ~ƒ“ƒO	
-		ENEMYITEM_TYPE_LASER,		//ƒŒ[ƒU[
-		ENEMYITEM_TYPE_GATORING,		//ƒKƒgƒŠƒ“ƒO
-		ENEMYITEM_TYPE_BARRIAR,		//ƒoƒŠƒA
+		ENEMYITEM_TYPE_HOMING = 0,	//ãƒ›ãƒ¼ãƒŸãƒ³ã‚°	
+		ENEMYITEM_TYPE_LASER,		//ãƒ¬ãƒ¼ã‚¶ãƒ¼
+		ENEMYITEM_TYPE_GATORING,		//ã‚¬ãƒˆãƒªãƒ³ã‚°
+		ENEMYITEM_TYPE_BARRIAR,		//ãƒãƒªã‚¢
 		ENEMYITEM_TYPE_STOP,		//STOP
-		ENEMYITEM_TYPE_ICERAIN,		//•X’Œ
+		ENEMYITEM_TYPE_ICERAIN,		//æ°·æŸ±
 		ENEMYITEM_TYPE7,
 		ENEMYITEM_TYPE8,
 		ENEMYITEM_NUM,
 	};
 
 private:
-	//cpp‚Å‰Šú‰»
-	static const float SIZE_X;		//ƒTƒCƒYX
-	static const float SIZE_Y;		//ƒTƒCƒYY
-	static const D3DXVECTOR2 ITEM_MOOB;		//ƒTƒCƒYY
+	//cppã§åˆæœŸåŒ–
+	static const float SIZE_X;		//ã‚µã‚¤ã‚ºX
+	static const float SIZE_Y;		//ã‚µã‚¤ã‚ºY
+	static const D3DXVECTOR2 ITEM_MOOB;		//ã‚µã‚¤ã‚ºY
 
 	Item_NUM m_TypeItem = Item_NUM::ENEMYITEM_NUM;
 public:
-	Item() {}	//ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	Item() {}	//ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 
-	//ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//å¼•æ•°ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	Item(DrawObject& DrawObject, const D3DXVECTOR2& pos,int typeitem)
 		:GameObject(DrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y)), m_TypeItem((Item_NUM)typeitem) {}
 	
-	//ƒfƒXƒgƒ‰ƒNƒ^
+	//ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	~Item()override{}
 	
-	//XVˆ—
+	//æ›´æ–°å‡¦ç†
 	void Update(void) { GameObject::MovePos(ITEM_MOOB); }
 
-	//ƒAƒCƒeƒ€‚Ìƒ^ƒCƒv‚ð•Ô‚·
+	//ã‚¢ã‚¤ãƒ†ãƒ ã®ã‚¿ã‚¤ãƒ—ã‚’è¿”ã™
 	int GerItemType() const { return (int)m_TypeItem; }
 };
 
