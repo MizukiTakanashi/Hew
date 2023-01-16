@@ -55,6 +55,7 @@ private:
 		EXPLOSION,
 		NUMBER,
 		MULTIPLY,
+		FRAME,
 		NUM
 	};
 
@@ -80,6 +81,7 @@ private:
 		NUMBER,
 		MULTIPLY,
 		BOMB,						//”š’e
+		FRAME,
 		NUM
 	};
 
@@ -107,6 +109,7 @@ private:
 	PlayerCenter* m_pPlayerCenter = nullptr;
 
 	UI* m_pMultiply = nullptr;
+	UI* m_pFrame = nullptr;
 	Number* m_pComboNum = nullptr;
 
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;

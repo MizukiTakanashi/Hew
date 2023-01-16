@@ -56,6 +56,7 @@ protected:
 		EXPLOSION,
 		NUMBER,
 		MULTIPLY,
+		FRAME,
 		NUM
 	};
 
@@ -82,6 +83,7 @@ protected:
 		NUMBER,
 		MULTIPLY,
 		BOMB,						//”š’e
+		FRAME,
 		NUM
 	};
 
@@ -102,6 +104,7 @@ protected:
 	PlayerLeft* m_pPlayerLeft = nullptr;
 	PlayerRight* m_pPlayerRight = nullptr;
 	PlayerCenter* m_pPlayerCenter = nullptr;
+	UI* m_pFrame = nullptr;
 	UI* m_pMultiply = nullptr;
 	Number* m_pComboNum = nullptr;
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;

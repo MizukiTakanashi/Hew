@@ -67,6 +67,7 @@ private:
 		BULLET_ICE,	//氷の弾のテクスチャセット
 		ENEMY_STOP,
 		BULLET_STOP,
+		FRAME,
 		NUM
 	};
 
@@ -102,6 +103,7 @@ private:
 		NUMBER,
 		MULTIPLY,
 		BOMB,						//爆弾
+		FRAME,
 		NUM
 	};
 
@@ -134,6 +136,7 @@ private:
 	PlayerCenter* m_pPlayerCenter = nullptr;
 
 	UI* m_pMultiply = nullptr;
+	UI* m_pFrame = nullptr;
 	Number* m_pComboNum = nullptr;
 
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;

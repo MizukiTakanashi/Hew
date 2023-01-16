@@ -59,6 +59,7 @@ private:
 		EXPLOSION,
 		NUMBER,
 		MULTIPLY,
+		FRAME,
 		NUM
 	};
 
@@ -87,6 +88,7 @@ private:
 		NUMBER,
 		MULTIPLY,
 		BOMB,						//”š’e
+		FRAME,
 		NUM
 	};
 
@@ -114,6 +116,7 @@ private:
 	PlayerRight* m_pPlayerRight = nullptr;
 	PlayerCenter* m_pPlayerCenter = nullptr;
 
+	UI* m_pFrame = nullptr;
 	UI* m_pMultiply = nullptr;
 	Number* m_pComboNum = nullptr;
 

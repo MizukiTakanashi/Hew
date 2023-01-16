@@ -15,8 +15,8 @@ const D3DXVECTOR2 StageMars::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
 //==========================
 // グローバル変数
 //==========================
-int MarsStopFlame = 0; //ヒットストップ用
-bool isDownMars = false; //ボスが死んだか
+int MarsStopFlame = 0;		//ヒットストップ用
+bool isDownMars = false;	//ボスが死んだか
 
 //==========================
 // 引数付きコンストラクタ
@@ -114,6 +114,12 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pComboNum = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(0.0f, 0.0f), D3DXVECTOR2(40.0f, 60.0f), 2);
 	m_pComboNum->SetInitPos(D3DXVECTOR2(SCREEN_WIDTH - 30, SCREEN_HEIGHT - 40));
 
+	//フレーム
+	m_pTexUseful[(int)TEXTURE_TYPE::FRAME].SetTextureName((char*)"data\\texture\\ui.png");
+	m_pDrawObject[(int)DRAW_TYPE::FRAME].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::FRAME]);
+	m_pFrame = new UI(m_pDrawObject[(int)DRAW_TYPE::FRAME], D3DXVECTOR2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2),
+		D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT));
+
 	//=======================
 	// プレイヤーの腕の左
 		//自身
@@ -124,7 +130,9 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 		//レーザー
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
+
 	m_pPlayerLeft = new PlayerLeft(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT], m_pPlayer->GetPos(), m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(130.0f, 600.0f), D3DXVECTOR2(30.0f, 600.0f));
+	
 	//バリア
 	m_pPlayerLeft->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
 		//動きを止める敵
@@ -167,7 +175,7 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
 	m_pPlayerCenter = new PlayerCenter(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_CENTER], m_pPlayer->GetPos(), m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(130.0f, 520.0f), D3DXVECTOR2(30.0f, 520.0f));
-	//バリア
+		//バリア
 	m_pPlayerCenter->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
 		//動きを止める敵
 	m_pPlayerCenter->DrawSetBulleStop(&m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
@@ -398,6 +406,7 @@ void StageMars::Draw(void) const
 	m_pBom->BomDraw();
 
 	//UIの描画
+	m_pFrame->Draw();
 	m_pPlayerHP->DrawHP();
 	m_pScore->DrawNumber();
 	m_pComboNum->SetNumber(m_pScore->GetComboNum());
