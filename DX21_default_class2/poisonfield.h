@@ -1,5 +1,6 @@
 #pragma once
-
+//“y¯‚Ì“ÅÀ
+//»ìÒF–î–ìãÄ‘å
 #include "inh_enemy.h"
 #include "main.h"
 
