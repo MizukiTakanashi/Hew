@@ -1,38 +1,36 @@
+//=======================================
+// 継承用のステージ関係(ヘッダファイル)
+// 作成日：
+// 作成者：恩田洋行
+//=======================================
 #pragma once
-//=======================================
-// 水星のステージ関係(ヘッダファイル)
-// 作成日：2022/12/15
-// 作成者：高梨水希
-//=======================================
-
-#ifndef _STAGE_MERCURY_H_
-#define _STAGE_MERCURY_H_
 
 #include "main.h"
 #include "sprite.h"
+#include "texture_useful.h"
+#include "draw_object.h"
 #include "BG.h"
 #include "bg_planet.h"
-#include "player.h"
-#include "draw_object.h"
-#include "management_enemy_barrier.h"
-#include "texture_useful.h"
-#include "player_hp.h"
-#include "management_explosion.h"
-#include "score.h"
 #include "number.h"
+#include "score.h"
+#include "player.h"
+#include "player_hp.h"
 #include "player_left.h"
 #include "player_right.h"
-#include "management_item.h"
-#include "all_enemy_management.h"
-#include "player_arm_change.h"
-#include "collision_all.h"
 #include "player_center.h"
+#include "player_arm_change.h"
 #include "Bom.h"
+#include "all_enemy_management.h"
+#include "management_item.h"
+#include "management_explosion.h"
+#include "management_meteo.h"
+#include "collision_all.h"
 
-class StageMercury
+
+class InhStage
 {
-	//定数
-private:
+//定数
+protected:
 	//ここで初期化
 	static const int NUMBER_DIGIT = 10;		//数字の桁
 
@@ -47,9 +45,12 @@ private:
 		ENEMY,
 		ENEMY_ITEM,
 		ENEMY_BARRIER,
+		ENEMY_METEO,
 		BULLET_CIRCLE_RED,
 		BULLET_CIRCLE_GREEN,
 		BULLET_SQUARE_GREEN,
+		BULLET_FIREBALL,
+		ENEMY_FIREBALL,
 		BULLET_LASER,
 		BARRIER,
 		EXPLOSION,
@@ -62,9 +63,10 @@ private:
 	{
 		PLAYER,
 		PLAYER_HP_BAR,
-		ENEMY_BARRIER,
-		ENEMY_BARRIER_BARRIER,
+		ENEMY_FIREBALL,
+		BULLET_FIREBALL,
 		ENEMY_ITEM,
+		ENEMY_METEO,
 		PLAYER_BULLET,
 		BULLET_ENEMY,
 		EXPLOSION,
@@ -84,59 +86,43 @@ private:
 	};
 
 
-	//メンバ変数
-private:
+//メンバ変数
+protected:
 	int m_BGM = 0;
 
 	Score* m_pScore = nullptr;
-
 	TextureUseful* m_pTexUseful = nullptr;
 	DrawObject* m_pDrawObject = nullptr;
-
 	BG* m_pBG = nullptr;
 	BGPlanet* m_pBG_Moon = nullptr;
 	Player* m_pPlayer = nullptr;
-	EnemyBarrierManagement* m_pEnemyBarrierManagement = nullptr;
-
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;
 	ItemManagement* m_pItemManagement = nullptr;
-
 	PlayerLeft* m_pPlayerLeft = nullptr;
 	PlayerRight* m_pPlayerRight = nullptr;
 	PlayerCenter* m_pPlayerCenter = nullptr;
-
 	UI* m_pMultiply = nullptr;
 	Number* m_pComboNum = nullptr;
-
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
-
 	PlayerArmChange* m_pPlayerArmChange = nullptr;	//腕の交換
-
 	CollisionAll* m_pColAll = nullptr;		//全ての当たり判定
-
 	Bom* m_pBom = nullptr;					//ボム
+	Management_Meteo* m_pMeteoManagement = nullptr;
 
-	//メンバ関数
+//メンバ関数
 public:
-	StageMercury(){}	//デフォルトコンストラクタ
+	InhStage(Score* pNumber);
 
-	StageMercury(Score* pNumber);
-
-	~StageMercury();	//デストラクタ
+	~InhStage();	//デストラクタ
 
 	//更新
-	void Update(void);
+	virtual void Update(void) = 0;
 
 	//描画
-	void Draw(void)const;
+	virtual void Draw(void)const = 0;
 
 	//スコアを返す
 	int GetScore(void)const { return m_pScore->GetNumber(); }
 };
 
-void MercuryHitStop(int flame);
-void MercuryBossDown();
-
-
-#endif // !_STAGE_MERCURY_H_

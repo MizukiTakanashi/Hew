@@ -51,6 +51,7 @@ private:
 		PLAYER,
 		PLAYER_HP,
 		ENEMY,
+		ENEMY_NORMAL,
 		ENEMY_ITEM,
 		ENEMY_BARRIER,
 		ENEMY_GREANADE,
@@ -131,10 +132,6 @@ private:
 	PlayerLeft* m_pPlayerLeft = nullptr;
 	PlayerRight* m_pPlayerRight = nullptr;
 	PlayerCenter* m_pPlayerCenter = nullptr;
-
-	Number* m_pRemaining_Left = nullptr;
-	Number* m_pRemaining_Right = nullptr;
-	Number* m_pRemaining_Center = nullptr;
 
 	UI* m_pMultiply = nullptr;
 	Number* m_pComboNum = nullptr;

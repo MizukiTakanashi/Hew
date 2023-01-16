@@ -1,38 +1,42 @@
 //=======================================
-// 火星のステージ関係(cppファイル)
-// 作成日：2022/12/15
-// 作成者：高梨水希
+// 継承用のステージ関係(cppファイル)
+// 作成日：
+// 作成者：恩田洋行
 //=======================================
-#include "stage_mercury.h"
+#include "inh_stage.h"
 #include "sound.h"
 
 //==========================
 // 定数初期化
 //==========================
-const D3DXVECTOR2 StageMercury::NUMBER_POS = D3DXVECTOR2(1230.0f, 30.0f);
-const D3DXVECTOR2 StageMercury::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
+const D3DXVECTOR2 InhStage::NUMBER_POS = D3DXVECTOR2(1230.0f, 30.0f);
+const D3DXVECTOR2 InhStage::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
 
 //==========================
 // グローバル変数
 //==========================
-int MercuryStopFlame = 0; //ヒットストップ用
-bool isDownMercury = false; //ボスが死んだか
 
 //==========================
 // 引数付きコンストラクタ
 //==========================
-StageMercury::StageMercury(Score* pNumber):m_pScore(pNumber)
+InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 {
 	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);	//BGM再生
 	SetVolume(m_BGM, 0.1f);
 
+	//背景の初期化処理
+	m_pBG = new BG((char*)"data\\texture\\game_bg_scroll.jpg");
+
+	//画像読み込み
 	m_pTexUseful = new TextureUseful[(int)TEXTURE_TYPE::NUM];
 	m_pDrawObject = new DrawObject[(int)DRAW_TYPE::NUM];
 
-	//背景の初期化処理
-	m_pBG = new BG((char*)"data\\texture\\game_bg_scroll.jpg");
-	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\mercury.png");
+
+
+	//各オブジェクトインスタンス化
+
+
 
 	//=======================
 	// 弾
@@ -60,12 +64,6 @@ StageMercury::StageMercury(Score* pNumber):m_pScore(pNumber)
 	// 敵
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY].SetTextureName((char*)"data\\texture\\teki2.png");
 
-	//バリアの敵
-	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_BARRIER].SetTextureName((char*)"data\\texture\\monster11.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_BARRIER]);
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BARRIER]);
-
-	m_pEnemyBarrierManagement = new EnemyBarrierManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER], m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
 
 	//=======================
 	// 残弾表示
@@ -94,6 +92,8 @@ StageMercury::StageMercury(Score* pNumber):m_pScore(pNumber)
 		D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
 	m_pPlayerLeft = new PlayerLeft(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT], m_pPlayer->GetPos(), m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(130.0f, 600.0f), D3DXVECTOR2(30.0f, 600.0f));
 
+	m_pPlayerLeft->DrawSetSurcleBullet(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_BULLET]);
+	m_pPlayerLeft->DrawSetLaser(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER]);
 	//=======================
 	// プレイヤーの腕の右
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
@@ -122,6 +122,7 @@ StageMercury::StageMercury(Score* pNumber):m_pScore(pNumber)
 	m_pPlayerRight->DrawSetLaser(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER]);
 	m_pPlayerCenter->DrawSetSurcleBullet(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_BULLET]);
 	m_pPlayerCenter->DrawSetLaser(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER]);
+
 
 	//腕の交換
 	m_pPlayerArmChange = new PlayerArmChange(m_pPlayerLeft, m_pPlayerRight, m_pPlayerCenter);
@@ -152,35 +153,36 @@ StageMercury::StageMercury(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::BOMB].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN]);
 	m_pBom = new Bom(m_pDrawObject[(int)DRAW_TYPE::BOMB], 3);
 
+	//m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_METEO].SetTextureName((char*)"data\\texture\\Meteo.png");
+	//m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_METEO]);
+	//m_pMeteoManagement = new Management_Meteo();
+
 	//敵の管理
 	m_pAllEnemyManagement = new AllEnemyManagement;
-	m_pAllEnemyManagement->AddPointer(m_pEnemyBarrierManagement);
-	
-	//========================================================
-	// 全ての当たり判定
-	//m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
-	//	m_pItemManagement, m_pScore, m_pBom, );
 
-	//敵のポインタをセット（順番変えるのNG）
-	//m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
+	//========================================================
+	 //全ての当たり判定
+	//m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
+	//	m_pItemManagement, m_pScore, m_pBom, m_pMeteoManagement);
+
 }
 
 //==========================
 // デストラクタ
 //==========================
-StageMercury::~StageMercury()
+InhStage::~InhStage()
 {
 	//描画がない物から消していく
 	delete m_pAllEnemyManagement;
 	delete m_pPlayerArmChange;
-	//delete m_pColAll;
+	delete m_pColAll;
 
 	//ゲームオブジェクトを消す
 	delete m_pBom;
 	delete m_pBG;
 	delete m_pBG_Moon;
 	delete m_pExplosionManagement;
-	delete m_pEnemyBarrierManagement;
+	delete m_pMeteoManagement;
 	delete m_pItemManagement;
 	delete m_pPlayer;
 	delete m_pPlayerHP;
@@ -196,127 +198,4 @@ StageMercury::~StageMercury()
 
 	//BGMをストップ
 	StopSound(m_BGM);
-}
-
-//==========================
-// 更新処理
-//==========================
-void StageMercury::Update(void)
-{
-	//ヒットストップ
-	if (MercuryStopFlame > 0)
-	{
-		MercuryStopFlame--;
-		return;
-	}
-
-	//ボスが死んだら
-	if (isDownMercury)
-		Fade(SCENE::SCENE_RESULT);
-
-	//背景
-	m_pBG->Update();
-	m_pBG_Moon->Update();
-
-	//腕の切り替え
-	m_pPlayerArmChange->Change();
-
-	//プレイヤー
-	m_pPlayer->Update(m_pPlayerHP->IsPlayerInvincible());
-
-	m_pPlayerHP->Update();
-
-	//爆発
-	m_pExplosionManagement->Update();
-
-	//敵から落ちるアイテム
-	m_pItemManagement->Update();
-
-	//=======================
-	// 敵
-	m_pEnemyBarrierManagement->Update();
-
-	//ボム
-	m_pBom->Update();
-
-	//====================================
-	//プレイヤーのHPに対する処理
-	int attack_num = 0;
-
-	//プレイヤーの腕
-
-	//ホーミング弾用
-	D3DXVECTOR2 temp_pos = m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerLeft->GetPos());
-
-	//腕のアップデート
-	m_pPlayerLeft->ButtonPress();
-	m_pPlayerLeft->Update(m_pPlayer->GetPos(), temp_pos);
-	m_pPlayerRight->ButtonPress();
-	m_pPlayerRight->Update(m_pPlayer->GetPos(), temp_pos);
-	m_pPlayerCenter->ButtonPress();
-	m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
-
-	//敵とプレイヤーの当たり判定
-	//attack_num += m_pColAll->Collision();
-
-	//回復
-	//m_pColAll->HeelCollision();
-
-	//プレイヤーのHPを攻撃数によって減らす
-	if (attack_num != 0) {
-		m_pPlayerHP->ReduceHP((float)attack_num);
-	}
-
-	//プレイヤーのHPが0になったら...
-	if (m_pPlayerHP->GetHP0Flag()) {
-		Fade(SCENE::SCENE_RESULT);
-	}
-}
-
-//==========================
-// 描画処理
-//==========================
-void StageMercury::Draw(void) const
-{
-	m_pBG->DrawBG();
-	m_pBG_Moon->DrawBG();
-	m_pPlayer->Draw();
-
-	//プレイヤーの腕の描画処理
-	m_pPlayerLeft->ArmDraw();
-	m_pPlayerRight->ArmDraw();
-	m_pPlayerCenter->ArmDraw();
-
-	//敵の描画
-	m_pEnemyBarrierManagement->Draw();
-
-	//プレイヤーの弾の表示
-	m_pPlayer->DrawBullet();
-
-	m_pExplosionManagement->Draw();
-
-	m_pItemManagement->Draw();
-
-	//ボムの描画
-	m_pBom->BomDraw();
-
-	//UIの描画
-	m_pPlayerHP->DrawHP();
-	m_pScore->DrawNumber();
-	m_pComboNum->SetNumber(m_pScore->GetComboNum());
-	m_pComboNum->DrawNumber();
-	m_pMultiply->Draw();
-}
-
-//==========================
-// ヒットストップ
-//==========================
-void MercuryHitStop(int flame)
-{
-	MercuryStopFlame = flame;
-}
-
-void MercuryBossDown()
-{
-	isDownMercury = true;
 }

@@ -93,11 +93,11 @@ void inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& 
 			switch (m_type) {
 
 				//Arm2はトリガーになってる
-			case TYPE::TYPE2:
+			case TYPE::TYPE_LASER:
 				m_pEnemyItem->SetButtonTrigger(m_bullet_shot_trigger);
 				break;
 
-			case TYPE::TYPE4:
+			case TYPE::TYPE_BARRIAR:
 				m_pEnemyItem->SetButtonTrigger(m_bullet_shot_trigger);
 				break;
 
@@ -119,9 +119,9 @@ void inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& 
 	}
 
 	//残弾数を更新
-	if (m_pRemaining_Bullet && m_pEnemyItem)
+	if (m_pRemaining_Num && m_pEnemyItem)
 	{
-		m_pRemaining_Bullet->SetNumber(m_pEnemyItem->GetRemainingBullet());
+		m_pRemaining_Num->SetNumber(m_pEnemyItem->GetRemainingBullet());
 	}
 
 }
@@ -138,13 +138,23 @@ void inhPlayerArmBoth::ArmDraw(void) const
 			//腕についているアイテム自身の描画
 			Draw();
 			//残弾数横の敵アイコン表示
-			Draw(m_Remaining_Bullet_Pos, ICON_SIZE);
+			Draw(m_Remaining_Icon_Pos, ICON_SIZE);
 		}
 
 		if (m_pEnemyItem != nullptr) {
 			//腕についているアイテムの弾等描画
 			m_pEnemyItem->PlayerArmDraw();
+			if (m_type != TYPE::TYPE_OLD)
+			{
+				m_pRemaining_Num->DrawNumber();
+			}
 		}
+
+	}
+
+
+	if (m_pRemaining_Num)
+	{
 	}
 }
 
@@ -192,32 +202,32 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 		//タイプに沿って腕のアイテムをセット
 		switch (m_type) {
 
-		case TYPE::TYPE1:
-			m_pEnemyItem = new PlayerArm1(m_bullet_draw, false, (int)m_type - 1);
+		case TYPE::TYPE_HOMING:
+			m_pEnemyItem = new PlayerArm1(*m_bullet_draw, false, (int)m_type - 1);
 			break;
 
-		case TYPE::TYPE2:
-			m_pEnemyItem = new PlayerArm2(m_laser_draw, false, (int)m_type - 1);
+		case TYPE::TYPE_LASER:
+			m_pEnemyItem = new PlayerArm2(*m_laser_draw, false, (int)m_type - 1);
 			break;
 
-		case TYPE::TYPE3:
-			m_pEnemyItem = new PlayerArm3(m_bullet_draw, false, (int)m_type - 1);
+		case TYPE::TYPE_GATORING:
+			m_pEnemyItem = new PlayerArm3(*m_bullet_draw, false, (int)m_type - 1);
 			break;
 
-		case TYPE::TYPE4:
+		case TYPE::TYPE_BARRIAR:
 			m_pEnemyItem = new PlayerArmBarrier(*m_barrier_draw, false, (int)m_type - 1);
 			break;
 
-		case TYPE::TYPE5:
+		case TYPE::TYPE_STOP:
 			m_pEnemyItem = new PlayerArmStop(*m_bullet_stop_draw, false, (int)m_type - 1);
 			break;
 
-		case TYPE::TYPE6:
+		case TYPE::TYPE_ICERAIN:
 			m_pEnemyItem = new PlayerArmIceRain(*m_bullet_icerain_draw, false, (int)m_type - 1);
 			break;
 
 		case TYPE::TYPE7:
-			m_pEnemyItem = new PlayerArmGrenade(m_bullet_draw, m_explosion_draw, false, (int)m_type - 1);
+			m_pEnemyItem = new PlayerArmGrenade(*m_bullet_draw, m_explosion_draw, false, (int)m_type - 1);
 
 		default:
 			break;

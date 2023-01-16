@@ -154,15 +154,6 @@
     <ClCompile Include="game_object.cpp">
       <Filter>30_Multi</Filter>
     </ClCompile>
-    <ClCompile Include="inh_enemy.cpp">
-      <Filter>30_Multi</Filter>
-    </ClCompile>
-    <ClCompile Include="inh_player_arm.cpp">
-      <Filter>30_Multi</Filter>
-    </ClCompile>
-    <ClCompile Include="inh_player_arm_both.cpp">
-      <Filter>30_Multi</Filter>
-    </ClCompile>
     <ClCompile Include="input.cpp">
       <Filter>30_Multi</Filter>
     </ClCompile>
@@ -229,15 +220,6 @@
     <ClCompile Include="Bom.cpp">
       <Filter>30_Multi</Filter>
     </ClCompile>
-    <ClCompile Include="boss.cpp">
-      <Filter>30_Multi</Filter>
-    </ClCompile>
-    <ClCompile Include="bullet.cpp">
-      <Filter>30_Multi</Filter>
-    </ClCompile>
-    <ClCompile Include="bullet_stop.cpp">
-      <Filter>30_Multi</Filter>
-    </ClCompile>
     <ClCompile Include="collision.cpp">
       <Filter>30_Multi</Filter>
     </ClCompile>
@@ -253,8 +235,35 @@
     <ClCompile Include="collision_all.cpp">
       <Filter>02_Moon</Filter>
     </ClCompile>
-    <ClCompile Include="laser.cpp">
+    <ClCompile Include="stage_venus.cpp">
+      <Filter>06_Venus</Filter>
+    </ClCompile>
+    <ClCompile Include="management_enemy_fireball.cpp">
+      <Filter>29_Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="inh_stage.cpp">
       <Filter>30_Multi</Filter>
+    </ClCompile>
+    <ClCompile Include="inh_player_arm.cpp">
+      <Filter>28_Player</Filter>
+    </ClCompile>
+    <ClCompile Include="inh_player_arm_both.cpp">
+      <Filter>28_Player</Filter>
+    </ClCompile>
+    <ClCompile Include="inh_enemy.cpp">
+      <Filter>29_Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="laser.cpp">
+      <Filter>29_Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="boss.cpp">
+      <Filter>29_Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="bullet.cpp">
+      <Filter>29_Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="bullet_stop.cpp">
+      <Filter>29_Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -417,15 +426,6 @@
     <ClInclude Include="game_object.h">
       <Filter>30_Multi</Filter>
     </ClInclude>
-    <ClInclude Include="inh_enemy.h">
-      <Filter>30_Multi</Filter>
-    </ClInclude>
-    <ClInclude Include="inh_player_arm.h">
-      <Filter>30_Multi</Filter>
-    </ClInclude>
-    <ClInclude Include="inh_player_arm_both.h">
-      <Filter>30_Multi</Filter>
-    </ClInclude>
     <ClInclude Include="input.h">
       <Filter>30_Multi</Filter>
     </ClInclude>
@@ -489,15 +489,6 @@
     <ClInclude Include="Bom.h">
       <Filter>30_Multi</Filter>
     </ClInclude>
-    <ClInclude Include="boss.h">
-      <Filter>30_Multi</Filter>
-    </ClInclude>
-    <ClInclude Include="bullet.h">
-      <Filter>30_Multi</Filter>
-    </ClInclude>
-    <ClInclude Include="bullet_stop.h">
-      <Filter>30_Multi</Filter>
-    </ClInclude>
     <ClInclude Include="collision.h">
       <Filter>30_Multi</Filter>
     </ClInclude>
@@ -513,8 +504,35 @@
     <ClInclude Include="collision_all.h">
       <Filter>02_Moon</Filter>
     </ClInclude>
-    <ClInclude Include="laser.h">
+    <ClInclude Include="stage_venus.h">
+      <Filter>06_Venus</Filter>
+    </ClInclude>
+    <ClInclude Include="management_enemy_fireball.h">
+      <Filter>29_Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="inh_stage.h">
       <Filter>30_Multi</Filter>
+    </ClInclude>
+    <ClInclude Include="inh_player_arm.h">
+      <Filter>28_Player</Filter>
+    </ClInclude>
+    <ClInclude Include="inh_player_arm_both.h">
+      <Filter>28_Player</Filter>
+    </ClInclude>
+    <ClInclude Include="inh_enemy.h">
+      <Filter>29_Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="laser.h">
+      <Filter>29_Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="boss.h">
+      <Filter>29_Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="bullet.h">
+      <Filter>29_Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="bullet_stop.h">
+      <Filter>29_Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -547,6 +565,9 @@
     </Filter>
     <Filter Include="28_Player">
       <UniqueIdentifier>{fabc2407-9ce7-4e98-8ce6-1a1f4cc61987}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06_Venus">
+      <UniqueIdentifier>{3b82c351-66bc-4e48-8525-78e192d02b62}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

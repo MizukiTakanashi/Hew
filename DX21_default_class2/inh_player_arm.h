@@ -1,8 +1,8 @@
 #pragma once
 //==============================================
-// (Œp³—p)ƒvƒŒƒCƒ„[‚Ì˜rŠÖŒW(ƒwƒbƒ_ƒtƒ@ƒCƒ‹)
-// ì¬“úF2022/10/28
-// ì¬ÒF‚—œ…Šó
+// (ç¶™æ‰¿ç”¨)ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•é–¢ä¿‚(ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š2022/10/28
+// ä½œæˆè€…ï¼šé«˜æ¢¨æ°´å¸Œ
 //==============================================
 
 #ifndef _INH_PLAYER_ARM_H_
@@ -12,159 +12,159 @@
 
 class inhPlayerArm:public GameObject
 {
-//’è”
+//å®šæ•°
 public:
-	// ˜r‚É’…‚­“G‚Ìí—Ş
+	// è…•ã«ç€ãæ•µã®ç¨®é¡
 	enum class TYPE :int
 	{
-		TYPE1,		//ƒz[ƒ~ƒ“ƒO
-		TYPE2,		//ƒŒ[ƒU[
-		TYPE3,		//ƒKƒgƒŠƒ“ƒO
-		TYPE4,		//ƒoƒŠƒA
-		TYPE5,		//STOP
-		TYPE6,		//•X’Œ
-		TYPE7,		//ƒOƒŒƒl[ƒh“G
+		TYPE_HOMING,		//ãƒ›ãƒ¼ãƒŸãƒ³ã‚°
+		TYPE_LASER,		//ãƒ¬ãƒ¼ã‚¶ãƒ¼
+		TYPE_GATORING,		//ã‚¬ãƒˆãƒªãƒ³ã‚°
+		TYPE_BARRIAR,		//ãƒãƒªã‚¢
+		TYPE_STOP,		//STOP
+		TYPE_ICERAIN,
+		TYPE7,        //æ°·æŸ±
 		TYPE8,
 		TYPE_NUM,
 	};
 
-//ƒƒ“ƒo•Ï”
+//ãƒ¡ãƒ³ãƒå¤‰æ•°
 private:
-	int m_BulletNum = 0;		//Œ»İ‚Ì’e‚Ì”
-	int m_bullet_maked_num = 0;	//¡‚Ü‚Åì‚ç‚ê‚½’e‚Ì”(ƒAƒCƒeƒ€‚ÌÁ”ï—Ê)
-	int m_bullet_max_num = 0;	//ƒAƒCƒeƒ€‚ªo‚·Å‘å’e”
+	int m_BulletNum = 0;		//ç¾åœ¨ã®å¼¾ã®æ•°
+	int m_bullet_maked_num = 0;	//ä»Šã¾ã§ä½œã‚‰ã‚ŒãŸå¼¾ã®æ•°(ã‚¢ã‚¤ãƒ†ãƒ ã®æ¶ˆè²»é‡)
+	int m_bullet_max_num = 0;	//ã‚¢ã‚¤ãƒ†ãƒ ãŒå‡ºã™æœ€å¤§å¼¾æ•°
 	
-	int m_bullet_hp = 0;		//Œ»İ‚Ì’e‚ÌHP
+	int m_bullet_hp = 0;		//ç¾åœ¨ã®å¼¾ã®HP
 	
-	bool m_right = false;		//‰E‚É‚Â‚¢‚Ä‚é‚©¶‚É‚Â‚¢‚Ä‚é‚©
-	bool m_center = false;		//’†‰›‚É‚Â‚¢‚Ä‚¢‚é‚©
+	bool m_right = false;		//å³ã«ã¤ã„ã¦ã‚‹ã‹å·¦ã«ã¤ã„ã¦ã‚‹ã‹
+	bool m_center = false;		//ä¸­å¤®ã«ã¤ã„ã¦ã„ã‚‹ã‹
 
-	bool m_button_push = false;	//ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚©
-	bool m_button_trigger = false;	//ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚©(ƒgƒŠƒK[)
+	bool m_button_push = false;	//ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸã‹
+	bool m_button_trigger = false;	//ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸã‹(ãƒˆãƒªã‚¬ãƒ¼)
 	
-	bool m_bullet_used = false;	//’e‚ªs‚«‚½‚©‚Ç‚¤‚©
+	bool m_bullet_used = false;	//å¼¾ãŒå°½ããŸã‹ã©ã†ã‹
 	
-	TYPE m_type = TYPE::TYPE1;	//©•ª‚Ìƒ^ƒCƒv
+	TYPE m_type = TYPE::TYPE_HOMING;	//è‡ªåˆ†ã®ã‚¿ã‚¤ãƒ—
 
 protected:
-	int m_bullet_interval_count = 0;	//”­ËŠÔŠuƒJƒEƒ“ƒg
+	int m_bullet_interval_count = 0;	//ç™ºå°„é–“éš”ã‚«ã‚¦ãƒ³ãƒˆ
 
-	//‚Æ‚ ‚éÀ•Wæ“¾—p
-	//Œ»İ‚ÍPlayerArm1‚Ìƒz[ƒ~ƒ“ƒO’e‚Ì“G‚ÌˆÊ’uæ“¾—p
+	//ã¨ã‚ã‚‹åº§æ¨™å–å¾—ç”¨
+	//ç¾åœ¨ã¯PlayerArm1ã®ãƒ›ãƒ¼ãƒŸãƒ³ã‚°å¼¾ã®æ•µã®ä½ç½®å–å¾—ç”¨
 	D3DXVECTOR2 m_something_pos = D3DXVECTOR2(0.0f, 0.0f);	
 
-//ƒƒ“ƒoŠÖ”
+//ãƒ¡ãƒ³ãƒé–¢æ•°
 public:
-	//ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	inhPlayerArm(){}
 
-	//ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//å¼•æ•°ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	inhPlayerArm(int bullet_max_num, bool right, int type, int hp_max = 0)
 		:m_bullet_max_num(bullet_max_num), m_right(right), m_type((TYPE)type),
 		m_bullet_hp(hp_max) {}
 
-	//ƒfƒXƒgƒ‰ƒNƒ^
+	//ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	virtual ~inhPlayerArm()override{}
 
 	//=========================
-	// ƒI[ƒo[ƒ‰ƒCƒh—p
+	// ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ç”¨
 	
-	//XVˆ—(ƒI[ƒo[ƒ‰ƒCƒh)
+	//æ›´æ–°å‡¦ç†(ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰)
 	virtual void Update(const D3DXVECTOR2& arm_pos) = 0;
 
-	//•`‰æˆ—(ƒI[ƒo[ƒ‰ƒCƒh)
+	//æç”»å‡¦ç†(ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰)
 	virtual void PlayerArmDraw(void)const = 0;
 
-	//w’è‚µ‚½”Ô†‚Ì’e‚ğÁ‚·(ƒI[ƒo[ƒ‰ƒCƒh—p)
+	//æŒ‡å®šã—ãŸç•ªå·ã®å¼¾ã‚’æ¶ˆã™(ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ç”¨)
 	virtual void DeleteBullet(int index_num) = 0;
 
-	//w’è‚µ‚½”Ô†‚Ì’e‚ÌÀ•W‚ğ•Ô‚·(ƒI[ƒo[ƒ‰ƒCƒh—p)
+	//æŒ‡å®šã—ãŸç•ªå·ã®å¼¾ã®åº§æ¨™ã‚’è¿”ã™(ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ç”¨)
 	virtual const D3DXVECTOR2& GetBulletPos(int index_num)const = 0;
 
-	//w’è‚µ‚½”Ô†‚Ì’e‚ÌƒTƒCƒY‚ğ•Ô‚·(ƒI[ƒo[ƒ‰ƒCƒh—p)
+	//æŒ‡å®šã—ãŸç•ªå·ã®å¼¾ã®ã‚µã‚¤ã‚ºã‚’è¿”ã™(ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ç”¨)
 	virtual const D3DXVECTOR2& GetBulletSize(int index_num = 0)const = 0;
 
-	//ƒAƒNƒVƒ‡ƒ“‚ğ‹N‚±‚·(ƒI[ƒo[ƒ‰ƒCƒh—p)(ƒOƒŒƒl[ƒh“G‚Ì‚İ)
+	//ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’èµ·ã“ã™(ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ç”¨)(ã‚°ãƒ¬ãƒãƒ¼ãƒ‰æ•µã®ã¿)
 	virtual void Action(int index_num){}
 	
 	//=====================
-	// ’e
+	// å¼¾
 	
-	//’e‚ªs‚«‚½‚©‚ğ•Ô‚·
-	// trueFg‚¢I‚í‚Á‚½@falseF‚Ü‚¾g‚¢I‚í‚Á‚Ä‚È‚¢
+	//å¼¾ãŒå°½ããŸã‹ã‚’è¿”ã™
+	// trueï¼šä½¿ã„çµ‚ã‚ã£ãŸã€€falseï¼šã¾ã ä½¿ã„çµ‚ã‚ã£ã¦ãªã„
 	bool IsBulletUsed(void)const;
 
-	//’e‚ªs‚«‚½‚©‚Ç‚¤‚©‚ğƒZƒbƒg
+	//å¼¾ãŒå°½ããŸã‹ã©ã†ã‹ã‚’ã‚»ãƒƒãƒˆ
 	void SetBulletUsed(bool used) { m_bullet_used = used; }
 
-	//ì‚Á‚½’e‚Ì”‚ğ‘‚â‚·
+	//ä½œã£ãŸå¼¾ã®æ•°ã‚’å¢—ã‚„ã™
 	void IncreaseBulletMaked(int num = 1) { m_bullet_maked_num += num; }
 
-	//ì‚Á‚½’e‚Ì”‚ğ•Ô‚·
+	//ä½œã£ãŸå¼¾ã®æ•°ã‚’è¿”ã™
 	int GetBulletMaked(void) { return m_bullet_maked_num; }
 
-	//Œ»İ‚Ì’e”‚ğ‘‚â‚·
+	//ç¾åœ¨ã®å¼¾æ•°ã‚’å¢—ã‚„ã™
 	void IncreaseBulletNum(int num = 1) { m_BulletNum += num; }
 
-	//’e‚Ì”‚ğæ“¾
+	//å¼¾ã®æ•°ã‚’å–å¾—
 	int GetBulletNum(void)const { return m_BulletNum; }
 
 	//==========================
-	// ‚Ç‚±‚Ì˜r‚É‚Â‚¢‚Ä‚¢‚é‚©
+	// ã©ã“ã®è…•ã«ã¤ã„ã¦ã„ã‚‹ã‹
 	
-	//‚Â‚¢‚Ä‚¢‚é‚Ì‚ª‰E˜r‚©¶˜r‚©‚ğ•Ô‚·
+	//ã¤ã„ã¦ã„ã‚‹ã®ãŒå³è…•ã‹å·¦è…•ã‹ã‚’è¿”ã™
 	bool GetRightLeft(void)const { return m_right; }
 
-	//‰E˜r‚©¶˜r‚©‚ğƒZƒbƒg‚·‚é
+	//å³è…•ã‹å·¦è…•ã‹ã‚’ã‚»ãƒƒãƒˆã™ã‚‹
 	void SetRightLeft(bool right) { m_right = right; }
 
-	//’†‰›‚É‚Â‚¢‚Ä‚¢‚é‚©
+	//ä¸­å¤®ã«ã¤ã„ã¦ã„ã‚‹ã‹
 	bool IsCenter(void)const { return m_center; }
 
-	//’†‰›‚É‚Â‚¢‚Ä‚¢‚é‚©ƒtƒ‰ƒO‚ğƒZƒbƒg
+	//ä¸­å¤®ã«ã¤ã„ã¦ã„ã‚‹ã‹ãƒ•ãƒ©ã‚°ã‚’ã‚»ãƒƒãƒˆ
 	void SetCenter(bool center) { m_center = center; }
 
 	//=====================
-	// ƒ{ƒ^ƒ“
+	// ãƒœã‚¿ãƒ³
 	
-	//ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚©ƒtƒ‰ƒO‚ğƒZƒbƒg
+	//ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸã‹ãƒ•ãƒ©ã‚°ã‚’ã‚»ãƒƒãƒˆ
 	void SetButtonPush(bool push) { m_button_push = push; }
 
-	//ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚©‚ğ•Ô‚·
+	//ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸã‹ã‚’è¿”ã™
 	bool IsButtonPush(void)const { return m_button_push; }
 
-	//ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚©ƒtƒ‰ƒO‚ğƒZƒbƒg@ƒgƒŠƒK[
+	//ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸã‹ãƒ•ãƒ©ã‚°ã‚’ã‚»ãƒƒãƒˆã€€ãƒˆãƒªã‚¬ãƒ¼
 	void SetButtonTrigger(bool push) { m_button_trigger = push; }
 
-	//ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚©‚ğ•Ô‚·@ƒgƒŠƒK[
+	//ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸã‹ã‚’è¿”ã™ã€€ãƒˆãƒªã‚¬ãƒ¼
 	bool IsButtonTrigger(void)const { return m_button_trigger; }
 
 
-	//ƒ^ƒCƒv‚ğ•Ô‚·
+	//ã‚¿ã‚¤ãƒ—ã‚’è¿”ã™
 	TYPE GetType(void)const { return m_type; }
 
 	//=====================
-	// ‚Æ‚ ‚éÀ•W
+	// ã¨ã‚ã‚‹åº§æ¨™
 	
-	//‚Æ‚ ‚éÀ•WƒZƒbƒg—p(Ú×‚Íƒƒ“ƒo•Ï”‚Ìm_something_pos‚ÌƒRƒƒ“ƒg‚Ö)
+	//ã¨ã‚ã‚‹åº§æ¨™ã‚»ãƒƒãƒˆç”¨(è©³ç´°ã¯ãƒ¡ãƒ³ãƒå¤‰æ•°ã®m_something_posã®ã‚³ãƒ¡ãƒ³ãƒˆã¸)
 	void SetSomethingPos(const D3DXVECTOR2& pos) { m_something_pos = pos; }
 
-	//‚Æ‚ ‚éÀ•Wæ“¾—p(Ú×‚Íƒƒ“ƒo•Ï”‚Ìm_something_pos‚ÌƒRƒƒ“ƒg‚Ö)
+	//ã¨ã‚ã‚‹åº§æ¨™å–å¾—ç”¨(è©³ç´°ã¯ãƒ¡ãƒ³ãƒå¤‰æ•°ã®m_something_posã®ã‚³ãƒ¡ãƒ³ãƒˆã¸)
 	const D3DXVECTOR2& GetSomethingPos(void)const { return m_something_pos; }
 
 	//=====================
-	// c’e”
+	// æ®‹å¼¾æ•°
 	
-	//c’e”‰ñ•œ
+	//æ®‹å¼¾æ•°å›å¾©
 	void HeelBullet(void) { m_bullet_maked_num = 0; }
 
-	//c’e”‚ğ•Ô‚·
+	//æ®‹å¼¾æ•°ã‚’è¿”ã™
 	int GetRemainingBullet(void);
 
 	//=====================
 	// HP
 	
-	//HP‚ğŒ¸‚ç‚·AHP‚ª0ˆÈ‰º‚É‚È‚Á‚½‚çtrue‚ğ•Ô‚·
+	//HPã‚’æ¸›ã‚‰ã™ã€HPãŒ0ä»¥ä¸‹ã«ãªã£ãŸã‚‰trueã‚’è¿”ã™
 	bool ReduceHP(int num) {
 		m_bullet_hp -= num;
 		if (m_bullet_hp <= 0) {
