@@ -48,8 +48,8 @@ private:
 	TYPE m_type = TYPE::TYPE_NONE;			//ついた敵のタイプ
 
 	inhPlayerArm* m_pEnemyItem = nullptr;	//腕についている敵のクラス
-	DrawObject m_bullet_draw;				//弾の描画オブジェクト
-	DrawObject m_laser_draw;				//レーザーの描画オブジェクト
+	DrawObject* m_bullet_draw;				//弾の描画オブジェクト
+	DrawObject* m_laser_draw;				//レーザーの描画オブジェクト
 	DrawObject* m_barrier_draw = nullptr;	//バリアの描画オブジェクト
 	DrawObject* m_bullet_stop_draw = nullptr;	//動きを止める敵の弾の描画オブジェクト
 	DrawObject* m_bullet_icerain_draw = nullptr;	//氷の敵の描画
@@ -68,10 +68,9 @@ public:
 	inhPlayerArmBoth(){}
 
 	//引数付きコンストラクタ
-	inhPlayerArmBoth(DrawObject& pDrawObject, DrawObject& pBullet, DrawObject& pLaser, const D3DXVECTOR2& pos,
+	inhPlayerArmBoth(DrawObject& pDrawObject, const D3DXVECTOR2& pos,
 		const D3DXVECTOR2& from_player, DrawObject& pDrawobNumber, D3DXVECTOR2 num_pos, D3DXVECTOR2 icon_pos)
-		:GameObject(pDrawObject, pos, SIZE), m_bullet_draw(pBullet), m_laser_draw(pLaser),
-		m_from_player(from_player), m_Remaining_Icon_Pos(icon_pos) 
+		:GameObject(pDrawObject, pos, SIZE), m_from_player(from_player), m_Remaining_Icon_Pos(icon_pos) 
 	{
 		m_pRemaining_Num = new Number(pDrawobNumber, num_pos, D3DXVECTOR2(40.0f, 60.0f), 2);
 	}
@@ -117,6 +116,12 @@ public:
 
 	//隕石と当たった時に腕を消す
 	void BreakShootingArm();
+
+	//丸い弾の描画オブジェクトをセット
+	void DrawSetSurcleBullet(DrawObject* pDraw) { m_bullet_draw = pDraw; }
+
+	//レーザーの描画オブジェクトをセット
+	void DrawSetLaser(DrawObject* pDraw) { m_laser_draw = pDraw; }
 
 	//バリアの描画オブジェクトをセット
 	void DrawSetBarrier(DrawObject* pDraw) { m_barrier_draw = pDraw; }

@@ -203,15 +203,15 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 		switch (m_type) {
 
 		case TYPE::TYPE_HOMING:
-			m_pEnemyItem = new PlayerArm1(m_bullet_draw, false, (int)m_type - 1);
+			m_pEnemyItem = new PlayerArm1(*m_bullet_draw, false, (int)m_type - 1);
 			break;
 
 		case TYPE::TYPE_LASER:
-			m_pEnemyItem = new PlayerArm2(m_laser_draw, false, (int)m_type - 1);
+			m_pEnemyItem = new PlayerArm2(*m_laser_draw, false, (int)m_type - 1);
 			break;
 
 		case TYPE::TYPE_GATORING:
-			m_pEnemyItem = new PlayerArm3(m_bullet_draw, false, (int)m_type - 1);
+			m_pEnemyItem = new PlayerArm3(*m_bullet_draw, false, (int)m_type - 1);
 			break;
 
 		case TYPE::TYPE_BARRIAR:
@@ -227,7 +227,7 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 			break;
 
 		case TYPE::TYPE7:
-			m_pEnemyItem = new PlayerArmGrenade(m_bullet_draw, m_explosion_draw, false, (int)m_type - 1);
+			m_pEnemyItem = new PlayerArmGrenade(*m_bullet_draw, m_explosion_draw, false, (int)m_type - 1);
 
 		default:
 			break;
