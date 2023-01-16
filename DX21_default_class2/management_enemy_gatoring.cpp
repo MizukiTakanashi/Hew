@@ -20,7 +20,7 @@ EnemyGatoringManagement::EnemyGatoringManagement(DrawObject& pDrawObject1, DrawO
 	:EnemyManagement(ENEMY_NUM, ATTACK, BULLET_ATTACK),m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
 	m_pEnemyGatoring = new EnemyGatoring[ENEMY_NUM];
-	m_pBullet = new Bullet[ENEMY_NUM];
+	m_pBullet = new Bullet[BULLET_NUM];
 }
 
 //======================
@@ -51,7 +51,7 @@ void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
 		}
 
 		//弾を作る
-		if (m_pEnemyGatoring[i].GetFlagBulletMake())
+		if (m_pEnemyGatoring[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() < BULLET_NUM)
 		{
 			Bullet temp(m_pDrawObjectBullet, m_pEnemyGatoring[i].GetPos(),
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y),D3DXVECTOR2(0, 10.0f), 0.0f);

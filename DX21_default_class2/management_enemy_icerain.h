@@ -21,6 +21,7 @@ private:
 	//‚±‚±‚Å‰Šú‰»
 	//“G©g
 	static const int ENEMY_NUM = 7;		//“G‚ğoŒ»‚³‚¹‚é”
+	static const int BULLET_NUM = 20;	//“¯‚É’e‚ğoŒ»‚³‚¹‚é”
 
 	//cpp‚Å‰Šú‰»
 	//’e

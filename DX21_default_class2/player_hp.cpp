@@ -11,17 +11,16 @@
 // 定数初期化
 //==========================
 const float PlayerHP::HP_MAX = 3.0f;
-const float PlayerHP::SIZE_X = 200.0f;
-const float PlayerHP::SIZE_Y = 25.0f;
-const float PlayerHP::POS_X = 30;
-const float PlayerHP::POS_Y = 30;
-const float PlayerHP::BET_X = 40;
+const D3DXVECTOR2 PlayerHP::SIZE = D3DXVECTOR2(60.0f, 60.0f);
+const float PlayerHP::POS_X = 1040.0f;
+const float PlayerHP::POS_Y = 625.0f;
+const float PlayerHP::BET_X = 80.0f;
 
 //==========================
 // 引数付きコンストラクタ
 //==========================
 PlayerHP::PlayerHP(DrawObject& DrawObject1, ExplosionManagement* pEM, Player* pPlayer)
-	:UI(DrawObject1, D3DXVECTOR2(POS_X, POS_Y),D3DXVECTOR2(SIZE_X, SIZE_Y)), 
+	:UI(DrawObject1, D3DXVECTOR2(POS_X, POS_Y), SIZE), 
 	m_pExplosionManagement(pEM), m_pPlayer(pPlayer)
 {
 	//プレイヤーダメージ音
@@ -71,7 +70,7 @@ void PlayerHP::HeelHP(float heel_num)
 //==========================
 void PlayerHP::Update(void)
 {
-	if (m_hp < 3)
+	if (m_hp < HP_MAX)
 	{//HPが少なくなったら
 		//プレイヤーの見た目変更
 		m_pPlayer->SetAnimationNum(2);
@@ -88,10 +87,18 @@ void PlayerHP::Update(void)
 //==========================
 // 描画処理
 //==========================
-void PlayerHP::DrawHP(void)const
+void PlayerHP::DrawHP(void)
 {
-	for (int i = 0; i < m_hp; i++)
+	//中身あり
+	for (int i = 0; i < (int)m_hp; i++)
 	{
-		UI::Draw(D3DXVECTOR2(POS_X  + i * BET_X, POS_Y), D3DXVECTOR2(40, 40));
+		UI::SetAnimationNum(0.0f);
+		UI::Draw(D3DXVECTOR2(POS_X  + i * BET_X, POS_Y), SIZE);
+	}
+
+	//中身なし
+	for (int i = (int)m_hp; i < (int)HP_MAX; i++) {
+		UI::SetAnimationNum(1.0f);
+		UI::Draw(D3DXVECTOR2(POS_X + i * BET_X, POS_Y), SIZE);
 	}
 }

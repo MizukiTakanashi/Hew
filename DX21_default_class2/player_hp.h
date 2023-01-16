@@ -24,8 +24,7 @@ class PlayerHP :public UI
 private:
 	//cppで初期化
 	static const float HP_MAX;			//最大HP
-	static const float SIZE_X;			//サイズX
-	static const float SIZE_Y;			//サイズY
+	static const D3DXVECTOR2 SIZE;		//サイズX
 	static const float POS_X;			//表示位置
 	static const float POS_Y;			//表示位置
 	static const float BET_X;			//ハートの表示間隔
@@ -63,7 +62,7 @@ public:
 	void HeelHP(float heel_num);
 
 	//描画
-	void DrawHP(void)const;
+	void DrawHP(void);
 
 	//HPが0になったかどうかのフラグを返す
 	bool GetHP0Flag(void)const { return m_HP0; }

@@ -20,7 +20,7 @@ EnemyIceRainManagement::EnemyIceRainManagement(DrawObject& pDrawObject1, DrawObj
 	:EnemyManagement(ENEMY_NUM, ATTACK, BULLET_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
 	m_pEnemyIceRain = new EnemyIceRain[ENEMY_NUM];
-	m_pBullet = new Bullet[ENEMY_NUM];
+	m_pBullet = new Bullet[BULLET_NUM];
 
 	//ïXíåÇç~ÇÁÇπÇÈâπ
 	m_SE_13 = LoadSound((char*)"data\\SE\\1_13.wav");
@@ -48,7 +48,7 @@ void EnemyIceRainManagement::Update(const D3DXVECTOR2& PlayerPos)
 		m_pEnemyIceRain[i].Update();
 
 		//íeÇçÏÇÈ
-		if (m_pEnemyIceRain[i].GetFlagBulletMake())
+		if (m_pEnemyIceRain[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() < BULLET_NUM)
 		{
 			Bullet temp(m_pDrawObjectBullet, m_pEnemyIceRain[i].GetPos(),
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f); 
@@ -62,7 +62,7 @@ void EnemyIceRainManagement::Update(const D3DXVECTOR2& PlayerPos)
 			PlaySound(m_SE_13, 0);
 		}
 		//íeÇçÏÇÈ
-		if (m_pEnemyIceRain[i].GetFlagBulletMake1())
+		if (m_pEnemyIceRain[i].GetFlagBulletMake1() && EnemyManagement::GetBulletNum() < BULLET_NUM)
 		{
 			Bullet temp(m_pDrawObjectBullet, m_pEnemyIceRain[i].GetPos() + D3DXVECTOR2(30.0f, 0.0f), 
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f);
@@ -74,7 +74,7 @@ void EnemyIceRainManagement::Update(const D3DXVECTOR2& PlayerPos)
 			m_pEnemyIceRain[i].BulletMake1();
 		}
 		//íeÇçÏÇÈ
-		if (m_pEnemyIceRain[i].GetFlagBulletMake2())
+		if (m_pEnemyIceRain[i].GetFlagBulletMake2() && EnemyManagement::GetBulletNum() < BULLET_NUM)
 		{
 			Bullet temp(m_pDrawObjectBullet, m_pEnemyIceRain[i].GetPos() + D3DXVECTOR2(-30.0f, 0.0f),
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f);
@@ -86,7 +86,7 @@ void EnemyIceRainManagement::Update(const D3DXVECTOR2& PlayerPos)
 			m_pEnemyIceRain[i].BulletMake2();
 		}
 		//íeÇçÏÇÈ
-		if (m_pEnemyIceRain[i].GetFlagBulletMake3())
+		if (m_pEnemyIceRain[i].GetFlagBulletMake3() && EnemyManagement::GetBulletNum() < BULLET_NUM)
 		{
 			Bullet temp(m_pDrawObjectBullet, m_pEnemyIceRain[i].GetPos() + D3DXVECTOR2(50.0f, 0.0f),
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f);
@@ -98,7 +98,7 @@ void EnemyIceRainManagement::Update(const D3DXVECTOR2& PlayerPos)
 			m_pEnemyIceRain[i].BulletMake3();
 		}
 		//íeÇçÏÇÈ
-		if (m_pEnemyIceRain[i].GetFlagBulletMake4())
+		if (m_pEnemyIceRain[i].GetFlagBulletMake4() && EnemyManagement::GetBulletNum() < BULLET_NUM)
 		{
 			Bullet temp(m_pDrawObjectBullet, m_pEnemyIceRain[i].GetPos() + D3DXVECTOR2(-50.0f, 0.0f),
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 10.0f), 0.0f);

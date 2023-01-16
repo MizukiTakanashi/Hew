@@ -21,6 +21,7 @@ private:
 	//ここで初期化
 	//敵自身
 	static const int ENEMY_NUM = 5;			//敵を出現させる数
+	static const int BULLET_NUM = 20;		//同時に弾を出現させる数
 	static const int EXIT_TIME = 60 * 10;	//退出時間
 
 	//cppで初期化
