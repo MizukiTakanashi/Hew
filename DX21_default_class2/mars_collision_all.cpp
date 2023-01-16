@@ -256,7 +256,7 @@ int MarsCollisionAll::Collision(void)
 			//=================================================
 			// プレイヤーの腕の弾と敵
 
-			//プレイヤーの腕の弾方
+			//プレイヤーの腕の弾の方
 			//敵の方
 
 				//弾
@@ -272,7 +272,7 @@ int MarsCollisionAll::Collision(void)
 				//ポインターがヌルであれば処理を行わない
 				if (pArmItem != nullptr) {
 					//バリアであれば何もしない
-					if (pArm->GetType() != inhPlayerArmBoth::TYPE::TYPE4) {
+					if (pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE4) {
 						//腕についているアイテムのポインタを取ってくる(二回目は右)
 						pArmItem = m_pPlayerRight->GetArmPointer();
 
@@ -283,19 +283,69 @@ int MarsCollisionAll::Collision(void)
 					}
 
 					//グレネード敵であれば何もしない
-					//if (pArm->GetType() != inhPlayerArmBoth::TYPE::TYPE7) {
-					//	//PlayerArmGrenade* pGrenade = m_pPlayerLeft->GetArmPointer();
-					//	for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
+					if (pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE7) {
+						for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
+							//敵を探している最中
+							if (pArmItem->GetBulletSize(i) == PlayerArmGrenade::FIND_BULLET_SIZE) {
+								if (Collision::ColBox(pArmItem->GetBulletPos(i), m_pEnemy[k]->GetObjPos(j),
+									PlayerArmGrenade::FIND_RANGE, m_pEnemy[k]->GetObjSize())) {
+									pArmItem->Action(i);
+								}
+							}
+							//爆発待ち時間か爆発中
+							else if (Collision::ColBox(pArmItem->GetBulletPos(i), m_pEnemy[k]->GetObjPos(j),
+								pArmItem->GetBulletSize(i), m_pEnemy[k]->GetObjSize())) {
+								//プレイヤーの弾を消す
+								pArmItem->DeleteBullet(i);
+								i--;
 
-					//	}
-					//	//腕についているアイテムのポインタを取ってくる(二回目は右)
-					//	pArmItem = m_pPlayerRight->GetArmPointer();
+								//爆発をセット
+								m_pExplosion->SetExplosion(m_pEnemy[k]->GetObjPos(j));
+								explosion_sound = true;
 
-					//	//腕のポインタを取ってくる(二回目は右)
-					//	pArm = m_pPlayerRight;
+								//敵のHPを減らす
+								//敵が死んだら...
+								if (m_pEnemy[k]->ReduceHP(j, 1))
+								{
+									//ドロップする敵であれば...
+									if (true) {
+										if (k == (int)TYPE::NORMAL) {
+											//敵アイテムのドロップ
+											m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), 0);
+										}
+										else {
+											//敵アイテムのドロップ
+											m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
+										}
+									}
 
-					//	continue;
-					//}
+									//敵を消す
+									m_pEnemy[k]->DeleteObj(j);
+
+									j--;
+
+									//倒した敵の数を増やす
+									m_pScore->AddScore(1);
+
+									if (j < 0) {
+										next = true;
+										break;
+									}
+								}
+
+								if (i == -1) {
+									break;
+								}
+							}
+						}
+						//腕についているアイテムのポインタを取ってくる(二回目は右)
+						pArmItem = m_pPlayerRight->GetArmPointer();
+
+						//腕のポインタを取ってくる(二回目は右)
+						pArm = m_pPlayerRight;
+
+						continue;
+					}
 
 					for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
 						//もしも画面外にいたら壊せないようにする

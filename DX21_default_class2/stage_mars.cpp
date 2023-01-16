@@ -138,7 +138,8 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 		//氷の敵
 	m_pPlayerLeft->DrawSetIceRain(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE]);
 		//爆発
-	m_pPlayerLeft->DrawSetExplosion(m_pDrawObject[(int)DRAW_TYPE::EXPLOSION]);
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_GRENADE_EXPLOSION].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION], 0.0f, 0.125f, 1.0f, 7);
+	m_pPlayerLeft->DrawSetExplosion(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_GRENADE_EXPLOSION]);
 
 	//=======================
 	// プレイヤーの腕の右
@@ -159,7 +160,8 @@ StageMars::StageMars(Score* pNumber):m_pScore(pNumber)
 		//氷の敵
 	m_pPlayerRight->DrawSetIceRain(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE]);
 		//爆発
-	m_pPlayerRight->DrawSetExplosion(m_pDrawObject[(int)DRAW_TYPE::EXPLOSION]);
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_GRENADE_EXPLOSION].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION], 0.0f, 0.125f, 1.0f, 7);
+	m_pPlayerRight->DrawSetExplosion(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_RIGHT_GRENADE_EXPLOSION]);
 	
 	//=======================
 	// プレイヤーの腕の真ん中

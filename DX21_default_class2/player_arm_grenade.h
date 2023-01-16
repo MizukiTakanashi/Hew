@@ -18,13 +18,16 @@ class PlayerArmGrenade :public inhPlayerArm
 //定数
 public:
 	//cppで初期化
-	static const D3DXVECTOR2 FINAD_RANGE;	//探している時の攻撃範囲
+	//※FIND_BULLET_SIZEが一番小さく！
+	static const D3DXVECTOR2 BULLET_SIZE;		//サイズ
+	static const D3DXVECTOR2 FIND_BULLET_SIZE;	//探している間の弾のサイズ
+	static const D3DXVECTOR2 FIND_RANGE;		//探している時の攻撃範囲
 
 private:
 	//ここで初期化
 	static const int BULLET_NUM_MAX = 50;	//弾の制限数　実際に撃てる数はこれより１少ない
 	static const int BULLET_SHOOT_MAX = 10;	//弾の同時最大発射数
-	static const int BULLET_BREAK_TIME = 200;	//ホーミング弾が壊れる時間
+	static const int BULLET_BREAK_TIME = 1000;	//ホーミング弾が壊れる時間
 	static const int BULLET_INTERVAL = 20;	//弾の発射間隔
 	static const int EXPLOSION_WAIT_TIME = 200;	//爆発待ち時間
 	static const int EXPLOSION_TIME = 100;		//爆発時間
@@ -74,16 +77,8 @@ public:
 		return m_pBullet[index_num]->GetSize();
 	}
 
-	//指定した番号の弾の爆発するフラグを返す
-	bool GetIsAttack(int index_num) {
-		if (m_attack_count[index_num] == -1) {
-			return false;
-		}
-		return true;
-	}
-
-	//指定した番号の弾の爆発するかフラグをオン
-	void SetIsAttack(int index_num);
+	//アクションを起こす(指定した番号の弾の爆発をセット)
+	void Action(int index_num)override;
 };
 
 #endif // !_PLAYER_ARM_GRENADE_H_

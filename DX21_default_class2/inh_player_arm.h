@@ -22,8 +22,8 @@ public:
 		TYPE3,		//ガトリング
 		TYPE4,		//バリア
 		TYPE5,		//STOP
-		TYPE6,
-		TYPE7,
+		TYPE6,		//氷柱
+		TYPE7,		//グレネード敵
 		TYPE8,
 		TYPE_NUM,
 	};
@@ -84,6 +84,8 @@ public:
 	//指定した番号の弾のサイズを返す(オーバーライド用)
 	virtual const D3DXVECTOR2& GetBulletSize(int index_num = 0)const = 0;
 
+	//アクションを起こす(オーバーライド用)(グレネード敵のみ)
+	virtual void Action(int index_num){}
 	
 	//=====================
 	// 弾
