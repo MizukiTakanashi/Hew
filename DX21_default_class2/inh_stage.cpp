@@ -21,6 +21,12 @@ const D3DXVECTOR2 InhStage::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
 //==========================
 InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 {
+	//数字の初期化
+	m_pScore->SetInitPos(NUMBER_POS);
+	m_pScore->SetPos(NUMBER_POS);
+	m_pScore->SetSize(NUMBER_SIZE);
+	m_pScore->SetDigit(NUMBER_DIGIT);
+
 	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);	//BGM再生
 	SetVolume(m_BGM, 0.1f);
@@ -143,11 +149,6 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ITEM].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ITEM], 0.0f, 1.0f, 1.0f, 1);
 	m_pItemManagement = new ItemManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ITEM]);
 
-	//数字の初期化
-	m_pScore->SetInitPos(NUMBER_POS);
-	m_pScore->SetPos(NUMBER_POS);
-	m_pScore->SetSize(NUMBER_SIZE);
-	m_pScore->SetDigit(NUMBER_DIGIT);
 
 	//プレイヤーのHP
 	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER_HP].SetTextureName((char*)"data\\texture\\hp.png");
@@ -159,17 +160,6 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::BOMB].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN]);
 	m_pBom = new Bom(m_pDrawObject[(int)DRAW_TYPE::BOMB], 3);
 
-	//m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_METEO].SetTextureName((char*)"data\\texture\\Meteo.png");
-	//m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_METEO]);
-	//m_pMeteoManagement = new Management_Meteo();
-
-	//敵の管理
-	m_pAllEnemyManagement = new AllEnemyManagement;
-
-	//========================================================
-	 //全ての当たり判定
-	//m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
-	//	m_pItemManagement, m_pScore, m_pBom, m_pMeteoManagement);
 
 }
 
@@ -179,9 +169,7 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 InhStage::~InhStage()
 {
 	//描画がない物から消していく
-	delete m_pAllEnemyManagement;
 	delete m_pPlayerArmChange;
-	delete m_pColAll;
 
 	//ゲームオブジェクトを消す
 	delete m_pBom;

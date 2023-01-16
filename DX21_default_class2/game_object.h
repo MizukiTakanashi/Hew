@@ -63,6 +63,8 @@ public:
 		m_color = color; 
 		m_pDrawObject.SetDrawColor(color);
 	}
+
+	void SetDrawob(DrawObject d){m_pDrawObject = d;	}
 };
 
 #endif // !_GAME_OBJECT_H_

@@ -20,11 +20,9 @@
 #include "player_center.h"
 #include "player_arm_change.h"
 #include "Bom.h"
-#include "all_enemy_management.h"
 #include "management_item.h"
 #include "management_explosion.h"
 #include "management_meteo.h"
-#include "collision_all.h"
 
 
 class InhStage
@@ -90,6 +88,9 @@ protected:
 
 //メンバ変数
 protected:
+	int m_StopFlame = 0;
+	bool m_isBossDown = false;
+
 	int m_BGM = 0;
 
 	Score* m_pScore = nullptr;
@@ -107,9 +108,7 @@ protected:
 	UI* m_pFrame = nullptr;
 	UI* m_pMultiply = nullptr;
 	Number* m_pComboNum = nullptr;
-	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
 	PlayerArmChange* m_pPlayerArmChange = nullptr;	//腕の交換
-	CollisionAll* m_pColAll = nullptr;		//全ての当たり判定
 	Bom* m_pBom = nullptr;					//ボム
 	Management_Meteo* m_pMeteoManagement = nullptr;
 
@@ -127,5 +126,8 @@ public:
 
 	//スコアを返す
 	int GetScore(void)const { return m_pScore->GetNumber(); }
+
+	void HitStop(int flame) { m_StopFlame = flame; }
+	void BossDown() { m_isBossDown = true; }
 };
 
