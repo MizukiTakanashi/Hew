@@ -16,11 +16,18 @@
 
 class EnemyIceRainManagement :public EnemyManagement
 {
-	//定数
+//定数
+public:
+	//ここで初期化
+	//敵自身
+	static const int ATTACK = 5;			//攻撃値
+	//弾
+	static const int BULLET_ATTACK = 1;		//攻撃値
+
 private:
 	//ここで初期化
 	//敵自身
-	static const int ENEMY_NUM = 7;		//敵を出現させる数
+	static const int ENEMY_NUM[(int)STAGE::NUM];		//敵を出現させる数
 	static const int BULLET_NUM = 20;	//同時に弾を出現させる数
 
 	//cppで初期化
@@ -29,12 +36,6 @@ private:
 	static const float BULLET_SIZE_Y;		//サイズY
 	static const float BULLET_SPEED;		//スピード
 
-public:
-	//ここで初期化
-	//敵自身
-	static const int ATTACK = 5;			//攻撃値
-	//弾
-	static const int BULLET_ATTACK = 1;		//攻撃値
 
 	//メンバ変数
 private:
@@ -44,44 +45,92 @@ private:
 	DrawObject m_pDrawObjectBullet;				//弾の描画オブジェクト
 	int m_SE_13 = 0;							//氷柱を降らせる音
 
+	int m_stage_num = 0;						//ステージ
+
 	//敵の位置配列
-	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-		D3DXVECTOR2(52.5f + (105 * 5), -EnemyIceRain::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 3), -EnemyIceRain::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 7), -EnemyIceRain::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 5), -EnemyIceRain::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 1), -EnemyIceRain::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 9), -EnemyIceRain::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 5), -EnemyIceRain::SIZE_Y / 2)
+	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][7] = {
+		//チュートリアル
+		{
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f)
+		},
+		//火星
+		{
+			D3DXVECTOR2(52.5f + (105 * 5), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 3), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 7), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 5), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 1), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 9), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 5), -EnemyIceRain::SIZE_Y / 2)
+		},
+		//水星
+		{
+			D3DXVECTOR2(52.5f + (105 * 5), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f)
+		},
+		//土星
+		{
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f)
+		}
 	};
 
 	//敵を出す時間
-	int m_SetEnemyTime[ENEMY_NUM] = {
-								60 * 5,
-								60 * 50,
-								60 * 50 + 1,
-								60 * 80,
-								60 * 125,
-								60 * 125 + 1,
-								60 * 135,
+	int m_SetEnemyTime[(int)STAGE::NUM][7] = {
+		//チュートリアル
+		{
+			0, 0, 0, 0, 0, 0, 0			
+		},
+		//火星
+		{
+			60 * 5,
+			60 * 50,
+			60 * 50 + 1,
+			60 * 80,
+			60 * 125,
+			60 * 125 + 1,
+			60 * 135,
+		},
+		//水星
+		{
+			60 * 1,
+			0, 0, 0, 0, 0, 0
+		},
+		//土星
+		{
+			0, 0, 0, 0, 0, 0, 0
+		}
 	};
 
 	//メンバ関数
 public:
 	//デフォルトコンストラクタ
-	EnemyIceRainManagement() {
-		m_pEnemyIceRain = new EnemyIceRain[ENEMY_NUM];
-		m_pBullet = new Bullet[ENEMY_NUM];
-	}
+	EnemyIceRainManagement() {}
 
 	//引数付きコンストラクタ
-	EnemyIceRainManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2);
+	EnemyIceRainManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, int stage);
 
 	//デストラクタ
 	~EnemyIceRainManagement()override {}
 
 	//更新処理
-	void Update(const D3DXVECTOR2& PlayerPos);
+	void Update(const D3DXVECTOR2& PlayerPos = D3DXVECTOR2(0.0f, 0.0f));
 
 	//描画処理
 	void Draw(void)const;

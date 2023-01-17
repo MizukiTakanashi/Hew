@@ -158,12 +158,8 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pPlayerCenter->DrawSetIceRainE(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE]);
 	m_pPlayerCenter->DrawSetStopE(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_STOP]);
 
-
 	//˜r‚ÌŒðŠ·
 	m_pPlayerArmChange = new PlayerArmChange(m_pPlayerLeft, m_pPlayerRight, m_pPlayerCenter);
-
-
-
 }
 
 //==========================
