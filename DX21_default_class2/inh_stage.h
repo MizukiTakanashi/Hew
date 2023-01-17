@@ -38,8 +38,12 @@ protected:
 
 	enum class TEXTURE_TYPE :int
 	{
+		NUMBER,
+		MULTIPLY,
+		FRAME,
 		PLAYER,
 		PLAYER_HP,
+
 		ENEMY,
 		ENEMY_ITEM,
 		ENEMY_GATORING,
@@ -64,9 +68,6 @@ protected:
 		BARRIER,
 		METEO,
 		EXPLOSION,
-		NUMBER,
-		MULTIPLY,
-		FRAME,
 		NUM
 	};
 

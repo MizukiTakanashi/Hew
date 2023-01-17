@@ -39,11 +39,6 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject = new DrawObject[(int)DRAW_TYPE::NUM];
 
 
-
-	//各オブジェクトインスタンス化
-
-
-
 	//=======================
 	// 弾
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_RED].SetTextureName((char*)"data\\texture\\bullet_red.png");
