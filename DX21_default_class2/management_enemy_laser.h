@@ -51,11 +51,19 @@ private:
 
 	//“G‚Ì”z—ñ
 	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][3] = {
+		//Œ
 		{
 			D3DXVECTOR2(52.5f + (105 * 4), -EnemyLaser::SIZE_Y / 2),
 			D3DXVECTOR2(52.5f + (105 * 6), -EnemyLaser::SIZE_Y / 2),
 			D3DXVECTOR2(52.5f + (105 * 5), -EnemyLaser::SIZE_Y / 2),
 		},
+		//‰Î¯
+		{
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f)
+		},
+		//…¯
 		{
 			D3DXVECTOR2(52.5f + (105 * 4), -EnemyLaser::SIZE_Y / 2),
 			D3DXVECTOR2(52.5f + (105 * 6), -EnemyLaser::SIZE_Y / 2),
@@ -64,16 +72,22 @@ private:
 	};
 	//“G‚ğo‚·ŠÔ
 	int m_SetEnemyTime[(int)STAGE::NUM][3] = {
+		//Œ
 		{
 			60 * 60,
 			60 * 60 + 1,
 			60 * 80,
 		},
+		//‰Î¯
 		{
-			60 * 5,
-			60 * 10,
-			60 * 20,
-		}
+			0, 0, 0,
+		},
+		//…¯
+		{
+			60 * 60,
+			60 * 60 + 1,
+			60 * 80,
+		},
 	};
 
 
