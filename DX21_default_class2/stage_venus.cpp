@@ -133,6 +133,7 @@ void StageVenus::Draw(void) const
 {
 	m_pBG->DrawBG();
 	m_pBG_Moon->DrawBG();
+	m_pFrame->Draw();
 	m_pPlayer->Draw();
 
 	//ƒvƒŒƒCƒ„[‚Ì˜r‚Ì•`‰æˆ—

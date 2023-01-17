@@ -130,12 +130,36 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 
 	m_pPlayerLeft->DrawSetSurcleBullet(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_BULLET]);
 	m_pPlayerLeft->DrawSetLaser(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER]);
+	
 	m_pPlayerRight->DrawSetSurcleBullet(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_BULLET]);
 	m_pPlayerRight->DrawSetLaser(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER]);
+	
 	m_pPlayerCenter->DrawSetSurcleBullet(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_BULLET]);
 	m_pPlayerCenter->DrawSetLaser(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LEFT_LASER]);
 
 	
+	
+	m_pPlayerLeft->DrawSetHomingE(&m_pDrawObject[(int)DRAW_TYPE::PLAYER]);
+	m_pPlayerLeft->DrawSetLaserE(&m_pDrawObject[(int)DRAW_TYPE::PLAYER]);
+	m_pPlayerLeft->DrawSetGatoringE(&m_pDrawObject[(int)DRAW_TYPE::PLAYER]);
+	m_pPlayerLeft->DrawSetBarriarE(&m_pDrawObject[(int)DRAW_TYPE::PLAYER]);
+	m_pPlayerLeft->DrawSetIceRainE(&m_pDrawObject[(int)DRAW_TYPE::PLAYER]);
+	m_pPlayerLeft->DrawSetStopE(&m_pDrawObject[(int)DRAW_TYPE::PLAYER]);
+
+	m_pPlayerRight->DrawSetHomingE(&m_pDrawObject[(int)DRAW_TYPE::PLAYER]);
+	m_pPlayerRight->DrawSetLaserE(&m_pDrawObject[(int)DRAW_TYPE::PLAYER]);
+	m_pPlayerRight->DrawSetGatoringE(&m_pDrawObject[(int)DRAW_TYPE::PLAYER]);
+	m_pPlayerRight->DrawSetBarriarE(&m_pDrawObject[(int)DRAW_TYPE::PLAYER]);
+	m_pPlayerRight->DrawSetIceRainE(&m_pDrawObject[(int)DRAW_TYPE::PLAYER]);
+	m_pPlayerRight->DrawSetStopE(&m_pDrawObject[(int)DRAW_TYPE::PLAYER]);
+
+	m_pPlayerCenter->DrawSetHomingE(&m_pDrawObject[(int)DRAW_TYPE::PLAYER]);
+	m_pPlayerCenter->DrawSetLaserE(&m_pDrawObject[(int)DRAW_TYPE::PLAYER]);
+	m_pPlayerCenter->DrawSetGatoringE(&m_pDrawObject[(int)DRAW_TYPE::PLAYER]);
+	m_pPlayerCenter->DrawSetBarriarE(&m_pDrawObject[(int)DRAW_TYPE::PLAYER]);
+	m_pPlayerCenter->DrawSetIceRainE(&m_pDrawObject[(int)DRAW_TYPE::PLAYER]);
+	m_pPlayerCenter->DrawSetStopE(&m_pDrawObject[(int)DRAW_TYPE::PLAYER]);
+
 
 	//˜r‚ÌŒðŠ·
 	m_pPlayerArmChange = new PlayerArmChange(m_pPlayerLeft, m_pPlayerRight, m_pPlayerCenter);
