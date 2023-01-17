@@ -7,145 +7,29 @@
 #ifndef _GAME_H_
 #define _GAME_H_
 
-#include "main.h"
-#include "sprite.h"
-#include "BG.h"
-#include "bg_planet.h"
-#include "player.h"
-#include "draw_object.h"
-#include "texture_useful.h"
-#include "player_hp.h"
-#include "management_explosion.h"
-#include "score.h"
-#include "number.h"
-#include "player_left.h"
-#include "player_right.h"
-#include "management_item.h"
-#include "all_enemy_management.h"
-#include "player_arm_change.h"
-#include "collision_all.h"
-#include "player_center.h"
-#include "management_meteo.h"
-#include "Bom.h"
+#include "inh_stage.h"
 
+#include "collision_all.h"
 #include "text_management.h"
 #include "management_enemy_normal.h"
 #include "management_enemy_laser.h"
 #include "management_enemy_gatoring.h"
+#include "all_enemy_management.h"
 
 
-class Game
+class Game : public InhStage
 {
-	//定数
-private:
-	//ここで初期化
-	static const int NUMBER_DIGIT = 10;		//数字の桁
-
-	//cppで初期化
-	static const D3DXVECTOR2 NUMBER_SIZE;	//数字のサイズ
-	static const D3DXVECTOR2 NUMBER_POS;	//数字の位置
-
-	enum class TEXTURE_TYPE :int
-	{
-		PLAYER,
-		PLAYER_HP,
-		ENEMY,
-		ENEMY_PUBLIC,
-		ENEMY_NORMAL,
-		ENEMY_LASER,
-		ENEMY_GATORING,
-		ENEMY_ITEM,
-		ENEMY_BARRIER,
-		BULLET_CIRCLE_RED,
-		BULLET_CIRCLE_GREEN,
-		BULLET_SQUARE_GREEN,
-		BULLET_LASER,
-		BARRIER,
-		EXPLOSION,
-		NUMBER,
-		MULTIPLY,
-		METEO,
-		FRAME,
-		NUM
-	};
-
-	enum class DRAW_TYPE :int
-	{
-		PLAYER,
-		PLAYER_HP_BAR,
-		ENEMY_NOREMAL,
-		ENEMY_LASER,
-		ENEMY_GATORING,
-		ENEMY_PUBLIC,
-		ENEMY_METEO,
-		ENEMY_ATTCK,
-		ENEMY_BARRIER,
-		ENEMY_BARRIER_BARRIER,
-		ENEMY_ITEM,
-		PLAYER_BULLET,
-		BULLET_ENEMY,
-		ENEMY_LASER_LASER,
-		EXPLOSION,
-		PLAYER_ARM_LEFT,
-		PLAYER_ARM_LEFT_BULLET,
-		PLAYER_ARM_LEFT_LASER,
-		PLAYER_ARM_RIGHT,
-		PLAYER_ARM_RIGHT_BULLET,
-		PLAYER_ARM_RIGHT_LASER,
-		PLAYER_ARM_CENTER,
-		PLAYER_ARM_CENTTER_BULLET,
-		PLAYER_ARM_CENTER_LASER,
-		NUMBER,
-		MULTIPLY,
-		BOMB,						//爆弾
-		FRAME,
-		NUM
-	};
-
-
 	//メンバ変数
 private:
-	int m_BGM = 0;
-
-	Score* m_pScore = nullptr;
-
-	TextureUseful* m_pTexUseful = nullptr;
-	DrawObject* m_pDrawObject = nullptr;
-
-	BG* m_pBG = nullptr;
-	BGPlanet* m_pBG_Moon = nullptr;
-	Player* m_pPlayer = nullptr;
 	EnemyNormalManagement* m_pEnemyNormalManagement = nullptr;
 	EnemyLaserManagement* m_pEnemyLaserManagement = nullptr;
 	EnemyGatoringManagement* m_pEnemyGatoringManagement = nullptr;
-	Management_Meteo* m_pMeteoManagement = nullptr;
-	
-	PlayerHP* m_pPlayerHP = nullptr;
-	ExplosionManagement* m_pExplosionManagement = nullptr;
-	ItemManagement* m_pItemManagement = nullptr;
-
-	PlayerLeft* m_pPlayerLeft = nullptr;
-	PlayerRight* m_pPlayerRight = nullptr;
-	PlayerCenter* m_pPlayerCenter = nullptr;
-
-	UI* m_pMultiply = nullptr;
-	UI* m_pFrame = nullptr;
-	Number* m_pComboNum = nullptr;
-
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
-
-	PlayerArmChange* m_pPlayerArmChange = nullptr;	//腕の交換
-
 	CollisionAll* m_pColAll = nullptr;		//全ての当たり判定
-
-	Bom* m_pBom = nullptr;					//ボム
-
 	TextManagement* m_pTextManagement = nullptr; //チュートリアルテキスト
 
 	//メンバ関数
 public:
-	Game();	//デフォルトコンストラクタ
-
 	Game(Score* pNumber);
 
 	~Game();	//デストラクタ

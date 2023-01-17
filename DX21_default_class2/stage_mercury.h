@@ -1,8 +1,8 @@
 #pragma once
 //=======================================
-// …¯‚ÌƒXƒe[ƒWŠÖŒW(ƒwƒbƒ_ƒtƒ@ƒCƒ‹)
-// ì¬“úF2022/12/15
-// ì¬ÒF‚—œ…Šó
+// æ°´æ˜Ÿã®ã‚¹ãƒ†ãƒ¼ã‚¸é–¢ä¿‚(ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š2022/12/15
+// ä½œæˆè€…ï¼šé«˜æ¢¨æ°´å¸Œ
 //=======================================
 
 #ifndef _STAGE_MERCURY_H_
@@ -12,27 +12,28 @@
 
 class StageMercury : public InhStage
 {
-//’è”
+//å®šæ•°
 private:
+
 
 	
-//ƒƒ“ƒo•Ï”
+//ãƒ¡ãƒ³ãƒå¤‰æ•°
 private:
-	//Bom* m_pBom = nullptr;					//ƒ{ƒ€
+	//Bom* m_pBom = nullptr;					//ãƒœãƒ 
 
-	//ƒƒ“ƒoŠÖ”
+	//ãƒ¡ãƒ³ãƒé–¢æ•°
 public:
 	StageMercury(Score* pNumber);
 
-	~StageMercury();	//ƒfƒXƒgƒ‰ƒNƒ^
+	~StageMercury();	//ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 
-	//XV
+	//æ›´æ–°
 	void Update(void);
 
-	//•`‰æ
+	//æç”»
 	void Draw(void)const;
 
-	//ƒXƒRƒA‚ğ•Ô‚·
+	//ã‚¹ã‚³ã‚¢ã‚’è¿”ã™
 	int GetScore(void)const { return m_pScore->GetNumber(); }
 };
 
