@@ -72,7 +72,11 @@ StageSaturn::StageSaturn(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_MEGUMIN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MEGUMIN]);
 	m_pEnemyMeguminManagement = new EnemyMeguminManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_MEGUMIN], m_pDrawObject[(int)DRAW_TYPE::BULLET_MEGUMIN]);
 
-
+	//毒沼
+	m_pTexUseful[(int)TEXTURE_TYPE::POISON].SetTextureName((char*)"date\\texture\\poison.png");
+	m_pDrawObject[(int)DRAW_TYPE::POISON].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::POISON]);
+	m_pPoisonField = new Management_PoisonField(m_pDrawObject[(int)DRAW_TYPE::POISON]);
+	
 	//=======================
 	// 残弾表示
 	m_pTexUseful[(int)TEXTURE_TYPE::NUMBER].SetTextureName((char*)"data\\texture\\number.png");
@@ -203,7 +207,7 @@ StageSaturn::~StageSaturn()
 	delete m_pPlayerCenter;
 	delete m_pComboNum;
 	delete m_pMultiply;
-
+	delete m_pPoisonField;
 	//そのほか
 	delete[] m_pDrawObject;
 	delete[] m_pTexUseful;
@@ -251,6 +255,7 @@ void StageSaturn::Update(void)
 	m_pEnemyLaserManagement->Update();
 	m_pEnemyMeguminManagement->Update();
 
+	m_pPoisonField->Update();
 	//ボム
 	m_pBom->Update();
 
@@ -306,6 +311,7 @@ void StageSaturn::Draw(void) const
 	m_pEnemyLaserManagement->Draw();
 	m_pEnemyMeguminManagement->Draw();
 
+	m_pPoisonField->Draw();
 	//プレイヤーの弾の表示
 	m_pPlayer->DrawBullet();
 

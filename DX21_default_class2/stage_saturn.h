@@ -30,7 +30,7 @@
 
 #include "management_enemy_laser.h"
 #include "management_enemy_megumin.h"
-
+#include "management_poisonfield.h"
 class StageSaturn
 {
 	//定数
@@ -60,6 +60,7 @@ private:
 		NUMBER,
 		MULTIPLY,
 		FRAME,
+		POISON,	//毒沼
 		NUM
 	};
 
@@ -89,6 +90,7 @@ private:
 		MULTIPLY,
 		BOMB,						//爆弾
 		FRAME,
+		POISON,	//毒沼
 		NUM
 	};
 
@@ -128,6 +130,7 @@ private:
 
 	Bom* m_pBom = nullptr;					//ボム
 
+	Management_PoisonField* m_pPoisonField = nullptr;	//毒沼
 	//メンバ関数
 public:
 	StageSaturn(){}	//デフォルトコンストラクタ
