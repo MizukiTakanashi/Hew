@@ -34,6 +34,9 @@ EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject&
 
 	//ビーム発射音
 	m_SE_07 = LoadSound((char*)"data\\SE\\2_07.wav");
+
+	//熱風音
+	m_SE_14 = LoadSound((char*)"data\\SE\\2_14.wav");
 }
 
 //======================

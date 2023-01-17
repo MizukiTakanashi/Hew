@@ -47,6 +47,7 @@ private:
 
 	int m_SE_06 = 0;	//ビーム音
 	int m_SE_07 = 0;	//ビーム発射音
+	int m_SE_14 = 0;	//熱風音
 
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][3] = {
