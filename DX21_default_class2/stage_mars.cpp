@@ -24,32 +24,16 @@ StageMars::StageMars(Score* pNumber):InhStage(pNumber)
 	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\mars.png");
 
 	//ƒoƒŠƒA‚Ì“G
-	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_BARRIER].SetTextureName((char*)"data\\texture\\Barrier.png");
-	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_BARRIER].SetTextureName((char*)"data\\texture\\monster11.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_BARRIER]);
-	m_pDrawObject[(int)DRAW_TYPE::BULLET_BARRIER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_BARRIER]);
-
 	m_pEnemyBarrierManagement = new EnemyBarrierManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER], m_pDrawObject[(int)DRAW_TYPE::BULLET_BARRIER]);
 
 	//•X‚Ì“G
-	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_ICE].SetTextureName((char*)"data\\texture\\Ice.png");	//•X‚Ì’e‚ÌƒZƒbƒg
-	//“G‘¤‚Ì’e
-	m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY_ICE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_ICE]);	//“G‚ÌƒAƒCƒX’e
-	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ICE].SetTextureName((char*)"data\\texture\\IceEnemy.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ICE]);
-	m_pEnemyIceRainManagement = new EnemyIceRainManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY_ICE]);
+	m_pEnemyIceRainManagement = new EnemyIceRainManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE], m_pDrawObject[(int)DRAW_TYPE::BULLET_ICE]);
 
 	//“®‚«‚ðŽ~‚ß‚é“G
-	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_STOP].SetTextureName((char*)"data\\texture\\enemy_stop.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_STOP].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_STOP]);
-	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_STOP].SetTextureName((char*)"data\\texture\\bullet_stop.jpg");
-	m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_STOP]);
 	m_pEnemyStopManagement = new EnemyStopManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_STOP], m_pDrawObject[(int)DRAW_TYPE::BULLET_STOP]);
 	
 	//ƒz[ƒ~ƒ“ƒO‚Ì“G
-	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_NORMAL].SetTextureName((char*)"data\\texture\\enemy_missile.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_NORMAL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_NORMAL]);
-	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NORMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 1);
+	m_pEnemyMissileManagement = new EnemyMissileManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NORMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 1);
 
 	//ƒOƒŒƒl[ƒh“G
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_GREANADE].SetTextureName((char*)"data\\texture\\grenade.png");
@@ -66,7 +50,7 @@ StageMars::StageMars(Score* pNumber):InhStage(pNumber)
 	m_pAllEnemyManagement->AddPointer(m_pEnemyStopManagement);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyIceRainManagement);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyGrenadeManagement);
-	m_pAllEnemyManagement->AddPointer(m_pEnemyNormalManagement);
+	m_pAllEnemyManagement->AddPointer(m_pEnemyMissileManagement);
 
 	//========================================================
 	// ‘S‚Ä‚Ì“–‚½‚è”»’è
@@ -78,7 +62,7 @@ StageMars::StageMars(Score* pNumber):InhStage(pNumber)
 	m_pColAll->AddEnemyPointer(m_pEnemyStopManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyIceRainManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyGrenadeManagement);
-	m_pColAll->AddEnemyPointer(m_pEnemyNormalManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemyMissileManagement);
 }
 
 //==========================
@@ -94,7 +78,7 @@ StageMars::~StageMars()
 	if(m_pBoss)
 	delete m_pBoss;
 	delete m_pEnemyBarrierManagement;
-	delete m_pEnemyNormalManagement;
+	delete m_pEnemyMissileManagement;
 	delete m_pEnemyGrenadeManagement;
 	delete m_pEnemyIceRainManagement;
 	delete m_pEnemyStopManagement;
@@ -136,7 +120,7 @@ void StageMars::Update(void)
 
 	//=======================
 	// “G
-	m_pEnemyNormalManagement->Update(m_pPlayer->GetPos());
+	m_pEnemyMissileManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyBarrierManagement->Update();
 	m_pEnemyIceRainManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyStopManagement->Update();
@@ -223,7 +207,7 @@ void StageMars::Draw(void) const
 	m_pPlayerCenter->ArmDraw();
 
 	//“G‚Ì•`‰æ
-	m_pEnemyNormalManagement->Draw();
+	m_pEnemyMissileManagement->Draw();
 	m_pEnemyBarrierManagement->Draw();
 	m_pEnemyIceRainManagement->Draw();
 	m_pEnemyStopManagement->Draw();

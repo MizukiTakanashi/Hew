@@ -11,7 +11,7 @@
 #include "inh_stage.h"
 
 #include "management_enemy_barrier.h"
-#include "management_enemy_normal.h"
+#include "management_enemy_missile.h"
 #include "management_enemy_icerain.h"
 #include "management_enemy_stop.h"
 #include "management_enemy_grenade.h"
@@ -26,7 +26,7 @@ private:
 	EnemyBarrierManagement* m_pEnemyBarrierManagement = nullptr;
 	EnemyIceRainManagement* m_pEnemyIceRainManagement = nullptr;
 	EnemyStopManagement* m_pEnemyStopManagement = nullptr;
-	EnemyNormalManagement* m_pEnemyNormalManagement = nullptr;
+	EnemyMissileManagement* m_pEnemyMissileManagement = nullptr;
 	EnemyGrenadeManagement* m_pEnemyGrenadeManagement = nullptr;
 
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;

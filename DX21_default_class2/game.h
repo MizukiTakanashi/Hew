@@ -11,7 +11,7 @@
 
 #include "collision_all.h"
 #include "text_management.h"
-#include "management_enemy_normal.h"
+#include "management_enemy_missile.h"
 #include "management_enemy_laser.h"
 #include "management_enemy_gatoring.h"
 #include "all_enemy_management.h"
@@ -21,7 +21,7 @@ class Game : public InhStage
 {
 	//ƒƒ“ƒo•Ï”
 private:
-	EnemyNormalManagement* m_pEnemyNormalManagement = nullptr;
+	EnemyMissileManagement* m_pEnemyMissileManagement = nullptr;
 	EnemyLaserManagement* m_pEnemyLaserManagement = nullptr;
 	EnemyGatoringManagement* m_pEnemyGatoringManagement = nullptr;
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;

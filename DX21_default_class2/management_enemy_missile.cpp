@@ -10,6 +10,7 @@
 //==========================
 // 定数の初期化
 //==========================
+const int EnemyMissileManagement::ENEMY_NUM[(int)STAGE::NUM] = { 5, 6 };
 const float EnemyMissileManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyMissileManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyMissileManagement::BULLET_SPEED = 5.0f;
@@ -17,12 +18,13 @@ const float EnemyMissileManagement::BULLET_SPEED = 5.0f;
 //=========================
 // 引数付きコンストラクタ
 //=========================
-EnemyMissileManagement::EnemyMissileManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
-	:EnemyManagement(EnemyManagement::TYPE::MISSILE, ENEMY_NUM, ATTACK, BULLET_ATTACK), 
+EnemyMissileManagement::EnemyMissileManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, int stage)
+	:EnemyManagement(EnemyManagement::TYPE::NORMAL, ENEMY_NUM[stage], ATTACK, BULLET_ATTACK),
 	m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
-	m_pEnemyMissile = new EnemyNormal[ENEMY_NUM];
-	m_pBullet = new Bullet[ENEMY_NUM];
+	m_stage_num = stage;
+	m_pEnemyMissile = new EnemyNormal[ENEMY_NUM[stage]];
+	m_pBullet = new Bullet[ENEMY_NUM[stage]];
 }
 
 //======================
@@ -33,9 +35,9 @@ void EnemyMissileManagement::Update(const D3DXVECTOR2& PlayerPos)
 	m_FlameNum++; //フレーム数を増加
 
 	int i = m_FlameNum;
-	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
+	if (m_FlameNum == m_SetEnemyTime[m_stage_num][m_EnemyNum])
 	{
-		EnemyNormal temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
+		EnemyNormal temp(m_pDrawObjectEnemy, m_SetEnemy[m_stage_num][m_EnemyNum]);
 		m_pEnemyMissile[GetObjNum()] = temp;
 		EnemyManagement::IncreaseObjNum(1);
 
@@ -54,7 +56,6 @@ void EnemyMissileManagement::Update(const D3DXVECTOR2& PlayerPos)
 			D3DXVec2Normalize(&movTemp, &movTemp);
 			movTemp *= BULLET_SPEED;
 
-			//float rotTemp = atan2(rotposTemp.y, rotposTemp.x) * (180 / M_PI) + 90.0f;
 
 			Bullet temp(m_pDrawObjectBullet, m_pEnemyMissile[i].GetPos(),
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), movTemp, 0.0f);

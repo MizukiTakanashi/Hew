@@ -151,11 +151,6 @@ void inhPlayerArmBoth::ArmDraw(void) const
 		}
 
 	}
-
-
-	if (m_pRemaining_Num)
-	{
-	}
 }
 
 //==========================

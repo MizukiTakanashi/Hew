@@ -73,9 +73,6 @@
     <ClCompile Include="management_explosion.cpp">
       <Filter>29_Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="management_item.cpp">
-      <Filter>29_Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="management_meteo.cpp">
       <Filter>29_Enemy</Filter>
     </ClCompile>
@@ -270,6 +267,9 @@
     <ClCompile Include="saturn_collision_all.cpp">
       <Filter>05_Saturn</Filter>
     </ClCompile>
+    <ClCompile Include="management_item.cpp">
+      <Filter>30_Multi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -342,9 +342,6 @@
       <Filter>29_Enemy</Filter>
     </ClInclude>
     <ClInclude Include="management_explosion.h">
-      <Filter>29_Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="management_item.h">
       <Filter>29_Enemy</Filter>
     </ClInclude>
     <ClInclude Include="management_meteo.h">
@@ -543,6 +540,9 @@
     <ClInclude Include="poisonfield.h" />
     <ClInclude Include="saturn_collision_all.h">
       <Filter>05_Saturn</Filter>
+    </ClInclude>
+    <ClInclude Include="management_item.h">
+      <Filter>30_Multi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
