@@ -13,7 +13,7 @@
 //==========================
 // グローバル変数
 //==========================
-int MercuryStopFlame = 0; //ヒットストップ用
+int MercuryStopFlame = 0;	//ヒットストップ用
 bool isDownMercury = false; //ボスが死んだか
 
 //==========================
@@ -27,8 +27,6 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_BARRIER].SetTextureName((char*)"data\\texture\\monster11.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_BARRIER]);
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_BARRIER]);
-
-	m_pEnemyBarrierManagement = new EnemyBarrierManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER], m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER_BARRIER]);
 
 	
 	//========================================================
@@ -45,8 +43,7 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 //==========================
 StageMercury::~StageMercury()
 {
-	delete m_pColAll;
-	delete m_pEnemyBarrierManagement;
+	//delete m_pColAll;
 }
 
 //==========================
@@ -85,7 +82,7 @@ void StageMercury::Update(void)
 
 	//=======================
 	// 敵
-	m_pEnemyBarrierManagement->Update();
+	
 
 	//ボム
 	m_pBom->Update();
@@ -136,7 +133,7 @@ void StageMercury::Draw(void) const
 	m_pPlayerCenter->ArmDraw();
 
 	//敵の描画
-	m_pEnemyBarrierManagement->Draw();
+
 
 	//プレイヤーの弾の表示
 	m_pPlayer->DrawBullet();

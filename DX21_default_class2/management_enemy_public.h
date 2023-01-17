@@ -18,13 +18,13 @@ private:
 
 	//“G‚Ì”z—ñ
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-										D3DXVECTOR2(52.5f + (105 *  0), -EnemyPublic::SIZE_Y / 2),
-										D3DXVECTOR2(52.5f + (105 * 11), -EnemyPublic::SIZE_Y / 2)
+		D3DXVECTOR2(52.5f + (105 *  0), -EnemyPublic::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 11), -EnemyPublic::SIZE_Y / 2)
 	};
 
 	int m_SetEnemyTime[ENEMY_NUM] = {
-								60 * 3,
-								60 * 6,
+		60 * 3,
+		60 * 6,
 	};
 
 public:

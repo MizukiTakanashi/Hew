@@ -51,11 +51,11 @@ private:
 	int m_other_attack = 0;			//別オブジェクトが与える攻撃力
 
 protected:
-
 	//ステージ
 	enum class STAGE :int {
 		TUTORIAL,
 		MARS,
+		MERCURY,
 		NUM
 	};
 	int m_stage_num = 0;			//ステージ

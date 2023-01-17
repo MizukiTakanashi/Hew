@@ -27,12 +27,6 @@ public:
 	static const D3DXVECTOR2 OTHER_RANGE;
 
 private:
-	//ステージ
-	enum class STAGE :int {
-		MARS,
-		NUM
-	};
-
 	//ここで初期化
 	//敵自身
 	static const int BULLET_BREAK_TIME = 200;	//ホーミング弾が壊れる時間
@@ -63,25 +57,49 @@ private:
 
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][5] = {
-	{//チュートリアル
-		D3DXVECTOR2(52.5f + (105 * 4), -EnemyGrenade::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 6), -EnemyGrenade::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 4), -EnemyGrenade::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 6), -EnemyGrenade::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 8), -EnemyGrenade::SIZE_Y / 2)
-	}
-
+		//月
+		{
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f)
+		},
+		//火星
+		{
+			D3DXVECTOR2(52.5f + (105 * 4), -EnemyGrenade::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 6), -EnemyGrenade::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 4), -EnemyGrenade::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 6), -EnemyGrenade::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 8), -EnemyGrenade::SIZE_Y / 2)
+		},
+		//水星
+		{
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f)
+		}
 	};
 
 	int m_SetEnemyTime[(int)STAGE::NUM][5] = {
-	{//チュートリアル
-		60 * 25,
-		60 * 25 + 1,
-		60 * 100,
-		60 * 100 + 1,
-		60 * 145
-	}
-
+		//月
+		{
+			0, 0, 0, 0, 0
+		},
+		//火星
+		{
+			60 * 25,
+			60 * 25 + 1,
+			60 * 100,
+			60 * 100 + 1,
+			60 * 145
+		},
+		//水星
+		{
+			0, 0, 0, 0, 0
+		}
 	};
 
 
