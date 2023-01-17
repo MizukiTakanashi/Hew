@@ -8,28 +8,30 @@
 #ifndef _STAGE_MERCURY_H_
 #define _STAGE_MERCURY_H_
 
-#include "main.h"
-#include "sprite.h"
-#include "BG.h"
-#include "bg_planet.h"
-#include "player.h"
-#include "draw_object.h"
-#include "management_enemy_barrier.h"
-#include "texture_useful.h"
-#include "player_hp.h"
-#include "management_explosion.h"
-#include "score.h"
-#include "number.h"
-#include "player_left.h"
-#include "player_right.h"
-#include "management_item.h"
-#include "all_enemy_management.h"
-#include "player_arm_change.h"
-#include "collision_all.h"
-#include "player_center.h"
-#include "Bom.h"
+#include "inh_stage.h"
 
-class StageMercury
+//#include "main.h"
+//#include "sprite.h"
+//#include "BG.h"
+//#include "bg_planet.h"
+//#include "player.h"
+//#include "draw_object.h"
+#include "management_enemy_barrier.h"
+//#include "texture_useful.h"
+//#include "player_hp.h"
+//#include "management_explosion.h"
+//#include "score.h"
+//#include "number.h"
+//#include "player_left.h"
+//#include "player_right.h"
+//#include "management_item.h"
+#include "all_enemy_management.h"
+//#include "player_arm_change.h"
+#include "collision_all.h"
+//#include "player_center.h"
+//#include "Bom.h"
+
+class StageMercury : public InhStage
 {
 	//定数
 private:
@@ -88,42 +90,40 @@ private:
 
 	//メンバ変数
 private:
-	int m_BGM = 0;
+	//int m_BGM = 0;
 
-	Score* m_pScore = nullptr;
+	//Score* m_pScore = nullptr;
 
-	TextureUseful* m_pTexUseful = nullptr;
-	DrawObject* m_pDrawObject = nullptr;
+	//TextureUseful* m_pTexUseful = nullptr;
+	//DrawObject* m_pDrawObject = nullptr;
 
-	BG* m_pBG = nullptr;
-	BGPlanet* m_pBG_Moon = nullptr;
-	Player* m_pPlayer = nullptr;
+	//BG* m_pBG = nullptr;
+	//BGPlanet* m_pBG_Moon = nullptr;
+	//Player* m_pPlayer = nullptr;
 	EnemyBarrierManagement* m_pEnemyBarrierManagement = nullptr;
 
-	PlayerHP* m_pPlayerHP = nullptr;
-	ExplosionManagement* m_pExplosionManagement = nullptr;
-	ItemManagement* m_pItemManagement = nullptr;
+	//PlayerHP* m_pPlayerHP = nullptr;
+	//ExplosionManagement* m_pExplosionManagement = nullptr;
+	//ItemManagement* m_pItemManagement = nullptr;
 
-	PlayerLeft* m_pPlayerLeft = nullptr;
-	PlayerRight* m_pPlayerRight = nullptr;
-	PlayerCenter* m_pPlayerCenter = nullptr;
+	//PlayerLeft* m_pPlayerLeft = nullptr;
+	//PlayerRight* m_pPlayerRight = nullptr;
+	//PlayerCenter* m_pPlayerCenter = nullptr;
 
-	UI* m_pMultiply = nullptr;
-	UI* m_pFrame = nullptr;
-	Number* m_pComboNum = nullptr;
+	//UI* m_pMultiply = nullptr;
+	//UI* m_pFrame = nullptr;
+	//Number* m_pComboNum = nullptr;
 
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
 
-	PlayerArmChange* m_pPlayerArmChange = nullptr;	//腕の交換
+	//PlayerArmChange* m_pPlayerArmChange = nullptr;	//腕の交換
 
 	CollisionAll* m_pColAll = nullptr;		//全ての当たり判定
 
-	Bom* m_pBom = nullptr;					//ボム
+	//Bom* m_pBom = nullptr;					//ボム
 
 	//メンバ関数
 public:
-	StageMercury(){}	//デフォルトコンストラクタ
-
 	StageMercury(Score* pNumber);
 
 	~StageMercury();	//デストラクタ

@@ -55,7 +55,7 @@ private:
 	DrawObject* m_bullet_stop_draw = nullptr;	//動きを止める敵の弾の描画オブジェクト
 	DrawObject* m_bullet_icerain_draw = nullptr;	//氷の敵の描画
 	//敵
-	DrawObject* m_enemy_normal_draw = nullptr;				//弾の描画オブジェクト
+	DrawObject* m_enemy_homing_draw = nullptr;				//弾の描画オブジェクト
 	DrawObject* m_enemy_gatoring_draw = nullptr;				//弾の描画オブジェクト
 	DrawObject* m_enemy_laser_draw = nullptr;				//レーザーの描画オブジェクト
 	DrawObject* m_enemy_barrier_draw = nullptr;	//バリアの描画オブジェクト
@@ -144,13 +144,13 @@ public:
 
 
 	//ホーミングの敵の腕の描画
-	void DrawSetHomingE(DrawObject* pDraw) { m_enemy_normal_draw = pDraw; }
+	void DrawSetHomingE(DrawObject* pDraw) { m_enemy_homing_draw = pDraw; }
 
 	//レーザーの敵の腕の描画
-	void DrawSetLaserE(DrawObject* pDraw) { m_enemy_gatoring_draw = pDraw; }
+	void DrawSetLaserE(DrawObject* pDraw) { m_enemy_laser_draw = pDraw; }
 
 	//ガトリングの敵の腕の描画
-	void DrawSetGatoringE(DrawObject* pDraw) { m_enemy_laser_draw = pDraw; }
+	void DrawSetGatoringE(DrawObject* pDraw) { m_enemy_gatoring_draw = pDraw; }
 
 	//バリアの敵の腕の描画
 	void DrawSetBarriarE(DrawObject* pDraw) { m_enemy_barrier_draw = pDraw; }
