@@ -538,7 +538,7 @@ int MarsCollisionAll::Collision(void)
 				//別オブジェクト
 			switch (m_pEnemy[k]->GetType()) {
 
-			case EnemyManagement::TYPE::BARRIER:
+			case EnemyManagement::TYPE::BULLET_BARRIER:
 				if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetOtherPos(j),
 					m_pPlayer->GetSize() / 3, m_pEnemy[k]->GetOtherSize())) {
 					if (m_pEnemy[k]->GetOtherAttack() != 0) {
