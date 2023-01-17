@@ -9,6 +9,7 @@
 #define _STAGE_MERCURY_H_
 
 #include "inh_stage.h"
+#include "management_enemy_laser.h"
 
 class StageMercury : public InhStage
 {
@@ -19,9 +20,11 @@ private:
 	
 //メンバ変数
 private:
-	//Bom* m_pBom = nullptr;					//ボム
+	//敵のレーザー
+	EnemyLaserManagement* m_pEnemyLaser = nullptr;
 
-	//メンバ関数
+
+//メンバ関数
 public:
 	StageMercury(Score* pNumber);
 

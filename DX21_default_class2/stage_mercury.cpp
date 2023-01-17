@@ -23,7 +23,11 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 {
 	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\mercury.png");
 
-	
+	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER].SetTextureName((char*)"data\\texture\\laser00.png");
+	m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER]);
+	m_pEnemyLaser = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], 
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER], 2);
+
 	//========================================================
 	// ‘S‚Ä‚Ì“–‚½‚è”»’è
 	//m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
@@ -39,6 +43,8 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 StageMercury::~StageMercury()
 {
 	//delete m_pColAll;
+
+	delete m_pEnemyLaser;
 }
 
 //==========================
@@ -77,7 +83,7 @@ void StageMercury::Update(void)
 
 	//=======================
 	// “G
-	
+	m_pEnemyLaser->Update();
 
 	//ƒ{ƒ€
 	m_pBom->Update();
@@ -128,7 +134,7 @@ void StageMercury::Draw(void) const
 	m_pPlayerCenter->ArmDraw();
 
 	//“G‚Ì•`‰æ
-
+	m_pEnemyLaser->Draw();
 
 	//ƒvƒŒƒCƒ„[‚Ì’e‚Ì•\Ž¦
 	m_pPlayer->DrawBullet();

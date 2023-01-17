@@ -56,6 +56,7 @@ protected:
 		TUTORIAL,
 		MARS,
 		MERCURY,
+		SATURN,
 		NUM
 	};
 	int m_stage_num = 0;			//ステージ

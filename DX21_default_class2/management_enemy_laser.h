@@ -44,7 +44,6 @@ private:
 	Laser* m_pLaser = nullptr;
 	DrawObject m_pDrawObjectEnemy;
 	DrawObject m_pDrawObjectLaser;
-	DrawObject m_pDrawObjectLaser1;
 
 	int m_SE_06 = 0;	//ビーム音
 	int m_SE_07 = 0;	//ビーム発射音
@@ -64,6 +63,12 @@ private:
 			D3DXVECTOR2(0.0f, 0.0f)
 		},
 		//水星
+		{
+			D3DXVECTOR2(52.5f + (105 * 4), -EnemyLaser::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 6), -EnemyLaser::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 5), -EnemyLaser::SIZE_Y / 2),
+		},
+		//土星
 		{
 			D3DXVECTOR2(52.5f + (105 * 4), -EnemyLaser::SIZE_Y / 2),
 			D3DXVECTOR2(52.5f + (105 * 6), -EnemyLaser::SIZE_Y / 2),
@@ -88,13 +93,19 @@ private:
 			60 * 10,
 			60 * 15,
 		},
+		//土星
+		{
+			60 * 5,
+			60 * 10,
+			60 * 15,
+		}
 	};
 
 
 //メンバー関数
 public:
 	//引数付きコンストラクタ
-	EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, DrawObject& pDrawObject3, int stage);
+	EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, int stage);
 
 	//デストラクタ
 	~EnemyLaserManagement()override{}

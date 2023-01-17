@@ -9,7 +9,7 @@
 //==========================
 // 定数の初期化
 //==========================
-const int EnemyLaserManagement::ENEMY_NUM[(int)STAGE::NUM] = { 3, 0, 0 };
+const int EnemyLaserManagement::ENEMY_NUM[(int)STAGE::NUM] = { 3, 0, 3, 3 };
 const float EnemyLaserManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyLaserManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyLaserManagement::EXIT_MOVE_SPEED_X = 2.5f;
@@ -17,11 +17,9 @@ const float EnemyLaserManagement::EXIT_MOVE_SPEED_X = 2.5f;
 //=========================
 // 引数付きコンストラクタ
 //=========================
-EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, 
-	DrawObject& pDrawObject3, int stage)
+EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, int stage)
 	:EnemyManagement(EnemyManagement::TYPE::LASER, ENEMY_NUM[stage], ATTACK, LASER_ATTACK), 
-	m_pDrawObjectEnemy(pDrawObject1),
-	m_pDrawObjectLaser(pDrawObject2), m_pDrawObjectLaser1(pDrawObject3)
+	m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectLaser(pDrawObject2)
 {
 	m_stage_num = stage;
 	m_pEnemyLaser = new EnemyLaser[ENEMY_NUM[stage]];
@@ -58,14 +56,9 @@ void EnemyLaserManagement::Update()
 		m_pEnemyLaser[GetObjNum()] = temp;
 		EnemyManagement::IncreaseObjNum(1);
 
-		m_EnemyNum++;
+		m_pEnemyLaser[m_EnemyNum].SetLaserDirection(0);
 
-		if (m_EnemyNum == 1) {
-			m_pEnemyLaser[0].SetLaserDirection(2);
-		}
-		else if (m_EnemyNum == 2) {
-			m_pEnemyLaser[1].SetLaserDirection(1);
-		}
+		m_EnemyNum++;
 	}
 
 	//今いる敵の処理
@@ -100,18 +93,12 @@ void EnemyLaserManagement::Update()
 			//レーザー番号をセット
 			m_pEnemyLaser[i].SetLaserIndex(EnemyManagement::GetBulletNum());
 			//レーザーを作る
-			DrawObject* draw_temp;
 			float laser_x = 0.0f;
 			float laser_y = 0.0f;
-			if (m_pEnemyLaser[i].GetLaserDirection() == 0) {
-				laser_x = BULLET_SIZE_X;
-				draw_temp = &m_pDrawObjectLaser;
-			}
-			else {
-				laser_y = BULLET_SIZE_Y;
-				draw_temp = &m_pDrawObjectLaser1;
-			}
-			Laser temp(*draw_temp, m_pEnemyLaser[i].GetPos() + D3DXVECTOR2(0.0f, 10.0f),
+
+			laser_x = BULLET_SIZE_X;
+
+			Laser temp(m_pDrawObjectLaser, m_pEnemyLaser[i].GetPos() + D3DXVECTOR2(0.0f, 10.0f),
 				D3DXVECTOR2(laser_x, laser_y));
 			m_pLaser[EnemyManagement::GetBulletNum()] = temp;
 			m_pLaser[EnemyManagement::GetBulletNum()].SetLaserDirectioon((Laser::DIRECTION)m_pEnemyLaser[i].GetLaserDirection());
