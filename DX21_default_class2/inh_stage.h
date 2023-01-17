@@ -55,6 +55,10 @@ protected:
 		NUMBER,
 		MULTIPLY,
 		FRAME,
+		ENEMY_MEGUMIN,
+		BULLET_MEGUMIN,
+		ENEMY_LASER,
+
 		NUM
 	};
 
@@ -82,6 +86,13 @@ protected:
 		MULTIPLY,
 		BOMB,						//”š’e
 		FRAME,
+		ENEMY_BARRIER_BARRIER,
+		ENEMY_ITEM,
+		ENEMY_LASER,
+		ENEMY_MEGUMIN,
+		BULLET_MEGUMIN,
+		BULLET_LASER,
+
 		NUM
 	};
 
