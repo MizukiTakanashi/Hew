@@ -267,6 +267,9 @@
     </ClCompile>
     <ClCompile Include="management_poisonfield.cpp" />
     <ClCompile Include="poisonfield.cpp" />
+    <ClCompile Include="saturn_collision_all.cpp">
+      <Filter>05_Saturn</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -538,6 +541,9 @@
     </ClInclude>
     <ClInclude Include="management_poisonfield.h" />
     <ClInclude Include="poisonfield.h" />
+    <ClInclude Include="saturn_collision_all.h">
+      <Filter>05_Saturn</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01_Title">

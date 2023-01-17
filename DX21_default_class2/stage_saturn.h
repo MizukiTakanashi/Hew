@@ -24,16 +24,17 @@
 #include "management_item.h"
 #include "all_enemy_management.h"
 #include "player_arm_change.h"
-#include "collision_all.h"
 #include "player_center.h"
 #include "Bom.h"
+
+#include "saturn_collision_all.h"
 
 #include "management_enemy_laser.h"
 #include "management_enemy_megumin.h"
 
 class StageSaturn
 {
-	//定数
+//定数
 private:
 	//ここで初期化
 	static const int NUMBER_DIGIT = 10;		//数字の桁
@@ -93,7 +94,7 @@ private:
 	};
 
 
-	//メンバ変数
+//メンバ変数
 private:
 	int m_BGM = 0;
 
@@ -124,11 +125,12 @@ private:
 
 	PlayerArmChange* m_pPlayerArmChange = nullptr;	//腕の交換
 
-	CollisionAll* m_pColAll = nullptr;		//全ての当たり判定
+	SaturnCollisionAll* m_pColAll = nullptr;		//全ての当たり判定
 
 	Bom* m_pBom = nullptr;					//ボム
 
-	//メンバ関数
+
+//メンバ関数
 public:
 	StageSaturn(){}	//デフォルトコンストラクタ
 
