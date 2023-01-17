@@ -30,7 +30,7 @@ class InhStage
 //’è”
 protected:
 	//‚±‚±‚Å‰Šú‰»
-	static const int NUMBER_DIGIT = 10;		//”š‚ÌŒ…
+	static const int NUMBER_DIGIT = 5;		//”š‚ÌŒ…
 
 	//cpp‚Å‰Šú‰»
 	static const D3DXVECTOR2 NUMBER_SIZE;	//”š‚ÌƒTƒCƒY
