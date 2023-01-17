@@ -23,7 +23,7 @@ public:
 
 private:
 	//‚±‚±‚Å‰Šú‰»
-	static const int BULLET_TIME = 200;	//’e‚Ì”­ËŠÔŠu
+	static const int BULLET_TIME = 100;	//’e‚Ì”­ËŠÔŠu
 	static const int HP_MAX = 2;		//“G‚ÌHPÅ‘å’l
 
 	//cpp‚Å‰Šú‰»

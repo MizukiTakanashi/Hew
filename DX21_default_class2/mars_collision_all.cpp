@@ -754,7 +754,7 @@ void MarsCollisionAll::HeelCollision(void)
 				{
 				}
 				//タイプが同じだったら残弾数を回復する
-				if (pArm->GetType() == (inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i) + 1))
+				if (pArm->GetType() == (inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i)))
 				{
 					pArm->HeelBullet();
 				}

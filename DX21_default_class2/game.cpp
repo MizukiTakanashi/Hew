@@ -29,32 +29,16 @@ Game::Game(Score* pNumber) :InhStage(pNumber)
 	//=======================
 	// レーザー
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER].SetTextureName((char*)"data\\texture\\laser00.png");
+	m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER]);
 
-	//敵側のレーザー
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER]);
-
-	//プレイヤー
-	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER].SetTextureName((char*)"data\\texture\\player_anime.png");
-	m_pDrawObject[(int)DRAW_TYPE::PLAYER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER], 1.0f, 0.25f, 1.0f, 4);
-	m_pPlayer = new Player(m_pDrawObject[(int)DRAW_TYPE::PLAYER], m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET], 
-		m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET]);
-
-	//=======================
-	// 敵
-	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_NORMAL].SetTextureName((char*)"data\\texture\\enemy_missile.png");
-	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_LASER].SetTextureName((char*)"data\\texture\\enemy_laser.png");
-	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_GATORING].SetTextureName((char*)"data\\texture\\enemy_gatoring.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_NORMAL]);
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_LASER]);
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_GATORING]);
 	
 	//隕石
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_METEO].SetTextureName((char*)"data\\texture\\Meteo.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_METEO], 2.0f, 1.0, 1.0f, 3);
 
-	m_pEnemyNormalManagement = new EnemyNormalManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NOREMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 0);
-	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER_LASER], 
-		m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER_LASER], 0);
+	m_pEnemyMissileManagement = new EnemyMissileManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NORMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 0);
+	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER], 
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER], 0);
 	m_pEnemyGatoringManagement = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY]);
 	m_pMeteoManagement = new Management_Meteo(m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO]);
 
@@ -62,7 +46,7 @@ Game::Game(Score* pNumber) :InhStage(pNumber)
 
 	//敵の管理
 	m_pAllEnemyManagement = new AllEnemyManagement;
-	m_pAllEnemyManagement->AddPointer(m_pEnemyNormalManagement);
+	m_pAllEnemyManagement->AddPointer(m_pEnemyMissileManagement);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyLaserManagement);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyGatoringManagement);
 
@@ -72,7 +56,7 @@ Game::Game(Score* pNumber) :InhStage(pNumber)
 		m_pItemManagement, m_pScore, m_pBom, m_pMeteoManagement);
 
 	//敵のポインタをセット（順番変えるのNG）
-	m_pColAll->AddEnemyPointer(m_pEnemyNormalManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemyMissileManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyLaserManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyGatoringManagement);
 	//m_pColAll->AddEnemyPointer(m_pMeteoManagement);
@@ -85,7 +69,7 @@ Game::~Game()
 {
 	delete m_pAllEnemyManagement;
 	delete m_pColAll;
-	delete m_pEnemyNormalManagement;
+	delete m_pEnemyMissileManagement;
 	delete m_pEnemyLaserManagement;
 	delete m_pEnemyGatoringManagement;
 	delete m_pTextManagement;
@@ -133,7 +117,7 @@ void Game::Update(void)
 
 	//=======================
 	// 敵
-	m_pEnemyNormalManagement->Update(m_pPlayer->GetPos());
+	m_pEnemyMissileManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyLaserManagement->Update();
 	m_pEnemyGatoringManagement->Update(m_pPlayer->GetPos());
 	m_pMeteoManagement->Update();
@@ -174,7 +158,7 @@ void Game::Update(void)
 	}
 
 	//最後の列の敵を全て倒したら
-	if (m_pEnemyNormalManagement->IsClear() && m_pEnemyLaserManagement->IsClear() &&
+	if (m_pEnemyMissileManagement->IsClear() && m_pEnemyLaserManagement->IsClear() &&
 		m_pEnemyGatoringManagement->IsClear()) {
 		//リザルト画面に行く
 		Fade(SCENE::SCENE_RESULT);
@@ -197,7 +181,7 @@ void Game::Draw(void)const
 	m_pPlayerCenter->ArmDraw();
 
 	//敵の描画
-	m_pEnemyNormalManagement->Draw();
+	m_pEnemyMissileManagement->Draw();
 	m_pEnemyLaserManagement->Draw();
 	m_pEnemyGatoringManagement->Draw();
 	m_pMeteoManagement->Draw();
