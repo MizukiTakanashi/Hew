@@ -17,7 +17,8 @@ const float EnemyStopManagement::BULLET_SPEED = 2.5f;
 // 引数付きコンストラクタ
 //=========================
 EnemyStopManagement::EnemyStopManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
-	:EnemyManagement(ENEMY_NUM, ATTACK, BULLET_ATTACK),m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
+	:EnemyManagement(EnemyManagement::TYPE::STOP, ENEMY_NUM, ATTACK, BULLET_ATTACK),
+	m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
 	m_pEnemy = new EnemyStop[ENEMY_NUM];
 	m_pBullet = new BulletStop[ENEMY_NUM];

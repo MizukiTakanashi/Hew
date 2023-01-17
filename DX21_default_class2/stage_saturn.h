@@ -106,6 +106,8 @@ private:
 	BG* m_pBG = nullptr;
 	BGPlanet* m_pBG_Moon = nullptr;
 	Player* m_pPlayer = nullptr;
+
+	//“G
 	EnemyLaserManagement* m_pEnemyLaserManagement = nullptr;
 	EnemyMeguminManagement* m_pEnemyMeguminManagement = nullptr;
 

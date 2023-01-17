@@ -17,8 +17,10 @@ const float EnemyLaserManagement::EXIT_MOVE_SPEED_X = 2.5f;
 //=========================
 // 引数付きコンストラクタ
 //=========================
-EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, DrawObject& pDrawObject3, int stage)
-	:EnemyManagement(ENEMY_NUM[stage], ATTACK, LASER_ATTACK), m_pDrawObjectEnemy(pDrawObject1),
+EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, 
+	DrawObject& pDrawObject3, int stage)
+	:EnemyManagement(EnemyManagement::TYPE::LASER, ENEMY_NUM[stage], ATTACK, LASER_ATTACK), 
+	m_pDrawObjectEnemy(pDrawObject1),
 	m_pDrawObjectLaser(pDrawObject2), m_pDrawObjectLaser1(pDrawObject3)
 {
 	m_stage_num = stage;

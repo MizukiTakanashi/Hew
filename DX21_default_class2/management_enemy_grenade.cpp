@@ -24,7 +24,8 @@ const D3DXVECTOR2 EnemyGrenadeManagement::EXPLOSION_RANGE = D3DXVECTOR2(200.0f, 
 //=========================
 EnemyGrenadeManagement::EnemyGrenadeManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, 
 	DrawObject& pDrawObject3, int stage)
-	:EnemyManagement(ENEMY_NUM[stage], ATTACK, BULLET_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2),
+	:EnemyManagement(EnemyManagement::TYPE::GRENADE, ENEMY_NUM[stage], ATTACK, BULLET_ATTACK), 
+	m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2),
 	m_pDrawObjectExplosion(pDrawObject3), m_stage_num(stage)
 {
 	m_pEnemy = new EnemyGrenade[ENEMY_NUM[stage]];
