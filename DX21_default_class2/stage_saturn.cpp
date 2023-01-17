@@ -171,11 +171,12 @@ StageSaturn::StageSaturn(Score* pNumber):m_pScore(pNumber)
 	
 	//========================================================
 	// 全ての当たり判定
-	//m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
-	//	m_pItemManagement, m_pScore, m_pBom, );
+	m_pColAll = new SaturnCollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
+		m_pItemManagement, m_pScore, m_pBom);
 
 	//敵のポインタをセット（順番変えるのNG）
-	//m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemyMeguminManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemyLaserManagement);
 }
 
 //==========================
@@ -186,7 +187,7 @@ StageSaturn::~StageSaturn()
 	//描画がない物から消していく
 	delete m_pAllEnemyManagement;
 	delete m_pPlayerArmChange;
-	//delete m_pColAll;
+	delete m_pColAll;
 
 	//ゲームオブジェクトを消す
 	delete m_pBom;
@@ -272,10 +273,10 @@ void StageSaturn::Update(void)
 	m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
 
 	//敵とプレイヤーの当たり判定
-	//attack_num += m_pColAll->Collision();
+	attack_num += m_pColAll->Collision();
 
 	//回復
-	//m_pColAll->HeelCollision();
+	m_pColAll->HeelCollision();
 
 	//プレイヤーのHPを攻撃数によって減らす
 	if (attack_num != 0) {

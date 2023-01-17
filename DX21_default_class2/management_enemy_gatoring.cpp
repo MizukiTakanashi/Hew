@@ -17,7 +17,8 @@ const float EnemyGatoringManagement::EXIT_MOVE_SPEED_Y = 5.0f;
 // 引数付きコンストラクタ
 //=========================
 EnemyGatoringManagement::EnemyGatoringManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
-	:EnemyManagement(ENEMY_NUM, ATTACK, BULLET_ATTACK),m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
+	:EnemyManagement(EnemyManagement::TYPE::GATORING, ENEMY_NUM, ATTACK, BULLET_ATTACK),
+	m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
 	m_pEnemyGatoring = new EnemyGatoring[ENEMY_NUM];
 	m_pBullet = new Bullet[BULLET_NUM];

@@ -14,7 +14,7 @@ const float EnemyAttackManagement::ATTACK_SPEED = 5.0f;
 // 引数付きコンストラクタ
 //=========================
 EnemyAttackManagement::EnemyAttackManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
-	:EnemyManagement(ENEMY_NUM, ATTACK, BULLET_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
+	:EnemyManagement(EnemyManagement::TYPE::ATTACK, ENEMY_NUM, ATTACK, BULLET_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
 	m_pEnemyAttack = new EnemyAttack[ENEMY_NUM];
 

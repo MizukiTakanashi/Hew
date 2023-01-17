@@ -104,17 +104,8 @@ int MarsCollisionAll::Collision(void)
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
-							//ドロップする敵であれば...
-							if (true) {
-								if (k == (int)TYPE::NORMAL) {
-									//敵アイテムのドロップ
-									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), 0);
-								}
-								else {
-									//敵アイテムのドロップ
-									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
-								}
-							}
+							//敵アイテムのドロップ
+							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
 
 							//敵を消す
 							m_pEnemy[k]->DeleteObj(j);
@@ -167,17 +158,8 @@ int MarsCollisionAll::Collision(void)
 				//敵が死んだら...
 				if (m_pEnemy[k]->ReduceHP(j, m_pBom->GetBombAttack()))
 				{
-					//ドロップする敵であれば...
-					if (true) {
-						if (k == (int)TYPE::NORMAL) {
-							//敵アイテムのドロップ
-							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), 0);
-						}
-						else {
-							//敵アイテムのドロップ
-							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
-						}
-					}
+					//敵アイテムのドロップ
+					m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
 
 					//敵を消す
 					m_pEnemy[k]->DeleteObj(j);
@@ -217,17 +199,8 @@ int MarsCollisionAll::Collision(void)
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
-							//ドロップする敵であれば...
-							if (true) {
-								if (k == (int)TYPE::NORMAL) {
-									//敵アイテムのドロップ
-									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), 0);
-								}
-								else {
-									//敵アイテムのドロップ
-									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
-								}
-							}
+							//敵アイテムのドロップ
+							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
 
 							//敵を消す
 							m_pEnemy[k]->DeleteObj(j);
@@ -307,17 +280,8 @@ int MarsCollisionAll::Collision(void)
 								//敵が死んだら...
 								if (m_pEnemy[k]->ReduceHP(j, 1))
 								{
-									//ドロップする敵であれば...
-									if (true) {
-										if (k == (int)TYPE::NORMAL) {
-											//敵アイテムのドロップ
-											m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), 0);
-										}
-										else {
-											//敵アイテムのドロップ
-											m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
-										}
-									}
+									//敵アイテムのドロップ
+									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
 
 									//敵を消す
 									m_pEnemy[k]->DeleteObj(j);
@@ -379,17 +343,8 @@ int MarsCollisionAll::Collision(void)
 								//敵が死んだら...
 								if (m_pEnemy[k]->ReduceHP(j, 1))
 								{
-									//ドロップする敵であれば...
-									if (true) {
-										if (k == (int)TYPE::NORMAL) {
-											//敵アイテムのドロップ
-											m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), 0);
-										}
-										else {
-											//敵アイテムのドロップ
-											m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
-										}
-									}
+									//敵アイテムのドロップ
+									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
 
 									//敵を消す
 									m_pEnemy[k]->DeleteObj(j);
@@ -460,7 +415,8 @@ int MarsCollisionAll::Collision(void)
 			if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetBulletPos(j),
 				m_pPlayer->GetSize() / 3, m_pEnemy[k]->GetBulletSize())) {
 
-				if (k == (int)TYPE::STOP)
+				//冷気を出す敵であれば...
+				if (m_pEnemy[k]->GetType() == EnemyManagement::TYPE::STOP)
 				{
 					//プレイヤーを動けなくする
 					PlaySound(m_SE_10, 0);
@@ -580,9 +536,9 @@ int MarsCollisionAll::Collision(void)
 
 				//自身
 				//別オブジェクト
-			switch (k) {
+			switch (m_pEnemy[k]->GetType()) {
 
-			case (int)TYPE::BARRIER:
+			case EnemyManagement::TYPE::BARRIER:
 				if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetOtherPos(j),
 					m_pPlayer->GetSize() / 3, m_pEnemy[k]->GetOtherSize())) {
 					if (m_pEnemy[k]->GetOtherAttack() != 0) {
@@ -598,7 +554,7 @@ int MarsCollisionAll::Collision(void)
 				}
 				break;
 
-			case (int)TYPE::GRENADE:
+			case EnemyManagement::TYPE::GRENADE:
 				if (Collision::ColBox(m_pPlayer->GetPos(), m_pEnemy[k]->GetOtherPos(j),
 					m_pPlayer->GetSize() / 3, EnemyGrenadeManagement::OTHER_RANGE)) {
 					m_pGrenade->SetExplosion(m_pEnemy[k]->GetOtherPos(j));
@@ -611,7 +567,7 @@ int MarsCollisionAll::Collision(void)
 			}
 
 			//グレネード敵であればこれ以降の処理を行わない
-			if (k == (int)TYPE::GRENADE) {
+			if (m_pEnemy[k]->GetType() == EnemyManagement::TYPE::GRENADE) {
 				break;
 			}
 			//弾

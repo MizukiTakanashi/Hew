@@ -18,22 +18,14 @@
 
 class SaturnCollisionAll
 {
-	//定数
+//定数
 private:
-	enum class TYPE :int
-	{
-		//新しい敵は上から追加
-		NORMAL,
-		GATORING,
-		NUM
-	};
-
-
 	//ここで初期化
 	static const int ENEMY_NUM = 10;		//全敵の種類数の制限数
 	static const int SE_INTERVAL = 30;		//爆発の音の間隔
 
-	//メンバ変数
+
+//メンバ変数
 private:
 	Player* m_pPlayer = nullptr;					//プレイヤー
 
@@ -58,7 +50,8 @@ private:
 	int m_SE_09 = 0;								//バリアが壊れる音
 	int m_SE_10 = 0;								//冷気を浴びた音
 
-	//メンバ関数
+	
+//メンバ関数
 public:
 	//デフォルトコンストラクタ
 	SaturnCollisionAll();

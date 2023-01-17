@@ -2,7 +2,8 @@
 #include "screen_out.h"
 
 Management_EnemyPublic::Management_EnemyPublic(DrawObject& pDrawObject)
-	:EnemyManagement(ENEMY_NUM, ATTACK, 0), m_pDrawObjectEnemyPublic(pDrawObject)
+	:EnemyManagement(EnemyManagement::TYPE::PUBLIC, ENEMY_NUM, ATTACK, 0), 
+	m_pDrawObjectEnemyPublic(pDrawObject)
 {
 	m_pEnemyPublic = new EnemyPublic[ENEMY_NUM];
 }

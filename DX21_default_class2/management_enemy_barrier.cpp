@@ -15,7 +15,8 @@ const D3DXVECTOR2 EnemyBarrierManagement::INTERVAL_POS = D3DXVECTOR2(0.0f, 60.0f
 // 引数付きコンストラクタ
 //=========================
 EnemyBarrierManagement::EnemyBarrierManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
-	:EnemyManagement(ENEMY_NUM, ATTACK, 0, BARRIER_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBarrier(pDrawObject2)
+	:EnemyManagement(EnemyManagement::TYPE::BARRIER, ENEMY_NUM, ATTACK, 0, BARRIER_ATTACK), 
+	m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBarrier(pDrawObject2)
 {
 	m_pEnemy = new EnemyBarrier[ENEMY_NUM];
 	m_pBarrier = new GameObject[ENEMY_NUM];
