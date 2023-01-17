@@ -37,7 +37,7 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	//âÊëúì«Ç›çûÇ›
 	m_pTexUseful = new TextureUseful[(int)TEXTURE_TYPE::NUM];
 	m_pDrawObject = new DrawObject[(int)DRAW_TYPE::NUM];
-	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_ENEMY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY], 0.0f, 0.33f, 1.0f, 3);
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_ENEMY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ITEM]);
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(0.2f, 1.0f, 0.2f, 1.0f));
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER], 0.0f, 1.0f, 1.0f, 1,
@@ -67,9 +67,6 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER], 1.0f, 0.25f, 1.0f, 4);
 	m_pPlayer = new Player(m_pDrawObject[(int)DRAW_TYPE::PLAYER], m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET], m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET]);
 
-	//=======================
-	// ìG
-	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY].SetTextureName((char*)"data\\texture\\teki2.png");
 
 
 	//=======================
