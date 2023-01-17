@@ -14,7 +14,7 @@
 #include "saturn_collision_all.h"
 #include "management_enemy_laser.h"
 #include "management_enemy_megumin.h"
-
+#include "management_poisonfield.h"
 class StageSaturn : public InhStage
 {
 //’è”
@@ -28,7 +28,7 @@ private:
 	EnemyMeguminManagement* m_pEnemyMeguminManagement = nullptr;
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
 	SaturnCollisionAll* m_pColAll = nullptr;		//‘S‚Ä‚Ì“–‚½‚è”»’è
-
+	Management_PoisonField* m_pPoisonField = nullptr;
 //ƒƒ“ƒoŠÖ”
 public:
 	StageSaturn(Score* pNumber);

@@ -41,7 +41,7 @@ private:
 	};
 
 	int m_SetEnemyTime[ENEMY_NUM] = {
-		60 * 35,
+		60 * 10,
 		60 * 35 + 1,
 		60 * 55,
 		60 * 55 + 1,
