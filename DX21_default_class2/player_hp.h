@@ -13,6 +13,8 @@
 #include "management_explosion.h"
 #include "player.h"
 
+class InhStage;
+
 //======================
 // マクロ定義
 //======================
@@ -41,14 +43,14 @@ private:
 	int m_invincible = 0;			//無敵時間
 	ExplosionManagement* m_pExplosionManagement = nullptr; //爆発管理のポインタ
 
+	InhStage* m_pStage = nullptr; //ヒットストップ用のステージのポインタ
+
 	int m_SE_04 = 0;				//プレイヤーダメージ音
 
 //メンバー関数
 public:
-	PlayerHP() { m_hp = HP_MAX; }	//デフォルトコンストラクタ
-
 	//引数付きコンストラクタ
-	PlayerHP(DrawObject& DrawObject1, ExplosionManagement* pEM, Player* pPlayer);
+	PlayerHP(DrawObject& DrawObject1, ExplosionManagement* pEM, Player* pPlayer, InhStage* pStage);
 
 	~PlayerHP()override {}							//デストラクタ
 

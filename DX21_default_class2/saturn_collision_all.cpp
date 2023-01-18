@@ -101,17 +101,8 @@ int SaturnCollisionAll::Collision(void)
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
-							//ドロップする敵であれば...
-							if (true) {
-								if (k == (int)TYPE::NORMAL) {
-									//敵アイテムのドロップ
-									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), 0);
-								}
-								else {
-									//敵アイテムのドロップ
-									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
-								}
-							}
+							//敵アイテムのドロップ
+							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
 
 							//敵を消す
 							m_pEnemy[k]->DeleteObj(j);
@@ -164,17 +155,8 @@ int SaturnCollisionAll::Collision(void)
 				//敵が死んだら...
 				if (m_pEnemy[k]->ReduceHP(j, m_pBom->GetBombAttack()))
 				{
-					//ドロップする敵であれば...
-					if (true) {
-						if (k == (int)TYPE::NORMAL) {
-							//敵アイテムのドロップ
-							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), 0);
-						}
-						else {
-							//敵アイテムのドロップ
-							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
-						}
-					}
+					//敵アイテムのドロップ
+					m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
 
 					//敵を消す
 					m_pEnemy[k]->DeleteObj(j);
@@ -214,17 +196,8 @@ int SaturnCollisionAll::Collision(void)
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
-							//ドロップする敵であれば...
-							if (true) {
-								if (k == (int)TYPE::NORMAL) {
-									//敵アイテムのドロップ
-									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), 0);
-								}
-								else {
-									//敵アイテムのドロップ
-									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
-								}
-							}
+							//敵アイテムのドロップ
+							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
 
 							//敵を消す
 							m_pEnemy[k]->DeleteObj(j);
@@ -300,17 +273,8 @@ int SaturnCollisionAll::Collision(void)
 								//敵が死んだら...
 								if (m_pEnemy[k]->ReduceHP(j, 1))
 								{
-									//ドロップする敵であれば...
-									if (true) {
-										if (k == (int)TYPE::NORMAL) {
-											//敵アイテムのドロップ
-											m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), 0);
-										}
-										else {
-											//敵アイテムのドロップ
-											m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), k + 3);
-										}
-									}
+									//敵アイテムのドロップ
+									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
 
 									//敵を消す
 									m_pEnemy[k]->DeleteObj(j);

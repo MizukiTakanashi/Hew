@@ -151,11 +151,6 @@ void inhPlayerArmBoth::ArmDraw(void) const
 		}
 
 	}
-
-
-	if (m_pRemaining_Num)
-	{
-	}
 }
 
 //==========================
@@ -203,7 +198,7 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 
 		case TYPE::TYPE_HOMING:
 			m_pEnemyItem = new PlayerArm1(*m_bullet_draw, false, (int)m_type - 1);
-			GameObject::SetDrawob(*m_enemy_normal_draw);
+			GameObject::SetDrawob(*m_enemy_homing_draw);
 			break;
 
 		case TYPE::TYPE_LASER:
@@ -232,13 +227,13 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 
 		case TYPE::TYPE_ICERAIN:
 			m_pEnemyItem = new PlayerArmIceRain(*m_enemy_icerain_draw, false, (int)m_type - 1);
-			GameObject::SetDrawob(*m_enemy_normal_draw);
+			GameObject::SetDrawob(*m_enemy_icerain_draw);
 
 			break;
 
 		case TYPE::TYPE7:
 			m_pEnemyItem = new PlayerArmGrenade(*m_bullet_draw, m_explosion_draw, false, (int)m_type - 1);
-			GameObject::SetDrawob(*m_enemy_normal_draw);
+			GameObject::SetDrawob(*m_enemy_homing_draw);
 
 
 		default:

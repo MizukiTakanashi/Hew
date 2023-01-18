@@ -13,8 +13,6 @@
 //==========================
 // グローバル変数
 //==========================
-int VenusStopFlame = 0; //ヒットストップ用
-bool isDownVenus = false; //ボスが死んだか
 
 //==========================
 // 引数付きコンストラクタ
@@ -60,14 +58,14 @@ StageVenus::~StageVenus()
 void StageVenus::Update(void)
 {
 	//ヒットストップ
-	if (VenusStopFlame > 0)
+	if (m_StopFlame > 0)
 	{
-		VenusStopFlame--;
+		m_StopFlame--;
 		return;
 	}
 
 	//ボスが死んだら
-	if (isDownVenus)
+	if (m_isBossDown)
 		Fade(SCENE::SCENE_RESULT);
 
 	//背景
@@ -133,6 +131,7 @@ void StageVenus::Draw(void) const
 {
 	m_pBG->DrawBG();
 	m_pBG_Moon->DrawBG();
+	m_pFrame->Draw();
 	m_pPlayer->Draw();
 
 	//プレイヤーの腕の描画処理
@@ -159,17 +158,4 @@ void StageVenus::Draw(void) const
 	m_pComboNum->SetNumber(m_pScore->GetComboNum());
 	m_pComboNum->DrawNumber();
 	m_pMultiply->Draw();
-}
-
-//==========================
-// ヒットストップ
-//==========================
-void VenusHitStop(int flame)
-{
-	VenusStopFlame = flame;
-}
-
-void VenusBossDown()
-{
-	isDownVenus = true;
 }

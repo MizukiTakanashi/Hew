@@ -12,8 +12,30 @@
 
 class EnemyManagement
 {
+//定数
+public:
+	enum class TYPE :int
+	{
+		//新しい敵は上から追加
+		NORMAL,
+		LASER,
+		GATORING,
+		BULLET_BARRIER,
+		STOP,
+		ICERAIN,
+		GRENADE,
+		MISSILE,
+		MEGUMIN,
+		ATTACK,
+		FIREBALL,
+		PUBLIC,
+		NUM
+	};
+
 //メンバ変数
 private:
+	TYPE m_type = TYPE::NORMAL;		//敵のタイプ
+
 	//敵自身
 	int m_obj_num = 0;				//現在のオブジェクト数
 	int m_obj_delete_index = 0;		//消したオブジェクトの番号
@@ -29,11 +51,12 @@ private:
 	int m_other_attack = 0;			//別オブジェクトが与える攻撃力
 
 protected:
-
 	//ステージ
 	enum class STAGE :int {
 		TUTORIAL,
 		MARS,
+		MERCURY,
+		SATURN,
 		NUM
 	};
 	int m_stage_num = 0;			//ステージ
@@ -49,12 +72,15 @@ public:
 	EnemyManagement() {}
 
 	//引数付きコンストラクタ
-	EnemyManagement(int bullet_max_num, int obj_attack, int bullet_attack, int other_attack = 0)
-		:m_bullet_max_num(bullet_max_num), m_obj_attack(obj_attack), m_bullet_attack(bullet_attack), 
+	EnemyManagement(TYPE type, int bullet_max_num, int obj_attack, int bullet_attack, int other_attack = 0)
+		:m_type(type), m_bullet_max_num(bullet_max_num), m_obj_attack(obj_attack), m_bullet_attack(bullet_attack), 
 		m_other_attack(other_attack) {}
 
 	//デストラクタ
 	virtual ~EnemyManagement() {}
+
+	//タイプを返す
+	TYPE GetType(void)const { return m_type; }
 
 	//指定した番号のオブジェクトのHPを減らす 敵が死んだらtrueを返す
 	virtual bool ReduceHP(int index_num, int reduceHP) { return false; }

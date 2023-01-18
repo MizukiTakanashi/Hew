@@ -19,7 +19,8 @@ const float EnemyFireballManagement::BULLET_SPEED = 5.0f;
 // 引数付きコンストラクタ
 //=========================
 EnemyFireballManagement::EnemyFireballManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
-	:EnemyManagement(ENEMY_NUM, ATTACK, BULLET_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
+	:EnemyManagement(EnemyManagement::TYPE::FIREBALL, ENEMY_NUM, ATTACK, BULLET_ATTACK), 
+	m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
 	m_pEnemyNormal = new EnemyNormal[ENEMY_NUM];
 	m_pBullet = new Bullet[ENEMY_NUM];

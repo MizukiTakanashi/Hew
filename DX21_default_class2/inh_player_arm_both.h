@@ -55,7 +55,7 @@ private:
 	DrawObject* m_bullet_stop_draw = nullptr;	//動きを止める敵の弾の描画オブジェクト
 	DrawObject* m_bullet_icerain_draw = nullptr;	//氷の敵の描画
 	//敵
-	DrawObject* m_enemy_normal_draw = nullptr;				//弾の描画オブジェクト
+	DrawObject* m_enemy_homing_draw = nullptr;				//弾の描画オブジェクト
 	DrawObject* m_enemy_gatoring_draw = nullptr;				//弾の描画オブジェクト
 	DrawObject* m_enemy_laser_draw = nullptr;				//レーザーの描画オブジェクト
 	DrawObject* m_enemy_barrier_draw = nullptr;	//バリアの描画オブジェクト
@@ -77,11 +77,11 @@ public:
 	inhPlayerArmBoth(){}
 
 	//引数付きコンストラクタ
-	inhPlayerArmBoth(DrawObject& pDrawObject, const D3DXVECTOR2& pos,
+	inhPlayerArmBoth(const D3DXVECTOR2& pos,
 		const D3DXVECTOR2& from_player, DrawObject& pDrawobNumber, D3DXVECTOR2 num_pos, D3DXVECTOR2 icon_pos)
-		:GameObject(pDrawObject, pos, SIZE), m_from_player(from_player), m_Remaining_Icon_Pos(icon_pos) 
+		:GameObject(pDrawobNumber, pos, SIZE), m_from_player(from_player), m_Remaining_Icon_Pos(icon_pos)
 	{
-		m_pRemaining_Num = new Number(pDrawobNumber, num_pos, D3DXVECTOR2(40.0f, 60.0f), 2);
+		m_pRemaining_Num = new Number(pDrawobNumber, num_pos, D3DXVECTOR2(30.0f, 40.0f), 2);
 	}
 
 	//デストラクタ
@@ -126,6 +126,8 @@ public:
 	//隕石と当たった時に腕を消す
 	void BreakShootingArm();
 
+
+
 	//丸い弾の描画オブジェクトをセット
 	void DrawSetSurcleBullet(DrawObject* pDraw) { m_bullet_draw = pDraw; }
 
@@ -144,13 +146,13 @@ public:
 
 
 	//ホーミングの敵の腕の描画
-	void DrawSetHomingE(DrawObject* pDraw) { m_enemy_normal_draw = pDraw; }
+	void DrawSetHomingE(DrawObject* pDraw) { m_enemy_homing_draw = pDraw; }
 
 	//レーザーの敵の腕の描画
-	void DrawSetLaserE(DrawObject* pDraw) { m_enemy_gatoring_draw = pDraw; }
+	void DrawSetLaserE(DrawObject* pDraw) { m_enemy_laser_draw = pDraw; }
 
 	//ガトリングの敵の腕の描画
-	void DrawSetGatoringE(DrawObject* pDraw) { m_enemy_laser_draw = pDraw; }
+	void DrawSetGatoringE(DrawObject* pDraw) { m_enemy_gatoring_draw = pDraw; }
 
 	//バリアの敵の腕の描画
 	void DrawSetBarriarE(DrawObject* pDraw) { m_enemy_barrier_draw = pDraw; }

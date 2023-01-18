@@ -9,6 +9,7 @@
 //==========================
 // 定数の初期化
 //==========================
+const int EnemyIceRainManagement::ENEMY_NUM[(int)STAGE::NUM] = { 0, 7, 1, 0 };
 const float EnemyIceRainManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyIceRainManagement::BULLET_SIZE_Y = 50.0f;
 const float EnemyIceRainManagement::BULLET_SPEED = 2.5f;
@@ -16,10 +17,11 @@ const float EnemyIceRainManagement::BULLET_SPEED = 2.5f;
 //=========================
 // 引数付きコンストラクタ
 //=========================
-EnemyIceRainManagement::EnemyIceRainManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
-	:EnemyManagement(ENEMY_NUM, ATTACK, BULLET_ATTACK), m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
+EnemyIceRainManagement::EnemyIceRainManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, int stage)
+	:EnemyManagement(EnemyManagement::TYPE::ICERAIN, ENEMY_NUM[stage], ATTACK, BULLET_ATTACK),
+	m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2), m_stage_num(stage)
 {
-	m_pEnemyIceRain = new EnemyIceRain[ENEMY_NUM];
+	m_pEnemyIceRain = new EnemyIceRain[ENEMY_NUM[stage]];
 	m_pBullet = new Bullet[BULLET_NUM];
 
 	//氷柱を降らせる音
@@ -34,9 +36,9 @@ void EnemyIceRainManagement::Update(const D3DXVECTOR2& PlayerPos)
 {
 	m_FlameNum++; //フレーム数を増加
 
-	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
+	if (m_FlameNum == m_SetEnemyTime[m_stage_num][m_EnemyNum] && m_EnemyNum < ENEMY_NUM[m_stage_num])
 	{
-		EnemyIceRain temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
+		EnemyIceRain temp(m_pDrawObjectEnemy, m_SetEnemy[m_stage_num][m_EnemyNum]);
 		m_pEnemyIceRain[GetObjNum()] = temp;
 		EnemyManagement::IncreaseObjNum(1);
 
@@ -61,6 +63,12 @@ void EnemyIceRainManagement::Update(const D3DXVECTOR2& PlayerPos)
 
 			PlaySound(m_SE_13, 0);
 		}
+
+		//水星のステージであれば、一発しか出さない
+		if (m_stage_num == (int)STAGE::MERCURY) {
+			continue;
+		}
+
 		//弾を作る
 		if (m_pEnemyIceRain[i].GetFlagBulletMake1() && EnemyManagement::GetBulletNum() < BULLET_NUM)
 		{
@@ -166,7 +174,7 @@ void EnemyIceRainManagement::DeleteObj(int index_num)
 	//継承元の敵を消すを呼ぶ
 	EnemyManagement::DeleteObj(index_num);
 
-	if (m_delete_enemy == ENEMY_NUM) {
+	if (m_delete_enemy == ENEMY_NUM[m_stage_num]) {
 		m_tutorial_clear = true;
 	}
 

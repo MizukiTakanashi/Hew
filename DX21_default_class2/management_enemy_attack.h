@@ -38,33 +38,33 @@ private:
 
 	//ìGÇÃîzóÒ
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-										 D3DXVECTOR2(52.5f + (105 * 1 - 1), -EnemyAttack::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyAttack::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyAttack::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 10 - 1), -EnemyAttack::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 10 - 1), -EnemyAttack::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 3 - 1), -EnemyAttack::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyAttack::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyAttack::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 1 - 1), -EnemyAttack::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 2 - 1), -EnemyAttack::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyAttack::SIZE_Y / 2)
-										,D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyAttack::SIZE_Y / 2)
+		D3DXVECTOR2(52.5f + (105 *  1 - 1), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  2 - 1), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 10 - 1), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 10 - 1), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  3 - 1), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  2 - 1), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  1 - 1), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  2 - 1), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyAttack::SIZE_Y / 2)
 	};
 	//ìGÇèoÇ∑éûä‘
 	int m_SetEnemyTime[ENEMY_NUM] = {
-								60 * 10,
-								60 * 10 + 1,
-								60 * 15,
-								60 * 20,
-								60 * 30,
-								60 * 40 + 1,
-								60 * 60,
-								60 * 60 + 1,
-								60 * 70,
-								60 * 70 + 1,
-								60 * 70 + 2,
-								60 * 70 + 3
+		60 * 10,
+		60 * 10 + 1,
+		60 * 15,
+		60 * 20,
+		60 * 30,
+		60 * 40 + 1,
+		60 * 60,
+		60 * 60 + 1,
+		60 * 70,
+		60 * 70 + 1,
+		60 * 70 + 2,
+		60 * 70 + 3
 	};
 	//ÉÅÉìÉoä÷êî
 public:

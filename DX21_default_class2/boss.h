@@ -10,6 +10,8 @@
 
 #include "game_object.h"
 
+class InhStage;
+
 class Boss :public GameObject
 {
 	//定数
@@ -49,6 +51,7 @@ protected:
 	int m_appearance_time = 0;			//出現してからのカウント
 	float m_alpha = 1.0f;				//アルファ値
 	bool m_alpha_flag = false;			//アルファ値を変えていいか
+	InhStage* m_pStage; 
 
 	//メンバ関数
 public:
@@ -56,8 +59,8 @@ public:
 	Boss() {}
 
 	//引数付きコンストラクタ
-	Boss(DrawObject& pDrawObject)
-		: GameObject(pDrawObject, D3DXVECTOR2(POS_X, POS_Y), D3DXVECTOR2(SIZE_X, SIZE_Y)), m_hp(HP_MAX), m_init_posx(POS_X) {}
+	Boss(DrawObject& pDrawObject, InhStage* pStage)
+		: GameObject(pDrawObject, D3DXVECTOR2(POS_X, POS_Y), D3DXVECTOR2(SIZE_X, SIZE_Y)), m_hp(HP_MAX), m_init_posx(POS_X), m_pStage(pStage) {}
 
 	//デストラクタ
 	~Boss()override {}

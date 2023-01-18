@@ -1,0 +1,11 @@
+﻿  コード生成しています。
+  Previous IPDB not found, fall back to full compilation.
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\screen_out.cpp(45): warning C4172: ローカル変数またはテンポラリのアドレスを返します: result_pos
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy_barrier.h(108): warning C4172: ローカル変数またはテンポラリのアドレスを返します
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy_barrier.h(105): warning C4172: ローカル変数またはテンポラリのアドレスを返します
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy.h(125): warning C4172: ローカル変数またはテンポラリのアドレスを返します
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy.h(122): warning C4172: ローカル変数またはテンポラリのアドレスを返します
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\all_enemy_management.cpp(59): warning C4172: ローカル変数またはテンポラリのアドレスを返します: min_pos
+  All 845 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  コード生成が終了しました。
+  sample.vcxproj -> C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\Release\sample.exe

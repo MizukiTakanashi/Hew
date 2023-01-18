@@ -44,18 +44,32 @@ private:
 	Laser* m_pLaser = nullptr;
 	DrawObject m_pDrawObjectEnemy;
 	DrawObject m_pDrawObjectLaser;
-	DrawObject m_pDrawObjectLaser1;
 
 	int m_SE_06 = 0;	//ビーム音
 	int m_SE_07 = 0;	//ビーム発射音
+	int m_SE_14 = 0;	//熱風音
 
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][3] = {
+		//月
 		{
 			D3DXVECTOR2(52.5f + (105 * 4), -EnemyLaser::SIZE_Y / 2),
 			D3DXVECTOR2(52.5f + (105 * 6), -EnemyLaser::SIZE_Y / 2),
 			D3DXVECTOR2(52.5f + (105 * 5), -EnemyLaser::SIZE_Y / 2),
 		},
+		//火星
+		{
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(0.0f, 0.0f)
+		},
+		//水星
+		{
+			D3DXVECTOR2(52.5f + (105 * 4), -EnemyLaser::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 6), -EnemyLaser::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 5), -EnemyLaser::SIZE_Y / 2),
+		},
+		//土星
 		{
 			D3DXVECTOR2(52.5f + (105 * 4), -EnemyLaser::SIZE_Y / 2),
 			D3DXVECTOR2(52.5f + (105 * 6), -EnemyLaser::SIZE_Y / 2),
@@ -64,15 +78,27 @@ private:
 	};
 	//敵を出す時間
 	int m_SetEnemyTime[(int)STAGE::NUM][3] = {
+		//月
 		{
 			60 * 60,
 			60 * 60 + 1,
 			60 * 80,
 		},
+		//火星
+		{
+			0, 0, 0,
+		},
+		//水星
 		{
 			60 * 5,
 			60 * 10,
-			60 * 20,
+			60 * 15,
+		},
+		//土星
+		{
+			60 * 5,
+			60 * 10,
+			60 * 15,
 		}
 	};
 
@@ -80,7 +106,7 @@ private:
 //メンバー関数
 public:
 	//引数付きコンストラクタ
-	EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, DrawObject& pDrawObject3, int stage);
+	EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, int stage);
 
 	//デストラクタ
 	~EnemyLaserManagement()override{}

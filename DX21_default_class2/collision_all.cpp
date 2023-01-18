@@ -409,7 +409,7 @@ int CollisionAll::Collision(void)
 		// 敵の別オブジェクト分ループ
 
 		////バリア以外の敵であれば処理しない
-		//if (k != (int)TYPE::BARRIER) {
+		//if (k != (int)TYPE::BULLET_BARRIER) {
 		//	continue;
 		//}
 

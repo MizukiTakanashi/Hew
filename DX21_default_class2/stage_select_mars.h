@@ -9,7 +9,6 @@
 #define _STAGE_SELECT_MARS_H_
 
 #include "game_object.h"
-#include "draw_object.h"
 
 
 #endif // !_STAGE_SELECT_MARS_H_
