@@ -270,6 +270,9 @@
     <ClCompile Include="management_item.cpp">
       <Filter>30_Multi</Filter>
     </ClCompile>
+    <ClCompile Include="management_enemy_fire.cpp">
+      <Filter>29_Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -543,6 +546,9 @@
     </ClInclude>
     <ClInclude Include="management_item.h">
       <Filter>30_Multi</Filter>
+    </ClInclude>
+    <ClInclude Include="management_enemy_fire.h">
+      <Filter>29_Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

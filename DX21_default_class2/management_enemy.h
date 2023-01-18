@@ -29,6 +29,7 @@ public:
 		ATTACK,
 		FIREBALL,
 		PUBLIC,
+		FIRE,
 		NUM
 	};
 

@@ -11,6 +11,7 @@
 #include "inh_stage.h"
 #include "management_enemy_laser.h"
 #include "management_enemy_icerain.h"
+#include "management_enemy_fire.h"
 
 class StageMercury : public InhStage
 {
@@ -24,6 +25,7 @@ private:
 	//敵のレーザー
 	EnemyLaserManagement* m_pEnemyLaser = nullptr;
 	EnemyIceRainManagement* m_pEnemyIce = nullptr;
+	EnemyFireManagement* m_pEnemyFire = nullptr;
 
 
 //メンバ関数
