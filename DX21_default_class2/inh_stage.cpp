@@ -83,11 +83,6 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::EXPLOSION].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION], 0.0f, 0.125f, 1.0f, 7);
 	m_pExplosionManagement = new ExplosionManagement(m_pDrawObject[(int)DRAW_TYPE::EXPLOSION]);
 
-	//敵のアイテム
-	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ITEM].SetTextureName((char*)"data\\texture\\EnemyItem.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ITEM].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ITEM], 0.0f, 1.0f, 1.0f, 1);
-	m_pItemManagement = new ItemManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ITEM]);
-
 	//プレイヤーのHP
 	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER_HP].SetTextureName((char*)"data\\texture\\hp.png");
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_BAR].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER_HP], 0.0f, 0.5f, 1.0f, 2);
@@ -160,6 +155,24 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 
 	//腕の交換
 	m_pPlayerArmChange = new PlayerArmChange(m_pPlayerLeft, m_pPlayerRight, m_pPlayerCenter);
+
+
+
+	//敵のアイテム
+	m_pItemManagement = new ItemManagement();
+	//画像読み込み
+	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_MISSILE].SetTextureName((char*)"data\\texture\\item_missile.png");
+	m_pDrawObject[(int)DRAW_TYPE::ITEM_MISSILE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_MISSILE]);
+	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_LASER].SetTextureName((char*)"data\\texture\\item_laser.png");
+	m_pDrawObject[(int)DRAW_TYPE::ITEM_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_LASER]);
+	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_GATORING].SetTextureName((char*)"data\\texture\\item_gatoring.png");
+	m_pDrawObject[(int)DRAW_TYPE::ITEM_GATORING].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_GATORING]);
+	//画像セット
+	m_pItemManagement->SetDrawMissile(&m_pDrawObject[(int)DRAW_TYPE::ITEM_MISSILE]);
+	m_pItemManagement->SetDrawLaser(&m_pDrawObject[(int)DRAW_TYPE::ITEM_LASER]);
+	m_pItemManagement->SetDrawGatoring(&m_pDrawObject[(int)DRAW_TYPE::ITEM_GATORING]);
+
+
 }
 
 //==========================

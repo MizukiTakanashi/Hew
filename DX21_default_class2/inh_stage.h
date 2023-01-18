@@ -45,6 +45,10 @@ protected:
 		PLAYER_HP,//
 		EXPLOSION,//
 
+		ITEM_MISSILE,//
+		ITEM_GATORING,//
+		ITEM_LASER,//
+
 		ENEMY_ITEM,//
 		ENEMY_NORMAL,//
 		ENEMY_LASER,//
@@ -78,6 +82,10 @@ protected:
 		BOMB,//
 		FRAME,//
 		EXPLOSION,//
+
+		ITEM_MISSILE,//
+		ITEM_GATORING,//
+		ITEM_LASER,//
 
 		ENEMY_ITEM,//
 		ENEMY_NORMAL,//

@@ -38,16 +38,13 @@ private:
 	//cppで初期化
 	static const D3DXVECTOR2 SIZE;				//サイズ
 	static const float SHOT_SPEED;				//切り離し発射スピード
-	static const D3DXVECTOR2 ICON_SIZE;			//敵アイコンの表示場所
 
 //メンバ変数
 private: 
 	D3DXVECTOR2 m_from_player = D3DXVECTOR2(0.0f, 0.0f);	//プレイヤーからどれくらい離れているか
 
 	bool m_shot = false;					//自分自身が発射されてるか否か
-	TYPE m_type = TYPE::TYPE_NONE;			//ついた敵のタイプ
 
-	inhPlayerArm* m_pEnemyItem = nullptr;	//腕についている敵のクラス
 	//弾
 	DrawObject* m_bullet_draw = nullptr;				//弾の描画オブジェクト
 	DrawObject* m_laser_draw = nullptr;				//レーザーの描画オブジェクト
@@ -68,8 +65,15 @@ private:
 	bool m_bullet_shot = false;				//弾発射のボタンが押されたか(押している間)
 	bool m_bullet_shot_trigger = false;		//弾発射のボタンが押されたか(押した時)
 
+
+protected:
+	static const D3DXVECTOR2 ICON_SIZE;			//敵アイコンの表示場所
+
+	TYPE m_type = TYPE::TYPE_NONE;			//ついた敵のタイプ
+	inhPlayerArm* m_pEnemyItem = nullptr;	//腕についている敵のクラス
 	Number* m_pRemaining_Num = nullptr;	//残弾数表示オブジェクト
 	D3DXVECTOR2 m_Remaining_Icon_Pos = D3DXVECTOR2(0.0f, 0.0f);	//敵アイコン表示場所
+
 
 //メンバ関数
 public:
@@ -96,7 +100,7 @@ public:
 	void Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& enemy_pos);
 
 	//描画処理
-	void ArmDraw(void)const;
+	virtual void ArmDraw(void)const;
 
 	//腕のタイプを設定
 	void SetType(TYPE type, bool newtype = true);

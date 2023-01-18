@@ -30,6 +30,8 @@ public:
 
 	~PlayerLeft()override {}	//デストラクタ
 
+	void ArmDraw(void)const override;
+
 	//ボタン判定
 	void ButtonPress(void);
 };

@@ -31,3 +31,14 @@ void DrawObject::Draw(const D3DXVECTOR2& pos, const D3DXVECTOR2& size, float rot
 	Sprite::DrawSpriteAnimationRotation(pos.x, pos.y, size.x, size.y, rot, m_color,
 		m_paternNo, m_uv_w, m_uv_h, m_tex_num);
 }
+
+void DrawObject::DrawReverse(const D3DXVECTOR2& pos, const D3DXVECTOR2& size, float rot) const
+{
+	//テクスチャの設定
+	GetDeviceContext()->PSSetShaderResources(0, 1,
+		GetTexture(m_pTexUseful.GetTexIndexNum()));
+
+	Sprite::DrawSpriteAnimationRotationReverse(pos.x, pos.y, size.x, size.y, rot, m_color,
+		m_paternNo, m_uv_w, m_uv_h, m_tex_num);
+
+}
