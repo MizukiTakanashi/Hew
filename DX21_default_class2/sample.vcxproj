@@ -165,6 +165,7 @@
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="management_enemy_attack.cpp" />
     <ClCompile Include="management_enemy_barrier.cpp" />
+    <ClCompile Include="management_enemy_fire.cpp" />
     <ClCompile Include="management_enemy_fireball.cpp" />
     <ClCompile Include="management_enemy_gatoring.cpp" />
     <ClCompile Include="enemy_laser.cpp" />
@@ -273,6 +274,7 @@
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="management_enemy_attack.h" />
     <ClInclude Include="management_enemy_barrier.h" />
+    <ClInclude Include="management_enemy_fire.h" />
     <ClInclude Include="management_enemy_fireball.h" />
     <ClInclude Include="management_enemy_gatoring.h" />
     <ClInclude Include="enemy_laser.h" />

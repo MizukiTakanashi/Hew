@@ -36,7 +36,7 @@ EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject&
 	m_SE_07 = LoadSound((char*)"data\\SE\\2_07.wav");
 
 	//熱風音
-	m_SE_14 = LoadSound((char*)"data\\SE\\2_14.wav");
+	m_SE_14 = LoadSound((char*)"data\\SE\\1_14.wav");
 }
 
 //======================
@@ -111,8 +111,14 @@ void EnemyLaserManagement::Update()
 
 			m_pEnemyLaser[i].BulletMake();
 
-			PlaySound(m_SE_06, 0);
 			PlaySound(m_SE_07, 0);
+
+			if (m_stage_num == (int)STAGE::MERCURY) {
+				PlaySound(m_SE_14, 0);
+			}
+			else {
+				PlaySound(m_SE_06, 0);
+			}
 		}
 	}
 
