@@ -51,7 +51,7 @@ protected:
 	int m_appearance_time = 0;			//出現してからのカウント
 	float m_alpha = 1.0f;				//アルファ値
 	bool m_alpha_flag = false;			//アルファ値を変えていいか
-	InhStage* m_pStage; 
+	InhStage* m_pStage = nullptr; 
 
 	//メンバ関数
 public:
