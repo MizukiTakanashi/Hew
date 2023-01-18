@@ -82,7 +82,7 @@ void PlayerArm1::Update(const D3DXVECTOR2& arm_pos)
 			//‘_‚¤“G‚ª‚¢‚È‚©‚Á‚½‚ç‰½‚à‚µ‚È‚¢(‚Ü‚Á‚·‚®‚É”ò‚ñ‚Å‚¢‚­)
 			if (!none_enemy) {
 				//ˆê”Ô‹ß‚¢“G‚ÌŒã‚ğ’Ç‚¤‚æ‚¤‚É‚µ‚ÄA’e‚ğ¶¬
-				D3DXVECTOR2 movTemp = inhPlayerArm::GetSomethingPos() - arm_pos;
+				movTemp = inhPlayerArm::GetSomethingPos() - arm_pos;
 				D3DXVECTOR2 rotposTemp = arm_pos - inhPlayerArm::GetSomethingPos();
 				D3DXVec2Normalize(&movTemp, &movTemp);
 				movTemp *= BULLET_SPEED;
