@@ -48,15 +48,16 @@ private:
 
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][6] = {
-	{//チュートリアル
+	//チュートリアル
+	{
 		D3DXVECTOR2(52.5f + (105 * 1), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 9), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 5), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 1), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 9), -EnemyNormal::SIZE_Y / 2)
 	},
-
-	{//火星
+	//火星
+	{
 		D3DXVECTOR2(52.5f + (105 * 8), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 0), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 10), -EnemyNormal::SIZE_Y / 2),
@@ -64,18 +65,55 @@ private:
 		D3DXVECTOR2(52.5f + (105 * 2), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 6), -EnemyNormal::SIZE_Y / 2)
 	},
+	//水星
+	{
+		D3DXVECTOR2(52.5f + (105 * 8), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 10), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 8), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 2), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 6), -EnemyNormal::SIZE_Y / 2)
+	},
+	//土星
+	{
+		D3DXVECTOR2(52.5f + (105 * 8), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 10), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 8), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 2), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 6), -EnemyNormal::SIZE_Y / 2)
+	}
 	};
 
 	int m_SetEnemyTime[(int)STAGE::NUM][6] = {
-	{//チュートリアル
+	//チュートリアル
+	{
 		60 * 40,
 		60 * 40 + 1,
 		60 * 45,
 		60 * 80,
 		60 * 80 + 1
 	},
-
-	{//火星
+	//火星
+	{
+		60 * 5,
+		60 * 60,
+		60 * 60 + 1,
+		60 * 80,
+		60 * 145,
+		60 * 160
+	},
+	//水星
+	{
+		60 * 5,
+		60 * 60,
+		60 * 60 + 1,
+		60 * 80,
+		60 * 145,
+		60 * 160
+	},
+	//土星
+	{
 		60 * 5,
 		60 * 60,
 		60 * 60 + 1,
