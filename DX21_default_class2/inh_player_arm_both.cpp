@@ -175,7 +175,7 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 	//タイプをセット
 	m_type = type;
 
-	//タイプに沿って腕のアイテムをセット
+	//タイプに沿って腕の画像をセット
 	switch (m_type) {
 	case TYPE::TYPE_HOMING:
 		GameObject::SetDrawob(*m_enemy_homing_draw);
