@@ -42,6 +42,8 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_FIRE], 2);
 
 	//ミサイル
+	m_pEnemyMissile = new EnemyMissileManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NORMAL],
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 2);
 
 	//========================================================
 	// 全ての当たり判定
@@ -62,6 +64,7 @@ StageMercury::~StageMercury()
 	delete m_pEnemyLaser;
 	delete m_pEnemyIce;
 	delete m_pEnemyFire;
+	delete m_pEnemyMissile;
 }
 
 //==========================
@@ -103,6 +106,7 @@ void StageMercury::Update(void)
 	m_pEnemyLaser->Update();
 	m_pEnemyIce->Update();
 	m_pEnemyFire->Update();
+	m_pEnemyMissile->Update(m_pPlayer->GetPos());
 
 	//ボム
 	m_pBom->Update();
@@ -156,6 +160,7 @@ void StageMercury::Draw(void) const
 	m_pEnemyLaser->Draw();
 	m_pEnemyIce->Draw();
 	m_pEnemyFire->Draw();
+	m_pEnemyMissile->Draw();
 
 	//プレイヤーの弾の表示
 	m_pPlayer->DrawBullet();
