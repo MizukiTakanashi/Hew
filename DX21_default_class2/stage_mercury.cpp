@@ -31,17 +31,19 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 	m_pEnemyLaser = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER], 2);
 
-	//•X‚Ì“G
+	//•X
 	m_pEnemyIce = new EnemyIceRainManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_ICE], 2);
 
-	//‰Š‚Ì“G
+	//‰Š
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_FIRE].SetTextureName((char*)"data\\texture\\enemy_fire.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIRE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_FIRE]);
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_FIRE].SetTextureName((char*)"data\\texture\\bullet_fire.png");
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_FIRE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_FIRE]);
 	m_pEnemyFire = new EnemyFireManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIRE], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_FIRE], 2);
+
+	//ƒ~ƒTƒCƒ‹
 
 	//========================================================
 	// ‘S‚Ä‚Ì“–‚½‚è”»’è
