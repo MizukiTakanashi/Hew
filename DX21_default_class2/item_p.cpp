@@ -9,6 +9,6 @@
 //==========================
 // 定数初期化
 //==========================
-const float Item::SIZE_X = 50.0f;
+const float Item::SIZE_X = 30.0f;
 const float Item::SIZE_Y = 50.0f;
 const D3DXVECTOR2 Item::ITEM_MOOB = D3DXVECTOR2(0, 3);//敵アイテムの落下スピード

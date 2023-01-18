@@ -16,7 +16,7 @@ class EnemyManagement
 public:
 	enum class TYPE :int
 	{
-		//V‚µ‚¢“G‚Íã‚©‚ç’Ç‰Á
+		//V‚µ‚¢“G‚Í‰º‚©‚ç’Ç‰Á
 		NORMAL,
 		LASER,
 		GATORING,

@@ -16,16 +16,6 @@ ItemManagement::ItemManagement()
 	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//サウンドのロード
 }
 
-//=========================
-// 引数付きコンストラクタ
-//=========================
-ItemManagement::ItemManagement(DrawObject& DrawObject) :m_DrawObject(DrawObject)
-{
-	m_pItem = new Item[ENEMY_NUM];
-
-	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//サウンドのロード
-}
-
 //======================
 // 更新処理
 //======================
@@ -54,7 +44,43 @@ void ItemManagement::DeleteItem(int index_num)
 //==========================
 void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem)
 {
-    	Item Temp(m_DrawObject, pos, typeitem);
+    Item Temp(*m_DOMissile, pos, typeitem);
+
+	switch (typeitem)
+	{
+	case 0:
+		m_pItem[m_ItemNum].SetDrawob(*m_DOMissile);
+		break;
+	case 1:
+		m_pItem[m_ItemNum].SetDrawob(*m_DOLaser);
+		break;
+	case 2:
+		m_pItem[m_ItemNum].SetDrawob(*m_DOGatoring);
+		break;
+	case 3:
+		m_pItem[m_ItemNum].SetDrawob(*m_DOMissile);
+		break;
+	case 4:
+		m_pItem[m_ItemNum].SetDrawob(*m_DOLaser);
+		break;
+	case 5:
+		m_pItem[m_ItemNum].SetDrawob(*m_DOGatoring);
+		break;
+	case 6:
+		m_pItem[m_ItemNum].SetDrawob(*m_DOMissile);
+		break;
+	case 7:
+		m_pItem[m_ItemNum].SetDrawob(*m_DOLaser);
+		break;
+	case 8:
+		m_pItem[m_ItemNum].SetDrawob(*m_DOGatoring);
+		break;
+	default:
+		m_pItem[m_ItemNum].SetDrawob(*m_DOMissile);
+		break;
+	}
+
 	m_pItem[m_ItemNum] = Temp;
 	m_ItemNum++;
+
 }

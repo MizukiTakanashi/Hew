@@ -19,16 +19,15 @@ private:
 	//メンバ変数
 private:
 	int m_SE = 0;
-	DrawObject m_DrawObject;
+	DrawObject* m_DOMissile;
+	DrawObject* m_DOLaser;
+	DrawObject* m_DOGatoring;
 	Item* m_pItem = nullptr;
 	int m_ItemNum = 0;	//アイテムの数
 
 public:
 	//デフォルトコンストラクタ
 	ItemManagement();
-
-	//引数付きコンストラクタ
-	ItemManagement(DrawObject& DrawObject);
 
 	~ItemManagement() { delete[] m_pItem; }	//デストラクタ
 
@@ -59,6 +58,10 @@ public:
 
 	//アイテムのタイプを返す
 	int GetItemType(int i) const { return m_pItem[i].GerItemType(); }
+
+	void SetDrawMissile(DrawObject* pd) { m_DOMissile = pd; }
+	void SetDrawLaser(DrawObject* pd) { m_DOLaser = pd; }
+	void SetDrawGatoring(DrawObject* pd) { m_DOGatoring = pd; }
 
 
 };

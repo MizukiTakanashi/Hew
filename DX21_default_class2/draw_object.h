@@ -39,6 +39,7 @@ public:
 
 	//描画
 	void Draw(const D3DXVECTOR2& pos, const D3DXVECTOR2& size, float rot = 0.0f)const;
+	void DrawReverse(const D3DXVECTOR2& pos, const D3DXVECTOR2& size, float rot = 0.0f)const;
 
 	//色をセット
 	void SetDrawColor(const D3DXCOLOR& col) { m_color = col; }

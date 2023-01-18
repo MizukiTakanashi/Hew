@@ -12,7 +12,7 @@
 //==========================
 // ’è”‚Ì‰Šú‰»
 //==========================
-const D3DXVECTOR2 PlayerRight::FROM_PLAYER_POS = D3DXVECTOR2(30.0f, 0.0f);
+const D3DXVECTOR2 PlayerRight::FROM_PLAYER_POS = D3DXVECTOR2(40.0f, 0.0f);
 
 //==========================
 // ƒ{ƒ^ƒ“”»’è
