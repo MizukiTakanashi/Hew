@@ -49,7 +49,7 @@ public:
 	//デストラクタ
 	~PlayerArmBarrier()override { 
 		if (m_pBullet != nullptr) {
-			delete m_pBullet;
+			delete[] m_pBullet;
 		}
 	}
 
