@@ -13,8 +13,6 @@
 //==========================
 // グローバル変数
 //==========================
-int SaturnStopFlame = 0; //ヒットストップ用
-bool isDownSaturn = false; //ボスが死んだか
 
 
 //==========================
@@ -76,14 +74,14 @@ StageSaturn::~StageSaturn()
 void StageSaturn::Update(void)
 {
 	//ヒットストップ
-	if (SaturnStopFlame > 0)
+	if (m_StopFlame > 0)
 	{
-		SaturnStopFlame--;
+		m_StopFlame--;
 		return;
 	}
 
 	//ボスが死んだら
-	if (isDownSaturn)
+	if (m_isBossDown)
 		Fade(SCENE::SCENE_RESULT);
 
 	//背景
@@ -183,17 +181,4 @@ void StageSaturn::Draw(void) const
 	m_pComboNum->SetNumber(m_pScore->GetComboNum());
 	m_pComboNum->DrawNumber();
 	m_pMultiply->Draw();
-}
-
-//==========================
-// ヒットストップ
-//==========================
-void SaturnHitStop(int flame)
-{
-	SaturnStopFlame = flame;
-}
-
-void SaturnBossDown()
-{
-	isDownSaturn = true;
 }

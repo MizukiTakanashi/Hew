@@ -45,8 +45,4 @@ public:
 	int GetScore(void)const { return m_pScore->GetNumber(); }
 };
 
-void SaturnHitStop(int flame);
-void SaturnBossDown();
-
-
 #endif // !_STAGE_SATURN_H_

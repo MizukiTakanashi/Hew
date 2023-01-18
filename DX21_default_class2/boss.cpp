@@ -4,7 +4,7 @@
 // ì¬ÒF‰¶“c—ms
 //=======================================
 #include "boss.h"
-#include "stage_mars.h"
+#include "inh_stage.h"
 
 //==========================
 // ’è”‰Šú‰»
@@ -76,8 +76,8 @@ void Boss::ReduceHP(int amount)
 		m_invincible_flame = INVINCIBLE_FLAME;
 
 		if (m_hp <= 0)
-			MarsBossDown();
-			MarsHitStop(180);
+			m_pStage->BossDown();
+			m_pStage->HitStop(180);
 	}
 	else
 	{

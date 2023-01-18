@@ -33,6 +33,3 @@ public:
 	//ƒXƒRƒA‚ð•Ô‚·
 	int GetScore(void)const { return m_pScore->GetNumber(); }
 };
-
-void VenusHitStop(int flame);
-void VenusBossDown();

@@ -44,9 +44,6 @@ public:
 	int GetScore(void)const { return m_pScore->GetNumber(); }
 };
 
-//ヒットストップ
-void HitStop(int flame);
-
 //チュートリアルテキスト関連
 //テキスト開始
 void StartTextG(void);
