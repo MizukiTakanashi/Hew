@@ -49,7 +49,4 @@ public:
 	int GetScore(void)const { return m_pScore->GetNumber(); }
 };
 
-void MarsHitStop(int flame);
-void MarsBossDown();
-
 #endif // !_STAGE_MARS_H_

@@ -42,8 +42,4 @@ public:
 	int GetScore(void)const { return m_pScore->GetNumber(); }
 };
 
-void MercuryHitStop(int flame);
-void MercuryBossDown();
-
-
 #endif // !_STAGE_MERCURY_H_

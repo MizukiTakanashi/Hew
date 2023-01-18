@@ -14,7 +14,6 @@
 //==========================
 // グローバル変数
 //==========================
-int StopFlame = 0; //ヒットストップ用
 bool isText = false; //チュートリアルテキスト用
 
 
@@ -80,9 +79,9 @@ Game::~Game()
 void Game::Update(void)
 {
 	//ヒットストップ
-	if (StopFlame > 0)
+	if (m_StopFlame > 0)
 	{
-		StopFlame--;
+		m_StopFlame--;
 		return;
 	}
 
@@ -208,11 +207,6 @@ void Game::Draw(void)const
 	}
 }
 
-
-void HitStop(int flame)
-{
-	StopFlame = flame;
-}
 
 void StartTextG(void)
 {

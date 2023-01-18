@@ -13,8 +13,6 @@
 //==========================
 // グローバル変数
 //==========================
-int MercuryStopFlame = 0;	//ヒットストップ用
-bool isDownMercury = false; //ボスが死んだか
 
 //==========================
 // 引数付きコンストラクタ
@@ -60,14 +58,14 @@ StageMercury::~StageMercury()
 void StageMercury::Update(void)
 {
 	//ヒットストップ
-	if (MercuryStopFlame > 0)
+	if (m_StopFlame > 0)
 	{
-		MercuryStopFlame--;
+		m_StopFlame--;
 		return;
 	}
 
 	//ボスが死んだら
-	if (isDownMercury)
+	if (m_isBossDown)
 		Fade(SCENE::SCENE_RESULT);
 
 	//背景
@@ -162,17 +160,4 @@ void StageMercury::Draw(void) const
 	m_pComboNum->SetNumber(m_pScore->GetComboNum());
 	m_pComboNum->DrawNumber();
 	m_pMultiply->Draw();
-}
-
-//==========================
-// ヒットストップ
-//==========================
-void MercuryHitStop(int flame)
-{
-	MercuryStopFlame = flame;
-}
-
-void MercuryBossDown()
-{
-	isDownMercury = true;
 }

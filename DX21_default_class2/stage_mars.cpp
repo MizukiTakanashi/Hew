@@ -13,8 +13,6 @@
 //==========================
 // グローバル変数
 //==========================
-int MarsStopFlame = 0;		//ヒットストップ用
-bool isDownMars = false;	//ボスが死んだか
 
 //==========================
 // 引数付きコンストラクタ
@@ -90,14 +88,14 @@ StageMars::~StageMars()
 void StageMars::Update(void)
 {
 	//ヒットストップ
-	if (MarsStopFlame > 0)
+	if (m_StopFlame > 0)
 	{
-		MarsStopFlame--;
+		m_StopFlame--;
 		return;
 	}
 
 	//ボスが死んだら
-	if (isDownMars)
+	if (m_isBossDown)
 		Fade(SCENE::SCENE_RESULT);
 
 	//背景
@@ -153,7 +151,7 @@ void StageMars::Update(void)
 	}
 	else if(m_pEnemyBarrierManagement->IsClear() && m_pEnemyStopManagement->IsClear())
 	{
-		m_pBoss = new Boss(m_pDrawObject[(int)DRAW_TYPE::ENEMY_STOP]);
+		m_pBoss = new Boss(m_pDrawObject[(int)DRAW_TYPE::ENEMY_STOP], this);
 	}
 
 
@@ -216,17 +214,4 @@ void StageMars::Draw(void) const
 		m_pBoss->Draw();
 
 
-}
-
-//==========================
-// ヒットストップ
-//==========================
-void MarsHitStop(int flame)
-{
-	MarsStopFlame = flame;
-}
-
-void MarsBossDown()
-{
-	isDownMars = true;
 }

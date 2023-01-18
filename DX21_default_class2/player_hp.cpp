@@ -6,6 +6,8 @@
 #include "player_hp.h"
 #include "game.h"
 #include "sound.h"
+#include "inh_stage.h"
+
 
 //==========================
 // 定数初期化
@@ -19,9 +21,9 @@ const float PlayerHP::BET_X = 80.0f;
 //==========================
 // 引数付きコンストラクタ
 //==========================
-PlayerHP::PlayerHP(DrawObject& DrawObject1, ExplosionManagement* pEM, Player* pPlayer)
+PlayerHP::PlayerHP(DrawObject& DrawObject1, ExplosionManagement* pEM, Player* pPlayer, InhStage* pStage)
 	:UI(DrawObject1, D3DXVECTOR2(POS_X, POS_Y), SIZE), 
-	m_pExplosionManagement(pEM), m_pPlayer(pPlayer)
+	m_pExplosionManagement(pEM), m_pPlayer(pPlayer), m_pStage(pStage)
 {
 	//プレイヤーダメージ音
 	m_SE_04 = LoadSound((char*)"data\\SE\\1_04_2.wav");
@@ -43,7 +45,7 @@ void PlayerHP::ReduceHP(float reduce_num)
 		m_hp -= reduce_num;
 
 		//ヒットストップ
-		HitStop(30);
+		m_pStage->HitStop(30);
 		SetInvincibleFrame();
 
 		PlaySound(m_SE_04, 0);
