@@ -60,7 +60,6 @@ void inhPlayerArmBoth::Update(const D3DXVECTOR2& player_pos, const D3DXVECTOR2& 
 
 			//発射のフラグをオフ
 			m_shot = false;
-			m_DM_SHOOT = false;
 		}
 
 		//もしも前のタイプの弾が残っていたら
