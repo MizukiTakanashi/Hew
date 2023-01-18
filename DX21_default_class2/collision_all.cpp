@@ -687,13 +687,13 @@ int CollisionAll::Collision(void)
 		if (m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_NONE &&
 			m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_OLD &&
 			m_pPlayerLeft->GetType() != inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
-			m_pPlayerLeft->SetType(inhPlayerArmBoth::TYPE::TYPE_SHOOT, false);
+			m_pPlayerLeft->SetType(inhPlayerArmBoth::TYPE::TYPE_OLD, false);
 			attacked--;
 		}
 		else if (m_pPlayerRight->GetType() != inhPlayerArmBoth::TYPE::TYPE_NONE &&
 			m_pPlayerRight->GetType() != inhPlayerArmBoth::TYPE::TYPE_OLD &&
 			m_pPlayerRight->GetType() != inhPlayerArmBoth::TYPE::TYPE_SHOOT) {
-			m_pPlayerRight->SetType(inhPlayerArmBoth::TYPE::TYPE_SHOOT, false);
+			m_pPlayerRight->SetType(inhPlayerArmBoth::TYPE::TYPE_OLD, false);
 			attacked--;
 		}
 	}
