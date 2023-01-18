@@ -30,6 +30,7 @@ public:
 		TYPE_NUM,
 		TYPE_NONE,	//	何もついていない
 		TYPE_SHOOT,	// 前のタイプの弾の処理 & 自身発射中
+		TYPE_DM_SHOOT,	//ダメージをくらった時の
 		TYPE_OLD,	// 前のタイプの弾の処理中
 	};
 
@@ -67,6 +68,7 @@ private:
 	bool m_separation_button = false;		//切り離しボタンが押されたか
 	bool m_bullet_shot = false;				//弾発射のボタンが押されたか(押している間)
 	bool m_bullet_shot_trigger = false;		//弾発射のボタンが押されたか(押した時)
+	bool m_DM_SHOOT = false;
 
 	Number* m_pRemaining_Num = nullptr;	//残弾数表示オブジェクト
 	D3DXVECTOR2 m_Remaining_Icon_Pos = D3DXVECTOR2(0.0f, 0.0f);	//敵アイコン表示場所
@@ -120,6 +122,8 @@ public:
 	//弾発射のボタンが押されたかフラグ(押した時)をセット
 	void SetBulletShotButtonTrigger(bool flag) { m_bullet_shot_trigger = flag; }
 
+	//腕がダメージを受けたときのフラグ
+	void SetDMShoot(bool flag) { m_DM_SHOOT = flag; }
 	//残弾数回復
 	void HeelBullet(void) { if (m_pEnemyItem)m_pEnemyItem->HeelBullet(); }
 
