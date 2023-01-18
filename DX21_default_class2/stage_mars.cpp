@@ -134,7 +134,7 @@ void StageMars::Update(void)
 	//プレイヤーの腕
 
 	//ホーミング弾用
-	D3DXVECTOR2 temp_pos = m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerLeft->GetPos());
+	D3DXVECTOR2 temp_pos = m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayer->GetPos());
 
 	//腕のアップデート
 	m_pPlayerLeft->ButtonPress();

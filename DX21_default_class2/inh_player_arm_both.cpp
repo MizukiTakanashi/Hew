@@ -197,42 +197,42 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 		switch (m_type) {
 
 		case TYPE::TYPE_HOMING:
-			m_pEnemyItem = new PlayerArm1(*m_bullet_draw, false, (int)m_type - 1);
+			m_pEnemyItem = new PlayerArm1(*m_bullet_draw, false, (int)m_type);
 			GameObject::SetDrawob(*m_enemy_homing_draw);
 			break;
 
 		case TYPE::TYPE_LASER:
-			m_pEnemyItem = new PlayerArm2(*m_laser_draw, false, (int)m_type - 1);
+			m_pEnemyItem = new PlayerArm2(*m_laser_draw, false, (int)m_type);
 			GameObject::SetDrawob(*m_enemy_laser_draw);
 
 			break;
 
 		case TYPE::TYPE_GATORING:
-			m_pEnemyItem = new PlayerArm3(*m_bullet_draw, false, (int)m_type - 1);
+			m_pEnemyItem = new PlayerArm3(*m_bullet_draw, false, (int)m_type);
 			GameObject::SetDrawob(*m_enemy_gatoring_draw);
 
 			break;
 
 		case TYPE::TYPE_BARRIAR:
-			m_pEnemyItem = new PlayerArmBarrier(*m_barrier_draw, false, (int)m_type - 1);
+			m_pEnemyItem = new PlayerArmBarrier(*m_barrier_draw, false, (int)m_type);
 			GameObject::SetDrawob(*m_enemy_barrier_draw);
 
 			break;
 
 		case TYPE::TYPE_STOP:
-			m_pEnemyItem = new PlayerArmStop(*m_bullet_stop_draw, false, (int)m_type - 1);
+			m_pEnemyItem = new PlayerArmStop(*m_bullet_stop_draw, false, (int)m_type);
 			GameObject::SetDrawob(*m_enemy_stop_draw);
 
 			break;
 
 		case TYPE::TYPE_ICERAIN:
-			m_pEnemyItem = new PlayerArmIceRain(*m_enemy_icerain_draw, false, (int)m_type - 1);
+			m_pEnemyItem = new PlayerArmIceRain(*m_enemy_icerain_draw, false, (int)m_type);
 			GameObject::SetDrawob(*m_enemy_icerain_draw);
 
 			break;
 
 		case TYPE::TYPE7:
-			m_pEnemyItem = new PlayerArmGrenade(*m_bullet_draw, m_explosion_draw, false, (int)m_type - 1);
+			m_pEnemyItem = new PlayerArmGrenade(*m_bullet_draw, m_explosion_draw, false, (int)0);
 			GameObject::SetDrawob(*m_enemy_homing_draw);
 
 
