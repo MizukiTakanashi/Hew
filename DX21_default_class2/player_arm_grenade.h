@@ -29,7 +29,7 @@ private:
 	static const int BULLET_SHOOT_MAX = 10;	//弾の同時最大発射数
 	static const int BULLET_BREAK_TIME = 1000;	//ホーミング弾が壊れる時間
 	static const int BULLET_INTERVAL = 20;	//弾の発射間隔
-	static const int EXPLOSION_WAIT_TIME = 200;	//爆発待ち時間
+	static const int EXPLOSION_WAIT_TIME = 0;	//爆発待ち時間
 	static const int EXPLOSION_TIME = 100;		//爆発時間
 
 	//cppで初期化

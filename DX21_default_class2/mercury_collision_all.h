@@ -1,12 +1,12 @@
 #pragma once
 //============================================================
-// 全てのゲームオブジェクトの当たり判定関係(ヘッダファイル)
-// 作成日：2022/11/10
+// 水星の全てのゲームオブジェクトの当たり判定関係(ヘッダファイル)
+// 作成日：2023/01/19
 // 作成者：高梨水希
 //============================================================
 
-#ifndef _COLLISION_ALL_H_
-#define _COLLISION_ALL_H_
+#ifndef _MERCURY_COLLISION_ALL_H_
+#define _MERCURY_COLLISION_ALL_H_
 
 #include "player.h"
 #include "management_enemy.h"
@@ -16,23 +16,9 @@
 #include "score.h"
 #include "Bom.h"
 
-//各ステージ
-#include "management_meteo.h"
-#include "management_enemy_grenade.h"
-
-class CollisionAll
+class MercuryCollisionAll
 {
 //定数
-public:
-	enum class STAGE :int
-	{
-		MOON,
-		MARS,
-		MERCURY,
-		SATURN,
-		NUM
-	};
-
 private:
 	//ここで初期化
 	static const int ENEMY_NUM = 10;		//全敵の種類数の制限数
@@ -41,8 +27,6 @@ private:
 
 //メンバ変数
 private:
-	STAGE m_stage = STAGE::MOON;					//現在のステージ
-
 	Player* m_pPlayer = nullptr;					//プレイヤー
 
 	int m_enemy_num = 0;							//敵の種類の数
@@ -50,7 +34,7 @@ private:
 
 	inhPlayerArmBoth* m_pPlayerLeft = nullptr;		//プレイヤーの左腕
 	inhPlayerArmBoth* m_pPlayerRight = nullptr;		//プレイヤーの右腕
-	
+
 	ExplosionManagement* m_pExplosion = nullptr;	//爆発
 	ItemManagement* m_pItem = nullptr;				//アイテム
 	Score* m_pScore = nullptr;						//倒した敵の数表示
@@ -58,58 +42,36 @@ private:
 
 	bool m_player_enemy_col = false;				//プレイヤーと敵が当たったか判定
 
+	Bom* m_pBom = nullptr;							//ボム
+
 	int m_SE = 0;									//爆発の音
 	int m_SE_interval_count = 0;					//爆発の音の間隔カウント
 
-	Bom* m_pBom = nullptr;							//ボム
-
-	//==========================
-	// 各ステージ
-	//月
-	Management_Meteo* m_pMeteo = nullptr;			//隕石
-
-	//火星
-	EnemyGrenadeManagement* m_pGrenade = nullptr;	//グレネード敵
-	int m_SE_08 = 0;								//バリアが弾を跳ね返す音
-	int m_SE_09 = 0;								//バリアが壊れる音
-	int m_SE_10 = 0;								//冷気を浴びた音
 
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
-	CollisionAll();
+	MercuryCollisionAll();
 
 	//引数付きコンストラクタ
-	CollisionAll(STAGE stage, Player* pPlayer, inhPlayerArmBoth* pL, inhPlayerArmBoth* pR, 
-		ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber, 
+	MercuryCollisionAll(Player* pPlayer, inhPlayerArmBoth* pL, inhPlayerArmBoth* pR,
+		ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber,
 		Bom* pBom);
 
 	//デストラクタ
-	~CollisionAll(){}
+	~MercuryCollisionAll() {}
 
 	//敵のクラスのポインタを加える
-	void AddEnemyPointer(EnemyManagement* pEnemy) { 
-		m_pEnemy[m_enemy_num] = pEnemy; 
+	void AddEnemyPointer(EnemyManagement* pEnemy) {
+		m_pEnemy[m_enemy_num] = pEnemy;
 		m_enemy_num++;
 	}
-	 
+
 	//当たり判定(プレイヤーのHPが削れる当たり判定)
 	int Collision(void);
 
 	//プレイヤーのHPが回復する当たり判定
 	void HeelCollision(void);
-
-
-	//==========================
-	// 各ステージ
-	
-	//月
-	//隕石をセット
-	void SetMeteo(Management_Meteo* pMeteo) { m_pMeteo = pMeteo; }
-
-	//火星
-	//グレネード敵をセット
-	void SetGrenade(EnemyGrenadeManagement* pGrenade) { m_pGrenade = pGrenade; }
 };
 
-#endif // !_COLLISION_ALL_H_
+#endif // !_MERCURY_COLLISION_ALL_H_

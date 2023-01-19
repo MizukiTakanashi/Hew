@@ -40,8 +40,6 @@ StageMars::StageMars(Score* pNumber):InhStage(pNumber)
 	m_pEnemyGrenadeManagement = new EnemyGrenadeManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GRENADE],
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], m_pDrawObject[(int)DRAW_TYPE::ENEMY_GRENADE_EXPLOSION], 1);
 
-
-
 	//敵の管理
 	m_pAllEnemyManagement = new AllEnemyManagement;
 	m_pAllEnemyManagement->AddPointer(m_pEnemyBarrierManagement);
@@ -50,17 +48,24 @@ StageMars::StageMars(Score* pNumber):InhStage(pNumber)
 	m_pAllEnemyManagement->AddPointer(m_pEnemyGrenadeManagement);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyMissileManagement);
 
+	//腕
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_GRENADE_EXPLOSION].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION], 0.0f, 0.125f, 1.0f, 7);
+	m_pPlayerLeft->DrawSetExplosion(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_GRENADE_EXPLOSION]);
+	m_pPlayerRight->DrawSetExplosion(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_GRENADE_EXPLOSION]);
+	m_pPlayerCenter->DrawSetExplosion(m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_GRENADE_EXPLOSION]);
+
 	//========================================================
 	// 全ての当たり判定
-	m_pColAll = new MarsCollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
-		m_pItemManagement, m_pScore, m_pBom, m_pEnemyGrenadeManagement);
+	m_pColAll1 = new CollisionAll(CollisionAll::STAGE::MARS, m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
+		m_pItemManagement, m_pScore, m_pBom);
+	m_pColAll1->SetGrenade(m_pEnemyGrenadeManagement);
 
 	//敵のポインタをセット（順番変えるのNG）
-	m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
-	m_pColAll->AddEnemyPointer(m_pEnemyStopManagement);
-	m_pColAll->AddEnemyPointer(m_pEnemyIceRainManagement);
-	m_pColAll->AddEnemyPointer(m_pEnemyGrenadeManagement);
-	m_pColAll->AddEnemyPointer(m_pEnemyMissileManagement);
+	m_pColAll1->AddEnemyPointer(m_pEnemyBarrierManagement);
+	m_pColAll1->AddEnemyPointer(m_pEnemyStopManagement);
+	m_pColAll1->AddEnemyPointer(m_pEnemyIceRainManagement);
+	m_pColAll1->AddEnemyPointer(m_pEnemyGrenadeManagement);
+	m_pColAll1->AddEnemyPointer(m_pEnemyMissileManagement);
 }
 
 //==========================
@@ -70,7 +75,7 @@ StageMars::~StageMars()
 {
 	//描画がない物から消していく
 	delete m_pAllEnemyManagement;
-	delete m_pColAll;
+	delete m_pColAll1;
 
 	//ゲームオブジェクトを消す
 	if(m_pBoss)
@@ -156,10 +161,10 @@ void StageMars::Update(void)
 
 
 	//敵とプレイヤーの当たり判定
-	attack_num += m_pColAll->Collision();
+	attack_num += m_pColAll1->Collision();
 
 	//回復
-	m_pColAll->HeelCollision();
+	m_pColAll1->HeelCollision();
 
 	//プレイヤーのHPを攻撃数によって減らす
 	if (attack_num != 0) {
