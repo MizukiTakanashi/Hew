@@ -9,8 +9,8 @@
 //==========================
 // 定数初期化
 //==========================
-const D3DXVECTOR2 InhStage::NUMBER_POS = D3DXVECTOR2(1230.0f, 30.0f);
-const D3DXVECTOR2 InhStage::NUMBER_SIZE = D3DXVECTOR2(30.0f, 30.0f);
+const D3DXVECTOR2 InhStage::NUMBER_POS = D3DXVECTOR2(1260.0f, 15.0f);
+const D3DXVECTOR2 InhStage::NUMBER_SIZE = D3DXVECTOR2(25.0f, 25.0f);
 
 //==========================
 // グローバル変数
@@ -58,8 +58,13 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	// 残弾表示
 	m_pDrawObject[(int)DRAW_TYPE::NUMBER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::NUMBER], 0.0f, 0.0909f, 1.0f, 11);
 	// コンボ継続数表示
-	m_pComboNum = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(SCREEN_WIDTH - 30, 80), D3DXVECTOR2(30.0f, 30.0f), 2);
+	m_pComboNum = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(SCREEN_WIDTH - 30, 50), D3DXVECTOR2(25.0f, 25.0f), 2);
 
+	//=======================
+	// コンボ数の横の×
+	m_pTexUseful[(int)TEXTURE_TYPE::MULTIPLY].SetTextureName((char*)"data\\texture\\multiply.png");
+	m_pDrawObject[(int)DRAW_TYPE::MULTIPLY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::MULTIPLY], 0.0f, 1.0f, 1.0f, 1);
+	m_pMultiply = new UI(m_pDrawObject[(int)DRAW_TYPE::MULTIPLY], D3DXVECTOR2(SCREEN_WIDTH - 110, 50), D3DXVECTOR2(25.0f, 25.0f), D3DXCOLOR());
 
 	//プレイヤー
 	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER].SetTextureName((char*)"data\\texture\\player_anime.png");
@@ -71,12 +76,6 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::FRAME].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::FRAME]);
 	m_pFrame = new UI(m_pDrawObject[(int)DRAW_TYPE::FRAME], D3DXVECTOR2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2),
 		D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT));
-
-	//=======================
-	// コンボ数の横の×
-	m_pTexUseful[(int)TEXTURE_TYPE::MULTIPLY].SetTextureName((char*)"data\\texture\\multiply.png");
-	m_pDrawObject[(int)DRAW_TYPE::MULTIPLY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::MULTIPLY], 0.0f, 1.0f, 1.0f, 1);
-	m_pMultiply = new UI(m_pDrawObject[(int)DRAW_TYPE::MULTIPLY], D3DXVECTOR2(SCREEN_WIDTH - 110, 80), D3DXVECTOR2(30.0f, 30.0f), D3DXCOLOR());
 
 	//爆発
 	m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION].SetTextureName((char*)"data\\texture\\explosion000.png");
@@ -108,9 +107,9 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 
 	//=======================
 	// プレイヤーの腕
-	m_pPlayerCenter = new PlayerCenter(m_pPlayer->GetPos(), m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(120.0f, 450.0f), D3DXVECTOR2(240.0f, 450.0f));
-	m_pPlayerLeft = new PlayerLeft(m_pPlayer->GetPos(), m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(120.0f, 570.0f), D3DXVECTOR2(240.0f, 560.0f));
-	m_pPlayerRight = new PlayerRight(m_pPlayer->GetPos(), m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(120.0f, 670.0f), D3DXVECTOR2(240.0f, 670.0f));
+	m_pPlayerCenter = new PlayerCenter(m_pPlayer->GetPos(), m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(120.0f, 590.0f), D3DXVECTOR2(230.0f, 590.0f));
+	m_pPlayerLeft = new PlayerLeft(m_pPlayer->GetPos(), m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(120.0f, 640.0f), D3DXVECTOR2(230.0f, 640.0f));
+	m_pPlayerRight = new PlayerRight(m_pPlayer->GetPos(), m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(120.0f, 690.0f), D3DXVECTOR2(230.0f, 690.0f));
 
 	//合体できる敵の画像読み込み(敵の弾)
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1, D3DXCOLOR(0.2f, 1.0f, 0.2f, 1.0f));

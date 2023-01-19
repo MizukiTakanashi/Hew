@@ -1,20 +1,17 @@
 //=======================================
-// 高速発射の敵の管理関係(ヘッダファイル)
-// 作成日：2022/09/13
-// 作成者：高梨水希
+// 酸性雨の敵の管理関係(ヘッダファイル)
+// 作成日：
+// 作成者：恩田洋行
 //=======================================
 #pragma once
 
-#ifndef _ENEMY_GATORING_MANAGEMENT_H_
-#define _ENEMY_GATORING_MANAGEMENT_H_
-
 #include "main.h"
 #include "management_enemy.h"
-#include "enemy_gatoring.h"
+#include "enemy_stop.h"
 #include "bullet.h"
 #include "draw_object.h"
 
-class EnemyGatoringManagement:public EnemyManagement
+class EnemyAcidManagement:public EnemyManagement
 {
 //定数
 private:
@@ -41,45 +38,45 @@ public:
 
 //メンバ変数
 private:
-	EnemyGatoring* m_pEnemyGatoring = nullptr;	//敵のクラス
+	EnemyStop* m_pEnemyGatoring = nullptr;	//敵のクラス
 	Bullet* m_pBullet = nullptr;				//弾のクラス
 	DrawObject m_pDrawObjectEnemy;				//敵の描画オブジェクト
 	DrawObject m_pDrawObjectBullet;				//弾の描画オブジェクト
 
 	//敵の位置配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-		D3DXVECTOR2(52.5f + (105 *  5), -EnemyGatoring::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  2), -EnemyGatoring::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  8), -EnemyGatoring::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  3), -EnemyGatoring::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  7), -EnemyGatoring::SIZE_Y / 2)
+		D3DXVECTOR2(52.5f + (105 *  5), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  2), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  8), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  3), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  7), -EnemyStop::SIZE_Y / 2)
 	};
 
 	//敵を出す時間
 	int m_SetEnemyTime[ENEMY_NUM] = {
+		60 * 5,
+		60 * 10,
 		60 * 15,
 		60 * 20,
-		60 * 20 + 1,
-		60 * 80,
-		60 * 80 + 1
+		60 * 25
 	};
 
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
-	EnemyGatoringManagement() {
-		m_pEnemyGatoring = new EnemyGatoring[ENEMY_NUM];
+	EnemyAcidManagement() {
+		m_pEnemyGatoring = new EnemyStop[ENEMY_NUM];
 		m_pBullet = new Bullet[ENEMY_NUM];
 	}
 
 	//引数付きコンストラクタ
-	EnemyGatoringManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2);
+	EnemyAcidManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2);
 
 	//デストラクタ
-	~EnemyGatoringManagement()override{}
+	~EnemyAcidManagement()override{}
 
 	//更新処理
-	void Update(const D3DXVECTOR2& PlayerPos);
+	void Update();
 
 	//描画処理
 	void Draw(void)const;
@@ -109,5 +106,3 @@ public:
 	void StopEnemy(int index_num, int time) override { m_pEnemyGatoring[index_num].StopEnemy(time); }
 
 };
-
-#endif // !_ENEMY_Gatoring_MANAGEMENT_H_
