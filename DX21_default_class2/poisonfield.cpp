@@ -4,8 +4,8 @@
 // ’è”‚Ì‰Šú‰»
 //==========================
 //public
-const float PoisonField::SIZE_X = 20.0f;
-const float PoisonField::SIZE_Y = 240.0f;
+const float PoisonField::SIZE_X = 100.0f;
+const float PoisonField::SIZE_Y = 100.0f;
 
 //private
 const float PoisonField::SPEED_X = 1.5f;
