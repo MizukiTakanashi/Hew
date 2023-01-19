@@ -15,12 +15,7 @@
 #include "management_enemy_missile.h"
 
 class StageMercury : public InhStage
-{
-//定数
-private:
-
-
-	
+{	
 //メンバ変数
 private:
 	//敵のレーザー
@@ -34,7 +29,7 @@ private:
 public:
 	StageMercury(Score* pNumber);
 
-	~StageMercury();	//デストラクタ
+	~StageMercury()override;	//デストラクタ
 
 	//更新
 	void Update(void);

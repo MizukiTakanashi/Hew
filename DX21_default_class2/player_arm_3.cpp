@@ -1,8 +1,8 @@
-//=======================================
-// プレイヤーの腕1関係(cppファイル)
+//===================================================
+// プレイヤーの腕、ガトリング・炎関係(cppファイル)
 // 作成日：2022/10/30
 // 作成者：高梨水希
-//=======================================
+//===================================================
 #include "player_arm_3.h"
 
 //==========================
@@ -11,6 +11,7 @@
 const float PlayerArm3::BULLET_SIZE_X = 20.0f;
 const float PlayerArm3::BULLET_SIZE_Y = 20.0f;
 const float PlayerArm3::BULLET_SPEED = 20.0f;
+const float PlayerArm3::FIRE_SPEED = 10.0f;
 
 //==========================
 // 更新処理
@@ -52,9 +53,16 @@ void PlayerArm3::Update(const D3DXVECTOR2& arm_pos)
 				return;
 			}
 
+			float temp_speed = 0.0f;
+			if (m_type == TYPE::GATORING) {
+				temp_speed = BULLET_SPEED;
+			}
+			else if (m_type == TYPE::FIRE) {
+				temp_speed = FIRE_SPEED;
+			}
 			//弾を作る
 			Bullet temp(m_bulletdraw, arm_pos,
-				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0.0f, -BULLET_SPEED), 0.0f);
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0.0f, -temp_speed), 0.0f);
 
 			m_pBullet[inhPlayerArm::GetBulletNum()] = temp;
 

@@ -229,9 +229,6 @@
     <ClCompile Include="main.cpp">
       <Filter>30_Multi</Filter>
     </ClCompile>
-    <ClCompile Include="collision_all.cpp">
-      <Filter>02_Moon</Filter>
-    </ClCompile>
     <ClCompile Include="stage_venus.cpp">
       <Filter>06_Venus</Filter>
     </ClCompile>
@@ -277,6 +274,9 @@
       <Filter>29_Enemy</Filter>
     </ClCompile>
     <ClCompile Include="mercury_collision_all.cpp" />
+    <ClCompile Include="collision_all.cpp">
+      <Filter>30_Multi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -510,9 +510,6 @@
     <ClInclude Include="main.h">
       <Filter>30_Multi</Filter>
     </ClInclude>
-    <ClInclude Include="collision_all.h">
-      <Filter>02_Moon</Filter>
-    </ClInclude>
     <ClInclude Include="stage_venus.h">
       <Filter>06_Venus</Filter>
     </ClInclude>
@@ -558,6 +555,9 @@
       <Filter>29_Enemy</Filter>
     </ClInclude>
     <ClInclude Include="mercury_collision_all.h" />
+    <ClInclude Include="collision_all.h">
+      <Filter>30_Multi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01_Title">

@@ -37,7 +37,7 @@ private:
 public:
 	StageMars(Score* pNumber);
 
-	~StageMars();	//デストラクタ
+	~StageMars()override;	//デストラクタ
 
 	//更新
 	void Update(void);

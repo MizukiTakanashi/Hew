@@ -24,11 +24,11 @@ public:
 		STOP,
 		ICERAIN,
 		GRENADE,
+		FIRE,
 		MEGUMIN,
 		ATTACK,
 		FIREBALL,
 		PUBLIC,
-		FIRE,
 		NUM
 	};
 

@@ -1,9 +1,9 @@
 #pragma once
-//=======================================
-// プレイヤーの腕1関係(ヘッダファイル)
+//======================================================
+// プレイヤーの腕、ガトリング・炎関係(ヘッダファイル)
 // 作成日：2022/10/28
 // 作成者：高梨水希
-//=======================================
+//======================================================
 
 #ifndef _PLAYER_ARM_3_H_
 #define _PLAYER_ARM_3_H_
@@ -16,6 +16,13 @@ class PlayerArm3 :public inhPlayerArm
 {
 //定数
 private:
+	enum class TYPE:int 
+	{
+		GATORING,
+		FIRE,
+		NUM
+	};
+
 	//ここで初期化
 	static const int BULLET_NUM_MAX = 50;		//弾の制限数　実際に撃てる数はこれより１少ない
 	static const int BULLET_SHOOT_MAX = 20;		//弾の同時最大発射数
@@ -25,11 +32,13 @@ private:
 	static const float BULLET_SIZE_X;		//サイズX
 	static const float BULLET_SIZE_Y;		//サイズY
 	static const float BULLET_SPEED;		//スピード
+	static const float FIRE_SPEED;			//炎のスピード
 
 //メンバ変数
 private:
 	DrawObject m_bulletdraw;			//弾の描画オブジェクト
 	Bullet* m_pBullet = nullptr;		//弾のオブジェクト
+	TYPE m_type = TYPE::GATORING;		//弾のタイプ
 
 //メンバ関数
 public:
@@ -37,8 +46,8 @@ public:
 	PlayerArm3() { m_pBullet = new Bullet[BULLET_SHOOT_MAX]; }
 
 	//引数付きコンストラクタ
-	PlayerArm3(DrawObject bulletdraw, bool right, int type) 
-		:inhPlayerArm(BULLET_NUM_MAX, right, type), m_bulletdraw(bulletdraw) { 
+	PlayerArm3(DrawObject bulletdraw, bool right, int type, TYPE _type = TYPE::GATORING)
+		:inhPlayerArm(BULLET_NUM_MAX, right, type), m_bulletdraw(bulletdraw), m_type(_type) {
 		m_pBullet = new Bullet[BULLET_SHOOT_MAX]; }
 
 	//デストラクタ

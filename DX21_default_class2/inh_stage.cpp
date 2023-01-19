@@ -13,10 +13,6 @@ const D3DXVECTOR2 InhStage::NUMBER_POS = D3DXVECTOR2(1260.0f, 15.0f);
 const D3DXVECTOR2 InhStage::NUMBER_SIZE = D3DXVECTOR2(25.0f, 25.0f);
 
 //==========================
-// グローバル変数
-//==========================
-
-//==========================
 // 引数付きコンストラクタ
 //==========================
 InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
@@ -182,11 +178,6 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 
 	//腕の交換
 	m_pPlayerArmChange = new PlayerArmChange(m_pPlayerLeft, m_pPlayerRight, m_pPlayerCenter);
-
-
-
-
-
 }
 
 //==========================

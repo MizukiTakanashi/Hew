@@ -7,14 +7,6 @@
 #include "sound.h"
 
 //==========================
-// 定数初期化
-//==========================
-
-//==========================
-// グローバル変数
-//==========================
-
-//==========================
 // 引数付きコンストラクタ
 //==========================
 StageMars::StageMars(Score* pNumber):InhStage(pNumber)
@@ -186,9 +178,6 @@ void StageMars::Draw(void) const
 	m_pBG->DrawBG();
 	m_pBG_Moon->DrawBG();
 
-
-	m_pExplosionManagement->Draw();
-
 	m_pItemManagement->Draw();
 
 	//ボムの描画
@@ -215,8 +204,9 @@ void StageMars::Draw(void) const
 	m_pEnemyIceRainManagement->Draw();
 	m_pEnemyStopManagement->Draw();
 	m_pEnemyGrenadeManagement->Draw();
-	if (m_pBoss)
+	if (m_pBoss) {
 		m_pBoss->Draw();
+	}
 
-
+	m_pExplosionManagement->Draw();
 }
