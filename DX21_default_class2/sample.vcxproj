@@ -163,6 +163,7 @@
     </ClCompile>
     <ClCompile Include="inputx.cpp" />
     <ClCompile Include="keyboard.cpp" />
+    <ClCompile Include="management_enemy_acid.cpp" />
     <ClCompile Include="management_enemy_attack.cpp" />
     <ClCompile Include="management_enemy_barrier.cpp" />
     <ClCompile Include="management_enemy_fire.cpp" />
@@ -272,6 +273,7 @@
     </ClInclude>
     <ClInclude Include="inputx.h" />
     <ClInclude Include="keyboard.h" />
+    <ClInclude Include="management_enemy_acid.h" />
     <ClInclude Include="management_enemy_attack.h" />
     <ClInclude Include="management_enemy_barrier.h" />
     <ClInclude Include="management_enemy_fire.h" />

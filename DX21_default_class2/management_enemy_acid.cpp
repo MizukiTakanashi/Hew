@@ -1,39 +1,39 @@
 //=======================================
-// 普通の敵の管理関係(cppファイル)
-// 作成日：2022/09/13
-// 作成者：高梨水希
+// 酸性雨の敵の管理関係(cppファイル)
+// 作成日：
+// 作成者：恩田洋行
 //=======================================
-#include "management_enemy_gatoring.h"
+#include "management_enemy_acid.h"
 
 //==========================
 // 定数の初期化
 //==========================
-const float EnemyGatoringManagement::BULLET_SIZE_X = 20.0f;
-const float EnemyGatoringManagement::BULLET_SIZE_Y = 20.0f;
-const float EnemyGatoringManagement::BULLET_SPEED = 2.5f;
-const float EnemyGatoringManagement::EXIT_MOVE_SPEED_Y = 5.0f;
+const float EnemyAcidManagement::BULLET_SIZE_X = 100.0f;
+const float EnemyAcidManagement::BULLET_SIZE_Y = 200.0f;
+const float EnemyAcidManagement::BULLET_SPEED = 5.0f;
+const float EnemyAcidManagement::EXIT_MOVE_SPEED_Y = 5.0f;
 
 //=========================
 // 引数付きコンストラクタ
 //=========================
-EnemyGatoringManagement::EnemyGatoringManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
+EnemyAcidManagement::EnemyAcidManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
 	:EnemyManagement(EnemyManagement::TYPE::GATORING, ENEMY_NUM, ATTACK, BULLET_ATTACK),
 	m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
-	m_pEnemyGatoring = new EnemyGatoring[ENEMY_NUM];
+	m_pEnemyGatoring = new EnemyStop[ENEMY_NUM];
 	m_pBullet = new Bullet[BULLET_NUM];
 }
 
 //======================
 // 更新処理
 //======================
-void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
+void EnemyAcidManagement::Update()
 {
 	m_FlameNum++; //フレーム数を増加
 
 	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
 	{
-		EnemyGatoring temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
+		EnemyStop temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
 		m_pEnemyGatoring[GetObjNum()] = temp;
 		EnemyManagement::IncreaseObjNum(1);
 
@@ -54,8 +54,8 @@ void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
 		//弾を作る
 		if (m_pEnemyGatoring[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() < BULLET_NUM)
 		{
-			Bullet temp(m_pDrawObjectBullet, m_pEnemyGatoring[i].GetPos(),
-				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y),D3DXVECTOR2(0, 10.0f), 0.0f);
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyGatoring[i].GetPos() + D3DXVECTOR2(0.0f, 50.0f) ,
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y),D3DXVECTOR2(0, BULLET_SPEED), 0.0f);
 						   // 弾の大きさ								弾を撃つ方向		
 			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
 
@@ -79,7 +79,7 @@ void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
 //==========================
 // 描画処理
 //==========================
-void EnemyGatoringManagement::Draw(void)const
+void EnemyAcidManagement::Draw(void)const
 {
 	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
 		m_pEnemyGatoring[i].Draw();
@@ -93,7 +93,7 @@ void EnemyGatoringManagement::Draw(void)const
 //======================
 // 敵のHPを減らす
 //======================
-bool EnemyGatoringManagement::ReduceHP(int index_num, int reduceHP)
+bool EnemyAcidManagement::ReduceHP(int index_num, int reduceHP)
 {
 	m_pEnemyGatoring[index_num].ReduceHP(reduceHP);
 
@@ -109,7 +109,7 @@ bool EnemyGatoringManagement::ReduceHP(int index_num, int reduceHP)
 //==========================
 // 敵を消す
 //==========================
-void EnemyGatoringManagement::DeleteObj(int index_num)
+void EnemyAcidManagement::DeleteObj(int index_num)
 {
 	//敵を消す
 	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
@@ -127,7 +127,7 @@ void EnemyGatoringManagement::DeleteObj(int index_num)
 //======================
 // 弾を消す
 //======================
-void EnemyGatoringManagement::DeleteBullet(int index_num)
+void EnemyAcidManagement::DeleteBullet(int index_num)
 {
 	for (int i = index_num; i < EnemyManagement::GetBulletNum() - 1; i++) {
 		m_pBullet[i] = m_pBullet[i + 1];
