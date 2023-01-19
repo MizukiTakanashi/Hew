@@ -31,21 +31,25 @@ private:
 	static const float POS_Y;			//表示位置
 	static const float BET_X;			//ハートの表示間隔
 
+	static const float FIRE_REDUCE;		//炎状態の際のHPの減少具合
+
 	//ここで初期化
 	static const int INVINCIBLE__FRAME = 40;	//無敵時間
 
 
 //メンバー変数
 private:
-	Player* m_pPlayer = nullptr; //プレイヤーのポインタ
+	Player* m_pPlayer = nullptr;	//プレイヤーのポインタ
 	bool m_HP0 = false;				//プレイヤーのHPが0か判断
 	float m_hp = HP_MAX;			//プレイヤーのHP
 	int m_invincible = 0;			//無敵時間
 	ExplosionManagement* m_pExplosionManagement = nullptr; //爆発管理のポインタ
 
-	InhStage* m_pStage = nullptr; //ヒットストップ用のステージのポインタ
+	InhStage* m_pStage = nullptr;	//ヒットストップ用のステージのポインタ
 
 	int m_SE_04 = 0;				//プレイヤーダメージ音
+
+	bool m_fire = false;			//炎状態フラグ
 
 //メンバー関数
 public:
@@ -73,7 +77,16 @@ public:
 	void SetInvincibleFrame(void) { m_invincible = INVINCIBLE__FRAME; }
 
 	//無敵かどうかを返す true:無敵じゃない  false:無敵
-	bool IsPlayerInvincible(void) { if (m_invincible <= 0) { return true; }return false; }
+	bool IsPlayerInvincible(void) { 
+		if (m_invincible <= 0) { return true; }
+		return false; 
+	}
+
+	//炎状態をセットする
+	void SetFire(bool fire) { m_fire = fire; }
+
+	//炎状態かどうかを返す
+	bool IsFire(void)const { return m_fire; }
 };
 
 #endif // !_PLAYER_HP_H_

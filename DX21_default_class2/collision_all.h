@@ -19,6 +19,7 @@
 //各ステージ
 #include "management_meteo.h"
 #include "management_enemy_grenade.h"
+#include "player_hp.h"
 
 class CollisionAll
 {
@@ -74,6 +75,9 @@ private:
 	int m_SE_09 = 0;								//バリアが壊れる音
 	int m_SE_10 = 0;								//冷気を浴びた音
 
+	//水星
+	PlayerHP* m_pHP = nullptr;						//プレイヤーのHP
+
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
@@ -110,6 +114,10 @@ public:
 	//火星
 	//グレネード敵をセット
 	void SetGrenade(EnemyGrenadeManagement* pGrenade) { m_pGrenade = pGrenade; }
+
+	//水星
+	//プレイヤーのHPをセット
+	void SetHP(PlayerHP* pHP) { m_pHP = pHP; }
 };
 
 #endif // !_COLLISION_ALL_H_

@@ -457,7 +457,13 @@ int CollisionAll::Collision(void)
 					//敵の弾を消す
 					m_pEnemy[k]->DeleteBullet(j);
 					j--;
+				}
 
+				//水星であれば...
+				//炎を出す敵であれば炎状態にする
+				if (m_pEnemy[k]->GetType() == EnemyManagement::TYPE::FIRE && m_stage == STAGE::MERCURY)
+				{
+					m_pHP->SetFire(true);
 				}
 				//ダメージ数を増やす
 				attacked += m_pEnemy[k]->GetBulletAttack();
@@ -917,7 +923,16 @@ void CollisionAll::HeelCollision(void)
 				{
 					pArm->HeelBullet();
 				}
-				pArm->SetType((inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i)));
+
+				//水星で、尚且つ氷の敵であれば炎状態を回復する
+				if (m_stage == STAGE::MERCURY && 
+					m_pItem->GetItemType(i) == (int)Item::Item_NUM::ENEMYITEM_TYPE_ICERAIN) {
+					m_pHP->SetFire(false);
+				}
+				//タイプをセット
+				else {
+					pArm->SetType((inhPlayerArmBoth::TYPE)(m_pItem->GetItemType(i)));
+				}
 				m_pItem->DeleteItem(i);
 				i--;
 			}

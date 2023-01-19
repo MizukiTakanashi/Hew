@@ -13,17 +13,19 @@
 #include "management_enemy_icerain.h"
 #include "management_enemy_fire.h"
 #include "management_enemy_missile.h"
+#include "collision_all.h"
 
 class StageMercury : public InhStage
 {	
 //メンバ変数
 private:
-	//敵のレーザー
+	//敵
 	EnemyLaserManagement* m_pEnemyLaser = nullptr;
 	EnemyIceRainManagement* m_pEnemyIce = nullptr;
 	EnemyFireManagement* m_pEnemyFire = nullptr;
 	EnemyMissileManagement* m_pEnemyMissile = nullptr;
 
+	CollisionAll* m_pColAll = nullptr;
 
 //メンバ関数
 public:
