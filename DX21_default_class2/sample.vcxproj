@@ -195,8 +195,12 @@
     <ClCompile Include="management.cpp" />
     <ClCompile Include="management_meteo.cpp" />
     <ClCompile Include="management_poisonfield.cpp" />
-    <ClCompile Include="mars_collision_all.cpp" />
+    <ClCompile Include="mars_collision_all.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="mars_gimmick.cpp" />
+    <ClCompile Include="mercury_collision_all.cpp" />
     <ClCompile Include="meteo.cpp" />
     <ClCompile Include="number.cpp" />
     <ClCompile Include="player.cpp" />
@@ -305,8 +309,12 @@
     <ClInclude Include="management.h" />
     <ClInclude Include="management_meteo.h" />
     <ClInclude Include="management_poisonfield.h" />
-    <ClInclude Include="mars_collision_all.h" />
+    <ClInclude Include="mars_collision_all.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="mars_gimmick.h" />
+    <ClInclude Include="mercury_collision_all.h" />
     <ClInclude Include="meteo.h" />
     <ClInclude Include="number.h" />
     <ClInclude Include="player.h" />

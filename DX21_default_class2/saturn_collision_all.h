@@ -77,4 +77,4 @@ public:
 	void HeelCollision(void);
 };
 
-#endif // !_MARS_COLLISION_ALL_H_
+#endif // !_SATURN_COLLISION_ALL_H_

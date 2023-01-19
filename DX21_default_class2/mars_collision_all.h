@@ -32,7 +32,7 @@ private:
 
 	int m_enemy_num = 0;							//敵の種類の数
 	EnemyManagement* m_pEnemy[ENEMY_NUM];			//敵全クラス
-	EnemyGrenadeManagement* m_pGrenade = nullptr;				//グレネード敵
+	EnemyGrenadeManagement* m_pGrenade = nullptr;	//グレネード敵
 
 	inhPlayerArmBoth* m_pPlayerLeft = nullptr;		//プレイヤーの左腕
 	inhPlayerArmBoth* m_pPlayerRight = nullptr;		//プレイヤーの右腕
