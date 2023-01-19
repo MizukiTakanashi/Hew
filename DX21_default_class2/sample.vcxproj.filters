@@ -273,7 +273,6 @@
     <ClCompile Include="management_enemy_fire.cpp">
       <Filter>29_Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="mercury_collision_all.cpp" />
     <ClCompile Include="collision_all.cpp">
       <Filter>30_Multi</Filter>
     </ClCompile>
@@ -554,7 +553,6 @@
     <ClInclude Include="management_enemy_fire.h">
       <Filter>29_Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="mercury_collision_all.h" />
     <ClInclude Include="collision_all.h">
       <Filter>30_Multi</Filter>
     </ClInclude>
