@@ -34,6 +34,14 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 
 	m_pEnemyFireballManagement = new EnemyFireballManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL], m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL]);
 
+	//Ž_«‰J‚Ì“G
+	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ACID].SetTextureName((char*)"data\\texture\\enemy_acid.png");
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ACID].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ACID]);
+	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_ACID].SetTextureName((char*)"data\\texture\\bullet_acid.png");
+	m_pDrawObject[(int)DRAW_TYPE::BULLET_ACID].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_ACID]);
+
+	m_pEnemyAcidManagement = new EnemyAcidManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ACID], m_pDrawObject[(int)DRAW_TYPE::BULLET_ACID]);
+
 
 	//“G‚ÌŠÇ—
 	//m_pAllEnemyManagement->AddPointer(m_pEnemyFireballManagement);
@@ -49,6 +57,7 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 StageVenus::~StageVenus()
 {
 	delete m_pEnemyFireballManagement;
+	delete m_pEnemyAcidManagement;
 	delete m_pColAll;
 }
 
@@ -89,6 +98,7 @@ void StageVenus::Update(void)
 	//=======================
 	// “G
 	m_pEnemyFireballManagement->Update(m_pPlayer->GetPos());
+	m_pEnemyAcidManagement->Update();
 
 	//ƒ{ƒ€
 	m_pBom->Update();
@@ -141,6 +151,7 @@ void StageVenus::Draw(void) const
 
 	//“G‚Ì•`‰æ
 	m_pEnemyFireballManagement->Draw();
+	m_pEnemyAcidManagement->Draw();
 
 	//ƒvƒŒƒCƒ„[‚Ì’e‚Ì•\Ž¦
 	m_pPlayer->DrawBullet();
