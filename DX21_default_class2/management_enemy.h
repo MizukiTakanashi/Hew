@@ -17,24 +17,24 @@ public:
 	enum class TYPE :int
 	{
 		//新しい敵は下から追加
-		NORMAL,
+		MISSILE,
 		LASER,
 		GATORING,
 		BULLET_BARRIER,
 		STOP,
 		ICERAIN,
 		GRENADE,
-		MISSILE,
 		MEGUMIN,
 		ATTACK,
 		FIREBALL,
 		PUBLIC,
+		FIRE,
 		NUM
 	};
 
 //メンバ変数
 private:
-	TYPE m_type = TYPE::NORMAL;		//敵のタイプ
+	TYPE m_type = TYPE::MISSILE;		//敵のタイプ
 
 	//敵自身
 	int m_obj_num = 0;				//現在のオブジェクト数

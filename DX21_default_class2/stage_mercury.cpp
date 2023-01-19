@@ -29,9 +29,21 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 	m_pEnemyLaser = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER], 2);
 
-	//•X‚Ì“G
+	//•X
 	m_pEnemyIce = new EnemyIceRainManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_ICE], 2);
+
+	//‰Š
+	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_FIRE].SetTextureName((char*)"data\\texture\\enemy_fire.png");
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIRE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_FIRE]);
+	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_FIRE].SetTextureName((char*)"data\\texture\\bullet_fire.png");
+	m_pDrawObject[(int)DRAW_TYPE::BULLET_FIRE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_FIRE]);
+	m_pEnemyFire = new EnemyFireManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIRE], 
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_FIRE], 2);
+
+	//ƒ~ƒTƒCƒ‹
+	m_pEnemyMissile = new EnemyMissileManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NORMAL],
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 2);
 
 	//========================================================
 	// ‘S‚Ä‚Ì“–‚½‚è”»’è
@@ -50,6 +62,9 @@ StageMercury::~StageMercury()
 	//delete m_pColAll;
 
 	delete m_pEnemyLaser;
+	delete m_pEnemyIce;
+	delete m_pEnemyFire;
+	delete m_pEnemyMissile;
 }
 
 //==========================
@@ -90,6 +105,8 @@ void StageMercury::Update(void)
 	// “G
 	m_pEnemyLaser->Update();
 	m_pEnemyIce->Update();
+	m_pEnemyFire->Update();
+	m_pEnemyMissile->Update(m_pPlayer->GetPos());
 
 	//ƒ{ƒ€
 	m_pBom->Update();
@@ -142,6 +159,8 @@ void StageMercury::Draw(void) const
 	//“G‚Ì•`‰æ
 	m_pEnemyLaser->Draw();
 	m_pEnemyIce->Draw();
+	m_pEnemyFire->Draw();
+	m_pEnemyMissile->Draw();
 
 	//ƒvƒŒƒCƒ„[‚Ì’e‚Ì•\Ž¦
 	m_pPlayer->DrawBullet();

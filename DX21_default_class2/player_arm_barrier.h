@@ -43,7 +43,7 @@ public:
 	//引数付きコンストラクタ
 	PlayerArmBarrier(DrawObject bulletdraw, bool right, int type)
 		:inhPlayerArm(BULLET_NUM_MAX, right, type, BARRIER_HP_MAX), m_bulletdraw(bulletdraw) {
-		m_pBullet = new Bullet[BULLET_SHOOT_MAX];
+		m_pBullet = new Bullet;
 	}
 
 	//デストラクタ

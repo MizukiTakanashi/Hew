@@ -30,6 +30,7 @@ public:
 		TYPE_NUM,
 		TYPE_NONE,	//	何もついていない
 		TYPE_SHOOT,	// 前のタイプの弾の処理 & 自身発射中
+		TYPE_DM_SHOOT,	//ダメージをくらった時の
 		TYPE_OLD,	// 前のタイプの弾の処理中
 	};
 
