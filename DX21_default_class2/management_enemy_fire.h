@@ -62,15 +62,15 @@ private:
 	},
 	//êÖêØ
 	{
-		D3DXVECTOR2(71.0f + (142 * 2), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 4), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 8), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 4), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142 * 3), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(71.0f + (142 * 2), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(71.0f + (142 * 2), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(71.0f + (142 * 2), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(71.0f + (142 * 2), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(71.0f + (142 * 2), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(71.0f + (142 * 2), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(71.0f + (142 * 2), -EnemyNormal::SIZE_Y / 2)
+		D3DXVECTOR2(71.0f + (142 * 5), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 5), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 1), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 6), -EnemyNormal::SIZE_Y / 2)
 	},
 	//ìyêØ
 	{
@@ -93,12 +93,14 @@ private:
 	},
 
 	{//êÖêØ
-		60 * 5,
-		60 * 60,
-		60 * 60 + 1,
+		60 * 10,
+		60 * 25,
+		60 * 25 + 1,
 		60 * 80,
-		60 * 145,
-		60 * 160
+		60 * 105,
+		60 * 105 + 1,
+		60 * 140,
+		60 * 170,
 	},
 
 	{//ìyêØ
