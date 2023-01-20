@@ -273,6 +273,13 @@
     <ClCompile Include="management_enemy_acid.cpp">
       <Filter>29_Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="management_enemy_fire.cpp" />
+    <ClCompile Include="management_enemy_poorvision.cpp">
+      <Filter>29_Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="management_enemy_speeddown.cpp">
+      <Filter>29_Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -548,6 +555,13 @@
       <Filter>30_Multi</Filter>
     </ClInclude>
     <ClInclude Include="management_enemy_acid.h">
+      <Filter>29_Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="management_enemy_fire.h" />
+    <ClInclude Include="management_enemy_poorvision.h">
+      <Filter>29_Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="management_enemy_speeddown.h">
       <Filter>29_Enemy</Filter>
     </ClInclude>
   </ItemGroup>

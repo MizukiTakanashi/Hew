@@ -29,6 +29,8 @@ public:
 		FIREBALL,
 		PUBLIC,
 		FIRE,
+		POORVISION,
+		SPEEDDOWN,
 		NUM
 	};
 

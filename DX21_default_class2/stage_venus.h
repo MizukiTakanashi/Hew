@@ -11,6 +11,8 @@
 
 #include "management_enemy_fireball.h"
 #include "management_enemy_acid.h"
+#include "management_enemy_poorvision.h"
+#include "management_enemy_speeddown.h"
 
 class StageVenus : public InhStage
 {
@@ -19,6 +21,8 @@ private:
 	CollisionAll* m_pColAll = nullptr;		//‘S‚Ä‚Ì“–‚½‚è”»’è
 	EnemyFireballManagement* m_pEnemyFireballManagement = nullptr;
 	EnemyAcidManagement* m_pEnemyAcidManagement = nullptr;
+	EnemyPoorvisionManagement* m_pEnemuPoorvisionManagement = nullptr;
+	EnemySpeeddownManagement* m_pEnemySpeeddownManagement = nullptr;
 
 	//ƒƒ“ƒoŠÖ”
 public:
