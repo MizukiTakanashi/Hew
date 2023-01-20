@@ -11,7 +11,6 @@
 #include "inh_stage.h"
 
 #include "all_enemy_management.h"
-//#include "saturn_collision_all.h"
 #include "collision_all.h"
 #include "management_enemy_laser.h"
 #include "management_enemy_megumin.h"
