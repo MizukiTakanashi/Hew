@@ -22,6 +22,7 @@ public:
 private:
 	bool m_move_down = false;	//移動速度低下フラグ
 	int m_frame_count = 0;		//フレームカウント
+	int m_frame_index = 0;
 
 //メンバ関数
 public:
@@ -37,10 +38,23 @@ public:
 	~MarsGimmick(){}
 
 	//更新処理
-	void Update() { m_frame_count++; }
+	void Update() { 
+		m_frame_count++; 
+		if (m_frame_count > TIME[m_frame_index]) {
+			m_move_down = !m_move_down;
+ 			m_frame_index++;
+		}
+	}
+
+	//描画処理
+	void Draw() { 
+		if (m_move_down) {
+			UI::Draw();
+		}
+	}
 
 	//移動速度低下フラグを返す
-	bool GetMoveDown() { return m_move_down; }
+	bool GetMoveDown()const { return m_move_down; }
 };
 
 #endif // !_MARS_GIMMICK_H_

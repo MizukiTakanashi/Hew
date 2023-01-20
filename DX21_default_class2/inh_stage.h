@@ -74,6 +74,9 @@ protected:
 		BULLET_FIRE,
 		BULLET_MEGUMIN,
 		BULLET_ACID,
+
+		GIMMICK_MARS,
+
 		NUM
 	};
 
@@ -121,6 +124,8 @@ protected:
 		PLAYER_ARM_LASER,//
 		PLAYER_BULLET,//
 		PLAYER_ARM_GRENADE_EXPLOSION,
+
+		GIMMICK_MARS,
 
 		NUM
 	};
