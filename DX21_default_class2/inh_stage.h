@@ -156,7 +156,7 @@ protected:
 public:
 	InhStage(Score* pNumber);
 
-	~InhStage();	//デストラクタ
+	virtual ~InhStage();	//デストラクタ
 
 	//更新
 	virtual void Update(void) = 0;

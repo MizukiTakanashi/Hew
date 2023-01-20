@@ -35,7 +35,8 @@ public:
 	//敵自身
 	static const int ATTACK = 1;			//攻撃値
 	//弾
-	static const int BULLET_ATTACK = 1;		//攻撃値
+	//※ここは0の方がいいかも！炎状態になって継続ダメージにしてるから
+	static const int BULLET_ATTACK = 0;		//攻撃値
 
 
 //メンバ変数

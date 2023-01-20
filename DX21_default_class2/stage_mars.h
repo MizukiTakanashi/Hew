@@ -16,7 +16,7 @@
 #include "management_enemy_stop.h"
 #include "management_enemy_grenade.h"
 #include "all_enemy_management.h"
-#include "mars_collision_all.h"
+#include "collision_all.h"
 #include "boss.h"
 
 class StageMars : public InhStage
@@ -30,14 +30,14 @@ private:
 	EnemyGrenadeManagement* m_pEnemyGrenadeManagement = nullptr;
 
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
-	MarsCollisionAll* m_pColAll = nullptr;		//全ての当たり判定
+	CollisionAll* m_pColAll1 = nullptr;
 	Boss* m_pBoss = nullptr;
 
 	//メンバ関数
 public:
 	StageMars(Score* pNumber);
 
-	~StageMars();	//デストラクタ
+	~StageMars()override;	//デストラクタ
 
 	//更新
 	void Update(void);

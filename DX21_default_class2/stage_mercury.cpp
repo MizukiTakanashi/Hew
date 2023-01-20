@@ -7,14 +7,6 @@
 #include "sound.h"
 
 //==========================
-// 定数初期化
-//==========================
-
-//==========================
-// グローバル変数
-//==========================
-
-//==========================
 // 引数付きコンストラクタ
 //==========================
 StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
@@ -47,11 +39,15 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 
 	//========================================================
 	// 全ての当たり判定
-	//m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
-	//	m_pItemManagement, m_pScore, m_pBom, );
+	m_pColAll = new CollisionAll(CollisionAll::STAGE::MERCURY, m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
+		m_pItemManagement, m_pScore, m_pBom);
+	m_pColAll->SetHP(m_pPlayerHP);
 
-	//敵のポインタをセット（順番変えるのNG）
-	//m_pColAll->AddEnemyPointer(m_pEnemyBarrierManagement);
+	//敵のポインタをセット
+	m_pColAll->AddEnemyPointer(m_pEnemyLaser);
+	m_pColAll->AddEnemyPointer(m_pEnemyIce);
+	m_pColAll->AddEnemyPointer(m_pEnemyFire);
+	m_pColAll->AddEnemyPointer(m_pEnemyMissile);
 }
 
 //==========================
@@ -59,7 +55,7 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 //==========================
 StageMercury::~StageMercury()
 {
-	//delete m_pColAll;
+	delete m_pColAll;
 
 	delete m_pEnemyLaser;
 	delete m_pEnemyIce;
@@ -125,10 +121,10 @@ void StageMercury::Update(void)
 	m_pPlayerCenter->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
 
 	//敵とプレイヤーの当たり判定
-	//attack_num += m_pColAll->Collision();
+	attack_num += m_pColAll->Collision();
 
 	//回復
-	//m_pColAll->HeelCollision();
+	m_pColAll->HeelCollision();
 
 	//プレイヤーのHPを攻撃数によって減らす
 	if (attack_num != 0) {
