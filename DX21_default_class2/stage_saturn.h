@@ -11,10 +11,12 @@
 #include "inh_stage.h"
 
 #include "all_enemy_management.h"
-#include "saturn_collision_all.h"
+//#include "saturn_collision_all.h"
+#include "collision_all.h"
 #include "management_enemy_laser.h"
 #include "management_enemy_megumin.h"
 #include "management_poisonfield.h"
+
 class StageSaturn : public InhStage
 {
 //メンバ変数
@@ -22,7 +24,7 @@ private:
 	EnemyLaserManagement* m_pEnemyLaserManagement = nullptr;
 	EnemyMeguminManagement* m_pEnemyMeguminManagement = nullptr;
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
-	SaturnCollisionAll* m_pColAll = nullptr;		//全ての当たり判定
+	CollisionAll* m_pColAll = nullptr;		//全ての当たり判定
 	Management_PoisonField* m_pPoisonField = nullptr;
 
 //メンバ関数

@@ -18,6 +18,7 @@
 #include "all_enemy_management.h"
 #include "collision_all.h"
 #include "boss.h"
+#include "mars_gimmick.h"
 
 class StageMars : public InhStage
 {
@@ -30,8 +31,12 @@ private:
 	EnemyGrenadeManagement* m_pEnemyGrenadeManagement = nullptr;
 
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
+
 	CollisionAll* m_pColAll1 = nullptr;
+
 	Boss* m_pBoss = nullptr;
+
+	MarsGimmick* m_pGimmick = nullptr;
 
 	//ƒƒ“ƒoŠÖ”
 public:

@@ -58,6 +58,12 @@ StageMars::StageMars(Score* pNumber):InhStage(pNumber)
 	m_pColAll1->AddEnemyPointer(m_pEnemyIceRainManagement);
 	m_pColAll1->AddEnemyPointer(m_pEnemyGrenadeManagement);
 	m_pColAll1->AddEnemyPointer(m_pEnemyMissileManagement);
+
+	//ギミック
+	m_pTexUseful[(int)TEXTURE_TYPE::GIMMICK_MARS].SetTextureName((char*)"data\\texture\\mars.png");
+	m_pDrawObject[(int)DRAW_TYPE::GIMMICK_MARS].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::GIMMICK_MARS]);
+	m_pDrawObject[(int)DRAW_TYPE::GIMMICK_MARS].SetDrawColor(D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.5f));
+	m_pGimmick = new MarsGimmick(m_pDrawObject[(int)DRAW_TYPE::GIMMICK_MARS]);
 }
 
 //==========================
@@ -70,8 +76,10 @@ StageMars::~StageMars()
 	delete m_pColAll1;
 
 	//ゲームオブジェクトを消す
-	if(m_pBoss)
-	delete m_pBoss;
+	delete m_pGimmick;
+	if (m_pBoss) {
+		delete m_pBoss;
+	}
 	delete m_pEnemyBarrierManagement;
 	delete m_pEnemyMissileManagement;
 	delete m_pEnemyGrenadeManagement;
@@ -92,8 +100,12 @@ void StageMars::Update(void)
 	}
 
 	//ボスが死んだら
-	if (m_isBossDown)
+	if (m_isBossDown) {
 		Fade(SCENE::SCENE_RESULT);
+	}
+
+	//ギミック
+	m_pGimmick->Update();
 
 	//背景
 	m_pBG->Update();
@@ -103,6 +115,7 @@ void StageMars::Update(void)
 	m_pPlayerArmChange->Change();
 
 	//プレイヤー
+	m_pPlayer->SetSlow(m_pGimmick->GetMoveDown());
 	m_pPlayer->Update(m_pPlayerHP->IsPlayerInvincible());
 
 	m_pPlayerHP->Update();
@@ -209,4 +222,6 @@ void StageMars::Draw(void) const
 	}
 
 	m_pExplosionManagement->Draw();
+
+	m_pGimmick->Draw();
 }

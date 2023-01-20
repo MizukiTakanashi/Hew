@@ -26,7 +26,8 @@ StageSaturn::StageSaturn(Score* pNumber):InhStage(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_MEGUMIN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_MEGUMIN]);
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MEGUMIN].SetTextureName((char*)"data\\texture\\bullet_megumin.png");
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_MEGUMIN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MEGUMIN]);
-	m_pEnemyMeguminManagement = new EnemyMeguminManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_MEGUMIN], m_pDrawObject[(int)DRAW_TYPE::BULLET_MEGUMIN]);
+	m_pEnemyMeguminManagement = new EnemyMeguminManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_MEGUMIN], 
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_MEGUMIN]);
 
 	//毒沼
 	m_pTexUseful[(int)TEXTURE_TYPE::POISON].SetTextureName((char*)"data\\texture\\poison.jpg");
@@ -39,10 +40,10 @@ StageSaturn::StageSaturn(Score* pNumber):InhStage(pNumber)
 	
 	//========================================================
 	// 全ての当たり判定
-	m_pColAll = new SaturnCollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
+	m_pColAll = new CollisionAll(CollisionAll::STAGE::SATURN, m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
 		m_pItemManagement, m_pScore, m_pBom);
 
-	//敵のポインタをセット（順番変えるのNG）
+	//敵のポインタをセット
 	m_pColAll->AddEnemyPointer(m_pEnemyMeguminManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyLaserManagement);
 }

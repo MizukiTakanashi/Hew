@@ -37,6 +37,14 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 	m_pEnemyMissile = new EnemyMissileManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NORMAL],
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 2);
 
+	//˜r
+	m_pPlayerLeft->DrawSetFireE(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIRE]);
+	m_pPlayerLeft->DrawSetFire(&m_pDrawObject[(int)DRAW_TYPE::BULLET_FIRE]);
+	m_pPlayerRight->DrawSetFireE(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIRE]);
+	m_pPlayerRight->DrawSetFire(&m_pDrawObject[(int)DRAW_TYPE::BULLET_FIRE]);
+	m_pPlayerCenter->DrawSetFireE(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIRE]);
+	m_pPlayerCenter->DrawSetFire(&m_pDrawObject[(int)DRAW_TYPE::BULLET_FIRE]);
+
 	//========================================================
 	// ‘S‚Ä‚Ì“–‚½‚è”»’è
 	m_pColAll = new CollisionAll(CollisionAll::STAGE::MERCURY, m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
