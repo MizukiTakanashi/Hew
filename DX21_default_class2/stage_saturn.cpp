@@ -151,7 +151,7 @@ void StageSaturn::Update(void)
 void StageSaturn::Draw(void) const
 {
 	m_pBG->DrawBG();
-	m_pBG_Moon->DrawBG();
+	m_pBG_Moon->DrawSaturn();
 	m_pFrame->Draw();
 	m_pPlayer->Draw();
 
