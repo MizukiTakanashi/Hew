@@ -15,7 +15,7 @@
 const float PlayerHP::HP_MAX = 3.0f;
 const D3DXVECTOR2 PlayerHP::SIZE = D3DXVECTOR2(60.0f, 60.0f);
 const float PlayerHP::POS_X = 1040.0f;
-const float PlayerHP::POS_Y = 625.0f;
+const float PlayerHP::POS_Y = 635.0f;
 const float PlayerHP::BET_X = 80.0f;
 
 //==========================
