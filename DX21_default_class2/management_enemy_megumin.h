@@ -12,7 +12,7 @@
 #include "management_enemy.h"
 #include "draw_object.h"
 #include "enemy_stop.h"
-#include "bullet_stop.h"
+#include "bullet.h"
 
 class EnemyMeguminManagement:public EnemyManagement
 {
@@ -39,10 +39,10 @@ public:
 //メンバ変数
 private:
 	EnemyStop* m_pEnemy = nullptr;			//敵のクラス
-	BulletStop* m_pBullet = nullptr;		//弾のクラス
+	Bullet* m_pBullet = nullptr;		//弾のクラス
 	DrawObject m_pDrawObjectEnemy;			//敵の描画オブジェクト
 	DrawObject m_pDrawObjectBullet;			//弾の描画オブジェクト
-	int m_SE_11 = 0;						//冷気を出した時の音
+	//int m_SE_11 = 0;						//冷気を出した時の音
 
 	//敵の位置配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
@@ -55,11 +55,11 @@ private:
 
 	//敵を出す時間
 	int m_SetEnemyTime[ENEMY_NUM] = {
-								60 * 5,
-								60 * 10,
-								60 * 15 + 1,
-								60 * 20,
-								60 * 25 + 1
+		60 * 5,
+		60 * 10,
+		60 * 15 + 1,
+		60 * 20,
+		60 * 25 + 1
 	};
 
 //メンバ関数
@@ -89,16 +89,13 @@ public:
 	const D3DXVECTOR2& GetObjPos(int index_num)const override{ return m_pEnemy[index_num].GetPos(); }
 
 	//指定した番号の敵のサイズを返す(オーバーライド)
-	const D3DXVECTOR2& GetObjSize(int index_num = 0)const override{ return m_pEnemy[0].GetSize(); }
+	const D3DXVECTOR2& GetObjSize(int index_num = 0)const override{ return m_pEnemy[index_num].GetSize(); }
 
 	//指定した番号の弾の座標を返す(オーバーライド)
 	const D3DXVECTOR2& GetBulletPos(int index_num)const override { return m_pBullet[index_num].GetPos(); }
 
 	//指定した番号の弾のサイズを返す(オーバーライド)
-	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override{ return m_pBullet[0].GetSize(); }
-
-	//弾の攻撃力を返す
-	int GetBulletAttack(void) const override { return 0; }
+	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override{ return m_pBullet[index_num].GetSize(); }
 
 	//指定した番号の敵を止める
 	void StopEnemy(int index_num, int time) override { m_pEnemy[index_num].StopEnemy(time); }
