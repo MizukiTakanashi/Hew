@@ -50,4 +50,6 @@ void DrawScene(void);
 void SetScene(SCENE s, STAGE stage);
 void CheckScene(void);
 
+void SetStageClear(bool is);
+
 #endif // !_SCENE_H_

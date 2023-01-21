@@ -41,6 +41,7 @@ DrawObject* g_pDrawObject;
 Score* g_pNumber;
 
 int g_Score[STAGE_NUM];		//スコア保持用
+bool g_isclear = false;
 
 //==========================
 // 初期化処理
@@ -98,28 +99,28 @@ void InitScene(SCENE s, STAGE stage)
 		switch (g_stage)
 		{
 		case STAGE::STAGE_MOON:
-			pResult = new Result(true, g_pNumber, STAGE::STAGE_MOON);
+			pResult = new Result(g_isclear, g_pNumber, STAGE::STAGE_MOON);
 			break;
 		case STAGE::STAGE_MARS:
-			pResult = new Result(true, g_pNumber, STAGE::STAGE_MARS);
+			pResult = new Result(g_isclear, g_pNumber, STAGE::STAGE_MARS);
 			break;
 		case STAGE::STAGE_MERCURY:
-			pResult = new Result(true, g_pNumber, STAGE::STAGE_MERCURY);
+			pResult = new Result(g_isclear, g_pNumber, STAGE::STAGE_MERCURY);
 			break;
 		case STAGE::STAGE_JUPITER:
-			pResult = new Result(true, g_pNumber, STAGE::STAGE_JUPITER);
+			pResult = new Result(g_isclear, g_pNumber, STAGE::STAGE_JUPITER);
 			break;
 		case STAGE::STAGE_VENUS:
-			pResult = new Result(true, g_pNumber, STAGE::STAGE_VENUS);
+			pResult = new Result(g_isclear, g_pNumber, STAGE::STAGE_VENUS);
 			break;
 		case STAGE::STAGE_SATURN:
-			pResult = new Result(true, g_pNumber, STAGE::STAGE_SATURN);
+			pResult = new Result(g_isclear, g_pNumber, STAGE::STAGE_SATURN);
 			break;
 		case STAGE::STAGE_SUN:
-			pResult = new Result(true, g_pNumber, STAGE::STAGE_SUN);
+			pResult = new Result(g_isclear, g_pNumber, STAGE::STAGE_SUN);
 			break;
 		case STAGE::STAGE_NUM:
-			pResult = new Result(true, g_pNumber, STAGE::STAGE_MOON);
+			pResult = new Result(g_isclear, g_pNumber, STAGE::STAGE_MOON);
 			break;
 		default:
 			break;
@@ -379,4 +380,9 @@ void CheckScene(void)
 
 		InitScene(g_scene_next, g_stage);	//次のシーンの初期化処理
 	}
+}
+
+void SetStageClear(bool is)
+{
+	g_isclear = is;
 }
