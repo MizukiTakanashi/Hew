@@ -78,6 +78,9 @@ protected:
 		BULLET_MIST,
 		BULLET_MEGUMIN,
 		BULLET_ACID,
+
+		GIMMICK_MARS,
+
 		NUM
 	};
 
@@ -130,6 +133,8 @@ protected:
 		PLAYER_BULLET,//
 		PLAYER_ARM_GRENADE_EXPLOSION,
 
+		GIMMICK_MARS,
+
 		NUM
 	};
 
@@ -165,7 +170,7 @@ protected:
 public:
 	InhStage(Score* pNumber);
 
-	~InhStage();	//デストラクタ
+	virtual ~InhStage();	//デストラクタ
 
 	//更新
 	virtual void Update(void) = 0;

@@ -8,14 +8,9 @@
 #include "sound.h"
 
 //==========================
-// 定数初期化
-//==========================
-
-//==========================
 // グローバル変数
 //==========================
 bool isText = false; //チュートリアルテキスト用
-
 
 //=========================
 // 引数付きコンストラクタ
@@ -50,8 +45,9 @@ Game::Game(Score* pNumber) :InhStage(pNumber)
 
 	//========================================================
 	// 全ての当たり判定
-	m_pColAll = new CollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
-		m_pItemManagement, m_pScore, m_pBom, m_pMeteoManagement);
+	m_pColAll = new CollisionAll(CollisionAll::STAGE::MOON, m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
+		m_pItemManagement, m_pScore, m_pBom);
+	m_pColAll->SetMeteo(m_pMeteoManagement);
 
 	//敵のポインタをセット（順番変えるのNG）
 	m_pColAll->AddEnemyPointer(m_pEnemyMissileManagement);

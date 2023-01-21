@@ -22,6 +22,9 @@ const float Player::START_POS_Y = (SCREEN_HEIGHT / 2);
 const float Player::SPEED_X = 20.0f;
 const float Player::SPEED_Y = 20.0f;
 const float Player::SPEED = 10.0f;
+const float Player::SLOW_SPEED_X = 5.0f;
+const float Player::SLOW_SPEED_Y = 5.0f;
+const float Player::SLOW_SPEED = 5.0f;
 const float Player::BULLET_SIZE_X = 15.0f;
 const float Player::BULLET_SIZE_Y = 40.0f;
 const float Player::BULLET_SPEED_X = 0.0f;
@@ -52,45 +55,55 @@ void Player::Update(bool isinvincible)
 	}
 	D3DXVECTOR2 temp = D3DXVECTOR2(0.0f, 0.0f);
 
+	float speed_x = SPEED_X;
+	float speed_y = SPEED_Y;
+	float speed = SPEED;
+	//動きが遅い時であれば...
+	if (m_slow) {
+		speed_x = SLOW_SPEED_X;
+		speed_y = SLOW_SPEED_Y;
+		speed = SLOW_SPEED;
+	}
+
 	//==========================
 	// パッド
 
 	//左スティックで上に倒されたら...
 	if (GetThumbLeftY(0) > 0) {
 		//上に行く
-		temp.y -= SPEED_Y * GetThumbLeftY(0);
+		temp.y -= speed_y * GetThumbLeftY(0);
 	}
 	//左スティックで下に倒されたら...
 	if (GetThumbLeftY(0) < 0) {
 		//下に行く
-		temp.y += SPEED_Y * -GetThumbLeftY(0);
+		temp.y += speed_y * -GetThumbLeftY(0);
 	}
 	//左スティックで左に倒されたら...
 	if (GetThumbLeftX(0) < 0) {
 		//左に行く
-		temp.x += SPEED_X * GetThumbLeftX(0);
+		temp.x += speed_x * GetThumbLeftX(0);
 	}
 	//左スティックで右に倒されたら...
 	if (GetThumbLeftX(0) > 0) {
 		//右に行く
-		temp.x += SPEED_X * GetThumbLeftX(0);
+		temp.x += speed_x * GetThumbLeftX(0);
 	}
 
 	//十字キー上が押されたら
 	if (IsButtonPressed(0, XINPUT_GAMEPAD_DPAD_UP)) {
-		temp.y -= SPEED_Y;
+		temp.y -= speed_y;
 	}
 	//十字キー下が押されたら
 	if (IsButtonPressed(0, XINPUT_GAMEPAD_DPAD_DOWN)) {
-		temp.y += SPEED_Y;
+		temp.y += speed_y;
 	}
 	//十字キー左が押されたら
 	if (IsButtonPressed(0, XINPUT_GAMEPAD_DPAD_LEFT)) {
-		temp.x -= SPEED_X;
+		temp.x -= speed_x;
 	}
 	//十字キー右が押されたら
 	if (IsButtonPressed(0, XINPUT_GAMEPAD_DPAD_RIGHT)) {
-		temp.x += SPEED_X;
+		temp.x += speed_x;
 	}
 
 	//==========================
@@ -98,19 +111,19 @@ void Player::Update(bool isinvincible)
 
 	//上矢印が押されたら
 	if (InputGetKey(KK_W)) {
-		temp.y -= SPEED_Y;
+		temp.y -= speed_y;
 	}
 	//下矢印が押されたら
 	if (InputGetKey(KK_S)) {
-		temp.y += SPEED_Y;
+		temp.y += speed_y;
 	}
 	//左矢印が押されたら
 	if (InputGetKey(KK_A)) {
-		temp.x -= SPEED_X;
+		temp.x -= speed_x;
 	}
 	//右矢印が押されたら
 	if (InputGetKey(KK_D)) {
-		temp.x += SPEED_X;
+		temp.x += speed_x;
 	}
 
 	if (temp.x != 0.0f || temp.y != 0.0f)
@@ -126,7 +139,7 @@ void Player::Update(bool isinvincible)
 
 	//正規化
 	D3DXVec2Normalize(&temp, &temp);
-	temp *= SPEED;
+	temp *= speed;
 
 	//移動
 	GameObject::MovePos(temp);

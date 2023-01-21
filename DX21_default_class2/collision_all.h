@@ -15,11 +15,25 @@
 #include "management_item.h"
 #include "score.h"
 #include "Bom.h"
+
+//各ステージ
 #include "management_meteo.h"
+#include "management_enemy_grenade.h"
+#include "player_hp.h"
 
 class CollisionAll
 {
 //定数
+public:
+	enum class STAGE :int
+	{
+		MOON,
+		MARS,
+		MERCURY,
+		SATURN,
+		NUM
+	};
+
 private:
 	//ここで初期化
 	static const int ENEMY_NUM = 10;		//全敵の種類数の制限数
@@ -28,11 +42,13 @@ private:
 
 //メンバ変数
 private:
+	STAGE m_stage = STAGE::MOON;					//現在のステージ
+
 	Player* m_pPlayer = nullptr;					//プレイヤー
 
 	int m_enemy_num = 0;							//敵の種類の数
 	EnemyManagement* m_pEnemy[ENEMY_NUM];			//敵全クラス
-	
+
 	inhPlayerArmBoth* m_pPlayerLeft = nullptr;		//プレイヤーの左腕
 	inhPlayerArmBoth* m_pPlayerRight = nullptr;		//プレイヤーの右腕
 	
@@ -48,7 +64,19 @@ private:
 
 	Bom* m_pBom = nullptr;							//ボム
 
+	//==========================
+	// 各ステージ
+	//月
 	Management_Meteo* m_pMeteo = nullptr;			//隕石
+
+	//火星
+	EnemyGrenadeManagement* m_pGrenade = nullptr;	//グレネード敵
+	int m_SE_08 = 0;								//バリアが弾を跳ね返す音
+	int m_SE_09 = 0;								//バリアが壊れる音
+	int m_SE_10 = 0;								//冷気を浴びた音
+
+	//水星
+	PlayerHP* m_pHP = nullptr;						//プレイヤーのHP
 
 //メンバ関数
 public:
@@ -56,9 +84,9 @@ public:
 	CollisionAll();
 
 	//引数付きコンストラクタ
-	CollisionAll(Player* pPlayer, inhPlayerArmBoth* pL, inhPlayerArmBoth* pR, 
+	CollisionAll(STAGE stage, Player* pPlayer, inhPlayerArmBoth* pL, inhPlayerArmBoth* pR, 
 		ExplosionManagement* pExplosion, ItemManagement* pItem, Score* pNumber, 
-		Bom* pBom, Management_Meteo* pMeteo);
+		Bom* pBom);
 
 	//デストラクタ
 	~CollisionAll(){}
@@ -74,6 +102,22 @@ public:
 
 	//プレイヤーのHPが回復する当たり判定
 	void HeelCollision(void);
+
+
+	//==========================
+	// 各ステージ
+	
+	//月
+	//隕石をセット
+	void SetMeteo(Management_Meteo* pMeteo) { m_pMeteo = pMeteo; }
+
+	//火星
+	//グレネード敵をセット
+	void SetGrenade(EnemyGrenadeManagement* pGrenade) { m_pGrenade = pGrenade; }
+
+	//水星
+	//プレイヤーのHPをセット
+	void SetHP(PlayerHP* pHP) { m_pHP = pHP; }
 };
 
 #endif // !_COLLISION_ALL_H_

@@ -30,7 +30,7 @@ private:
 public:
 	StageVenus(Score* pNumber);
 
-	~StageVenus();	//デストラクタ
+	~StageVenus()override;	//デストラクタ
 
 	//更新
 	void Update(void) override;

@@ -32,7 +32,7 @@ private:
 public:
 	Game(Score* pNumber);
 
-	~Game();	//デストラクタ
+	~Game()override;	//デストラクタ
 
 	//更新
 	void Update(void);
