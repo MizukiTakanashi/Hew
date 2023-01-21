@@ -18,7 +18,7 @@ public:
 
 private:
 	//ìGé©êg
-	static const int ENEMY_NUM = 6;				//ìGÇÃç≈ëÂêî
+	static const int ENEMY_NUM = 19;		//ìGÇÃç≈ëÂêî
 
 
 	//ÉÅÉìÉoïœêî
@@ -32,21 +32,40 @@ private:
 
 	//ìGÇÃîzóÒ
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-		D3DXVECTOR2(52.5f + (105 * 1), -PoisonField::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 9), -PoisonField::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 1), -PoisonField::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 9), -PoisonField::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 1), -PoisonField::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 9), -PoisonField::SIZE_Y / 2)
+		D3DXVECTOR2(71.0f + (142.0f * 5.0f), -PoisonField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 6.0f), -PoisonField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 7.0f), -PoisonField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 8.0f), -PoisonField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 0.0f), -PoisonField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 1.0f), -PoisonField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 2.0f), -PoisonField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 2.0f), -PoisonField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 8.0f), -PoisonField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 0.0f), -PoisonField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 6.0f), -PoisonField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 4.0f), -PoisonField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 3.0f), -PoisonField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 4.0f), -PoisonField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 5.0f), -PoisonField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 0.0f), -PoisonField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 1.0f), -PoisonField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 7.0f), -PoisonField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 8.0f), -PoisonField::SIZE_Y / 2)
 	};
 
 	int m_SetEnemyTime[ENEMY_NUM] = {
-		60 * 10,
-		60 * 35 + 1,
-		60 * 55,
-		60 * 55 + 1,
+		60 * 20,
+		60 * 20 + 1,
+		60 * 20 + 2,
+		60 * 20 + 3,
+		60 * 30,
+		60 * 30 + 1,
+		60 * 30 + 2,
+		60 * 65,
+		60 * 65 + 1,
 		60 * 70,
 		60 * 70 + 1,
+		60 * 80
 	};
 
 

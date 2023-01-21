@@ -20,6 +20,7 @@
 #include "management_meteo.h"
 #include "management_enemy_grenade.h"
 #include "player_hp.h"
+#include "management_poisonfield.h"
 
 class CollisionAll
 {
@@ -78,6 +79,9 @@ private:
 	//水星
 	PlayerHP* m_pHP = nullptr;						//プレイヤーのHP
 
+	//土星
+	Management_PoisonField* m_pPoison = nullptr;	//毒沼
+
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
@@ -118,6 +122,10 @@ public:
 	//水星
 	//プレイヤーのHPをセット
 	void SetHP(PlayerHP* pHP) { m_pHP = pHP; }
+
+	//土星
+	//毒沼をセット
+	void SetPoison(Management_PoisonField* pPoison) { m_pPoison = pPoison; }
 };
 
 #endif // !_COLLISION_ALL_H_
