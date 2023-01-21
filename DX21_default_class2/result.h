@@ -47,8 +47,6 @@ private:
 	bool m_select_retry = true; //どっちを選択しているか
 
 public:
-	Result();	//デフォルトコンストラクタ
-
 	Result(bool isClear, Score* pNumber, STAGE stagenum);
 
 	~Result();	//デストラクタ
