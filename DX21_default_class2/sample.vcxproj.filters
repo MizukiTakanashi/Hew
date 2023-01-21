@@ -280,6 +280,9 @@
     <ClCompile Include="management_enemy_speeddown.cpp">
       <Filter>29_Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="poorvision.cpp">
+      <Filter>30_Multi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -563,6 +566,9 @@
     </ClInclude>
     <ClInclude Include="management_enemy_speeddown.h">
       <Filter>29_Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="poorvision.h">
+      <Filter>30_Multi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

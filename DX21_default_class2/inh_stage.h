@@ -23,6 +23,7 @@
 #include "management_item.h"
 #include "management_explosion.h"
 #include "management_meteo.h"
+#include "poorvision.h"
 
 
 class InhStage
@@ -145,6 +146,7 @@ protected:
 	DrawObject* m_pDrawObject = nullptr;
 	BG* m_pBG = nullptr;
 	BGPlanet* m_pBG_Moon = nullptr;
+	PoorVision* m_pPoorvision = nullptr;
 	Player* m_pPlayer = nullptr;
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;
@@ -176,5 +178,7 @@ public:
 
 	void HitStop(int flame) { m_StopFlame = flame; }
 	void BossDown() { m_isBossDown = true; }
+
+	void SetPoorVision() { m_pPoorvision->SetPV(); }
 };
 

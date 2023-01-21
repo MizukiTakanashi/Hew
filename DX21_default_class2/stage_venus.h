@@ -24,6 +24,8 @@ private:
 	EnemyPoorvisionManagement* m_pEnemuPoorvisionManagement = nullptr;
 	EnemySpeeddownManagement* m_pEnemySpeeddownManagement = nullptr;
 
+	int a = 0;
+
 	//ƒƒ“ƒoŠÖ”
 public:
 	StageVenus(Score* pNumber);

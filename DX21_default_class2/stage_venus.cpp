@@ -103,6 +103,7 @@ void StageVenus::Update(void)
 
 	//ƒvƒŒƒCƒ„[
 	m_pPlayer->Update(m_pPlayerHP->IsPlayerInvincible());
+	m_pPoorvision->Update(m_pPlayer->GetPos());
 
 	m_pPlayerHP->Update();
 
@@ -190,4 +191,6 @@ void StageVenus::Draw(void) const
 	m_pComboNum->SetNumber(m_pScore->GetComboNum());
 	m_pComboNum->DrawNumber();
 	m_pMultiply->Draw();
+
+	m_pPoorvision->Draw();
 }

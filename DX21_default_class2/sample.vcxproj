@@ -216,6 +216,7 @@
     <ClCompile Include="player_left.cpp" />
     <ClCompile Include="player_right.cpp" />
     <ClCompile Include="poisonfield.cpp" />
+    <ClCompile Include="poorvision.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="result.cpp" />
     <ClCompile Include="saturn_collision_all.cpp" />
@@ -328,6 +329,7 @@
     <ClInclude Include="player_left.h" />
     <ClInclude Include="player_right.h" />
     <ClInclude Include="poisonfield.h" />
+    <ClInclude Include="poorvision.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="result.h" />
