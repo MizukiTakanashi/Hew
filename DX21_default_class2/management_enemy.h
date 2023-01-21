@@ -1,8 +1,8 @@
 #pragma once
 //====================================================
-// “G‚ÌŠÇ—ŠÖŒW(ƒ|ƒŠƒ‚[ƒtƒBƒYƒ€—p)(ƒwƒbƒ_ƒtƒ@ƒCƒ‹)
-// ì¬“úF2022/10/31
-// ì¬ÒF‚—œ…Šó
+// æ•µã®ç®¡ç†é–¢ä¿‚(ãƒãƒªãƒ¢ãƒ¼ãƒ•ã‚£ã‚ºãƒ ç”¨)(ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š2022/10/31
+// ä½œæˆè€…ï¼šé«˜æ¢¨æ°´å¸Œ
 //====================================================
 
 #ifndef _ENEMY_MANAGEMENT_H_
@@ -12,11 +12,11 @@
 
 class EnemyManagement
 {
-//’è”
+//å®šæ•°
 public:
 	enum class TYPE :int
 	{
-		//V‚µ‚¢“G‚Í‰º‚©‚ç’Ç‰Á
+		//æ–°ã—ã„æ•µã¯ä¸‹ã‹ã‚‰è¿½åŠ 
 		MISSILE,
 		LASER,
 		GATORING,
@@ -29,29 +29,32 @@ public:
 		ATTACK,
 		FIREBALL,
 		PUBLIC,
+		FIRE,
+		POORVISION,
+		SPEEDDOWN,
 		NUM
 	};
 
-//ƒƒ“ƒo•Ï”
+//ãƒ¡ãƒ³ãƒå¤‰æ•°
 private:
-	TYPE m_type = TYPE::MISSILE;		//“G‚Ìƒ^ƒCƒv
+	TYPE m_type = TYPE::MISSILE;		//æ•µã®ã‚¿ã‚¤ãƒ—
 
-	//“G©g
-	int m_obj_num = 0;				//Œ»İ‚ÌƒIƒuƒWƒFƒNƒg”
-	int m_obj_delete_index = 0;		//Á‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ì”Ô†
-	int m_obj_attack = 0;			//“G©g‚ª‚Ô‚Â‚©‚Á‚Ä—^‚¦‚éUŒ‚—Í
+	//æ•µè‡ªèº«
+	int m_obj_num = 0;				//ç¾åœ¨ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæ•°
+	int m_obj_delete_index = 0;		//æ¶ˆã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç•ªå·
+	int m_obj_attack = 0;			//æ•µè‡ªèº«ãŒã¶ã¤ã‹ã£ã¦ä¸ãˆã‚‹æ”»æ’ƒåŠ›
 	
-	//’e
-	int m_bullet_num = 0;			//Œ»İ‚Ì’e”
-	int m_bullet_max_num = 0;		//’e‚ÌÅ‘å”
-	int m_bullet_attack = 0;		//’e‚ª—^‚¦‚éUŒ‚—Í
+	//å¼¾
+	int m_bullet_num = 0;			//ç¾åœ¨ã®å¼¾æ•°
+	int m_bullet_max_num = 0;		//å¼¾ã®æœ€å¤§æ•°
+	int m_bullet_attack = 0;		//å¼¾ãŒä¸ãˆã‚‹æ”»æ’ƒåŠ›
 
-	//•ÊƒIƒuƒWƒFƒNƒg
-	int m_other_num = 0;			//Œ»İ‚Ì•ÊƒIƒuƒWƒFƒNƒg”
-	int m_other_attack = 0;			//•ÊƒIƒuƒWƒFƒNƒg‚ª—^‚¦‚éUŒ‚—Í
+	//åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	int m_other_num = 0;			//ç¾åœ¨ã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæ•°
+	int m_other_attack = 0;			//åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒä¸ãˆã‚‹æ”»æ’ƒåŠ›
 
 protected:
-	//ƒXƒe[ƒW
+	//ã‚¹ãƒ†ãƒ¼ã‚¸
 	enum class STAGE :int {
 		TUTORIAL,
 		MARS,
@@ -59,98 +62,98 @@ protected:
 		SATURN,
 		NUM
 	};
-	int m_stage_num = 0;			//ƒXƒe[ƒW
+	int m_stage_num = 0;			//ã‚¹ãƒ†ãƒ¼ã‚¸
 
-	int m_EnemyNum = 0;				//oŒ»‚³‚¹‚½“G‚Ì”
-	int m_FlameNum = 0;				//Œ»İ‚ÌƒtƒŒ[ƒ€”
-	bool m_tutorial_clear = false;	//ÅŒã‚Ì“G‚ğ“|‚µ‚½‚©‚Ç‚¤‚©(ƒ`ƒ…[ƒgƒŠƒAƒ‹)
-	int m_delete_enemy = 0; //Á‚µ‚½“G‚Ì”
+	int m_EnemyNum = 0;				//å‡ºç¾ã•ã›ãŸæ•µã®æ•°
+	int m_FlameNum = 0;				//ç¾åœ¨ã®ãƒ•ãƒ¬ãƒ¼ãƒ æ•°
+	bool m_tutorial_clear = false;	//æœ€å¾Œã®æ•µã‚’å€’ã—ãŸã‹ã©ã†ã‹(ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«)
+	int m_delete_enemy = 0; //æ¶ˆã—ãŸæ•µã®æ•°
 
-//ƒƒ“ƒoŠÖ”
+//ãƒ¡ãƒ³ãƒé–¢æ•°
 public:
-	//ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	EnemyManagement() {}
 
-	//ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//å¼•æ•°ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	EnemyManagement(TYPE type, int bullet_max_num, int obj_attack, int bullet_attack, int other_attack = 0)
 		:m_type(type), m_bullet_max_num(bullet_max_num), m_obj_attack(obj_attack), m_bullet_attack(bullet_attack), 
 		m_other_attack(other_attack) {}
 
-	//ƒfƒXƒgƒ‰ƒNƒ^
+	//ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	virtual ~EnemyManagement() {}
 
-	//ƒ^ƒCƒv‚ğ•Ô‚·
+	//ã‚¿ã‚¤ãƒ—ã‚’è¿”ã™
 	TYPE GetType(void)const { return m_type; }
 
-	//w’è‚µ‚½”Ô†‚ÌƒIƒuƒWƒFƒNƒg‚ÌHP‚ğŒ¸‚ç‚· “G‚ª€‚ñ‚¾‚çtrue‚ğ•Ô‚·
+	//æŒ‡å®šã—ãŸç•ªå·ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®HPã‚’æ¸›ã‚‰ã™ æ•µãŒæ­»ã‚“ã ã‚‰trueã‚’è¿”ã™
 	virtual bool ReduceHP(int index_num, int reduceHP) { return false; }
 
-	//w’è‚µ‚½”Ô†‚Ì•ÊƒIƒuƒWƒFƒNƒg‚ÌHP‚ğŒ¸‚ç‚· “G‚ª€‚ñ‚¾‚çtrue‚ğ•Ô‚·
-	//(ƒI[ƒo[ƒ‰ƒCƒh—p)
+	//æŒ‡å®šã—ãŸç•ªå·ã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®HPã‚’æ¸›ã‚‰ã™ æ•µãŒæ­»ã‚“ã ã‚‰trueã‚’è¿”ã™
+	//(ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ç”¨)
 	virtual bool ReduceOtherHP(int index_num, int reduceHP) { return false; }
 
-	//Á‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ì”Ô†‚ğ•Ô‚·(ƒz[ƒ~ƒ“ƒO’e—p)
+	//æ¶ˆã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç•ªå·ã‚’è¿”ã™(ãƒ›ãƒ¼ãƒŸãƒ³ã‚°å¼¾ç”¨)
 	int GetDeleteObjIndex(void)const { return m_obj_delete_index; }
 
-	//ƒƒ“ƒo•Ï”‚ÉÁ‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ì”Ô†‚ğ‹L˜^‚³‚¹‚Ä‚¨‚­
-	//Œ»İ‚ÌƒIƒuƒWƒFƒNƒg”‚ğˆê‚ÂŒ¸‚ç‚·
+	//ãƒ¡ãƒ³ãƒå¤‰æ•°ã«æ¶ˆã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç•ªå·ã‚’è¨˜éŒ²ã•ã›ã¦ãŠã
+	//ç¾åœ¨ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæ•°ã‚’ä¸€ã¤æ¸›ã‚‰ã™
 	virtual void DeleteObj(int index_num) { m_obj_delete_index = index_num; m_obj_num--; }
 	
-	//w’è‚µ‚½”Ô†‚Ì’e‚ğÁ‚· 
+	//æŒ‡å®šã—ãŸç•ªå·ã®å¼¾ã‚’æ¶ˆã™ 
 	virtual void DeleteBullet(int index_num) = 0;
 
-	//w’è‚µ‚½”Ô†‚Ì“G‚ğ~‚ß‚é
+	//æŒ‡å®šã—ãŸç•ªå·ã®æ•µã‚’æ­¢ã‚ã‚‹
 	virtual void StopEnemy(int index_num, int time) = 0;
 
-	//w’è‚µ‚½”Ô†‚Ì•ÊƒIƒuƒWƒFƒNƒg‚ğÁ‚· 
+	//æŒ‡å®šã—ãŸç•ªå·ã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ¶ˆã™ 
 	virtual void DeleteOther(int index_num) { m_other_num--; }
 
-	//Œ»İ‚ÌƒIƒuƒWƒFƒNƒg”‚ğ‘‚â‚·
+	//ç¾åœ¨ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæ•°ã‚’å¢—ã‚„ã™
 	void IncreaseObjNum(int num) { m_obj_num += num; }
 
-	//Œ»İ‚Ì’e”‚ğ‘‚â‚·
+	//ç¾åœ¨ã®å¼¾æ•°ã‚’å¢—ã‚„ã™
 	void IncreaseBulletNum(int num) { m_bullet_num += num; }
 
-	//Œ»İ‚Ì•ÊƒIƒuƒWƒFƒNƒg”‚ğ‘‚â‚·
+	//ç¾åœ¨ã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæ•°ã‚’å¢—ã‚„ã™
 	void IncreaseOtherNum(int num) { m_other_num += num; }
 
-	//Œ»İ‚ÌƒIƒuƒWƒFƒNƒg‚Ì”‚ğ•Ô‚·
+	//ç¾åœ¨ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æ•°ã‚’è¿”ã™
 	int GetObjNum(void)const { return m_obj_num; }
 
-	//Œ»İ‚Ì’e‚Ì”‚ğ•Ô‚·
+	//ç¾åœ¨ã®å¼¾ã®æ•°ã‚’è¿”ã™
 	int GetBulletNum(void)const { return m_bullet_num; }
 
-	//Œ»İ‚Ì•ÊƒIƒuƒWƒFƒNƒg‚Ì”‚ğ•Ô‚·
+	//ç¾åœ¨ã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æ•°ã‚’è¿”ã™
 	int GetOtherNum(void)const { return m_other_num; }
 	
-	//“G©g‚ª‚Ô‚Â‚©‚Á‚½‚ÌUŒ‚—Í‚ğ•Ô‚·
+	//æ•µè‡ªèº«ãŒã¶ã¤ã‹ã£ãŸæ™‚ã®æ”»æ’ƒåŠ›ã‚’è¿”ã™
 	int GetObjAttack(void)const { return m_obj_attack; }
 
-	//’e‚ÌUŒ‚—Í‚ğ•Ô‚·
+	//å¼¾ã®æ”»æ’ƒåŠ›ã‚’è¿”ã™
 	virtual int GetBulletAttack(void)const { return m_bullet_attack; }
 
-	//•ÊƒIƒuƒWƒFƒNƒg‚ÌUŒ‚—Í‚ğ•Ô‚·
+	//åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æ”»æ’ƒåŠ›ã‚’è¿”ã™
 	int GetOtherAttack(void)const { return m_other_attack; }
 
-	//w’è‚µ‚½”Ô†‚Ì“G‚ÌÀ•W‚ğ•Ô‚·(ƒI[ƒo[ƒ‰ƒCƒh—p)
+	//æŒ‡å®šã—ãŸç•ªå·ã®æ•µã®åº§æ¨™ã‚’è¿”ã™(ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ç”¨)
 	virtual const D3DXVECTOR2& GetObjPos(int index_num)const = 0;
 
-	//w’è‚µ‚½”Ô†‚Ì“G‚ÌƒTƒCƒY‚ğ•Ô‚·(ƒI[ƒo[ƒ‰ƒCƒh—p)
+	//æŒ‡å®šã—ãŸç•ªå·ã®æ•µã®ã‚µã‚¤ã‚ºã‚’è¿”ã™(ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ç”¨)
 	virtual const D3DXVECTOR2& GetObjSize(int index_num = 0)const = 0;
 
-	//w’è‚µ‚½”Ô†‚Ì’e‚ÌÀ•W‚ğ•Ô‚·(ƒI[ƒo[ƒ‰ƒCƒh—p)
+	//æŒ‡å®šã—ãŸç•ªå·ã®å¼¾ã®åº§æ¨™ã‚’è¿”ã™(ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ç”¨)
 	virtual const D3DXVECTOR2& GetBulletPos(int index_num)const = 0;
 
-	//w’è‚µ‚½”Ô†‚Ì’e‚ÌƒTƒCƒY‚ğ•Ô‚·(ƒI[ƒo[ƒ‰ƒCƒh—p)
+	//æŒ‡å®šã—ãŸç•ªå·ã®å¼¾ã®ã‚µã‚¤ã‚ºã‚’è¿”ã™(ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ç”¨)
 	virtual const D3DXVECTOR2& GetBulletSize(int index_num = 0)const = 0;
 
-	//w’è‚µ‚½”Ô†‚Ì•ÊƒIƒuƒWƒFƒNƒg‚ÌÀ•W‚ğ•Ô‚·(ƒI[ƒo[ƒ‰ƒCƒh—p)
+	//æŒ‡å®šã—ãŸç•ªå·ã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®åº§æ¨™ã‚’è¿”ã™(ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ç”¨)
 	virtual const D3DXVECTOR2& GetOtherPos(int index_num)const { return D3DXVECTOR2(-30.0f, -30.0f); };
 
-	//w’è‚µ‚½”Ô†‚Ì•ÊƒIƒuƒWƒFƒNƒg‚ÌƒTƒCƒY‚ğ•Ô‚·(ƒI[ƒo[ƒ‰ƒCƒh—p)
+	//æŒ‡å®šã—ãŸç•ªå·ã®åˆ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚µã‚¤ã‚ºã‚’è¿”ã™(ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ç”¨)
 	virtual const D3DXVECTOR2& GetOtherSize(int index_num = 0)const{ return D3DXVECTOR2(0.0f, 0.0f); };
 
-	//ƒ`ƒ…[ƒgƒŠƒAƒ‹‚ÌƒNƒŠƒA”»’è
+	//ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«ã®ã‚¯ãƒªã‚¢åˆ¤å®š
 	bool IsClear(void)const { return m_tutorial_clear; }
 
 };

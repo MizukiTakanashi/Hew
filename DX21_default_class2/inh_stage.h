@@ -23,6 +23,7 @@
 #include "management_item.h"
 #include "management_explosion.h"
 #include "management_meteo.h"
+#include "poorvision.h"
 
 
 class InhStage
@@ -60,6 +61,8 @@ protected:
 		ENEMY_FIREBALL,
 		ENEMY_GREANADE,
 		ENEMY_METEO,
+		ENEMY_POOR,
+		ENEMY_SPEEDDOWN,
 		ENEMY_ACID,
 		ENEMY_FIRE,
 		POISON,
@@ -72,6 +75,7 @@ protected:
 		BULLET_ICE,//
 		BULLET_FIREBALL,
 		BULLET_FIRE,
+		BULLET_MIST,
 		BULLET_MEGUMIN,
 		BULLET_ACID,
 
@@ -106,6 +110,8 @@ protected:
 		ENEMY_FIREBALL,
 		ENEMY_ACID,
 		ENEMY_FIRE,
+		ENEMY_POOR,
+		ENEMY_SPEEDDOWN,
 		ENEMY_GRENADE,
 		ENEMY_GRENADE_EXPLOSION,
 		POISON,
@@ -116,6 +122,8 @@ protected:
 		BULLET_STOP,//
 		BULLET_ICE,//
 		BULLET_FIREBALL,
+		BULLET_MIST,
+		BULLET_SPEEDDOWN,
 		BULLET_ACID,
 		BULLET_FIRE,
 		BULLET_MEGUMIN,
@@ -143,6 +151,7 @@ protected:
 	DrawObject* m_pDrawObject = nullptr;
 	BG* m_pBG = nullptr;
 	BGPlanet* m_pBG_Moon = nullptr;
+	PoorVision* m_pPoorvision = nullptr;
 	Player* m_pPlayer = nullptr;
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;
@@ -174,5 +183,7 @@ public:
 
 	void HitStop(int flame) { m_StopFlame = flame; }
 	void BossDown() { m_isBossDown = true; }
+
+	void SetPoorVision() { m_pPoorvision->SetPV(); }
 };
 

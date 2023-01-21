@@ -32,6 +32,7 @@ public:
 
 	//ï`âÊèàóù
 	virtual void Draw()const { m_pDrawObject.Draw(m_pos, m_size, m_rot); }
+	virtual void DrawDouble()const { m_pDrawObject.Draw(m_pos, m_size * 2, m_rot); }
 	virtual void DrawReverse()const { m_pDrawObject.DrawReverse(m_pos, m_size, m_rot); }
 	virtual void Draw(D3DXVECTOR2 pos, D3DXVECTOR2 size)const { m_pDrawObject.Draw(pos, size, m_rot); }
 	

@@ -183,7 +183,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="explosion.cpp" />
+    <ClCompile Include="management_enemy_poorvision.cpp" />
     <ClCompile Include="management_enemy_public.cpp" />
+    <ClCompile Include="management_enemy_speeddown.cpp" />
     <ClCompile Include="management_enemy_stop.cpp" />
     <ClCompile Include="management_explosion.cpp" />
     <ClCompile Include="game.cpp" />
@@ -219,6 +221,7 @@
     <ClCompile Include="player_left.cpp" />
     <ClCompile Include="player_right.cpp" />
     <ClCompile Include="poisonfield.cpp" />
+    <ClCompile Include="poorvision.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="result.cpp" />
     <ClCompile Include="saturn_collision_all.cpp">
@@ -301,7 +304,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="explosion.h" />
+    <ClInclude Include="management_enemy_poorvision.h" />
     <ClInclude Include="management_enemy_public.h" />
+    <ClInclude Include="management_enemy_speeddown.h" />
     <ClInclude Include="management_enemy_stop.h" />
     <ClInclude Include="management_explosion.h" />
     <ClInclude Include="game.h" />
@@ -337,6 +342,7 @@
     <ClInclude Include="player_left.h" />
     <ClInclude Include="player_right.h" />
     <ClInclude Include="poisonfield.h" />
+    <ClInclude Include="poorvision.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="result.h" />
