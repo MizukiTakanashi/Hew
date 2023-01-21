@@ -148,6 +148,7 @@ void Game::Update(void)
 	//プレイヤーのHPが0になったら...
 	if (m_pPlayerHP->GetHP0Flag()) {
 		//リザルト画面に行く
+		SetStageClear(false);
 		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MOON);
 	}
 
@@ -155,6 +156,7 @@ void Game::Update(void)
 	if (m_pEnemyMissileManagement->IsClear() && m_pEnemyLaserManagement->IsClear() &&
 		m_pEnemyGatoringManagement->IsClear()) {
 		//リザルト画面に行く
+		SetStageClear(true);
 		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MOON);
 	}
 }

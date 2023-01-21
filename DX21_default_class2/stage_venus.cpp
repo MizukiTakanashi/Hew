@@ -82,7 +82,10 @@ void StageVenus::Update(void)
 
 	//ボスが死んだら
 	if (m_isBossDown)
+	{
+		SetStageClear(true);
 		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_VENUS);
+	}
 
 	//背景
 	m_pBG->Update();
@@ -140,6 +143,7 @@ void StageVenus::Update(void)
 
 	//プレイヤーのHPが0になったら...
 	if (m_pPlayerHP->GetHP0Flag()) {
+		SetStageClear(false);
 		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_VENUS);
 	}
 }
