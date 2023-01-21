@@ -10,6 +10,8 @@ SCENE		g_FadeNextScene;
 float		g_FadeAlpha;
 int			g_FadeTexNo = 0;
 
+STAGE f_stage;
+
 //=========================================================
 // 初期化処理
 //=========================================================
@@ -18,7 +20,7 @@ void InitFade()
 	g_FadeState = FADE_STATE_NONE;
 	g_FadeNextScene = SCENE_NONE;
 	g_FadeAlpha = 0.0f;
-	SetScene(SCENE::SCENE_TITLE);
+	SetScene(SCENE::SCENE_TITLE, STAGE::STAGE_MOON);
 
 	g_FadeTexNo = LoadTexture((char*)"data\\texture\\fade.png");
 }
@@ -34,7 +36,7 @@ void UpdateFade()
 		{
 			g_FadeAlpha = 1.0f;	
 			g_FadeState = FADE_STATE_IN;
-			SetScene(g_FadeNextScene);
+			SetScene(g_FadeNextScene, f_stage);
 		}
 
 		g_FadeAlpha += 1.0f / 20.0f;
@@ -72,11 +74,11 @@ void DrawFade()
 //=========================================================
 // フェード
 //=========================================================
-void Fade(SCENE NextScene)
+void Fade(SCENE NextScene, STAGE stage)
 {
 
 	g_FadeNextScene = NextScene;
-
+	f_stage = stage;
 	g_FadeState = FADE_STATE_OUT;
 
 }

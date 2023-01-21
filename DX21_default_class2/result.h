@@ -31,6 +31,7 @@ private:
 	int m_BGM = 0;		//BGM
 	int m_SE_01 = 0;	//Œˆ’è‰¹
 	int m_SE_03 = 0;	//ƒJ[ƒ\ƒ‹ˆÚ“®‰¹
+	STAGE m_stage;
 
 	TextureUseful* m_pTexUse[6] = { nullptr, nullptr , nullptr , nullptr, nullptr, nullptr };
 	DrawObject* m_pDrawOb[6] = { nullptr, nullptr , nullptr , nullptr, nullptr, nullptr };

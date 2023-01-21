@@ -74,7 +74,7 @@ void StageSaturn::Update(void)
 
 	//ボスが死んだら
 	if (m_isBossDown)
-		Fade(SCENE::SCENE_RESULT);
+		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_SATURN);
 
 	//背景
 	m_pBG->Update();
@@ -133,7 +133,7 @@ void StageSaturn::Update(void)
 
 	//プレイヤーのHPが0になったら...
 	if (m_pPlayerHP->GetHP0Flag()) {
-		Fade(SCENE::SCENE_RESULT);
+		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_SATURN);
 	}
 }
 
