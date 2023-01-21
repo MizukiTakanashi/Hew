@@ -35,7 +35,7 @@ Result::Result()
 //=========================
 // 引数付きコンストラクタ
 //=========================
-Result::Result(bool isClear,  Score* pNumber, STAGE stagenum) :m_pScore(pNumber)
+Result::Result(bool isClear,  Score* pNumber, STAGE stagenum) :m_pScore(pNumber), m_stage(stagenum)
 {
 	m_isClear = isClear;
 
@@ -55,7 +55,7 @@ Result::Result(bool isClear,  Score* pNumber, STAGE stagenum) :m_pScore(pNumber)
 	m_SE_03 = LoadSound((char*)"data\\SE\\2_03.wav");
 	//SetVolume(g_SE, 0.1f);
 
-	switch (stagenum)
+	switch (m_stage)
 	{
 	case STAGE::STAGE_MOON:
 		m_pTexUse[0] = new TextureUseful((char*)"data\\texture\\result.png");
@@ -169,11 +169,39 @@ void Result::Update(void)
 
 		if (m_select_retry)
 		{
-			Fade(SCENE::SCENE_GAME);
+			switch (m_stage)
+			{
+			case STAGE::STAGE_MOON:
+				Fade(SCENE::SCENE_GAME, m_stage);
+				break;
+			case STAGE::STAGE_MARS:
+				Fade(SCENE::SCENE_MARS, m_stage);
+				break;
+			case STAGE::STAGE_MERCURY:
+				Fade(SCENE::SCENE_MERCURY, m_stage);
+				break;
+			case STAGE::STAGE_JUPITER:
+				Fade(SCENE::SCENE_JUPITER, m_stage);
+				break;
+			case STAGE::STAGE_VENUS:
+				Fade(SCENE::SCENE_VENUS, m_stage);
+				break;
+			case STAGE::STAGE_SATURN:
+				Fade(SCENE::SCENE_SATURN, m_stage);
+				break;
+			case STAGE::STAGE_SUN:
+				Fade(SCENE::SCENE_SUN, m_stage);
+				break;
+			case STAGE::STAGE_NUM:
+				Fade(SCENE::SCENE_GAME, m_stage);
+				break;
+			default:
+				break;
+			}
 		}
 		else
 		{
-			Fade(SCENE::SCENE_STAGE_SELECT);
+			Fade(SCENE::SCENE_STAGE_SELECT, STAGE::STAGE_MOON);
 
 		}
 	}

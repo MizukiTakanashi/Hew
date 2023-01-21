@@ -83,28 +83,28 @@ void	UpdateTitle()
 	//キー入力のチェック
 	if (InputGetKeyDown(KK_SPACE))
 	{
-		Fade(SCENE::SCENE_GAME);
+		Fade(SCENE::SCENE_GAME, STAGE::STAGE_MOON);
 		PlaySound(g_SE, 0);
 	}
 
 	//Aボタンを押したらステージ選択画面に行く
 	if (InputGetKeyDown(KK_A))
 	{
-		Fade(SCENE::SCENE_STAGE_SELECT);
+		Fade(SCENE::SCENE_STAGE_SELECT, STAGE::STAGE_MERCURY);
 		PlaySound(g_SE, 0);
 	}
 
 	//Dボタンを押したらステージ選択画面に行く
 	if (InputGetKeyDown(KK_D))
 	{
-		Fade(SCENE::SCENE_TITLE_SCORE);
+		Fade(SCENE::SCENE_TITLE_SCORE, STAGE::STAGE_MERCURY);
 		PlaySound(g_SE, 0);
 	}
 
 	//Wボタンを押したらリザルト画面に行く
 	if (InputGetKeyDown(KK_S))
 	{
-		Fade(SCENE::SCENE_RESULT);
+		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MERCURY);
 		PlaySound(g_SE, 0);
 	}
 }
