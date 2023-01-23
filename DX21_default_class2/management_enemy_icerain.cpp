@@ -45,8 +45,14 @@ void EnemyIceRainManagement::Update(const D3DXVECTOR2& PlayerPos)
 		m_EnemyNum++;
 	}
 
+	if (m_EnemyNum == ENEMY_NUM[m_stage_num])
+	{
+		m_tutorial_clear = true;
+	}
+
 	//¡‚¢‚é“G‚Ìˆ—
 	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
+		m_tutorial_clear = false;
 		m_pEnemyIceRain[i].Update();
 
 		//’e‚ğì‚é
@@ -174,9 +180,9 @@ void EnemyIceRainManagement::DeleteObj(int index_num)
 	//Œp³Œ³‚Ì“G‚ğÁ‚·‚ğŒÄ‚Ô
 	EnemyManagement::DeleteObj(index_num);
 
-	if (m_delete_enemy == ENEMY_NUM[m_stage_num]) {
-		m_tutorial_clear = true;
-	}
+	//if (m_delete_enemy == ENEMY_NUM[m_stage_num]) {
+	//	m_tutorial_clear = true;
+	//}
 
 }
 

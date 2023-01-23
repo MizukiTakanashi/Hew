@@ -40,8 +40,14 @@ void EnemyAcidManagement::Update()
 		m_EnemyNum++;
 	}
 
+	if (m_EnemyNum == ENEMY_NUM)
+	{
+		m_tutorial_clear = true;
+	}
+
 	//今いる敵の処理
 	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
+		m_tutorial_clear = false;
 		m_pEnemyGatoring[i].Update();
 
 		//退出時間来たら...
@@ -119,9 +125,9 @@ void EnemyAcidManagement::DeleteObj(int index_num)
 	//継承元の敵を消すを呼ぶ
 	EnemyManagement::DeleteObj(index_num);
 
-	if (m_EnemyNum == ENEMY_NUM) {
-		m_tutorial_clear = true;
-	}
+	//if (m_EnemyNum == ENEMY_NUM) {
+	//	m_tutorial_clear = true;
+	//}
 }
 
 //======================

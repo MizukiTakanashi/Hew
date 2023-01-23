@@ -90,10 +90,10 @@ void	UpdateTitle()
 		Fade(SCENE::SCENE_GAME, STAGE::STAGE_MOON);
 		PlaySound(g_SE, 0);
 		if (g_title_tutorial) {
-			Fade(SCENE::SCENE_STAGE_SELECT);
+			Fade(SCENE::SCENE_STAGE_SELECT, STAGE::STAGE_MERCURY);
 		}
 		else {
-			Fade(SCENE::SCENE_GAME);
+			Fade(SCENE::SCENE_GAME, STAGE::STAGE_MERCURY);
 		}
 	}
 

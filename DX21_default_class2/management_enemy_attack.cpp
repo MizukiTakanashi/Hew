@@ -37,8 +37,14 @@ void EnemyAttackManagement::Update(const D3DXVECTOR2& PlayerPos)
 		m_EnemyNum++;
 	}
 
+	if (m_EnemyNum == ENEMY_NUM)
+	{
+		m_tutorial_clear = true;
+	}
+
 	//¡‚¢‚é“G‚Ìˆ—
 	for (int i = 0; i < GetObjNum(); i++) {
+		m_tutorial_clear = false;
 		m_pEnemyAttack[i].Update();
 		if (m_pEnemyAttack[i].GetFlagExplosion() == false) {
 			//ŠÔ‚É‚È‚Á‚½‚ç“Ë‚Á‚Ş
