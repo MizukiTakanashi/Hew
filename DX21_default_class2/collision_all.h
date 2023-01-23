@@ -32,6 +32,7 @@ public:
 		MARS,
 		MERCURY,
 		SATURN,
+		VENUS,
 		NUM
 	};
 
@@ -82,6 +83,9 @@ private:
 	//土星
 	Management_PoisonField* m_pPoison = nullptr;	//毒沼
 
+	//金星
+	bool m_poor_vision = false;						//視界を悪くするかフラグ
+
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
@@ -126,6 +130,13 @@ public:
 	//土星
 	//毒沼をセット
 	void SetPoison(Management_PoisonField* pPoison) { m_pPoison = pPoison; }
+
+	//金星
+	//視界を狭くするか否かを返す
+	bool IsPoorVision(void) { return m_poor_vision; }
+
+	//視界を狭くするか否かをセットする
+	void SetPoorVision(bool poor_vision) { m_poor_vision = poor_vision; }
 };
 
 #endif // !_COLLISION_ALL_H_

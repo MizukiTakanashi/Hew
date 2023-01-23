@@ -14,6 +14,12 @@
 class EnemySpeeddownManagement:public EnemyManagement
 {
 //定数
+public:
+	//ここで初期化
+	static const int ATTACK = 5;			//敵の攻撃値
+	static const int BULLET_ATTACK = 1;		//弾の攻撃値
+	static const int SPEED_DOWN_TIME = 60 * 2;	//プレイヤーを遅くする時間
+
 private:
 	//ここで初期化
 	//敵自身
@@ -25,13 +31,6 @@ private:
 	static const float BULLET_SIZE_X;		//サイズX
 	static const float BULLET_SIZE_Y;		//サイズY
 	static const float BULLET_SPEED;		//スピード
-
-public:
-	//ここで初期化
-	//敵自身
-	static const int ATTACK = 5;			//攻撃値
-	//弾
-	static const int BULLET_ATTACK = 1;		//攻撃値
 
 //メンバ変数
 private:
@@ -52,11 +51,11 @@ private:
 
 	//敵を出す時間
 	int m_SetEnemyTime[ENEMY_NUM] = {
-								60 * 10,
-								60 * 20,
-								60 * 30,
-								60 * 40,
-								60 * 50
+		60 * 1,
+		60 * 20,
+		60 * 30,
+		60 * 40,
+		60 * 50
 	};
 
 //メンバ関数

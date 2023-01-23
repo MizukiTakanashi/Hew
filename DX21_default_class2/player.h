@@ -59,6 +59,7 @@ private:
 
 	int m_stop_time = 0;			//playerのアップデートを止める時間
 	bool m_slow = false;			//動きが遅いフラグ
+	int m_slow_time = -1;			//動きが遅い間の最大時間
 
 //メンバ関数
 public:
@@ -103,7 +104,10 @@ public:
 	void StopPlayer(int time) { m_stop_time = time; }
 
 	//動きが遅いフラグをセット
-	void SetSlow(bool slow) { m_slow = slow; }
+	void SetSlow(bool slow, int time = -1) { 
+		m_slow = slow; 
+		m_slow_time = time;
+	}
 };
 
 #endif // !_PLAYER_H_
