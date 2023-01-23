@@ -66,12 +66,15 @@ void EnemyMissileManagement::Update(const D3DXVECTOR2& PlayerPos)
 
 			m_pEnemyMissile[i].BulletMake();
 		}
+
+		//‰æ–ÊŠO‚©‚ço‚½‚çÁ‚·
+		if (m_pEnemyMissile[i].GetScreenOut()) {
+
+		}
 	}
 
 	//¡‚¢‚é’e‚Ìˆ—
 	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {
-
-
 		//’e‚ÌXVˆ—
 		m_pBullet[i].Update();
 		
@@ -105,11 +108,28 @@ bool EnemyMissileManagement::ReduceHP(int index_num, int reduceHP)
 	m_pEnemyMissile[index_num].ReduceHP(reduceHP);
 	if (m_pEnemyMissile[index_num].GetHP() <= 0)
 	{//HP‚ª‚OˆÈ‰º‚È‚ç“G‚ğÁ‚·
-
-
 		return true;
 	}
 	return false;
+}
+
+//======================
+// “G‚ğÁ‚·
+//======================
+void EnemyMissileManagement::DeleteObj(int index_num)
+{
+	m_delete_enemy++;
+	//“G‚ğÁ‚·
+	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
+		m_pEnemyMissile[i] = m_pEnemyMissile[i + 1];
+	}
+
+	//Œp³Œ³‚Ì“G‚ğÁ‚·‚ğŒÄ‚Ô
+	EnemyManagement::DeleteObj(index_num);
+
+	if (m_delete_enemy == ENEMY_NUM[m_stage_num]) {
+		m_tutorial_clear = true;
+	}
 }
 
 //======================
@@ -121,4 +141,8 @@ void EnemyMissileManagement::DeleteBullet(int index_num)
 		m_pBullet[i] = m_pBullet[i + 1];
 	}
 	EnemyMissileManagement::IncreaseBulletNum(-1);
+
+	if (m_delete_enemy == ENEMY_NUM[m_stage_num]) {
+		m_tutorial_clear = true;
+	}
 }

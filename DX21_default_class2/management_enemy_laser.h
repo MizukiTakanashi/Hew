@@ -72,9 +72,10 @@ private:
 		},
 		//ìyêØ
 		{
-			D3DXVECTOR2(52.5f + (105 * 4), -EnemyLaser::SIZE_Y / 2),
-			D3DXVECTOR2(52.5f + (105 * 6), -EnemyLaser::SIZE_Y / 2),
-			D3DXVECTOR2(52.5f + (105 * 5), -EnemyLaser::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 0.0f), -EnemyLaser::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 8.0f), -EnemyLaser::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 3.0f), -EnemyLaser::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 5.0f), -EnemyLaser::SIZE_Y / 2)
 		}
 	};
 	//ìGÇèoÇ∑éûä‘
@@ -98,9 +99,10 @@ private:
 		},
 		//ìyêØ
 		{
-			60 * 5,
-			60 * 10,
-			60 * 15,
+			60 * 40,
+			60 * 40 + 1,
+			60 * 165,
+			60 * 165 + 1
 		}
 	};
 
