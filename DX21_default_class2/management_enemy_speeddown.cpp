@@ -47,6 +47,7 @@ void EnemySpeeddownManagement::Update(void)
 	if (m_EnemyNum == ENEMY_NUM)
 	{
 		m_tutorial_clear = true;
+	}
 	
 	//今いる敵の処理
 	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
