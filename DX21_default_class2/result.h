@@ -44,7 +44,7 @@ private:
 	Score* m_pScore = nullptr;
 
 	bool m_isClear = false;		//CLEAR‚µ‚½‚©‚Ç‚¤‚©
-	bool m_select_retry = true; //‚Ç‚Á‚¿‚ð‘I‘ð‚µ‚Ä‚¢‚é‚©
+	bool m_select_retry = false; //‚Ç‚Á‚¿‚ð‘I‘ð‚µ‚Ä‚¢‚é‚©
 
 public:
 	Result(bool isClear, Score* pNumber, STAGE stagenum);

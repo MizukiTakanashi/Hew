@@ -42,6 +42,7 @@ StageSaturn::StageSaturn(Score* pNumber):InhStage(pNumber)
 	// 全ての当たり判定
 	m_pColAll = new CollisionAll(CollisionAll::STAGE::SATURN, m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
 		m_pItemManagement, m_pScore, m_pBom);
+	m_pColAll->SetPoison(m_pPoisonField);
 
 	//敵のポインタをセット
 	m_pColAll->AddEnemyPointer(m_pEnemyMeguminManagement);

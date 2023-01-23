@@ -850,6 +850,47 @@ int CollisionAll::Collision(void)
 			}
 		}
 	}
+
+	//===========================
+	// 土星、毒沼
+	if (m_stage == STAGE::SATURN) {
+		for (int j = 0; j < m_pPoison->GetPoisonFieldNum(); j++) {
+			//プレイヤー自身
+			if (Collision::ColBox(m_pPlayer->GetPos(), m_pPoison->GetObjPos(j),
+				m_pPlayer->GetSize() / 3, m_pPoison->GetObjSize())) {
+				//一度離れてからじゃないともう一度当たった判定にはならない
+				if (!m_player_enemy_col) {
+					//ぶつかったフラグをオン
+					m_player_enemy_col = true;
+
+					//ダメージ数を増やす
+					attacked += m_pPoison->GetPoisonFieldAttack();
+
+					//コンボを途切れさせる
+					m_pScore->InitCombo();
+				}
+			}
+			else {
+				m_player_enemy_col = false;
+			}
+
+			//ボム
+			//自身
+			if (m_pBom->IsBomb()) {
+				//爆発をセット
+				m_pExplosion->SetExplosion(m_pPoison->GetObjPos(j));
+				explosion_sound = true;
+
+				//敵を消す
+				m_pPoison->DeleteObj(j);
+
+				j--;
+				if (j < 0) {
+					break;
+				}
+			}
+		}
+	}
 	
 	//=======================================
 	// 攻撃を受けたら、腕の切り離しを行う
