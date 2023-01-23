@@ -220,7 +220,7 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	//乱数の初期化
 	srand(timeGetTime());
 
-	InitScene2(SCENE::SCENE_TITLE);	//シーンの初期化処理、好きなシーンを設定できる
+	InitScene2(SCENE::SCENE_TITLE, STAGE::STAGE_MOON);	//シーンの初期化処理、好きなシーンを設定できる
 	InitFade();
 	return S_OK;
 }

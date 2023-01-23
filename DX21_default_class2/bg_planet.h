@@ -41,4 +41,5 @@ public:
 
 	//•`‰æˆ—
 	void DrawBG()const;
+	void DrawSaturn()const;
 };

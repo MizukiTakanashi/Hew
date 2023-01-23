@@ -24,6 +24,7 @@
 //======================
 SCENE g_scene;			//現在のシーン
 SCENE g_scene_next;		//次のシーン
+STAGE g_stage = STAGE::STAGE_MOON; //今のステージ
 
 StageSelect* pStageSelect = nullptr;	//ステージ選択画面
 TitleScore* pTitleScore = nullptr;		//最高スコア表示画面
@@ -40,12 +41,14 @@ DrawObject* g_pDrawObject;
 Score* g_pNumber;
 
 int g_Score[STAGE_NUM];		//スコア保持用
+bool g_isclear = false;
 
 //==========================
 // 初期化処理
 //==========================
-void InitScene(SCENE s)
+void InitScene(SCENE s, STAGE stage)
 {
+	g_stage = stage;
 	g_scene = s;
 	g_scene_next = s;
 
@@ -98,7 +101,35 @@ void InitScene(SCENE s)
 		break;
 
 	case SCENE::SCENE_RESULT:
-		pResult = new Result(true, g_pNumber, STAGE::STAGE_MOON);
+		switch (g_stage)
+		{
+		case STAGE::STAGE_MOON:
+			pResult = new Result(g_isclear, g_pNumber, STAGE::STAGE_MOON);
+			break;
+		case STAGE::STAGE_MARS:
+			pResult = new Result(g_isclear, g_pNumber, STAGE::STAGE_MARS);
+			break;
+		case STAGE::STAGE_MERCURY:
+			pResult = new Result(g_isclear, g_pNumber, STAGE::STAGE_MERCURY);
+			break;
+		case STAGE::STAGE_JUPITER:
+			pResult = new Result(g_isclear, g_pNumber, STAGE::STAGE_JUPITER);
+			break;
+		case STAGE::STAGE_VENUS:
+			pResult = new Result(g_isclear, g_pNumber, STAGE::STAGE_VENUS);
+			break;
+		case STAGE::STAGE_SATURN:
+			pResult = new Result(g_isclear, g_pNumber, STAGE::STAGE_SATURN);
+			break;
+		case STAGE::STAGE_SUN:
+			pResult = new Result(g_isclear, g_pNumber, STAGE::STAGE_SUN);
+			break;
+		case STAGE::STAGE_NUM:
+			pResult = new Result(g_isclear, g_pNumber, STAGE::STAGE_MOON);
+			break;
+		default:
+			break;
+		}
 		break;
 
 	default:
@@ -109,7 +140,7 @@ void InitScene(SCENE s)
 //==========================
 // 初期化処理
 //==========================
-void InitScene2(SCENE s)
+void InitScene2(SCENE s, STAGE stage)
 {
 	//テクスチャ
 	g_pTexUseful = new TextureUseful[10];
@@ -125,7 +156,7 @@ void InitScene2(SCENE s)
 		g_Score[i] = 0;
 	}
 
-	InitScene(s);
+	InitScene(s, stage);
 }
 
 //==========================
@@ -338,9 +369,10 @@ void DrawScene(void)
 //==========================
 // シーンをセット
 //==========================
-void SetScene(SCENE s)
+void SetScene(SCENE s, STAGE stage)
 {
 	g_scene_next = s;
+	g_stage = stage;
 }
 
 //==========================
@@ -351,6 +383,11 @@ void CheckScene(void)
 	if (g_scene != g_scene_next) {
 		UninitScene();				//現在のシーンの終了処理
 
-		InitScene(g_scene_next);	//次のシーンの初期化処理
+		InitScene(g_scene_next, g_stage);	//次のシーンの初期化処理
 	}
+}
+
+void SetStageClear(bool is)
+{
+	g_isclear = is;
 }

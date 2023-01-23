@@ -18,24 +18,10 @@
 const D3DXVECTOR2 Result::NUMBER_POS = D3DXVECTOR2(700, SCREEN_HEIGHT / 2);
 const D3DXVECTOR2 Result::NUMBER_SIZE = D3DXVECTOR2(50.0f, 50.0f);
 
-//==========================
-// 初期化処理
-//==========================
-Result::Result()
-{
-	//m_BGM = LoadSound((char*)"data\\BGM\\silky_sky_away (online-audio-converter.com).wav");	//サウンドのロード
-	//PlaySound(m_BGM, -1);
-	//SetVolume(m_BGM, 0.05f);
-
-	//m_pTexUse = new TextureUseful((char*)"data\\texture\\result.png");
-	//m_pDrawOb = new DrawObject(*m_pTexUse);
-	//m_pBG = new UI(*m_pDrawOb, D3DXVECTOR2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT));
-}
-
 //=========================
 // 引数付きコンストラクタ
 //=========================
-Result::Result(bool isClear,  Score* pNumber, STAGE stagenum) :m_pScore(pNumber)
+Result::Result(bool isClear,  Score* pNumber, STAGE stagenum) :m_pScore(pNumber), m_stage(stagenum)
 {
 	m_isClear = isClear;
 
@@ -55,7 +41,7 @@ Result::Result(bool isClear,  Score* pNumber, STAGE stagenum) :m_pScore(pNumber)
 	m_SE_03 = LoadSound((char*)"data\\SE\\2_03.wav");
 	//SetVolume(g_SE, 0.1f);
 
-	switch (stagenum)
+	switch (m_stage)
 	{
 	case STAGE::STAGE_MOON:
 		m_pTexUse[0] = new TextureUseful((char*)"data\\texture\\result.png");
@@ -113,8 +99,8 @@ Result::Result(bool isClear,  Score* pNumber, STAGE stagenum) :m_pScore(pNumber)
 
 	m_pBG = new UI(*m_pDrawOb[0], D3DXVECTOR2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT));
 	m_pStageTitle = new UI(*m_pDrawOb[1], D3DXVECTOR2(300, 100), D3DXVECTOR2(300, 150));
-	m_pText_Retry = new UI(*m_pDrawOb[2], D3DXVECTOR2(SCREEN_WIDTH / 2 + 100, SCREEN_HEIGHT / 2 + 100), D3DXVECTOR2(300, 100));
-	m_pText_title = new UI(*m_pDrawOb[3], D3DXVECTOR2(SCREEN_WIDTH / 2 + 100, SCREEN_HEIGHT / 2 + 175), D3DXVECTOR2(300, 100));
+	m_pText_Retry = new UI(*m_pDrawOb[2], D3DXVECTOR2(SCREEN_WIDTH / 2 + 100, SCREEN_HEIGHT / 2 + 175), D3DXVECTOR2(300, 100));
+	m_pText_title = new UI(*m_pDrawOb[3], D3DXVECTOR2(SCREEN_WIDTH / 2 + 100, SCREEN_HEIGHT / 2 + 100), D3DXVECTOR2(300, 100));
 	m_pCursor = new UI(*m_pDrawOb[4], D3DXVECTOR2(SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 + 300), D3DXVECTOR2(50, 50));
 	m_pText_Clear = new UI(*m_pDrawOb[5], D3DXVECTOR2(SCREEN_WIDTH / 2, 150), D3DXVECTOR2(200, 100));
 
@@ -147,7 +133,7 @@ Result::~Result()
 void Result::Update(void)
 {
 	//上下のボタンが押されたら選択を変更
-	if (InputGetKeyDown(KK_DOWN) && m_isClear || InputGetKeyDown(KK_UP) && m_isClear){
+	if (InputGetKeyDown(KK_DOWN) && !m_isClear || InputGetKeyDown(KK_UP) && !m_isClear){
 		Select();
 		PlaySound(m_SE_03, 0);
 	}
@@ -169,11 +155,39 @@ void Result::Update(void)
 
 		if (m_select_retry)
 		{
-			Fade(SCENE::SCENE_GAME);
+			switch (m_stage)
+			{
+			case STAGE::STAGE_MOON:
+				Fade(SCENE::SCENE_GAME, m_stage);
+				break;
+			case STAGE::STAGE_MARS:
+				Fade(SCENE::SCENE_MARS, m_stage);
+				break;
+			case STAGE::STAGE_MERCURY:
+				Fade(SCENE::SCENE_MERCURY, m_stage);
+				break;
+			case STAGE::STAGE_JUPITER:
+				Fade(SCENE::SCENE_JUPITER, m_stage);
+				break;
+			case STAGE::STAGE_VENUS:
+				Fade(SCENE::SCENE_VENUS, m_stage);
+				break;
+			case STAGE::STAGE_SATURN:
+				Fade(SCENE::SCENE_SATURN, m_stage);
+				break;
+			case STAGE::STAGE_SUN:
+				Fade(SCENE::SCENE_SUN, m_stage);
+				break;
+			case STAGE::STAGE_NUM:
+				Fade(SCENE::SCENE_GAME, m_stage);
+				break;
+			default:
+				break;
+			}
 		}
 		else
 		{
-			Fade(SCENE::SCENE_STAGE_SELECT);
+			Fade(SCENE::SCENE_STAGE_SELECT, STAGE::STAGE_MOON);
 
 		}
 	}
@@ -186,10 +200,10 @@ void Result::Draw(void)const
 {
 	m_pBG->Draw();
 	m_pStageTitle->Draw();
-	m_pText_Retry->Draw();
-	if (m_isClear)
+	m_pText_title->Draw();
+	if (!m_isClear)
 	{
-		m_pText_title->Draw();
+		m_pText_Retry->Draw();
 	}
 	m_pCursor->Draw();
 	m_pText_Clear->Draw();

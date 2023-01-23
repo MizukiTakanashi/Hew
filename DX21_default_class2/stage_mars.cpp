@@ -100,8 +100,10 @@ void StageMars::Update(void)
 	}
 
 	//ボスが死んだら
-	if (m_isBossDown) {
-		Fade(SCENE::SCENE_RESULT);
+	if (m_isBossDown) 
+	{
+		SetStageClear(true);
+		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MARS);
 	}
 
 	//ギミック
@@ -178,7 +180,8 @@ void StageMars::Update(void)
 
 	//プレイヤーのHPが0になったら...
 	if (m_pPlayerHP->GetHP0Flag()) {
-		Fade(SCENE::SCENE_RESULT);
+		SetStageClear(false);
+		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MARS);
 	}
 
 }

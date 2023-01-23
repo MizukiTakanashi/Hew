@@ -31,6 +31,7 @@ private:
 	int m_BGM = 0;		//BGM
 	int m_SE_01 = 0;	//決定音
 	int m_SE_03 = 0;	//カーソル移動音
+	STAGE m_stage;
 
 	TextureUseful* m_pTexUse[6] = { nullptr, nullptr , nullptr , nullptr, nullptr, nullptr };
 	DrawObject* m_pDrawOb[6] = { nullptr, nullptr , nullptr , nullptr, nullptr, nullptr };
@@ -43,11 +44,9 @@ private:
 	Score* m_pScore = nullptr;
 
 	bool m_isClear = false;		//CLEARしたかどうか
-	bool m_select_retry = true; //どっちを選択しているか
+	bool m_select_retry = false; //どっちを選択しているか
 
 public:
-	Result();	//デフォルトコンストラクタ
-
 	Result(bool isClear, Score* pNumber, STAGE stagenum);
 
 	~Result();	//デストラクタ

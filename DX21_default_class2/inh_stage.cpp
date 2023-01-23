@@ -30,6 +30,8 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	//背景の初期化処理
 	m_pBG = new BG((char*)"data\\texture\\game_bg_scroll.jpg");
 
+	m_pPoorvision = new PoorVision((char*)"data\\texture\\poorvision.png");
+
 	m_pTexUseful = new TextureUseful[(int)TEXTURE_TYPE::NUM];
 	m_pDrawObject = new DrawObject[(int)DRAW_TYPE::NUM];
 
@@ -191,6 +193,7 @@ InhStage::~InhStage()
 	//ゲームオブジェクトを消す
 	delete m_pBom;
 	delete m_pBG;
+	delete m_pPoorvision;
 	delete m_pBG_Moon;
 	delete m_pExplosionManagement;
 	delete m_pMeteoManagement;

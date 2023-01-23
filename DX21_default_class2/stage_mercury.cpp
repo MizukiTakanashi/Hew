@@ -85,7 +85,10 @@ void StageMercury::Update(void)
 
 	//ボスが死んだら
 	if (m_isBossDown)
-		Fade(SCENE::SCENE_RESULT);
+	{
+		SetStageClear(true);
+		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MERCURY);
+	}
 
 	//背景
 	m_pBG->Update();
@@ -141,7 +144,8 @@ void StageMercury::Update(void)
 
 	//プレイヤーのHPが0になったら...
 	if (m_pPlayerHP->GetHP0Flag()) {
-		Fade(SCENE::SCENE_RESULT);
+		SetStageClear(false);
+		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MERCURY);
 	}
 }
 
