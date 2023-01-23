@@ -49,13 +49,18 @@ void InitScene(SCENE s)
 	g_scene = s;
 	g_scene_next = s;
 
+	bool tutorial = false;
+	if (g_Score[STAGE_MOON] > 0) {
+		tutorial = true;
+	}
+
 	switch (g_scene){
 
 	case SCENE::SCENE_NONE:
 		break;
 
 	case SCENE::SCENE_TITLE:
-		InitTitle();
+		InitTitle(tutorial);
 		break;
 
 	case SCENE::SCENE_TITLE_SCORE:

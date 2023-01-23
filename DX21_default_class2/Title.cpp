@@ -23,6 +23,7 @@ int		g_TitleSoundNo;
 int		g_SE = 0;
 BG* p_title_bg;
 Sprite* g_p1Sprite;
+bool g_title_tutorial = true;
 
 //タイトル構造体
 typedef	struct
@@ -40,7 +41,7 @@ int		TitleTextureNo;	//テクスチャ番号
 //==========================
 // 初期化処理
 //==========================
-void	InitTitle()
+void	InitTitle(bool tutorial)
 {
 	TitleTextureNo = LoadTexture(g_TitleTextureName);				//テクスチャのロード
 	g_TitleSoundNo = LoadSound((char*)"data\\BGM\\sample000.wav");	//サウンドのロード
@@ -63,6 +64,9 @@ void	InitTitle()
 	SetVolume(g_TitleSoundNo, 0.1f);
 
 	g_p1Sprite = new Sprite;
+
+	//チュートリアルプレイ済みか
+	g_title_tutorial = tutorial;
 }
 
 //==========================
@@ -83,8 +87,13 @@ void	UpdateTitle()
 	//キー入力のチェック
 	if (InputGetKeyDown(KK_SPACE))
 	{
-		Fade(SCENE::SCENE_GAME);
 		PlaySound(g_SE, 0);
+		if (g_title_tutorial) {
+			Fade(SCENE::SCENE_STAGE_SELECT);
+		}
+		else {
+			Fade(SCENE::SCENE_GAME);
+		}
 	}
 
 	//Aボタンを押したらステージ選択画面に行く
