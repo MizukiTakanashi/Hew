@@ -55,6 +55,14 @@ void Player::Update(bool isinvincible)
 	}
 	D3DXVECTOR2 temp = D3DXVECTOR2(0.0f, 0.0f);
 
+	//時間がセットされていれば...
+	if (m_slow_time != -1) {
+		//時間がなくなったら、プレイヤーを元のスピードに戻す
+		if (m_slow_time-- < 0) {
+			m_slow = false;
+		}
+	}
+
 	float speed_x = SPEED_X;
 	float speed_y = SPEED_Y;
 	float speed = SPEED;

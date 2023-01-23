@@ -11,6 +11,7 @@
 //各ステージ
 #include "management_enemy_grenade.h"
 #include "player_arm_grenade.h"
+#include "management_enemy_speeddown.h"
 
 //==========================
 // デフォルトコンストラクタ
@@ -447,6 +448,17 @@ int CollisionAll::Collision(void)
 					//プレイヤーを動けなくする
 					PlaySound(m_SE_10, 0);
 					m_pPlayer->StopPlayer(60);
+				}
+				//金星であれば...
+				else if (m_stage == STAGE::VENUS) {
+					//スピードを落とす敵であれば...
+					if (m_pEnemy[k]->GetType() == EnemyManagement::TYPE::SPEEDDOWN) {
+						m_pPlayer->SetSlow(true, EnemySpeeddownManagement::SPEED_DOWN_TIME);
+					}
+					//視界を悪くする敵であれば...
+					else if (m_pEnemy[k]->GetType() == EnemyManagement::TYPE::POORVISION) {
+
+					}
 				}
 				else
 				{

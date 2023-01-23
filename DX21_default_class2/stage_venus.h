@@ -26,7 +26,9 @@ private:
 
 	int a = 0;
 
-	//ƒƒ“ƒoŠÖ”
+	bool m_poor_vision = false;
+
+//ƒƒ“ƒoŠÖ”
 public:
 	StageVenus(Score* pNumber);
 

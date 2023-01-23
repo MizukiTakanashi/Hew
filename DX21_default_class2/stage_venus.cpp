@@ -22,7 +22,8 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_FIREBALL].SetTextureName((char*)"data\\texture\\sun.png");
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_FIREBALL]);
 
-	m_pEnemyFireballManagement = new EnemyFireballManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL], m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL]);
+	m_pEnemyFireballManagement = new EnemyFireballManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL], 
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL]);
 
 	//酸性雨の敵
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ACID].SetTextureName((char*)"data\\texture\\enemy_acid.png");
@@ -30,7 +31,8 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_ACID].SetTextureName((char*)"data\\texture\\bullet_acid.png");
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_ACID].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_ACID]);
 
-	m_pEnemyAcidManagement = new EnemyAcidManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ACID], m_pDrawObject[(int)DRAW_TYPE::BULLET_ACID]);
+	m_pEnemyAcidManagement = new EnemyAcidManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ACID], 
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_ACID]);
 
 	//視界を悪くする敵
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_POOR].SetTextureName((char*)"data\\texture\\enemy_poorvision.png");
@@ -38,22 +40,30 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MIST].SetTextureName((char*)"data\\texture\\bullet_mist.png");
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_MIST].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MIST]);
 
-	m_pEnemuPoorvisionManagement = new EnemyPoorvisionManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_POOR], m_pDrawObject[(int)DRAW_TYPE::BULLET_MIST]);
+	m_pEnemuPoorvisionManagement = new EnemyPoorvisionManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_POOR], 
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_MIST]);
 
 	//プレイヤーのスピードを遅くする敵
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_SPEEDDOWN].SetTextureName((char*)"data\\texture\\enemy_speeddown.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_SPEEDDOWN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_SPEEDDOWN]);
-	m_pDrawObject[(int)DRAW_TYPE::BULLET_SPEEDDOWN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MIST], 1.0f, 1.0f, 1.0f, 1, D3DXCOLOR(1.0f, 0.0f, 1.0f, 1.0f));
+	m_pDrawObject[(int)DRAW_TYPE::BULLET_SPEEDDOWN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MIST], 
+		1.0f, 1.0f, 1.0f, 1, D3DXCOLOR(1.0f, 0.0f, 1.0f, 1.0f));
 
-	m_pEnemySpeeddownManagement = new EnemySpeeddownManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_SPEEDDOWN], m_pDrawObject[(int)DRAW_TYPE::BULLET_SPEEDDOWN]);
+	m_pEnemySpeeddownManagement = new EnemySpeeddownManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_SPEEDDOWN], 
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_SPEEDDOWN]);
 
 
 	//敵の管理
 	//m_pAllEnemyManagement->AddPointer(m_pEnemyFireballManagement);
 	
-
-	//敵のポインタをセット（順番変えるのNG）
-	//m_pColAll->AddEnemyPointer(m_pEnemyFireballManagement);
+	//当たり判定
+	m_pColAll = new CollisionAll(CollisionAll::STAGE::VENUS, m_pPlayer, m_pPlayerLeft, m_pPlayerRight,
+		m_pExplosionManagement, m_pItemManagement, m_pScore, m_pBom);
+	//敵のポインタをセット
+	m_pColAll->AddEnemyPointer(m_pEnemyFireballManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemyAcidManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemuPoorvisionManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemySpeeddownManagement);
 }
 
 //==========================
@@ -131,10 +141,16 @@ void StageVenus::Update(void)
 	m_pPlayerCenter->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
 
 	//敵とプレイヤーの当たり判定
-	//attack_num += m_pColAll->Collision();
+	attack_num += m_pColAll->Collision();
 
 	//回復
-	//m_pColAll->HeelCollision();
+	m_pColAll->HeelCollision();
+
+	//視界を悪くするか
+	if (m_pColAll->IsPoorVision()) {
+		InhStage::SetPoorVision();
+		m_pColAll->SetPoorVision(false);
+	}
 
 	//プレイヤーのHPを攻撃数によって減らす
 	if (attack_num != 0) {
