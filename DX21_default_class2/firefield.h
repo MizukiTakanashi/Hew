@@ -25,7 +25,7 @@ private:
 private:
 	float m_move_width = 0.0f;			//敵が動く時のcosカーブ
 	float m_init_posx = 0.0f;			//敵の初期位置X
-
+	bool m_move_down = false;	//移動速度低下フラグ
 	int m_hp = HP_MAX;					//敵の現在のHP
 	int m_invincible_flame = 0;			//無敵時間の残り
 
@@ -50,7 +50,8 @@ public:
 			m_invincible_flame = INVINCIBLE_FLAME;
 		}
 	}
-
+	//移動速度低下フラグを返す
+	bool GetMoveDown() { return m_move_down; }
 	//HPを返す
 	int GetHP(void) { return m_hp; }
 
