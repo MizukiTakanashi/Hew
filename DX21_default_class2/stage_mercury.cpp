@@ -45,6 +45,15 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 	m_pPlayerCenter->DrawSetFireE(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIRE]);
 	m_pPlayerCenter->DrawSetFire(&m_pDrawObject[(int)DRAW_TYPE::BULLET_FIRE]);
 
+	//炎ギミック
+	m_pTexUseful[(int)TEXTURE_TYPE::FIREFIELD].SetTextureName((char*)"data\\texture\\gimmick_Mercury2.png");
+	m_pDrawObject[(int)DRAW_TYPE::FIREFIELD].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::FIREFIELD], 2.0f, 1.0, 1.0f, 3);
+	m_pManagement_FireField = new Management_FireField(m_pDrawObject[(int)DRAW_TYPE::FIREFIELD]);
+
+	//氷ギミック
+	m_pTexUseful[(int)TEXTURE_TYPE::ICEFIELD].SetTextureName((char*)"data\\texture\\gimmick_Mercury .png");
+	m_pDrawObject[(int)DRAW_TYPE::ICEFIELD].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ICEFIELD], 2.0f, 1.0, 1.0f, 3);
+	m_pManagement_IceField = new Management_IceField(m_pDrawObject[(int)DRAW_TYPE::ICEFIELD]);
 	//========================================================
 	// 全ての当たり判定
 	m_pColAll = new CollisionAll(CollisionAll::STAGE::MERCURY, m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
@@ -69,6 +78,8 @@ StageMercury::~StageMercury()
 	delete m_pEnemyIce;
 	delete m_pEnemyFire;
 	delete m_pEnemyMissile;
+	delete m_pManagement_IceField;
+	delete m_pManagement_FireField;
 }
 
 //==========================
@@ -130,6 +141,8 @@ void StageMercury::Update(void)
 	m_pPlayerRight->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
 	m_pPlayerCenter->ButtonPress();
 	m_pPlayerCenter->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
+	m_pManagement_FireField->Update();
+	m_pManagement_IceField->Update();
 
 	//敵とプレイヤーの当たり判定
 	attack_num += m_pColAll->Collision();
@@ -176,6 +189,9 @@ void StageMercury::Draw(void) const
 	m_pExplosionManagement->Draw();
 
 	m_pItemManagement->Draw();
+
+	m_pManagement_IceField->Draw();
+	m_pManagement_FireField->Draw();
 
 	//ボムの描画
 	m_pBom->BomDraw();
