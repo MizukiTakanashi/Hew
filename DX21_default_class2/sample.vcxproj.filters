@@ -281,9 +281,16 @@
     <ClCompile Include="management_enemy_fire.cpp">
       <Filter>29_Enemy</Filter>
     </ClCompile>
+
+    <ClCompile Include="firefield.cpp" />
+    <ClCompile Include="icefield.cpp" />
+    <ClCompile Include="management_firefield.cpp" />
+    <ClCompile Include="management_icefield.cpp" />
+
     <ClCompile Include="collision_all.cpp">
       <Filter>30_Multi</Filter>
     </ClCompile>
+
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -569,9 +576,16 @@
     <ClInclude Include="management_enemy_fire.h">
       <Filter>29_Enemy</Filter>
     </ClInclude>
+
+    <ClInclude Include="firefield.h" />
+    <ClInclude Include="icefield.h" />
+    <ClInclude Include="management_icefield.h" />
+    <ClInclude Include="management_firefield.h" />
+
     <ClInclude Include="collision_all.h">
       <Filter>30_Multi</Filter>
     </ClInclude>
+
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01_Title">
