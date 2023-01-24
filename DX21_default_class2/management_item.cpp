@@ -45,7 +45,9 @@ void ItemManagement::DeleteItem(int index_num)
 void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem)
 {
     Item Temp(*m_DOMissile, pos, typeitem);
+	m_pItem[m_ItemNum] = Temp;
 
+	//アイテムの見た目変更
 	switch (typeitem)
 	{
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE_HOMING:
@@ -64,7 +66,7 @@ void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem)
 		m_pItem[m_ItemNum].SetDrawob(*m_DOLaser);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE_ICERAIN:
-		m_pItem[m_ItemNum].SetDrawob(*m_DOGatoring);
+		m_pItem[m_ItemNum].SetDrawob(*m_DOIcerain);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE7:
 		m_pItem[m_ItemNum].SetDrawob(*m_DOMissile);
@@ -80,7 +82,5 @@ void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem)
 		break;
 	}
 
-	m_pItem[m_ItemNum] = Temp;
 	m_ItemNum++;
-
 }

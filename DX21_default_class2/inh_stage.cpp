@@ -96,10 +96,22 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::ITEM_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_LASER]);
 	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_GATORING].SetTextureName((char*)"data\\texture\\item_gatoring.png");
 	m_pDrawObject[(int)DRAW_TYPE::ITEM_GATORING].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_GATORING]);
+	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_ACID].SetTextureName((char*)"data\\texture\\item_acid.png");
+	m_pDrawObject[(int)DRAW_TYPE::ITEM_ACID].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_ACID]);
+	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_HOTAIRLASER].SetTextureName((char*)"data\\texture\\item_hotairlaserlaser.png");
+	m_pDrawObject[(int)DRAW_TYPE::ITEM_HOTAIRLASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_HOTAIRLASER]);
+	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_ICERAIN].SetTextureName((char*)"data\\texture\\item_icerain.png");
+	m_pDrawObject[(int)DRAW_TYPE::ITEM_ICERAIN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_ICERAIN]);
+	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_POISONLASER].SetTextureName((char*)"data\\texture\\item_Poisonlaserlaser.png");
+	m_pDrawObject[(int)DRAW_TYPE::ITEM_POISONLASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_POISONLASER]);
 	//‰æ‘œƒZƒbƒg
 	m_pItemManagement->SetDrawMissile(&m_pDrawObject[(int)DRAW_TYPE::ITEM_MISSILE]);
 	m_pItemManagement->SetDrawLaser(&m_pDrawObject[(int)DRAW_TYPE::ITEM_LASER]);
 	m_pItemManagement->SetDrawGatoring(&m_pDrawObject[(int)DRAW_TYPE::ITEM_GATORING]);
+	m_pItemManagement->SetDrawAcid(&m_pDrawObject[(int)DRAW_TYPE::ITEM_ACID]);
+	m_pItemManagement->SetDrawHotairlaser(&m_pDrawObject[(int)DRAW_TYPE::ITEM_HOTAIRLASER]);
+	m_pItemManagement->SetDrawIcerain(&m_pDrawObject[(int)DRAW_TYPE::ITEM_ICERAIN]);
+	m_pItemManagement->SetDrawPoisonlaser(&m_pDrawObject[(int)DRAW_TYPE::ITEM_POISONLASER]);
 
 
 	//=======================

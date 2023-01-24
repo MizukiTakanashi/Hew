@@ -19,9 +19,13 @@ private:
 	//メンバ変数
 private:
 	int m_SE = 0;
-	DrawObject* m_DOMissile;
-	DrawObject* m_DOLaser;
-	DrawObject* m_DOGatoring;
+	DrawObject* m_DOMissile = nullptr;
+	DrawObject* m_DOLaser = nullptr;
+	DrawObject* m_DOGatoring = nullptr;
+	DrawObject* m_DOAcid = nullptr;
+	DrawObject* m_DOHotairlaser = nullptr;
+	DrawObject* m_DOIcerain = nullptr;
+	DrawObject* m_DOPoisonlaser = nullptr;
 	Item* m_pItem = nullptr;
 	int m_ItemNum = 0;	//アイテムの数
 
@@ -29,7 +33,17 @@ public:
 	//デフォルトコンストラクタ
 	ItemManagement();
 
-	~ItemManagement() { delete[] m_pItem; }	//デストラクタ
+	~ItemManagement() 
+	{
+		delete[] m_pItem; 
+		//delete m_DOMissile;
+		//delete m_DOLaser;
+		//delete m_DOGatoring;
+		//delete m_DOAcid;
+		//delete m_DOHotairlaser;
+		//delete m_DOIcerain;
+		//delete m_DOPoisonlaser;
+	}	//デストラクタ
 
 	//更新処理
 	void Update(void);
@@ -62,5 +76,9 @@ public:
 	void SetDrawMissile(DrawObject* pd) { m_DOMissile = pd; }
 	void SetDrawLaser(DrawObject* pd) { m_DOLaser = pd; }
 	void SetDrawGatoring(DrawObject* pd) { m_DOGatoring = pd; }
+	void SetDrawAcid(DrawObject* pd) { m_DOAcid = pd; }
+	void SetDrawHotairlaser(DrawObject* pd) { m_DOHotairlaser = pd; }
+	void SetDrawIcerain(DrawObject* pd) { m_DOIcerain = pd; }
+	void SetDrawPoisonlaser(DrawObject* pd) { m_DOPoisonlaser = pd; }
 };
 
