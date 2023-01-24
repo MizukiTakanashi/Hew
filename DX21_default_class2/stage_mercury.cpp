@@ -205,4 +205,5 @@ void StageMercury::Draw(void) const
 	m_pComboNum->SetNumber(m_pScore->GetComboNum());
 	m_pComboNum->DrawNumber();
 	m_pMultiply->Draw();
+	m_pStageMarcury->Draw();
 }
