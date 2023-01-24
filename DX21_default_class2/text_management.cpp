@@ -113,33 +113,99 @@ void TextManagement::SetText(void)
 	switch (m_TextCount)
 	{
 	case 0:
-		temp.SetTextureName((char*)"data\\texture\\tuto1.png");
-		m_Text = DrawObject(temp, 0, 0.025f, 0.25f, 40);
-		m_PaternMax = 160;
+		temp.SetTextureName((char*)"data\\texture\\01story.png");
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 3, 30);
+		m_PaternMax = 90;
 
 		break;
 	case 1:	
-		temp.SetTextureName((char*)"data\\texture\\tuto2.png");
-		m_Text = DrawObject(temp, 0, 0.025f, 0.5f, 40);
-		m_PaternMax = 80;
+		temp.SetTextureName((char*)"data\\texture\\02story2.png");
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 2, 30);
+		m_PaternMax = 60;
 
 		break;
 	case 2:
-		temp.SetTextureName((char*)"data\\texture\\tuto3.png");
-		m_Text = DrawObject(temp, 0, 0.025f, 0.2f, 40);
-		m_PaternMax = 200;
+		temp.SetTextureName((char*)"data\\texture\\player operation.png");
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 2, 30);
+		m_PaternMax = 60;
 
 		break;
 	case 3:
-		temp.SetTextureName((char*)"data\\texture\\tuto4.png");
-		m_Text = DrawObject(temp, 0, 0.025f, 1.0f / 7, 40);
-		m_PaternMax = 280;
+		temp.SetTextureName((char*)"data\\texture\\player operation2.png");
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 4, 30);
+		m_PaternMax = 120;
 
 		break;
 	case 4:
-		temp.SetTextureName((char*)"data\\texture\\tuto5.png");
-		m_Text = DrawObject(temp, 0, 0.025f, 0.2f, 40);
-		m_PaternMax = 200;
+		temp.SetTextureName((char*)"data\\texture\\gatling description.png");
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 4, 30);
+		m_PaternMax = 120;
+
+		break;
+	case 5:
+		temp.SetTextureName((char*)"data\\texture\\Combined explanation.png");
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 3, 30);
+		m_PaternMax = 90;
+
+		break;
+	case 6:
+		temp.SetTextureName((char*)"data\\texture\\Combined explanation2.png");
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 3, 30);
+		m_PaternMax = 90;
+
+		break;
+	case 7:
+		temp.SetTextureName((char*)"data\\texture\\missile description.png");
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 4, 30);
+		m_PaternMax = 90;
+
+		break;
+	case 8:
+		temp.SetTextureName((char*)"data\\texture\\Weapon switch.png");
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 4, 30);
+		m_PaternMax = 120;
+
+		break;
+	case 9:
+		temp.SetTextureName((char*)"data\\texture\\Weapon switch2.png");
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 2, 30);
+		m_PaternMax = 60;
+
+		break;
+	case 10:
+		temp.SetTextureName((char*)"data\\texture\\laser description.png");
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 3, 30);
+		m_PaternMax = 90;
+
+		break;
+	case 11:
+		temp.SetTextureName((char*)"data\\texture\\laser description2.png");
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 4, 30);
+		m_PaternMax = 120;
+
+		break;
+	case 12:
+		temp.SetTextureName((char*)"data\\texture\\Bomb description.png");
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 3, 30);
+		m_PaternMax = 90;
+
+		break;
+	case 13:
+		temp.SetTextureName((char*)"data\\texture\\Bomb description2.png");
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 4, 30);
+		m_PaternMax = 120;
+
+		break;
+	case 14:
+		temp.SetTextureName((char*)"data\\texture\\Bomb description3.png");
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 3, 30);
+		m_PaternMax = 90;
+
+		break;
+	case 15:
+		temp.SetTextureName((char*)"data\\texture\\end.png");
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 2, 30);
+		m_PaternMax = 60;
 
 		break;
 	default:
