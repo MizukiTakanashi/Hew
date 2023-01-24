@@ -21,6 +21,8 @@
 #include "management_enemy_grenade.h"
 #include "player_hp.h"
 #include "management_poisonfield.h"
+#include "management_icefield.h"
+#include "management_firefield.h"
 
 class CollisionAll
 {
@@ -79,6 +81,8 @@ private:
 
 	//水星
 	PlayerHP* m_pHP = nullptr;						//プレイヤーのHP
+	Management_IceField* m_pIceField = nullptr;		//ステージギミック(氷)
+	Management_FireField* m_pFireField = nullptr;	//ステージギミック(炎)
 
 	//土星
 	Management_PoisonField* m_pPoison = nullptr;	//毒沼
@@ -126,6 +130,8 @@ public:
 	//水星
 	//プレイヤーのHPをセット
 	void SetHP(PlayerHP* pHP) { m_pHP = pHP; }
+	void SetIceField(Management_IceField* pIceField) { m_pIceField = pIceField; }
+	void SetFireField(Management_FireField* pFireField) { m_pFireField = pFireField; }
 
 	//土星
 	//毒沼をセット

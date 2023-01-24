@@ -864,6 +864,84 @@ int CollisionAll::Collision(void)
 	}
 
 	//===========================
+	// 水星、氷沼、炎沼
+	if (m_stage == STAGE::MERCURY) {
+		for (int j = 0; j < m_pIceField->GetPoisonFieldNum(); j++) {
+			//プレイヤー自身
+			if (Collision::ColBox(m_pPlayer->GetPos(), m_pIceField->GetObjPos(j),
+				m_pPlayer->GetSize() / 3, m_pIceField->GetObjSize())) {
+				//一度離れてからじゃないともう一度当たった判定にはならない
+				if (!m_player_enemy_col) {
+					//ぶつかったフラグをオン
+					m_player_enemy_col = true;
+
+					//プレイヤーを遅くする
+					m_pPlayer->SetSlow(true, Management_IceField::SLOW_TIME);
+
+					//コンボを途切れさせる
+					m_pScore->InitCombo();
+				}
+			}
+			else {
+				m_player_enemy_col = false;
+			}
+
+			//ボム
+			//自身
+			if (m_pBom->IsBomb()) {
+				//爆発をセット
+				m_pExplosion->SetExplosion(m_pIceField->GetObjPos(j));
+				explosion_sound = true;
+
+				//敵を消す
+				m_pIceField->DeleteObj(j);
+
+				j--;
+				if (j < 0) {
+					break;
+				}
+			}
+		}
+
+		for (int j = 0; j < m_pFireField->GetPoisonFieldNum(); j++) {
+			//プレイヤー自身
+			if (Collision::ColBox(m_pPlayer->GetPos(), m_pFireField->GetObjPos(j),
+				m_pPlayer->GetSize() / 3, m_pFireField->GetObjSize())) {
+				//一度離れてからじゃないともう一度当たった判定にはならない
+				if (!m_player_enemy_col) {
+					//ぶつかったフラグをオン
+					m_player_enemy_col = true;
+
+					//ダメージ数を増やす
+					attacked += m_pPoison->GetPoisonFieldAttack();
+
+					//コンボを途切れさせる
+					m_pScore->InitCombo();
+				}
+			}
+			else {
+				m_player_enemy_col = false;
+			}
+
+			//ボム
+			//自身
+			if (m_pBom->IsBomb()) {
+				//爆発をセット
+				m_pExplosion->SetExplosion(m_pFireField->GetObjPos(j));
+				explosion_sound = true;
+
+				//敵を消す
+				m_pFireField->DeleteObj(j);
+
+				j--;
+				if (j < 0) {
+					break;
+				}
+			}
+		}
+	}
+
+	//===========================
 	// 土星、毒沼
 	if (m_stage == STAGE::SATURN) {
 		for (int j = 0; j < m_pPoison->GetPoisonFieldNum(); j++) {
