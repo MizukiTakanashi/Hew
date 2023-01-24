@@ -47,7 +47,7 @@ private:
 	int m_EnemyItem_num = 0;	//敵のアイテムの数
 
 	//敵の配列
-	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][6] = {
+	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][7] = {
 	//チュートリアル
 	{
 		D3DXVECTOR2(52.5f + (105 * 1), -EnemyNormal::SIZE_Y / 2),
@@ -67,12 +67,13 @@ private:
 	},
 	//水星
 	{
-		D3DXVECTOR2(52.5f + (105 * 8), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 0), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 10), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 8), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 2), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 6), -EnemyNormal::SIZE_Y / 2)
+		D3DXVECTOR2(71.0f + (142.0f * 0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 8), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2)
 	},
 	//土星
 	{
@@ -85,7 +86,7 @@ private:
 	}
 	};
 
-	int m_SetEnemyTime[(int)STAGE::NUM][6] = {
+	int m_SetEnemyTime[(int)STAGE::NUM][7] = {
 	//チュートリアル
 	{
 		60 * 40,
@@ -105,12 +106,13 @@ private:
 	},
 	//水星
 	{
-		60 * 5,
-		60 * 60,
-		60 * 60 + 1,
-		60 * 80,
-		60 * 145,
-		60 * 160
+		60 * 140,
+		60 * 140 + 1,
+		60 * 150,
+		60 * 150 + 1,
+		60 * 170,
+		60 * 170 + 1,
+		60 * 170 + 2
 	},
 	//土星
 	{
@@ -140,6 +142,9 @@ public:
 
 	//指定したのHPを減らす
 	bool ReduceHP(int index_num, int reduceHP)override;
+
+	//指定した敵を消す
+	void DeleteObj(int index_num)override;
 
 	//指定した弾を消す
 	void DeleteBullet(int index_num)override;

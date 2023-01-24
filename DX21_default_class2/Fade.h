@@ -18,5 +18,5 @@ void InitFade();
 void UpdateFade();
 void DrawFade();
 
-void Fade(SCENE NextScene);
+void Fade(SCENE NextScene, STAGE stage);
 FADE_STATE GetFadeState();

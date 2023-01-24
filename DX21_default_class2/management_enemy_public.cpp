@@ -20,9 +20,15 @@ void Management_EnemyPublic::Update()
 
 		m_EnemyNum++;
 	}
+
+	if (m_EnemyNum == ENEMY_NUM)
+	{
+		m_tutorial_clear = true;
+	}
 	//今いる敵の処理
 	for (int i = 0; i < EnemyManagement::GetObjNum(); i++)
 	{
+		m_tutorial_clear = false;
 		m_pEnemyPublic[i].Update();
 
 		//画面外に出たら消す

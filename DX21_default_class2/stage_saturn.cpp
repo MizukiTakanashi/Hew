@@ -7,15 +7,6 @@
 #include "sound.h"
 
 //==========================
-// 定数初期化
-//==========================
-
-//==========================
-// グローバル変数
-//==========================
-
-
-//==========================
 // 引数付きコンストラクタ
 //==========================
 StageSaturn::StageSaturn(Score* pNumber):InhStage(pNumber)
@@ -35,7 +26,8 @@ StageSaturn::StageSaturn(Score* pNumber):InhStage(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_MEGUMIN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_MEGUMIN]);
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MEGUMIN].SetTextureName((char*)"data\\texture\\bullet_megumin.png");
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_MEGUMIN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MEGUMIN]);
-	m_pEnemyMeguminManagement = new EnemyMeguminManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_MEGUMIN], m_pDrawObject[(int)DRAW_TYPE::BULLET_MEGUMIN]);
+	m_pEnemyMeguminManagement = new EnemyMeguminManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_MEGUMIN], 
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_MEGUMIN]);
 
 	//毒沼
 	m_pTexUseful[(int)TEXTURE_TYPE::POISON].SetTextureName((char*)"data\\texture\\poison.jpg");
@@ -48,10 +40,11 @@ StageSaturn::StageSaturn(Score* pNumber):InhStage(pNumber)
 	
 	//========================================================
 	// 全ての当たり判定
-	m_pColAll = new SaturnCollisionAll(m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
+	m_pColAll = new CollisionAll(CollisionAll::STAGE::SATURN, m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
 		m_pItemManagement, m_pScore, m_pBom);
+	m_pColAll->SetPoison(m_pPoisonField);
 
-	//敵のポインタをセット（順番変えるのNG）
+	//敵のポインタをセット
 	m_pColAll->AddEnemyPointer(m_pEnemyMeguminManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyLaserManagement);
 }
@@ -82,7 +75,10 @@ void StageSaturn::Update(void)
 
 	//ボスが死んだら
 	if (m_isBossDown)
-		Fade(SCENE::SCENE_RESULT);
+	{
+		SetStageClear(true);
+		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_SATURN);
+	}
 
 	//背景
 	m_pBG->Update();
@@ -141,7 +137,8 @@ void StageSaturn::Update(void)
 
 	//プレイヤーのHPが0になったら...
 	if (m_pPlayerHP->GetHP0Flag()) {
-		Fade(SCENE::SCENE_RESULT);
+		SetStageClear(false);
+		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_SATURN);
 	}
 }
 
@@ -151,7 +148,7 @@ void StageSaturn::Update(void)
 void StageSaturn::Draw(void) const
 {
 	m_pBG->DrawBG();
-	m_pBG_Moon->DrawBG();
+	m_pBG_Moon->DrawSaturn();
 	m_pFrame->Draw();
 	m_pPlayer->Draw();
 

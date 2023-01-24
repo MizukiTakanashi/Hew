@@ -17,13 +17,14 @@ const float EnemyMeguminManagement::BULLET_SPEED = 2.5f;
 // 引数付きコンストラクタ
 //=========================
 EnemyMeguminManagement::EnemyMeguminManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
-	:EnemyManagement(EnemyManagement::TYPE::MEGUMIN, ENEMY_NUM, ATTACK, BULLET_ATTACK),m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
+	:EnemyManagement(EnemyManagement::TYPE::MEGUMIN, ENEMY_NUM, ATTACK, BULLET_ATTACK),m_pDrawObjectEnemy(pDrawObject1),
+	m_pDrawObjectBullet(pDrawObject2)
 {
 	m_pEnemy = new EnemyStop[ENEMY_NUM];
-	m_pBullet = new BulletStop[ENEMY_NUM];
+	m_pBullet = new Bullet[ENEMY_NUM];
 
 	//冷気を出す音
-	m_SE_11 = LoadSound((char*)"data\\SE\\1_11.wav");
+	//m_SE_11 = LoadSound((char*)"data\\SE\\1_11.wav");
 	//SetVolume(m_SE_06, 0.4f);
 }
 
@@ -43,15 +44,20 @@ void EnemyMeguminManagement::Update(void)
 		m_EnemyNum++;
 	}
 
+	if (m_EnemyNum == ENEMY_NUM)
+	{
+		m_tutorial_clear = true;
+	}
 	//今いる敵の処理
 	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
+		m_tutorial_clear = false;
 		m_pEnemy[i].Update();
 
 		//弾を作る
 		if (m_pEnemy[i].GetFlagBulletMake())
 		{
-			BulletStop temp(m_pDrawObjectBullet, m_pEnemy[i].GetPos() + D3DXVECTOR2(0, 300),
-				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), 0.0f);
+			Bullet temp(m_pDrawObjectBullet, m_pEnemy[i].GetPos() + D3DXVECTOR2(0, 300),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0.0f, 0.0f));
 						   // 弾の大きさ	
 			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
 
@@ -59,7 +65,7 @@ void EnemyMeguminManagement::Update(void)
 
 			m_pEnemy[i].BulletMake();
 
-			PlaySound(m_SE_11, 0);
+			//PlaySound(m_SE_11, 0);
 		}
 	}
 
@@ -118,9 +124,9 @@ void EnemyMeguminManagement::DeleteObj(int index_num)
 	//継承元の敵を消すを呼ぶ
 	EnemyManagement::DeleteObj(index_num);
 
-	if (m_delete_enemy == ENEMY_NUM) {
-		m_tutorial_clear = true;
-	}
+	//if (m_delete_enemy == ENEMY_NUM) {
+	//	m_tutorial_clear = true;
+	//}
 
 }
 

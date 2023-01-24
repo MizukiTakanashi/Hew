@@ -48,16 +48,10 @@ private:
 	int m_stage_num = 0;						//ステージ
 
 	//敵の位置配列
-	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][7] = {
+	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][11] = {
 		//チュートリアル
 		{
 			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f)
 		},
 		//火星
 		{
@@ -71,31 +65,29 @@ private:
 		},
 		//水星
 		{
-			D3DXVECTOR2(52.5f + (105 * 5), -EnemyIceRain::SIZE_Y / 2),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f)
+			D3DXVECTOR2(71.0f + (142.0f * 2.0f), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 6.0f), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 2.0f), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 6.0f), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 1.0f), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 7.0f), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 1.0f), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 7.0f), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 3.0f), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 7.0f), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 2.0f), -EnemyIceRain::SIZE_Y / 2),
 		},
 		//土星
 		{
 			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f)
 		}
 	};
 
 	//敵を出す時間
-	int m_SetEnemyTime[(int)STAGE::NUM][7] = {
+	int m_SetEnemyTime[(int)STAGE::NUM][11] = {
 		//チュートリアル
 		{
-			0, 0, 0, 0, 0, 0, 0			
+			0,
 		},
 		//火星
 		{
@@ -109,12 +101,21 @@ private:
 		},
 		//水星
 		{
-			60 * 1,
-			0, 0, 0, 0, 0, 0
+			60 * 5,
+			60 * 5 + 1,
+			60 * 30,
+			60 * 30 + 1,
+			60 * 70,
+			60 * 70 + 1,
+			60 * 115,
+			60 * 115 + 1,
+			60 * 140,
+			60 * 160,
+			60 * 170
 		},
 		//土星
 		{
-			0, 0, 0, 0, 0, 0, 0
+			0,
 		}
 	};
 
