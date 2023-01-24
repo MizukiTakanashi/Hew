@@ -59,6 +59,8 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 	m_pColAll = new CollisionAll(CollisionAll::STAGE::MERCURY, m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
 		m_pItemManagement, m_pScore, m_pBom);
 	m_pColAll->SetHP(m_pPlayerHP);
+	m_pColAll->SetIceField(m_pManagement_IceField);
+	m_pColAll->SetFireField(m_pManagement_FireField);
 
 	//敵のポインタをセット
 	m_pColAll->AddEnemyPointer(m_pEnemyLaser);
@@ -203,4 +205,5 @@ void StageMercury::Draw(void) const
 	m_pComboNum->SetNumber(m_pScore->GetComboNum());
 	m_pComboNum->DrawNumber();
 	m_pMultiply->Draw();
+	m_pStageMarcury->Draw();
 }

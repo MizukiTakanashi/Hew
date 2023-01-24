@@ -16,7 +16,7 @@ public:
 
 private:
 	//敵自身
-	static const int ENEMY_NUM = 6;				//敵の最大数
+	static const int ENEMY_NUM = 9;				//敵の最大数
 
 
 	//メンバ変数
@@ -30,21 +30,27 @@ private:
 
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-		D3DXVECTOR2(52.5f + (105 * 1), -FireField::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 9), -FireField::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 1), -FireField::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 9), -FireField::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 1), -FireField::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 9), -FireField::SIZE_Y / 2)
+		D3DXVECTOR2(71.0f + (142 * 1), -FireField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 0), -FireField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 1), -FireField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 7), -FireField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 8), -FireField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 0), -FireField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 6), -FireField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 4), -FireField::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 5), -FireField::SIZE_Y / 2)
 	};
 
 	int m_SetEnemyTime[ENEMY_NUM] = {
-		60 * 10,
-		60 * 35 + 1,
-		60 * 55,
-		60 * 55 + 1,
-		60 * 70,
-		60 * 70 + 1,
+		60 * 15,
+		60 * 45,
+		60 * 45 + 1,
+		60 * 45 + 2,
+		60 * 45 + 3,
+		60 * 85,
+		60 * 85 + 1,
+		60 * 130,
+		60 * 155
 	};
 
 
@@ -63,7 +69,9 @@ public:
 	//デストラクタ
 	~Management_FireField() {
 		for (int i = 0; i < ENEMY_NUM; i++) {
-			delete m_pFireField[i];
+			if (m_pFireField[i] != nullptr) {
+				delete m_pFireField[i];
+			}
 		}
 	}
 
@@ -84,8 +92,10 @@ public:
 
 	//指定した敵を消す
 	void DeleteObj(int index_num) {
+		delete m_pFireField[index_num];
 		for (int i = index_num; i < m_EnemyNum - 1; i++) {
 			m_pFireField[i] = m_pFireField[i + 1];
+			m_pFireField[i + 1] = nullptr;
 		}
 
 		m_EnemyNum--;
