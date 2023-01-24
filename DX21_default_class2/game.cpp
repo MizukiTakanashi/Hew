@@ -169,9 +169,18 @@ void Game::Draw(void)const
 	m_pBG->DrawBG();
 	m_pBG_Moon->DrawBG();
 	m_pFrame->Draw();
-	m_pPlayer->Draw();
 
-	//プレイヤーの腕の描画処理
+	//UIの描画
+	m_pPlayerHP->DrawHP();
+	m_pScore->DrawNumber();
+	m_pComboNum->SetNumber(m_pScore->GetComboNum());
+	m_pComboNum->DrawNumber();
+	m_pMultiply->Draw();
+	m_pStageMoon->Draw();
+
+	//プレイヤーの描画処理
+	m_pPlayer->Draw();
+	m_pPlayer->DrawBullet();
 	m_pPlayerLeft->ArmDraw();
 	m_pPlayerRight->ArmDraw();
 	m_pPlayerCenter->ArmDraw();
@@ -182,9 +191,6 @@ void Game::Draw(void)const
 	m_pEnemyGatoringManagement->Draw();
 	m_pMeteoManagement->Draw();
 
-	//プレイヤーの弾の表示
-	m_pPlayer->DrawBullet();
-
 	m_pExplosionManagement->Draw();
 
 	m_pItemManagement->Draw();
@@ -192,13 +198,6 @@ void Game::Draw(void)const
 	//ボムの描画
 	m_pBom->BomDraw();
 
-	//UIの描画
-	m_pPlayerHP->DrawHP();
-	m_pScore->DrawNumber();
-	m_pComboNum->SetNumber(m_pScore->GetComboNum());
-	m_pComboNum->DrawNumber();
-	m_pMultiply->Draw();
-	m_pStageMoon->Draw();
 	if (isText)
 	{
 		m_pTextManagement->Draw();

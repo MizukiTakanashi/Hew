@@ -203,11 +203,6 @@ void StageMars::Draw(void) const
 	m_pBG->DrawBG();
 	m_pBG_Moon->DrawBG();
 
-	m_pItemManagement->Draw();
-
-	//ƒ{ƒ€‚Ì•`‰æ
-	m_pBom->BomDraw();
-
 	//UI‚Ì•`‰æ
 	m_pFrame->Draw();
 	m_pPlayerHP->DrawHP();
@@ -216,6 +211,7 @@ void StageMars::Draw(void) const
 	m_pComboNum->DrawNumber();
 	m_pMultiply->Draw();
 	m_pStageMars->Draw();
+
 	//ƒvƒŒƒCƒ„[‚Ì•`‰æˆ—
 	m_pPlayer->Draw();
 	m_pPlayer->DrawBullet();
@@ -233,7 +229,14 @@ void StageMars::Draw(void) const
 		m_pBoss->Draw();
 	}
 
+	m_pItemManagement->Draw();
+
 	m_pExplosionManagement->Draw();
 
 	m_pGimmick->Draw();
+
+	//ƒ{ƒ€‚Ì•`‰æ
+	m_pBom->BomDraw();
+
+
 }

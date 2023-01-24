@@ -156,10 +156,19 @@ void StageSaturn::Draw(void) const
 {
 	m_pBG->DrawBG();
 	m_pBG_Moon->DrawSaturn();
+
+	//UI‚Ì•`‰æ
 	m_pFrame->Draw();
-	m_pPlayer->Draw();
+	m_pPlayerHP->DrawHP();
+	m_pScore->DrawNumber();
+	m_pComboNum->SetNumber(m_pScore->GetComboNum());
+	m_pComboNum->DrawNumber();
+	m_pMultiply->Draw();
+	m_pStageSataurn->Draw();
 
 	//ƒvƒŒƒCƒ„[‚Ì˜r‚Ì•`‰æˆ—
+	m_pPlayer->Draw();
+	m_pPlayer->DrawBullet();
 	m_pPlayerLeft->ArmDraw();
 	m_pPlayerRight->ArmDraw();
 	m_pPlayerCenter->ArmDraw();
@@ -169,8 +178,6 @@ void StageSaturn::Draw(void) const
 	m_pEnemyMeguminManagement->Draw();
 
 	m_pPoisonField->Draw();
-	//ƒvƒŒƒCƒ„[‚Ì’e‚Ì•\Ž¦
-	m_pPlayer->DrawBullet();
 
 	m_pExplosionManagement->Draw();
 
@@ -179,11 +186,5 @@ void StageSaturn::Draw(void) const
 	//ƒ{ƒ€‚Ì•`‰æ
 	m_pBom->BomDraw();
 
-	//UI‚Ì•`‰æ
-	m_pPlayerHP->DrawHP();
-	m_pScore->DrawNumber();
-	m_pComboNum->SetNumber(m_pScore->GetComboNum());
-	m_pComboNum->DrawNumber();
-	m_pMultiply->Draw();
-	m_pStageSataurn->Draw();
+
 }
