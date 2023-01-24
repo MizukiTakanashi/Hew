@@ -104,7 +104,7 @@ public:
 	void StopPlayer(int time) { m_stop_time = time; }
 
 	//動きが遅いフラグをセット
-	void SetSlow(bool slow, int time = -1) { 
+	void SetSlow(bool slow, int time = -100) { 
 		m_slow = slow; 
 		m_slow_time = time;
 	}
