@@ -11,7 +11,7 @@
 void PlayerArmChange::Change()
 {
 	//キーボードのPボタンまたはパッドのBボタンをおす
-	if (InputGetKeyDown(KK_P)|| IsButtonTriggered(0, XINPUT_GAMEPAD_B)) {
+	if (InputGetKeyDown(KK_F)|| IsButtonTriggered(0, XINPUT_GAMEPAD_X)) {
 		//腕の中の位置を変更
 		if (m_PlayerRight->GetArmPointer() != nullptr) {
 			m_PlayerRight->GetArmPointer()->SetCenter(true);
