@@ -61,25 +61,25 @@ void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem)
 		m_pItem[m_ItemNum].SetDrawob(m_DOGatoring);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE_BARRIAR:
-		m_pItem[m_ItemNum].SetDrawob(m_DOMissile);
+		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE_STOP:
-		m_pItem[m_ItemNum].SetDrawob(m_DOLaser);
+		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE_ICERAIN:
-		m_pItem[m_ItemNum].SetDrawob(m_DOGatoring);
+		m_pItem[m_ItemNum].SetDrawob(m_DOIcerain);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE7:
-		m_pItem[m_ItemNum].SetDrawob(m_DOMissile);
+		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE8:
-		m_pItem[m_ItemNum].SetDrawob(m_DOLaser);
+		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
 		break;
 	case 8:
-		m_pItem[m_ItemNum].SetDrawob(m_DOGatoring);
+		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
 		break;
 	default:
-		m_pItem[m_ItemNum].SetDrawob(m_DOMissile);
+		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
 		break;
 	}
 
