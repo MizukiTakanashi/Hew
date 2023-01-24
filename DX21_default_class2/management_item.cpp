@@ -1,23 +1,23 @@
 //=======================================
-// ”š”­ŠÇ—ŠÖŒW(cppƒtƒ@ƒCƒ‹)
-// ì¬“úF2022/09/18
-// ì¬ÒF‚—œ…Šó
+// çˆ†ç™ºç®¡ç†é–¢ä¿‚(cppãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š2022/09/18
+// ä½œæˆè€…ï¼šé«˜æ¢¨æ°´å¸Œ
 //=======================================
 #include "management_item.h"
 #include "sound.h"
 
 //============================
-// ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //============================
 ItemManagement::ItemManagement()
 {
 	m_pItem = new Item[ENEMY_NUM];
 
-	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//ƒTƒEƒ“ƒh‚Ìƒ[ƒh
+	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//ã‚µã‚¦ãƒ³ãƒ‰ã®ãƒ­ãƒ¼ãƒ‰
 }
 
 //======================
-// XVˆ—
+// æ›´æ–°å‡¦ç†
 //======================
 void ItemManagement::Update(void)
 {
@@ -40,14 +40,15 @@ void ItemManagement::DeleteItem(int index_num)
 }
 
 //==========================
-// ƒAƒCƒeƒ€‚ğƒZƒbƒg
+// ã‚¢ã‚¤ãƒ†ãƒ ã‚’ã‚»ãƒƒãƒˆ
 //==========================
 void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem)
 {
-    Item Temp(m_DOMissile, pos, typeitem);
 
+    Item Temp(m_DOMissile, pos, typeitem);
 	m_pItem[m_ItemNum] = Temp;
 
+	//ã‚¢ã‚¤ãƒ†ãƒ ã®è¦‹ãŸç›®å¤‰æ›´
 	switch (typeitem)
 	{
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE_HOMING:
@@ -83,5 +84,4 @@ void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem)
 	}
 
 	m_ItemNum++;
-
 }
