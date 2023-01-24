@@ -48,28 +48,28 @@ void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem)
 
 	switch (typeitem)
 	{
-	case 0:
+	case (int)Item::Item_NUM::ENEMYITEM_TYPE_HOMING:
 		m_pItem[m_ItemNum].SetDrawob(*m_DOMissile);
 		break;
-	case 1:
+	case (int)Item::Item_NUM::ENEMYITEM_TYPE_LASER:
 		m_pItem[m_ItemNum].SetDrawob(*m_DOLaser);
 		break;
-	case 2:
+	case (int)Item::Item_NUM::ENEMYITEM_TYPE_GATORING:
 		m_pItem[m_ItemNum].SetDrawob(*m_DOGatoring);
 		break;
-	case 3:
+	case (int)Item::Item_NUM::ENEMYITEM_TYPE_BARRIAR:
 		m_pItem[m_ItemNum].SetDrawob(*m_DOMissile);
 		break;
-	case 4:
+	case (int)Item::Item_NUM::ENEMYITEM_TYPE_STOP:
 		m_pItem[m_ItemNum].SetDrawob(*m_DOLaser);
 		break;
-	case 5:
+	case (int)Item::Item_NUM::ENEMYITEM_TYPE_ICERAIN:
 		m_pItem[m_ItemNum].SetDrawob(*m_DOGatoring);
 		break;
-	case 6:
+	case (int)Item::Item_NUM::ENEMYITEM_TYPE7:
 		m_pItem[m_ItemNum].SetDrawob(*m_DOMissile);
 		break;
-	case 7:
+	case (int)Item::Item_NUM::ENEMYITEM_TYPE8:
 		m_pItem[m_ItemNum].SetDrawob(*m_DOLaser);
 		break;
 	case 8:

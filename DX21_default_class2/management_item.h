@@ -62,7 +62,5 @@ public:
 	void SetDrawMissile(DrawObject* pd) { m_DOMissile = pd; }
 	void SetDrawLaser(DrawObject* pd) { m_DOLaser = pd; }
 	void SetDrawGatoring(DrawObject* pd) { m_DOGatoring = pd; }
-
-
 };
 

@@ -102,7 +102,6 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pItemManagement->SetDrawGatoring(&m_pDrawObject[(int)DRAW_TYPE::ITEM_GATORING]);
 
 
-
 	//=======================
 	// ƒvƒŒƒCƒ„[‚Ì˜r
 	m_pPlayerCenter = new PlayerCenter(m_pPlayer->GetPos(), m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(120.0f, 590.0f), D3DXVECTOR2(230.0f, 590.0f));
