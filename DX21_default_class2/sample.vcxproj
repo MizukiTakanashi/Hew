@@ -154,7 +154,9 @@
     <ClCompile Include="enemy_stop.cpp" />
     <ClCompile Include="Fade.cpp" />
     <ClCompile Include="firefield.cpp" />
+
     <ClCompile Include="icefield.cpp" />
+
     <ClCompile Include="inh_enemy.cpp" />
     <ClCompile Include="inh_player_arm_both.cpp" />
     <ClCompile Include="inh_stage.cpp" />
@@ -165,6 +167,7 @@
     </ClCompile>
     <ClCompile Include="inputx.cpp" />
     <ClCompile Include="keyboard.cpp" />
+    <ClCompile Include="management_enemy_acid.cpp" />
     <ClCompile Include="management_enemy_attack.cpp" />
     <ClCompile Include="management_enemy_barrier.cpp" />
     <ClCompile Include="management_enemy_fire.cpp" />
@@ -183,14 +186,18 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="explosion.cpp" />
+    <ClCompile Include="management_enemy_poorvision.cpp" />
     <ClCompile Include="management_enemy_public.cpp" />
+    <ClCompile Include="management_enemy_speeddown.cpp" />
     <ClCompile Include="management_enemy_stop.cpp" />
     <ClCompile Include="management_explosion.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="game_object.cpp" />
     <ClCompile Include="inh_player_arm.cpp" />
     <ClCompile Include="management_firefield.cpp" />
+
     <ClCompile Include="management_icefield.cpp" />
+
     <ClCompile Include="management_item.cpp" />
     <ClCompile Include="item_p.cpp" />
     <ClCompile Include="laser.cpp" />
@@ -198,7 +205,10 @@
     <ClCompile Include="management.cpp" />
     <ClCompile Include="management_meteo.cpp" />
     <ClCompile Include="management_poisonfield.cpp" />
-    <ClCompile Include="mars_collision_all.cpp" />
+    <ClCompile Include="mars_collision_all.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="mars_gimmick.cpp" />
     <ClCompile Include="meteo.cpp" />
     <ClCompile Include="number.cpp" />
@@ -217,9 +227,13 @@
     <ClCompile Include="player_left.cpp" />
     <ClCompile Include="player_right.cpp" />
     <ClCompile Include="poisonfield.cpp" />
+    <ClCompile Include="poorvision.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="result.cpp" />
-    <ClCompile Include="saturn_collision_all.cpp" />
+    <ClCompile Include="saturn_collision_all.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="score.cpp" />
     <ClCompile Include="screen_out.cpp" />
@@ -267,7 +281,10 @@
     <ClInclude Include="enemy_stop.h" />
     <ClInclude Include="Fade.h" />
     <ClInclude Include="firefield.h" />
+
     <ClInclude Include="icefield.h" />
+
+
     <ClInclude Include="inh_enemy.h" />
     <ClInclude Include="inh_player_arm_both.h" />
     <ClInclude Include="inh_stage.h" />
@@ -278,6 +295,7 @@
     </ClInclude>
     <ClInclude Include="inputx.h" />
     <ClInclude Include="keyboard.h" />
+    <ClInclude Include="management_enemy_acid.h" />
     <ClInclude Include="management_enemy_attack.h" />
     <ClInclude Include="management_enemy_barrier.h" />
     <ClInclude Include="management_enemy_fire.h" />
@@ -296,14 +314,18 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="explosion.h" />
+    <ClInclude Include="management_enemy_poorvision.h" />
     <ClInclude Include="management_enemy_public.h" />
+    <ClInclude Include="management_enemy_speeddown.h" />
     <ClInclude Include="management_enemy_stop.h" />
     <ClInclude Include="management_explosion.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="game_object.h" />
     <ClInclude Include="inh_player_arm.h" />
     <ClInclude Include="management_firefield.h" />
+
     <ClInclude Include="management_icefield.h" />
+
     <ClInclude Include="management_item.h" />
     <ClInclude Include="item_p.h" />
     <ClInclude Include="laser.h" />
@@ -311,7 +333,10 @@
     <ClInclude Include="management.h" />
     <ClInclude Include="management_meteo.h" />
     <ClInclude Include="management_poisonfield.h" />
-    <ClInclude Include="mars_collision_all.h" />
+    <ClInclude Include="mars_collision_all.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="mars_gimmick.h" />
     <ClInclude Include="meteo.h" />
     <ClInclude Include="number.h" />
@@ -330,10 +355,14 @@
     <ClInclude Include="player_left.h" />
     <ClInclude Include="player_right.h" />
     <ClInclude Include="poisonfield.h" />
+    <ClInclude Include="poorvision.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="result.h" />
-    <ClInclude Include="saturn_collision_all.h" />
+    <ClInclude Include="saturn_collision_all.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="scene.h" />
     <ClInclude Include="score.h" />
     <ClInclude Include="screen_out.h" />

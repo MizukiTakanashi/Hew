@@ -11,7 +11,7 @@
 //======================
 // プロトタイプ宣言
 //======================
-void	InitTitle();
+void	InitTitle(bool tutorial);
 void	UninitTitle();
 void	UpdateTitle();
 void	DrawTitle();

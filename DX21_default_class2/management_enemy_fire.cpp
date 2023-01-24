@@ -9,7 +9,7 @@
 //==========================
 // ’è”‚Ì‰Šú‰»
 //==========================
-const int EnemyFireManagement::ENEMY_NUM[(int)STAGE::NUM] = { 0, 0, 6, 0 };
+const int EnemyFireManagement::ENEMY_NUM[(int)STAGE::NUM] = { 0, 0, 9, 0 };
 const float EnemyFireManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyFireManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyFireManagement::BULLET_SPEED = 5.0f;
@@ -46,8 +46,13 @@ void EnemyFireManagement::Update()
 		m_EnemyNum++;
 	}
 
+	if (m_EnemyNum == ENEMY_NUM[m_stage_num])
+	{
+		m_tutorial_clear = true;
+	}
 	//¡‚¢‚é“G‚Ìˆ—
 	for (int i = 0; i < GetObjNum(); i++) {
+		m_tutorial_clear = false;
 		m_pEnemy[i].Update();
 
 		//‘ŞoŠÔ—ˆ‚½‚ç...
@@ -130,9 +135,9 @@ void EnemyFireManagement::DeleteObj(int index_num)
 	//Œp³Œ³‚Ì“G‚ğÁ‚·‚ğŒÄ‚Ô
 	EnemyManagement::DeleteObj(index_num);
 
-	if (m_delete_enemy == ENEMY_NUM[m_stage_num]) {
-		m_tutorial_clear = true;
-	}
+	//if (m_delete_enemy == ENEMY_NUM[m_stage_num]) {
+	//	m_tutorial_clear = true;
+	//}
 }
 
 //======================

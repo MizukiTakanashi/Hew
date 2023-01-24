@@ -29,6 +29,9 @@ private:
 	static const float SPEED_X;		//スピードX
 	static const float SPEED_Y;		//スピードY
 	static const float SPEED;		//スピード
+	static const float SLOW_SPEED_X;//動きが遅い時のスピードX
+	static const float SLOW_SPEED_Y;//動きが遅い時のスピードY
+	static const float SLOW_SPEED;	//動きが遅い時のスピード
 
 	//弾
 	//ここで初期化
@@ -46,13 +49,17 @@ private:
 //メンバ変数
 private:
 	Bullet* m_pBullet = nullptr;
-	int m_BulletNum = 0;			//弾の現在の数
 	DrawObject m_BulletDrawObject;
+	int m_BulletNum = 0;			//弾の現在の数
 	int m_BulletInterval = 0;		//弾の発射間隔
-	int m_BomNum = 0;				//爆弾の現在の数
+	
 	DrawObject m_BomDrawObject;
+	int m_BomNum = 0;				//爆弾の現在の数
 	int m_BomInterval = 0;			//爆弾の発射間隔
-	int m_stop_time = 0; //playerのアップデートを止める時間
+
+	int m_stop_time = 0;			//playerのアップデートを止める時間
+	bool m_slow = false;			//動きが遅いフラグ
+	int m_slow_time = -1;			//動きが遅い間の最大時間
 
 //メンバ関数
 public:
@@ -95,6 +102,12 @@ public:
 
 	//止める時間をセット
 	void StopPlayer(int time) { m_stop_time = time; }
+
+	//動きが遅いフラグをセット
+	void SetSlow(bool slow, int time = -100) { 
+		m_slow = slow; 
+		m_slow_time = time;
+	}
 };
 
 #endif // !_PLAYER_H_

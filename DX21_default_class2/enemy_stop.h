@@ -43,6 +43,9 @@ public:
 	EnemyStop(DrawObject& pDrawObject, const D3DXVECTOR2& pos)
 		:Inh_Enemy(pDrawObject, pos, D3DXVECTOR2(SIZE_X, SIZE_Y), HP_MAX) {}
 
+	EnemyStop(DrawObject& pDrawObject, const D3DXVECTOR2& pos, D3DXVECTOR2 size)
+		:Inh_Enemy(pDrawObject, pos, size, HP_MAX) {}
+
 	~EnemyStop()override {}	//デストラクタ
 
 	void Update(void);	//更新処理

@@ -9,7 +9,7 @@
 //==========================
 // 定数の初期化
 //==========================
-const int EnemyLaserManagement::ENEMY_NUM[(int)STAGE::NUM] = { 3, 0, 3, 3 };
+const int EnemyLaserManagement::ENEMY_NUM[(int)STAGE::NUM] = { 3, 0, 4, 4 };
 const float EnemyLaserManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyLaserManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyLaserManagement::EXIT_MOVE_SPEED_X = 2.5f;
@@ -64,9 +64,16 @@ void EnemyLaserManagement::Update()
 		m_EnemyNum++;
 	}
 
+	if (m_EnemyNum == ENEMY_NUM[m_stage_num])
+	{
+		m_tutorial_clear = true;
+	}
+
 	//今いる敵の処理
 	for (int i = 0; i < GetObjNum(); i++)
 	{
+		m_tutorial_clear = false;
+
 		m_pEnemyLaser[i].Update();
 		//レーザーのアップデート
 		if (m_pEnemyLaser[i].GetLaserIndex() >= 0)
@@ -193,9 +200,9 @@ void EnemyLaserManagement::DeleteObj(int index_num)
 	//継承元の敵を消すを呼ぶ
 	EnemyManagement::DeleteObj(index_num);
 
-	if (m_EnemyNum == ENEMY_NUM[m_stage_num]) {
-		m_tutorial_clear = true;
-	}
+	//if (m_EnemyNum == ENEMY_NUM[m_stage_num]) {
+	//	m_tutorial_clear = true;
+	//}
 }
 
 //======================

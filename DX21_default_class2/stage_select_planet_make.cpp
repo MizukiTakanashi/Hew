@@ -58,9 +58,9 @@ const float StageSelectJupiter::START_POS_X = SCREEN_WIDTH / 6 * 2 + 50.0f;
 const float StageSelectJupiter::START_POS_Y = SCREEN_HEIGHT / 2 + 200.0f;
 
 //ìyêØ
-const float StageSelectSaturn::BOX_W = 100.0f;
+const float StageSelectSaturn::BOX_W = 150.0f;
 const float StageSelectSaturn::BOX_H = 100.0f;
-const float StageSelectSaturn::BIG_BOX_W = 200.0f;
+const float StageSelectSaturn::BIG_BOX_W = 300.0f;
 const float StageSelectSaturn::BIG_BOX_H = 200.0f;
 const float StageSelectSaturn::SUN_BOX_W = 25.0f;
 const float StageSelectSaturn::SUN_BOX_H = 25.0f;

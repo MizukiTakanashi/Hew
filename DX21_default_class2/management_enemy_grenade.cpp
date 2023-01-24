@@ -73,8 +73,13 @@ void EnemyGrenadeManagement::Update(const D3DXVECTOR2& PlayerPos)
 		m_EnemyNum++;
 	}
 
+	if (m_EnemyNum == ENEMY_NUM[m_stage_num])
+	{
+		m_tutorial_clear = true;
+	}
 	//¡‚¢‚é“G‚Ìˆ—
 	for (int i = 0; i < GetObjNum(); i++) {
+		m_tutorial_clear = false;
 		m_pEnemy[i].Update();
 
 		//‘ŞoŠÔ—ˆ‚½‚ç...

@@ -229,9 +229,6 @@
     <ClCompile Include="main.cpp">
       <Filter>30_Multi</Filter>
     </ClCompile>
-    <ClCompile Include="collision_all.cpp">
-      <Filter>02_Moon</Filter>
-    </ClCompile>
     <ClCompile Include="stage_venus.cpp">
       <Filter>06_Venus</Filter>
     </ClCompile>
@@ -270,13 +267,30 @@
     <ClCompile Include="management_item.cpp">
       <Filter>30_Multi</Filter>
     </ClCompile>
+    <ClCompile Include="management_enemy_acid.cpp">
+      <Filter>29_Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="management_enemy_fire.cpp" />
+    <ClCompile Include="management_enemy_poorvision.cpp">
+      <Filter>29_Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="management_enemy_speeddown.cpp">
+      <Filter>29_Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="poorvision.cpp">
     <ClCompile Include="management_enemy_fire.cpp">
       <Filter>29_Enemy</Filter>
     </ClCompile>
+
     <ClCompile Include="firefield.cpp" />
     <ClCompile Include="icefield.cpp" />
     <ClCompile Include="management_firefield.cpp" />
     <ClCompile Include="management_icefield.cpp" />
+
+    <ClCompile Include="collision_all.cpp">
+      <Filter>30_Multi</Filter>
+    </ClCompile>
+
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h">
@@ -510,9 +524,6 @@
     <ClInclude Include="main.h">
       <Filter>30_Multi</Filter>
     </ClInclude>
-    <ClInclude Include="collision_all.h">
-      <Filter>02_Moon</Filter>
-    </ClInclude>
     <ClInclude Include="stage_venus.h">
       <Filter>06_Venus</Filter>
     </ClInclude>
@@ -551,13 +562,30 @@
     <ClInclude Include="management_item.h">
       <Filter>30_Multi</Filter>
     </ClInclude>
+    <ClInclude Include="management_enemy_acid.h">
+      <Filter>29_Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="management_enemy_fire.h" />
+    <ClInclude Include="management_enemy_poorvision.h">
+      <Filter>29_Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="management_enemy_speeddown.h">
+      <Filter>29_Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="poorvision.h">
     <ClInclude Include="management_enemy_fire.h">
       <Filter>29_Enemy</Filter>
     </ClInclude>
+
     <ClInclude Include="firefield.h" />
     <ClInclude Include="icefield.h" />
     <ClInclude Include="management_icefield.h" />
     <ClInclude Include="management_firefield.h" />
+
+    <ClInclude Include="collision_all.h">
+      <Filter>30_Multi</Filter>
+    </ClInclude>
+
   </ItemGroup>
   <ItemGroup>
     <Filter Include="01_Title">

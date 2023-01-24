@@ -7,22 +7,12 @@
 #include "sound.h"
 
 //==========================
-// 定数初期化
-//==========================
-
-//==========================
-// グローバル変数
-//==========================
-
-//==========================
 // 引数付きコンストラクタ
 //==========================
 StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 {
 	//画像読み込み
 	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\venus.png");
-
-
 
 	//=======================
 	// 敵
@@ -32,15 +22,48 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_FIREBALL].SetTextureName((char*)"data\\texture\\sun.png");
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_FIREBALL]);
 
-	m_pEnemyFireballManagement = new EnemyFireballManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL], m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL]);
+	m_pEnemyFireballManagement = new EnemyFireballManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL], 
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL]);
+
+	//酸性雨の敵
+	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ACID].SetTextureName((char*)"data\\texture\\enemy_acid.png");
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ACID].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ACID]);
+	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_ACID].SetTextureName((char*)"data\\texture\\bullet_acid.png");
+	m_pDrawObject[(int)DRAW_TYPE::BULLET_ACID].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_ACID]);
+
+	m_pEnemyAcidManagement = new EnemyAcidManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ACID], 
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_ACID]);
+
+	//視界を悪くする敵
+	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_POOR].SetTextureName((char*)"data\\texture\\enemy_poorvision.png");
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_POOR].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_POOR]);
+	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MIST].SetTextureName((char*)"data\\texture\\bullet_mist.png");
+	m_pDrawObject[(int)DRAW_TYPE::BULLET_MIST].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MIST]);
+
+	m_pEnemuPoorvisionManagement = new EnemyPoorvisionManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_POOR], 
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_MIST]);
+
+	//プレイヤーのスピードを遅くする敵
+	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_SPEEDDOWN].SetTextureName((char*)"data\\texture\\enemy_speeddown.png");
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_SPEEDDOWN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_SPEEDDOWN]);
+	m_pDrawObject[(int)DRAW_TYPE::BULLET_SPEEDDOWN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MIST], 
+		1.0f, 1.0f, 1.0f, 1, D3DXCOLOR(1.0f, 0.0f, 1.0f, 1.0f));
+
+	m_pEnemySpeeddownManagement = new EnemySpeeddownManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_SPEEDDOWN], 
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_SPEEDDOWN]);
 
 
 	//敵の管理
 	//m_pAllEnemyManagement->AddPointer(m_pEnemyFireballManagement);
 	
-
-	//敵のポインタをセット（順番変えるのNG）
-	//m_pColAll->AddEnemyPointer(m_pEnemyFireballManagement);
+	//当たり判定
+	m_pColAll = new CollisionAll(CollisionAll::STAGE::VENUS, m_pPlayer, m_pPlayerLeft, m_pPlayerRight,
+		m_pExplosionManagement, m_pItemManagement, m_pScore, m_pBom);
+	//敵のポインタをセット
+	m_pColAll->AddEnemyPointer(m_pEnemyFireballManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemyAcidManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemuPoorvisionManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemySpeeddownManagement);
 }
 
 //==========================
@@ -49,6 +72,9 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 StageVenus::~StageVenus()
 {
 	delete m_pEnemyFireballManagement;
+	delete m_pEnemuPoorvisionManagement;
+	delete m_pEnemySpeeddownManagement;
+	delete m_pEnemyAcidManagement;
 	delete m_pColAll;
 }
 
@@ -66,7 +92,10 @@ void StageVenus::Update(void)
 
 	//ボスが死んだら
 	if (m_isBossDown)
-		Fade(SCENE::SCENE_RESULT);
+	{
+		SetStageClear(true);
+		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_VENUS);
+	}
 
 	//背景
 	m_pBG->Update();
@@ -77,6 +106,7 @@ void StageVenus::Update(void)
 
 	//プレイヤー
 	m_pPlayer->Update(m_pPlayerHP->IsPlayerInvincible());
+	m_pPoorvision->Update(m_pPlayer->GetPos());
 
 	m_pPlayerHP->Update();
 
@@ -89,6 +119,9 @@ void StageVenus::Update(void)
 	//=======================
 	// 敵
 	m_pEnemyFireballManagement->Update(m_pPlayer->GetPos());
+	m_pEnemyAcidManagement->Update();
+	m_pEnemuPoorvisionManagement->Update();
+	m_pEnemySpeeddownManagement->Update();
 
 	//ボム
 	m_pBom->Update();
@@ -108,10 +141,16 @@ void StageVenus::Update(void)
 	m_pPlayerCenter->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
 
 	//敵とプレイヤーの当たり判定
-	//attack_num += m_pColAll->Collision();
+	attack_num += m_pColAll->Collision();
 
 	//回復
-	//m_pColAll->HeelCollision();
+	m_pColAll->HeelCollision();
+
+	//視界を悪くするか
+	if (m_pColAll->IsPoorVision()) {
+		InhStage::SetPoorVision();
+		m_pColAll->SetPoorVision(false);
+	}
 
 	//プレイヤーのHPを攻撃数によって減らす
 	if (attack_num != 0) {
@@ -120,7 +159,8 @@ void StageVenus::Update(void)
 
 	//プレイヤーのHPが0になったら...
 	if (m_pPlayerHP->GetHP0Flag()) {
-		Fade(SCENE::SCENE_RESULT);
+		SetStageClear(false);
+		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_VENUS);
 	}
 }
 
@@ -141,6 +181,9 @@ void StageVenus::Draw(void) const
 
 	//敵の描画
 	m_pEnemyFireballManagement->Draw();
+	m_pEnemyAcidManagement->Draw();
+	m_pEnemuPoorvisionManagement->Draw();
+	m_pEnemySpeeddownManagement->Draw();
 
 	//プレイヤーの弾の表示
 	m_pPlayer->DrawBullet();
@@ -158,4 +201,6 @@ void StageVenus::Draw(void) const
 	m_pComboNum->SetNumber(m_pScore->GetComboNum());
 	m_pComboNum->DrawNumber();
 	m_pMultiply->Draw();
+
+	m_pPoorvision->Draw();
 }

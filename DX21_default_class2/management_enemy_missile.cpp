@@ -10,7 +10,7 @@
 //==========================
 // ’è”‚Ì‰Šú‰»
 //==========================
-const int EnemyMissileManagement::ENEMY_NUM[(int)STAGE::NUM] = { 5, 6, 6, 0 };
+const int EnemyMissileManagement::ENEMY_NUM[(int)STAGE::NUM] = { 5, 6, 7, 0 };
 const float EnemyMissileManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyMissileManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyMissileManagement::BULLET_SPEED = 5.0f;
@@ -45,8 +45,14 @@ void EnemyMissileManagement::Update(const D3DXVECTOR2& PlayerPos)
 		m_EnemyNum++;
 	}
 
+	if (m_EnemyNum == ENEMY_NUM[m_stage_num])
+	{
+		m_tutorial_clear = true;
+	}
+
 	//¡‚¢‚é“G‚Ìˆ—
 	for (int i = 0; i < GetObjNum(); i++) {
+		m_tutorial_clear = false;
 		m_pEnemyMissile[i].Update();
 
 		//’e‚ğì‚é
@@ -66,12 +72,15 @@ void EnemyMissileManagement::Update(const D3DXVECTOR2& PlayerPos)
 
 			m_pEnemyMissile[i].BulletMake();
 		}
+
+		//‰æ–ÊŠO‚©‚ço‚½‚çÁ‚·
+		if (m_pEnemyMissile[i].GetScreenOut()) {
+
+		}
 	}
 
 	//¡‚¢‚é’e‚Ìˆ—
 	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {
-
-
 		//’e‚ÌXVˆ—
 		m_pBullet[i].Update();
 		
@@ -105,11 +114,28 @@ bool EnemyMissileManagement::ReduceHP(int index_num, int reduceHP)
 	m_pEnemyMissile[index_num].ReduceHP(reduceHP);
 	if (m_pEnemyMissile[index_num].GetHP() <= 0)
 	{//HP‚ª‚OˆÈ‰º‚È‚ç“G‚ğÁ‚·
-
-
 		return true;
 	}
 	return false;
+}
+
+//======================
+// “G‚ğÁ‚·
+//======================
+void EnemyMissileManagement::DeleteObj(int index_num)
+{
+	m_delete_enemy++;
+	//“G‚ğÁ‚·
+	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
+		m_pEnemyMissile[i] = m_pEnemyMissile[i + 1];
+	}
+
+	//Œp³Œ³‚Ì“G‚ğÁ‚·‚ğŒÄ‚Ô
+	EnemyManagement::DeleteObj(index_num);
+
+	//if (m_delete_enemy == ENEMY_NUM[m_stage_num]) {
+	//	m_tutorial_clear = true;
+	//}
 }
 
 //======================
@@ -121,4 +147,8 @@ void EnemyMissileManagement::DeleteBullet(int index_num)
 		m_pBullet[i] = m_pBullet[i + 1];
 	}
 	EnemyMissileManagement::IncreaseBulletNum(-1);
+
+	if (m_delete_enemy == ENEMY_NUM[m_stage_num]) {
+		m_tutorial_clear = true;
+	}
 }

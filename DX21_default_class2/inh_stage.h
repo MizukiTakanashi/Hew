@@ -23,6 +23,7 @@
 #include "management_item.h"
 #include "management_explosion.h"
 #include "management_meteo.h"
+#include "poorvision.h"
 
 
 class InhStage
@@ -59,9 +60,11 @@ protected:
 		ENEMY_MEGUMIN,
 		ENEMY_FIREBALL,
 		ENEMY_GREANADE,
-		ENEMY_FIRE,
 		ENEMY_METEO,
-		ENEMY_MISSILE,
+		ENEMY_POOR,
+		ENEMY_SPEEDDOWN,
+		ENEMY_ACID,
+		ENEMY_FIRE,
 		POISON,
 
 		BULLET_CIRCLE_RED,//
@@ -71,8 +74,13 @@ protected:
 		BULLET_STOP,//
 		BULLET_ICE,//
 		BULLET_FIREBALL,
-		BULLET_MEGUMIN,
 		BULLET_FIRE,
+		BULLET_MIST,
+		BULLET_MEGUMIN,
+		BULLET_ACID,
+
+		GIMMICK_MARS,
+
 		NUM
 	};
 
@@ -100,10 +108,12 @@ protected:
 		ENEMY_METEO,
 		ENEMY_MEGUMIN,
 		ENEMY_FIREBALL,
+		ENEMY_ACID,
+		ENEMY_FIRE,
+		ENEMY_POOR,
+		ENEMY_SPEEDDOWN,
 		ENEMY_GRENADE,
 		ENEMY_GRENADE_EXPLOSION,
-		ENEMY_FIRE,
-		ENEMY_MISSILE,
 		POISON,
 
 		BULLET_ENEMY,//
@@ -112,13 +122,18 @@ protected:
 		BULLET_STOP,//
 		BULLET_ICE,//
 		BULLET_FIREBALL,
-		BULLET_MEGUMIN,
+		BULLET_MIST,
+		BULLET_SPEEDDOWN,
+		BULLET_ACID,
 		BULLET_FIRE,
+		BULLET_MEGUMIN,
 
 		PLAYER_ARM_BULLET,//
 		PLAYER_ARM_LASER,//
 		PLAYER_BULLET,//
 		PLAYER_ARM_GRENADE_EXPLOSION,
+
+		GIMMICK_MARS,
 
 		NUM
 	};
@@ -136,6 +151,7 @@ protected:
 	DrawObject* m_pDrawObject = nullptr;
 	BG* m_pBG = nullptr;
 	BGPlanet* m_pBG_Moon = nullptr;
+	PoorVision* m_pPoorvision = nullptr;
 	Player* m_pPlayer = nullptr;
 	PlayerHP* m_pPlayerHP = nullptr;
 	ExplosionManagement* m_pExplosionManagement = nullptr;
@@ -154,7 +170,7 @@ protected:
 public:
 	InhStage(Score* pNumber);
 
-	~InhStage();	//デストラクタ
+	virtual ~InhStage();	//デストラクタ
 
 	//更新
 	virtual void Update(void) = 0;
@@ -167,5 +183,7 @@ public:
 
 	void HitStop(int flame) { m_StopFlame = flame; }
 	void BossDown() { m_isBossDown = true; }
+
+	void SetPoorVision() { m_pPoorvision->SetPV(); }
 };
 

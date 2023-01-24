@@ -1,7 +1,7 @@
 //=======================================
-// ƒ^ƒCƒgƒ‹‰æ–ÊŠÖŒW(cppƒtƒ@ƒCƒ‹)
-// ì¬“úF2022/07/14
-// ì¬ŽÒF‚—œ…Šó
+// ã‚¿ã‚¤ãƒˆãƒ«ç”»é¢é–¢ä¿‚(cppãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š2022/07/14
+// ä½œæˆè€…ï¼šé«˜æ¢¨æ°´å¸Œ
 //=======================================
 #include	"main.h"
 #include	"texture.h"
@@ -15,43 +15,44 @@
 #include	"BG.h"
 
 //======================
-// ƒOƒ[ƒoƒ‹•Ï”
+// ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°
 //======================
-static	ID3D11ShaderResourceView	*g_TitleTexture = NULL;//ƒeƒNƒXƒ`ƒƒî•ñ
+static	ID3D11ShaderResourceView	*g_TitleTexture = NULL;//ãƒ†ã‚¯ã‚¹ãƒãƒ£æƒ…å ±
 static	char	*g_TitleTextureName = (char*)"data\\texture\\Title.png";
 int		g_TitleSoundNo;
 int		g_SE = 0;
 BG* p_title_bg;
 Sprite* g_p1Sprite;
+bool g_title_tutorial = true;
 
-//ƒ^ƒCƒgƒ‹\‘¢‘Ì
+//ã‚¿ã‚¤ãƒˆãƒ«æ§‹é€ ä½“
 typedef	struct
 {
-	D3DXVECTOR3		Position;	//•\Ž¦À•W
-	D3DXVECTOR2		Size;		//ƒTƒCƒY
-	D3DXCOLOR		Color;		//F
-	float			Rotate;		//Šp“x
+	D3DXVECTOR3		Position;	//è¡¨ç¤ºåº§æ¨™
+	D3DXVECTOR2		Size;		//ã‚µã‚¤ã‚º
+	D3DXCOLOR		Color;		//è‰²
+	float			Rotate;		//è§’åº¦
 }TITLE;
 
-TITLE	TitleObject;	//ƒ^ƒCƒgƒ‹‰æ–ÊƒIƒuƒWƒFƒNƒg
+TITLE	TitleObject;	//ã‚¿ã‚¤ãƒˆãƒ«ç”»é¢ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 
-int		TitleTextureNo;	//ƒeƒNƒXƒ`ƒƒ”Ô†
+int		TitleTextureNo;	//ãƒ†ã‚¯ã‚¹ãƒãƒ£ç•ªå·
 
 //==========================
-// ‰Šú‰»ˆ—
+// åˆæœŸåŒ–å‡¦ç†
 //==========================
-void	InitTitle()
+void	InitTitle(bool tutorial)
 {
-	TitleTextureNo = LoadTexture(g_TitleTextureName);				//ƒeƒNƒXƒ`ƒƒ‚Ìƒ[ƒh
-	g_TitleSoundNo = LoadSound((char*)"data\\BGM\\sample000.wav");	//ƒTƒEƒ“ƒh‚Ìƒ[ƒh
+	TitleTextureNo = LoadTexture(g_TitleTextureName);				//ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®ãƒ­ãƒ¼ãƒ‰
+	g_TitleSoundNo = LoadSound((char*)"data\\BGM\\sample000.wav");	//ã‚µã‚¦ãƒ³ãƒ‰ã®ãƒ­ãƒ¼ãƒ‰
 	
-	//Œˆ’è‰¹
+	//æ±ºå®šéŸ³
 	g_SE = LoadSound((char*)"data\\SE\\2_01.wav");
 	//SetVolume(g_SE, 0.1f);
 
 	if (TitleTextureNo == -1)
-	{//“Ç‚Ýž‚ÝƒGƒ‰[
-		exit(999);	//‹­§I—¹
+	{//èª­ã¿è¾¼ã¿ã‚¨ãƒ©ãƒ¼
+		exit(999);	//å¼·åˆ¶çµ‚äº†
 	}
 
 	TitleObject.Position = D3DXVECTOR3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0);
@@ -59,14 +60,17 @@ void	InitTitle()
 	TitleObject.Color = D3DXCOLOR(1.0, 1.0, 1.0, 1.0);
 	TitleObject.Rotate = 0.0;
 
-	PlaySound(g_TitleSoundNo, -1);	//BGMÄ¶
+	PlaySound(g_TitleSoundNo, -1);	//BGMå†ç”Ÿ
 	SetVolume(g_TitleSoundNo, 0.1f);
 
 	g_p1Sprite = new Sprite;
+
+	//ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«ãƒ—ãƒ¬ã‚¤æ¸ˆã¿ã‹
+	g_title_tutorial = tutorial;
 }
 
 //==========================
-// I—¹ˆ—
+// çµ‚äº†å‡¦ç†
 //==========================
 void	UninitTitle()
 {
@@ -76,49 +80,54 @@ void	UninitTitle()
 }
 
 //======================
-// XVˆ—
+// æ›´æ–°å‡¦ç†
 //======================
 void	UpdateTitle()
 {
-	//ƒL[“ü—Í‚Ìƒ`ƒFƒbƒN
+	//ã‚­ãƒ¼å…¥åŠ›ã®ãƒã‚§ãƒƒã‚¯
 	if (InputGetKeyDown(KK_SPACE))
 	{
-		Fade(SCENE::SCENE_GAME);
 		PlaySound(g_SE, 0);
+		if (g_title_tutorial) {
+			Fade(SCENE::SCENE_STAGE_SELECT, STAGE::STAGE_MOON);
+		}
+		else {
+			Fade(SCENE::SCENE_GAME, STAGE::STAGE_MOON);
+		}
 	}
 
-	//Aƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚½‚çƒXƒe[ƒW‘I‘ð‰æ–Ê‚És‚­
+	//Aãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸã‚‰ã‚¹ãƒ†ãƒ¼ã‚¸é¸æŠžç”»é¢ã«è¡Œã
 	if (InputGetKeyDown(KK_A))
 	{
-		Fade(SCENE::SCENE_STAGE_SELECT);
+		Fade(SCENE::SCENE_STAGE_SELECT, STAGE::STAGE_MERCURY);
 		PlaySound(g_SE, 0);
 	}
 
-	//Dƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚½‚çƒXƒe[ƒW‘I‘ð‰æ–Ê‚És‚­
+	//Dãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸã‚‰ã‚¹ãƒ†ãƒ¼ã‚¸é¸æŠžç”»é¢ã«è¡Œã
 	if (InputGetKeyDown(KK_D))
 	{
-		Fade(SCENE::SCENE_TITLE_SCORE);
+		Fade(SCENE::SCENE_TITLE_SCORE, STAGE::STAGE_MERCURY);
 		PlaySound(g_SE, 0);
 	}
 
-	//Wƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚½‚çƒŠƒUƒ‹ƒg‰æ–Ê‚És‚­
+	//Wãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸã‚‰ãƒªã‚¶ãƒ«ãƒˆç”»é¢ã«è¡Œã
 	if (InputGetKeyDown(KK_S))
 	{
-		Fade(SCENE::SCENE_RESULT);
+		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MERCURY);
 		PlaySound(g_SE, 0);
 	}
 }
 
 //==========================
-// •`‰æˆ—
+// æç”»å‡¦ç†
 //==========================
 void	DrawTitle()
 {
-	//ƒeƒNƒXƒ`ƒƒ‚ÌƒZƒbƒg
+	//ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®ã‚»ãƒƒãƒˆ
 	GetDeviceContext()->PSSetShaderResources(0, 1,
 		GetTexture(TitleTextureNo));
 
-	//ƒXƒvƒ‰ƒCƒg‚Ì•`‰æ
+	//ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã®æç”»
 	g_p1Sprite->DrawSpriteAnimationRotation
 	(
 		TitleObject.Position.x,

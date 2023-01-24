@@ -14,34 +14,34 @@
 
 class inhPlayerArmBoth :public GameObject
 {
-//定数
+	//定数
 public:
 	//腕につく敵のタイプ
 	enum class TYPE :int
 	{
-		TYPE_HOMING,		//ホーミング
+		TYPE_HOMING,	//ホーミング
 		TYPE_LASER,		//レーザー
-		TYPE_GATORING,		//ガトリング
-		TYPE_BARRIAR,		//バリア
+		TYPE_GATORING,	//ガトリング
+		TYPE_BARRIAR,	//バリア
 		TYPE_STOP,		//動きを止める
-		TYPE_ICERAIN,		//氷の敵
-		TYPE7,
-		TYPE8,
-		TYPE_NUM,
+		TYPE_ICERAIN,	//氷の敵
+		TYPE7,			//グレネード敵
+		TYPE8,			//炎の敵
 		TYPE_NONE,	//	何もついていない
 		TYPE_SHOOT,	// 前のタイプの弾の処理 & 自身発射中
 		TYPE_DM_SHOOT,	//ダメージをくらった時の
 		TYPE_OLD,	// 前のタイプの弾の処理中
+		TYPE_NUM,
 	};
 
-//定数
+	//定数
 private:
 	//cppで初期化
 	static const D3DXVECTOR2 SIZE;				//サイズ
 	static const float SHOT_SPEED;				//切り離し発射スピード
 
-//メンバ変数
-private: 
+	//メンバ変数
+private:
 	D3DXVECTOR2 m_from_player = D3DXVECTOR2(0.0f, 0.0f);	//プレイヤーからどれくらい離れているか
 
 	bool m_shot = false;					//自分自身が発射されてるか否か
@@ -52,6 +52,8 @@ private:
 	DrawObject* m_barrier_draw = nullptr;	//バリアの描画オブジェクト
 	DrawObject* m_bullet_stop_draw = nullptr;	//動きを止める敵の弾の描画オブジェクト
 	DrawObject* m_bullet_icerain_draw = nullptr;	//氷の敵の描画
+	DrawObject* m_bullet_fire_draw = nullptr;	//氷の敵の描画
+	
 	//敵
 	DrawObject* m_enemy_homing_draw = nullptr;				//弾の描画オブジェクト
 	DrawObject* m_enemy_gatoring_draw = nullptr;				//弾の描画オブジェクト
@@ -59,6 +61,7 @@ private:
 	DrawObject* m_enemy_barrier_draw = nullptr;	//バリアの描画オブジェクト
 	DrawObject* m_enemy_stop_draw = nullptr;	//動きを止める敵の弾の描画オブジェクト
 	DrawObject* m_enemy_icerain_draw = nullptr;	//氷の敵の描画
+	DrawObject* m_enemy_fire_draw = nullptr;	//炎の敵の描画
 
 	DrawObject m_explosion_draw;			//爆発の描画オブジェクト
 
@@ -132,7 +135,8 @@ public:
 	void BreakShootingArm();
 
 
-
+	//====================
+	// 弾
 	//丸い弾の描画オブジェクトをセット
 	void DrawSetSurcleBullet(DrawObject* pDraw) { m_bullet_draw = pDraw; }
 
@@ -145,11 +149,15 @@ public:
 	//動きを止める敵の弾描画オブジェクトをセット
 	void DrawSetBulleStop(DrawObject* pDraw) { m_bullet_stop_draw = pDraw; }
 
-	//氷の敵の腕の描画
+	//氷の敵の弾の描画
 	void DrawSetIceRain(DrawObject* pDraw) { m_bullet_icerain_draw = pDraw; }
 
+	//炎の敵の弾の描画
+	void DrawSetFire(DrawObject* pDraw) { m_bullet_fire_draw = pDraw; }
 
 
+	//========================
+	// 敵
 	//ホーミングの敵の腕の描画
 	void DrawSetHomingE(DrawObject* pDraw) { m_enemy_homing_draw = pDraw; }
 
@@ -168,6 +176,8 @@ public:
 	//氷の敵の腕の描画
 	void DrawSetIceRainE(DrawObject* pDraw) { m_enemy_icerain_draw = pDraw; }
 
+	//炎の敵の腕の描画
+	void DrawSetFireE(DrawObject* pDraw) { m_enemy_fire_draw = pDraw; }
 
 
 	//爆発の描画セット

@@ -261,12 +261,12 @@ void StageSelectPlanet::Update()
 	//パッドのBボタンを押したら...
 	if (IsButtonTriggered(0, XINPUT_GAMEPAD_B)) {
 		PlaySound(m_SE_01, 0);
-		Fade((SCENE)(SCENE::SCENE_MERCURY + m_planet_index));
+		Fade((SCENE)(SCENE::SCENE_MERCURY + m_planet_index), STAGE::STAGE_MERCURY);
 	}
 	//キーボードのEnterを押したら...
 	else if (InputGetKeyDown(KK_ENTER)) {
 		PlaySound(m_SE_01, 0);
-		Fade((SCENE)(SCENE::SCENE_MERCURY + m_planet_index));
+		Fade((SCENE)(SCENE::SCENE_MERCURY + m_planet_index), STAGE::STAGE_MERCURY);
 	}
 }
 

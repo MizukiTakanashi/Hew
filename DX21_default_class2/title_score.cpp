@@ -152,7 +152,7 @@ void TitleScore::Update(void)
 	{
 		//タイトル画面に行く
 		PlaySound(m_SE_02, 0);
-		Fade(SCENE::SCENE_TITLE);
+		Fade(SCENE::SCENE_TITLE, STAGE::STAGE_MERCURY);
 	}
 }
 

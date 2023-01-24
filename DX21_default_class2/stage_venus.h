@@ -10,6 +10,9 @@
 #include "collision_all.h"
 
 #include "management_enemy_fireball.h"
+#include "management_enemy_acid.h"
+#include "management_enemy_poorvision.h"
+#include "management_enemy_speeddown.h"
 
 class StageVenus : public InhStage
 {
@@ -17,12 +20,19 @@ class StageVenus : public InhStage
 private:
 	CollisionAll* m_pColAll = nullptr;		//全ての当たり判定
 	EnemyFireballManagement* m_pEnemyFireballManagement = nullptr;
+	EnemyAcidManagement* m_pEnemyAcidManagement = nullptr;
+	EnemyPoorvisionManagement* m_pEnemuPoorvisionManagement = nullptr;
+	EnemySpeeddownManagement* m_pEnemySpeeddownManagement = nullptr;
 
-	//メンバ関数
+	int a = 0;
+
+	bool m_poor_vision = false;
+
+//メンバ関数
 public:
 	StageVenus(Score* pNumber);
 
-	~StageVenus();	//デストラクタ
+	~StageVenus()override;	//デストラクタ
 
 	//更新
 	void Update(void) override;

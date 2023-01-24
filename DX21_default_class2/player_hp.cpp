@@ -15,8 +15,9 @@
 const float PlayerHP::HP_MAX = 3.0f;
 const D3DXVECTOR2 PlayerHP::SIZE = D3DXVECTOR2(60.0f, 60.0f);
 const float PlayerHP::POS_X = 1040.0f;
-const float PlayerHP::POS_Y = 625.0f;
+const float PlayerHP::POS_Y = 635.0f;
 const float PlayerHP::BET_X = 80.0f;
+const float PlayerHP::FIRE_REDUCE = 0.001f;
 
 //==========================
 // 引数付きコンストラクタ
@@ -72,6 +73,13 @@ void PlayerHP::HeelHP(float heel_num)
 //==========================
 void PlayerHP::Update(void)
 {
+	//もしもHPが0であれば
+	if (m_hp <= 0) {
+		m_hp = 0;
+		m_HP0 = true;
+		return;
+	}
+
 	if (m_hp < HP_MAX)
 	{//HPが少なくなったら
 		//プレイヤーの見た目変更
@@ -84,6 +92,10 @@ void PlayerHP::Update(void)
 		m_invincible--;
 	}
 
+	//炎状態になっていたら少しずつ削る
+	if (m_fire) {
+		m_hp -= FIRE_REDUCE;
+	}
 }
 
 //==========================

@@ -17,13 +17,13 @@ public:
 	// 腕に着く敵の種類
 	enum class TYPE :int
 	{
-		TYPE_HOMING,		//ホーミング
+		TYPE_HOMING,	//ホーミング
 		TYPE_LASER,		//レーザー
-		TYPE_GATORING,		//ガトリング
-		TYPE_BARRIAR,		//バリア
+		TYPE_GATORING,	//ガトリング
+		TYPE_BARRIAR,	//バリア
 		TYPE_STOP,		//STOP
-		TYPE_ICERAIN,
-		TYPE7,        //氷柱
+		TYPE_ICERAIN,	//氷柱
+		TYPE7,        
 		TYPE8,
 		TYPE_NUM,
 	};
