@@ -10,7 +10,7 @@
 //==========================
 // ’è”‚Ì‰Šú‰»
 //==========================
-const int EnemyMissileManagement::ENEMY_NUM[(int)STAGE::NUM] = { 5, 6, 7, 0 };
+const int EnemyMissileManagement::ENEMY_NUM[(int)STAGE::NUM] = { 5, 6, 7, 2 };
 const float EnemyMissileManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyMissileManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyMissileManagement::BULLET_SPEED = 5.0f;
@@ -133,9 +133,9 @@ void EnemyMissileManagement::DeleteObj(int index_num)
 	//Œp³Œ³‚Ì“G‚ğÁ‚·‚ğŒÄ‚Ô
 	EnemyManagement::DeleteObj(index_num);
 
-	//if (m_delete_enemy == ENEMY_NUM[m_stage_num]) {
-	//	m_tutorial_clear = true;
-	//}
+	if (m_delete_enemy == ENEMY_NUM[m_stage_num]) {
+		m_tutorial_clear = true;
+	}
 }
 
 //======================

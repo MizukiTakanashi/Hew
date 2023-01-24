@@ -23,8 +23,8 @@ public:
 		TYPE_BARRIAR,	//バリア
 		TYPE_STOP,		//STOP
 		TYPE_ICERAIN,	//氷柱
-		TYPE7,        
-		TYPE8,
+		TYPE_GRENADE,        
+		TYPE_FIRE,
 		TYPE_NUM,
 	};
 

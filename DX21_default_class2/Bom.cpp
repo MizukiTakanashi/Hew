@@ -22,7 +22,7 @@ void Bom::Update(void)
 	
 	//ゲームパッドのXボタンを押したら...
 	//キーボードのEnterを押したら...
-	if (m_time == -1 && (IsButtonTriggered(0, XINPUT_GAMEPAD_Y) || InputGetKeyDown(KK_ENTER))) {
+	if (m_time == -1 && (GetRightTriggerTriggered(0, 120) || InputGetKeyDown(KK_R))) {
 		m_time = 0;
 	}
 

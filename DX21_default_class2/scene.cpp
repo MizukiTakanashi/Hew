@@ -148,7 +148,7 @@ void InitScene2(SCENE s, STAGE stage)
 
 	//”š
 	g_pTexUseful[0].SetTextureName((char*)"data\\texture\\number.png");
-	g_pDrawObject[0].SetDrawObject(g_pTexUseful[0], 0.0f, 0.0909f, 1.0f, 11);
+	g_pDrawObject[0].SetDrawObject(g_pTexUseful[0], 0.0f, 0.1f, 1.0f, 10);
 	g_pNumber = new Score(g_pDrawObject[0]);
 
 	//ƒXƒRƒA‚ğ‰Šú‰»

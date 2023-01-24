@@ -256,7 +256,7 @@ int MarsCollisionAll::Collision(void)
 					}
 
 					//グレネード敵であれば何もしない
-					if (pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE7) {
+					if (pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE_GRENADE) {
 						for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
 							//敵を探している最中
 							if (pArmItem->GetBulletSize(i) == PlayerArmGrenade::FIND_BULLET_SIZE) {

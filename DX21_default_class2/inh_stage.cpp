@@ -1,33 +1,33 @@
 //=======================================
-// Œp³—p‚ÌƒXƒe[ƒWŠÖŒW(cppƒtƒ@ƒCƒ‹)
-// ì¬“úF
-// ì¬ÒF‰¶“c—ms
+// ç¶™æ‰¿ç”¨ã®ã‚¹ãƒ†ãƒ¼ã‚¸é–¢ä¿‚(cppãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š
+// ä½œæˆè€…ï¼šæ©ç”°æ´‹è¡Œ
 //=======================================
 #include "inh_stage.h"
 #include "sound.h"
 
 //==========================
-// ’è”‰Šú‰»
+// å®šæ•°åˆæœŸåŒ–
 //==========================
 const D3DXVECTOR2 InhStage::NUMBER_POS = D3DXVECTOR2(1260.0f, 15.0f);
 const D3DXVECTOR2 InhStage::NUMBER_SIZE = D3DXVECTOR2(25.0f, 25.0f);
 
 //==========================
-// ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+// å¼•æ•°ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //==========================
 InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 {
-	//”š‚Ì‰Šú‰»
+	//æ•°å­—ã®åˆæœŸåŒ–
 	m_pScore->SetInitPos(NUMBER_POS);
 	m_pScore->SetPos(NUMBER_POS);
 	m_pScore->SetSize(NUMBER_SIZE);
 	m_pScore->SetDigit(NUMBER_DIGIT);
 
-	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//ƒTƒEƒ“ƒh‚Ìƒ[ƒh
-	PlaySound(m_BGM, -1);	//BGMÄ¶
+	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//ã‚µã‚¦ãƒ³ãƒ‰ã®ãƒ­ãƒ¼ãƒ‰
+	PlaySound(m_BGM, -1);	//BGMå†ç”Ÿ
 	SetVolume(m_BGM, 0.1f);
 
-	//”wŒi‚Ì‰Šú‰»ˆ—
+	//èƒŒæ™¯ã®åˆæœŸåŒ–å‡¦ç†
 	m_pBG = new BG((char*)"data\\texture\\game_bg_scroll.jpg");
 
 	m_pPoorvision = new PoorVision((char*)"data\\texture\\poorvision.png");
@@ -37,113 +37,125 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 
 
 	//=======================
-	// ’e
+	// å¼¾
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_RED].SetTextureName((char*)"data\\texture\\bullet_red.png");
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN].SetTextureName((char*)"data\\texture\\bullet_green.png");
-	//—Î‚Ì’e
+	//ç·‘ã®å¼¾
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
 		D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
-	//“G‘¤‚Ì’e
+	//æ•µå´ã®å¼¾
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_RED]);
-	//ƒ{ƒ€
+	//ãƒœãƒ 
 	m_pDrawObject[(int)DRAW_TYPE::BOMB].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN]);
 	m_pBom = new Bom(m_pDrawObject[(int)DRAW_TYPE::BOMB], 3);
 
 
 	//=======================
-	//”šŠÖ˜A
+	//æ•°å­—é–¢é€£
 	m_pTexUseful[(int)TEXTURE_TYPE::NUMBER].SetTextureName((char*)"data\\texture\\number.png");
-	// c’e•\¦
-	m_pDrawObject[(int)DRAW_TYPE::NUMBER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::NUMBER], 0.0f, 0.0909f, 1.0f, 11);
-	// ƒRƒ“ƒ{Œp‘±”•\¦
+	// æ®‹å¼¾è¡¨ç¤º
+	m_pDrawObject[(int)DRAW_TYPE::NUMBER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::NUMBER], 0.0f, 0.1f, 1.0f, 10);
+	// ã‚³ãƒ³ãƒœç¶™ç¶šæ•°è¡¨ç¤º
 	m_pComboNum = new Number(m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(SCREEN_WIDTH - 30, 50), D3DXVECTOR2(25.0f, 25.0f), 2);
 
 	//=======================
-	// ƒRƒ“ƒ{”‚Ì‰¡‚Ì~
+	// ã‚³ãƒ³ãƒœæ•°ã®æ¨ªã®Ã—
 	m_pTexUseful[(int)TEXTURE_TYPE::MULTIPLY].SetTextureName((char*)"data\\texture\\multiply.png");
 	m_pDrawObject[(int)DRAW_TYPE::MULTIPLY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::MULTIPLY], 0.0f, 1.0f, 1.0f, 1);
 	m_pMultiply = new UI(m_pDrawObject[(int)DRAW_TYPE::MULTIPLY], D3DXVECTOR2(SCREEN_WIDTH - 110, 50), D3DXVECTOR2(25.0f, 25.0f), D3DXCOLOR());
 
-	//ƒvƒŒƒCƒ„[
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
 	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER].SetTextureName((char*)"data\\texture\\player_anime.png");
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER], 1.0f, 0.25f, 1.0f, 4);
 	m_pPlayer = new Player(m_pDrawObject[(int)DRAW_TYPE::PLAYER], m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET], m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET]);
 
-	//ƒtƒŒ[ƒ€
+	//ãƒ•ãƒ¬ãƒ¼ãƒ 
 	m_pTexUseful[(int)TEXTURE_TYPE::FRAME].SetTextureName((char*)"data\\texture\\ui.png");
 	m_pDrawObject[(int)DRAW_TYPE::FRAME].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::FRAME]);
 	m_pFrame = new UI(m_pDrawObject[(int)DRAW_TYPE::FRAME], D3DXVECTOR2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2),
 		D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT));
 
-	//”š”­
+	//çˆ†ç™º
 	m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION].SetTextureName((char*)"data\\texture\\explosion000.png");
 	m_pDrawObject[(int)DRAW_TYPE::EXPLOSION].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION], 0.0f, 0.125f, 1.0f, 7);
 	m_pExplosionManagement = new ExplosionManagement(m_pDrawObject[(int)DRAW_TYPE::EXPLOSION]);
 
-	//ƒvƒŒƒCƒ„[‚ÌHP
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HP
 	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER_HP].SetTextureName((char*)"data\\texture\\hp.png");
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_BAR].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER_HP], 0.0f, 0.5f, 1.0f, 2);
 	m_pPlayerHP = new PlayerHP(m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_BAR], m_pExplosionManagement, m_pPlayer, this);
 
-	//ƒXƒe[ƒW•\¦“Ç‚İ‚İ
-	//Œ
+	//ã‚¹ãƒ†ãƒ¼ã‚¸è¡¨ç¤ºèª­ã¿è¾¼ã¿
+	//æœˆ
 	m_pTexUseful[(int)TEXTURE_TYPE::MOON].SetTextureName((char*)"data\\texture\\moon_name.png");
 	m_pDrawObject[(int)DRAW_TYPE::MOON].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::MOON], 0.0f, 1.0f, 1.0f, 1);
-	m_pStageMoon = new UI(m_pDrawObject[(int)DRAW_TYPE::MOON], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(100.0f, 50.0f), D3DXCOLOR());
+	m_pStageMoon = new UI(m_pDrawObject[(int)DRAW_TYPE::MOON], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(80.0f, 25.0f), D3DXCOLOR());
 	
-	//…¯
+	//æ°´æ˜Ÿ
 	m_pTexUseful[(int)TEXTURE_TYPE::MARCURY].SetTextureName((char*)"data\\texture\\mercury_name.png");
 	m_pDrawObject[(int)DRAW_TYPE::MARCURY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::MARCURY], 0.0f, 1.0f, 1.0f, 1);
-	m_pStageMarcury = new UI(m_pDrawObject[(int)DRAW_TYPE::MARCURY], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(100.0f, 50.0f), D3DXCOLOR());
+	m_pStageMarcury = new UI(m_pDrawObject[(int)DRAW_TYPE::MARCURY], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(80.0f, 25.0f), D3DXCOLOR());
 
-	//‹à¯
+	//é‡‘æ˜Ÿ
 	m_pTexUseful[(int)TEXTURE_TYPE::VENUS].SetTextureName((char*)"data\\texture\\venus_name.png");
 	m_pDrawObject[(int)DRAW_TYPE::VENUS].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::VENUS], 0.0f, 1.0f, 1.0f, 1);
-	m_pStageVenus = new UI(m_pDrawObject[(int)DRAW_TYPE::VENUS], D3DXVECTOR2(160.0f,40.0f), D3DXVECTOR2(100.0f, 50.0f), D3DXCOLOR());
+	m_pStageVenus = new UI(m_pDrawObject[(int)DRAW_TYPE::VENUS], D3DXVECTOR2(160.0f,40.0f), D3DXVECTOR2(80.0f, 25.0f), D3DXCOLOR());
 
-	//‰Î¯
+	//ç«æ˜Ÿ
 	m_pTexUseful[(int)TEXTURE_TYPE::MARS].SetTextureName((char*)"data\\texture\\mars_name.png");
 	m_pDrawObject[(int)DRAW_TYPE::MARS].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::MARS], 0.0f, 1.0f, 1.0f, 1);
-	m_pStageMars = new UI(m_pDrawObject[(int)DRAW_TYPE::MARS], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(100.0f, 50.0f), D3DXCOLOR());
+	m_pStageMars = new UI(m_pDrawObject[(int)DRAW_TYPE::MARS], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(80.0f, 25.0f), D3DXCOLOR());
 
-	//–Ø¯
+	//æœ¨æ˜Ÿ
 	m_pTexUseful[(int)TEXTURE_TYPE::JUPITOR].SetTextureName((char*)"data\\texture\\jupiter_name.png");
 	m_pDrawObject[(int)DRAW_TYPE::JUPITOR].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::JUPITOR], 0.0f, 1.0f, 1.0f, 1);
-	m_pStageJupitor = new UI(m_pDrawObject[(int)DRAW_TYPE::JUPITOR], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(100.0f, 50.0f), D3DXCOLOR());
+	m_pStageJupitor = new UI(m_pDrawObject[(int)DRAW_TYPE::JUPITOR], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(80.0f, 25.0f), D3DXCOLOR());
 
-	//“y¯
+	//åœŸæ˜Ÿ
 	m_pTexUseful[(int)TEXTURE_TYPE::SATAURN].SetTextureName((char*)"data\\texture\\saturn_name.png");
 	m_pDrawObject[(int)DRAW_TYPE::SATAURN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::SATAURN], 0.0f, 1.0f, 1.0f, 1);
-	m_pStageSataurn = new UI(m_pDrawObject[(int)DRAW_TYPE::SATAURN], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(100.0f, 50.0f), D3DXCOLOR());
+	m_pStageSataurn = new UI(m_pDrawObject[(int)DRAW_TYPE::SATAURN], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(80.0f, 25.0f), D3DXCOLOR());
 
-	//‘¾—z
+	//å¤ªé™½
 	m_pTexUseful[(int)TEXTURE_TYPE::SUN].SetTextureName((char*)"data\\texture\\sun_name.png");
 	m_pDrawObject[(int)DRAW_TYPE::SUN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::SUN], 0.0f, 1.0f, 1.0f, 1);
-	m_pStageSun = new UI(m_pDrawObject[(int)DRAW_TYPE::SUN], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(100.0f, 50.0f), D3DXCOLOR());
+	m_pStageSun = new UI(m_pDrawObject[(int)DRAW_TYPE::SUN], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(80.0f, 25.0f), D3DXCOLOR());
 
 	//=======================
-	//“G‚ÌƒAƒCƒeƒ€
+	//æ•µã®ã‚¢ã‚¤ãƒ†ãƒ 
 	m_pItemManagement = new ItemManagement();
-	//‰æ‘œ“Ç‚İ‚İ
+	//ç”»åƒèª­ã¿è¾¼ã¿
 	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_MISSILE].SetTextureName((char*)"data\\texture\\item_missile.png");
 	m_pDrawObject[(int)DRAW_TYPE::ITEM_MISSILE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_MISSILE]);
 	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_LASER].SetTextureName((char*)"data\\texture\\item_laser.png");
 	m_pDrawObject[(int)DRAW_TYPE::ITEM_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_LASER]);
 	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_GATORING].SetTextureName((char*)"data\\texture\\item_gatoring.png");
 	m_pDrawObject[(int)DRAW_TYPE::ITEM_GATORING].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_GATORING]);
-	//‰æ‘œƒZƒbƒg
-	m_pItemManagement->SetDrawMissile(&m_pDrawObject[(int)DRAW_TYPE::ITEM_MISSILE]);
-	m_pItemManagement->SetDrawLaser(&m_pDrawObject[(int)DRAW_TYPE::ITEM_LASER]);
-	m_pItemManagement->SetDrawGatoring(&m_pDrawObject[(int)DRAW_TYPE::ITEM_GATORING]);
+	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_ACID].SetTextureName((char*)"data\\texture\\item_acid.png");
+	m_pDrawObject[(int)DRAW_TYPE::ITEM_ACID].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_ACID]);
+	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_HOTAIRLASER].SetTextureName((char*)"data\\texture\\item_hotairlaserlaser.png");
+	m_pDrawObject[(int)DRAW_TYPE::ITEM_HOTAIRLASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_HOTAIRLASER]);
+	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_ICERAIN].SetTextureName((char*)"data\\texture\\item_icerain.png");
+	m_pDrawObject[(int)DRAW_TYPE::ITEM_ICERAIN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_ICERAIN]);
+	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_POISONLASER].SetTextureName((char*)"data\\texture\\item_Poisonlaserlaser.png");
+	m_pDrawObject[(int)DRAW_TYPE::ITEM_POISONLASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_POISONLASER]);
+	//ç”»åƒã‚»ãƒƒãƒˆ
+	m_pItemManagement->SetDrawMissile(m_pDrawObject[(int)DRAW_TYPE::ITEM_MISSILE]);
+	m_pItemManagement->SetDrawLaser(m_pDrawObject[(int)DRAW_TYPE::ITEM_LASER]);
+	m_pItemManagement->SetDrawGatoring(m_pDrawObject[(int)DRAW_TYPE::ITEM_GATORING]);
+	m_pItemManagement->SetDrawAcid(m_pDrawObject[(int)DRAW_TYPE::ITEM_ACID]);
+	m_pItemManagement->SetDrawHotairlaser(m_pDrawObject[(int)DRAW_TYPE::ITEM_HOTAIRLASER]);
+	m_pItemManagement->SetDrawIcerain(m_pDrawObject[(int)DRAW_TYPE::ITEM_ICERAIN]);
+	m_pItemManagement->SetDrawPoisonlaser(m_pDrawObject[(int)DRAW_TYPE::ITEM_POISONLASER]);
 
 
 	//=======================
-	// ƒvƒŒƒCƒ„[‚Ì˜r
+	// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•
 	m_pPlayerCenter = new PlayerCenter(m_pPlayer->GetPos(), m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(120.0f, 590.0f), D3DXVECTOR2(230.0f, 590.0f));
 	m_pPlayerLeft = new PlayerLeft(m_pPlayer->GetPos(), m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(120.0f, 640.0f), D3DXVECTOR2(230.0f, 640.0f));
 	m_pPlayerRight = new PlayerRight(m_pPlayer->GetPos(), m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(120.0f, 690.0f), D3DXVECTOR2(230.0f, 690.0f));
 
-	//‡‘Ì‚Å‚«‚é“G‚Ì‰æ‘œ“Ç‚İ‚İ(“G‚Ì’e)
+	//åˆä½“ã§ãã‚‹æ•µã®ç”»åƒèª­ã¿è¾¼ã¿(æ•µã®å¼¾)
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1, D3DXCOLOR(0.2f, 1.0f, 0.2f, 1.0f));
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER], 0.0f, 1.0f, 1.0f, 1, D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
 
@@ -155,7 +167,7 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_ICE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_ICE]);
 
 
-	//˜r‚Ì‰æ‘œƒZƒbƒgi’ej
+	//è…•ã®ç”»åƒã‚»ãƒƒãƒˆï¼ˆå¼¾ï¼‰
 	m_pPlayerLeft->DrawSetSurcleBullet(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_BULLET]);
 	m_pPlayerLeft->DrawSetLaser(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LASER]);
 	m_pPlayerLeft->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::BULLET_BARRIER]);
@@ -175,7 +187,7 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pPlayerCenter->DrawSetIceRain(&m_pDrawObject[(int)DRAW_TYPE::BULLET_ICE]);
 	
 
-	//‡‘Ì‚Å‚«‚é“G‚Ì‰æ‘œ“Ç‚İ‚İ(“G–{‘Ì)
+	//åˆä½“ã§ãã‚‹æ•µã®ç”»åƒèª­ã¿è¾¼ã¿(æ•µæœ¬ä½“)
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_NORMAL].SetTextureName((char*)"data\\texture\\enemy_missile.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_NORMAL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_NORMAL]);
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_LASER].SetTextureName((char*)"data\\texture\\enemy_laser.png");
@@ -190,41 +202,41 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_STOP].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_STOP]);
 
 
-	//˜r‚Ì‰æ‘œƒZƒbƒgi–{‘Ìj
+	//è…•ã®ç”»åƒã‚»ãƒƒãƒˆï¼ˆæœ¬ä½“ï¼‰
 	m_pPlayerLeft->DrawSetHomingE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_MISSILE]);
 	m_pPlayerLeft->DrawSetLaserE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_LASER]);
 	m_pPlayerLeft->DrawSetGatoringE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_GATORING]);
 	m_pPlayerLeft->DrawSetBarriarE(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER]);
-	m_pPlayerLeft->DrawSetIceRainE(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE]);
+	m_pPlayerLeft->DrawSetIceRainE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_ICERAIN]);
 	m_pPlayerLeft->DrawSetStopE(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_STOP]);
 
 	m_pPlayerRight->DrawSetHomingE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_MISSILE]);
 	m_pPlayerRight->DrawSetLaserE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_LASER]);
 	m_pPlayerRight->DrawSetGatoringE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_GATORING]);
 	m_pPlayerRight->DrawSetBarriarE(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER]);
-	m_pPlayerRight->DrawSetIceRainE(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE]);
+	m_pPlayerRight->DrawSetIceRainE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_ICERAIN]);
 	m_pPlayerRight->DrawSetStopE(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_STOP]);
 
 	m_pPlayerCenter->DrawSetHomingE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_MISSILE]);
 	m_pPlayerCenter->DrawSetLaserE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_LASER]);
 	m_pPlayerCenter->DrawSetGatoringE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_GATORING]);
 	m_pPlayerCenter->DrawSetBarriarE(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER]);
-	m_pPlayerCenter->DrawSetIceRainE(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE]);
+	m_pPlayerCenter->DrawSetIceRainE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_ICERAIN]);
 	m_pPlayerCenter->DrawSetStopE(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_STOP]);
 
-	//˜r‚ÌŒğŠ·
+	//è…•ã®äº¤æ›
 	m_pPlayerArmChange = new PlayerArmChange(m_pPlayerLeft, m_pPlayerRight, m_pPlayerCenter);
 }
 
 //==========================
-// ƒfƒXƒgƒ‰ƒNƒ^
+// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //==========================
 InhStage::~InhStage()
 {
-	//•`‰æ‚ª‚È‚¢•¨‚©‚çÁ‚µ‚Ä‚¢‚­
+	//æç”»ãŒãªã„ç‰©ã‹ã‚‰æ¶ˆã—ã¦ã„ã
 	delete m_pPlayerArmChange;
 
-	//ƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ğÁ‚·
+	//ã‚²ãƒ¼ãƒ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ¶ˆã™
 	delete m_pBom;
 	delete m_pBG;
 	delete m_pPoorvision;
@@ -240,10 +252,10 @@ InhStage::~InhStage()
 	delete m_pComboNum;
 	delete m_pMultiply;
 
-	//‚»‚Ì‚Ù‚©
+	//ãã®ã»ã‹
 	delete[] m_pDrawObject;
 	delete[] m_pTexUseful;
 
-	//BGM‚ğƒXƒgƒbƒv
+	//BGMã‚’ã‚¹ãƒˆãƒƒãƒ—
 	StopSound(m_BGM);
 }

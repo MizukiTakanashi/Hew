@@ -142,14 +142,14 @@ void StageSelectPlanet::Update()
 	//=======================
 	// キーボード
 
-	//Aキーを押したら...
-	if (InputGetKeyDown(KK_A)) {
+	//矢印キー左を押したら...
+	if (InputGetKeyDown(KK_LEFT) || InputGetKeyDown(KK_DOWN)) {
 		//左にずらす
 		m_planet_index++;
 		PlaySound(m_SE_03, 0);
 	}
-	//Dキーを押したら...
-	if (InputGetKeyDown(KK_D)) {
+	//矢印キー右を押したら...
+	if (InputGetKeyDown(KK_RIGHT) || InputGetKeyDown(KK_UP)) {
 		//右にずらす
 		m_planet_index--;
 		PlaySound(m_SE_03, 0);
@@ -160,22 +160,24 @@ void StageSelectPlanet::Update()
 	// パッド
 
 	//十字キー左を押したら...
-	if (IsButtonTriggered(0, XINPUT_GAMEPAD_DPAD_LEFT)) {
+	if (IsButtonTriggered(0, XINPUT_GAMEPAD_DPAD_LEFT) || 
+		IsButtonTriggered(0, XINPUT_GAMEPAD_DPAD_DOWN)) {
 		//左にずらす
 		m_planet_index++;
 		PlaySound(m_SE_03, 0);
 	}
 	//十字キー右を押したら...
-	if (IsButtonTriggered(0, XINPUT_GAMEPAD_DPAD_RIGHT)) {
+	if (IsButtonTriggered(0, XINPUT_GAMEPAD_DPAD_RIGHT) || 
+		IsButtonTriggered(0, XINPUT_GAMEPAD_DPAD_UP)) {
 		//右にずらす
 		m_planet_index--;
 		PlaySound(m_SE_03, 0);
 	}
 
 	//左スティックで左に倒されたら...
-	if (GetThumbLeftX(0) < 0) {
+	if (GetThumbLeftX(0) < -0.5f) {
 		//前フレームのスティックが右に倒されてたら...(連続押しを拒否)
-		if (m_thumb_before >= 0) {
+		if (m_thumb_before >= -0.5f) {
 			//左にずらす
 			m_planet_index++;
 			PlaySound(m_SE_03, 0);
@@ -184,14 +186,14 @@ void StageSelectPlanet::Update()
 	//左スティックで右に倒されたら...
 	if (GetThumbLeftX(0) > 0) {
 		//前フレームのスティックが左に倒されてたら...(連続押しを拒否)
-		if (m_thumb_before <= 0) {
+		if (m_thumb_before <= 0.0f) {
 			//右にずらす
 			m_planet_index--;
 			PlaySound(m_SE_03, 0);
 		}
 	}
 	//スティックの値を保存
-	m_thumb_before = (int)GetThumbLeftX(0);
+	m_thumb_before = GetThumbLeftX(0);
 
 	//太陽がなかったら...
 	if (!m_sun_appearance) {

@@ -67,7 +67,9 @@ public:
 	//デストラクタ
 	~Management_Meteo() {
 		for (int i = 0; i < ENEMY_NUM; i++) {
-			delete m_pMeteo[i];
+			if (m_pMeteo[i] != nullptr) {
+				delete m_pMeteo[i];
+			}
 		}
 	}
 
@@ -88,6 +90,7 @@ public:
 
 	//指定した敵を消す
 	void DeleteObj(int index_num) {
+		delete m_pMeteo[index_num];
 		for (int i = index_num; i < m_EnemyNum - 1; i++) {
 			m_pMeteo[i] = m_pMeteo[i + 1];
 			m_pMeteo[i + 1] = nullptr;

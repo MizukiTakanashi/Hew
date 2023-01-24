@@ -84,7 +84,9 @@ public:
 	//デストラクタ
 	~Management_PoisonField() {
 		for (int i = 0; i < ENEMY_NUM; i++) {
-			delete m_pPoisonField[i];
+			if (m_pPoisonField[i] != nullptr) {
+				delete m_pPoisonField[i];
+			}
 		}
 	}
 
@@ -105,8 +107,10 @@ public:
 
 	//指定した敵を消す
 	void DeleteObj(int index_num) {
+		delete m_pPoisonField[index_num];
 		for (int i = index_num; i < m_EnemyNum - 1; i++) {
 			m_pPoisonField[i] = m_pPoisonField[i + 1];
+			m_pPoisonField[i + 1] = nullptr;
 		}
 
 		m_EnemyNum--;

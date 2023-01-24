@@ -1,23 +1,23 @@
 //=======================================
-// ”š”­ŠÇ—ŠÖŒW(cppƒtƒ@ƒCƒ‹)
-// ì¬“úF2022/09/18
-// ì¬ÒF‚—œ…Šó
+// çˆ†ç™ºç®¡ç†é–¢ä¿‚(cppãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š2022/09/18
+// ä½œæˆè€…ï¼šé«˜æ¢¨æ°´å¸Œ
 //=======================================
 #include "management_item.h"
 #include "sound.h"
 
 //============================
-// ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //============================
 ItemManagement::ItemManagement()
 {
 	m_pItem = new Item[ENEMY_NUM];
 
-	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//ƒTƒEƒ“ƒh‚Ìƒ[ƒh
+	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//ã‚µã‚¦ãƒ³ãƒ‰ã®ãƒ­ãƒ¼ãƒ‰
 }
 
 //======================
-// XVˆ—
+// æ›´æ–°å‡¦ç†
 //======================
 void ItemManagement::Update(void)
 {
@@ -40,47 +40,48 @@ void ItemManagement::DeleteItem(int index_num)
 }
 
 //==========================
-// ƒAƒCƒeƒ€‚ğƒZƒbƒg
+// ã‚¢ã‚¤ãƒ†ãƒ ã‚’ã‚»ãƒƒãƒˆ
 //==========================
 void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem)
 {
-    Item Temp(*m_DOMissile, pos, typeitem);
 
+    Item Temp(m_DOMissile, pos, typeitem);
+	m_pItem[m_ItemNum] = Temp;
+
+	//ã‚¢ã‚¤ãƒ†ãƒ ã®è¦‹ãŸç›®å¤‰æ›´
 	switch (typeitem)
 	{
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE_HOMING:
-		m_pItem[m_ItemNum].SetDrawob(*m_DOMissile);
+		m_pItem[m_ItemNum].SetDrawob(m_DOMissile);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE_LASER:
-		m_pItem[m_ItemNum].SetDrawob(*m_DOLaser);
+		m_pItem[m_ItemNum].SetDrawob(m_DOLaser);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE_GATORING:
-		m_pItem[m_ItemNum].SetDrawob(*m_DOGatoring);
+		m_pItem[m_ItemNum].SetDrawob(m_DOGatoring);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE_BARRIAR:
-		m_pItem[m_ItemNum].SetDrawob(*m_DOMissile);
+		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE_STOP:
-		m_pItem[m_ItemNum].SetDrawob(*m_DOLaser);
+		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE_ICERAIN:
-		m_pItem[m_ItemNum].SetDrawob(*m_DOGatoring);
+		m_pItem[m_ItemNum].SetDrawob(m_DOIcerain);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE7:
-		m_pItem[m_ItemNum].SetDrawob(*m_DOMissile);
+		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE8:
-		m_pItem[m_ItemNum].SetDrawob(*m_DOLaser);
+		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
 		break;
 	case 8:
-		m_pItem[m_ItemNum].SetDrawob(*m_DOGatoring);
+		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
 		break;
 	default:
-		m_pItem[m_ItemNum].SetDrawob(*m_DOMissile);
+		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
 		break;
 	}
 
-	m_pItem[m_ItemNum] = Temp;
 	m_ItemNum++;
-
 }

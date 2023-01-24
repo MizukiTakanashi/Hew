@@ -1,7 +1,7 @@
 //=======================================
-// ”š”­ŠÇ—ŠÖŒW(ƒwƒbƒ_ƒtƒ@ƒCƒ‹)
-// ì¬“úF2022/09/18
-// ì¬ÒF‚—œ…Šó
+// çˆ†ç™ºç®¡ç†é–¢ä¿‚(ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š2022/09/18
+// ä½œæˆè€…ï¼šé«˜æ¢¨æ°´å¸Œ
 //=======================================
 #pragma once
 
@@ -11,56 +11,76 @@
 
 class ItemManagement
 {
-	//’è”
+	//å®šæ•°
 private:
-	static const int ENEMY_NUM = 50;	//”š”­‚ÌÅ‘å”
+	static const int ENEMY_NUM = 50;	//çˆ†ç™ºã®æœ€å¤§æ•°
 
 
-	//ƒƒ“ƒo•Ï”
+	//ãƒ¡ãƒ³ãƒå¤‰æ•°
 private:
 	int m_SE = 0;
-	DrawObject* m_DOMissile;
-	DrawObject* m_DOLaser;
-	DrawObject* m_DOGatoring;
+	DrawObject m_DOMissile;
+	DrawObject m_DOLaser;
+	DrawObject m_DOGatoring;
+	DrawObject m_DOAcid;
+	DrawObject m_DOHotairlaser;
+	DrawObject m_DOIcerain;
+	DrawObject m_DOPoisonlaser;
+
 	Item* m_pItem = nullptr;
-	int m_ItemNum = 0;	//ƒAƒCƒeƒ€‚Ì”
+	int m_ItemNum = 0;	//ã‚¢ã‚¤ãƒ†ãƒ ã®æ•°
 
 public:
-	//ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	ItemManagement();
 
-	~ItemManagement() { delete[] m_pItem; }	//ƒfƒXƒgƒ‰ƒNƒ^
+	~ItemManagement() 
+	{
+		delete[] m_pItem; 
+		//delete m_DOMissile;
+		//delete m_DOLaser;
+		//delete m_DOGatoring;
+		//delete m_DOAcid;
+		//delete m_DOHotairlaser;
+		//delete m_DOIcerain;
+		//delete m_DOPoisonlaser;
+	}	//ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 
-	//XVˆ—
+	//æ›´æ–°å‡¦ç†
 	void Update(void);
 
-	//•`‰æˆ—
+	//æç”»å‡¦ç†
 	void Draw(void)const {
 		for (int i = 0; i < m_ItemNum; i++) {
 			m_pItem[i].Draw();
 		}
 	}
 
-	//Œ»İ‚ÌƒAƒCƒeƒ€ˆÊ’u‚ğ•Ô‚·
+	//ç¾åœ¨ã®ã‚¢ã‚¤ãƒ†ãƒ ä½ç½®ã‚’è¿”ã™
 	const D3DXVECTOR2& GetItemPos(int index_num)const { return m_pItem[index_num].GetPos(); }
 
-	//ƒAƒCƒeƒ€‚ÌƒTƒCƒY‚ğ•Ô‚·
+	//ã‚¢ã‚¤ãƒ†ãƒ ã®ã‚µã‚¤ã‚ºã‚’è¿”ã™
 	const D3DXVECTOR2& GetItemSize(void)const { return m_pItem[0].GetSize(); }
 
-	//w’è‚µ‚½ƒAƒCƒeƒ€‚ğÁ‚·
+	//æŒ‡å®šã—ãŸã‚¢ã‚¤ãƒ†ãƒ ã‚’æ¶ˆã™
 	void DeleteItem(int index_num);
 
-	//Œ»İ‚ÌƒAƒCƒeƒ€‚Ì”‚ğ•Ô‚·
+	//ç¾åœ¨ã®ã‚¢ã‚¤ãƒ†ãƒ ã®æ•°ã‚’è¿”ã™
 	int GetItemNum(void)const { return m_ItemNum; }
 
-	//ƒAƒCƒeƒ€‚ğƒZƒbƒg
+	//ã‚¢ã‚¤ãƒ†ãƒ ã‚’ã‚»ãƒƒãƒˆ
 	void SetItem(const D3DXVECTOR2& pos, int typeitem);
 
-	//ƒAƒCƒeƒ€‚Ìƒ^ƒCƒv‚ğ•Ô‚·
+	//ã‚¢ã‚¤ãƒ†ãƒ ã®ã‚¿ã‚¤ãƒ—ã‚’è¿”ã™
 	int GetItemType(int i) const { return m_pItem[i].GerItemType(); }
 
-	void SetDrawMissile(DrawObject* pd) { m_DOMissile = pd; }
-	void SetDrawLaser(DrawObject* pd) { m_DOLaser = pd; }
-	void SetDrawGatoring(DrawObject* pd) { m_DOGatoring = pd; }
+	void SetDrawMissile(DrawObject& pd) { m_DOMissile = pd; }
+	void SetDrawLaser(DrawObject& pd) { m_DOLaser = pd; }
+	void SetDrawGatoring(DrawObject& pd) { m_DOGatoring = pd; }
+	void SetDrawAcid(DrawObject& pd) { m_DOAcid = pd; }
+	void SetDrawHotairlaser(DrawObject& pd) { m_DOHotairlaser = pd; }
+	void SetDrawIcerain(DrawObject& pd) { m_DOIcerain = pd; }
+	void SetDrawPoisonlaser(DrawObject& pd) { m_DOPoisonlaser = pd; }
+
 };
 

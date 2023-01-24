@@ -45,31 +45,31 @@ Result::Result(bool isClear,  Score* pNumber, STAGE stagenum) :m_pScore(pNumber)
 	{
 	case STAGE::STAGE_MOON:
 		m_pTexUse[0] = new TextureUseful((char*)"data\\texture\\result.png");
-		m_pTexUse[1] = new TextureUseful((char*)"data\\texture\\stage_title.png");
+		m_pTexUse[1] = new TextureUseful((char*)"data\\texture\\moon_name.png");
 		break;
 	case STAGE::STAGE_MARS:
 		m_pTexUse[0] = new TextureUseful((char*)"data\\texture\\result.png");
-		m_pTexUse[1] = new TextureUseful((char*)"data\\texture\\result.png");
+		m_pTexUse[1] = new TextureUseful((char*)"data\\texture\\mars_name.png");
 		break;
 	case STAGE::STAGE_MERCURY:
 		m_pTexUse[0] = new TextureUseful((char*)"data\\texture\\result.png");
-		m_pTexUse[1] = new TextureUseful((char*)"data\\texture\\result.png");
+		m_pTexUse[1] = new TextureUseful((char*)"data\\texture\\mercury_name.png");
 		break;
 	case STAGE::STAGE_JUPITER:
 		m_pTexUse[0] = new TextureUseful((char*)"data\\texture\\result.png");
-		m_pTexUse[1] = new TextureUseful((char*)"data\\texture\\result.png");
+		m_pTexUse[1] = new TextureUseful((char*)"data\\texture\\jupiter_name.png");
 		break;
 	case STAGE::STAGE_VENUS:
 		m_pTexUse[0] = new TextureUseful((char*)"data\\texture\\result.png");
-		m_pTexUse[1] = new TextureUseful((char*)"data\\texture\\result.png");
+		m_pTexUse[1] = new TextureUseful((char*)"data\\texture\\venus_name.png");
 		break;
 	case STAGE::STAGE_SATURN:
 		m_pTexUse[0] = new TextureUseful((char*)"data\\texture\\result.png");
-		m_pTexUse[1] = new TextureUseful((char*)"data\\texture\\result.png");
+		m_pTexUse[1] = new TextureUseful((char*)"data\\texture\\saturn_name.png");
 		break;
 	case STAGE::STAGE_SUN:
 		m_pTexUse[0] = new TextureUseful((char*)"data\\texture\\result.png");
-		m_pTexUse[1] = new TextureUseful((char*)"data\\texture\\result.png");
+		m_pTexUse[1] = new TextureUseful((char*)"data\\texture\\sun_name.png");
 		break;
 	case STAGE::STAGE_NUM:
 		break;
@@ -98,7 +98,7 @@ Result::Result(bool isClear,  Score* pNumber, STAGE stagenum) :m_pScore(pNumber)
 	m_pDrawOb[5] = new DrawObject(*m_pTexUse[5]);
 
 	m_pBG = new UI(*m_pDrawOb[0], D3DXVECTOR2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT));
-	m_pStageTitle = new UI(*m_pDrawOb[1], D3DXVECTOR2(300, 100), D3DXVECTOR2(300, 150));
+	m_pStageTitle = new UI(*m_pDrawOb[1], D3DXVECTOR2(300, 135), D3DXVECTOR2(250, 50));
 	m_pText_Retry = new UI(*m_pDrawOb[2], D3DXVECTOR2(SCREEN_WIDTH / 2 + 100, SCREEN_HEIGHT / 2 + 175), D3DXVECTOR2(300, 100));
 	m_pText_title = new UI(*m_pDrawOb[3], D3DXVECTOR2(SCREEN_WIDTH / 2 + 100, SCREEN_HEIGHT / 2 + 100), D3DXVECTOR2(300, 100));
 	m_pCursor = new UI(*m_pDrawOb[4], D3DXVECTOR2(SCREEN_WIDTH / 2 - 100, SCREEN_HEIGHT / 2 + 300), D3DXVECTOR2(50, 50));
@@ -133,7 +133,9 @@ Result::~Result()
 void Result::Update(void)
 {
 	//上下のボタンが押されたら選択を変更
-	if (InputGetKeyDown(KK_DOWN) && !m_isClear || InputGetKeyDown(KK_UP) && !m_isClear){
+	if (InputGetKeyDown(KK_DOWN) && !m_isClear || InputGetKeyDown(KK_UP) && !m_isClear ||
+		IsButtonTriggered(0, XINPUT_GAMEPAD_DPAD_UP) && !m_isClear || 
+		IsButtonTriggered(0, XINPUT_GAMEPAD_DPAD_DOWN) && !m_isClear){
 		Select();
 		PlaySound(m_SE_03, 0);
 	}

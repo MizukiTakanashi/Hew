@@ -20,7 +20,7 @@ const D3DXVECTOR2 PlayerRight::FROM_PLAYER_POS = D3DXVECTOR2(40.0f, 0.0f);
 void PlayerRight::ButtonPress(void)
 {
 	//切り離しボタン
-	inhPlayerArmBoth::SetSeparationButton(InputGetKeyDown(KK_R) || IsButtonTriggered(0, XINPUT_GAMEPAD_RIGHT_SHOULDER));
+	inhPlayerArmBoth::SetSeparationButton(InputGetKeyDown(KK_C) || IsButtonTriggered(0, XINPUT_GAMEPAD_RIGHT_SHOULDER));
 
 	//弾発射ボタン(押している間)
 	inhPlayerArmBoth::SetBulletShotButton((InputGetKey(KK_SPACE) || IsButtonPressed(0, XINPUT_GAMEPAD_A)) ||

@@ -144,9 +144,9 @@ void EnemyBarrierManagement::DeleteObj(int index_num)
 	//Œp³Œ³‚Ì“G‚ğÁ‚·‚ğŒÄ‚Ô
 	EnemyManagement::DeleteObj(index_num);
 
-	//if (m_delete_enemy == ENEMY_NUM) {
-	//	m_tutorial_clear = true;
-	//}
+	if (m_delete_enemy == ENEMY_NUM) {
+		m_tutorial_clear = true;
+	}
 
 }
 
