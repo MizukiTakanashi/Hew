@@ -45,6 +45,8 @@ private:
 	DrawObject m_pDrawObjectEnemy;
 	DrawObject m_pDrawObjectBullet;
 
+	int m_SE_22 = 0;						//弾発射音
+
 	int m_EnemyItem_num = 0;	//敵のアイテムの数
 
 	//敵の配列

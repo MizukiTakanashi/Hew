@@ -48,6 +48,7 @@ private:
 	int m_SE_06 = 0;	//ビーム音
 	int m_SE_07 = 0;	//ビーム発射音
 	int m_SE_14 = 0;	//熱風音
+	int m_SE_19 = 0;	//ガス噴射音
 
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][4] = {
@@ -99,7 +100,7 @@ private:
 		},
 		//土星
 		{
-			60 * 40,
+			60 * 1,
 			60 * 40 + 1,
 			60 * 165,
 			60 * 165 + 1

@@ -6,6 +6,7 @@
 #include "management_enemy_fireball.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
+#include "sound.h"
 
 //==========================
 // 定数の初期化
@@ -24,6 +25,9 @@ EnemyFireballManagement::EnemyFireballManagement(DrawObject& pDrawObject1, DrawO
 {
 	m_pEnemyNormal = new EnemyNormal[ENEMY_NUM];
 	m_pBullet = new Bullet[ENEMY_NUM];
+
+	//発射音
+	m_SE_15_2 = LoadSound((char*)"data\\SE\\2_15_3.wav");
 }
 
 //======================
@@ -78,6 +82,8 @@ void EnemyFireballManagement::Update(const D3DXVECTOR2& PlayerPos)
 			EnemyManagement::IncreaseBulletNum(1);
 
 			m_pEnemyNormal[i].BulletMake();
+
+			PlaySound(m_SE_15_2, 0);
 		}
 	}
 

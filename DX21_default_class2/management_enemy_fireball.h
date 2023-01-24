@@ -18,7 +18,6 @@ class EnemyFireballManagement :public EnemyManagement
 {
 //定数
 private:
-
 	//ここで初期化
 	//敵自身
 	static const int BULLET_BREAK_TIME = 200;	//ホーミング弾が壊れる時間
@@ -46,7 +45,7 @@ private:
 	DrawObject m_pDrawObjectEnemy;
 	DrawObject m_pDrawObjectBullet;
 
-
+	int m_SE_15_2 = 0;
 
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[6] = {
@@ -58,7 +57,7 @@ private:
 	};
 
 	int m_SetEnemyTime[6] = {
-		60 * 10,
+		60 * 1,
 		60 * 15,
 		60 * 20,
 		60 * 25,

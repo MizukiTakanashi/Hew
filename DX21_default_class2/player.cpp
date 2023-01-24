@@ -171,6 +171,7 @@ void Player::Update(bool isinvincible)
 				D3DXVECTOR2(BULLET_SPEED_X, BULLET_SPEED_Y), 0.0f);
 			m_pBullet[m_BulletNum] = temp;
 			m_BulletNum++;
+			PlaySound(m_SE_20, 0);
 		}
 
 	}

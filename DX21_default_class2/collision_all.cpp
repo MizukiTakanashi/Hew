@@ -22,7 +22,7 @@ CollisionAll::CollisionAll()
 		m_pEnemy[i] = nullptr;
 	}
 
-	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//サウンドのロード
+	m_SE = LoadSound((char*)"data\\SE\\1_16.wav");	//サウンドのロード
 }
 
 //==========================
@@ -38,7 +38,7 @@ CollisionAll::CollisionAll(STAGE stage, Player* pPlayer, inhPlayerArmBoth* pL, i
 	}
 
 	//音
-	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//サウンドのロード
+	m_SE = LoadSound((char*)"data\\SE\\1_16.wav");	//サウンドのロード
 
 	switch (m_stage) {
 
@@ -1006,7 +1006,7 @@ int CollisionAll::Collision(void)
 
 		//音を鳴らす
 		PlaySound(m_SE, 0);
-		SetVolume(m_SE, 0.1f);
+		SetVolume(m_SE, 0.5f);
 
 		//爆発の音の間隔をリセット
 		m_SE_interval_count = 0;

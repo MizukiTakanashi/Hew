@@ -37,6 +37,9 @@ EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject&
 
 	//熱風音
 	m_SE_14 = LoadSound((char*)"data\\SE\\1_14.wav");
+
+	//ガス噴射音
+	m_SE_19 = LoadSound((char*)"data\\SE\\2_19.wav");
 }
 
 //======================
@@ -122,6 +125,9 @@ void EnemyLaserManagement::Update()
 
 			if (m_stage_num == (int)STAGE::MERCURY) {
 				PlaySound(m_SE_14, 0);
+			}
+			else if (m_stage_num == (int)STAGE::SATURN) {
+				PlaySound(m_SE_19, 0);
 			}
 			else {
 				PlaySound(m_SE_06, 0);

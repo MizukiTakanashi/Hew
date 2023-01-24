@@ -4,6 +4,7 @@
 // 作成者：高梨水希
 //=======================================
 #include "management_enemy_gatoring.h"
+#include "sound.h"
 
 //==========================
 // 定数の初期化
@@ -24,6 +25,9 @@ EnemyGatoringManagement::EnemyGatoringManagement(DrawObject& pDrawObject1, DrawO
 	m_stage_num = stage;
 	m_pEnemyGatoring = new EnemyGatoring[ENEMY_NUM[stage]];
 	m_pBullet = new Bullet[BULLET_NUM];
+
+	m_SE_21 = LoadSound((char*)"data\\SE\\2_20.wav");
+	SetVolume(m_SE_21, 0.1f);
 }
 
 //======================
@@ -71,6 +75,8 @@ void EnemyGatoringManagement::Update()
 			EnemyManagement::IncreaseBulletNum(1);
 
 			m_pEnemyGatoring[i].BulletMake();
+
+			PlaySound(m_SE_21, 0);
 		}
 
 	}

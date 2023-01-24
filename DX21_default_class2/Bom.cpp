@@ -23,6 +23,7 @@ void Bom::Update(void)
 	//ゲームパッドのXボタンを押したら...
 	//キーボードのEnterを押したら...
 	if (m_time == -1 && (GetRightTriggerTriggered(0, 120) || InputGetKeyDown(KK_R))) {
+		PlaySound(m_SE_17, 0);
 		m_time = 0;
 	}
 

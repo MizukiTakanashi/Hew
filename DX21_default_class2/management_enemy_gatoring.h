@@ -45,6 +45,8 @@ private:
 	Bullet* m_pBullet = nullptr;				//弾のクラス
 	DrawObject m_pDrawObjectEnemy;				//敵の描画オブジェクト
 	DrawObject m_pDrawObjectBullet;				//弾の描画オブジェクト
+	int m_SE_21 = 0;							//弾発射音
+
 
 	//敵の位置配列
 	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][5] = {
