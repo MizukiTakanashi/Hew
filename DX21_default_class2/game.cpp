@@ -28,11 +28,15 @@ Game::Game(Score* pNumber) :InhStage(pNumber)
 	
 	//隕石
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_METEO].SetTextureName((char*)"data\\texture\\Meteo.png");
-	m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_METEO], 2.0f, 1.0, 1.0f, 3);
+	m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_METEO], 
+		2.0f, 1.0, 1.0f, 3);
 
-	m_pEnemyMissileManagement = new EnemyMissileManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NORMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 0);
-	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER], 0);
-	m_pEnemyGatoringManagement = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY]);
+	m_pEnemyMissileManagement = new EnemyMissileManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NORMAL], 
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 0);
+	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], 
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER], 0);
+	m_pEnemyGatoringManagement = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING], 
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 0);
 	m_pMeteoManagement = new Management_Meteo(m_pDrawObject[(int)DRAW_TYPE::ENEMY_METEO]);
 
 
@@ -113,7 +117,7 @@ void Game::Update(void)
 	// 敵
 	m_pEnemyMissileManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyLaserManagement->Update();
-	m_pEnemyGatoringManagement->Update(m_pPlayer->GetPos());
+	m_pEnemyGatoringManagement->Update();
 	m_pMeteoManagement->Update();
 
 

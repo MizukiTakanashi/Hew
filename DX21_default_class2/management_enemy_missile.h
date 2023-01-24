@@ -16,7 +16,7 @@
 
 class EnemyMissileManagement :public EnemyManagement
 {
-	//定数
+//定数
 private:
 	//ここで初期化
 	//敵自身
@@ -37,7 +37,8 @@ public:
 	//弾
 	static const int BULLET_ATTACK = 1;		//攻撃値
 
-	//メンバ変数
+
+//メンバ変数
 private:
 	EnemyNormal* m_pEnemyMissile = nullptr;
 	Bullet* m_pBullet = nullptr;

@@ -29,6 +29,10 @@ StageSaturn::StageSaturn(Score* pNumber):InhStage(pNumber)
 	m_pEnemyMeguminManagement = new EnemyMeguminManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_MEGUMIN], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_MEGUMIN]);
 
+	//ガトリング
+	m_pEnemyGatoring = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING], 
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 3);
+
 	//毒沼
 	m_pTexUseful[(int)TEXTURE_TYPE::POISON].SetTextureName((char*)"data\\texture\\poison.jpg");
 	m_pDrawObject[(int)DRAW_TYPE::POISON].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::POISON], 2.0f, 1.0, 1.0f, 3);
@@ -58,6 +62,7 @@ StageSaturn::~StageSaturn()
 	delete m_pColAll;
 	delete m_pEnemyLaserManagement;
 	delete m_pEnemyMeguminManagement;
+	delete m_pEnemyGatoring;
 	delete m_pPoisonField;
 }
 
@@ -102,6 +107,7 @@ void StageSaturn::Update(void)
 	// 敵
 	m_pEnemyLaserManagement->Update();
 	m_pEnemyMeguminManagement->Update();
+	m_pEnemyGatoring->Update();
 
 	m_pPoisonField->Update();
 	//ボム
@@ -167,6 +173,7 @@ void StageSaturn::Draw(void) const
 	//敵の描画
 	m_pEnemyLaserManagement->Draw();
 	m_pEnemyMeguminManagement->Draw();
+	m_pEnemyGatoring->Draw();
 
 	m_pPoisonField->Draw();
 	//プレイヤーの弾の表示
