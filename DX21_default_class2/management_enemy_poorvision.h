@@ -31,7 +31,7 @@ public:
 	//“G©g
 	static const int ATTACK = 5;			//UŒ‚’l
 	//’e
-	static const int BULLET_ATTACK = 1;		//UŒ‚’l
+	static const int BULLET_ATTACK = 0;		//UŒ‚’l
 
 //ƒƒ“ƒo•Ï”
 private:

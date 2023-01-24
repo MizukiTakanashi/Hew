@@ -17,7 +17,7 @@ class EnemySpeeddownManagement:public EnemyManagement
 public:
 	//‚±‚±‚Å‰Šú‰»
 	static const int ATTACK = 5;			//“G‚ÌUŒ‚’l
-	static const int BULLET_ATTACK = 1;		//’e‚ÌUŒ‚’l
+	static const int BULLET_ATTACK = 0;		//’e‚ÌUŒ‚’l
 	static const int SPEED_DOWN_TIME = 60 * 2;	//ƒvƒŒƒCƒ„[‚ğ’x‚­‚·‚éŠÔ
 
 private:

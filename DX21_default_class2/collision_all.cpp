@@ -457,7 +457,7 @@ int CollisionAll::Collision(void)
 					}
 					//視界を悪くする敵であれば...
 					else if (m_pEnemy[k]->GetType() == EnemyManagement::TYPE::POORVISION) {
-
+						m_poor_vision = true;
 					}
 				}
 				else
