@@ -184,6 +184,15 @@ void StageMars::Update(void)
 		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MARS);
 	}
 
+	//最後の列の敵を全て倒したら
+	if (m_pEnemyMissileManagement->IsClear() && m_pEnemyBarrierManagement->IsClear() &&
+		m_pEnemyIceRainManagement->IsClear() && m_pEnemyStopManagement->IsClear() &&
+		m_pEnemyGrenadeManagement->IsClear()) {
+		//リザルト画面に行く
+		SetStageClear(true);
+		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MARS);
+	}
+
 }
 
 //==========================

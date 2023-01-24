@@ -117,14 +117,14 @@ int CollisionAll::Collision(void)
 							//敵を消す
 							m_pEnemy[k]->DeleteObj(j);
 
+							//倒した敵の数を増やす
+							m_pScore->AddScore(1);
+
 							j--;
 							if (j < 0) {
 								next = true;
 								break;
 							}
-
-							//倒した敵の数を増やす
-							m_pScore->AddScore(1);
 						}
 					}
 				}
@@ -171,15 +171,15 @@ int CollisionAll::Collision(void)
 					//敵を消す
 					m_pEnemy[k]->DeleteObj(j);
 
+					//倒した敵の数を増やす
+					m_pScore->AddScore(1);
+
 					j--;
 
 					if (j < 0) {
 						next = true;
 						break;
 					}
-
-					//倒した敵の数を増やす
-					m_pScore->AddScore(1);
 				}
 			}
 
@@ -213,15 +213,15 @@ int CollisionAll::Collision(void)
 							//敵を消す
 							m_pEnemy[k]->DeleteObj(j);
 
+							//倒した敵の数を増やす
+							m_pScore->AddScore(1);
+
 							j--;
 
 							if (j < 0) {
 								next = true;
 								break;
 							}
-
-							//倒した敵の数を増やす
-							m_pScore->AddScore(1);
 						}
 					}
 				}
@@ -376,15 +376,15 @@ int CollisionAll::Collision(void)
 								//敵を消す
 								m_pEnemy[k]->DeleteObj(j);
 
+								//倒した敵の数を増やす
+								m_pScore->AddScore(1);
+
 								j--;
 
 								if (j < 0) {
 									next = true;
 									break;
 								}
-
-								//倒した敵の数を増やす
-								m_pScore->AddScore(1);
 							}
 						}
 					}

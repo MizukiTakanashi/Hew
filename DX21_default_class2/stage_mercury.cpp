@@ -162,6 +162,14 @@ void StageMercury::Update(void)
 		SetStageClear(false);
 		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MERCURY);
 	}
+
+	//最後の列の敵を全て倒したら
+	if (m_pEnemyLaser->IsClear() && m_pEnemyIce->IsClear() &&
+		m_pEnemyFire->IsClear() && m_pEnemyMissile->IsClear()) {
+		//リザルト画面に行く
+		SetStageClear(true);
+		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MERCURY);
+	}
 }
 
 //==========================

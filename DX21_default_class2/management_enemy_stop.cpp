@@ -124,9 +124,9 @@ void EnemyStopManagement::DeleteObj(int index_num)
 	//継承元の敵を消すを呼ぶ
 	EnemyManagement::DeleteObj(index_num);
 
-	//if (m_delete_enemy == ENEMY_NUM) {
-	//	m_tutorial_clear = true;
-	//}
+	if (m_delete_enemy == ENEMY_NUM) {
+		m_tutorial_clear = true;
+	}
 
 }
 
