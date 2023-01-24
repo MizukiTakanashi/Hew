@@ -142,6 +142,24 @@ void TextManagement::SetText(void)
 		m_PaternMax = 200;
 
 		break;
+	case 5:
+		temp.SetTextureName((char*)"data\\texture\\tuto5.png");
+		m_Text = DrawObject(temp, 0, 0.025f, 0.2f, 40);
+		m_PaternMax = 200;
+
+		break;
+	case 6:
+		temp.SetTextureName((char*)"data\\texture\\tuto5.png");
+		m_Text = DrawObject(temp, 0, 0.025f, 0.2f, 40);
+		m_PaternMax = 200;
+
+		break;
+	case 7:
+		temp.SetTextureName((char*)"data\\texture\\tuto5.png");
+		m_Text = DrawObject(temp, 0, 0.025f, 0.2f, 40);
+		m_PaternMax = 200;
+
+		break;
 	default:
 		break;
 	}
