@@ -24,7 +24,7 @@ public:
 		STOP,
 		ICERAIN,
 		GRENADE,
-		FIRE,
+		FIRE, //ここまでが合体できる敵
 		MEGUMIN,
 		ATTACK,
 		FIREBALL,
