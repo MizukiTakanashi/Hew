@@ -45,6 +45,13 @@ protected:
 		PLAYER,//
 		PLAYER_HP,//
 		EXPLOSION,//
+		MOON,//Œ
+		MARCURY,//…¯
+		VENUS,//‹à¯
+		MARS,//‰Î¯
+		JUPITOR,//–Ø¯
+		SATAURN,//“y¯
+		SUN,//‘¾—z
 
 		ITEM_MISSILE,//
 		ITEM_GATORING,//
@@ -95,6 +102,13 @@ protected:
 		BOMB,//
 		FRAME,//
 		EXPLOSION,//
+		MOON,//Œ
+		MARCURY,//…¯
+		VENUS,//‹à¯
+		MARS,//‰Î¯
+		JUPITOR,//–Ø¯
+		SATAURN,//“y¯
+		SUN,//‘¾—z
 
 		ITEM_MISSILE,//
 		ITEM_GATORING,//
@@ -165,6 +179,13 @@ protected:
 	PlayerCenter* m_pPlayerCenter = nullptr;
 	UI* m_pFrame = nullptr;
 	UI* m_pMultiply = nullptr;
+	UI* m_pStageMoon = nullptr;//Œ
+	UI* m_pStageMarcury = nullptr;//…¯
+	UI* m_pStageVenus = nullptr;//‹à¯
+	UI* m_pStageMars = nullptr;//‰Î¯
+	UI* m_pStageJupitor = nullptr;//–Ø¯
+	UI* m_pStageSataurn = nullptr;//“y¯
+	UI* m_pStageSun = nullptr;//‘¾—z
 	Number* m_pComboNum = nullptr;
 	PlayerArmChange* m_pPlayerArmChange = nullptr;	//˜r‚ÌŒğŠ·
 	Bom* m_pBom = nullptr;					//ƒ{ƒ€

@@ -85,6 +85,41 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_BAR].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER_HP], 0.0f, 0.5f, 1.0f, 2);
 	m_pPlayerHP = new PlayerHP(m_pDrawObject[(int)DRAW_TYPE::PLAYER_HP_BAR], m_pExplosionManagement, m_pPlayer, this);
 
+	//ステージ表示読み込み
+	//月
+	m_pTexUseful[(int)TEXTURE_TYPE::MOON].SetTextureName((char*)"data\\texture\\moon_name.png");
+	m_pDrawObject[(int)DRAW_TYPE::MOON].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::MOON], 0.0f, 1.0f, 1.0f, 1);
+	m_pStageMoon = new UI(m_pDrawObject[(int)DRAW_TYPE::MOON], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(100.0f, 50.0f), D3DXCOLOR());
+	
+	//水星
+	m_pTexUseful[(int)TEXTURE_TYPE::MARCURY].SetTextureName((char*)"data\\texture\\mercury_name.png");
+	m_pDrawObject[(int)DRAW_TYPE::MARCURY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::MARCURY], 0.0f, 1.0f, 1.0f, 1);
+	m_pStageMarcury = new UI(m_pDrawObject[(int)DRAW_TYPE::MARCURY], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(100.0f, 50.0f), D3DXCOLOR());
+
+	//金星
+	m_pTexUseful[(int)TEXTURE_TYPE::VENUS].SetTextureName((char*)"data\\texture\\venus_name.png");
+	m_pDrawObject[(int)DRAW_TYPE::VENUS].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::VENUS], 0.0f, 1.0f, 1.0f, 1);
+	m_pStageVenus = new UI(m_pDrawObject[(int)DRAW_TYPE::VENUS], D3DXVECTOR2(160.0f,40.0f), D3DXVECTOR2(100.0f, 50.0f), D3DXCOLOR());
+
+	//火星
+	m_pTexUseful[(int)TEXTURE_TYPE::MARS].SetTextureName((char*)"data\\texture\\mars_name.png");
+	m_pDrawObject[(int)DRAW_TYPE::MARS].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::MARS], 0.0f, 1.0f, 1.0f, 1);
+	m_pStageMars = new UI(m_pDrawObject[(int)DRAW_TYPE::MARS], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(100.0f, 50.0f), D3DXCOLOR());
+
+	//木星
+	m_pTexUseful[(int)TEXTURE_TYPE::JUPITOR].SetTextureName((char*)"data\\texture\\jupiter_name.png");
+	m_pDrawObject[(int)DRAW_TYPE::JUPITOR].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::JUPITOR], 0.0f, 1.0f, 1.0f, 1);
+	m_pStageJupitor = new UI(m_pDrawObject[(int)DRAW_TYPE::JUPITOR], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(100.0f, 50.0f), D3DXCOLOR());
+
+	//土星
+	m_pTexUseful[(int)TEXTURE_TYPE::SATAURN].SetTextureName((char*)"data\\texture\\saturn_name.png");
+	m_pDrawObject[(int)DRAW_TYPE::SATAURN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::SATAURN], 0.0f, 1.0f, 1.0f, 1);
+	m_pStageSataurn = new UI(m_pDrawObject[(int)DRAW_TYPE::SATAURN], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(100.0f, 50.0f), D3DXCOLOR());
+
+	//太陽
+	m_pTexUseful[(int)TEXTURE_TYPE::SUN].SetTextureName((char*)"data\\texture\\sun_name.png");
+	m_pDrawObject[(int)DRAW_TYPE::SUN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::SUN], 0.0f, 1.0f, 1.0f, 1);
+	m_pStageSun = new UI(m_pDrawObject[(int)DRAW_TYPE::SUN], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(100.0f, 50.0f), D3DXCOLOR());
 
 	//=======================
 	//敵のアイテム
