@@ -201,11 +201,11 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 		GameObject::SetDrawob(*m_enemy_icerain_draw);
 		break;
 
-	case TYPE::TYPE7:
+	case TYPE::TYPE_GRENADE:
 		GameObject::SetDrawob(*m_enemy_homing_draw);
 		break;
 
-	case TYPE::TYPE8:
+	case TYPE::TYPE_FIRE:
 		GameObject::SetDrawob(*m_enemy_fire_draw);
 		break;
 
@@ -260,11 +260,11 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 			m_pEnemyItem = new PlayerArmIceRain(*m_enemy_icerain_draw, false, (int)m_type);
 			break;
 
-		case TYPE::TYPE7:
+		case TYPE::TYPE_GRENADE:
 			m_pEnemyItem = new PlayerArmGrenade(*m_bullet_draw, m_explosion_draw, false, (int)0);
 			break;
 
-		case TYPE::TYPE8:
+		case TYPE::TYPE_FIRE:
 			m_pEnemyItem = new PlayerArm3(*m_bullet_fire_draw, false, (int)m_type, PlayerArm3::TYPE::FIRE);
 			break;
 
