@@ -198,7 +198,7 @@ void Game::Draw(void)const
 	m_pComboNum->SetNumber(m_pScore->GetComboNum());
 	m_pComboNum->DrawNumber();
 	m_pMultiply->Draw();
-
+	m_pStageMoon->Draw();
 	if (isText)
 	{
 		m_pTextManagement->Draw();
