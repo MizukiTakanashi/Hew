@@ -15,6 +15,7 @@
 #include "management_enemy_laser.h"
 #include "management_enemy_megumin.h"
 #include "management_enemy_gatoring.h"
+#include "management_enemy_missile.h"
 #include "management_poisonfield.h"
 
 class StageSaturn : public InhStage
@@ -24,6 +25,7 @@ private:
 	EnemyLaserManagement* m_pEnemyLaserManagement = nullptr;
 	EnemyMeguminManagement* m_pEnemyMeguminManagement = nullptr;
 	EnemyGatoringManagement* m_pEnemyGatoring = nullptr;
+	EnemyMissileManagement* m_pEnemyMissile = nullptr;
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
 	CollisionAll* m_pColAll = nullptr;		//‘S‚Ä‚Ì“–‚½‚è”»’è
 	Management_PoisonField* m_pPoisonField = nullptr;

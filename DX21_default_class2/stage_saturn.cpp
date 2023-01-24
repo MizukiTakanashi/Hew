@@ -33,6 +33,10 @@ StageSaturn::StageSaturn(Score* pNumber):InhStage(pNumber)
 	m_pEnemyGatoring = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 3);
 
+	//ミサイル
+	m_pEnemyMissile = new EnemyMissileManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NORMAL],
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 3);
+
 	//毒沼
 	m_pTexUseful[(int)TEXTURE_TYPE::POISON].SetTextureName((char*)"data\\texture\\poison.jpg");
 	m_pDrawObject[(int)DRAW_TYPE::POISON].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::POISON], 2.0f, 1.0, 1.0f, 3);
@@ -41,6 +45,9 @@ StageSaturn::StageSaturn(Score* pNumber):InhStage(pNumber)
 	//敵の管理
 	m_pAllEnemyManagement = new AllEnemyManagement;
 	m_pAllEnemyManagement->AddPointer(m_pEnemyLaserManagement);
+	m_pAllEnemyManagement->AddPointer(m_pEnemyMeguminManagement);
+	m_pAllEnemyManagement->AddPointer(m_pEnemyGatoring);
+	m_pAllEnemyManagement->AddPointer(m_pEnemyMissile);
 	
 	//========================================================
 	// 全ての当たり判定
@@ -51,6 +58,8 @@ StageSaturn::StageSaturn(Score* pNumber):InhStage(pNumber)
 	//敵のポインタをセット
 	m_pColAll->AddEnemyPointer(m_pEnemyMeguminManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyLaserManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemyGatoring);
+	m_pColAll->AddEnemyPointer(m_pEnemyMissile);
 }
 
 //==========================
@@ -62,6 +71,7 @@ StageSaturn::~StageSaturn()
 	delete m_pColAll;
 	delete m_pEnemyLaserManagement;
 	delete m_pEnemyMeguminManagement;
+	delete m_pEnemyMissile;
 	delete m_pEnemyGatoring;
 	delete m_pPoisonField;
 }
@@ -108,6 +118,7 @@ void StageSaturn::Update(void)
 	m_pEnemyLaserManagement->Update();
 	m_pEnemyMeguminManagement->Update();
 	m_pEnemyGatoring->Update();
+	m_pEnemyMissile->Update(m_pPlayer->GetPos());
 
 	m_pPoisonField->Update();
 	//ボム
@@ -183,6 +194,7 @@ void StageSaturn::Draw(void) const
 	m_pEnemyLaserManagement->Draw();
 	m_pEnemyMeguminManagement->Draw();
 	m_pEnemyGatoring->Draw();
+	m_pEnemyMissile->Draw();
 
 	m_pPoisonField->Draw();
 

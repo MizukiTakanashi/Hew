@@ -78,12 +78,8 @@ private:
 	},
 	//ìyêØ
 	{
-		D3DXVECTOR2(52.5f + (105 * 8), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 0), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 10), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 8), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 2), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 6), -EnemyNormal::SIZE_Y / 2)
+		D3DXVECTOR2(52.5f + (105 * 6), -EnemyNormal::SIZE_Y / 2),
 	}
 	};
 
@@ -117,12 +113,8 @@ private:
 	},
 	//ìyêØ
 	{
-		60 * 5,
-		60 * 60,
-		60 * 60 + 1,
-		60 * 80,
-		60 * 145,
-		60 * 160
+		60 * 100,
+		60 * 100 + 1,
 	}
 
 	};
