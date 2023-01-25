@@ -49,6 +49,9 @@ private:
 
 //メンバ変数
 private:
+	DrawObject m_draw_default;		//デフォルト描画オブジェクト
+	DrawObject m_draw_fire;			//炎描画オブジェクト
+
 	Bullet* m_pBullet = nullptr;
 	DrawObject m_BulletDrawObject;
 	int m_BulletNum = 0;			//弾の現在の数
@@ -74,7 +77,7 @@ public:
 	//引数付きコンストラクタ
 	Player(DrawObject& pDrawObject, DrawObject& BulletDrawObject,DrawObject& BomDrawObject)
 		:GameObject(pDrawObject, D3DXVECTOR2(START_POS_X, START_POS_Y), D3DXVECTOR2(BOX_W, BOX_H)),
-		m_BulletDrawObject(BulletDrawObject),m_BomDrawObject(BomDrawObject){
+		m_BulletDrawObject(BulletDrawObject),m_BomDrawObject(BomDrawObject), m_draw_default(pDrawObject) {
 		m_pBullet = new Bullet[BULLET_MAX_NUM];
 		m_SE_20 = LoadSound((char*)"data\\SE\\2_22.wav");
 		SetVolume(m_SE_20, 0.2f);
@@ -113,6 +116,14 @@ public:
 		m_slow = slow; 
 		m_slow_time = time;
 	}
+
+	//===================
+	// 水星
+	//炎状態の描画オブジェクトをセット
+	void SetDrawFire(DrawObject& pDraw) { m_draw_fire = pDraw; }
+
+	//炎状態かどうかをセット
+	void SetFire(bool fire);
 };
 
 #endif // !_PLAYER_H_

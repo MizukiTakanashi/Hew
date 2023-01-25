@@ -140,6 +140,27 @@ void Result::Update(void)
 		PlaySound(m_SE_03, 0);
 	}
 
+	//左スティックで左に倒されたら...
+	if (GetThumbLeftY(0) < -0.5f) {
+		//前フレームのスティックが右に倒されてたら...(連続押しを拒否)
+		if (m_thumb_before >= -0.5f) {
+			//左にずらす
+			Select();
+			PlaySound(m_SE_03, 0);
+		}
+	}
+	//左スティックで右に倒されたら...
+	if (GetThumbLeftY(0) > 0) {
+		//前フレームのスティックが左に倒されてたら...(連続押しを拒否)
+		if (m_thumb_before <= 0.0f) {
+			//右にずらす
+			Select();
+			PlaySound(m_SE_03, 0);
+		}
+	}
+	//スティックの値を保存
+	m_thumb_before = GetThumbLeftY(0);
+
 	//選択によってカーソル位置を変更
 	if (m_select_retry)
 	{
