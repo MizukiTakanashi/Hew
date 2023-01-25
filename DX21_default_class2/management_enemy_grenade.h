@@ -62,10 +62,6 @@ private:
 		//åé
 		{
 			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f)
 		},
 		//âŒêØ
 		{
@@ -78,10 +74,14 @@ private:
 		//êÖêØ
 		{
 			D3DXVECTOR2(0.0f, 0.0f),
+		},
+		//ìyêØ
+		{
 			D3DXVECTOR2(0.0f, 0.0f),
+		},
+		//ã‡êØ
+		{
 			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f)
 		}
 	};
 
@@ -99,6 +99,14 @@ private:
 			60 * 145
 		},
 		//êÖêØ
+		{
+			0, 0, 0, 0, 0
+		},
+		//ìyêØ
+		{
+			0, 0, 0, 0, 0
+		},
+		//ã‡êØ
 		{
 			0, 0, 0, 0, 0
 		}

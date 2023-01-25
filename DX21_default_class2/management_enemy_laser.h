@@ -61,8 +61,6 @@ private:
 		//âŒêØ
 		{
 			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f)
 		},
 		//êÖêØ
 		{
@@ -77,6 +75,10 @@ private:
 			D3DXVECTOR2(71.0f + (142.0f * 8.0f), -EnemyLaser::SIZE_Y / 2),
 			D3DXVECTOR2(71.0f + (142.0f * 3.0f), -EnemyLaser::SIZE_Y / 2),
 			D3DXVECTOR2(71.0f + (142.0f * 5.0f), -EnemyLaser::SIZE_Y / 2)
+		},
+		//ã‡êØ
+		{
+			D3DXVECTOR2(0.0f, 0.0f),
 		}
 	};
 	//ìGÇèoÇ∑éûä‘
@@ -104,6 +106,10 @@ private:
 			60 * 40 + 1,
 			60 * 165,
 			60 * 165 + 1
+		},
+		//ã‡êØ
+		{
+			0, 0, 0,
 		}
 	};
 

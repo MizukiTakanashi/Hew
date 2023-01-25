@@ -59,6 +59,7 @@ protected:
 		MARS,
 		MERCURY,
 		SATURN,
+		VENUS,
 		NUM
 	};
 	int m_stage_num = 0;			//ステージ

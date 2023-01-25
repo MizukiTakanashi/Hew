@@ -23,7 +23,7 @@ public:
 private:
 	//ここで初期化
 	//敵自身
-	static const int ENEMY_NUM = 5;		//敵を出現させる数
+	static const int ENEMY_NUM = 9;		//敵を出現させる数
 	static const int BULLET_TIME = 240;		
 
 	//cppで初期化
@@ -42,20 +42,28 @@ private:
 
 	//敵の位置配列
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-		D3DXVECTOR2(52.5f + (105 *  2), -EnemyStop::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  3), -EnemyStop::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  5), -EnemyStop::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  7), -EnemyStop::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  4), -EnemyStop::SIZE_Y / 2)
+		D3DXVECTOR2(71.0f + (142 * 0), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 4), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 8), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 2), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 6), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 2), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 6), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 0), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 8), -EnemyStop::SIZE_Y / 2)
 	};
 
 	//敵を出す時間
 	int m_SetEnemyTime[ENEMY_NUM] = {
-		60 * 1,
-		60 * 20,
-		60 * 30,
-		60 * 40,
-		60 * 50
+		60 * 5,
+		60 * 5 + 1,
+		60 * 5 + 2,
+		60 * 45,
+		60 * 45 + 1,
+		60 * 90,
+		60 * 90 + 1,
+		60 * 155,
+		60 * 155 + 1
 	};
 
 //メンバ関数

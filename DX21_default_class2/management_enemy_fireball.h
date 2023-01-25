@@ -24,7 +24,7 @@ private:
 	static const int EXIT_TIME = 60 * 10;		//退出時間
 
 	//cppで初期化
-	static const int ENEMY_NUM;	//敵を出現させる数W
+	static const int ENEMY_NUM = 14;		//敵を出現させる数W
 	//弾
 	static const float BULLET_SIZE_X;		//サイズX
 	static const float BULLET_SIZE_Y;		//サイズY
@@ -48,20 +48,38 @@ private:
 	int m_SE_15_2 = 0;
 
 	//敵の配列
-	D3DXVECTOR2 m_SetEnemy[6] = {
-		D3DXVECTOR2(52.5f + (105 * 1), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 9), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 5), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 1), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 9), -EnemyNormal::SIZE_Y / 2)
+	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
+		D3DXVECTOR2(71.0f + (142 * 2), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 3), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 3), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 5), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 8), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 8), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 3), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 5), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 3), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 5), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 6), -EnemyNormal::SIZE_Y / 2)
 	};
 
-	int m_SetEnemyTime[6] = {
-		60 * 1,
-		60 * 15,
-		60 * 20,
+	int m_SetEnemyTime[ENEMY_NUM] = {
+		60 * 10,
 		60 * 25,
-		60 * 30
+		60 * 25 + 1,
+		60 * 65,
+		60 * 65 + 1,
+		60 * 75,
+		60 * 75 + 1,
+		60 * 120,
+		60 * 120 + 1,
+		60 * 125,
+		60 * 125 + 1,
+		60 * 155,
+		60 * 155 + 1,
+		60 * 170
 	};
 
 //メンバ関数
