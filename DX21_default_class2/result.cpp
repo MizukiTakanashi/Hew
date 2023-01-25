@@ -87,7 +87,7 @@ Result::Result(bool isClear,  Score* pNumber, STAGE stagenum) :m_pScore(pNumber)
 
 	m_pBG = new UI(*m_pDrawOb[0], D3DXVECTOR2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT));
 	m_pStageTitle = new UI(*m_pDrawOb[1], D3DXVECTOR2(510, 97), D3DXVECTOR2(220, 27));
-	m_pCursor = new UI(*m_pDrawOb[2], D3DXVECTOR2(480, 490), D3DXVECTOR2(50, 50));
+	m_pCursor = new UI(*m_pDrawOb[2], D3DXVECTOR2(480, 490), D3DXVECTOR2(30, 30));
 
 	m_pScore->SetDigit(NUMBER_DIGIT);
 	m_pScore->SetInitPos(NUMBER_POS);
