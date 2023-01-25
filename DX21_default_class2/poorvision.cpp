@@ -37,7 +37,7 @@ void PoorVision::Draw()const
 		GetTexture(m_tex_num));
 
 	Sprite::DrawSpriteUVStart(m_pos.x, m_pos.y,
-		SCREEN_WIDTH * 2, SCREEN_HEIGHT * 2, 0.0f, D3DXCOLOR(1.0f, 1.0f, 1.0f, m_alp), 0.0f, 0.0f, 1.0f, 1.0f);
+		SCREEN_WIDTH * 3, SCREEN_HEIGHT * 3, 0.0f, D3DXCOLOR(1.0f, 1.0f, 1.0f, m_alp), 0.0f, 0.0f, 1.0f, 1.0f);
 }
 
 void PoorVision::SetPV()

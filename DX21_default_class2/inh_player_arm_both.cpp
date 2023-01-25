@@ -209,6 +209,14 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 		GameObject::SetDrawob(*m_enemy_fire_draw);
 		break;
 
+	case TYPE::TYPE_ACID:
+		GameObject::SetDrawob(*m_enemy_gatoring_draw);
+		break;
+
+	case TYPE::TYPE_FIREBALL:
+		GameObject::SetDrawob(*m_enemy_gatoring_draw);
+		break;
+
 	default:
 		break;
 	}
@@ -266,6 +274,14 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 
 		case TYPE::TYPE_FIRE:
 			m_pEnemyItem = new PlayerArm3(*m_bullet_fire_draw, false, (int)m_type, PlayerArm3::TYPE::FIRE);
+			break;
+
+		case TYPE::TYPE_ACID:
+			m_pEnemyItem = new PlayerArm3(*m_bullet_acid_draw, false, (int)m_type, PlayerArm3::TYPE::ACID);
+			break;
+
+		case TYPE::TYPE_FIREBALL:
+			m_pEnemyItem = new PlayerArm3(*m_bullet_fireball_draw, false, (int)m_type, PlayerArm3::TYPE::FIREBALL);
 			break;
 
 		default:

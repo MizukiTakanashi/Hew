@@ -32,7 +32,7 @@ TextManagement::TextManagement()
 {
 	TextureUseful temp((char*)"data\\texture\\text_flame.png");
 	m_TextFrame = DrawObject(temp);
-	temp.SetTextureName((char*)"data\\texture\\triangle.png");
+	temp.SetTextureName((char*)"data\\texture\\cursor.png");
 	m_Triangle = DrawObject(temp);
 
 	//================
@@ -94,7 +94,7 @@ void TextManagement::Draw(void)
 {
 	m_TextFrame.Draw(D3DXVECTOR2(FLAME_POS_X, FLAME_POS_Y), D3DXVECTOR2(FLAME_SIZE_X, FLAME_SIZE_Y));
 	if(!m_RunText)
-	m_Triangle.Draw(D3DXVECTOR2(SCREEN_WIDTH - 220, SCREEN_HEIGHT - 45), D3DXVECTOR2(30, 30));
+	m_Triangle.Draw(D3DXVECTOR2(SCREEN_WIDTH - 220, SCREEN_HEIGHT - 45), D3DXVECTOR2(20, 20), 90);
 
 	int x, y;
 	for (int i = 0; i < m_PaternNum; i++)

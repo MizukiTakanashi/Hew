@@ -19,8 +19,6 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 	//‰Î‹…‚Ì“G
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_FIREBALL].SetTextureName((char*)"data\\texture\\enemy_fireball.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_FIREBALL]);
-	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_FIREBALL].SetTextureName((char*)"data\\texture\\sun.png");
-	m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_FIREBALL]);
 
 	m_pEnemyFireballManagement = new EnemyFireballManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL]);
@@ -67,6 +65,11 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 	m_pColAll->AddEnemyPointer(m_pEnemyAcidManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemuPoorvisionManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemySpeeddownManagement);
+
+	m_pPlayerCenter->DrawSetAcid(&m_pDrawObject[(int)DRAW_TYPE::BULLET_ACID]);
+	m_pPlayerRight->DrawSetAcid(&m_pDrawObject[(int)DRAW_TYPE::BULLET_ACID]);
+	m_pPlayerLeft->DrawSetAcid(&m_pDrawObject[(int)DRAW_TYPE::BULLET_ACID]);
+
 }
 
 //==========================

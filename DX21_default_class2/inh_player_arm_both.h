@@ -27,6 +27,8 @@ public:
 		TYPE_ICERAIN,	//氷の敵
 		TYPE_GRENADE,			//グレネード敵
 		TYPE_FIRE,			//炎の敵
+		TYPE_ACID,
+		TYPE_FIREBALL,
 		TYPE_NONE,	//	何もついていない
 		TYPE_SHOOT,	// 前のタイプの弾の処理 & 自身発射中
 		TYPE_DM_SHOOT,	//ダメージをくらった時の
@@ -53,6 +55,8 @@ private:
 	DrawObject* m_bullet_stop_draw = nullptr;	//動きを止める敵の弾の描画オブジェクト
 	DrawObject* m_bullet_icerain_draw = nullptr;//氷の敵の描画
 	DrawObject* m_bullet_fire_draw = nullptr;	//氷の敵の描画
+	DrawObject* m_bullet_acid_draw = nullptr;	//氷の敵の描画
+	DrawObject* m_bullet_fireball_draw = nullptr;	//氷の敵の描画
 	
 	//敵
 	DrawObject* m_enemy_homing_draw = nullptr;	//弾の描画オブジェクト
@@ -157,6 +161,12 @@ public:
 
 	//炎の敵の弾の描画
 	void DrawSetFire(DrawObject* pDraw) { m_bullet_fire_draw = pDraw; }
+
+	//酸性雨の敵の弾の描画
+	void DrawSetAcid(DrawObject* pDraw) { m_bullet_acid_draw = pDraw; }
+
+	//酸性雨の敵の弾の描画
+	void DrawSetFireBall(DrawObject* pDraw) { m_bullet_fireball_draw = pDraw; }
 
 
 	//========================
