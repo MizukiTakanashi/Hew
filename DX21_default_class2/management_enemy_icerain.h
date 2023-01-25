@@ -54,7 +54,7 @@ private:
 			D3DXVECTOR2(0.0f, 0.0f),
 		},
 		//âŒêØ
-		{
+		{                              //É}ÉXñ⁄
 			D3DXVECTOR2(52.5f + (105 * 5), -EnemyIceRain::SIZE_Y / 2),
 			D3DXVECTOR2(52.5f + (105 * 3), -EnemyIceRain::SIZE_Y / 2),
 			D3DXVECTOR2(52.5f + (105 * 7), -EnemyIceRain::SIZE_Y / 2),
