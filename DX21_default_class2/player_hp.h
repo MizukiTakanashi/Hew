@@ -35,7 +35,7 @@ private:
 
 	//ここで初期化
 	static const int INVINCIBLE__FRAME = 40;	//無敵時間
-
+	static const int FIRE_DAMAGE_SOUND_INTERVAL = 60 * 3;	//炎ダメージの音の間隔時間
 
 //メンバー変数
 private:
@@ -47,9 +47,11 @@ private:
 
 	InhStage* m_pStage = nullptr;	//ヒットストップ用のステージのポインタ
 
-	int m_SE_04 = 0;				//プレイヤーダメージ音
-
 	bool m_fire = false;			//炎状態フラグ
+	int m_sound_interval = 60 * 1;	//炎状態の際の音の間隔	
+
+	int m_SE_04 = 0;				//プレイヤーダメージ音
+	int m_SE_24 = 0;				//プレイヤー炎ダメージ音
 
 //メンバー関数
 public:
