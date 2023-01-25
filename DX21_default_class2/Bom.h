@@ -11,6 +11,7 @@
 
 #include "game_object.h"
 #include "draw_object.h"
+#include "sound.h"
 
 class Bom :public GameObject
 {
@@ -26,16 +27,21 @@ private:
 	int m_time = -1;					//ボムが出来てからの経過時間
 	int m_num = 0;						//ボムの現在の数
 	int m_num_max = 0;					//ボムの最大数
-
+	int m_SE_17 = 0;					//爆発音2
 
 //メンバ関数
 public:
-	Bom() {}	//デフォルトコンストラクタ
+	//デフォルトコンストラクタ
+	Bom() { 
+		m_SE_17 = LoadSound((char*)"data\\SE\\1_17.wav");
+	}	
 
 	//引数付きコンストラクタ
 	Bom(DrawObject& pDrawObject, int num_max)
 		:GameObject(pDrawObject, D3DXVECTOR2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), 
-			D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT), 0.0f), m_num_max(num_max) {}
+			D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT), 0.0f), m_num_max(num_max) {
+		m_SE_17 = LoadSound((char*)"data\\SE\\1_17.wav");
+	}
 
 	~Bom()override {}	//デストラクタ
 

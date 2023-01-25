@@ -54,6 +54,14 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 	m_pTexUseful[(int)TEXTURE_TYPE::ICEFIELD].SetTextureName((char*)"data\\texture\\gimmick_Mercury .png");
 	m_pDrawObject[(int)DRAW_TYPE::ICEFIELD].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ICEFIELD], 2.0f, 1.0, 1.0f, 3);
 	m_pManagement_IceField = new Management_IceField(m_pDrawObject[(int)DRAW_TYPE::ICEFIELD]);
+	
+	//敵の管理
+	m_pAllEnemyManagement = new AllEnemyManagement;
+	m_pAllEnemyManagement->AddPointer(m_pEnemyLaser);
+	m_pAllEnemyManagement->AddPointer(m_pEnemyIce);
+	m_pAllEnemyManagement->AddPointer(m_pEnemyFire);
+	m_pAllEnemyManagement->AddPointer(m_pEnemyMissile);
+
 	//========================================================
 	// 全ての当たり判定
 	m_pColAll = new CollisionAll(CollisionAll::STAGE::MERCURY, m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
@@ -75,6 +83,7 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 StageMercury::~StageMercury()
 {
 	delete m_pColAll;
+	delete m_pAllEnemyManagement;
 
 	delete m_pEnemyLaser;
 	delete m_pEnemyIce;
@@ -136,13 +145,16 @@ void StageMercury::Update(void)
 	int attack_num = 0;
 
 	//プレイヤーの腕
+	//ホーミング弾用
+	D3DXVECTOR2 temp_pos = m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerLeft->GetPos());
+
 	//腕のアップデート
 	m_pPlayerLeft->ButtonPress();
-	m_pPlayerLeft->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
+	m_pPlayerLeft->Update(m_pPlayer->GetPos(), temp_pos);
 	m_pPlayerRight->ButtonPress();
-	m_pPlayerRight->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
+	m_pPlayerRight->Update(m_pPlayer->GetPos(), temp_pos);
 	m_pPlayerCenter->ButtonPress();
-	m_pPlayerCenter->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
+	m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
 	m_pManagement_FireField->Update();
 	m_pManagement_IceField->Update();
 

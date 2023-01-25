@@ -60,6 +60,7 @@ void PlayerArmIceRain::Update(const D3DXVECTOR2& arm_pos)
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0.0f, -BULLET_SPEED), 0.0f);
 
 			m_pBullet[inhPlayerArm::GetBulletNum()] = temp;
+			m_pBullet[inhPlayerArm::GetBulletNum()].SetRot(180.0f);
 
 			//Œ»İ‚Ì’e‚Ì”‚ğ‘‚â‚·
 			inhPlayerArm::IncreaseBulletNum();
@@ -85,6 +86,7 @@ void PlayerArmIceRain::Update(const D3DXVECTOR2& arm_pos)
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0.0f, -BULLET_SPEED), 0.0f);
 
 			m_pBullet[inhPlayerArm::GetBulletNum()] = temp;
+			m_pBullet[inhPlayerArm::GetBulletNum()].SetRot(180.0f);
 
 			//Œ»İ‚Ì’e‚Ì”‚ğ‘‚â‚·
 			inhPlayerArm::IncreaseBulletNum();
@@ -110,6 +112,7 @@ void PlayerArmIceRain::Update(const D3DXVECTOR2& arm_pos)
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0.0f, -BULLET_SPEED), 0.0f);
 
 			m_pBullet[inhPlayerArm::GetBulletNum()] = temp;
+			m_pBullet[inhPlayerArm::GetBulletNum()].SetRot(180.0f);
 
 			//Œ»İ‚Ì’e‚Ì”‚ğ‘‚â‚·
 			inhPlayerArm::IncreaseBulletNum();
@@ -135,6 +138,7 @@ void PlayerArmIceRain::Update(const D3DXVECTOR2& arm_pos)
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0.0f, -BULLET_SPEED), 0.0f);
 
 			m_pBullet[inhPlayerArm::GetBulletNum()] = temp;
+			m_pBullet[inhPlayerArm::GetBulletNum()].SetRot(180.0f);
 
 			//Œ»İ‚Ì’e‚Ì”‚ğ‘‚â‚·
 			inhPlayerArm::IncreaseBulletNum();
@@ -160,6 +164,7 @@ void PlayerArmIceRain::Update(const D3DXVECTOR2& arm_pos)
 				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0.0f, -BULLET_SPEED), 0.0f);
 
 			m_pBullet[inhPlayerArm::GetBulletNum()] = temp;
+			m_pBullet[inhPlayerArm::GetBulletNum()].SetRot(180.0f);
 
 			//Œ»İ‚Ì’e‚Ì”‚ğ‘‚â‚·
 			inhPlayerArm::IncreaseBulletNum();

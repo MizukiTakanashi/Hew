@@ -22,7 +22,7 @@ CollisionAll::CollisionAll()
 		m_pEnemy[i] = nullptr;
 	}
 
-	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//サウンドのロード
+	m_SE = LoadSound((char*)"data\\SE\\1_16.wav");	//サウンドのロード
 }
 
 //==========================
@@ -38,7 +38,7 @@ CollisionAll::CollisionAll(STAGE stage, Player* pPlayer, inhPlayerArmBoth* pL, i
 	}
 
 	//音
-	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//サウンドのロード
+	m_SE = LoadSound((char*)"data\\SE\\1_16.wav");	//サウンドのロード
 
 	switch (m_stage) {
 
@@ -47,7 +47,7 @@ CollisionAll::CollisionAll(STAGE stage, Player* pPlayer, inhPlayerArmBoth* pL, i
 		m_SE_08 = LoadSound((char*)"data\\SE\\2_08.wav");
 
 		//バリアが壊れる音
-		m_SE_09 = LoadSound((char*)"data\\SE\\1_09.wav");
+		m_SE_09 = LoadSound((char*)"data\\SE\\1_09_2.wav");
 		//SetVolume(m_SE_09, 2.0f);
 
 		//冷気を浴びた音
@@ -521,9 +521,9 @@ int CollisionAll::Collision(void)
 
 			//右と左、両方行う
 			for (int m = 0; m < 2; m++) {
-				//ポインターがヌルであれば...
-				// 火星でなければ...
-				//バリアでなければ処理を行わない
+				//ポインターがヌルでなければ...
+				// 火星であれば...
+				//バリアであれば処理を行う
 				if (pArmItem != nullptr && pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE_BARRIAR &&
 					m_stage == STAGE::MARS) {
 					for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
@@ -1006,7 +1006,7 @@ int CollisionAll::Collision(void)
 
 		//音を鳴らす
 		PlaySound(m_SE, 0);
-		SetVolume(m_SE, 0.1f);
+		SetVolume(m_SE, 0.5f);
 
 		//爆発の音の間隔をリセット
 		m_SE_interval_count = 0;

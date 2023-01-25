@@ -5,7 +5,7 @@
 //=======================================
 #include "boss.h"
 #include "inh_stage.h"
-
+#include "BossPattern.h"
 //==========================
 // 定数初期化
 //==========================
@@ -23,11 +23,17 @@ const float Boss::POS_Y = -100;
 
 
 
+Boss::~Boss()
+{
+	delete m_pBossPattern;
+}
+
 //======================
 // 更新処理
 //======================
 void Boss::Update(void)
 {
+	m_pBossPattern->Update(this);
 	//無敵時間減少
 	m_invincible_flame--;
 
@@ -38,34 +44,24 @@ void Boss::Update(void)
 	}
 
 
-	//止まる場所まで移動する
-	if (GameObject::GetPos().y < STOP_POS_Y) {
-		GameObject::MovePos(D3DXVECTOR2(0.0f, SPEED_Y));
-	}
+	////時間が来たら弾を作る
+	//if (m_bullet_count++ > BULLET_TIME) {
+	//	m_bullet_make = true;
+	//	m_bullet_count = 0;
+	//}
 
-	//左右に動く
-	float rad = D3DXToRadian(m_move_width);
-	SetPos(D3DXVECTOR2(m_init_posx + cosf(rad) * RANGE, GetPos().y));
-	m_move_width += SPEED_X;
+	////出現してからのカウントを数える
+	//m_appearance_time++;
 
-	//時間が来たら弾を作る
-	if (m_bullet_count++ > BULLET_TIME) {
-		m_bullet_make = true;
-		m_bullet_count = 0;
-	}
-
-	//出現してからのカウントを数える
-	m_appearance_time++;
-
-	//退出のフラグが立ったら
-	if (m_alpha_flag) {
-		//どんどんアルファ値を低くしていく
-		m_alpha -= ALPHA_SPEED;
-		if (m_alpha < 0.0f) {
-			m_alpha = 0.0f;
-		}
-		GameObject::SetColor(D3DXCOLOR(1.0f, 1.0f, 1.0f, m_alpha));
-	}
+	////退出のフラグが立ったら
+	//if (m_alpha_flag) {
+	//	//どんどんアルファ値を低くしていく
+	//	m_alpha -= ALPHA_SPEED;
+	//	if (m_alpha < 0.0f) {
+	//		m_alpha = 0.0f;
+	//	}
+	//	GameObject::SetColor(D3DXCOLOR(1.0f, 1.0f, 1.0f, m_alpha));
+	//}
 }
 
 void Boss::ReduceHP(int amount)
@@ -82,4 +78,16 @@ void Boss::ReduceHP(int amount)
 	else
 	{
 	}
+}
+
+void Boss::ChangeBossPattern(BossPattern* pBossPattern)
+{
+	delete m_pBossPattern;
+	m_pBossPattern = pBossPattern;
+}
+
+void Boss::ChangeBulletPattern(BulletPattern* pBulletPattern)
+{
+	delete m_pBulletPattern;
+	m_pBulletPattern = pBulletPattern;
 }

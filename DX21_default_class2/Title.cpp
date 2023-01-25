@@ -85,7 +85,7 @@ void	UninitTitle()
 void	UpdateTitle()
 {
 	//キー入力のチェック
-	if (InputGetKeyDown(KK_SPACE))
+	if (InputGetKeyDown(KK_SPACE) || IsButtonTriggered(0, XINPUT_GAMEPAD_B))
 	{
 		PlaySound(g_SE, 0);
 		if (g_title_tutorial) {
@@ -104,7 +104,7 @@ void	UpdateTitle()
 	}
 
 	//Dボタンを押したらステージ選択画面に行く
-	if (InputGetKeyDown(KK_D))
+	if (InputGetKeyDown(KK_D) || GetLeftTriggerTriggered(0, 120))
 	{
 		Fade(SCENE::SCENE_TITLE_SCORE, STAGE::STAGE_MERCURY);
 		PlaySound(g_SE, 0);

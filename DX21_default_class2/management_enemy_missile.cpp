@@ -6,11 +6,12 @@
 #include "management_enemy_missile.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
+#include "sound.h"
 
 //==========================
 // ’è”‚Ì‰Šú‰»
 //==========================
-const int EnemyMissileManagement::ENEMY_NUM[(int)STAGE::NUM] = { 5, 6, 7, 0 };
+const int EnemyMissileManagement::ENEMY_NUM[(int)STAGE::NUM] = { 5, 6, 7, 2, 0 };
 const float EnemyMissileManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyMissileManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyMissileManagement::BULLET_SPEED = 5.0f;
@@ -25,6 +26,9 @@ EnemyMissileManagement::EnemyMissileManagement(DrawObject& pDrawObject1, DrawObj
 	m_stage_num = stage;
 	m_pEnemyMissile = new EnemyNormal[ENEMY_NUM[stage]];
 	m_pBullet = new Bullet[ENEMY_NUM[stage]];
+
+	m_SE_22 = LoadSound((char*)"data\\SE\\2_21.wav");
+	SetVolume(m_SE_22, 0.1f);
 }
 
 //======================
@@ -71,11 +75,14 @@ void EnemyMissileManagement::Update(const D3DXVECTOR2& PlayerPos)
 			EnemyManagement::IncreaseBulletNum(1);
 
 			m_pEnemyMissile[i].BulletMake();
+
+			PlaySound(m_SE_22, 0);
 		}
 
 		//‰æ–ÊŠO‚©‚ço‚½‚çÁ‚·
 		if (m_pEnemyMissile[i].GetScreenOut()) {
-
+			DeleteObj(i);
+			break;
 		}
 	}
 

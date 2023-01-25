@@ -49,7 +49,7 @@ private:
 	int m_planet_index = 0;			//惑星の現在のインデックス番号
 	int m_planet_index_before = 0;	//惑星の前のインデックス番号
 
-	int m_thumb_before = 0;			//前フレームのスティックの値
+	float m_thumb_before = 0.0f;	//前フレームのスティックの値
 
 	int m_move_time = -1;			//動く時間カウント
 

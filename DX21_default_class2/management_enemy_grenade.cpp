@@ -6,6 +6,7 @@
 #include "management_enemy_grenade.h"
 //#define _USE_MATH_DEFINES
 //#include <math.h>
+#include "sound.h"
 
 //==========================
 // íËêîÇÃèâä˙âª
@@ -14,7 +15,7 @@
 const D3DXVECTOR2 EnemyGrenadeManagement::OTHER_RANGE = D3DXVECTOR2(100.0f, 100.0f);
 
 //private
-const int EnemyGrenadeManagement::ENEMY_NUM[(int)STAGE::NUM] = { 0, 5, 0 };
+const int EnemyGrenadeManagement::ENEMY_NUM[(int)STAGE::NUM] = { 0, 5, 0, 0, 0 };
 const float EnemyGrenadeManagement::BULLET_SPEED = 5.0f;
 const D3DXVECTOR2 EnemyGrenadeManagement::BULLET_SIZE = D3DXVECTOR2(20.0f, 20.0f);
 const D3DXVECTOR2 EnemyGrenadeManagement::EXPLOSION_RANGE = D3DXVECTOR2(200.0f, 200.0f);
@@ -35,6 +36,8 @@ EnemyGrenadeManagement::EnemyGrenadeManagement(DrawObject& pDrawObject1, DrawObj
 		m_pExplosion[i] = nullptr;
 		m_pExplosionDraw[i] = nullptr;
 	}
+
+	m_SE_12 = LoadSound((char*)"data\\SE\\1_12.wav");
 }
 
 //==========================
@@ -109,6 +112,14 @@ void EnemyGrenadeManagement::Update(const D3DXVECTOR2& PlayerPos)
 			EnemyManagement::IncreaseOtherNum(1);
 
 			m_pEnemy[i].BulletMake();
+
+			PlaySound(m_SE_12, 0);
+		}
+
+		//âÊñ äOÇ…èoÇΩÇÁè¡Ç∑
+		if (m_pEnemy[i].GetScreenOut()) {
+			DeleteObj(i);
+			break;
 		}
 	}
 

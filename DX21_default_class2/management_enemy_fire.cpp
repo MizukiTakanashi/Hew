@@ -9,7 +9,7 @@
 //==========================
 // ’è”‚Ì‰Šú‰»
 //==========================
-const int EnemyFireManagement::ENEMY_NUM[(int)STAGE::NUM] = { 0, 0, 9, 0 };
+const int EnemyFireManagement::ENEMY_NUM[(int)STAGE::NUM] = { 0, 0, 9, 0, 0 };
 const float EnemyFireManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyFireManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyFireManagement::BULLET_SPEED = 5.0f;
@@ -76,6 +76,12 @@ void EnemyFireManagement::Update()
 			m_pEnemy[i].BulletMake();
 
 			PlaySound(m_SE_15_1, 0);
+		}
+
+		//‰æ–ÊŠO‚Éo‚½‚çÁ‚·
+		if (m_pEnemy[i].GetScreenOut()) {
+			DeleteObj(i);
+			break;
 		}
 	}
 

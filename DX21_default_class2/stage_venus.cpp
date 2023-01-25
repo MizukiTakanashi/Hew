@@ -50,6 +50,9 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 	m_pEnemySpeeddownManagement = new EnemySpeeddownManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_SPEEDDOWN], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_SPEEDDOWN]);
 
+	//ƒKƒgƒŠƒ“ƒO“G
+	m_pEnemyGatoring = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING],
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 4);
 
 	//“G‚ÌŠÇ—
 	//m_pAllEnemyManagement->AddPointer(m_pEnemyFireballManagement);
@@ -74,11 +77,12 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 //==========================
 StageVenus::~StageVenus()
 {
+	delete m_pColAll;
 	delete m_pEnemyFireballManagement;
 	delete m_pEnemuPoorvisionManagement;
 	delete m_pEnemySpeeddownManagement;
 	delete m_pEnemyAcidManagement;
-	delete m_pColAll;
+	delete m_pEnemyGatoring;
 }
 
 //==========================
@@ -125,6 +129,7 @@ void StageVenus::Update(void)
 	m_pEnemyAcidManagement->Update();
 	m_pEnemuPoorvisionManagement->Update();
 	m_pEnemySpeeddownManagement->Update();
+	m_pEnemyGatoring->Update();
 
 	//ƒ{ƒ€
 	m_pBom->Update();
@@ -197,6 +202,7 @@ void StageVenus::Draw(void) const
 	m_pEnemyAcidManagement->Draw();
 	m_pEnemuPoorvisionManagement->Draw();
 	m_pEnemySpeeddownManagement->Draw();
+	m_pEnemyGatoring->Draw();
 
 	m_pExplosionManagement->Draw();
 

@@ -11,6 +11,7 @@
 #include "inh_player_arm.h"
 #include "draw_object.h"
 #include "bullet.h"
+#include "sound.h"
 
 class PlayerArm1:public inhPlayerArm
 {
@@ -32,6 +33,7 @@ private:
 	DrawObject m_bulletdraw;			//弾の描画オブジェクト
 	Bullet* m_pBullet = nullptr;		//弾のオブジェクト
 	int m_interval_count = 0;			//発射間隔のカウント
+	int m_SE_22 = 0;					//発射音
 
 //メンバ関数
 public:
@@ -40,8 +42,11 @@ public:
 
 	//引数付きコンストラクタ
 	PlayerArm1(DrawObject& bulletdraw, bool right, int type)
-		:inhPlayerArm(BULLET_NUM_MAX, right, type), m_bulletdraw(bulletdraw) 
-	{ m_pBullet = new Bullet[BULLET_SHOOT_MAX]; }
+		:inhPlayerArm(BULLET_NUM_MAX, right, type), m_bulletdraw(bulletdraw) {
+		m_pBullet = new Bullet[BULLET_SHOOT_MAX]; 
+		m_SE_22 = LoadSound((char*)"data\\SE\\2_21.wav");
+		SetVolume(m_SE_22, 0.1f);
+	}
 
 	//デストラクタ
 	~PlayerArm1()override { delete[] m_pBullet; }

@@ -16,6 +16,8 @@
 #include "collision_all.h"
 #include "management_firefield.h"
 #include "management_icefield.h"
+#include "all_enemy_management.h"
+
 class StageMercury : public InhStage
 {	
 //メンバ変数
@@ -27,6 +29,7 @@ private:
 	EnemyMissileManagement* m_pEnemyMissile = nullptr;
 	Management_IceField* m_pManagement_IceField = nullptr;
 	Management_FireField* m_pManagement_FireField = nullptr;
+	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
 	CollisionAll* m_pColAll = nullptr;
 
 //メンバ関数

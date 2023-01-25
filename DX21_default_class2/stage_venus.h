@@ -13,6 +13,7 @@
 #include "management_enemy_acid.h"
 #include "management_enemy_poorvision.h"
 #include "management_enemy_speeddown.h"
+#include "management_enemy_gatoring.h"
 
 class StageVenus : public InhStage
 {
@@ -23,6 +24,7 @@ private:
 	EnemyAcidManagement* m_pEnemyAcidManagement = nullptr;
 	EnemyPoorvisionManagement* m_pEnemuPoorvisionManagement = nullptr;
 	EnemySpeeddownManagement* m_pEnemySpeeddownManagement = nullptr;
+	EnemyGatoringManagement* m_pEnemyGatoring = nullptr;
 
 	int a = 0;
 

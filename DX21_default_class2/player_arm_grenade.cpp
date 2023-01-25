@@ -7,6 +7,7 @@
 #include "player_arm_grenade.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
+#include "sound.h"
 
 //==========================
 // ’è”‚Ì‰Šú‰»
@@ -43,6 +44,9 @@ PlayerArmGrenade::PlayerArmGrenade(DrawObject bulletdraw, DrawObject explosiondr
 		m_pExplosionDraw[i] = nullptr;
 		m_attack_count[i] = -1;
 	}
+
+	m_SE_12 = LoadSound((char*)"data\\SE\\1_12.wav");
+	SetVolume(m_SE_12, 0.5f);
 }
 
 //==========================
@@ -152,6 +156,8 @@ void PlayerArmGrenade::Update(const D3DXVECTOR2& arm_pos)
 
 			//ì‚Á‚½’e‚Ì”‚ğ‘‚â‚·
 			inhPlayerArm::IncreaseBulletMaked();
+
+			PlaySound(m_SE_12, 0);
 		}
 	}
 }

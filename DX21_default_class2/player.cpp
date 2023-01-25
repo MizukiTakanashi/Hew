@@ -118,19 +118,19 @@ void Player::Update(bool isinvincible)
 	// キーボード
 
 	//上矢印が押されたら
-	if (InputGetKey(KK_W)) {
+	if (InputGetKey(KK_W) || InputGetKey(KK_UP)) {
 		temp.y -= speed_y;
 	}
 	//下矢印が押されたら
-	if (InputGetKey(KK_S)) {
+	if (InputGetKey(KK_S) || InputGetKey(KK_DOWN)) {
 		temp.y += speed_y;
 	}
 	//左矢印が押されたら
-	if (InputGetKey(KK_A)) {
+	if (InputGetKey(KK_A) || InputGetKey(KK_LEFT)) {
 		temp.x -= speed_x;
 	}
 	//右矢印が押されたら
-	if (InputGetKey(KK_D)) {
+	if (InputGetKey(KK_D) || InputGetKey(KK_RIGHT)) {
 		temp.x += speed_x;
 	}
 
@@ -162,7 +162,7 @@ void Player::Update(bool isinvincible)
 	m_BulletInterval++;
 	//パッドのAが押されたら、又はキーボードのスペースが押されたら...
 	//なおかつ発射間隔が指定の値を超えたら弾を生成
-	if ((InputGetKey(KK_SPACE) || IsButtonPressed(0, XINPUT_GAMEPAD_A)) &&
+	if ((InputGetKey(KK_SPACE) || IsButtonPressed(0, XINPUT_GAMEPAD_B)) &&
 		m_BulletInterval > BULLET_INTERVAL_TIME) {
 		m_BulletInterval = 0;
 		
@@ -171,6 +171,7 @@ void Player::Update(bool isinvincible)
 				D3DXVECTOR2(BULLET_SPEED_X, BULLET_SPEED_Y), 0.0f);
 			m_pBullet[m_BulletNum] = temp;
 			m_BulletNum++;
+			PlaySound(m_SE_20, 0);
 		}
 
 	}

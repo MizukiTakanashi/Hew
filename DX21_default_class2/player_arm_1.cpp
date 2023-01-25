@@ -101,6 +101,8 @@ void PlayerArm1::Update(const D3DXVECTOR2& arm_pos)
 
 			//ì‚Á‚½’e‚Ì”‚ğ‘‚â‚·
 			inhPlayerArm::IncreaseBulletMaked();
+
+			PlaySound(m_SE_22, 0);
 		}
 	}
 }

@@ -69,6 +69,12 @@ void EnemyAcidManagement::Update()
 
 			m_pEnemyGatoring[i].BulletMake();
 		}
+
+		//画面外に出たら消す
+		if (m_pEnemyGatoring[i].GetScreenOut()) {
+			DeleteObj(i);
+			break;
+		}
 	}
 
 	//今いる弾の処理

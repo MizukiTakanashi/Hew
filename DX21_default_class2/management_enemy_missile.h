@@ -16,7 +16,7 @@
 
 class EnemyMissileManagement :public EnemyManagement
 {
-	//’è”
+//’è”
 private:
 	//‚±‚±‚Å‰Šú‰»
 	//“G©g
@@ -37,12 +37,15 @@ public:
 	//’e
 	static const int BULLET_ATTACK = 1;		//UŒ‚’l
 
-	//ƒƒ“ƒo•Ï”
+
+//ƒƒ“ƒo•Ï”
 private:
 	EnemyNormal* m_pEnemyMissile = nullptr;
 	Bullet* m_pBullet = nullptr;
 	DrawObject m_pDrawObjectEnemy;
 	DrawObject m_pDrawObjectBullet;
+
+	int m_SE_22 = 0;						//’e”­Ë‰¹
 
 	int m_EnemyItem_num = 0;	//“G‚ÌƒAƒCƒeƒ€‚Ì”
 
@@ -77,12 +80,12 @@ private:
 	},
 	//“y¯
 	{
-		D3DXVECTOR2(52.5f + (105 * 8), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 0), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 10), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 8), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 2), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 6), -EnemyNormal::SIZE_Y / 2)
+		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2),
+	},
+	//‹à¯
+	{
+		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyNormal::SIZE_Y / 2),
 	}
 	};
 
@@ -116,12 +119,12 @@ private:
 	},
 	//“y¯
 	{
-		60 * 5,
-		60 * 60,
-		60 * 60 + 1,
-		60 * 80,
-		60 * 145,
-		60 * 160
+		60 * 100,
+		60 * 100 + 1,
+	},
+	//‹à¯
+	{
+		60 * 100,
 	}
 
 	};

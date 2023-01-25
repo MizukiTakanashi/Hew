@@ -11,6 +11,7 @@
 #include "draw_object.h"
 #include "game_object.h"
 #include "bullet.h"
+#include "sound.h"
 
 //======================
 // マクロ定義
@@ -61,6 +62,8 @@ private:
 	bool m_slow = false;			//動きが遅いフラグ
 	int m_slow_time = -1;			//動きが遅い間の最大時間
 
+	int m_SE_20 = 0;				//発射音
+
 //メンバ関数
 public:
 	//デフォルトコンストラクタ
@@ -73,6 +76,8 @@ public:
 		:GameObject(pDrawObject, D3DXVECTOR2(START_POS_X, START_POS_Y), D3DXVECTOR2(BOX_W, BOX_H)),
 		m_BulletDrawObject(BulletDrawObject),m_BomDrawObject(BomDrawObject){
 		m_pBullet = new Bullet[BULLET_MAX_NUM];
+		m_SE_20 = LoadSound((char*)"data\\SE\\2_22.wav");
+		SetVolume(m_SE_20, 0.2f);
 	}
 
 	~Player()override {

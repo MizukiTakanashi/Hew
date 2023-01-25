@@ -98,6 +98,14 @@ void PlayerArm3::Update(const D3DXVECTOR2& arm_pos)
 
 			//ì‚Á‚½’e‚Ì”‚ğ‘‚â‚·
 			inhPlayerArm::IncreaseBulletMaked();
+
+			//‰¹‚ğ–Â‚ç‚·
+			if (m_type == TYPE::GATORING) {
+				PlaySound(m_SE_21, 0);
+			}
+			else if (m_type == TYPE::FIRE) {
+				PlaySound(m_SE_15_1, 0);
+			}
 		}
 	}
 }
