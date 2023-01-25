@@ -19,7 +19,7 @@ class Result
 //íËêî
 private:
 	//Ç±Ç±Ç≈èâä˙âª
-	static const int NUMBER_DIGIT = 10 ;
+	static const int NUMBER_DIGIT = 5 ;
 
 	//cppÇ≈èâä˙âª
 	static const D3DXVECTOR2 NUMBER_POS;
@@ -33,13 +33,10 @@ private:
 	int m_SE_03 = 0;	//ÉJÅ[É\Éãà⁄ìÆâπ
 	STAGE m_stage;
 
-	TextureUseful* m_pTexUse[6] = { nullptr, nullptr , nullptr , nullptr, nullptr, nullptr };
-	DrawObject* m_pDrawOb[6] = { nullptr, nullptr , nullptr , nullptr, nullptr, nullptr };
+	TextureUseful* m_pTexUse[3] = { nullptr, nullptr , nullptr};
+	DrawObject* m_pDrawOb[3] = { nullptr, nullptr , nullptr};
 	UI* m_pBG = nullptr;
-	UI* m_pText_Clear = nullptr;
 	UI* m_pStageTitle = nullptr;
-	UI* m_pText_title = nullptr;
-	UI* m_pText_Retry = nullptr;
 	UI* m_pCursor = nullptr;
 	Score* m_pScore = nullptr;
 

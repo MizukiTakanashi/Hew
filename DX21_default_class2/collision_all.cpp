@@ -22,7 +22,7 @@ CollisionAll::CollisionAll()
 		m_pEnemy[i] = nullptr;
 	}
 
-	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//サウンドのロード
+	m_SE = LoadSound((char*)"data\\SE\\1_16.wav");	//サウンドのロード
 }
 
 //==========================
@@ -38,7 +38,7 @@ CollisionAll::CollisionAll(STAGE stage, Player* pPlayer, inhPlayerArmBoth* pL, i
 	}
 
 	//音
-	m_SE = LoadSound((char*)"data\\SE\\bomb000.wav");	//サウンドのロード
+	m_SE = LoadSound((char*)"data\\SE\\1_16.wav");	//サウンドのロード
 
 	switch (m_stage) {
 
@@ -47,7 +47,7 @@ CollisionAll::CollisionAll(STAGE stage, Player* pPlayer, inhPlayerArmBoth* pL, i
 		m_SE_08 = LoadSound((char*)"data\\SE\\2_08.wav");
 
 		//バリアが壊れる音
-		m_SE_09 = LoadSound((char*)"data\\SE\\1_09.wav");
+		m_SE_09 = LoadSound((char*)"data\\SE\\1_09_2.wav");
 		//SetVolume(m_SE_09, 2.0f);
 
 		//冷気を浴びた音
@@ -117,14 +117,14 @@ int CollisionAll::Collision(void)
 							//敵を消す
 							m_pEnemy[k]->DeleteObj(j);
 
+							//倒した敵の数を増やす
+							m_pScore->AddScore(1);
+
 							j--;
 							if (j < 0) {
 								next = true;
 								break;
 							}
-
-							//倒した敵の数を増やす
-							m_pScore->AddScore(1);
 						}
 					}
 				}
@@ -171,15 +171,15 @@ int CollisionAll::Collision(void)
 					//敵を消す
 					m_pEnemy[k]->DeleteObj(j);
 
+					//倒した敵の数を増やす
+					m_pScore->AddScore(1);
+
 					j--;
 
 					if (j < 0) {
 						next = true;
 						break;
 					}
-
-					//倒した敵の数を増やす
-					m_pScore->AddScore(1);
 				}
 			}
 
@@ -213,15 +213,15 @@ int CollisionAll::Collision(void)
 							//敵を消す
 							m_pEnemy[k]->DeleteObj(j);
 
+							//倒した敵の数を増やす
+							m_pScore->AddScore(1);
+
 							j--;
 
 							if (j < 0) {
 								next = true;
 								break;
 							}
-
-							//倒した敵の数を増やす
-							m_pScore->AddScore(1);
 						}
 					}
 				}
@@ -271,7 +271,7 @@ int CollisionAll::Collision(void)
 						next_right = true;
 					}
 					//グレネード敵であれば何もしない
-					else if (pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE7) {
+					else if (pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE_GRENADE) {
 						for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
 							//敵を探している最中
 							if (pArmItem->GetBulletSize(i) == PlayerArmGrenade::FIND_BULLET_SIZE) {
@@ -376,15 +376,15 @@ int CollisionAll::Collision(void)
 								//敵を消す
 								m_pEnemy[k]->DeleteObj(j);
 
+								//倒した敵の数を増やす
+								m_pScore->AddScore(1);
+
 								j--;
 
 								if (j < 0) {
 									next = true;
 									break;
 								}
-
-								//倒した敵の数を増やす
-								m_pScore->AddScore(1);
 							}
 						}
 					}
@@ -521,9 +521,9 @@ int CollisionAll::Collision(void)
 
 			//右と左、両方行う
 			for (int m = 0; m < 2; m++) {
-				//ポインターがヌルであれば...
-				// 火星でなければ...
-				//バリアでなければ処理を行わない
+				//ポインターがヌルでなければ...
+				// 火星であれば...
+				//バリアであれば処理を行う
 				if (pArmItem != nullptr && pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE_BARRIAR &&
 					m_stage == STAGE::MARS) {
 					for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
@@ -864,6 +864,84 @@ int CollisionAll::Collision(void)
 	}
 
 	//===========================
+	// 水星、氷沼、炎沼
+	if (m_stage == STAGE::MERCURY) {
+		for (int j = 0; j < m_pIceField->GetPoisonFieldNum(); j++) {
+			//プレイヤー自身
+			if (Collision::ColBox(m_pPlayer->GetPos(), m_pIceField->GetObjPos(j),
+				m_pPlayer->GetSize() / 3, m_pIceField->GetObjSize())) {
+				//一度離れてからじゃないともう一度当たった判定にはならない
+				if (!m_player_enemy_col) {
+					//ぶつかったフラグをオン
+					m_player_enemy_col = true;
+
+					//プレイヤーを遅くする
+					m_pPlayer->SetSlow(true, Management_IceField::SLOW_TIME);
+
+					//コンボを途切れさせる
+					m_pScore->InitCombo();
+				}
+			}
+			else {
+				m_player_enemy_col = false;
+			}
+
+			//ボム
+			//自身
+			if (m_pBom->IsBomb()) {
+				//爆発をセット
+				m_pExplosion->SetExplosion(m_pIceField->GetObjPos(j));
+				explosion_sound = true;
+
+				//敵を消す
+				m_pIceField->DeleteObj(j);
+
+				j--;
+				if (j < 0) {
+					break;
+				}
+			}
+		}
+
+		for (int j = 0; j < m_pFireField->GetPoisonFieldNum(); j++) {
+			//プレイヤー自身
+			if (Collision::ColBox(m_pPlayer->GetPos(), m_pFireField->GetObjPos(j),
+				m_pPlayer->GetSize() / 3, m_pFireField->GetObjSize())) {
+				//一度離れてからじゃないともう一度当たった判定にはならない
+				if (!m_player_enemy_col) {
+					//ぶつかったフラグをオン
+					m_player_enemy_col = true;
+
+					//ダメージ数を増やす
+					attacked += m_pPoison->GetPoisonFieldAttack();
+
+					//コンボを途切れさせる
+					m_pScore->InitCombo();
+				}
+			}
+			else {
+				m_player_enemy_col = false;
+			}
+
+			//ボム
+			//自身
+			if (m_pBom->IsBomb()) {
+				//爆発をセット
+				m_pExplosion->SetExplosion(m_pFireField->GetObjPos(j));
+				explosion_sound = true;
+
+				//敵を消す
+				m_pFireField->DeleteObj(j);
+
+				j--;
+				if (j < 0) {
+					break;
+				}
+			}
+		}
+	}
+
+	//===========================
 	// 土星、毒沼
 	if (m_stage == STAGE::SATURN) {
 		for (int j = 0; j < m_pPoison->GetPoisonFieldNum(); j++) {
@@ -928,7 +1006,7 @@ int CollisionAll::Collision(void)
 
 		//音を鳴らす
 		PlaySound(m_SE, 0);
-		SetVolume(m_SE, 0.1f);
+		SetVolume(m_SE, 0.5f);
 
 		//爆発の音の間隔をリセット
 		m_SE_interval_count = 0;

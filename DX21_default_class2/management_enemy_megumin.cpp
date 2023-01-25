@@ -24,7 +24,7 @@ EnemyMeguminManagement::EnemyMeguminManagement(DrawObject& pDrawObject1, DrawObj
 	m_pBullet = new Bullet[ENEMY_NUM];
 
 	//冷気を出す音
-	//m_SE_11 = LoadSound((char*)"data\\SE\\1_11.wav");
+	m_SE_18 = LoadSound((char*)"data\\SE\\1_18.wav");
 	//SetVolume(m_SE_06, 0.4f);
 }
 
@@ -65,7 +65,13 @@ void EnemyMeguminManagement::Update(void)
 
 			m_pEnemy[i].BulletMake();
 
-			//PlaySound(m_SE_11, 0);
+			PlaySound(m_SE_18, 0);
+		}
+
+		//画面外に出たら消す
+		if (m_pEnemy[i].GetScreenOut()) {
+			DeleteObj(i);
+			break;
 		}
 	}
 
@@ -124,10 +130,9 @@ void EnemyMeguminManagement::DeleteObj(int index_num)
 	//継承元の敵を消すを呼ぶ
 	EnemyManagement::DeleteObj(index_num);
 
-	//if (m_delete_enemy == ENEMY_NUM) {
-	//	m_tutorial_clear = true;
-	//}
-
+	if (m_delete_enemy == ENEMY_NUM) {
+		m_tutorial_clear = true;
+	}
 }
 
 //======================

@@ -54,5 +54,4 @@ public:
 
 	//HP‚ð•Ô‚·
 	int GetHP(void) { return m_hp; }
-
 };

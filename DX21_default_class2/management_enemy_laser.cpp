@@ -9,7 +9,7 @@
 //==========================
 // 定数の初期化
 //==========================
-const int EnemyLaserManagement::ENEMY_NUM[(int)STAGE::NUM] = { 3, 0, 4, 4 };
+const int EnemyLaserManagement::ENEMY_NUM[(int)STAGE::NUM] = { 3, 0, 4, 4, 0 };
 const float EnemyLaserManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyLaserManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyLaserManagement::EXIT_MOVE_SPEED_X = 2.5f;
@@ -37,6 +37,9 @@ EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject&
 
 	//熱風音
 	m_SE_14 = LoadSound((char*)"data\\SE\\1_14.wav");
+
+	//ガス噴射音
+	m_SE_19 = LoadSound((char*)"data\\SE\\2_19.wav");
 }
 
 //======================
@@ -123,9 +126,18 @@ void EnemyLaserManagement::Update()
 			if (m_stage_num == (int)STAGE::MERCURY) {
 				PlaySound(m_SE_14, 0);
 			}
+			else if (m_stage_num == (int)STAGE::SATURN) {
+				PlaySound(m_SE_19, 0);
+			}
 			else {
 				PlaySound(m_SE_06, 0);
 			}
+		}
+
+		//画面外に出たら消す
+		if (m_pEnemyLaser[i].GetScreenOut()) {
+			DeleteObj(i);
+			break;
 		}
 	}
 
@@ -200,9 +212,9 @@ void EnemyLaserManagement::DeleteObj(int index_num)
 	//継承元の敵を消すを呼ぶ
 	EnemyManagement::DeleteObj(index_num);
 
-	//if (m_EnemyNum == ENEMY_NUM[m_stage_num]) {
-	//	m_tutorial_clear = true;
-	//}
+	if (m_EnemyNum == ENEMY_NUM[m_stage_num]) {
+		m_tutorial_clear = true;
+	}
 }
 
 //======================

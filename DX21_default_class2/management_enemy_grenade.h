@@ -55,15 +55,13 @@ private:
 
 	int m_stage_num = 0;			//ステージ
 
+	int m_SE_12 = 0;				//弾発射音
+
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][5] = {
 		//月
 		{
 			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f)
 		},
 		//火星
 		{
@@ -76,10 +74,14 @@ private:
 		//水星
 		{
 			D3DXVECTOR2(0.0f, 0.0f),
+		},
+		//土星
+		{
 			D3DXVECTOR2(0.0f, 0.0f),
+		},
+		//金星
+		{
 			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f),
-			D3DXVECTOR2(0.0f, 0.0f)
 		}
 	};
 
@@ -97,6 +99,14 @@ private:
 			60 * 145
 		},
 		//水星
+		{
+			0, 0, 0, 0, 0
+		},
+		//土星
+		{
+			0, 0, 0, 0, 0
+		},
+		//金星
 		{
 			0, 0, 0, 0, 0
 		}

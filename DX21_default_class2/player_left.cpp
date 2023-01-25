@@ -45,13 +45,13 @@ void PlayerLeft::ArmDraw(void) const
 void PlayerLeft::ButtonPress(void)
 {
 	//切り離しボタン
-	inhPlayerArmBoth::SetSeparationButton(InputGetKeyDown(KK_E) || IsButtonTriggered(0, XINPUT_GAMEPAD_LEFT_SHOULDER));
+	inhPlayerArmBoth::SetSeparationButton(InputGetKeyDown(KK_Z) || IsButtonTriggered(0, XINPUT_GAMEPAD_LEFT_SHOULDER));
 
 	//弾発射ボタン(押している間)
-	inhPlayerArmBoth::SetBulletShotButton((InputGetKey(KK_SPACE) || IsButtonPressed(0, XINPUT_GAMEPAD_A)) ||
+	inhPlayerArmBoth::SetBulletShotButton((InputGetKey(KK_SPACE) || IsButtonPressed(0, XINPUT_GAMEPAD_B)) ||
 		GetRightTrigger(0) > TRIGGER);
 
 	//弾発射ボタン(押した時)
-	inhPlayerArmBoth::SetBulletShotButtonTrigger((InputGetKeyDown(KK_SPACE) || IsButtonTriggered(0, XINPUT_GAMEPAD_A)) ||
+	inhPlayerArmBoth::SetBulletShotButtonTrigger((InputGetKeyDown(KK_SPACE) || IsButtonTriggered(0, XINPUT_GAMEPAD_B)) ||
 		GetRightTriggerTriggered(0, TRIGGER));
 }

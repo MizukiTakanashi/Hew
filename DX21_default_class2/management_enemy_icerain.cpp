@@ -9,7 +9,7 @@
 //==========================
 // 定数の初期化
 //==========================
-const int EnemyIceRainManagement::ENEMY_NUM[(int)STAGE::NUM] = { 0, 7, 11, 0 };
+const int EnemyIceRainManagement::ENEMY_NUM[(int)STAGE::NUM] = { 0, 7, 11, 0, 0 };
 const float EnemyIceRainManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyIceRainManagement::BULLET_SIZE_Y = 50.0f;
 const float EnemyIceRainManagement::BULLET_SPEED = 2.5f;
@@ -68,6 +68,12 @@ void EnemyIceRainManagement::Update(const D3DXVECTOR2& PlayerPos)
 			m_pEnemyIceRain[i].BulletMake();
 
 			PlaySound(m_SE_13, 0);
+		}
+
+		//画面外に出たら消す
+		if (m_pEnemyIceRain[i].GetScreenOut()) {
+			DeleteObj(i);
+			break;
 		}
 
 		//水星のステージであれば、一発しか出さない
@@ -180,10 +186,9 @@ void EnemyIceRainManagement::DeleteObj(int index_num)
 	//継承元の敵を消すを呼ぶ
 	EnemyManagement::DeleteObj(index_num);
 
-	//if (m_delete_enemy == ENEMY_NUM[m_stage_num]) {
-	//	m_tutorial_clear = true;
-	//}
-
+	if (m_delete_enemy == ENEMY_NUM[m_stage_num]) {
+		m_tutorial_clear = true;
+	}
 }
 
 //======================

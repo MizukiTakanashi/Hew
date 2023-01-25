@@ -201,12 +201,20 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 		GameObject::SetDrawob(*m_enemy_icerain_draw);
 		break;
 
-	case TYPE::TYPE7:
+	case TYPE::TYPE_GRENADE:
 		GameObject::SetDrawob(*m_enemy_homing_draw);
 		break;
 
-	case TYPE::TYPE8:
+	case TYPE::TYPE_FIRE:
 		GameObject::SetDrawob(*m_enemy_fire_draw);
+		break;
+
+	case TYPE::TYPE_ACID:
+		GameObject::SetDrawob(*m_enemy_gatoring_draw);
+		break;
+
+	case TYPE::TYPE_FIREBALL:
+		GameObject::SetDrawob(*m_enemy_gatoring_draw);
 		break;
 
 	default:
@@ -237,35 +245,43 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 		switch (m_type) {
 
 		case TYPE::TYPE_HOMING:
-			m_pEnemyItem = new PlayerArm1(*m_bullet_draw, false, (int)m_type);
+			m_pEnemyItem = new PlayerArm1(*m_bullet_draw, m_right, (int)m_type);
 			break;
 
 		case TYPE::TYPE_LASER:
-			m_pEnemyItem = new PlayerArm2(*m_laser_draw, false, (int)m_type);
+			m_pEnemyItem = new PlayerArm2(*m_laser_draw, m_right, (int)m_type);
 			break;
 
 		case TYPE::TYPE_GATORING:
-			m_pEnemyItem = new PlayerArm3(*m_bullet_draw, false, (int)m_type);
+			m_pEnemyItem = new PlayerArm3(*m_bullet_draw, m_right, (int)m_type);
 			break;
 
 		case TYPE::TYPE_BARRIAR:
-			m_pEnemyItem = new PlayerArmBarrier(*m_barrier_draw, false, (int)m_type);
+			m_pEnemyItem = new PlayerArmBarrier(*m_barrier_draw, m_right, (int)m_type);
 			break;
 
 		case TYPE::TYPE_STOP:
-			m_pEnemyItem = new PlayerArmStop(*m_bullet_stop_draw, false, (int)m_type);
+			m_pEnemyItem = new PlayerArmStop(*m_bullet_stop_draw, m_right, (int)m_type);
 			break;
 
 		case TYPE::TYPE_ICERAIN:
-			m_pEnemyItem = new PlayerArmIceRain(*m_enemy_icerain_draw, false, (int)m_type);
+			m_pEnemyItem = new PlayerArmIceRain(*m_bullet_icerain_draw, m_right, (int)m_type);
 			break;
 
-		case TYPE::TYPE7:
-			m_pEnemyItem = new PlayerArmGrenade(*m_bullet_draw, m_explosion_draw, false, (int)0);
+		case TYPE::TYPE_GRENADE:
+			m_pEnemyItem = new PlayerArmGrenade(*m_bullet_draw, m_explosion_draw, m_right, (int)0);
 			break;
 
-		case TYPE::TYPE8:
+		case TYPE::TYPE_FIRE:
 			m_pEnemyItem = new PlayerArm3(*m_bullet_fire_draw, false, (int)m_type, PlayerArm3::TYPE::FIRE);
+			break;
+
+		case TYPE::TYPE_ACID:
+			m_pEnemyItem = new PlayerArm3(*m_bullet_acid_draw, false, (int)m_type, PlayerArm3::TYPE::ACID);
+			break;
+
+		case TYPE::TYPE_FIREBALL:
+			m_pEnemyItem = new PlayerArm3(*m_bullet_fireball_draw, false, (int)m_type, PlayerArm3::TYPE::FIREBALL);
 			break;
 
 		default:

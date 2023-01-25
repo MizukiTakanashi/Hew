@@ -4,10 +4,12 @@
 // 作成者：高梨水希
 //=======================================
 #include "management_enemy_gatoring.h"
+#include "sound.h"
 
 //==========================
 // 定数の初期化
 //==========================
+const int EnemyGatoringManagement::ENEMY_NUM[(int)STAGE::NUM] = { 5, 0, 0, 2, 5 };
 const float EnemyGatoringManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyGatoringManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyGatoringManagement::BULLET_SPEED = 2.5f;
@@ -16,34 +18,40 @@ const float EnemyGatoringManagement::EXIT_MOVE_SPEED_Y = 5.0f;
 //=========================
 // 引数付きコンストラクタ
 //=========================
-EnemyGatoringManagement::EnemyGatoringManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
-	:EnemyManagement(EnemyManagement::TYPE::GATORING, ENEMY_NUM, ATTACK, BULLET_ATTACK),
+EnemyGatoringManagement::EnemyGatoringManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, int stage)
+	:EnemyManagement(EnemyManagement::TYPE::GATORING, ENEMY_NUM[stage], ATTACK, BULLET_ATTACK),
 	m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
-	m_pEnemyGatoring = new EnemyGatoring[ENEMY_NUM];
+	m_stage_num = stage;
+	m_pEnemyGatoring = new EnemyGatoring[ENEMY_NUM[stage]];
 	m_pBullet = new Bullet[BULLET_NUM];
+
+	m_SE_21 = LoadSound((char*)"data\\SE\\2_20.wav");
+	SetVolume(m_SE_21, 0.1f);
 }
 
 //======================
 // 更新処理
 //======================
-void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
+void EnemyGatoringManagement::Update()
 {
 	m_FlameNum++; //フレーム数を増加
 
-	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
+	if (m_FlameNum == m_SetEnemyTime[m_stage_num][m_EnemyNum] &&
+		m_EnemyNum < ENEMY_NUM[m_stage_num])
 	{
-		EnemyGatoring temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
+		EnemyGatoring temp(m_pDrawObjectEnemy, m_SetEnemy[m_stage_num][m_EnemyNum]);
 		m_pEnemyGatoring[GetObjNum()] = temp;
 		EnemyManagement::IncreaseObjNum(1);
 
 		m_EnemyNum++;
 	}
 
-	if (m_EnemyNum == ENEMY_NUM)
+	if (m_EnemyNum == ENEMY_NUM[m_stage_num])
 	{
 		m_tutorial_clear = true;
 	}
+
 	//今いる敵の処理
 	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
 		m_tutorial_clear = false;
@@ -67,6 +75,14 @@ void EnemyGatoringManagement::Update(const D3DXVECTOR2& PlayerPos)
 			EnemyManagement::IncreaseBulletNum(1);
 
 			m_pEnemyGatoring[i].BulletMake();
+
+			PlaySound(m_SE_21, 0);
+		}
+
+		//画面外に出たら消す
+		if (m_pEnemyGatoring[i].GetScreenOut()) {
+			DeleteObj(i);
+			break;
 		}
 
 	}

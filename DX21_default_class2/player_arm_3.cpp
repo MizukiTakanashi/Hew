@@ -12,6 +12,8 @@ const float PlayerArm3::BULLET_SIZE_X = 20.0f;
 const float PlayerArm3::BULLET_SIZE_Y = 20.0f;
 const float PlayerArm3::BULLET_SPEED = 20.0f;
 const float PlayerArm3::FIRE_SPEED = 10.0f;
+const float PlayerArm3::ACID_SPEED = 5.0f;
+const float PlayerArm3::FIREBALL_SPEED = 5.0f;
 
 //==========================
 // çXêVèàóù
@@ -41,7 +43,7 @@ void PlayerArm3::Update(const D3DXVECTOR2& arm_pos)
 	if ((inhPlayerArm::GetRightLeft() && inhPlayerArm::IsButtonPush()) ||
 		(!inhPlayerArm::GetRightLeft() && inhPlayerArm::IsButtonPush())) {
 		//î≠éÀÇ≈Ç´ÇÈéûä‘Ç…Ç»Ç¡ÇΩÇÁ...
-		if (m_bullet_interval_count > BULLET_INTERVAL) {
+		if (m_bullet_interval_count > m_interval) {
 			m_bullet_interval_count = 0;
 
 			//òrÇÃêÿÇËó£ÇµÇ∆ìØéûÇ…íeÇçÏÇÁÇ»Ç¢ÇΩÇﬂÇÃèàóù
@@ -60,9 +62,34 @@ void PlayerArm3::Update(const D3DXVECTOR2& arm_pos)
 			else if (m_type == TYPE::FIRE) {
 				temp_speed = FIRE_SPEED;
 			}
+			else if (m_type == TYPE::ACID)
+			{
+				temp_speed = ACID_SPEED;
+			}
+			else if (m_type == TYPE::FIREBALL)
+			{
+				temp_speed = FIREBALL_SPEED;
+			}
+
 			//íeÇçÏÇÈ
-			Bullet temp(m_bulletdraw, arm_pos,
-				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0.0f, -temp_speed), 0.0f);
+			Bullet temp;
+			if (m_type == TYPE::ACID)
+			{
+				temp = Bullet(m_bulletdraw, arm_pos,
+					D3DXVECTOR2(100.0f, 200.0f), D3DXVECTOR2(0.0f, -temp_speed), 0.0f);
+
+			}
+			else if (m_type == TYPE::FIREBALL)
+			{
+				temp = Bullet(m_bulletdraw, arm_pos,
+					D3DXVECTOR2(200.0f, 200.0f), D3DXVECTOR2(0.0f, -temp_speed), 0.0f);
+			}
+			else
+			{
+				temp = Bullet(m_bulletdraw, arm_pos,
+					D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0.0f, -temp_speed), 0.0f);
+
+			}
 
 			m_pBullet[inhPlayerArm::GetBulletNum()] = temp;
 
@@ -71,6 +98,14 @@ void PlayerArm3::Update(const D3DXVECTOR2& arm_pos)
 
 			//çÏÇ¡ÇΩíeÇÃêîÇëùÇ‚Ç∑
 			inhPlayerArm::IncreaseBulletMaked();
+
+			//âπÇñ¬ÇÁÇ∑
+			if (m_type == TYPE::GATORING) {
+				PlaySound(m_SE_21, 0);
+			}
+			else if (m_type == TYPE::FIRE) {
+				PlaySound(m_SE_15_1, 0);
+			}
 		}
 	}
 }

@@ -67,6 +67,12 @@ void EnemyStopManagement::Update(void)
 
 			PlaySound(m_SE_11, 0);
 		}
+
+		//画面外から出たら消す
+		if (m_pEnemy[i].GetScreenOut()) {
+			DeleteObj(i);
+			break;
+		}
 	}
 
 	//今いる弾の処理
@@ -124,9 +130,9 @@ void EnemyStopManagement::DeleteObj(int index_num)
 	//継承元の敵を消すを呼ぶ
 	EnemyManagement::DeleteObj(index_num);
 
-	//if (m_delete_enemy == ENEMY_NUM) {
-	//	m_tutorial_clear = true;
-	//}
+	if (m_delete_enemy == ENEMY_NUM) {
+		m_tutorial_clear = true;
+	}
 
 }
 

@@ -29,6 +29,9 @@ PlayerHP::PlayerHP(DrawObject& DrawObject1, ExplosionManagement* pEM, Player* pP
 	//プレイヤーダメージ音
 	m_SE_04 = LoadSound((char*)"data\\SE\\1_04_2.wav");
 	//SetVolume(g_SE, 0.1f);
+
+	//プレイヤー炎ダメージ音
+	m_SE_24 = LoadSound((char*)"data\\SE\\1_15_3.wav");
 }
 
 //==========================
@@ -94,6 +97,10 @@ void PlayerHP::Update(void)
 
 	//炎状態になっていたら少しずつ削る
 	if (m_fire) {
+		if (m_sound_interval-- < 0) {
+			PlaySound(m_SE_24, 0);
+			m_sound_interval = FIRE_DAMAGE_SOUND_INTERVAL;
+		}
 		m_hp -= FIRE_REDUCE;
 	}
 }

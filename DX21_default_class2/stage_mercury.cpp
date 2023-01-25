@@ -54,11 +54,21 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 	m_pTexUseful[(int)TEXTURE_TYPE::ICEFIELD].SetTextureName((char*)"data\\texture\\gimmick_Mercury .png");
 	m_pDrawObject[(int)DRAW_TYPE::ICEFIELD].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ICEFIELD], 2.0f, 1.0, 1.0f, 3);
 	m_pManagement_IceField = new Management_IceField(m_pDrawObject[(int)DRAW_TYPE::ICEFIELD]);
+	
+	//敵の管理
+	m_pAllEnemyManagement = new AllEnemyManagement;
+	m_pAllEnemyManagement->AddPointer(m_pEnemyLaser);
+	m_pAllEnemyManagement->AddPointer(m_pEnemyIce);
+	m_pAllEnemyManagement->AddPointer(m_pEnemyFire);
+	m_pAllEnemyManagement->AddPointer(m_pEnemyMissile);
+
 	//========================================================
 	// 全ての当たり判定
 	m_pColAll = new CollisionAll(CollisionAll::STAGE::MERCURY, m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
 		m_pItemManagement, m_pScore, m_pBom);
 	m_pColAll->SetHP(m_pPlayerHP);
+	m_pColAll->SetIceField(m_pManagement_IceField);
+	m_pColAll->SetFireField(m_pManagement_FireField);
 
 	//敵のポインタをセット
 	m_pColAll->AddEnemyPointer(m_pEnemyLaser);
@@ -73,6 +83,7 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 StageMercury::~StageMercury()
 {
 	delete m_pColAll;
+	delete m_pAllEnemyManagement;
 
 	delete m_pEnemyLaser;
 	delete m_pEnemyIce;
@@ -134,13 +145,16 @@ void StageMercury::Update(void)
 	int attack_num = 0;
 
 	//プレイヤーの腕
+	//ホーミング弾用
+	D3DXVECTOR2 temp_pos = m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerLeft->GetPos());
+
 	//腕のアップデート
 	m_pPlayerLeft->ButtonPress();
-	m_pPlayerLeft->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
+	m_pPlayerLeft->Update(m_pPlayer->GetPos(), temp_pos);
 	m_pPlayerRight->ButtonPress();
-	m_pPlayerRight->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
+	m_pPlayerRight->Update(m_pPlayer->GetPos(), temp_pos);
 	m_pPlayerCenter->ButtonPress();
-	m_pPlayerCenter->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
+	m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
 	m_pManagement_FireField->Update();
 	m_pManagement_IceField->Update();
 
@@ -160,6 +174,14 @@ void StageMercury::Update(void)
 		SetStageClear(false);
 		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MERCURY);
 	}
+
+	//最後の列の敵を全て倒したら
+	if (m_pEnemyLaser->IsClear() && m_pEnemyIce->IsClear() &&
+		m_pEnemyFire->IsClear() && m_pEnemyMissile->IsClear()) {
+		//リザルト画面に行く
+		SetStageClear(true);
+		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MERCURY);
+	}
 }
 
 //==========================
@@ -169,10 +191,19 @@ void StageMercury::Draw(void) const
 {
 	m_pBG->DrawBG();
 	m_pBG_Moon->DrawBG();
-	m_pFrame->Draw();
-	m_pPlayer->Draw();
 
-	//プレイヤーの腕の描画処理
+	//UIの描画
+	m_pFrame->Draw();
+	m_pPlayerHP->DrawHP();
+	m_pScore->DrawNumber();
+	m_pComboNum->SetNumber(m_pScore->GetComboNum());
+	m_pComboNum->DrawNumber();
+	m_pMultiply->Draw();
+	m_pStageMarcury->Draw();
+
+	//プレイヤーの描画処理
+	m_pPlayer->Draw();
+	m_pPlayer->DrawBullet();
 	m_pPlayerLeft->ArmDraw();
 	m_pPlayerRight->ArmDraw();
 	m_pPlayerCenter->ArmDraw();
@@ -183,9 +214,6 @@ void StageMercury::Draw(void) const
 	m_pEnemyFire->Draw();
 	m_pEnemyMissile->Draw();
 
-	//プレイヤーの弾の表示
-	m_pPlayer->DrawBullet();
-
 	m_pExplosionManagement->Draw();
 
 	m_pItemManagement->Draw();
@@ -193,14 +221,8 @@ void StageMercury::Draw(void) const
 	m_pManagement_IceField->Draw();
 	m_pManagement_FireField->Draw();
 
+
 	//ボムの描画
 	m_pBom->BomDraw();
 
-	//UIの描画
-	m_pFrame->Draw();
-	m_pPlayerHP->DrawHP();
-	m_pScore->DrawNumber();
-	m_pComboNum->SetNumber(m_pScore->GetComboNum());
-	m_pComboNum->DrawNumber();
-	m_pMultiply->Draw();
 }

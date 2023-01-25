@@ -19,8 +19,6 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 	//‰Î‹…‚Ì“G
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_FIREBALL].SetTextureName((char*)"data\\texture\\enemy_fireball.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_FIREBALL]);
-	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_FIREBALL].SetTextureName((char*)"data\\texture\\sun.png");
-	m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_FIREBALL]);
 
 	m_pEnemyFireballManagement = new EnemyFireballManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL]);
@@ -52,6 +50,9 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 	m_pEnemySpeeddownManagement = new EnemySpeeddownManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_SPEEDDOWN], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_SPEEDDOWN]);
 
+	//ƒKƒgƒŠƒ“ƒO“G
+	m_pEnemyGatoring = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING],
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 4);
 
 	//“G‚ÌŠÇ—
 	//m_pAllEnemyManagement->AddPointer(m_pEnemyFireballManagement);
@@ -64,6 +65,11 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 	m_pColAll->AddEnemyPointer(m_pEnemyAcidManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemuPoorvisionManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemySpeeddownManagement);
+
+	m_pPlayerCenter->DrawSetAcid(&m_pDrawObject[(int)DRAW_TYPE::BULLET_ACID]);
+	m_pPlayerRight->DrawSetAcid(&m_pDrawObject[(int)DRAW_TYPE::BULLET_ACID]);
+	m_pPlayerLeft->DrawSetAcid(&m_pDrawObject[(int)DRAW_TYPE::BULLET_ACID]);
+
 }
 
 //==========================
@@ -71,11 +77,12 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 //==========================
 StageVenus::~StageVenus()
 {
+	delete m_pColAll;
 	delete m_pEnemyFireballManagement;
 	delete m_pEnemuPoorvisionManagement;
 	delete m_pEnemySpeeddownManagement;
 	delete m_pEnemyAcidManagement;
-	delete m_pColAll;
+	delete m_pEnemyGatoring;
 }
 
 //==========================
@@ -122,6 +129,7 @@ void StageVenus::Update(void)
 	m_pEnemyAcidManagement->Update();
 	m_pEnemuPoorvisionManagement->Update();
 	m_pEnemySpeeddownManagement->Update();
+	m_pEnemyGatoring->Update();
 
 	//ƒ{ƒ€
 	m_pBom->Update();
@@ -171,10 +179,20 @@ void StageVenus::Draw(void) const
 {
 	m_pBG->DrawBG();
 	m_pBG_Moon->DrawBG();
+
+	//UI‚Ì•`‰æ
 	m_pFrame->Draw();
-	m_pPlayer->Draw();
+	m_pPlayerHP->DrawHP();
+	m_pScore->DrawNumber();
+	m_pComboNum->SetNumber(m_pScore->GetComboNum());
+	m_pComboNum->DrawNumber();
+	m_pMultiply->Draw();
+	m_pStageVenus->Draw();
+
 
 	//ƒvƒŒƒCƒ„[‚Ì˜r‚Ì•`‰æˆ—
+	m_pPlayer->Draw();
+	m_pPlayer->DrawBullet();
 	m_pPlayerLeft->ArmDraw();
 	m_pPlayerRight->ArmDraw();
 	m_pPlayerCenter->ArmDraw();
@@ -184,9 +202,7 @@ void StageVenus::Draw(void) const
 	m_pEnemyAcidManagement->Draw();
 	m_pEnemuPoorvisionManagement->Draw();
 	m_pEnemySpeeddownManagement->Draw();
-
-	//ƒvƒŒƒCƒ„[‚Ì’e‚Ì•\Ž¦
-	m_pPlayer->DrawBullet();
+	m_pEnemyGatoring->Draw();
 
 	m_pExplosionManagement->Draw();
 
@@ -194,13 +210,6 @@ void StageVenus::Draw(void) const
 
 	//ƒ{ƒ€‚Ì•`‰æ
 	m_pBom->BomDraw();
-
-	//UI‚Ì•`‰æ
-	m_pPlayerHP->DrawHP();
-	m_pScore->DrawNumber();
-	m_pComboNum->SetNumber(m_pScore->GetComboNum());
-	m_pComboNum->DrawNumber();
-	m_pMultiply->Draw();
 
 	m_pPoorvision->Draw();
 }

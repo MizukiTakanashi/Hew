@@ -17,7 +17,7 @@ const float EnemyAcidManagement::EXIT_MOVE_SPEED_Y = 5.0f;
 // 引数付きコンストラクタ
 //=========================
 EnemyAcidManagement::EnemyAcidManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
-	:EnemyManagement(EnemyManagement::TYPE::GATORING, ENEMY_NUM, ATTACK, BULLET_ATTACK),
+	:EnemyManagement(EnemyManagement::TYPE::ACID, ENEMY_NUM, ATTACK, BULLET_ATTACK),
 	m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
 	m_pEnemyGatoring = new EnemyStop[ENEMY_NUM];
@@ -68,6 +68,12 @@ void EnemyAcidManagement::Update()
 			EnemyManagement::IncreaseBulletNum(1);
 
 			m_pEnemyGatoring[i].BulletMake();
+		}
+
+		//画面外に出たら消す
+		if (m_pEnemyGatoring[i].GetScreenOut()) {
+			DeleteObj(i);
+			break;
 		}
 	}
 
@@ -125,9 +131,9 @@ void EnemyAcidManagement::DeleteObj(int index_num)
 	//継承元の敵を消すを呼ぶ
 	EnemyManagement::DeleteObj(index_num);
 
-	//if (m_EnemyNum == ENEMY_NUM) {
-	//	m_tutorial_clear = true;
-	//}
+	if (m_EnemyNum == ENEMY_NUM) {
+		m_tutorial_clear = true;
+	}
 }
 
 //======================

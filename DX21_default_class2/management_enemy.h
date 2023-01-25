@@ -24,10 +24,11 @@ public:
 		STOP,
 		ICERAIN,
 		GRENADE,
-		FIRE,
+		FIRE, 
+		ACID,
+		FIREBALL,//ここまでが合体できる敵
 		MEGUMIN,
 		ATTACK,
-		FIREBALL,
 		PUBLIC,
 		POORVISION,
 		SPEEDDOWN,
@@ -59,6 +60,7 @@ protected:
 		MARS,
 		MERCURY,
 		SATURN,
+		VENUS,
 		NUM
 	};
 	int m_stage_num = 0;			//ステージ

@@ -18,6 +18,7 @@ const D3DXVECTOR2 TitleScore::FLAME_SIZE = D3DXVECTOR2(1000.0f, 70.0f);
 const float TitleScore::FLAME_POS_X = SCREEN_WIDTH / 2 + 100.0f;
 
 const D3DXVECTOR2 TitleScore::PLANET_SIZE = D3DXVECTOR2(70.0f, 70.0f);
+const D3DXVECTOR2 TitleScore::PLANET_SATURN_SIZE = D3DXVECTOR2(70.0f, 50.0f);
 const float TitleScore::PLANET_POS_X = 100.0f;
 
 const D3DXVECTOR2 TitleScore::WORD_SIZE = D3DXVECTOR2(600.0f, 100.0f);
@@ -77,7 +78,7 @@ TitleScore::TitleScore(int score[])
 
 	//”Žš
 	m_pTexUseful[(int)TEXTURE_TYPE::NUMBER].SetTextureName((char*)"data\\texture\\number.png");
-	m_pDrawObject[(int)DRAW_TYPE::NUMBER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::NUMBER], 0.0f, 0.0909f, 1.0f, 11);
+	m_pDrawObject[(int)DRAW_TYPE::NUMBER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::NUMBER], 0.0f, 0.1f, 1.0f, 10);
 
 	//‰Î¯
 	m_pTexUseful[(int)TEXTURE_TYPE::MARS].SetTextureName((char*)"data\\texture\\mars.png");
@@ -131,6 +132,8 @@ TitleScore::TitleScore(int score[])
 		m_pScore[i - 2]->SetNumber(m_score[i - 2]);
 		m_pScore[i - 2]->SetInitPos(D3DXVECTOR2(NUMBER_INIT_POS_X, temp_y));
 	}
+
+	m_pUI[(int)UI_TYPE::SATURN]->SetSize(PLANET_SATURN_SIZE);
 
 	//=================
 	// ‰¹
