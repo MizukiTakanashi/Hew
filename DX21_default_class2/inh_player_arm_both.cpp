@@ -158,7 +158,10 @@ void inhPlayerArmBoth::ArmDraw(void) const
 //==========================
 void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 {
-
+	if (type == TYPE::TYPE_OLD)
+	{
+		m_pEnemyItem->SetBulletUsed(true);
+	}
 	//”­ŽË’†‚Å‚ ‚ê‚ÎƒZƒbƒg‚µ‚È‚¢
 	if (m_shot/*m_type == TYPE::TYPE_SHOOT*/) {
 		return;
