@@ -147,6 +147,10 @@
     <ClCompile Include="BossPatternE.cpp" />
     <ClCompile Include="BossPatternF.cpp" />
     <ClCompile Include="BulletPatternA.cpp" />
+    <ClCompile Include="BulletPatternB.cpp" />
+    <ClCompile Include="BulletPatternC.cpp" />
+    <ClCompile Include="BulletPatternD.cpp" />
+    <ClCompile Include="BulletPatternE.cpp" />
     <ClCompile Include="bullet_stop.cpp" />
     <ClCompile Include="collision_all.cpp" />
     <ClCompile Include="bullet.cpp" />
@@ -280,6 +284,9 @@
     <ClInclude Include="BulletPattern.h" />
     <ClInclude Include="BulletPatternA.h" />
     <ClInclude Include="BulletPatternB.h" />
+    <ClInclude Include="BulletPatternC.h" />
+    <ClInclude Include="BulletPatternD.h" />
+    <ClInclude Include="BulletPatternE.h" />
     <ClInclude Include="bullet_stop.h" />
     <ClInclude Include="collision_all.h" />
     <ClInclude Include="bullet.h" />

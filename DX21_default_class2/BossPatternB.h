@@ -19,4 +19,8 @@ public:
 
 private:
 	BossPatternB(){}
+
+private:
+	float m_fStartX;
+	float m_fRad;
 };
