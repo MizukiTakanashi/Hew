@@ -75,7 +75,10 @@ void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem)
 	case (int)Item::Item_NUM::ENEMYITEM_FIRE:
 		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
 		break;
-	case 8:
+	case (int)Item::Item_NUM::ENEMYITEM_ACID:
+		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
+		break;
+	case (int)Item::Item_NUM::ENEMYITEM_FIREBALL:
 		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
 		break;
 	default:

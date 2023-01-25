@@ -20,6 +20,8 @@ public:
 	{
 		GATORING,
 		FIRE,
+		ACID,
+		FIREBALL,
 		NUM
 	};
 
@@ -28,18 +30,24 @@ private:
 	static const int BULLET_NUM_MAX = 50;		//弾の制限数　実際に撃てる数はこれより１少ない
 	static const int BULLET_SHOOT_MAX = 20;		//弾の同時最大発射数
 	static const int BULLET_INTERVAL = 10;		//弾の発射間隔
+	static const int ACID_INTERVAL = 120;		//弾の発射間隔
+	static const int FIREBALL_INTERVAL = 60;		//弾の発射間隔
 	
 	//cppで初期化
 	static const float BULLET_SIZE_X;		//サイズX
 	static const float BULLET_SIZE_Y;		//サイズY
 	static const float BULLET_SPEED;		//スピード
 	static const float FIRE_SPEED;			//炎のスピード
+	static const float ACID_SPEED;			//炎のスピード
+	static const float FIREBALL_SPEED;			//炎のスピード
 
 //メンバ変数
 private:
 	DrawObject m_bulletdraw;			//弾の描画オブジェクト
 	Bullet* m_pBullet = nullptr;		//弾のオブジェクト
 	TYPE m_type = TYPE::GATORING;		//弾のタイプ
+
+	int m_interval = BULLET_INTERVAL;
 
 //メンバ関数
 public:
@@ -48,8 +56,19 @@ public:
 
 	//引数付きコンストラクタ
 	PlayerArm3(DrawObject bulletdraw, bool right, int type, TYPE _type = TYPE::GATORING)
-		:inhPlayerArm(BULLET_NUM_MAX, right, type), m_bulletdraw(bulletdraw), m_type(_type) {
-		m_pBullet = new Bullet[BULLET_SHOOT_MAX]; }
+		:inhPlayerArm(BULLET_NUM_MAX, right, type), m_bulletdraw(bulletdraw), m_type(_type) 
+	{
+
+		m_pBullet = new Bullet[BULLET_SHOOT_MAX]; 
+		if (m_type == TYPE::ACID)
+		{
+			m_interval = ACID_INTERVAL;
+		}
+		else if (m_type == TYPE::FIREBALL)
+		{
+			m_interval = FIREBALL_INTERVAL;
+		}
+	}
 
 	//デストラクタ
 	~PlayerArm3()override { delete[] m_pBullet; }

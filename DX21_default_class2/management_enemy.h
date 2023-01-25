@@ -24,10 +24,11 @@ public:
 		STOP,
 		ICERAIN,
 		GRENADE,
-		FIRE, //ここまでが合体できる敵
+		FIRE, 
+		ACID,
+		FIREBALL,//ここまでが合体できる敵
 		MEGUMIN,
 		ATTACK,
-		FIREBALL,
 		PUBLIC,
 		POORVISION,
 		SPEEDDOWN,

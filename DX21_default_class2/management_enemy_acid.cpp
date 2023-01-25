@@ -17,7 +17,7 @@ const float EnemyAcidManagement::EXIT_MOVE_SPEED_Y = 5.0f;
 // 引数付きコンストラクタ
 //=========================
 EnemyAcidManagement::EnemyAcidManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
-	:EnemyManagement(EnemyManagement::TYPE::GATORING, ENEMY_NUM, ATTACK, BULLET_ATTACK),
+	:EnemyManagement(EnemyManagement::TYPE::ACID, ENEMY_NUM, ATTACK, BULLET_ATTACK),
 	m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
 	m_pEnemyGatoring = new EnemyStop[ENEMY_NUM];
