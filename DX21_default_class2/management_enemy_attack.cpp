@@ -74,6 +74,12 @@ void EnemyAttackManagement::Update(const D3DXVECTOR2& PlayerPos)
 			m_pEnemyAttack[i].MovePos(D3DXVECTOR2(0.0f, 0.0f));
 			DeleteObj(i);
 		}
+
+		//‰æ–ÊŠO‚Éo‚½‚çÁ‚·
+		if (m_pEnemyAttack[i].GetScreenOut()) {
+			DeleteObj(i);
+			break;
+		}
 	}
 	//¡‚¢‚é’e‚Ìˆ—
 	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {

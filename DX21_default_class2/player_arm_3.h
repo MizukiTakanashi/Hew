@@ -1,8 +1,8 @@
 #pragma once
 //======================================================
-// ƒvƒŒƒCƒ„[‚Ì˜rAƒKƒgƒŠƒ“ƒOE‰ŠŠÖŒW(ƒwƒbƒ_ƒtƒ@ƒCƒ‹)
-// ì¬“úF2022/10/28
-// ì¬ÒF‚—œ…Šó
+// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•ã€ã‚¬ãƒˆãƒªãƒ³ã‚°ãƒ»ç‚é–¢ä¿‚(ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š2022/10/28
+// ä½œæˆè€…ï¼šé«˜æ¢¨æ°´å¸Œ
 //======================================================
 
 #ifndef _PLAYER_ARM_3_H_
@@ -15,67 +15,84 @@
 
 class PlayerArm3 :public inhPlayerArm
 {
-//’è”
+//å®šæ•°
 public:
 	enum class TYPE :int
 	{
 		GATORING,
 		FIRE,
+		ACID,
+		FIREBALL,
 		NUM
 	};
 
 private:
-	//‚±‚±‚Å‰Šú‰»
-	static const int BULLET_NUM_MAX = 50;		//’e‚Ì§ŒÀ”@ÀÛ‚ÉŒ‚‚Ä‚é”‚Í‚±‚ê‚æ‚è‚P­‚È‚¢
-	static const int BULLET_SHOOT_MAX = 20;		//’e‚Ì“¯Å‘å”­Ë”
-	static const int BULLET_INTERVAL = 10;		//’e‚Ì”­ËŠÔŠu
+	//ã“ã“ã§åˆæœŸåŒ–
+	static const int BULLET_NUM_MAX = 50;		//å¼¾ã®åˆ¶é™æ•°ã€€å®Ÿéš›ã«æ’ƒã¦ã‚‹æ•°ã¯ã“ã‚Œã‚ˆã‚Šï¼‘å°‘ãªã„
+	static const int BULLET_SHOOT_MAX = 20;		//å¼¾ã®åŒæ™‚æœ€å¤§ç™ºå°„æ•°
+	static const int BULLET_INTERVAL = 10;		//å¼¾ã®ç™ºå°„é–“éš”
+	static const int ACID_INTERVAL = 120;		//å¼¾ã®ç™ºå°„é–“éš”
+	static const int FIREBALL_INTERVAL = 60;		//å¼¾ã®ç™ºå°„é–“éš”
 	
-	//cpp‚Å‰Šú‰»
-	static const float BULLET_SIZE_X;		//ƒTƒCƒYX
-	static const float BULLET_SIZE_Y;		//ƒTƒCƒYY
-	static const float BULLET_SPEED;		//ƒXƒs[ƒh
-	static const float FIRE_SPEED;			//‰Š‚ÌƒXƒs[ƒh
+	//cppã§åˆæœŸåŒ–
+	static const float BULLET_SIZE_X;		//ã‚µã‚¤ã‚ºX
+	static const float BULLET_SIZE_Y;		//ã‚µã‚¤ã‚ºY
+	static const float BULLET_SPEED;		//ã‚¹ãƒ”ãƒ¼ãƒ‰
+	static const float FIRE_SPEED;			//ç‚ã®ã‚¹ãƒ”ãƒ¼ãƒ‰
+	static const float ACID_SPEED;			//ç‚ã®ã‚¹ãƒ”ãƒ¼ãƒ‰
+	static const float FIREBALL_SPEED;			//ç‚ã®ã‚¹ãƒ”ãƒ¼ãƒ‰
 
-//ƒƒ“ƒo•Ï”
+//ãƒ¡ãƒ³ãƒå¤‰æ•°
 private:
-	DrawObject m_bulletdraw;			//’e‚Ì•`‰æƒIƒuƒWƒFƒNƒg
-	Bullet* m_pBullet = nullptr;		//’e‚ÌƒIƒuƒWƒFƒNƒg
-	TYPE m_type = TYPE::GATORING;		//’e‚Ìƒ^ƒCƒv
-	int m_SE_21 = 0;					//ƒKƒgƒŠƒ“ƒO’e”­Ë‰¹
-	int m_SE_15_1 = 0;					//‰Š”­Ë‰¹
+	DrawObject m_bulletdraw;			//å¼¾ã®æç”»ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	Bullet* m_pBullet = nullptr;		//å¼¾ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	TYPE m_type = TYPE::GATORING;		//å¼¾ã®ã‚¿ã‚¤ãƒ—
+	int m_SE_21 = 0;					//ã‚¬ãƒˆãƒªãƒ³ã‚°å¼¾ç™ºå°„éŸ³
+	int m_SE_15_1 = 0;					//ç‚ç™ºå°„éŸ³
 
-//ƒƒ“ƒoŠÖ”
+	int m_interval = BULLET_INTERVAL;
+
+//ãƒ¡ãƒ³ãƒé–¢æ•°
 public:
-	//ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	PlayerArm3() { m_pBullet = new Bullet[BULLET_SHOOT_MAX]; }
 
-	//ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	//å¼•æ•°ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	PlayerArm3(DrawObject bulletdraw, bool right, int type, TYPE _type = TYPE::GATORING)
-		:inhPlayerArm(BULLET_NUM_MAX, right, type), m_bulletdraw(bulletdraw), m_type(_type) {
+	:inhPlayerArm(BULLET_NUM_MAX, right, type), m_bulletdraw(bulletdraw), m_type(_type) 
+	{
 		m_pBullet = new Bullet[BULLET_SHOOT_MAX]; 
 		m_SE_21 = LoadSound((char*)"data\\SE\\2_20.wav");
 		SetVolume(m_SE_21, 0.07f);
 		m_SE_15_1 = LoadSound((char*)"data\\SE\\1_15_1.wav");
 		SetVolume(m_SE_15_1, 0.5f);
+		if (m_type == TYPE::ACID)
+		{
+			m_interval = ACID_INTERVAL;
+		}
+		else if (m_type == TYPE::FIREBALL)
+		{
+			m_interval = FIREBALL_INTERVAL;
+		}
 	}
 
-	//ƒfƒXƒgƒ‰ƒNƒ^
+	//ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	~PlayerArm3()override { delete[] m_pBullet; }
 
-	//XVˆ—(ƒI[ƒo[ƒ‰ƒCƒh)
+	//æ›´æ–°å‡¦ç†(ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰)
 	void Update(const D3DXVECTOR2& arm_pos)override;
 
-	//•`‰æˆ—(ƒI[ƒo[ƒ‰ƒCƒh)
+	//æç”»å‡¦ç†(ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰)
 	void PlayerArmDraw()const override;
 
-	//w’è‚µ‚½”Ô†‚Ì’e‚ğÁ‚·(ƒI[ƒo[ƒ‰ƒCƒh)
+	//æŒ‡å®šã—ãŸç•ªå·ã®å¼¾ã‚’æ¶ˆã™(ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰)
 	void DeleteBullet(int index_num)override;
 
-	//w’è‚µ‚½”Ô†‚Ì’e‚ÌÀ•W‚ğ•Ô‚·(ƒI[ƒo[ƒ‰ƒCƒh)
+	//æŒ‡å®šã—ãŸç•ªå·ã®å¼¾ã®åº§æ¨™ã‚’è¿”ã™(ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰)
 	const D3DXVECTOR2& GetBulletPos(int index_num)const override
 		{ return m_pBullet[index_num].GetPos();	}
 
-	//w’è‚µ‚½”Ô†‚Ì’e‚ÌƒTƒCƒY‚ğ•Ô‚·(ƒI[ƒo[ƒ‰ƒCƒh)
+	//æŒ‡å®šã—ãŸç•ªå·ã®å¼¾ã®ã‚µã‚¤ã‚ºã‚’è¿”ã™(ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰)
 	const D3DXVECTOR2& GetBulletSize(int index_num = 0)const override
 		{ return m_pBullet[index_num].GetSize(); }
 };

@@ -67,6 +67,12 @@ void EnemyPoorvisionManagement::Update(void)
 
 			//PlaySound(m_SE_11, 0);
 		}
+
+		//画面外から出たら消す
+		if (m_pEnemy[i].GetScreenOut()) {
+			DeleteObj(i);
+			break;
+		}
 	}
 
 	//今いる弾の処理

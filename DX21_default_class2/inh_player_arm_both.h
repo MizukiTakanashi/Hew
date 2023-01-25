@@ -27,6 +27,8 @@ public:
 		TYPE_ICERAIN,	//氷の敵
 		TYPE_GRENADE,			//グレネード敵
 		TYPE_FIRE,			//炎の敵
+		TYPE_ACID,
+		TYPE_FIREBALL,
 		TYPE_NONE,	//	何もついていない
 		TYPE_SHOOT,	// 前のタイプの弾の処理 & 自身発射中
 		TYPE_DM_SHOOT,	//ダメージをくらった時の
@@ -47,17 +49,19 @@ private:
 	bool m_shot = false;					//自分自身が発射されてるか否か
 
 	//弾
-	DrawObject* m_bullet_draw = nullptr;				//弾の描画オブジェクト
-	DrawObject* m_laser_draw = nullptr;				//レーザーの描画オブジェクト
-	DrawObject* m_barrier_draw = nullptr;	//バリアの描画オブジェクト
+	DrawObject* m_bullet_draw = nullptr;		//弾の描画オブジェクト
+	DrawObject* m_laser_draw = nullptr;			//レーザーの描画オブジェクト
+	DrawObject* m_barrier_draw = nullptr;		//バリアの描画オブジェクト
 	DrawObject* m_bullet_stop_draw = nullptr;	//動きを止める敵の弾の描画オブジェクト
-	DrawObject* m_bullet_icerain_draw = nullptr;	//氷の敵の描画
+	DrawObject* m_bullet_icerain_draw = nullptr;//氷の敵の描画
 	DrawObject* m_bullet_fire_draw = nullptr;	//氷の敵の描画
+	DrawObject* m_bullet_acid_draw = nullptr;	//氷の敵の描画
+	DrawObject* m_bullet_fireball_draw = nullptr;	//氷の敵の描画
 	
 	//敵
-	DrawObject* m_enemy_homing_draw = nullptr;				//弾の描画オブジェクト
-	DrawObject* m_enemy_gatoring_draw = nullptr;				//弾の描画オブジェクト
-	DrawObject* m_enemy_laser_draw = nullptr;				//レーザーの描画オブジェクト
+	DrawObject* m_enemy_homing_draw = nullptr;	//弾の描画オブジェクト
+	DrawObject* m_enemy_gatoring_draw = nullptr;//弾の描画オブジェクト
+	DrawObject* m_enemy_laser_draw = nullptr;	//レーザーの描画オブジェクト
 	DrawObject* m_enemy_barrier_draw = nullptr;	//バリアの描画オブジェクト
 	DrawObject* m_enemy_stop_draw = nullptr;	//動きを止める敵の弾の描画オブジェクト
 	DrawObject* m_enemy_icerain_draw = nullptr;	//氷の敵の描画
@@ -69,6 +73,7 @@ private:
 	bool m_bullet_shot = false;				//弾発射のボタンが押されたか(押している間)
 	bool m_bullet_shot_trigger = false;		//弾発射のボタンが押されたか(押した時)
 
+	bool m_right = false;					//腕の右か左についているか
 
 protected:
 	static const D3DXVECTOR2 ICON_SIZE;			//敵アイコンの表示場所
@@ -86,8 +91,10 @@ public:
 
 	//引数付きコンストラクタ
 	inhPlayerArmBoth(const D3DXVECTOR2& pos,
-		const D3DXVECTOR2& from_player, DrawObject& pDrawobNumber, D3DXVECTOR2 num_pos, D3DXVECTOR2 icon_pos)
-		:GameObject(pDrawobNumber, pos, SIZE), m_from_player(from_player), m_Remaining_Icon_Pos(icon_pos)
+		const D3DXVECTOR2& from_player, DrawObject& pDrawobNumber, D3DXVECTOR2 num_pos, D3DXVECTOR2 icon_pos,
+		bool right = false)
+		:GameObject(pDrawobNumber, pos, SIZE), m_from_player(from_player), m_Remaining_Icon_Pos(icon_pos), 
+		m_right(right)
 	{
 		m_pRemaining_Num = new Number(pDrawobNumber, num_pos, D3DXVECTOR2(30.0f, 40.0f), 2);
 	}
@@ -154,6 +161,12 @@ public:
 
 	//炎の敵の弾の描画
 	void DrawSetFire(DrawObject* pDraw) { m_bullet_fire_draw = pDraw; }
+
+	//酸性雨の敵の弾の描画
+	void DrawSetAcid(DrawObject* pDraw) { m_bullet_acid_draw = pDraw; }
+
+	//酸性雨の敵の弾の描画
+	void DrawSetFireBall(DrawObject* pDraw) { m_bullet_fireball_draw = pDraw; }
 
 
 	//========================

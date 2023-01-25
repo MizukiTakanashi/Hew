@@ -133,6 +133,12 @@ void EnemyLaserManagement::Update()
 				PlaySound(m_SE_06, 0);
 			}
 		}
+
+		//画面外に出たら消す
+		if (m_pEnemyLaser[i].GetScreenOut()) {
+			DeleteObj(i);
+			break;
+		}
 	}
 
 	//死んだ敵のレーザーのアップデート

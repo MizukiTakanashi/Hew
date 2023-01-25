@@ -115,6 +115,12 @@ void EnemyGrenadeManagement::Update(const D3DXVECTOR2& PlayerPos)
 
 			PlaySound(m_SE_12, 0);
 		}
+
+		//画面外に出たら消す
+		if (m_pEnemy[i].GetScreenOut()) {
+			DeleteObj(i);
+			break;
+		}
 	}
 
 	//今いる弾の処理(別オブジェクト)
