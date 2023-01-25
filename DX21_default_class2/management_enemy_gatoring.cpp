@@ -79,6 +79,12 @@ void EnemyGatoringManagement::Update()
 			PlaySound(m_SE_21, 0);
 		}
 
+		//画面外に出たら消す
+		if (m_pEnemyGatoring[i].GetScreenOut()) {
+			DeleteObj(i);
+			break;
+		}
+
 	}
 
 	//今いる弾の処理

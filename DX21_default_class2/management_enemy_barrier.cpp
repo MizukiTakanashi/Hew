@@ -71,6 +71,12 @@ void EnemyBarrierManagement::Update()
 				m_pBarrier[j].SetPos(m_pEnemy[i].GetPos() + INTERVAL_POS);
 			}
 		}
+
+		//‰æ–ÊŠO‚Éo‚½‚çÁ‚·
+		if (m_pEnemy[i].GetScreenOut()) {
+			DeleteObj(i);
+			break;
+		}
 	}
 }
 

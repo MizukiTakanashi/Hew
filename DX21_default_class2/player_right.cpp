@@ -23,10 +23,10 @@ void PlayerRight::ButtonPress(void)
 	inhPlayerArmBoth::SetSeparationButton(InputGetKeyDown(KK_C) || IsButtonTriggered(0, XINPUT_GAMEPAD_RIGHT_SHOULDER));
 
 	//’e”­ŽËƒ{ƒ^ƒ“(‰Ÿ‚µ‚Ä‚¢‚éŠÔ)
-	inhPlayerArmBoth::SetBulletShotButton((InputGetKey(KK_SPACE) || IsButtonPressed(0, XINPUT_GAMEPAD_A)) ||
+	inhPlayerArmBoth::SetBulletShotButton((InputGetKey(KK_SPACE) || IsButtonPressed(0, XINPUT_GAMEPAD_B)) ||
 		GetRightTrigger(0) > TRIGGER);
 
 	//’e”­ŽËƒ{ƒ^ƒ“(‰Ÿ‚µ‚½Žž)
-	inhPlayerArmBoth::SetBulletShotButtonTrigger((InputGetKeyDown(KK_SPACE) || IsButtonTriggered(0, XINPUT_GAMEPAD_A)) ||
+	inhPlayerArmBoth::SetBulletShotButtonTrigger((InputGetKeyDown(KK_SPACE) || IsButtonTriggered(0, XINPUT_GAMEPAD_B)) ||
 		GetRightTriggerTriggered(0, TRIGGER));
 }

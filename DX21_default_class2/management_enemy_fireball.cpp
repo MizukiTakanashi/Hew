@@ -84,6 +84,12 @@ void EnemyFireballManagement::Update(const D3DXVECTOR2& PlayerPos)
 
 			PlaySound(m_SE_15_2, 0);
 		}
+
+		//画面外に出たら消す
+		if (m_pEnemyNormal[i].GetScreenOut()) {
+			DeleteObj(i);
+			break;
+		}
 	}
 
 	//今いる弾の処理

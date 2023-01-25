@@ -81,7 +81,8 @@ void EnemyMissileManagement::Update(const D3DXVECTOR2& PlayerPos)
 
 		//‰æ–ÊŠO‚©‚ço‚½‚çÁ‚·
 		if (m_pEnemyMissile[i].GetScreenOut()) {
-
+			DeleteObj(i);
+			break;
 		}
 	}
 
