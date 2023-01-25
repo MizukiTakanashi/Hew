@@ -208,3 +208,18 @@ void Player::DeleteBullet(int index_num)
 	}
 	m_BulletNum--;
 }
+
+//==========================
+// ‰Šó‘Ô‚ğƒZƒbƒg‚·‚é
+//==========================
+void Player::SetFire(bool fire)
+{
+	//‰Šó‘Ô‚É‚È‚é‚Ì‚Å‚ ‚ê‚Î...
+	if (fire) {
+		GameObject::SetDrawob(m_draw_fire);
+	}
+	//‰Šó‘Ô‰ğœ‚Å‚ ‚ê‚Î...
+	else {
+		GameObject::SetDrawob(m_draw_default);
+	}
+}

@@ -43,6 +43,8 @@ private:
 	bool m_isClear = false;		//CLEARしたかどうか
 	bool m_select_retry = false; //どっちを選択しているか
 
+	float m_thumb_before = 0.0f;	//スティックの値
+
 public:
 	Result(bool isClear, Score* pNumber, STAGE stagenum);
 
