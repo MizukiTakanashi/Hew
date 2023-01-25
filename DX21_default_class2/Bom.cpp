@@ -19,12 +19,22 @@ void Bom::Update(void)
 	}
 
 	//ボムがセットされていなければ...
+
+	if (GetLeftTriggerTriggered(0, 120)) {
+		m_left = SAME_TIME;
+	}
+	if (GetRightTriggerTriggered(0, 120)) {
+		m_right = SAME_TIME;
+	}
 	
 	//ゲームパッドのXボタンを押したら...
 	//キーボードのEnterを押したら...
-	if (m_time == -1 && (GetRightTriggerTriggered(0, 120) || InputGetKeyDown(KK_R))) {
+	if (m_time == -1 && ((m_right-- > 0 && m_left-- > 0)
+		|| InputGetKeyDown(KK_R))) {
 		PlaySound(m_SE_17, 0);
 		m_time = 0;
+		m_right = 0;
+		m_left = 0;
 	}
 
 	//ボムがセットされていれば...
