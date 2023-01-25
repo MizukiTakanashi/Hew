@@ -80,8 +80,8 @@ private:
 	},
 	//ìyêØ
 	{
-		D3DXVECTOR2(52.5f + (105 * 2), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 6), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2),
 	}
 	};
 
