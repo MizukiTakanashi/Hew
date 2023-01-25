@@ -140,6 +140,13 @@
     <ClCompile Include="bgplanet.cpp" />
     <ClCompile Include="Bom.cpp" />
     <ClCompile Include="boss.cpp" />
+    <ClCompile Include="BossPatternA.cpp" />
+    <ClCompile Include="BossPatternB.cpp" />
+    <ClCompile Include="BossPatternC.cpp" />
+    <ClCompile Include="BossPatternD.cpp" />
+    <ClCompile Include="BossPatternE.cpp" />
+    <ClCompile Include="BossPatternF.cpp" />
+    <ClCompile Include="BulletPatternA.cpp" />
     <ClCompile Include="bullet_stop.cpp" />
     <ClCompile Include="collision_all.cpp" />
     <ClCompile Include="bullet.cpp" />
@@ -154,9 +161,7 @@
     <ClCompile Include="enemy_stop.cpp" />
     <ClCompile Include="Fade.cpp" />
     <ClCompile Include="firefield.cpp" />
-
     <ClCompile Include="icefield.cpp" />
-
     <ClCompile Include="inh_enemy.cpp" />
     <ClCompile Include="inh_player_arm_both.cpp" />
     <ClCompile Include="inh_stage.cpp" />
@@ -195,9 +200,7 @@
     <ClCompile Include="game_object.cpp" />
     <ClCompile Include="inh_player_arm.cpp" />
     <ClCompile Include="management_firefield.cpp" />
-
     <ClCompile Include="management_icefield.cpp" />
-
     <ClCompile Include="management_item.cpp" />
     <ClCompile Include="item_p.cpp" />
     <ClCompile Include="laser.cpp" />
@@ -267,6 +270,16 @@
     <ClInclude Include="bg_planet.h" />
     <ClInclude Include="Bom.h" />
     <ClInclude Include="boss.h" />
+    <ClInclude Include="BossPattern.h" />
+    <ClInclude Include="BossPatternA.h" />
+    <ClInclude Include="BossPatternB.h" />
+    <ClInclude Include="BossPatternC.h" />
+    <ClInclude Include="BossPatternD.h" />
+    <ClInclude Include="BossPatternE.h" />
+    <ClInclude Include="BossPatternF.h" />
+    <ClInclude Include="BulletPattern.h" />
+    <ClInclude Include="BulletPatternA.h" />
+    <ClInclude Include="BulletPatternB.h" />
     <ClInclude Include="bullet_stop.h" />
     <ClInclude Include="collision_all.h" />
     <ClInclude Include="bullet.h" />
@@ -281,10 +294,7 @@
     <ClInclude Include="enemy_stop.h" />
     <ClInclude Include="Fade.h" />
     <ClInclude Include="firefield.h" />
-
     <ClInclude Include="icefield.h" />
-
-
     <ClInclude Include="inh_enemy.h" />
     <ClInclude Include="inh_player_arm_both.h" />
     <ClInclude Include="inh_stage.h" />
@@ -323,9 +333,7 @@
     <ClInclude Include="game_object.h" />
     <ClInclude Include="inh_player_arm.h" />
     <ClInclude Include="management_firefield.h" />
-
     <ClInclude Include="management_icefield.h" />
-
     <ClInclude Include="management_item.h" />
     <ClInclude Include="item_p.h" />
     <ClInclude Include="laser.h" />
