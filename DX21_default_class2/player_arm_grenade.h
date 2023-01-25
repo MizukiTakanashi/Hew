@@ -45,6 +45,7 @@ private:
 	Explosion* m_pExplosionDraw[BULLET_SHOOT_MAX];	//描画用の爆発
 	int m_interval_count = 0;				//発射間隔のカウント
 	int m_attack_count[BULLET_SHOOT_MAX];	//爆発開始からをカウント
+	int m_SE_12 = 0;						//弾発射音
 
 
 //メンバ関数

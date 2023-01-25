@@ -55,6 +55,8 @@ private:
 
 	int m_stage_num = 0;			//ステージ
 
+	int m_SE_12 = 0;				//弾発射音
+
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][5] = {
 		//月
