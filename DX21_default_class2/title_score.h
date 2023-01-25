@@ -71,7 +71,7 @@ private:
 	};
 
 	//‚±‚±‚Å‰Šú‰»
-	static const int NUMBER_DIGIT = 10;		//”š‚ÌŒ…
+	static const int NUMBER_DIGIT = 5;		//”š‚ÌŒ…
 
 	//cpp‚Å‰Šú‰»
 	static const D3DXVECTOR2 NUMBER_SIZE;
@@ -81,6 +81,7 @@ private:
 	static const float FLAME_POS_X;
 
 	static const D3DXVECTOR2 PLANET_SIZE;
+	static const D3DXVECTOR2 PLANET_SATURN_SIZE;
 	static const float PLANET_POS_X;
 
 	static const D3DXVECTOR2 WORD_SIZE;

@@ -67,6 +67,12 @@ void EnemyMeguminManagement::Update(void)
 
 			PlaySound(m_SE_18, 0);
 		}
+
+		//画面外に出たら消す
+		if (m_pEnemy[i].GetScreenOut()) {
+			DeleteObj(i);
+			break;
+		}
 	}
 
 	//今いる弾の処理

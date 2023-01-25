@@ -77,6 +77,12 @@ void EnemyFireManagement::Update()
 
 			PlaySound(m_SE_15_1, 0);
 		}
+
+		//‰æ–ÊŠO‚Éo‚½‚çÁ‚·
+		if (m_pEnemy[i].GetScreenOut()) {
+			DeleteObj(i);
+			break;
+		}
 	}
 
 	//¡‚¢‚é’e‚Ìˆ—

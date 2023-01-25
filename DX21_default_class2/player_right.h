@@ -26,7 +26,7 @@ public:
 
 	//引数付きコンストラクタ
 	PlayerRight(const D3DXVECTOR2& pos, DrawObject& pDrawobNumber, D3DXVECTOR2 num_pos, D3DXVECTOR2 icon_pos)
-		:inhPlayerArmBoth(pos, FROM_PLAYER_POS, pDrawobNumber, num_pos, icon_pos) {}
+		:inhPlayerArmBoth(pos, FROM_PLAYER_POS, pDrawobNumber, num_pos, icon_pos, true) {}
 
 	~PlayerRight()override {}	//デストラクタ
 

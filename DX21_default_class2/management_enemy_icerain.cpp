@@ -70,6 +70,12 @@ void EnemyIceRainManagement::Update(const D3DXVECTOR2& PlayerPos)
 			PlaySound(m_SE_13, 0);
 		}
 
+		//画面外に出たら消す
+		if (m_pEnemyIceRain[i].GetScreenOut()) {
+			DeleteObj(i);
+			break;
+		}
+
 		//水星のステージであれば、一発しか出さない
 		if (m_stage_num == (int)STAGE::MERCURY) {
 			continue;
