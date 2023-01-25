@@ -4,7 +4,7 @@
 #include "BulletPatternE.h"
 BossPatternF::BossPatternF(Boss* pBoss)
 {
-	pBoss->ChangeBulletPattern(new BulletPatternE);
+	//pBoss->ChangeBulletPattern(new BulletPatternE);
 }
 
 BossPatternF::~BossPatternF()
