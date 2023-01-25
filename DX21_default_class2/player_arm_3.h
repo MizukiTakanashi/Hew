@@ -59,15 +59,14 @@ public:
 
 	//引数付きコンストラクタ
 	PlayerArm3(DrawObject bulletdraw, bool right, int type, TYPE _type = TYPE::GATORING)
-
-		:inhPlayerArm(BULLET_NUM_MAX, right, type), m_bulletdraw(bulletdraw), m_type(_type) 
-　{
+	:inhPlayerArm(BULLET_NUM_MAX, right, type), m_bulletdraw(bulletdraw), m_type(_type) 
+	{
 		m_pBullet = new Bullet[BULLET_SHOOT_MAX]; 
 		m_SE_21 = LoadSound((char*)"data\\SE\\2_20.wav");
 		SetVolume(m_SE_21, 0.07f);
 		m_SE_15_1 = LoadSound((char*)"data\\SE\\1_15_1.wav");
 		SetVolume(m_SE_15_1, 0.5f);
-    if (m_type == TYPE::ACID)
+		if (m_type == TYPE::ACID)
 		{
 			m_interval = ACID_INTERVAL;
 		}
