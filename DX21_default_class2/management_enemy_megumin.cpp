@@ -95,9 +95,11 @@ void EnemyMeguminManagement::Draw(void)const
 		m_pEnemy[i].Draw();
 	}
 
+	SetBlendState(BLEND_MODE_ADD);
 	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {
 		m_pBullet[i].Draw();
 	}
+	SetBlendState(BLEND_MODE_ALPHABLEND);
 }
 
 //======================
