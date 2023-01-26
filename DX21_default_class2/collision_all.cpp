@@ -111,9 +111,10 @@ int CollisionAll::Collision(void)
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
-							//敵アイテムのドロップ
-							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
-
+							if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION) {
+								//敵アイテムのドロップ
+								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+							}
 							//敵を消す
 							m_pEnemy[k]->DeleteObj(j);
 
@@ -207,9 +208,10 @@ int CollisionAll::Collision(void)
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
-							//敵アイテムのドロップ
-							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
-
+							if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION) {
+								//敵アイテムのドロップ
+								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+							}
 							//敵を消す
 							m_pEnemy[k]->DeleteObj(j);
 
@@ -295,9 +297,10 @@ int CollisionAll::Collision(void)
 								//敵が死んだら...
 								if (m_pEnemy[k]->ReduceHP(j, 1))
 								{
-									//敵アイテムのドロップ
-									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
-
+									if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION) {
+										//敵アイテムのドロップ
+										m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+									}
 									//敵を消す
 									m_pEnemy[k]->DeleteObj(j);
 
@@ -370,9 +373,10 @@ int CollisionAll::Collision(void)
 							//敵が死んだら...
 							if (m_pEnemy[k]->ReduceHP(j, 1))
 							{
-								//敵アイテムのドロップ
-								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
-
+								if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION) {
+									//敵アイテムのドロップ
+									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+								}
 								//敵を消す
 								m_pEnemy[k]->DeleteObj(j);
 
