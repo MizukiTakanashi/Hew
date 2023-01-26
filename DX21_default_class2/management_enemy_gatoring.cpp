@@ -57,10 +57,17 @@ void EnemyGatoringManagement::Update()
 		m_tutorial_clear = false;
 		m_pEnemyGatoring[i].Update();
 
-		//退出時間来たら...
-		if (m_pEnemyGatoring[i].GetAppearanceTime() > EXIT_TIME) {
+		//退出時間が来たら...
+		//最後の敵が出ていなければ...
+		if (m_pEnemyGatoring[i].GetAppearanceTime() > EXIT_TIME &&
+			m_FlameNum < m_SetEnemyTime[m_stage_num][ENEMY_NUM[m_stage_num] - 1]) {
 			//上に消えて行く
 			m_pEnemyGatoring[i].MovePos(D3DXVECTOR2(0.0f, -EXIT_MOVE_SPEED_Y));
+			//画面外に出たら消す
+			if (m_pEnemyGatoring[i].GetScreenOut()) {
+				DeleteObj(i);
+				break;
+			}
 			continue;
 		}
 

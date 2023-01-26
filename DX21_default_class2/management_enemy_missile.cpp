@@ -25,7 +25,7 @@ EnemyMissileManagement::EnemyMissileManagement(DrawObject& pDrawObject1, DrawObj
 {
 	m_stage_num = stage;
 	m_pEnemyMissile = new EnemyNormal[ENEMY_NUM[stage]];
-	m_pBullet = new Bullet[ENEMY_NUM[stage]];
+	m_pBullet = new Bullet[BULLET_NUM];
 
 	m_SE_22 = LoadSound((char*)"data\\SE\\2_21.wav");
 	SetVolume(m_SE_22, 0.1f);

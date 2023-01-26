@@ -36,6 +36,11 @@ void Management_PoisonField::Update()
 	for (int i = 0; i < m_EnemyNum; i++)
 	{
 		m_pPoisonField[i]->Update();
+
+		//‰æ–ÊŠO‚Éo‚½‚çÁ‚·
+		if (m_pPoisonField[i]->GetScreenOut()) {
+			DeleteObj(i);
+		}
 	}
 }
 

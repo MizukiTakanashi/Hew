@@ -108,6 +108,10 @@
     <ClCompile Include="title_score.cpp" />
     <ClCompile Include="ui.cpp" />
     <ClCompile Include="BulletPatternA.cpp" />
+    <ClCompile Include="BulletPatternB.cpp" />
+    <ClCompile Include="BulletPatternC.cpp" />
+    <ClCompile Include="BulletPatternD.cpp" />
+    <ClCompile Include="BulletPatternE.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h" />
@@ -221,6 +225,9 @@
     <ClInclude Include="BulletPattern.h" />
     <ClInclude Include="BulletPatternA.h" />
     <ClInclude Include="BulletPatternB.h" />
+    <ClInclude Include="BulletPatternC.h" />
+    <ClInclude Include="BulletPatternD.h" />
+    <ClInclude Include="BulletPatternE.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="sample.rc" />

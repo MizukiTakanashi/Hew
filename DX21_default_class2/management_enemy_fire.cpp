@@ -23,7 +23,7 @@ EnemyFireManagement::EnemyFireManagement(DrawObject& pDrawObject1, DrawObject& p
 {
 	m_stage_num = stage;
 	m_pEnemy = new EnemyNormal[ENEMY_NUM[stage]];
-	m_pBullet = new Bullet[ENEMY_NUM[stage]];
+	m_pBullet = new Bullet[BULLET_NUM];
 
 	//”­ŽË‰¹
 	m_SE_15_1 = LoadSound((char*)"data\\SE\\1_15_1.wav");
@@ -56,7 +56,8 @@ void EnemyFireManagement::Update()
 		m_pEnemy[i].Update();
 
 		//‘ÞoŽžŠÔ—ˆ‚½‚ç...
-		if (m_pEnemy[i].GetAppearanceTime() > EXIT_TIME) {
+		if (m_pEnemy[i].GetAppearanceTime() > EXIT_TIME &&
+			m_FlameNum < m_SetEnemyTime[m_stage_num][ENEMY_NUM[m_stage_num] - 1]) {
 			//Á‚¦‚Ä‚­
 			m_pEnemy[i].OnAlphaFlag();
 			if (m_pEnemy[i].GetAlpha() <= 0.0f) {

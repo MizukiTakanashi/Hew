@@ -79,22 +79,22 @@ void InitScene(SCENE s, STAGE stage)
 		break;
 
 	case SCENE::SCENE_MERCURY:
-		pMercury = new StageMercury(new Score(g_pDrawObject[0]));
+		pMercury = new StageMercury(g_pNumber = new Score(g_pDrawObject[0]));
 		break;
 
 	case SCENE::SCENE_VENUS:
-		pVenus = new StageVenus(new Score(g_pDrawObject[0]));
+		pVenus = new StageVenus(g_pNumber = new Score(g_pDrawObject[0]));
 		break;
 
 	case SCENE::SCENE_MARS:
-		pMars = new StageMars(new Score(g_pDrawObject[0]));
+		pMars = new StageMars(g_pNumber = new Score(g_pDrawObject[0]));
 		break;
 
 	case SCENE::SCENE_JUPITER:
 		break;
 
 	case SCENE::SCENE_SATURN:
-		pSaturn = new StageSaturn(new Score(g_pDrawObject[0]));
+		pSaturn = new StageSaturn(g_pNumber = new Score(g_pDrawObject[0]));
 		break;
 
 	case SCENE::SCENE_SUN:

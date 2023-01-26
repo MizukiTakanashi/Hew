@@ -19,12 +19,12 @@ class EnemyFireballManagement :public EnemyManagement
 //定数
 private:
 	//ここで初期化
-	//敵自身
-	static const int BULLET_BREAK_TIME = 200;	//ホーミング弾が壊れる時間
+	static const int ENEMY_NUM = 14;			//敵を出現させる数W
 	static const int EXIT_TIME = 60 * 10;		//退出時間
+	static const int BULLET_BREAK_TIME = 200;	//ホーミング弾が壊れる時間
+	static const int BULLET_NUM = 20;			//同時に出せる弾
 
 	//cppで初期化
-	static const int ENEMY_NUM = 14;		//敵を出現させる数W
 	//弾
 	static const float BULLET_SIZE_X;		//サイズX
 	static const float BULLET_SIZE_Y;		//サイズY

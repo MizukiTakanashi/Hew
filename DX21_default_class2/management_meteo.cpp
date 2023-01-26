@@ -36,6 +36,12 @@ void Management_Meteo::Update()
 	for (int i = 0; i < m_EnemyNum; i++)
 	{
 		m_pMeteo[i]->Update();
+
+		//‰æ–ÊŠO‚Éo‚½‚çÁ‚·
+		if (m_pMeteo[i]->GetScreenOut()) {
+			DeleteObj(i);
+			break;
+		}
 	}
 }
 
