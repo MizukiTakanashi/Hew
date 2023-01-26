@@ -11,6 +11,7 @@
 #include "game_object.h"
 #include "inh_player_arm.h"
 #include "number.h"
+#include "sound.h"
 
 class inhPlayerArmBoth :public GameObject
 {
@@ -78,6 +79,7 @@ private:
 	bool m_right = false;					//腕の右か左についているか
 
 	bool m_hit_stop = false;				//合体したときのヒットストップ
+	int m_SE_25 = 0;						//合体音
 
 protected:
 	static const D3DXVECTOR2 ICON_SIZE;			//敵アイコンの表示場所
@@ -101,6 +103,8 @@ public:
 		m_right(right)
 	{
 		m_pRemaining_Num = new Number(pDrawobNumber, num_pos, D3DXVECTOR2(30.0f, 40.0f), 2);
+		m_SE_25 = LoadSound((char*)"data\\SE\\_25.wav");
+		SetVolume(m_SE_25, 0.5f);
 	}
 
 	//デストラクタ

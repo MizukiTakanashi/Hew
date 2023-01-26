@@ -156,15 +156,15 @@ void StageMars::Update(void)
 		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MARS);
 	}
 
-	//ƒMƒ~ƒbƒN
-	m_pGimmick->Update();
-
 	//”wŒi
 	m_pBG->Update();
 	m_pBG_Moon->Update();
 
 	//˜r‚ÌØ‚è‘Ö‚¦
 	m_pPlayerArmChange->Change();
+
+	//ƒMƒ~ƒbƒN
+	m_pGimmick->Update();
 
 	//ƒvƒŒƒCƒ„[
 	m_pPlayer->SetSlow(m_pGimmick->GetMoveDown());
@@ -281,6 +281,4 @@ void StageMars::Draw(void) const
 
 	//ƒ{ƒ€‚Ì•`‰æ
 	m_pBom->BomDraw();
-
-
 }

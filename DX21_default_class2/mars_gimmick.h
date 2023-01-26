@@ -10,6 +10,7 @@
 
 #include "draw_object.h"
 #include "UI.h"
+#include "sound.h"
 
 class MarsGimmick:public UI
 {
@@ -23,6 +24,7 @@ private:
 	bool m_move_down = false;	//移動速度低下フラグ
 	int m_frame_count = 0;		//フレームカウント
 	int m_frame_index = 0;
+	int m_SE_26 = 0;			//スピード低下音
 
 //メンバ関数
 public:
@@ -32,7 +34,9 @@ public:
 	//引数付きコンストラクタ
 	MarsGimmick(DrawObject& pDrawObj)
 		:UI(pDrawObj, D3DXVECTOR2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), 
-			D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT)) {}
+			D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT)) {
+		m_SE_26 = LoadSound((char*)"data\\SE\\2_10.wav");
+	}
 
 	//デストラクタ
 	~MarsGimmick(){}
@@ -42,6 +46,9 @@ public:
 		m_frame_count++; 
 		if (m_frame_count > TIME[m_frame_index]) {
 			m_move_down = !m_move_down;
+			if (m_move_down) {
+				PlaySound(m_SE_26, 0);
+			}
  			m_frame_index++;
 		}
 	}

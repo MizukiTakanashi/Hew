@@ -245,6 +245,7 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 		m_pEnemyItem = nullptr;
 
 		m_hit_stop = true;
+		PlaySound(m_SE_25, 0);
 
 		//タイプに沿って腕のアイテムをセット
 		switch (m_type) {
