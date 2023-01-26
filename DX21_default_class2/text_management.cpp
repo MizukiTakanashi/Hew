@@ -144,14 +144,14 @@ void TextManagement::SetText(void)
 		break;
 	case 5:
 		temp.SetTextureName((char*)"data\\texture\\Combined explanation.png");
-		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 4, 30);
-		m_PaternMax = 120;
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 3, 30);
+		m_PaternMax = 90;
 
 		break;
 	case 6:
 		temp.SetTextureName((char*)"data\\texture\\Combined explanation2.png");
-		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 3, 30);
-		m_PaternMax = 90;
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 4, 30);
+		m_PaternMax = 120;
 
 		break;
 	case 7:
