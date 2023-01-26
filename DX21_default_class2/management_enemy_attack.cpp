@@ -18,7 +18,7 @@ EnemyAttackManagement::EnemyAttackManagement(DrawObject& pDrawObject1, DrawObjec
 {
 	m_pEnemyAttack = new EnemyAttack[ENEMY_NUM];
 
-	m_pBullet = new Bullet[ENEMY_NUM];
+	m_pBullet = new Bullet[BULLET_NUM];
 }
 
 //======================

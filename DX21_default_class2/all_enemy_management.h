@@ -21,10 +21,6 @@ private:
 private:
 	int m_enemy_num = 0;					//敵の種類の数
 
-	//敵のインデックス番号(1番目は敵の種類の数、2番目は敵の番号)
-	int m_enemy_index[2] = { -1, -1 };		
-	int m_enemy_delete_before = -1;			//前フレームで消された敵の番号を記録
-
 	EnemyManagement* m_pEnemy[ENEMY_NUM];	//敵全クラス
 
 //メンバ関数

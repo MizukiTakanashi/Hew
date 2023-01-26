@@ -23,7 +23,7 @@ EnemyFireballManagement::EnemyFireballManagement(DrawObject& pDrawObject1, DrawO
 	m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
 	m_pEnemyNormal = new EnemyNormal[ENEMY_NUM];
-	m_pBullet = new Bullet[ENEMY_NUM];
+	m_pBullet = new Bullet[BULLET_NUM];
 
 	//発射音
 	m_SE_15_2 = LoadSound((char*)"data\\SE\\2_15_3.wav");
@@ -57,7 +57,8 @@ void EnemyFireballManagement::Update(const D3DXVECTOR2& PlayerPos)
 		m_pEnemyNormal[i].Update();
 
 		//退出時間来たら...
-		if (m_pEnemyNormal[i].GetAppearanceTime() > EXIT_TIME) {
+		if (m_pEnemyNormal[i].GetAppearanceTime() > EXIT_TIME &&
+			m_FlameNum < m_SetEnemyTime[ENEMY_NUM - 1]) {
 			//消えてく
 			m_pEnemyNormal[i].OnAlphaFlag();
 			if (m_pEnemyNormal[i].GetAlpha() <= 0.0f) {

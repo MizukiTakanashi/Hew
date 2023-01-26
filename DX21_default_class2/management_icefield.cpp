@@ -31,6 +31,11 @@ void Management_IceField::Update()
 	for (int i = 0; i < m_EnemyNum; i++)
 	{
 		m_pIceField[i]->Update();
+
+		//‰æ–ÊŠO‚Éo‚½‚çÁ‚·
+		if (m_pIceField[i]->GetScreenOut()) {
+			DeleteObj(i);
+		}
 	}
 }
 

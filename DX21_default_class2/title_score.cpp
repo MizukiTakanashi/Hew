@@ -11,18 +11,18 @@
 //==========================
 // 定数の初期化
 //==========================
-const D3DXVECTOR2 TitleScore::NUMBER_SIZE = D3DXVECTOR2(40.0f, 60.0f);
-const float TitleScore::NUMBER_INIT_POS_X = SCREEN_WIDTH / 2 + 200.0f;
+const D3DXVECTOR2 TitleScore::NUMBER_SIZE = D3DXVECTOR2(40.0f, 50.0f);
+const float TitleScore::NUMBER_INIT_POS_X = SCREEN_WIDTH / 2 + 180.0f;
 
-const D3DXVECTOR2 TitleScore::FLAME_SIZE = D3DXVECTOR2(1000.0f, 70.0f);
-const float TitleScore::FLAME_POS_X = SCREEN_WIDTH / 2 + 100.0f;
+const D3DXVECTOR2 TitleScore::FLAME_SIZE = D3DXVECTOR2(500.0f, 90.0f);
+const float TitleScore::FLAME_POS_X = SCREEN_WIDTH / 2 + 50.0f;
 
 const D3DXVECTOR2 TitleScore::PLANET_SIZE = D3DXVECTOR2(70.0f, 70.0f);
 const D3DXVECTOR2 TitleScore::PLANET_SATURN_SIZE = D3DXVECTOR2(70.0f, 50.0f);
-const float TitleScore::PLANET_POS_X = 100.0f;
+const float TitleScore::PLANET_POS_X = 300.0f;
 
-const D3DXVECTOR2 TitleScore::WORD_SIZE = D3DXVECTOR2(600.0f, 100.0f);
-const float TitleScore::WORD_POS_Y = 60.0f;
+const D3DXVECTOR2 TitleScore::WORD_SIZE = D3DXVECTOR2(600.0f, 140.0f);
+const float TitleScore::WORD_POS_Y = 80.0f;
 
 //==========================
 // デフォルトコンストラクタ
@@ -68,13 +68,13 @@ TitleScore::TitleScore(int score[])
 		D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT));
 
 	//最高スコアという表示
-	m_pTexUseful[(int)TEXTURE_TYPE::WORD].SetTextureName((char*)"data\\texture\\stage_select_bg.jpg");
+	m_pTexUseful[(int)TEXTURE_TYPE::WORD].SetTextureName((char*)"data\\texture\\text_flame.png");
 	m_pDrawObject[(int)DRAW_TYPE::WORD].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::WORD]);
 	m_pUI[(int)UI_TYPE::WORD] = new UI(m_pDrawObject[(int)DRAW_TYPE::WORD], D3DXVECTOR2(SCREEN_WIDTH / 2, WORD_POS_Y),
 		WORD_SIZE);
 
 	//フレーム
-	m_pTexUseful[(int)TEXTURE_TYPE::FLAME].SetTextureName((char*)"data\\texture\\stage_select_bg.jpg");
+	m_pTexUseful[(int)TEXTURE_TYPE::FLAME].SetTextureName((char*)"data\\texture\\text_flame.png");
 
 	//数字
 	m_pTexUseful[(int)TEXTURE_TYPE::NUMBER].SetTextureName((char*)"data\\texture\\number.png");
@@ -115,7 +115,7 @@ TitleScore::TitleScore(int score[])
 	}
 
 	for (int i = (int)UI_TYPE::MERCURY; i < num; i++) {
-		float temp_y = (SCREEN_HEIGHT - (WORD_POS_Y + WORD_SIZE.y / 2)) / 7.0f * (i - 1) + (WORD_POS_Y + WORD_SIZE.y / 2);
+		float temp_y = (SCREEN_HEIGHT - (WORD_POS_Y + WORD_SIZE.y / 2)) / 5.5f * (i - 1) + (WORD_POS_Y + WORD_SIZE.y / 2);
 		
 		//惑星
 		m_pUI[i] = new UI(m_pDrawObject[i + 1], D3DXVECTOR2(PLANET_POS_X, temp_y),
