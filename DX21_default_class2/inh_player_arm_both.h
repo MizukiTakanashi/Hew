@@ -66,6 +66,8 @@ private:
 	DrawObject* m_enemy_stop_draw = nullptr;	//動きを止める敵の弾の描画オブジェクト
 	DrawObject* m_enemy_icerain_draw = nullptr;	//氷の敵の描画
 	DrawObject* m_enemy_fire_draw = nullptr;	//炎の敵の描画
+	DrawObject* m_enemy_fireball_draw = nullptr;	//炎の敵の描画
+	DrawObject* m_enemy_acid_draw = nullptr;	//炎の敵の描画
 
 	DrawObject m_explosion_draw;			//爆発の描画オブジェクト
 
@@ -192,9 +194,14 @@ public:
 	//炎の敵の腕の描画
 	void DrawSetFireE(DrawObject* pDraw) { m_enemy_fire_draw = pDraw; }
 
-
 	//爆発の描画セット
 	void DrawSetExplosion(DrawObject& pDraw) { m_explosion_draw = pDraw; }
+
+	//爆発の描画セット
+	void DrawSetFireballE(DrawObject* pDraw) { m_enemy_fireball_draw = pDraw; }
+
+	//爆発の描画セット
+	void DrawSetAcidE(DrawObject* pDraw) { m_enemy_acid_draw = pDraw; }
 };
 
 #endif // !_INH_PLAYER_ARM_BOTH_H_
