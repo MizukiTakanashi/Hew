@@ -114,7 +114,7 @@ int SaturnCollisionAll::Collision(void)
 							}
 
 							//“|‚µ‚½“G‚Ì”‚ð‘‚â‚·
-							m_pScore->AddScore(1);
+							m_pScore->AddScore(10);
 						}
 					}
 				}
@@ -169,7 +169,7 @@ int SaturnCollisionAll::Collision(void)
 					}
 
 					//“|‚µ‚½“G‚Ì”‚ð‘‚â‚·
-					m_pScore->AddScore(1);
+					m_pScore->AddScore(10);
 				}
 			}
 
@@ -210,7 +210,7 @@ int SaturnCollisionAll::Collision(void)
 							}
 
 							//“|‚µ‚½“G‚Ì”‚ð‘‚â‚·
-							m_pScore->AddScore(1);
+							m_pScore->AddScore(10);
 						}
 					}
 				}
@@ -287,7 +287,7 @@ int SaturnCollisionAll::Collision(void)
 									}
 
 									//“|‚µ‚½“G‚Ì”‚ð‘‚â‚·
-									m_pScore->AddScore(1);
+									m_pScore->AddScore(10);
 								}
 							}
 						}

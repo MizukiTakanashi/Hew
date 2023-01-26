@@ -168,8 +168,8 @@ void TextManagement::SetText(void)
 		break;
 	case 9:
 		temp.SetTextureName((char*)"data\\texture\\Weapon switch2.png");
-		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 2, 30);
-		m_PaternMax = 60;
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 3, 30);
+		m_PaternMax = 90;
 
 		break;
 	case 10:
@@ -192,8 +192,8 @@ void TextManagement::SetText(void)
 		break;
 	case 13:
 		temp.SetTextureName((char*)"data\\texture\\Bomb description2.png");
-		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 4, 30);
-		m_PaternMax = 120;
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 5, 30);
+		m_PaternMax = 150;
 
 		break;
 	case 14:
