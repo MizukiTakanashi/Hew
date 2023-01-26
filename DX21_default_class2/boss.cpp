@@ -17,15 +17,17 @@ const float Boss::RANGE = 20.0f;
 //private
 const float Boss::SPEED_X = 1.5f;
 const float Boss::SPEED_Y = 2.5f;
-const float Boss::ALPHA_SPEED = 0.01f;
-const float Boss::POS_X = SCREEN_WIDTH / 2;
-const float Boss::POS_Y = -100;
 
+int m_count = 0;
+int m_count1 = 0;
+int m_count2 = 0;
+int m_count3 = 0;
+int m_count4 = 0;
 
 
 Boss::~Boss()
 {
-	delete m_pBossPattern;
+	
 }
 
 //======================
@@ -33,7 +35,7 @@ Boss::~Boss()
 //======================
 void Boss::Update(void)
 {
-	m_pBossPattern->Update(this);
+
 	//無敵時間減少
 	m_invincible_flame--;
 
@@ -44,50 +46,42 @@ void Boss::Update(void)
 	}
 
 
-	////時間が来たら弾を作る
-	//if (m_bullet_count++ > BULLET_TIME) {
-	//	m_bullet_make = true;
-	//	m_bullet_count = 0;
-	//}
-
-	////出現してからのカウントを数える
-	//m_appearance_time++;
-
-	////退出のフラグが立ったら
-	//if (m_alpha_flag) {
-	//	//どんどんアルファ値を低くしていく
-	//	m_alpha -= ALPHA_SPEED;
-	//	if (m_alpha < 0.0f) {
-	//		m_alpha = 0.0f;
-	//	}
-	//	GameObject::SetColor(D3DXCOLOR(1.0f, 1.0f, 1.0f, m_alpha));
-	//}
-}
-
-void Boss::ReduceHP(int amount)
-{
-	if (m_invincible_flame <= 0)
-	{
-		m_hp -= amount;
-		m_invincible_flame = INVINCIBLE_FLAME;
-
-		if (m_hp <= 0)
-			m_pStage->BossDown();
-			m_pStage->HitStop(180);
+	//止まる場所まで移動する
+	if (GameObject::GetPos().y < STOP_POS_Y) {
+		GameObject::MovePos(D3DXVECTOR2(0.0f, SPEED_Y));
 	}
-	else
-	{
+
+	//左右に動く
+	float rad = D3DXToRadian(m_move_width);
+	SetPos(D3DXVECTOR2(m_init_posx + cosf(rad) * RANGE, GetPos().y));
+	m_move_width += SPEED_X;
+
+	m_count++;
+	m_count1++;
+	m_count2++;
+	m_count3++;
+	m_count4++;
+
+	//時間が来たら弾を作る
+	if (m_count > BULLET_TIME) {
+		m_bullet_make = true;
+		m_count = 0;
 	}
-}
+	if (m_count1 > BULLET_TIME + 1) {
+		m_bullet_make1 = true;
+		m_count1 = 0;
+	}
+	if (m_count2 > BULLET_TIME + 2) {
+		m_bullet_make2 = true;
+		m_count2 = 0;
+	}
+	if (m_count3 > BULLET_TIME + 3) {
+		m_bullet_make3 = true;
+		m_count3 = 0;
+	}
+	if (m_count4 > BULLET_TIME + 4) {
+		m_bullet_make4 = true;
+		m_count4 = 0;
+	}
 
-void Boss::ChangeBossPattern(BossPattern* pBossPattern)
-{
-	delete m_pBossPattern;
-	m_pBossPattern = pBossPattern;
-}
-
-void Boss::ChangeBulletPattern(BulletPattern* pBulletPattern)
-{
-	delete m_pBulletPattern;
-	m_pBulletPattern = pBulletPattern;
 }

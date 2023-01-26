@@ -159,7 +159,7 @@ void StageSaturn::Update(void)
 	}
 
 	//最後の列の敵を全て倒したら
-	if (m_pEnemyLaserManagement->IsClear() && m_pEnemyMeguminManagement->IsClear()) {
+	if (m_pEnemyGatoring->IsClear() && m_pEnemyMeguminManagement->IsClear()&& m_pEnemyMissile->IsClear()) {
 		//リザルト画面に行く
 		SetStageClear(true);
 		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_SATURN);
