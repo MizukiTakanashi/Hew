@@ -10,6 +10,7 @@ const float EnemyAttackManagement::BULLET_SIZE_Y = 100.0f;
 const float EnemyAttackManagement::BULLET_SPEED = 0.0f;
 
 const float EnemyAttackManagement::ATTACK_SPEED = 5.0f;
+
 //=========================
 // 引数付きコンストラクタ
 //=========================

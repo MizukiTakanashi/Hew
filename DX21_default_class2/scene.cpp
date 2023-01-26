@@ -17,6 +17,7 @@
 #include "stage_mars.h"
 #include "stage_saturn.h"
 #include "stage_venus.h"
+#include "stage_jupiter.h"
 #include "title_score.h"
 
 //======================
@@ -35,6 +36,7 @@ StageMercury* pMercury = nullptr;		//水星ステージ
 StageMars* pMars = nullptr;				//火星ステージ
 StageSaturn* pSaturn = nullptr;
 StageVenus* pVenus = nullptr;
+StageJupiter* pJupiter = nullptr;		//木星ステージ
 
 TextureUseful* g_pTexUseful;
 DrawObject* g_pDrawObject;
@@ -91,6 +93,7 @@ void InitScene(SCENE s, STAGE stage)
 		break;
 
 	case SCENE::SCENE_JUPITER:
+		pJupiter = new StageJupiter(g_pNumber = new Score(g_pDrawObject[0]));
 		break;
 
 	case SCENE::SCENE_SATURN:
@@ -219,6 +222,12 @@ void UninitScene(void)
 		break;
 
 	case SCENE::SCENE_JUPITER:
+		//前のスコアよりも超えそうであれば...
+		if (pJupiter->GetScore() > g_Score[STAGE_MARS]) {
+			//スコアを更新
+			g_Score[STAGE_MARS] = pJupiter->GetScore();
+		}
+		delete pJupiter;
 		break;
 
 	case SCENE::SCENE_SATURN:
@@ -291,6 +300,7 @@ void UpdateScene(void)
 		break;
 
 	case SCENE::SCENE_JUPITER:
+		pJupiter->Update();
 		break;
 
 	case SCENE::SCENE_SATURN:
@@ -348,6 +358,7 @@ void DrawScene(void)
 		break;
 
 	case SCENE::SCENE_JUPITER:
+		pJupiter->Draw();
 		break;
 
 	case SCENE::SCENE_SATURN:

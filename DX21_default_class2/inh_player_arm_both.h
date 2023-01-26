@@ -26,10 +26,10 @@ public:
 		TYPE_BARRIAR,	//バリア
 		TYPE_STOP,		//動きを止める
 		TYPE_ICERAIN,	//氷の敵
-		TYPE_GRENADE,			//グレネード敵
-		TYPE_FIRE,			//炎の敵
-		TYPE_ACID,
-		TYPE_FIREBALL,
+		TYPE_GRENADE,	//グレネード敵
+		TYPE_FIRE,		//炎の敵
+		TYPE_ACID,		//酸性雨
+		TYPE_FIREBALL,	//炎の弾の敵
 		TYPE_NONE,	//	何もついていない
 		TYPE_SHOOT,	// 前のタイプの弾の処理 & 自身発射中
 		TYPE_DM_SHOOT,	//ダメージをくらった時の
