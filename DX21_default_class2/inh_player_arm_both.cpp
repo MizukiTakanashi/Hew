@@ -213,11 +213,11 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 		break;
 
 	case TYPE::TYPE_ACID:
-		GameObject::SetDrawob(*m_enemy_gatoring_draw);
+		GameObject::SetDrawob(*m_enemy_acid_draw);
 		break;
 
 	case TYPE::TYPE_FIREBALL:
-		GameObject::SetDrawob(*m_enemy_gatoring_draw);
+		GameObject::SetDrawob(*m_enemy_fireball_draw);
 		break;
 
 	default:

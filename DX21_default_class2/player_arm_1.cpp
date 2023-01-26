@@ -29,18 +29,18 @@ void PlayerArm1::Update(const D3DXVECTOR2& arm_pos)
 	//今いる弾の処理
 	for (int i = 0; i < inhPlayerArm::GetBulletNum(); i++) {
 		//狙う敵がいなかったら何もしない(まっすぐに飛んでいく)
-		if (!none_enemy) {
-			//一番近い敵の後を追う(ホーミング弾)
-			D3DXVECTOR2 movTemp = inhPlayerArm::GetSomethingPos() - m_pBullet[i].GetPos();
-			D3DXVECTOR2 rotposTemp = m_pBullet[i].GetPos() - inhPlayerArm::GetSomethingPos();
-			D3DXVec2Normalize(&movTemp, &movTemp);
-			movTemp *= BULLET_SPEED;
+		//if (!none_enemy) {
+		//	//一番近い敵の後を追う(ホーミング弾)
+		//	D3DXVECTOR2 movTemp = inhPlayerArm::GetSomethingPos() - m_pBullet[i].GetPos();
+		//	D3DXVECTOR2 rotposTemp = m_pBullet[i].GetPos() - inhPlayerArm::GetSomethingPos();
+		//	D3DXVec2Normalize(&movTemp, &movTemp);
+		//	movTemp *= BULLET_SPEED;
 
-			float rotTemp = atan2(rotposTemp.y, rotposTemp.x) * (180 / M_PI) + 180.0f;
+		//	float rotTemp = atan2(rotposTemp.y, rotposTemp.x) * (180 / M_PI) + 180.0f;
 
-			m_pBullet[i].SetRot(rotTemp);
-			m_pBullet[i].SetMove(movTemp);
-		}
+		//	m_pBullet[i].SetRot(rotTemp);
+		//	m_pBullet[i].SetMove(movTemp);
+		//}
 
 		//弾の更新処理
 		m_pBullet[i].Update();

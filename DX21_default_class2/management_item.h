@@ -26,6 +26,7 @@ private:
 	DrawObject m_DOHotairlaser;
 	DrawObject m_DOIcerain;
 	DrawObject m_DOPoisonlaser;
+	DrawObject m_DOFireball;
 
 	Item* m_pItem = nullptr;
 	int m_ItemNum = 0;	//アイテムの数
@@ -81,6 +82,7 @@ public:
 	void SetDrawHotairlaser(DrawObject& pd) { m_DOHotairlaser = pd; }
 	void SetDrawIcerain(DrawObject& pd) { m_DOIcerain = pd; }
 	void SetDrawPoisonlaser(DrawObject& pd) { m_DOPoisonlaser = pd; }
+	void SetDrawFireball(DrawObject& pd) { m_DOFireball = pd; }
 
 };
 

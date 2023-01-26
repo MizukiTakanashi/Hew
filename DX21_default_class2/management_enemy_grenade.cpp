@@ -30,7 +30,7 @@ EnemyGrenadeManagement::EnemyGrenadeManagement(DrawObject& pDrawObject1, DrawObj
 	m_pDrawObjectExplosion(pDrawObject3), m_stage_num(stage)
 {
 	m_pEnemy = new EnemyGrenade[ENEMY_NUM[stage]];
-	m_pBullet = new Bullet[ENEMY_NUM[stage]];
+	m_pBullet = new Bullet[BULLET_NUM];
 
 	for (int i = 0; i < ENEMY_NUM[stage]; i++) {
 		m_pExplosion[i] = nullptr;
@@ -86,14 +86,16 @@ void EnemyGrenadeManagement::Update(const D3DXVECTOR2& PlayerPos)
 		m_pEnemy[i].Update();
 
 		//ëﬁèoéûä‘óàÇΩÇÁ...
-		//if (m_pEnemy[i].GetAppearanceTime() > EXIT_TIME) {
-		//	//è¡Ç¶ÇƒÇ≠
-		//	m_pEnemy[i].OnAlphaFlag();
-		//	if (m_pEnemy[i].GetAlpha() <= 0.0f) {
-		//		DeleteObj(i);
-		//	}
-		//	continue;
-		//}
+		//ç≈å„ÇÃìGÇ≈Ç»ÇØÇÍÇŒ...
+		if (m_pEnemy[i].GetAppearanceTime() > EXIT_TIME &&
+			m_FlameNum < m_SetEnemyTime[m_stage_num][ENEMY_NUM[m_stage_num] - 1]) {
+			//è¡Ç¶ÇƒÇ≠
+			m_pEnemy[i].OnAlphaFlag();
+			if (m_pEnemy[i].GetAlpha() <= 0.0f) {
+				DeleteObj(i);
+			}
+			continue;
+		}
 
 		//íeÇçÏÇÈ
 		if (m_pEnemy[i].GetFlagBulletMake()) {

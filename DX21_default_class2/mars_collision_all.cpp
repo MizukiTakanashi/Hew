@@ -117,7 +117,7 @@ int MarsCollisionAll::Collision(void)
 							}
 
 							//倒した敵の数を増やす
-							m_pScore->AddScore(1);
+							m_pScore->AddScore(10);
 						}
 					}
 				}
@@ -172,7 +172,7 @@ int MarsCollisionAll::Collision(void)
 					}
 
 					//倒した敵の数を増やす
-					m_pScore->AddScore(1);
+					m_pScore->AddScore(10);
 				}
 			}
 
@@ -213,7 +213,7 @@ int MarsCollisionAll::Collision(void)
 							}
 
 							//倒した敵の数を増やす
-							m_pScore->AddScore(1);
+							m_pScore->AddScore(10);
 						}
 					}
 				}
@@ -289,7 +289,7 @@ int MarsCollisionAll::Collision(void)
 									j--;
 
 									//倒した敵の数を増やす
-									m_pScore->AddScore(1);
+									m_pScore->AddScore(10);
 
 									if (j < 0) {
 										next = true;
@@ -357,7 +357,7 @@ int MarsCollisionAll::Collision(void)
 									}
 
 									//倒した敵の数を増やす
-									m_pScore->AddScore(1);
+									m_pScore->AddScore(10);
 								}
 							}
 						}

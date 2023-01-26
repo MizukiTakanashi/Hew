@@ -93,6 +93,7 @@ public:
 	//w’è‚µ‚½“G‚ğÁ‚·
 	void DeleteObj(int index_num) {
 		delete m_pFireField[index_num];
+		m_pFireField[index_num] = nullptr;
 		for (int i = index_num; i < m_EnemyNum - 1; i++) {
 			m_pFireField[i] = m_pFireField[i + 1];
 			m_pFireField[i + 1] = nullptr;

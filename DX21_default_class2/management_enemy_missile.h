@@ -22,6 +22,7 @@ private:
 	//敵自身
 	static const int BULLET_BREAK_TIME = 200;	//ホーミング弾が壊れる時間
 	static const int EXIT_TIME = 60 * 10;		//退出時間
+	static const int BULLET_NUM = 30;			//同時に出せる弾の数
 
 	//cppで初期化
 	static const int ENEMY_NUM[(int)STAGE::NUM];	//敵を出現させる数W
@@ -47,7 +48,7 @@ private:
 
 	int m_SE_22 = 0;						//弾発射音
 
-	int m_EnemyItem_num = 0;	//敵のアイテムの数
+	int m_EnemyItem_num = 0;				//敵のアイテムの数
 
 	//敵の配列
 	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][7] = {

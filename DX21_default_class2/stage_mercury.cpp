@@ -21,7 +21,7 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 	//======================
 	// 敵
 	//レーザー
-	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER].SetTextureName((char*)"data\\texture\\laser00.png");
+	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER].SetTextureName((char*)"data\\texture\\laser.png");
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER]);
 	m_pEnemyLaser = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER], 2);
@@ -110,12 +110,12 @@ void StageMercury::Update(void)
 		return;
 	}
 
-	//ボスが死んだら
-	if (m_isBossDown)
-	{
-		SetStageClear(true);
-		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MERCURY);
-	}
+	////ボスが死んだら
+	//if (m_isBossDown)
+	//{
+	//	SetStageClear(true);
+	//	Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MERCURY);
+	//}
 
 	//背景
 	m_pBG->Update();

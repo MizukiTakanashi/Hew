@@ -38,7 +38,7 @@ StageSaturn::StageSaturn(Score* pNumber):InhStage(pNumber)
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 3);
 
 	//ì≈è¿
-	m_pTexUseful[(int)TEXTURE_TYPE::POISON].SetTextureName((char*)"data\\texture\\poison.jpg");
+	m_pTexUseful[(int)TEXTURE_TYPE::POISON].SetTextureName((char*)"data\\texture\\poison.png");
 	m_pDrawObject[(int)DRAW_TYPE::POISON].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::POISON], 2.0f, 1.0, 1.0f, 3);
 	m_pPoisonField = new Management_PoisonField(m_pDrawObject[(int)DRAW_TYPE::POISON]);
 

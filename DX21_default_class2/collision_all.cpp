@@ -111,14 +111,15 @@ int CollisionAll::Collision(void)
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
-							//敵アイテムのドロップ
-							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
-
+							if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
+								//敵アイテムのドロップ
+								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+							}
 							//敵を消す
 							m_pEnemy[k]->DeleteObj(j);
 
 							//倒した敵の数を増やす
-							m_pScore->AddScore(1);
+							m_pScore->AddScore(10);
 
 							j--;
 							if (j < 0) {
@@ -165,14 +166,15 @@ int CollisionAll::Collision(void)
 				//敵が死んだら...
 				if (m_pEnemy[k]->ReduceHP(j, m_pBom->GetBombAttack()))
 				{
-					//敵アイテムのドロップ
-					m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
-
+					if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
+						//敵アイテムのドロップ
+						m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+					}
 					//敵を消す
 					m_pEnemy[k]->DeleteObj(j);
 
 					//倒した敵の数を増やす
-					m_pScore->AddScore(1);
+					m_pScore->AddScore(10);
 
 					j--;
 
@@ -207,14 +209,15 @@ int CollisionAll::Collision(void)
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
-							//敵アイテムのドロップ
-							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
-
+							if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
+								//敵アイテムのドロップ
+								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+							}
 							//敵を消す
 							m_pEnemy[k]->DeleteObj(j);
 
 							//倒した敵の数を増やす
-							m_pScore->AddScore(1);
+							m_pScore->AddScore(10);
 
 							j--;
 
@@ -295,16 +298,17 @@ int CollisionAll::Collision(void)
 								//敵が死んだら...
 								if (m_pEnemy[k]->ReduceHP(j, 1))
 								{
-									//敵アイテムのドロップ
-									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
-
+									if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
+										//敵アイテムのドロップ
+										m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+									}
 									//敵を消す
 									m_pEnemy[k]->DeleteObj(j);
 
 									j--;
 
 									//倒した敵の数を増やす
-									m_pScore->AddScore(1);
+									m_pScore->AddScore(10);
 
 									if (j < 0) {
 										next = true;
@@ -370,14 +374,15 @@ int CollisionAll::Collision(void)
 							//敵が死んだら...
 							if (m_pEnemy[k]->ReduceHP(j, 1))
 							{
-								//敵アイテムのドロップ
-								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
-
+								if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
+									//敵アイテムのドロップ
+									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+								}
 								//敵を消す
 								m_pEnemy[k]->DeleteObj(j);
 
 								//倒した敵の数を増やす
-								m_pScore->AddScore(1);
+								m_pScore->AddScore(10);
 
 								j--;
 

@@ -35,6 +35,8 @@ private:
 	static const int EXPLOSION_WAIT_TIME = 200;	//”š”­‘Ò‚¿ŠÔ
 	static const int EXPLOSION_TIME = 100;		//”š”­ŠÔ
 
+	static const int BULLET_NUM = 20;			//“¯‚Éo‚¹‚é’e
+
 	//cpp‚Å‰Šú‰»
 	static const int ENEMY_NUM[(int)STAGE::NUM];	//“G‚ğoŒ»‚³‚¹‚é”W
 	//’e
