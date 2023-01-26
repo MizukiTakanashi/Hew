@@ -65,6 +65,7 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 	m_pColAll->AddEnemyPointer(m_pEnemyAcidManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemuPoorvisionManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemySpeeddownManagement);
+	m_pColAll->AddEnemyPointer(m_pEnemyGatoring);
 
 	m_pPlayerCenter->DrawSetAcid(&m_pDrawObject[(int)DRAW_TYPE::BULLET_ACID]);
 	m_pPlayerRight->DrawSetAcid(&m_pDrawObject[(int)DRAW_TYPE::BULLET_ACID]);
@@ -169,6 +170,12 @@ void StageVenus::Update(void)
 	if (m_pPlayerHP->GetHP0Flag()) {
 		SetStageClear(false);
 		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_VENUS);
+	}
+	//最後の列の敵を全て倒したら
+	if (m_pEnemuPoorvisionManagement->IsClear() && m_pEnemyAcidManagement->IsClear() && m_pEnemySpeeddownManagement->IsClear() && m_pEnemyFireballManagement->IsClear()) {
+		//リザルト画面に行く
+		SetStageClear(true);
+		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_SATURN);
 	}
 }
 
