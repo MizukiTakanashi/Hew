@@ -42,6 +42,7 @@ CollisionAll::CollisionAll(STAGE stage, Player* pPlayer, inhPlayerArmBoth* pL, i
 
 	switch (m_stage) {
 
+	//火星
 	case STAGE::MARS:
 		//バリアが弾を跳ね返す音
 		m_SE_08 = LoadSound((char*)"data\\SE\\2_08.wav");
@@ -52,6 +53,13 @@ CollisionAll::CollisionAll(STAGE stage, Player* pPlayer, inhPlayerArmBoth* pL, i
 
 		//冷気を浴びた音
 		m_SE_10 = LoadSound((char*)"data\\SE\\1_10.wav");
+
+		break;
+
+	//金星
+	case STAGE::VENUS:
+		//プレイヤースピード低下音
+		m_SE_26 = LoadSound((char*)"data\\SE\\2_10.wav");
 
 		break;
 
@@ -459,6 +467,7 @@ int CollisionAll::Collision(void)
 					//スピードを落とす敵であれば...
 					if (m_pEnemy[k]->GetType() == EnemyManagement::TYPE::SPEEDDOWN) {
 						m_pPlayer->SetSlow(true, EnemySpeeddownManagement::SPEED_DOWN_TIME);
+						PlaySound(m_SE_26, 0);
 					}
 					//視界を悪くする敵であれば...
 					else if (m_pEnemy[k]->GetType() == EnemyManagement::TYPE::POORVISION) {
@@ -883,6 +892,7 @@ int CollisionAll::Collision(void)
 
 					//プレイヤーを遅くする
 					m_pPlayer->SetSlow(true, Management_IceField::SLOW_TIME);
+					PlaySound(m_SE_26, 0);
 
 					//コンボを途切れさせる
 					m_pScore->InitCombo();
