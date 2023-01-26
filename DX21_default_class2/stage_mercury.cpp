@@ -105,12 +105,12 @@ void StageMercury::Update(void)
 		return;
 	}
 
-	//ƒ{ƒX‚ªŽ€‚ñ‚¾‚ç
-	if (m_isBossDown)
-	{
-		SetStageClear(true);
-		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MERCURY);
-	}
+	////ƒ{ƒX‚ªŽ€‚ñ‚¾‚ç
+	//if (m_isBossDown)
+	//{
+	//	SetStageClear(true);
+	//	Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MERCURY);
+	//}
 
 	//”wŒi
 	m_pBG->Update();

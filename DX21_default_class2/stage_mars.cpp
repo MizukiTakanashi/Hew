@@ -77,9 +77,9 @@ StageMars::~StageMars()
 
 	//ゲームオブジェクトを消す
 	delete m_pGimmick;
-	if (m_pBoss) {
-		delete m_pBoss;
-	}
+	//if (m_pBoss) {
+	//	delete m_pBoss;
+	//}
 	delete m_pEnemyBarrierManagement;
 	delete m_pEnemyMissileManagement;
 	delete m_pEnemyGrenadeManagement;
@@ -156,17 +156,17 @@ void StageMars::Update(void)
 	m_pPlayerCenter->ButtonPress();
 	m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
 
-	//ボス処理
-	if (m_pBoss)
-	{
-		m_pBoss->Update();
-	}
-	else if(m_pEnemyBarrierManagement->IsClear() && m_pEnemyStopManagement->IsClear())
-	{
-		m_pBoss = new Boss(m_pDrawObject[(int)DRAW_TYPE::ENEMY_STOP], this);
-	}
+	////ボス処理
+	//if (m_pBoss)
+	//{
+	//	m_pBoss->Update();
+	//}
+	//else if(m_pEnemyBarrierManagement->IsClear() && m_pEnemyStopManagement->IsClear())
+	//{
+	//	m_pBoss = new Boss(m_pDrawObject[(int)DRAW_TYPE::ENEMY_STOP], this);
+	//}
 
-
+	
 	//敵とプレイヤーの当たり判定
 	attack_num += m_pColAll1->Collision();
 
@@ -225,9 +225,9 @@ void StageMars::Draw(void) const
 	m_pEnemyIceRainManagement->Draw();
 	m_pEnemyStopManagement->Draw();
 	m_pEnemyGrenadeManagement->Draw();
-	if (m_pBoss) {
-		m_pBoss->Draw();
-	}
+	//if (m_pBoss) {
+	//	m_pBoss->Draw();
+	//}
 
 	m_pItemManagement->Draw();
 
