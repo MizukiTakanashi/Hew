@@ -12,6 +12,7 @@
 // ’è”‚Ì‰Šú‰»
 //==========================
 const int EnemyMissileManagement::ENEMY_NUM[(int)STAGE::NUM] = { 5, 6, 7, 2, 0, 15 };
+const D3DXVECTOR2 EnemyMissileManagement::SIZE = D3DXVECTOR2(65.0f, 60.0f);
 const float EnemyMissileManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyMissileManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyMissileManagement::BULLET_SPEED = 5.0f;
@@ -44,6 +45,7 @@ void EnemyMissileManagement::Update(const D3DXVECTOR2& PlayerPos)
 	{
 		EnemyNormal temp(m_pDrawObjectEnemy, m_SetEnemy[m_stage_num][m_EnemyNum]);
 		m_pEnemyMissile[GetObjNum()] = temp;
+		m_pEnemyMissile[GetObjNum()].SetSize(SIZE);
 		EnemyManagement::IncreaseObjNum(1);
 
 		m_EnemyNum++;
