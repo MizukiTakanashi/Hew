@@ -107,7 +107,56 @@ void StageMercury::Update(void)
 	if (m_StopFlame > 0)
 	{
 		m_StopFlame--;
-		return;
+
+		//ゆっくりになるのであれば...
+		if (m_HitStopSlow != -1) {
+			//時間が来たら処理をかける
+			if (++m_HitStopSlow >= HIT_STOP_SLOW_INTERVAL) {
+				m_HitStopSlow = 0;
+			}
+			else{
+				return;
+			}
+		}
+		//ゆっくりにならないのであれば...
+		else {
+			//処理を飛ばす
+			return;
+		}
+	}
+
+	//プレイヤーのHPが0になったら...
+	if (m_pPlayerHP->GetHP0Flag()) {
+		if (m_GameoverHitstop) {
+			m_StopFlame = HIT_STOP_TIME;
+			m_GameoverHitstop = false;
+			m_HitStopSlow = 0;
+		}
+		else {
+			if (m_StopFlame <= 0) {
+				SetStageClear(false);
+				Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MERCURY);
+				return;
+			}
+		}
+	}
+
+	//最後の列の敵を全て倒したら
+	if (m_pEnemyLaser->IsClear() && m_pEnemyIce->IsClear() &&
+		m_pEnemyFire->IsClear() && m_pEnemyMissile->IsClear()) {
+		if (m_GameclearHitstop) {
+			m_StopFlame = HIT_STOP_TIME;
+			m_GameclearHitstop = false;
+			m_HitStopSlow = 0;
+		}
+		else {
+			if (m_StopFlame <= 0) {
+				//リザルト画面に行く
+				SetStageClear(true);
+				Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MERCURY);
+				return;
+			}
+		}
 	}
 
 	////ボスが死んだら
@@ -172,20 +221,6 @@ void StageMercury::Update(void)
 	//プレイヤーのHPを攻撃数によって減らす
 	if (attack_num != 0) {
 		m_pPlayerHP->ReduceHP((float)attack_num);
-	}
-
-	//プレイヤーのHPが0になったら...
-	if (m_pPlayerHP->GetHP0Flag()) {
-		SetStageClear(false);
-		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MERCURY);
-	}
-
-	//最後の列の敵を全て倒したら
-	if (m_pEnemyLaser->IsClear() && m_pEnemyIce->IsClear() &&
-		m_pEnemyFire->IsClear() && m_pEnemyMissile->IsClear()) {
-		//リザルト画面に行く
-		SetStageClear(true);
-		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MERCURY);
 	}
 }
 

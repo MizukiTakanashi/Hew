@@ -32,6 +32,8 @@ class InhStage
 protected:
 	//ここで初期化
 	static const int NUMBER_DIGIT = 5;		//数字の桁
+	static const int HIT_STOP_TIME = 60 * 3;		//ゲームオーバーかゲームクリアしたときの時間
+	static const int HIT_STOP_SLOW_INTERVAL = 7;	//ゆっくりになる
 
 	//cppで初期化
 	static const D3DXVECTOR2 NUMBER_SIZE;	//数字のサイズ
@@ -202,6 +204,11 @@ protected:
 	PlayerArmChange* m_pPlayerArmChange = nullptr;	//腕の交換
 	Bom* m_pBom = nullptr;					//ボム
 	Management_Meteo* m_pMeteoManagement = nullptr;
+
+	//ゲームオーバーかクリア時
+	bool m_GameoverHitstop = true;	//ゲームオーバー時のヒットストップ
+	bool m_GameclearHitstop = true;	//ゲームクリア時のヒットストップ
+	int m_HitStopSlow = -1;			//ちょっとゆっくりになる
 
 //メンバ関数
 public:
