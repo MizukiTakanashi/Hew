@@ -22,6 +22,7 @@ private:
 	static const int EXIT_TIME = 60 * 10;	//退出時間
 
 	//cppで初期化
+	static const D3DXVECTOR2 SIZE;			//敵のサイズ
 	//弾
 	static const float BULLET_SIZE_X;		//サイズX
 	static const float BULLET_SIZE_Y;		//サイズY

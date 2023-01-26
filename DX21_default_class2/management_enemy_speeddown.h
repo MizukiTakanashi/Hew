@@ -28,10 +28,11 @@ private:
 	static const int BULLET_NUM = 20;	//同時に出せる弾
 
 	//cppで初期化
+	static const D3DXVECTOR2 SIZE;		//サイズ
 	//弾
-	static const float BULLET_SIZE_X;		//サイズX
-	static const float BULLET_SIZE_Y;		//サイズY
-	static const float BULLET_SPEED;		//スピード
+	static const float BULLET_SIZE_X;	//サイズX
+	static const float BULLET_SIZE_Y;	//サイズY
+	static const float BULLET_SPEED;	//スピード
 
 //メンバ変数
 private:

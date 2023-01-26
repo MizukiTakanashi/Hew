@@ -22,6 +22,7 @@ private:
 	DrawObject m_DOMissile;
 	DrawObject m_DOLaser;
 	DrawObject m_DOGatoring;
+	DrawObject m_DOBarrier;
 	DrawObject m_DOStop;
 	DrawObject m_DOHotairlaser;
 	DrawObject m_DOIcerain;
@@ -72,6 +73,7 @@ public:
 	void SetDrawMissile(DrawObject& pd) { m_DOMissile = pd; }
 	void SetDrawLaser(DrawObject& pd) { m_DOLaser = pd; }
 	void SetDrawGatoring(DrawObject& pd) { m_DOGatoring = pd; }
+	void SetDrawBarrier(DrawObject& pd) { m_DOBarrier = pd; }
 	void SetDrawStop(DrawObject& pd) { m_DOStop = pd; }
 	void SetDrawAcid(DrawObject& pd) { m_DOAcid = pd; }
 	void SetDrawHotairlaser(DrawObject& pd) { m_DOHotairlaser = pd; }

@@ -50,7 +50,8 @@ void EnemyLaserManagement::Update()
 	m_FlameNum++; //フレーム数を増加
 
 	//時間が来たら敵をセット
-	if (m_FlameNum == m_SetEnemyTime[m_stage_num][m_EnemyNum])
+	if (m_FlameNum == m_SetEnemyTime[m_stage_num][m_EnemyNum] &&
+		m_EnemyNum < ENEMY_NUM[m_stage_num])
 	{
 		//退出方向を決める
 		bool right = true;

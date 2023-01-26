@@ -8,6 +8,7 @@
 //==========================
 // 定数の初期化
 //==========================
+const D3DXVECTOR2 EnemyAcidManagement::SIZE = D3DXVECTOR2(65.0f, 60.0f);
 const float EnemyAcidManagement::BULLET_SIZE_X = 100.0f;
 const float EnemyAcidManagement::BULLET_SIZE_Y = 200.0f;
 const float EnemyAcidManagement::BULLET_SPEED = 5.0f;
@@ -35,6 +36,7 @@ void EnemyAcidManagement::Update()
 	{
 		EnemyStop temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
 		m_pEnemyGatoring[GetObjNum()] = temp;
+		m_pEnemyGatoring[GetObjNum()].SetSize(SIZE);
 		EnemyManagement::IncreaseObjNum(1);
 
 		m_EnemyNum++;

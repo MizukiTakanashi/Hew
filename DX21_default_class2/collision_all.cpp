@@ -56,6 +56,13 @@ CollisionAll::CollisionAll(STAGE stage, Player* pPlayer, inhPlayerArmBoth* pL, i
 
 		break;
 
+	//水星
+	case STAGE::MERCURY:
+		//プレイヤースピード低下音
+		m_SE_26 = LoadSound((char*)"data\\SE\\2_10.wav");
+
+		break;
+
 	//金星
 	case STAGE::VENUS:
 		//プレイヤースピード低下音
@@ -63,7 +70,7 @@ CollisionAll::CollisionAll(STAGE stage, Player* pPlayer, inhPlayerArmBoth* pL, i
 
 		break;
 
-		//火星
+	//木星
 	case STAGE::JUPITER:
 		//バリアが弾を跳ね返す音
 		m_SE_08 = LoadSound((char*)"data\\SE\\2_08.wav");

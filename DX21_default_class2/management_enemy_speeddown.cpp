@@ -9,6 +9,7 @@
 //==========================
 // 定数の初期化
 //==========================
+const D3DXVECTOR2 EnemySpeeddownManagement::SIZE = D3DXVECTOR2(50.0f, 60.0f);
 const float EnemySpeeddownManagement::BULLET_SIZE_X = 100.0f;
 const float EnemySpeeddownManagement::BULLET_SIZE_Y = 200.0f;
 const float EnemySpeeddownManagement::BULLET_SPEED = 2.5f;
@@ -39,6 +40,7 @@ void EnemySpeeddownManagement::Update(void)
 	{
 		EnemyStop temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum], D3DXVECTOR2(40.0f, 60.0f));
 		m_pEnemy[GetObjNum()] = temp;
+		m_pEnemy[GetObjNum()].SetSize(SIZE);
 		EnemyManagement::IncreaseObjNum(1);
 
 		m_EnemyNum++;

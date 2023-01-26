@@ -61,7 +61,7 @@ void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem, bool ice)
 		m_pItem[m_ItemNum].SetDrawob(m_DOGatoring);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE_BARRIAR:
-		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
+		m_pItem[m_ItemNum].SetDrawob(m_DOBarrier);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE_STOP:
 		m_pItem[m_ItemNum].SetDrawob(m_DOStop);
