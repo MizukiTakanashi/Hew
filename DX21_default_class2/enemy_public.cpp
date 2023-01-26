@@ -19,4 +19,6 @@ void EnemyPublic::Update(void)
 
 	GameObject::MovePos(D3DXVECTOR2(0.0f, SPEED_Y));
 
+	//出現してからのカウントを数える
+	m_appearance_time++;
 }

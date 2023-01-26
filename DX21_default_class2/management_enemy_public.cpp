@@ -12,7 +12,8 @@ void Management_EnemyPublic::Update()
 {
 	m_FlameNum++; //フレーム数を増加
 
-	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
+	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum] &&
+		m_EnemyNum < ENEMY_NUM)
 	{
 		EnemyPublic temp(m_pDrawObjectEnemyPublic, m_SetEnemy[m_EnemyNum]);
 		m_pEnemyPublic[EnemyManagement::GetObjNum()] = temp;
@@ -41,6 +42,9 @@ void Management_EnemyPublic::Update()
 	}
 }
 
+//==========================
+// 描画処理
+//==========================
 void Management_EnemyPublic::Draw(void) const
 {
 	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
@@ -48,13 +52,14 @@ void Management_EnemyPublic::Draw(void) const
 	}
 }
 
+//======================
+// 敵のHPを減らす
+//======================
 bool Management_EnemyPublic::ReduceHP(int index_num, int reduceHP)
 {
 	m_pEnemyPublic[index_num].ReduceHP(reduceHP);
 	if (m_pEnemyPublic[index_num].GetHP() <= 0)
 	{//HPが０以下なら敵を消す
-
-
 		return true;
 	}
 	return false;
@@ -65,6 +70,8 @@ bool Management_EnemyPublic::ReduceHP(int index_num, int reduceHP)
 //==========================
 void Management_EnemyPublic::DeleteObj(int index_num)
 {
+	m_delete_enemy++;
+
 	//敵を消す
 	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
 		m_pEnemyPublic[i] = m_pEnemyPublic[i + 1];
@@ -72,4 +79,8 @@ void Management_EnemyPublic::DeleteObj(int index_num)
 
 	//継承元の敵を消すを呼ぶ
 	EnemyManagement::DeleteObj(index_num);
+
+	if (m_delete_enemy == ENEMY_NUM) {
+		m_tutorial_clear = true;
+	}
 }
