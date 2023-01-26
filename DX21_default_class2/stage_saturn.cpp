@@ -188,6 +188,15 @@ void StageSaturn::Update(void)
 	m_pPlayerRight->Update(m_pPlayer->GetPos(), temp_pos);
 	m_pPlayerCenter->ButtonPress();
 	m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
+	//合体した時のヒットストップ
+	if (m_pPlayerLeft->IsHitStop()) {
+		m_StopFlame = HIT_STOP_UNION;
+		m_pPlayerLeft->SetHitStop(false);
+	}
+	if (m_pPlayerRight->IsHitStop()) {
+		m_StopFlame = HIT_STOP_UNION;
+		m_pPlayerRight->SetHitStop(false);
+	}
 
 	//敵とプレイヤーの当たり判定
 	attack_num += m_pColAll->Collision();

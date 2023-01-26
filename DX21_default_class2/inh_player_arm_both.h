@@ -77,6 +77,8 @@ private:
 
 	bool m_right = false;					//腕の右か左についているか
 
+	bool m_hit_stop = false;				//合体したときのヒットストップ
+
 protected:
 	static const D3DXVECTOR2 ICON_SIZE;			//敵アイコンの表示場所
 
@@ -142,6 +144,12 @@ public:
 
 	//隕石と当たった時に腕を消す
 	void BreakShootingArm();
+
+	//合体し、ヒットストップするか返す
+	bool IsHitStop(void)const { return m_hit_stop; }
+
+	//合体し、ヒットストップするかをセット
+	void SetHitStop(bool hit_stop) { m_hit_stop = hit_stop; }
 
 
 	//====================

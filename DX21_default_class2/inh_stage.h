@@ -32,6 +32,7 @@ class InhStage
 protected:
 	//ここで初期化
 	static const int NUMBER_DIGIT = 5;		//数字の桁
+	static const int HIT_STOP_UNION = 30;	//合体したときのヒットストップ時間
 	static const int HIT_STOP_TIME = 60 * 3;		//ゲームオーバーかゲームクリアしたときの時間
 	static const int HIT_STOP_SLOW_INTERVAL = 7;	//ゆっくりになる
 

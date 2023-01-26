@@ -244,6 +244,8 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 		delete m_pEnemyItem;
 		m_pEnemyItem = nullptr;
 
+		m_hit_stop = true;
+
 		//タイプに沿って腕のアイテムをセット
 		switch (m_type) {
 
