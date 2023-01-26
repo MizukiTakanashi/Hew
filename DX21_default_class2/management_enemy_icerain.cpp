@@ -9,7 +9,7 @@
 //==========================
 // ’è”‚Ì‰Šú‰»
 //==========================
-const int EnemyIceRainManagement::ENEMY_NUM[(int)STAGE::NUM] = { 0, 7, 11, 0, 0 };
+const int EnemyIceRainManagement::ENEMY_NUM[(int)STAGE::NUM] = { 0, 7, 11, 0, 0, 0 };
 const float EnemyIceRainManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyIceRainManagement::BULLET_SIZE_Y = 50.0f;
 const float EnemyIceRainManagement::BULLET_SPEED = 2.5f;

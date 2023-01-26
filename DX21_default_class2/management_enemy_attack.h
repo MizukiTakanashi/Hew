@@ -37,18 +37,18 @@ private:
 
 	//ìGÇÃîzóÒ
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-		D3DXVECTOR2(52.5f + (105 *  1 - 1), -EnemyAttack::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyAttack::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  2 - 1), -EnemyAttack::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 10 - 1), -EnemyAttack::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 10 - 1), -EnemyAttack::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  3 - 1), -EnemyAttack::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  2 - 1), -EnemyAttack::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyAttack::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  1 - 1), -EnemyAttack::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 *  2 - 1), -EnemyAttack::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 11 - 1), -EnemyAttack::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 12 - 1), -EnemyAttack::SIZE_Y / 2)
+		D3DXVECTOR2(52.5f + (105 *  0), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 11), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  1), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  9), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  9), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  2), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  1), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 10), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  0), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 *  1), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 10), -EnemyAttack::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 11), -EnemyAttack::SIZE_Y / 2)
 	};
 	//ìGÇèoÇ∑éûä‘
 	int m_SetEnemyTime[ENEMY_NUM] = {

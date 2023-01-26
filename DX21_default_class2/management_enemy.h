@@ -61,6 +61,7 @@ protected:
 		MERCURY,
 		SATURN,
 		VENUS,
+		JUPITER,
 		NUM
 	};
 	int m_stage_num = 0;			//ステージ

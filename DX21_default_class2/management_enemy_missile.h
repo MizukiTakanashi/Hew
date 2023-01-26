@@ -51,7 +51,7 @@ private:
 	int m_EnemyItem_num = 0;				//敵のアイテムの数
 
 	//敵の配列
-	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][9] = {
+	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][15] = {
 	//チュートリアル
 	{
 		D3DXVECTOR2(52.5f + (105 * 1), -EnemyNormal::SIZE_Y / 2),
@@ -98,10 +98,28 @@ private:
 	//金星
 	{
 		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyNormal::SIZE_Y / 2),
+	},
+	//木星
+	{
+		D3DXVECTOR2(71.0f + (142.0f * 3), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 5), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 8), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 8), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 8), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 3), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 5), -EnemyNormal::SIZE_Y / 2)
 	}
 	};
 
-	int m_SetEnemyTime[(int)STAGE::NUM][9] = {
+	int m_SetEnemyTime[(int)STAGE::NUM][15] = {
 	//チュートリアル
 	{
 		60 * 40,
@@ -144,8 +162,25 @@ private:
 	//金星
 	{
 		60 * 100,
+	},
+	//木星
+	{
+		60 * 10,
+		60 * 10 + 1,
+		60 * 40,
+		60 * 40 + 1,
+		60 * 40 + 2,
+		60 * 65,
+		60 * 65 + 1,
+		60 * 75,
+		60 * 130,
+		60 * 130 + 1,
+		60 * 140,
+		60 * 140 + 1,
+		60 * 165,
+		60 * 165 + 1,
+		60 * 165 + 2,
 	}
-
 	};
 
 	//メンバ関数

@@ -22,10 +22,13 @@ private:
 	DrawObject m_DOMissile;
 	DrawObject m_DOLaser;
 	DrawObject m_DOGatoring;
-	DrawObject m_DOAcid;
+	DrawObject m_DOStop;
 	DrawObject m_DOHotairlaser;
 	DrawObject m_DOIcerain;
+	DrawObject m_DOIce;
 	DrawObject m_DOPoisonlaser;
+	DrawObject m_DOFire;
+	DrawObject m_DOAcid;
 	DrawObject m_DOFireball;
 
 	Item* m_pItem = nullptr;
@@ -35,17 +38,8 @@ public:
 	//デフォルトコンストラクタ
 	ItemManagement();
 
-	~ItemManagement() 
-	{
-		delete[] m_pItem; 
-		//delete m_DOMissile;
-		//delete m_DOLaser;
-		//delete m_DOGatoring;
-		//delete m_DOAcid;
-		//delete m_DOHotairlaser;
-		//delete m_DOIcerain;
-		//delete m_DOPoisonlaser;
-	}	//デストラクタ
+	//デストラクタ
+	~ItemManagement() { delete[] m_pItem; }	
 
 	//更新処理
 	void Update(void);
@@ -70,7 +64,7 @@ public:
 	int GetItemNum(void)const { return m_ItemNum; }
 
 	//アイテムをセット
-	void SetItem(const D3DXVECTOR2& pos, int typeitem);
+	void SetItem(const D3DXVECTOR2& pos, int typeitem, bool ice = false);
 
 	//アイテムのタイプを返す
 	int GetItemType(int i) const { return m_pItem[i].GerItemType(); }
@@ -78,11 +72,13 @@ public:
 	void SetDrawMissile(DrawObject& pd) { m_DOMissile = pd; }
 	void SetDrawLaser(DrawObject& pd) { m_DOLaser = pd; }
 	void SetDrawGatoring(DrawObject& pd) { m_DOGatoring = pd; }
+	void SetDrawStop(DrawObject& pd) { m_DOStop = pd; }
 	void SetDrawAcid(DrawObject& pd) { m_DOAcid = pd; }
 	void SetDrawHotairlaser(DrawObject& pd) { m_DOHotairlaser = pd; }
 	void SetDrawIcerain(DrawObject& pd) { m_DOIcerain = pd; }
+	void SetDrawIce(DrawObject& pd) { m_DOIce = pd; }
 	void SetDrawPoisonlaser(DrawObject& pd) { m_DOPoisonlaser = pd; }
+	void SetDrawFire(DrawObject& pd) { m_DOFire = pd; }
 	void SetDrawFireball(DrawObject& pd) { m_DOFireball = pd; }
-
 };
 

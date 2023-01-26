@@ -8,21 +8,23 @@
 //==========================
 // 定数の初期化
 //==========================
+const int EnemyBarrierManagement::ENEMY_NUM[(int)STAGE::NUM] = { 0, 4, 0, 0, 0, 9 };
 const D3DXVECTOR2 EnemyBarrierManagement::BARRIER_SIZE = D3DXVECTOR2(50.0f, 10.0f);
 const D3DXVECTOR2 EnemyBarrierManagement::INTERVAL_POS = D3DXVECTOR2(0.0f, 60.0f);
 
 //=========================
 // 引数付きコンストラクタ
 //=========================
-EnemyBarrierManagement::EnemyBarrierManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2)
-	:EnemyManagement(EnemyManagement::TYPE::BULLET_BARRIER, ENEMY_NUM, ATTACK, 0, BARRIER_ATTACK), 
+EnemyBarrierManagement::EnemyBarrierManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, int stage_num)
+	:EnemyManagement(EnemyManagement::TYPE::BULLET_BARRIER, ENEMY_NUM[stage_num], ATTACK, 0, BARRIER_ATTACK),
 	m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBarrier(pDrawObject2)
 {
-	m_pEnemy = new EnemyBarrier[ENEMY_NUM];
-	m_pBarrier = new GameObject[ENEMY_NUM];
+	m_stage_num = stage_num;
+	m_pEnemy = new EnemyBarrier[ENEMY_NUM[m_stage_num]];
+	m_pBarrier = new GameObject[ENEMY_NUM[m_stage_num]];
 
 	//バリアのHP初期化
-	for (int i = 0; i < ENEMY_NUM; i++) {
+	for (int i = 0; i < ENEMY_NUM[m_stage_num]; i++) {
 		m_BarrierHP[i] = BARRIER_HP_MAX;
 	}
 }
@@ -35,14 +37,15 @@ void EnemyBarrierManagement::Update()
 	m_FlameNum++; //フレーム数を増加
 
 	//セットする時間になれば...
-	if (m_FlameNum == m_SetEnemyTime[m_EnemyNum])
+	if (m_FlameNum == m_SetEnemyTime[m_stage_num][m_EnemyNum] && 
+		m_EnemyNum < ENEMY_NUM[m_stage_num])
 	{
 		//敵をセットする
-		EnemyBarrier temp(m_pDrawObjectEnemy, m_SetEnemy[m_EnemyNum]);
+		EnemyBarrier temp(m_pDrawObjectEnemy, m_SetEnemy[m_stage_num][m_EnemyNum]);
 		m_pEnemy[EnemyManagement::GetObjNum()] = temp;
 
 		//バリアをセットする
-		GameObject temp1(m_pDrawObjectBarrier, m_SetEnemy[m_EnemyNum], BARRIER_SIZE);
+		GameObject temp1(m_pDrawObjectBarrier, m_SetEnemy[m_stage_num][m_EnemyNum], BARRIER_SIZE);
 		m_pBarrier[EnemyManagement::GetOtherNum()] = temp1;
 		m_BarrierHP[EnemyManagement::GetOtherNum()] = BARRIER_HP_MAX;
 		m_pEnemy[EnemyManagement::GetObjNum()].SetBarrierIndex(EnemyManagement::GetOtherNum());
@@ -54,7 +57,7 @@ void EnemyBarrierManagement::Update()
 		m_EnemyNum++;
 	}
 
-	if (m_EnemyNum == ENEMY_NUM)
+	if (m_EnemyNum == ENEMY_NUM[m_stage_num])
 	{
 		m_tutorial_clear = true;
 	}
@@ -150,7 +153,7 @@ void EnemyBarrierManagement::DeleteObj(int index_num)
 	//継承元の敵を消すを呼ぶ
 	EnemyManagement::DeleteObj(index_num);
 
-	if (m_delete_enemy == ENEMY_NUM) {
+	if (m_delete_enemy == ENEMY_NUM[m_stage_num]) {
 		m_tutorial_clear = true;
 	}
 

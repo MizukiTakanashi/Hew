@@ -63,6 +63,17 @@ CollisionAll::CollisionAll(STAGE stage, Player* pPlayer, inhPlayerArmBoth* pL, i
 
 		break;
 
+		//火星
+	case STAGE::JUPITER:
+		//バリアが弾を跳ね返す音
+		m_SE_08 = LoadSound((char*)"data\\SE\\2_08.wav");
+
+		//バリアが壊れる音
+		m_SE_09 = LoadSound((char*)"data\\SE\\1_09_2.wav");
+		//SetVolume(m_SE_09, 2.0f);
+
+		break;
+
 	default:
 		break;
 	}
@@ -119,9 +130,18 @@ int CollisionAll::Collision(void)
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
-							if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
-								//敵アイテムのドロップ
-								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+							if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
+								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
+								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
+								if (m_stage == STAGE::MERCURY &&
+									m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {
+									//敵アイテムのドロップ
+									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType(), true);
+								}
+								else {
+									//敵アイテムのドロップ
+									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+								}
 							}
 							//敵を消す
 							m_pEnemy[k]->DeleteObj(j);
@@ -174,9 +194,18 @@ int CollisionAll::Collision(void)
 				//敵が死んだら...
 				if (m_pEnemy[k]->ReduceHP(j, m_pBom->GetBombAttack()))
 				{
-					if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
-						//敵アイテムのドロップ
-						m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+					if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
+						m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
+						m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
+						if (m_stage == STAGE::MERCURY &&
+							m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {
+							//敵アイテムのドロップ
+							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType(), true);
+						}
+						else {
+							//敵アイテムのドロップ
+							m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+						}
 					}
 					//敵を消す
 					m_pEnemy[k]->DeleteObj(j);
@@ -217,9 +246,18 @@ int CollisionAll::Collision(void)
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
-							if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
-								//敵アイテムのドロップ
-								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+							if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
+								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
+								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
+								if (m_stage == STAGE::MERCURY &&
+									m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {
+									//敵アイテムのドロップ
+									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType(), true);
+								}
+								else {
+									//敵アイテムのドロップ
+									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+								}
 							}
 							//敵を消す
 							m_pEnemy[k]->DeleteObj(j);
@@ -306,9 +344,18 @@ int CollisionAll::Collision(void)
 								//敵が死んだら...
 								if (m_pEnemy[k]->ReduceHP(j, 1))
 								{
-									if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
-										//敵アイテムのドロップ
-										m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+									if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
+										m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
+										m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
+										if (m_stage == STAGE::MERCURY &&
+											m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {
+											//敵アイテムのドロップ
+											m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType(), true);
+										}
+										else {
+											//敵アイテムのドロップ
+											m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+										}
 									}
 									//敵を消す
 									m_pEnemy[k]->DeleteObj(j);
@@ -333,6 +380,12 @@ int CollisionAll::Collision(void)
 					}
 
 					break;
+
+				case STAGE::JUPITER:
+					//バリアであれば何もしない
+					if (pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE_BARRIAR) {
+						next_right = true;
+					}
 
 				default:
 					break;
@@ -382,9 +435,18 @@ int CollisionAll::Collision(void)
 							//敵が死んだら...
 							if (m_pEnemy[k]->ReduceHP(j, 1))
 							{
-								if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
-									//敵アイテムのドロップ
-									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+								if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
+									m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
+									m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
+									if (m_stage == STAGE::MERCURY &&
+										m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {
+										//敵アイテムのドロップ
+										m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType(), true);
+									}
+									else {
+										//敵アイテムのドロップ
+										m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+									}
 								}
 								//敵を消す
 								m_pEnemy[k]->DeleteObj(j);
@@ -540,7 +602,7 @@ int CollisionAll::Collision(void)
 				// 火星であれば...
 				//バリアであれば処理を行う
 				if (pArmItem != nullptr && pArm->GetType() == inhPlayerArmBoth::TYPE::TYPE_BARRIAR &&
-					m_stage == STAGE::MARS) {
+					(m_stage == STAGE::MARS || m_stage == STAGE::JUPITER)) {
 					for (int i = 0; i < pArmItem->GetBulletNum(); i++) {
 						if (Collision::ColBox(pArmItem->GetBulletPos(i), m_pEnemy[k]->GetBulletPos(j),
 							pArmItem->GetBulletSize(), m_pEnemy[k]->GetBulletSize())) {
@@ -584,10 +646,10 @@ int CollisionAll::Collision(void)
 		//=================================================
 		// 敵の別オブジェクト分ループ
 		
-		//火星
+		//火星、木星
 		//バリア
 		//グレネード敵
-		for (int j = 0; j < m_pEnemy[k]->GetOtherNum() && m_stage == STAGE::MARS; j++) {
+		for (int j = 0; j < m_pEnemy[k]->GetOtherNum() && (m_stage == STAGE::MARS || m_stage == STAGE::JUPITER); j++) {
 			bool next = false;
 
 			//=================================================
