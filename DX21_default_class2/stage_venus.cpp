@@ -95,7 +95,54 @@ void StageVenus::Update(void)
 	if (m_StopFlame > 0)
 	{
 		m_StopFlame--;
-		return;
+
+		//ゆっくりになるのであれば...
+		if (m_HitStopSlow != -1) {
+			//時間が来たら処理をかける
+			if (++m_HitStopSlow >= HIT_STOP_SLOW_INTERVAL) {
+				m_HitStopSlow = 0;
+			}
+			else {
+				return;
+			}
+		}
+		//ゆっくりにならないのであれば...
+		else {
+			//処理を飛ばす
+			return;
+		}
+	}
+
+	//プレイヤーのHPが0になったら...
+	if (m_pPlayerHP->GetHP0Flag()) {
+		if (m_GameoverHitstop) {
+			m_StopFlame = HIT_STOP_TIME;
+			m_GameoverHitstop = false;
+			m_HitStopSlow = 0;
+		}
+		else {
+			if (m_StopFlame <= 0) {
+				SetStageClear(false);
+				Fade(SCENE::SCENE_RESULT, STAGE::STAGE_VENUS);
+				return;
+			}
+		}
+	}
+	//最後の列の敵を全て倒したら
+	if (m_pEnemuPoorvisionManagement->IsClear() && m_pEnemyAcidManagement->IsClear() && m_pEnemySpeeddownManagement->IsClear() && m_pEnemyFireballManagement->IsClear() && m_pEnemyGatoring->IsClear()) {
+		if (m_GameclearHitstop) {
+			m_StopFlame = HIT_STOP_TIME;
+			m_GameclearHitstop = false;
+			m_HitStopSlow = 0;
+		}
+		else {
+			if (m_StopFlame <= 0) {
+				//リザルト画面に行く
+				SetStageClear(true);
+				Fade(SCENE::SCENE_RESULT, STAGE::STAGE_SATURN);
+				return;
+			}
+		}
 	}
 
 	//ボスが死んだら
@@ -148,6 +195,15 @@ void StageVenus::Update(void)
 	m_pPlayerRight->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
 	m_pPlayerCenter->ButtonPress();
 	m_pPlayerCenter->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
+		//合体した時のヒットストップ
+	if (m_pPlayerLeft->IsHitStop()) {
+		m_StopFlame = HIT_STOP_UNION;
+		m_pPlayerLeft->SetHitStop(false);
+	}
+	if (m_pPlayerRight->IsHitStop()) {
+		m_StopFlame = HIT_STOP_UNION;
+		m_pPlayerRight->SetHitStop(false);
+	}
 
 	//敵とプレイヤーの当たり判定
 	attack_num += m_pColAll->Collision();
@@ -164,18 +220,6 @@ void StageVenus::Update(void)
 	//プレイヤーのHPを攻撃数によって減らす
 	if (attack_num != 0) {
 		m_pPlayerHP->ReduceHP((float)attack_num);
-	}
-
-	//プレイヤーのHPが0になったら...
-	if (m_pPlayerHP->GetHP0Flag()) {
-		SetStageClear(false);
-		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_VENUS);
-	}
-	//最後の列の敵を全て倒したら
-	if (m_pEnemuPoorvisionManagement->IsClear() && m_pEnemyAcidManagement->IsClear() && m_pEnemySpeeddownManagement->IsClear() && m_pEnemyFireballManagement->IsClear() && m_pEnemyGatoring->IsClear()) {
-		//リザルト画面に行く
-		SetStageClear(true);
-		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_SATURN);
 	}
 }
 

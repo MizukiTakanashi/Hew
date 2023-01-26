@@ -96,7 +96,57 @@ void StageMars::Update(void)
 	if (m_StopFlame > 0)
 	{
 		m_StopFlame--;
-		return;
+
+		//ゆっくりになるのであれば...
+		if (m_HitStopSlow != -1) {
+			//時間が来たら処理をかける
+			if (++m_HitStopSlow >= HIT_STOP_SLOW_INTERVAL) {
+				m_HitStopSlow = 0;
+			}
+			else {
+				return;
+			}
+		}
+		//ゆっくりにならないのであれば...
+		else {
+			//処理を飛ばす
+			return;
+		}
+	}
+
+	//プレイヤーのHPが0になったら...
+	if (m_pPlayerHP->GetHP0Flag()) {
+		if (m_GameoverHitstop) {
+			m_StopFlame = HIT_STOP_TIME;
+			m_GameoverHitstop = false;
+			m_HitStopSlow = 0;
+		}
+		else {
+			if (m_StopFlame <= 0) {
+				SetStageClear(false);
+				Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MARS);
+				return;
+			}
+		}
+	}
+
+	//最後の列の敵を全て倒したら
+	if (m_pEnemyMissileManagement->IsClear() && m_pEnemyBarrierManagement->IsClear() &&
+		m_pEnemyIceRainManagement->IsClear() && m_pEnemyStopManagement->IsClear() &&
+		m_pEnemyGrenadeManagement->IsClear()) {
+		if (m_GameclearHitstop) {
+			m_StopFlame = HIT_STOP_TIME;
+			m_GameclearHitstop = false;
+			m_HitStopSlow = 0;
+		}
+		else {
+			if (m_StopFlame <= 0) {
+				//リザルト画面に行く
+				SetStageClear(true);
+				Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MARS);
+				return;
+			}
+		}
 	}
 
 	//ボスが死んだら
@@ -155,6 +205,15 @@ void StageMars::Update(void)
 	m_pPlayerRight->Update(m_pPlayer->GetPos(), temp_pos);
 	m_pPlayerCenter->ButtonPress();
 	m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
+	//合体した時のヒットストップ
+	if (m_pPlayerLeft->IsHitStop()) {
+		m_StopFlame = HIT_STOP_UNION;
+		m_pPlayerLeft->SetHitStop(false);
+	}
+	if (m_pPlayerRight->IsHitStop()) {
+		m_StopFlame = HIT_STOP_UNION;
+		m_pPlayerRight->SetHitStop(false);
+	}
 
 	////ボス処理
 	//if (m_pBoss)
@@ -176,21 +235,6 @@ void StageMars::Update(void)
 	//プレイヤーのHPを攻撃数によって減らす
 	if (attack_num != 0) {
 		m_pPlayerHP->ReduceHP((float)attack_num);
-	}
-
-	//プレイヤーのHPが0になったら...
-	if (m_pPlayerHP->GetHP0Flag()) {
-		SetStageClear(false);
-		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MARS);
-	}
-
-	//最後の列の敵を全て倒したら
-	if (m_pEnemyMissileManagement->IsClear() && m_pEnemyBarrierManagement->IsClear() &&
-		m_pEnemyIceRainManagement->IsClear() && m_pEnemyStopManagement->IsClear() &&
-		m_pEnemyGrenadeManagement->IsClear()) {
-		//リザルト画面に行く
-		SetStageClear(true);
-		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MARS);
 	}
 
 }
