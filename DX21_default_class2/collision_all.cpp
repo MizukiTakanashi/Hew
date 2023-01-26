@@ -476,6 +476,7 @@ int CollisionAll::Collision(void)
 				if (m_pEnemy[k]->GetType() == EnemyManagement::TYPE::FIRE && m_stage == STAGE::MERCURY)
 				{
 					m_pHP->SetFire(true);
+					m_pPlayer->SetFire(true);
 				}
 				//ダメージ数を増やす
 				attacked += m_pEnemy[k]->GetBulletAttack();
@@ -1059,6 +1060,7 @@ void CollisionAll::HeelCollision(void)
 				if (m_stage == STAGE::MERCURY && 
 					m_pItem->GetItemType(i) == (int)Item::Item_NUM::ENEMYITEM_TYPE_ICERAIN) {
 					m_pHP->SetFire(false);
+					m_pPlayer->SetFire(false);
 				}
 				//タイプをセット
 				else {

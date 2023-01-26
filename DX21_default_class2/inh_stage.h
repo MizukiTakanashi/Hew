@@ -43,6 +43,7 @@ protected:
 		MULTIPLY,//
 		FRAME,//
 		PLAYER,//
+		PLAYER_FIRE,
 		PLAYER_HP,//
 		EXPLOSION,//
 		MOON,//ŒŽ
@@ -100,6 +101,7 @@ protected:
 	enum class DRAW_TYPE :int
 	{
 		PLAYER,//
+		PLAYER_FIRE,
 		PLAYER_HP_BAR,//
 		NUMBER,//
 		MULTIPLY,//
