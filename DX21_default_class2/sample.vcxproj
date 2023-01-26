@@ -140,17 +140,6 @@
     <ClCompile Include="bgplanet.cpp" />
     <ClCompile Include="Bom.cpp" />
     <ClCompile Include="boss.cpp" />
-    <ClCompile Include="BossPatternA.cpp" />
-    <ClCompile Include="BossPatternB.cpp" />
-    <ClCompile Include="BossPatternC.cpp" />
-    <ClCompile Include="BossPatternD.cpp" />
-    <ClCompile Include="BossPatternE.cpp" />
-    <ClCompile Include="BossPatternF.cpp" />
-    <ClCompile Include="BulletPatternA.cpp" />
-    <ClCompile Include="BulletPatternB.cpp" />
-    <ClCompile Include="BulletPatternC.cpp" />
-    <ClCompile Include="BulletPatternD.cpp" />
-    <ClCompile Include="BulletPatternE.cpp" />
     <ClCompile Include="bullet_stop.cpp" />
     <ClCompile Include="collision_all.cpp" />
     <ClCompile Include="bullet.cpp" />
@@ -177,6 +166,7 @@
     </ClCompile>
     <ClCompile Include="inputx.cpp" />
     <ClCompile Include="keyboard.cpp" />
+    <ClCompile Include="management_boss.cpp" />
     <ClCompile Include="management_enemy_acid.cpp" />
     <ClCompile Include="management_enemy_attack.cpp" />
     <ClCompile Include="management_enemy_barrier.cpp" />
@@ -279,19 +269,6 @@
     <ClInclude Include="bg_planet.h" />
     <ClInclude Include="Bom.h" />
     <ClInclude Include="boss.h" />
-    <ClInclude Include="BossPattern.h" />
-    <ClInclude Include="BossPatternA.h" />
-    <ClInclude Include="BossPatternB.h" />
-    <ClInclude Include="BossPatternC.h" />
-    <ClInclude Include="BossPatternD.h" />
-    <ClInclude Include="BossPatternE.h" />
-    <ClInclude Include="BossPatternF.h" />
-    <ClInclude Include="BulletPattern.h" />
-    <ClInclude Include="BulletPatternA.h" />
-    <ClInclude Include="BulletPatternB.h" />
-    <ClInclude Include="BulletPatternC.h" />
-    <ClInclude Include="BulletPatternD.h" />
-    <ClInclude Include="BulletPatternE.h" />
     <ClInclude Include="bullet_stop.h" />
     <ClInclude Include="collision_all.h" />
     <ClInclude Include="bullet.h" />
@@ -318,6 +295,7 @@
     </ClInclude>
     <ClInclude Include="inputx.h" />
     <ClInclude Include="keyboard.h" />
+    <ClInclude Include="management_boss.h" />
     <ClInclude Include="management_enemy_acid.h" />
     <ClInclude Include="management_enemy_attack.h" />
     <ClInclude Include="management_enemy_barrier.h" />
