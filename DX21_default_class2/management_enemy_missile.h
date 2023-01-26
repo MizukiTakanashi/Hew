@@ -76,7 +76,7 @@ private:
 		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 0), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2)
+		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2),
 	},
 	//ìyêØ
 	{
