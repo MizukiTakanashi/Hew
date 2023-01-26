@@ -20,7 +20,7 @@ class EnemyMeguminManagement:public EnemyManagement
 private:
 	//Ç±Ç±Ç≈èâä˙âª
 	//ìGé©êg
-	static const int ENEMY_NUM = 8;		//ìGÇèoåªÇ≥ÇπÇÈêî
+	static const int ENEMY_NUM = 13;		//ìGÇèoåªÇ≥ÇπÇÈêî
 	static const int BULLET_TIME = 60;		
 
 	//cppÇ≈èâä˙âª
@@ -49,7 +49,14 @@ private:
 		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyStop::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 1), -EnemyStop::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 7), -EnemyStop::SIZE_Y / 2),
-		D3DXVECTOR2(71.0f + (142.0f * 3), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyStop::SIZE_Y / 2),
+
+
+		D3DXVECTOR2(71.0f + (142.0f * 5), -EnemyStop::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 5), -EnemyStop::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyStop::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 1), -EnemyStop::SIZE_Y / 2),
@@ -61,6 +68,11 @@ private:
 		60 * 5,
 		60 * 10,
 		60 * 10 + 1,
+		60 * 20,
+		60 * 20 + 1,
+		60 * 30,
+		60 * 35,
+		60 * 35 + 1,
 		60 * 50,
 		60 * 50 + 1,
 		60 * 110,
