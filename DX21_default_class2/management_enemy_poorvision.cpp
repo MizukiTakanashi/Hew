@@ -21,7 +21,7 @@ EnemyPoorvisionManagement::EnemyPoorvisionManagement(DrawObject& pDrawObject1, D
 	m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
 	m_pEnemy = new EnemyStop[ENEMY_NUM];
-	m_pBullet = new Bullet[ENEMY_NUM];
+	m_pBullet = new Bullet[BULLET_NUM];
 
 	//冷気を出す音
 	//m_SE_11 = LoadSound((char*)"data\\SE\\1_11.wav");

@@ -31,6 +31,11 @@ void Management_FireField::Update()
 	for (int i = 0; i < m_EnemyNum; i++)
 	{
 		m_pFireField[i]->Update();
+
+		//‰æ–ÊŠO‚Éo‚½‚çÁ‚·
+		if (m_pFireField[i]->GetScreenOut()) {
+			DeleteObj(i);
+		}
 	}
 }
 

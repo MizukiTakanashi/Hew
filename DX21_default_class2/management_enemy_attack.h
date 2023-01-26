@@ -10,12 +10,11 @@ class EnemyAttackManagement :public EnemyManagement
 	//定数
 private:
 	//ここで初期化
-	//敵自身
 	static const int ENEMY_NUM = 12;		//敵を出現させる数
-
-	static const float ATTACK_SPEED;		//スピード
+	static const int BULLET_NUM = 20;		//同時に出せる弾
 
 	//cppで初期化
+	static const float ATTACK_SPEED;		//スピード
 	//弾
 	static const float BULLET_SIZE_X;		//サイズX
 	static const float BULLET_SIZE_Y;		//サイズY

@@ -91,6 +91,7 @@ public:
 	//w’è‚µ‚½“G‚ğÁ‚·
 	void DeleteObj(int index_num) {
 		delete m_pMeteo[index_num];
+		m_pMeteo[index_num] = nullptr;
 		for (int i = index_num; i < m_EnemyNum - 1; i++) {
 			m_pMeteo[i] = m_pMeteo[i + 1];
 			m_pMeteo[i + 1] = nullptr;

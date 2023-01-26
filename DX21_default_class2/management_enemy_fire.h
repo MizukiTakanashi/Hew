@@ -22,6 +22,7 @@ private:
 	//敵自身
 	static const int BULLET_BREAK_TIME = 200;	//ホーミング弾が壊れる時間
 	static const int EXIT_TIME = 60 * 10;		//退出時間
+	static const int BULLET_NUM = 30;			//同時に出せる弾
 
 	//cppで初期化
 	static const int ENEMY_NUM[(int)STAGE::NUM];	//敵を出現させる数W
