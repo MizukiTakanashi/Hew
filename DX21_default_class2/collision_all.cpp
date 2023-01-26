@@ -111,7 +111,7 @@ int CollisionAll::Collision(void)
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
-							if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION) {
+							if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
 								//敵アイテムのドロップ
 								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
 							}
@@ -166,9 +166,10 @@ int CollisionAll::Collision(void)
 				//敵が死んだら...
 				if (m_pEnemy[k]->ReduceHP(j, m_pBom->GetBombAttack()))
 				{
-					//敵アイテムのドロップ
-					m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
-
+					if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
+						//敵アイテムのドロップ
+						m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
+					}
 					//敵を消す
 					m_pEnemy[k]->DeleteObj(j);
 
@@ -208,7 +209,7 @@ int CollisionAll::Collision(void)
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
-							if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION) {
+							if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
 								//敵アイテムのドロップ
 								m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
 							}
@@ -297,7 +298,7 @@ int CollisionAll::Collision(void)
 								//敵が死んだら...
 								if (m_pEnemy[k]->ReduceHP(j, 1))
 								{
-									if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION) {
+									if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
 										//敵アイテムのドロップ
 										m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
 									}
@@ -373,7 +374,7 @@ int CollisionAll::Collision(void)
 							//敵が死んだら...
 							if (m_pEnemy[k]->ReduceHP(j, 1))
 							{
-								if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION) {
+								if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
 									//敵アイテムのドロップ
 									m_pItem->SetItem(m_pEnemy[k]->GetObjPos(j), (int)m_pEnemy[k]->GetType());
 								}
