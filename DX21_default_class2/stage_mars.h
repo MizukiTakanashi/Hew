@@ -34,7 +34,7 @@ private:
 
 	CollisionAll* m_pColAll1 = nullptr;
 
-	Boss* m_pBoss = nullptr;
+	//Boss* m_pBoss = nullptr;
 
 	MarsGimmick* m_pGimmick = nullptr;
 
