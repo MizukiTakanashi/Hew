@@ -5,12 +5,6 @@
     <ClCompile Include="bgplanet.cpp" />
     <ClCompile Include="Bom.cpp" />
     <ClCompile Include="boss.cpp" />
-    <ClCompile Include="BossPatternA.cpp" />
-    <ClCompile Include="BossPatternB.cpp" />
-    <ClCompile Include="BossPatternC.cpp" />
-    <ClCompile Include="BossPatternD.cpp" />
-    <ClCompile Include="BossPatternE.cpp" />
-    <ClCompile Include="BossPatternF.cpp" />
     <ClCompile Include="bullet_stop.cpp" />
     <ClCompile Include="collision_all.cpp" />
     <ClCompile Include="bullet.cpp" />
@@ -107,24 +101,14 @@
     <ClCompile Include="title.cpp" />
     <ClCompile Include="title_score.cpp" />
     <ClCompile Include="ui.cpp" />
-    <ClCompile Include="BulletPatternA.cpp" />
-    <ClCompile Include="BulletPatternB.cpp" />
-    <ClCompile Include="BulletPatternC.cpp" />
-    <ClCompile Include="BulletPatternD.cpp" />
-    <ClCompile Include="BulletPatternE.cpp" />
+    <ClCompile Include="management_boss.cpp" />
+    <ClCompile Include="stage_jupiter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="all_enemy_management.h" />
     <ClInclude Include="bg_planet.h" />
     <ClInclude Include="Bom.h" />
     <ClInclude Include="boss.h" />
-    <ClInclude Include="BossPattern.h" />
-    <ClInclude Include="BossPatternA.h" />
-    <ClInclude Include="BossPatternB.h" />
-    <ClInclude Include="BossPatternC.h" />
-    <ClInclude Include="BossPatternD.h" />
-    <ClInclude Include="BossPatternE.h" />
-    <ClInclude Include="BossPatternF.h" />
     <ClInclude Include="bullet_stop.h" />
     <ClInclude Include="collision_all.h" />
     <ClInclude Include="bullet.h" />
@@ -222,12 +206,8 @@
     <ClInclude Include="title.h" />
     <ClInclude Include="title_score.h" />
     <ClInclude Include="ui.h" />
-    <ClInclude Include="BulletPattern.h" />
-    <ClInclude Include="BulletPatternA.h" />
-    <ClInclude Include="BulletPatternB.h" />
-    <ClInclude Include="BulletPatternC.h" />
-    <ClInclude Include="BulletPatternD.h" />
-    <ClInclude Include="BulletPatternE.h" />
+    <ClInclude Include="management_boss.h" />
+    <ClInclude Include="stage_jupiter.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="sample.rc" />

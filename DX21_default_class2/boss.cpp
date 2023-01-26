@@ -18,11 +18,11 @@ const float Boss::RANGE = 20.0f;
 const float Boss::SPEED_X = 1.5f;
 const float Boss::SPEED_Y = 2.5f;
 
-int m_count = 0;
-int m_count1 = 0;
-int m_count2 = 0;
-int m_count3 = 0;
-int m_count4 = 0;
+int m_boss_count = 0;
+int m_boss_count1 = 0;
+int m_boss_count2 = 0;
+int m_boss_count3 = 0;
+int m_boss_count4 = 0;
 
 
 Boss::~Boss()
@@ -56,32 +56,32 @@ void Boss::Update(void)
 	SetPos(D3DXVECTOR2(m_init_posx + cosf(rad) * RANGE, GetPos().y));
 	m_move_width += SPEED_X;
 
-	m_count++;
-	m_count1++;
-	m_count2++;
-	m_count3++;
-	m_count4++;
+	m_boss_count++;
+	m_boss_count1++;
+	m_boss_count2++;
+	m_boss_count3++;
+	m_boss_count4++;
 
 	//ŽžŠÔ‚ª—ˆ‚½‚ç’e‚ðì‚é
-	if (m_count > BULLET_TIME) {
+	if (m_boss_count > BULLET_TIME) {
 		m_bullet_make = true;
-		m_count = 0;
+		m_boss_count = 0;
 	}
-	if (m_count1 > BULLET_TIME + 1) {
+	if (m_boss_count1 > BULLET_TIME + 1) {
 		m_bullet_make1 = true;
-		m_count1 = 0;
+		m_boss_count1 = 0;
 	}
-	if (m_count2 > BULLET_TIME + 2) {
+	if (m_boss_count2 > BULLET_TIME + 2) {
 		m_bullet_make2 = true;
-		m_count2 = 0;
+		m_boss_count2 = 0;
 	}
-	if (m_count3 > BULLET_TIME + 3) {
+	if (m_boss_count3 > BULLET_TIME + 3) {
 		m_bullet_make3 = true;
-		m_count3 = 0;
+		m_boss_count3 = 0;
 	}
-	if (m_count4 > BULLET_TIME + 4) {
+	if (m_boss_count4 > BULLET_TIME + 4) {
 		m_bullet_make4 = true;
-		m_count4 = 0;
+		m_boss_count4 = 0;
 	}
 
 }

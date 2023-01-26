@@ -35,6 +35,7 @@ public:
 		MERCURY,
 		SATURN,
 		VENUS,
+		JUPITER,
 		NUM
 	};
 

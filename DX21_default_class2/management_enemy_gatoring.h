@@ -88,6 +88,10 @@ private:
 			D3DXVECTOR2(71.0f + (142 * 0), -EnemyGatoring::SIZE_Y / 2),
 			D3DXVECTOR2(71.0f + (142 * 4), -EnemyGatoring::SIZE_Y / 2),
 			D3DXVECTOR2(71.0f + (142 * 8), -EnemyGatoring::SIZE_Y / 2)
+		},
+		//ñÿêØ
+		{
+			D3DXVECTOR2(71.0f + (142 * 0), -EnemyGatoring::SIZE_Y / 2),
 		}
 	};
 
@@ -130,6 +134,10 @@ private:
 			60 * 170,
 			60 * 170 + 1,
 			60 * 170 + 2
+		},
+		//ñÿêØ
+		{
+			60 * 90,
 		}
 	};
 

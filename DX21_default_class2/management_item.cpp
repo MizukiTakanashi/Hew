@@ -42,7 +42,7 @@ void ItemManagement::DeleteItem(int index_num)
 //==========================
 // アイテムをセット
 //==========================
-void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem)
+void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem, bool ice)
 {
 
     Item Temp(m_DOMissile, pos, typeitem);
@@ -64,7 +64,7 @@ void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem)
 		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE_STOP:
-		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
+		m_pItem[m_ItemNum].SetDrawob(m_DOStop);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_TYPE_ICERAIN:
 		m_pItem[m_ItemNum].SetDrawob(m_DOIcerain);
@@ -81,9 +81,14 @@ void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem)
 	case (int)Item::Item_NUM::ENEMYITEM_FIREBALL:
 		m_pItem[m_ItemNum].SetDrawob(m_DOFireball);
 		break;
+
 	default:
 		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
 		break;
+	}
+
+	if (ice) {
+		m_pItem[m_ItemNum].SetDrawob(m_DOIce);
 	}
 
 	m_ItemNum++;

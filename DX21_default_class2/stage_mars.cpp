@@ -14,7 +14,7 @@ StageMars::StageMars(Score* pNumber):InhStage(pNumber)
 	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\mars.png");
 
 	//ƒoƒŠƒA‚Ì“G
-	m_pEnemyBarrierManagement = new EnemyBarrierManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER], m_pDrawObject[(int)DRAW_TYPE::BULLET_BARRIER]);
+	m_pEnemyBarrierManagement = new EnemyBarrierManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER], m_pDrawObject[(int)DRAW_TYPE::BULLET_BARRIER], 1);
 
 	//•X‚Ì“G
 	m_pEnemyIceRainManagement = new EnemyIceRainManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE], m_pDrawObject[(int)DRAW_TYPE::BULLET_ICE], 1);

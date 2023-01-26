@@ -22,7 +22,7 @@ public:
 
 private:
 	//ここで初期化
-	static const int ENEMY_NUM = 4;			//敵を出現させる数
+	static const int ENEMY_NUM[(int)STAGE::NUM];	//敵を出現させる数
 
 	//cppで初期化
 	static const D3DXVECTOR2 BARRIER_SIZE;	//バリアの大きさ
@@ -32,40 +32,98 @@ private:
 private:
 	EnemyBarrier* m_pEnemy = nullptr;	//敵のクラス
 	GameObject* m_pBarrier = nullptr;	//バリア
-	int m_BarrierHP[ENEMY_NUM];			//バリアのHP
+	int m_BarrierHP[9];			//バリアのHP
 	DrawObject m_pDrawObjectEnemy;		//敵の描画オブジェクト
 	DrawObject m_pDrawObjectBarrier;	//バリアの描画オブジェクト
 
+	int m_stage_num = 0;				//ステージ
+
 	//敵の位置配列
-	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
-		D3DXVECTOR2(52.5f + (105 * 2), -EnemyBarrier::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 2), -EnemyBarrier::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 4), -EnemyBarrier::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 10), -EnemyBarrier::SIZE_Y / 2)
+	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][9] = {
+		//チュートリアル
+		{
+			D3DXVECTOR2(52.5f + (105 * 1), -EnemyBarrier::SIZE_Y / 2),
+		},
+		//火星
+		{
+			D3DXVECTOR2(52.5f + (105 * 2), -EnemyBarrier::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 2), -EnemyBarrier::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 4), -EnemyBarrier::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 10), -EnemyBarrier::SIZE_Y / 2)
+		},
+		//水星
+		{
+			D3DXVECTOR2(71.0f + (142.0f * 0), -EnemyBarrier::SIZE_Y / 2),
+		},
+		//土星
+		{
+			D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyBarrier::SIZE_Y / 2),
+
+		},
+		//金星
+		{
+			D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyBarrier::SIZE_Y / 2),
+		},
+		//木星
+		{
+			D3DXVECTOR2(71.0f + (142.0f * 1), -EnemyBarrier::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 7), -EnemyBarrier::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyBarrier::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyBarrier::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 3), -EnemyBarrier::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 5), -EnemyBarrier::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 0), -EnemyBarrier::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 8), -EnemyBarrier::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyBarrier::SIZE_Y / 2)
+		}
 	};
 
 	//敵を出す時間
-	int m_SetEnemyTime[ENEMY_NUM] = {
-		60 * 5,
-		60 * 80,
-		60 * 160,
-		60 * 170
+	int m_SetEnemyTime[(int)STAGE::NUM][9] = {
+		//チュートリアル
+		{
+			60 * 40,
+		},
+		//火星
+		{
+			60 * 5,
+			60 * 80,
+			60 * 160,
+			60 * 170
+		},
+		//水星
+		{
+			60 * 140,
+		},
+		//土星
+		{
+			60 * 10,
+		},
+		//金星
+		{
+			60 * 100,
+		},
+		//木星
+		{
+			60 * 20,
+			60 * 20 + 1,
+			60 * 35,
+			60 * 35 + 1,
+			60 * 100,
+			60 * 100 + 1,
+			60 * 105,
+			60 * 105 + 1,
+			60 * 145,
+		}
 	};
 
 	//メンバ関数
 public:
 	//デフォルトコンストラクタ
-	EnemyBarrierManagement() {
-		m_pEnemy = new EnemyBarrier[ENEMY_NUM];
-		m_pBarrier = new GameObject[ENEMY_NUM];
-
-		for (int i = 0; i < ENEMY_NUM; i++) {
-			m_BarrierHP[i] = BARRIER_HP_MAX;
-		}
-	}
+	EnemyBarrierManagement() {}
 
 	//引数付きコンストラクタ
-	EnemyBarrierManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2);
+	EnemyBarrierManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, int stage_num);
 
 	//デストラクタ
 	~EnemyBarrierManagement()override { 
