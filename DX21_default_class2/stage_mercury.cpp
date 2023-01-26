@@ -21,7 +21,7 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 	//======================
 	// ìG
 	//ÉåÅ[ÉUÅ[
-	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER].SetTextureName((char*)"data\\texture\\laser00.png");
+	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER].SetTextureName((char*)"data\\texture\\laser.png");
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER]);
 	m_pEnemyLaser = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER], 2);
