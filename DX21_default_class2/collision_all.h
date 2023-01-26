@@ -89,6 +89,7 @@ private:
 
 	//金星
 	bool m_poor_vision = false;						//視界を悪くするかフラグ
+	int m_SE_26 = 0;								//プレイヤースピード低下音
 
 //メンバ関数
 public:
