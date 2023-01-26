@@ -172,7 +172,7 @@ void StageVenus::Update(void)
 		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_VENUS);
 	}
 	//最後の列の敵を全て倒したら
-	if (m_pEnemuPoorvisionManagement->IsClear() && m_pEnemyAcidManagement->IsClear() && m_pEnemySpeeddownManagement->IsClear() && m_pEnemyFireballManagement->IsClear()) {
+	if (m_pEnemuPoorvisionManagement->IsClear() && m_pEnemyAcidManagement->IsClear() && m_pEnemySpeeddownManagement->IsClear() && m_pEnemyFireballManagement->IsClear() && m_pEnemyGatoring->IsClear()) {
 		//リザルト画面に行く
 		SetStageClear(true);
 		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_SATURN);
