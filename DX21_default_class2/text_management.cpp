@@ -18,7 +18,7 @@ const float TextManagement::FLAME_SIZE_Y = 200.0f;
 const float TextManagement::FLAME_POS_X = SCREEN_WIDTH / 2;
 const float TextManagement::FLAME_POS_Y = 600.0f;
 
-const float TextManagement::TEXT_POS_X = 230.0f;
+const float TextManagement::TEXT_POS_X = 330.0f;
 const float TextManagement::TEXT_POS_Y = 570.0f;
 const float TextManagement::TEXT_BET_X = 20.0f;
 const float TextManagement::TEXT_BET_Y = 20.0f;
@@ -94,7 +94,7 @@ void TextManagement::Draw(void)
 {
 	m_TextFrame.Draw(D3DXVECTOR2(FLAME_POS_X, FLAME_POS_Y), D3DXVECTOR2(FLAME_SIZE_X, FLAME_SIZE_Y));
 	if(!m_RunText)
-	m_Triangle.Draw(D3DXVECTOR2(SCREEN_WIDTH - 220, SCREEN_HEIGHT - 45), D3DXVECTOR2(20, 20), 90);
+	m_Triangle.Draw(D3DXVECTOR2(SCREEN_WIDTH - 250, SCREEN_HEIGHT - 90), D3DXVECTOR2(20, 20), 90);
 
 	int x, y;
 	for (int i = 0; i < m_PaternNum; i++)
@@ -150,8 +150,8 @@ void TextManagement::SetText(void)
 		break;
 	case 6:
 		temp.SetTextureName((char*)"data\\texture\\Combined explanation2.png");
-		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 3, 30);
-		m_PaternMax = 90;
+		m_Text = DrawObject(temp, 0, 1.0f / 30, 1.0f / 4, 30);
+		m_PaternMax = 120;
 
 		break;
 	case 7:

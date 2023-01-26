@@ -162,7 +162,7 @@ void Player::Update(bool isinvincible)
 	m_BulletInterval++;
 	//パッドのAが押されたら、又はキーボードのスペースが押されたら...
 	//なおかつ発射間隔が指定の値を超えたら弾を生成
-	if ((InputGetKey(KK_SPACE) || IsButtonPressed(0, XINPUT_GAMEPAD_B)) &&
+	if ((InputGetKey(KK_SPACE) || GetRightTrigger(0) || GetLeftTrigger(0)) &&
 		m_BulletInterval > BULLET_INTERVAL_TIME) {
 		m_BulletInterval = 0;
 		
@@ -207,4 +207,19 @@ void Player::DeleteBullet(int index_num)
 		m_pBullet[i] = m_pBullet[i + 1];
 	}
 	m_BulletNum--;
+}
+
+//==========================
+// 炎状態をセットする
+//==========================
+void Player::SetFire(bool fire)
+{
+	//炎状態になるのであれば...
+	if (fire) {
+		GameObject::SetDrawob(m_draw_fire);
+	}
+	//炎状態解除であれば...
+	else {
+		GameObject::SetDrawob(m_draw_default);
+	}
 }

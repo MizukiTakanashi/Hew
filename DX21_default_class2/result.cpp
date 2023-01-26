@@ -115,12 +115,34 @@ Result::~Result()
 void Result::Update(void)
 {
 	//上下のボタンが押されたら選択を変更
-	if (InputGetKeyDown(KK_DOWN) && !m_isClear || InputGetKeyDown(KK_UP) && !m_isClear ||
-		IsButtonTriggered(0, XINPUT_GAMEPAD_DPAD_UP) && !m_isClear || 
-		IsButtonTriggered(0, XINPUT_GAMEPAD_DPAD_DOWN) && !m_isClear){
-		Select();
-		PlaySound(m_SE_03, 0);
+	if (!m_isClear) {
+		if (InputGetKeyDown(KK_DOWN) || InputGetKeyDown(KK_UP) ||
+			IsButtonTriggered(0, XINPUT_GAMEPAD_DPAD_UP) || IsButtonTriggered(0, XINPUT_GAMEPAD_DPAD_DOWN)) {
+			Select();
+			PlaySound(m_SE_03, 0);
+		}
 	}
+
+	//左スティックで左に倒されたら...
+	if (GetThumbLeftY(0) < -0.5f) {
+		//前フレームのスティックが右に倒されてたら...(連続押しを拒否)
+		if (m_thumb_before >= -0.5f) {
+			//左にずらす
+			Select();
+			PlaySound(m_SE_03, 0);
+		}
+	}
+	//左スティックで右に倒されたら...
+	if (GetThumbLeftY(0) > 0) {
+		//前フレームのスティックが左に倒されてたら...(連続押しを拒否)
+		if (m_thumb_before <= 0.0f) {
+			//右にずらす
+			Select();
+			PlaySound(m_SE_03, 0);
+		}
+	}
+	//スティックの値を保存
+	m_thumb_before = GetThumbLeftY(0);
 
 	//選択によってカーソル位置を変更
 	if (m_select_retry)
@@ -133,7 +155,7 @@ void Result::Update(void)
 	}
 
 	//シーンを変更
-	if (InputGetKeyDown(KK_ENTER))
+	if (InputGetKeyDown(KK_ENTER) || IsButtonTriggered(0, XINPUT_GAMEPAD_B))
 	{
 		PlaySound(m_SE_01, 0);
 

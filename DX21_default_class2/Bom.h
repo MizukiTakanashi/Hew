@@ -20,14 +20,17 @@ private:
 	//ここで初期化
 	static const int TIME_LIMIT = 60;	//ボムを出してる時間
 	static const int ATTACK = 10;		//ボムの攻撃力
+	static const int SAME_TIME = 30;	//R2とL2同時押しの範囲
 
 
 //メンバ変数
 private:
-	int m_time = -1;					//ボムが出来てからの経過時間
-	int m_num = 0;						//ボムの現在の数
-	int m_num_max = 0;					//ボムの最大数
-	int m_SE_17 = 0;					//爆発音2
+	int m_time = -1;	//ボムが出来てからの経過時間
+	int m_num = 0;		//ボムの現在の数
+	int m_num_max = 0;	//ボムの最大数
+	int m_SE_17 = 0;	//爆発音2
+	int m_right = 0;	//R2での押し間隔
+	int m_left = 0;		//L2での押し間隔
 
 //メンバ関数
 public:

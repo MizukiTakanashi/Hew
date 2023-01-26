@@ -43,6 +43,7 @@ protected:
 		MULTIPLY,//
 		FRAME,//
 		PLAYER,//
+		PLAYER_FIRE,
 		PLAYER_HP,//
 		EXPLOSION,//
 		MOON,//ŒŽ
@@ -60,6 +61,7 @@ protected:
 		ITEM_HOTAIRLASER,//
 		ITEM_ICERAIN,//
 		ITEM_POISONLASER,//
+		ITEM_FIREBALL,//
 
 		ENEMY_ITEM,//
 		ENEMY_NORMAL,//
@@ -100,6 +102,7 @@ protected:
 	enum class DRAW_TYPE :int
 	{
 		PLAYER,//
+		PLAYER_FIRE,
 		PLAYER_HP_BAR,//
 		NUMBER,//
 		MULTIPLY,//
@@ -121,6 +124,7 @@ protected:
 		ITEM_HOTAIRLASER,//
 		ITEM_ICERAIN,//
 		ITEM_POISONLASER,//
+		ITEM_FIREBALL,//
 
 		ENEMY_ITEM,//
 		ENEMY_NORMAL,//

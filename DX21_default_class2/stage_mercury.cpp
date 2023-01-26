@@ -13,6 +13,11 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 {
 	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\mercury.png");
 
+	//プレイヤーの炎状態をセット
+	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER_FIRE].SetTextureName((char*)"data\\texture\\player_fire.png");
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_FIRE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER_FIRE]);
+	m_pPlayer->SetDrawFire(m_pDrawObject[(int)DRAW_TYPE::PLAYER_FIRE]);
+
 	//======================
 	// 敵
 	//レーザー
