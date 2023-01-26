@@ -51,7 +51,7 @@ private:
 	int m_EnemyItem_num = 0;				//敵のアイテムの数
 
 	//敵の配列
-	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][7] = {
+	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][9] = {
 	//チュートリアル
 	{
 		D3DXVECTOR2(52.5f + (105 * 1), -EnemyNormal::SIZE_Y / 2),
@@ -81,10 +81,17 @@ private:
 	},
 	//土星
 	{
+		// 10秒
+		D3DXVECTOR2(71.0f + (142.0f * 1), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 8), -EnemyNormal::SIZE_Y / 2),
+		// 25秒
 		D3DXVECTOR2(71.0f + (142.0f * 1), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 7), -EnemyNormal::SIZE_Y / 2),
+		// 45秒
 		D3DXVECTOR2(71.0f + (142.0f * 3), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 5), -EnemyNormal::SIZE_Y / 2),
+		// 100秒
 		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2),
 		
@@ -95,7 +102,7 @@ private:
 	}
 	};
 
-	int m_SetEnemyTime[(int)STAGE::NUM][7] = {
+	int m_SetEnemyTime[(int)STAGE::NUM][9] = {
 	//チュートリアル
 	{
 		60 * 40,
@@ -125,6 +132,9 @@ private:
 	},
 	//土星
 	{
+		60 * 10,
+		60 * 10 + 1,
+		60 * 10 + 2,
 		60 * 25,
 		60 * 25 + 1,
 		60 * 45,

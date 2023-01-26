@@ -51,7 +51,7 @@ private:
 	int m_SE_19 = 0;	//ÉKÉXï¨éÀâπ
 
 	//ìGÇÃîzóÒ
-	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][4] = {
+	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][5] = {
 		//åé
 		{
 			D3DXVECTOR2(52.5f + (105 * 4), -EnemyLaser::SIZE_Y / 2),
@@ -73,6 +73,7 @@ private:
 		{
 			D3DXVECTOR2(71.0f + (142.0f * 0.0f), -EnemyLaser::SIZE_Y / 2),
 			D3DXVECTOR2(71.0f + (142.0f * 8.0f), -EnemyLaser::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142.0f * 4.0f), -EnemyLaser::SIZE_Y / 2),
 			D3DXVECTOR2(71.0f + (142.0f * 3.0f), -EnemyLaser::SIZE_Y / 2),
 			D3DXVECTOR2(71.0f + (142.0f * 5.0f), -EnemyLaser::SIZE_Y / 2)
 		},
@@ -82,7 +83,7 @@ private:
 		}
 	};
 	//ìGÇèoÇ∑éûä‘
-	int m_SetEnemyTime[(int)STAGE::NUM][4] = {
+	int m_SetEnemyTime[(int)STAGE::NUM][5] = {
 		//åé
 		{
 			60 * 60,
@@ -104,6 +105,7 @@ private:
 		{
 			60 * 40,
 			60 * 40 + 1,
+			60 * 80,
 			60 * 165,
 			60 * 165 + 1
 		},

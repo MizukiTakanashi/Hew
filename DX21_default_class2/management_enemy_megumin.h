@@ -20,7 +20,7 @@ class EnemyMeguminManagement:public EnemyManagement
 private:
 	//Ç±Ç±Ç≈èâä˙âª
 	//ìGé©êg
-	static const int ENEMY_NUM = 13;		//ìGÇèoåªÇ≥ÇπÇÈêî
+	static const int ENEMY_NUM = 21;		//ìGÇèoåªÇ≥ÇπÇÈêî
 	static const int BULLET_TIME = 60;		
 
 	//cppÇ≈èâä˙âª
@@ -46,19 +46,36 @@ private:
 
 	//ìGÇÃà íuîzóÒ
 	D3DXVECTOR2 m_SetEnemy[ENEMY_NUM] = {
+		// 5ïb
 		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyStop::SIZE_Y / 2),
+		// 10ïb
 		D3DXVECTOR2(71.0f + (142.0f * 1), -EnemyStop::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 7), -EnemyStop::SIZE_Y / 2),
+		// 20ïb
 		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyStop::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyStop::SIZE_Y / 2),
+		// 30ïb
 		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyStop::SIZE_Y / 2),
+		// 35ïb
 		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyStop::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyStop::SIZE_Y / 2),
-
-
-		D3DXVECTOR2(71.0f + (142.0f * 5), -EnemyStop::SIZE_Y / 2),
-		D3DXVECTOR2(71.0f + (142.0f * 5), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 8), -EnemyStop::SIZE_Y / 2),
+		// 50ïb
+		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyStop::SIZE_Y / 2),
+		// 60ïb
+		D3DXVECTOR2(71.0f + (142.0f * 1), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 7), -EnemyStop::SIZE_Y / 2),
+		// 70ïb
 		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyStop::SIZE_Y / 2),
+		// 85ïb
+		D3DXVECTOR2(71.0f + (142.0f * 1), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 3), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 5), -EnemyStop::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 7), -EnemyStop::SIZE_Y / 2),
+		// 110ïb
+		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyStop::SIZE_Y / 2),
+		// 155ïb
 		D3DXVECTOR2(71.0f + (142.0f * 1), -EnemyStop::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 7), -EnemyStop::SIZE_Y / 2)
 	};
@@ -73,8 +90,16 @@ private:
 		60 * 30,
 		60 * 35,
 		60 * 35 + 1,
+		60 * 35 + 2,
 		60 * 50,
 		60 * 50 + 1,
+		60 * 60,
+		60 * 60 + 1,
+		60 * 70,
+		60 * 85,
+		60 * 85 + 1,
+		60 * 85 + 2,
+		60 * 85 + 3,
 		60 * 110,
 		60 * 155,
 		60 * 155 + 1
