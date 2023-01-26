@@ -13,7 +13,7 @@
 const float Boss::SIZE_X = 200.0f;
 const float Boss::SIZE_Y = 200.0f;
 const float Boss::STOP_POS_Y = 100.0f;
-const float Boss::RANGE = 20.0f;
+const float Boss::RANGE = 200.0f;
 //private
 const float Boss::SPEED_X = 1.5f;
 const float Boss::SPEED_Y = 2.5f;
@@ -67,19 +67,19 @@ void Boss::Update(void)
 		m_bullet_make = true;
 		m_boss_count = 0;
 	}
-	if (m_boss_count1 > BULLET_TIME + 1) {
+	if (m_boss_count1 > BULLET_TIME) {
 		m_bullet_make1 = true;
 		m_boss_count1 = 0;
 	}
-	if (m_boss_count2 > BULLET_TIME + 2) {
+	if (m_boss_count2 > BULLET_TIME) {
 		m_bullet_make2 = true;
 		m_boss_count2 = 0;
 	}
-	if (m_boss_count3 > BULLET_TIME + 3) {
+	if (m_boss_count3 > BULLET_TIME) {
 		m_bullet_make3 = true;
 		m_boss_count3 = 0;
 	}
-	if (m_boss_count4 > BULLET_TIME + 4) {
+	if (m_boss_count4 > BULLET_TIME) {
 		m_bullet_make4 = true;
 		m_boss_count4 = 0;
 	}
