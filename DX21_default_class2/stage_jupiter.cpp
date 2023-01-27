@@ -13,6 +13,11 @@ StageJupiter::StageJupiter(Score* pNumber) :InhStage(pNumber)
 {
 	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\jupiter.png");
 
+	//ñÿêØ
+	m_pTexUseful[(int)TEXTURE_TYPE::JUPITOR].SetTextureName((char*)"data\\texture\\jupiter_name.png");
+	m_pDrawObject[(int)DRAW_TYPE::JUPITOR].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::JUPITOR], 0.0f, 1.0f, 1.0f, 1);
+	m_pStageJupitor = new UI(m_pDrawObject[(int)DRAW_TYPE::JUPITOR], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(80.0f, 25.0f), D3DXCOLOR());
+
 	//======================
 	// ìG
 	//ÉåÅ[ÉUÅ[

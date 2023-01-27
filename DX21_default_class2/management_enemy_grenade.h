@@ -48,8 +48,8 @@ private:
 private:
 	EnemyGrenade* m_pEnemy = nullptr;		//敵自身
 	Bullet* m_pBullet = nullptr;			//弾(別オブジェクト)
-	Bullet* m_pExplosion[5];				//爆発
-	Explosion* m_pExplosionDraw[5];			//描画用の爆発
+	Bullet* m_pExplosion[17];				//爆発
+	Explosion* m_pExplosionDraw[17];			//描画用の爆発
 
 	DrawObject m_pDrawObjectEnemy;
 	DrawObject m_pDrawObjectBullet;

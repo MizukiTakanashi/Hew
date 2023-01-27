@@ -13,6 +13,12 @@ StageSaturn::StageSaturn(Score* pNumber):InhStage(pNumber)
 {
 	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\saturn.png");
 
+	//ステージ表示読み込み
+	//土星
+	m_pTexUseful[(int)TEXTURE_TYPE::SATAURN].SetTextureName((char*)"data\\texture\\saturn_name.png");
+	m_pDrawObject[(int)DRAW_TYPE::SATAURN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::SATAURN], 0.0f, 1.0f, 1.0f, 1);
+	m_pStageSataurn = new UI(m_pDrawObject[(int)DRAW_TYPE::SATAURN], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(80.0f, 25.0f), D3DXCOLOR());
+
 	//=======================
 	// 敵
 	//レーザーの敵

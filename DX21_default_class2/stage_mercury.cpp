@@ -13,6 +13,12 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 {
 	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\mercury.png");
 
+	//ステージ表示読み込み
+	//水星
+	m_pTexUseful[(int)TEXTURE_TYPE::MARCURY].SetTextureName((char*)"data\\texture\\mercury_name.png");
+	m_pDrawObject[(int)DRAW_TYPE::MARCURY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::MARCURY], 0.0f, 1.0f, 1.0f, 1);
+	m_pStageMarcury = new UI(m_pDrawObject[(int)DRAW_TYPE::MARCURY], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(80.0f, 25.0f), D3DXCOLOR());
+
 	//プレイヤーの炎状態をセット
 	m_pTexUseful[(int)TEXTURE_TYPE::PLAYER_FIRE].SetTextureName((char*)"data\\texture\\player_fire.png");
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_FIRE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::PLAYER_FIRE]);

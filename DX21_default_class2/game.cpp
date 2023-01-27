@@ -20,6 +20,12 @@ Game::Game(Score* pNumber) :InhStage(pNumber)
 	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\moon.png");
 	m_pTextManagement = new TextManagement();
 
+	//ステージ表示読み込み
+	//月
+	m_pTexUseful[(int)TEXTURE_TYPE::MOON].SetTextureName((char*)"data\\texture\\moon_name.png");
+	m_pDrawObject[(int)DRAW_TYPE::MOON].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::MOON], 0.0f, 1.0f, 1.0f, 1);
+	m_pStageMoon = new UI(m_pDrawObject[(int)DRAW_TYPE::MOON], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(80.0f, 25.0f), D3DXCOLOR());
+
 	//=======================
 	// レーザー
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER].SetTextureName((char*)"data\\texture\\laser.png");

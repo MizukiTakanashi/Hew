@@ -14,9 +14,17 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 	//画像読み込み
 	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\venus.png");
 
+	//ステージ表示読み込み
+	//金星
+	m_pTexUseful[(int)TEXTURE_TYPE::VENUS].SetTextureName((char*)"data\\texture\\venus_name.png");
+	m_pDrawObject[(int)DRAW_TYPE::VENUS].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::VENUS], 0.0f, 1.0f, 1.0f, 1);
+	m_pStageVenus = new UI(m_pDrawObject[(int)DRAW_TYPE::VENUS], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(80.0f, 25.0f), D3DXCOLOR());
+
 	//=======================
 	// 敵
 	//火球の敵
+	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_FIREBALL].SetTextureName((char*)"data\\texture\\sun.png");
+	m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_FIREBALL]);
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_FIREBALL].SetTextureName((char*)"data\\texture\\enemy_fireball.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_FIREBALL]);
 
@@ -31,6 +39,13 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 
 	m_pEnemyAcidManagement = new EnemyAcidManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ACID], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_ACID]);
+
+	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_ACID].SetTextureName((char*)"data\\texture\\item_acid.png");
+	m_pDrawObject[(int)DRAW_TYPE::ITEM_ACID].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_ACID]);
+	m_pItemManagement->SetDrawAcid(m_pDrawObject[(int)DRAW_TYPE::ITEM_ACID]);
+	m_pPlayerLeft->DrawSetAcidE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_ACID]);
+	m_pPlayerRight->DrawSetAcidE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_ACID]);
+	m_pPlayerCenter->DrawSetAcidE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_ACID]);
 
 	//視界を悪くする敵
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_POOR].SetTextureName((char*)"data\\texture\\enemy_poorvision.png");
@@ -58,6 +73,18 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 	//敵の管理
 	//m_pAllEnemyManagement->AddPointer(m_pEnemyFireballManagement);
 	
+	//FIREBALL_ITEM
+	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_FIREBALL].SetTextureName((char*)"data\\texture\\item_fireball.png");
+	m_pDrawObject[(int)DRAW_TYPE::ITEM_FIREBALL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_FIREBALL]);
+	m_pItemManagement->SetDrawFireball(m_pDrawObject[(int)DRAW_TYPE::ITEM_FIREBALL]);
+
+	m_pPlayerLeft->DrawSetFireBall(&m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL]);
+	m_pPlayerRight->DrawSetFireBall(&m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL]);
+	m_pPlayerCenter->DrawSetFireBall(&m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL]);
+	m_pPlayerLeft->DrawSetFireballE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_FIREBALL]);
+	m_pPlayerRight->DrawSetFireballE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_FIREBALL]);
+	m_pPlayerCenter->DrawSetFireballE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_FIREBALL]);
+
 	//当たり判定
 	m_pColAll = new CollisionAll(CollisionAll::STAGE::VENUS, m_pPlayer, m_pPlayerLeft, m_pPlayerRight,
 		m_pExplosionManagement, m_pItemManagement, m_pScore, m_pBom);

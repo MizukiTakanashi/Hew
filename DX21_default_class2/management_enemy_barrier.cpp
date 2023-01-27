@@ -37,7 +37,7 @@ void EnemyBarrierManagement::Update()
 	m_FlameNum++; //フレーム数を増加
 
 	//セットする時間になれば...
-	if (m_FlameNum == m_SetEnemyTime[m_stage_num][m_EnemyNum] && 
+	if (m_FlameNum == m_SetEnemyTime[m_stage_num][m_EnemyNum] &&
 		m_EnemyNum < ENEMY_NUM[m_stage_num])
 	{
 		//敵をセットする
@@ -49,7 +49,7 @@ void EnemyBarrierManagement::Update()
 		m_pBarrier[EnemyManagement::GetOtherNum()] = temp1;
 		m_BarrierHP[EnemyManagement::GetOtherNum()] = BARRIER_HP_MAX;
 		m_pEnemy[EnemyManagement::GetObjNum()].SetBarrierIndex(EnemyManagement::GetOtherNum());
-		
+
 		EnemyManagement::IncreaseObjNum(1);
 		EnemyManagement::IncreaseOtherNum(1);
 

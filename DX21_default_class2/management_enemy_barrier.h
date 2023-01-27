@@ -31,8 +31,8 @@ private:
 //メンバ変数
 private:
 	EnemyBarrier* m_pEnemy = nullptr;	//敵のクラス
-	GameObject* m_pBarrier = nullptr;	//バリア
-	int m_BarrierHP[9];			//バリアのHP
+	GameObject* m_pBarrier = nullptr;	//aバリア
+	int m_BarrierHP[15];				//バリアのHP
 	DrawObject m_pDrawObjectEnemy;		//敵の描画オブジェクト
 	DrawObject m_pDrawObjectBarrier;	//バリアの描画オブジェクト
 
