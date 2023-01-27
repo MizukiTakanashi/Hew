@@ -139,6 +139,7 @@ int CollisionAll::Collision(void)
 						{
 							if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
 								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
+								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::BOSS && 
 								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
 								if (m_stage == STAGE::MERCURY &&
 									m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {
@@ -203,6 +204,7 @@ int CollisionAll::Collision(void)
 				{
 					if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
 						m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
+						m_pEnemy[k]->GetType() != EnemyManagement::TYPE::BOSS && 
 						m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
 						if (m_stage == STAGE::MERCURY &&
 							m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {
@@ -255,6 +257,7 @@ int CollisionAll::Collision(void)
 						{
 							if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
 								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
+								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::BOSS && 
 								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
 								if (m_stage == STAGE::MERCURY &&
 									m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {
@@ -353,6 +356,7 @@ int CollisionAll::Collision(void)
 								{
 									if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
 										m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
+										m_pEnemy[k]->GetType() != EnemyManagement::TYPE::BOSS && 
 										m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
 										if (m_stage == STAGE::MERCURY &&
 											m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {
@@ -444,6 +448,7 @@ int CollisionAll::Collision(void)
 							{
 								if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
 									m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
+									m_pEnemy[k]->GetType() != EnemyManagement::TYPE::BOSS && 
 									m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
 									if (m_stage == STAGE::MERCURY &&
 										m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {

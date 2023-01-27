@@ -123,5 +123,9 @@ public:
 	//w’è‚µ‚½”Ô†‚Ì“G‚ğ~‚ß‚é
 	void StopEnemy(int index_num, int time) override { m_pEnemyBoss[index_num].StopEnemy(time); }
 
+	void BossPatternA();
+	void BossPatternB();
+	void BossPatternC();
+	void BossPatternD();
 };
 

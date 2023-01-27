@@ -9,7 +9,7 @@
 //==========================
 // 定数の初期化
 //==========================
-const int EnemyLaserManagement::ENEMY_NUM[(int)STAGE::NUM] = { 3, 0, 8, 4, 0, 6 };
+const int EnemyLaserManagement::ENEMY_NUM[(int)STAGE::NUM] = { 3, 0, 8, 9, 0, 6 };
 const float EnemyLaserManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyLaserManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyLaserManagement::EXIT_MOVE_SPEED_X = 2.5f;

@@ -32,6 +32,7 @@ public:
 		PUBLIC,
 		POORVISION,
 		SPEEDDOWN,
+		BOSS,
 		NUM
 	};
 
