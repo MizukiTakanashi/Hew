@@ -137,10 +137,11 @@ int CollisionAll::Collision(void)
 						//敵が死んだら...
 						if (m_pEnemy[k]->ReduceHP(j, 1))
 						{
-							if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
-								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
-								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::BOSS && 
-								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
+							if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN &&
+								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION &&
+								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::BOSS &&
+								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN &&
+								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::PUBLIC) {
 								if (m_stage == STAGE::MERCURY &&
 									m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {
 									//敵アイテムのドロップ
@@ -205,7 +206,8 @@ int CollisionAll::Collision(void)
 					if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
 						m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
 						m_pEnemy[k]->GetType() != EnemyManagement::TYPE::BOSS && 
-						m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
+						m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN &&
+						m_pEnemy[k]->GetType() != EnemyManagement::TYPE::PUBLIC) {
 						if (m_stage == STAGE::MERCURY &&
 							m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {
 							//敵アイテムのドロップ
@@ -258,7 +260,8 @@ int CollisionAll::Collision(void)
 							if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
 								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
 								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::BOSS && 
-								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
+								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN &&
+								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::PUBLIC) {
 								if (m_stage == STAGE::MERCURY &&
 									m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {
 									//敵アイテムのドロップ
@@ -357,7 +360,8 @@ int CollisionAll::Collision(void)
 									if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
 										m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
 										m_pEnemy[k]->GetType() != EnemyManagement::TYPE::BOSS && 
-										m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
+										m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN &&
+										m_pEnemy[k]->GetType() != EnemyManagement::TYPE::PUBLIC) {
 										if (m_stage == STAGE::MERCURY &&
 											m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {
 											//敵アイテムのドロップ
@@ -449,7 +453,8 @@ int CollisionAll::Collision(void)
 								if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
 									m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
 									m_pEnemy[k]->GetType() != EnemyManagement::TYPE::BOSS && 
-									m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
+									m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN &&
+									m_pEnemy[k]->GetType() != EnemyManagement::TYPE::PUBLIC) {
 									if (m_stage == STAGE::MERCURY &&
 										m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {
 										//敵アイテムのドロップ

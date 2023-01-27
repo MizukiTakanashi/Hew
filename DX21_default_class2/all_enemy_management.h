@@ -9,6 +9,7 @@
 #define _ALL_ENEMY_MANAGEMENT_H_
 
 #include "management_enemy.h"
+#include "main.h"
 
 class AllEnemyManagement
 {
