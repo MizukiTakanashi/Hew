@@ -24,7 +24,7 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pScore->SetDigit(NUMBER_DIGIT);
 
 	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//サウンドのロード
-	PlaySound(m_BGM, -1);	//BGM再生
+	//PlaySound(m_BGM, -1);	//BGM再生
 	SetVolume(m_BGM, 0.1f);
 
 	//背景の初期化処理
