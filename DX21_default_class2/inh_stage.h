@@ -104,6 +104,7 @@ protected:
 		BULLET_ACID,
 
 		GIMMICK_MARS,
+		BOM,
 
 		NUM
 	};
