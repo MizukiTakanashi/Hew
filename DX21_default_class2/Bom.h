@@ -19,7 +19,7 @@ class Bom :public GameObject
 private:
 	//ここで初期化
 	static const int TIME_LIMIT = 60;	//ボムを出してる時間
-	static const int ATTACK = 10;		//ボムの攻撃力
+	static const int ATTACK = 5;		//ボムの攻撃力
 	static const int SAME_TIME = 30;	//R2とL2同時押しの範囲
 
 
