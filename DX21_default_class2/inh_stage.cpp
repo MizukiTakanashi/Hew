@@ -118,9 +118,9 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pStageSataurn = new UI(m_pDrawObject[(int)DRAW_TYPE::SATAURN], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(80.0f, 25.0f), D3DXCOLOR());
 
 	//太陽
-	m_pTexUseful[(int)TEXTURE_TYPE::SUN].SetTextureName((char*)"data\\texture\\sun_name.png");
-	m_pDrawObject[(int)DRAW_TYPE::SUN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::SUN], 0.0f, 1.0f, 1.0f, 1);
-	m_pStageSun = new UI(m_pDrawObject[(int)DRAW_TYPE::SUN], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(80.0f, 25.0f), D3DXCOLOR());
+	//m_pTexUseful[(int)TEXTURE_TYPE::SUN].SetTextureName((char*)"data\\texture\\sun_name.png");
+	//m_pDrawObject[(int)DRAW_TYPE::SUN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::SUN], 0.0f, 1.0f, 1.0f, 1);
+	//m_pStageSun = new UI(m_pDrawObject[(int)DRAW_TYPE::SUN], D3DXVECTOR2(160.0f, 40.0f), D3DXVECTOR2(80.0f, 25.0f), D3DXCOLOR());
 
 	//=======================
 	//敵のアイテム
