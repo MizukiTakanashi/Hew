@@ -69,7 +69,7 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 	m_pEnemyGatoring = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING],
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_GATORING], 4);
 
-	m_pBossManagement = new BossManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL], m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL ], 1);
+	m_pBossManagement = new BossManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL], m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL ], 4);
 	//敵の管理
 	//m_pAllEnemyManagement->AddPointer(m_pEnemyFireballManagement);
 	
