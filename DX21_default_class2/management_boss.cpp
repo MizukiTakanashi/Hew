@@ -51,138 +51,21 @@ void BossManagement::Update()
 		m_tutorial_clear = false;
 		m_pEnemyBoss[i].Update();
 		//HP‚ª”¼•ª‚ğ’´‚¦‚½‚Æ‚«
-		if (m_pEnemyBoss[i].GetHP() > Boss::HP_MAX * 0.5f) {
-			//’e‚ğì‚é
-			if (m_pEnemyBoss[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() < BULLET_NUM)
-			{
-				Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos(),
-					D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 25.0f), 0.0f);
-				// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
-				m_pBullet[EnemyManagement::GetBulletNum()] = temp;
-
-				EnemyManagement::IncreaseBulletNum(1);
-
-				m_pEnemyBoss[i].BulletMake();
-
-				PlaySound(m_SE_21, 0);
-			}
-
-			//’e‚ğì‚é
-			if (m_pEnemyBoss[i].GetFlagBulletMake1() && EnemyManagement::GetBulletNum() < BULLET_NUM)
-			{
-				Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(60.0f, 0.0f),
-					D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 25.0f), 0.0f);
-				// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
-				m_pBullet[EnemyManagement::GetBulletNum()] = temp;
-
-				EnemyManagement::IncreaseBulletNum(1);
-
-				m_pEnemyBoss[i].BulletMake1();
-			}
-			//’e‚ğì‚é
-			if (m_pEnemyBoss[i].GetFlagBulletMake2() && EnemyManagement::GetBulletNum() < BULLET_NUM)
-			{
-				Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(-60.0f, 0.0f),
-					D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 25.0f), 0.0f);
-				// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
-				m_pBullet[EnemyManagement::GetBulletNum()] = temp;
-
-				EnemyManagement::IncreaseBulletNum(1);
-
-				m_pEnemyBoss[i].BulletMake2();
-			}
-			//’e‚ğì‚é
-			if (m_pEnemyBoss[i].GetFlagBulletMake3() && EnemyManagement::GetBulletNum() < BULLET_NUM)
-			{
-				Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(100.0f, 0.0f),
-					D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 25.0f), 0.0f);
-				// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
-				m_pBullet[EnemyManagement::GetBulletNum()] = temp;
-
-				EnemyManagement::IncreaseBulletNum(1);
-
-				m_pEnemyBoss[i].BulletMake3();
-			}
-			//’e‚ğì‚é
-			if (m_pEnemyBoss[i].GetFlagBulletMake4() && EnemyManagement::GetBulletNum() < BULLET_NUM)
-			{
-				Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(-100.0f, 0.0f),
-					D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 25.0f), 0.0f);
-				// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
-				m_pBullet[EnemyManagement::GetBulletNum()] = temp;
-
-				EnemyManagement::IncreaseBulletNum(1);
-
-				m_pEnemyBoss[i].BulletMake4();
-			}
+		if (m_pEnemyBoss[i].GetHP() > Boss::HP_MAX * 0.75f) {
+			BossPatternC();
+		}
+		//HP‚ª”¼•ª‚ğØ‚Á‚½
+		if (m_pEnemyBoss[i].GetHP() <= Boss::HP_MAX * 0.75f&&m_pEnemyBoss[i].GetHP() > Boss::HP_MAX * 0.5f) {
+			BossPatternA();
 
 		}
 		//HP‚ª”¼•ª‚ğØ‚Á‚½
-		if (m_pEnemyBoss[i].GetHP() <= Boss::HP_MAX * 0.5f) {
-			//’e‚ğì‚é
-			if (m_pEnemyBoss[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() < BULLET_NUM)
-			{
-				Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos(),
-					D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 25.0f), 0.0f);
-				// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
-				m_pBullet[EnemyManagement::GetBulletNum()] = temp;
-
-				EnemyManagement::IncreaseBulletNum(1);
-
-				m_pEnemyBoss[i].BulletMake();
-
-				PlaySound(m_SE_21, 0);
-			}
-
-			//’e‚ğì‚é
-			if (m_pEnemyBoss[i].GetFlagBulletMake1() && EnemyManagement::GetBulletNum() < BULLET_NUM)
-			{
-				Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(30.0f, 0.0f),
-					D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(10.0f, 20.0f), -30.0f);
-				// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
-				m_pBullet[EnemyManagement::GetBulletNum()] = temp;
-
-				EnemyManagement::IncreaseBulletNum(1);
-
-				m_pEnemyBoss[i].BulletMake1();
-			}
-			//’e‚ğì‚é
-			if (m_pEnemyBoss[i].GetFlagBulletMake2() && EnemyManagement::GetBulletNum() < BULLET_NUM)
-			{
-				Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(-30.0f, 0.0f),
-					D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(-10.0f, 20.0f), 30.0f);
-				// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
-				m_pBullet[EnemyManagement::GetBulletNum()] = temp;
-
-				EnemyManagement::IncreaseBulletNum(1);
-
-				m_pEnemyBoss[i].BulletMake2();
-			}
-			//’e‚ğì‚é
-			if (m_pEnemyBoss[i].GetFlagBulletMake3() && EnemyManagement::GetBulletNum() < BULLET_NUM)
-			{
-				Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(50.0f, 0.0f),
-					D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(20.0f, 20.0f), -45.0f);
-				// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
-				m_pBullet[EnemyManagement::GetBulletNum()] = temp;
-
-				EnemyManagement::IncreaseBulletNum(1);
-
-				m_pEnemyBoss[i].BulletMake3();
-			}
-			//’e‚ğì‚é
-			if (m_pEnemyBoss[i].GetFlagBulletMake4() && EnemyManagement::GetBulletNum() < BULLET_NUM)
-			{
-				Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(-50.0f, 0.0f),
-					D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(-20.0f, 20.0f), 45.0f);
-				// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
-				m_pBullet[EnemyManagement::GetBulletNum()] = temp;
-
-				EnemyManagement::IncreaseBulletNum(1);
-
-				m_pEnemyBoss[i].BulletMake4();
-			}
-			
+		if (m_pEnemyBoss[i].GetHP() <= Boss::HP_MAX * 0.5f && m_pEnemyBoss[i].GetHP() > Boss::HP_MAX * 0.25f) {
+			BossPatternD();
+		}
+		//HP‚ª”¼•ª‚ğØ‚Á‚½
+		if (m_pEnemyBoss[i].GetHP() <= Boss::HP_MAX * 0.25f && m_pEnemyBoss[i].GetHP() > Boss::HP_MAX * 0.0f) {
+			BossPatternB();
 		}
 		//‰æ–ÊŠO‚Éo‚½‚çÁ‚·
 		if (m_pEnemyBoss[i].GetScreenOut()) {
@@ -202,6 +85,7 @@ void BossManagement::Update()
 		}
 	}
 }
+
 
 //==========================
 // •`‰æˆ—
@@ -260,4 +144,262 @@ void BossManagement::DeleteBullet(int index_num)
 		m_pBullet[i] = m_pBullet[i + 1];
 	}
 	EnemyManagement::IncreaseBulletNum(-1);
+}
+
+void BossManagement::BossPatternA()
+{
+	//ŒÜ–{‚Ì’e‚ª³–Ê‚É”ò‚Ô
+	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
+		//’e‚ğì‚é
+		if (m_pEnemyBoss[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() < BULLET_NUM)
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos(),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 25.0f), 0.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyBoss[i].BulletMake();
+
+			PlaySound(m_SE_21, 0);
+		}
+
+		//’e‚ğì‚é
+		if (m_pEnemyBoss[i].GetFlagBulletMake1() && EnemyManagement::GetBulletNum() < BULLET_NUM)
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(60.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 25.0f), 0.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyBoss[i].BulletMake1();
+		}
+		//’e‚ğì‚é
+		if (m_pEnemyBoss[i].GetFlagBulletMake2() && EnemyManagement::GetBulletNum() < BULLET_NUM)
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(-60.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 25.0f), 0.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyBoss[i].BulletMake2();
+		}
+		//’e‚ğì‚é
+		if (m_pEnemyBoss[i].GetFlagBulletMake3() && EnemyManagement::GetBulletNum() < BULLET_NUM)
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(100.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 25.0f), 0.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyBoss[i].BulletMake3();
+		}
+		//’e‚ğì‚é
+		if (m_pEnemyBoss[i].GetFlagBulletMake4() && EnemyManagement::GetBulletNum() < BULLET_NUM)
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(-100.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 25.0f), 0.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyBoss[i].BulletMake4();
+		}
+
+	}
+}
+
+void BossManagement::BossPatternB()
+{
+	//ŒÜ–{‚Ì’e‚ª•úËó‚É”ò‚Ô
+	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
+		//’e‚ğì‚é
+		if (m_pEnemyBoss[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() < BULLET_NUM)
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos(),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 25.0f), 0.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyBoss[i].BulletMake();
+
+			PlaySound(m_SE_21, 0);
+		}
+
+		//’e‚ğì‚é
+		if (m_pEnemyBoss[i].GetFlagBulletMake1() && EnemyManagement::GetBulletNum() < BULLET_NUM)
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(30.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(10.0f, 20.0f), -30.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyBoss[i].BulletMake1();
+		}
+		//’e‚ğì‚é
+		if (m_pEnemyBoss[i].GetFlagBulletMake2() && EnemyManagement::GetBulletNum() < BULLET_NUM)
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(-30.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(-10.0f, 20.0f), 30.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyBoss[i].BulletMake2();
+		}
+		//’e‚ğì‚é
+		if (m_pEnemyBoss[i].GetFlagBulletMake3() && EnemyManagement::GetBulletNum() < BULLET_NUM)
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(50.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(20.0f, 20.0f), -45.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyBoss[i].BulletMake3();
+		}
+		//’e‚ğì‚é
+		if (m_pEnemyBoss[i].GetFlagBulletMake4() && EnemyManagement::GetBulletNum() < BULLET_NUM)
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(-50.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(-20.0f, 20.0f), 45.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyBoss[i].BulletMake4();
+		}
+	}
+}
+
+void BossManagement::BossPatternC()
+{
+	//O–{‚Ì’e‚ª³–Ê‚É”ò‚Ô
+	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
+		//’e‚ğì‚é
+		if (m_pEnemyBoss[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() < BULLET_NUM)
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos(),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 25.0f), 0.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyBoss[i].BulletMake();
+
+			PlaySound(m_SE_21, 0);
+		}
+
+		//’e‚ğì‚é
+		if (m_pEnemyBoss[i].GetFlagBulletMake1() && EnemyManagement::GetBulletNum() < BULLET_NUM)
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(60.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 25.0f), 0.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyBoss[i].BulletMake1();
+		}
+		//’e‚ğì‚é
+		if (m_pEnemyBoss[i].GetFlagBulletMake2() && EnemyManagement::GetBulletNum() < BULLET_NUM)
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(-60.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 25.0f), 0.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyBoss[i].BulletMake2();
+		}
+	}
+}
+
+void BossManagement::BossPatternD()
+{
+	//ŒÜ–{‚Ì’e‚ª³–Ê‚É”ò‚Ô
+	for (int i = 0; i < EnemyManagement::GetObjNum(); i++) {
+		//’e‚ğì‚é
+		if (m_pEnemyBoss[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() < BULLET_NUM)
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos(),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 12.5f), 0.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyBoss[i].BulletMake();
+
+			PlaySound(m_SE_21, 0);
+		}
+
+		//’e‚ğì‚é
+		if (m_pEnemyBoss[i].GetFlagBulletMake1() && EnemyManagement::GetBulletNum() < BULLET_NUM)
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(60.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 25.0f), 0.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyBoss[i].BulletMake1();
+		}
+		//’e‚ğì‚é
+		if (m_pEnemyBoss[i].GetFlagBulletMake2() && EnemyManagement::GetBulletNum() < BULLET_NUM)
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(-60.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 25.0f), 0.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyBoss[i].BulletMake2();
+		}
+		//’e‚ğì‚é
+		if (m_pEnemyBoss[i].GetFlagBulletMake3() && EnemyManagement::GetBulletNum() < BULLET_NUM)
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(100.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 12.5f), 0.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyBoss[i].BulletMake3();
+		}
+		//’e‚ğì‚é
+		if (m_pEnemyBoss[i].GetFlagBulletMake4() && EnemyManagement::GetBulletNum() < BULLET_NUM)
+		{
+			Bullet temp(m_pDrawObjectBullet, m_pEnemyBoss[i].GetPos() + D3DXVECTOR2(-100.0f, 0.0f),
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), D3DXVECTOR2(0, 12.5f), 0.0f);
+			// ’e‚Ì‘å‚«‚³								’e‚ğŒ‚‚Â•ûŒü		
+			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
+
+			EnemyManagement::IncreaseBulletNum(1);
+
+			m_pEnemyBoss[i].BulletMake4();
+		}
+
+	}
 }
