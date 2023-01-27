@@ -9,7 +9,7 @@
 //==========================
 // 定数の初期化
 //==========================
-const D3DXVECTOR2 EnemyPoorvisionManagement::SIZE = D3DXVECTOR2()
+const D3DXVECTOR2 EnemyPoorvisionManagement::SIZE = D3DXVECTOR2(50.0f, 60.0f);
 const float EnemyPoorvisionManagement::BULLET_SIZE_X = 100.0f;
 const float EnemyPoorvisionManagement::BULLET_SIZE_Y = 200.0f;
 const float EnemyPoorvisionManagement::BULLET_SPEED = 2.5f;
