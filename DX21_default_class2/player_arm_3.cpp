@@ -82,7 +82,7 @@ void PlayerArm3::Update(const D3DXVECTOR2& arm_pos)
 			else if (m_type == TYPE::FIREBALL)
 			{
 				temp = Bullet(m_bulletdraw, arm_pos,
-					D3DXVECTOR2(200.0f, 200.0f), D3DXVECTOR2(0.0f, -temp_speed), 0.0f);
+					D3DXVECTOR2(150.0f, 150.0f), D3DXVECTOR2(0.0f, -temp_speed), 0.0f);
 			}
 			else
 			{
