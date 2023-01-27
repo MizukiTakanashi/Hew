@@ -22,9 +22,11 @@ private:
 	DrawObject m_DOMissile;
 	DrawObject m_DOLaser;
 	DrawObject m_DOGatoring;
+	DrawObject m_DOBarrier;
 	DrawObject m_DOStop;
 	DrawObject m_DOHotairlaser;
 	DrawObject m_DOIcerain;
+	DrawObject m_DOGrenade;
 	DrawObject m_DOIce;
 	DrawObject m_DOPoisonlaser;
 	DrawObject m_DOFire;
@@ -72,10 +74,12 @@ public:
 	void SetDrawMissile(DrawObject& pd) { m_DOMissile = pd; }
 	void SetDrawLaser(DrawObject& pd) { m_DOLaser = pd; }
 	void SetDrawGatoring(DrawObject& pd) { m_DOGatoring = pd; }
+	void SetDrawBarrier(DrawObject& pd) { m_DOBarrier = pd; }
 	void SetDrawStop(DrawObject& pd) { m_DOStop = pd; }
 	void SetDrawAcid(DrawObject& pd) { m_DOAcid = pd; }
 	void SetDrawHotairlaser(DrawObject& pd) { m_DOHotairlaser = pd; }
 	void SetDrawIcerain(DrawObject& pd) { m_DOIcerain = pd; }
+	void SetDrawGrenade(DrawObject& pd) { m_DOGrenade = pd; }
 	void SetDrawIce(DrawObject& pd) { m_DOIce = pd; }
 	void SetDrawPoisonlaser(DrawObject& pd) { m_DOPoisonlaser = pd; }
 	void SetDrawFire(DrawObject& pd) { m_DOFire = pd; }

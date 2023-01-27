@@ -24,7 +24,7 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pScore->SetDigit(NUMBER_DIGIT);
 
 	m_BGM = LoadSound((char*)"data\\BGM\\opportunity (online-audio-converter.com).wav");	//サウンドのロード
-	PlaySound(m_BGM, -1);	//BGM再生
+	//PlaySound(m_BGM, -1);	//BGM再生
 	SetVolume(m_BGM, 0.1f);
 
 	//背景の初期化処理
@@ -133,6 +133,8 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::ITEM_GATORING].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_GATORING]);
 	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_STOP].SetTextureName((char*)"data\\texture\\item_stop.png");
 	m_pDrawObject[(int)DRAW_TYPE::ITEM_STOP].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_STOP]);
+	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_BARRIER].SetTextureName((char*)"data\\texture\\item_barrier.png");
+	m_pDrawObject[(int)DRAW_TYPE::ITEM_BARRIER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_BARRIER]);
 	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_ACID].SetTextureName((char*)"data\\texture\\item_acid.png");
 	m_pDrawObject[(int)DRAW_TYPE::ITEM_ACID].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_ACID]);
 	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_HOTAIRLASER].SetTextureName((char*)"data\\texture\\item_hotairlaserlaser.png");
@@ -143,8 +145,8 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::ITEM_ICE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_ICE]);
 	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_POISONLASER].SetTextureName((char*)"data\\texture\\item_Poisonlaserlaser.png");
 	m_pDrawObject[(int)DRAW_TYPE::ITEM_POISONLASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_POISONLASER]);
-	//m_pTexUseful[(int)TEXTURE_TYPE::ITEM_FIRE].SetTextureName((char*)"data\\texture\\item_fireball.png");
-	//m_pDrawObject[(int)DRAW_TYPE::ITEM_FIRE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_FIRE]);
+	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_FIRE].SetTextureName((char*)"data\\texture\\item_fire.png");
+	m_pDrawObject[(int)DRAW_TYPE::ITEM_FIRE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_FIRE]);
 	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_FIREBALL].SetTextureName((char*)"data\\texture\\item_fireball.png");
 	m_pDrawObject[(int)DRAW_TYPE::ITEM_FIREBALL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_FIREBALL]);
 	//画像セット
@@ -152,12 +154,14 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pItemManagement->SetDrawLaser(m_pDrawObject[(int)DRAW_TYPE::ITEM_LASER]);
 	m_pItemManagement->SetDrawGatoring(m_pDrawObject[(int)DRAW_TYPE::ITEM_GATORING]);
 	m_pItemManagement->SetDrawStop(m_pDrawObject[(int)DRAW_TYPE::ITEM_STOP]);
+	m_pItemManagement->SetDrawBarrier(m_pDrawObject[(int)DRAW_TYPE::ITEM_BARRIER]);
 	m_pItemManagement->SetDrawAcid(m_pDrawObject[(int)DRAW_TYPE::ITEM_ACID]);
 	m_pItemManagement->SetDrawHotairlaser(m_pDrawObject[(int)DRAW_TYPE::ITEM_HOTAIRLASER]);
 	m_pItemManagement->SetDrawIcerain(m_pDrawObject[(int)DRAW_TYPE::ITEM_ICERAIN]);
 	m_pItemManagement->SetDrawIce(m_pDrawObject[(int)DRAW_TYPE::ITEM_ICE]);
 	m_pItemManagement->SetDrawPoisonlaser(m_pDrawObject[(int)DRAW_TYPE::ITEM_POISONLASER]);
 	m_pItemManagement->SetDrawFireball(m_pDrawObject[(int)DRAW_TYPE::ITEM_FIREBALL]);
+	m_pItemManagement->SetDrawFire(m_pDrawObject[(int)DRAW_TYPE::ITEM_FIRE]);
 
 
 	//=======================
@@ -224,7 +228,7 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pPlayerLeft->DrawSetHomingE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_MISSILE]);
 	m_pPlayerLeft->DrawSetLaserE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_LASER]);
 	m_pPlayerLeft->DrawSetGatoringE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_GATORING]);
-	m_pPlayerLeft->DrawSetBarriarE(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER]);
+	m_pPlayerLeft->DrawSetBarriarE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_BARRIER]);
 	m_pPlayerLeft->DrawSetIceRainE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_ICERAIN]);
 	m_pPlayerLeft->DrawSetStopE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_STOP]);
 	m_pPlayerLeft->DrawSetAcidE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_ACID]);
@@ -234,7 +238,7 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pPlayerRight->DrawSetHomingE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_MISSILE]);
 	m_pPlayerRight->DrawSetLaserE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_LASER]);
 	m_pPlayerRight->DrawSetGatoringE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_GATORING]);
-	m_pPlayerRight->DrawSetBarriarE(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER]);
+	m_pPlayerRight->DrawSetBarriarE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_BARRIER]);
 	m_pPlayerRight->DrawSetIceRainE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_ICERAIN]);
 	m_pPlayerRight->DrawSetStopE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_STOP]);
 	m_pPlayerRight->DrawSetAcidE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_ACID]);
@@ -244,7 +248,7 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pPlayerCenter->DrawSetHomingE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_MISSILE]);
 	m_pPlayerCenter->DrawSetLaserE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_LASER]);
 	m_pPlayerCenter->DrawSetGatoringE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_GATORING]);
-	m_pPlayerCenter->DrawSetBarriarE(&m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER]);
+	m_pPlayerCenter->DrawSetBarriarE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_BARRIER]);
 	m_pPlayerCenter->DrawSetIceRainE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_ICERAIN]);
 	m_pPlayerCenter->DrawSetStopE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_STOP]);
 	m_pPlayerCenter->DrawSetAcidE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_ACID]);

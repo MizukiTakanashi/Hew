@@ -44,7 +44,9 @@ void Management_IceField::Update()
 //==========================
 void Management_IceField::Draw(void) const
 {
+	SetBlendState(BLEND_MODE_ADD);
 	for (int i = 0; i < m_EnemyNum; i++) {
 		m_pIceField[i]->Draw();
 	}
+	SetBlendState(BLEND_MODE_ALPHABLEND);
 }

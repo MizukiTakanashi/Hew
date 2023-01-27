@@ -25,6 +25,7 @@ StageMars::StageMars(Score* pNumber):InhStage(pNumber)
 	//ƒz[ƒ~ƒ“ƒO‚Ì“G
 	m_pEnemyMissileManagement = new EnemyMissileManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NORMAL], m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 1);
 
+	m_pBossManagement = new BossManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ICE], m_pDrawObject[(int)DRAW_TYPE::BULLET_ICE], 1);
 	//ƒOƒŒƒl[ƒh“G
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_GREANADE].SetTextureName((char*)"data\\texture\\grenade.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_GRENADE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_GREANADE]);
@@ -39,6 +40,7 @@ StageMars::StageMars(Score* pNumber):InhStage(pNumber)
 	m_pAllEnemyManagement->AddPointer(m_pEnemyIceRainManagement);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyGrenadeManagement);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyMissileManagement);
+	m_pAllEnemyManagement->AddPointer(m_pBossManagement);
 
 	//˜r
 	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_GRENADE_EXPLOSION].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::EXPLOSION], 0.0f, 0.125f, 1.0f, 7);
@@ -58,6 +60,7 @@ StageMars::StageMars(Score* pNumber):InhStage(pNumber)
 	m_pColAll1->AddEnemyPointer(m_pEnemyIceRainManagement);
 	m_pColAll1->AddEnemyPointer(m_pEnemyGrenadeManagement);
 	m_pColAll1->AddEnemyPointer(m_pEnemyMissileManagement);
+	m_pColAll1->AddEnemyPointer(m_pBossManagement);
 
 	//ƒMƒ~ƒbƒN
 	m_pTexUseful[(int)TEXTURE_TYPE::GIMMICK_MARS].SetTextureName((char*)"data\\texture\\mars.png");
@@ -85,6 +88,7 @@ StageMars::~StageMars()
 	delete m_pEnemyGrenadeManagement;
 	delete m_pEnemyIceRainManagement;
 	delete m_pEnemyStopManagement;
+	delete m_pBossManagement;
 }
 
 //==========================
@@ -133,7 +137,7 @@ void StageMars::Update(void)
 	//ÅŒã‚Ì—ñ‚Ì“G‚ð‘S‚Ä“|‚µ‚½‚ç
 	if (m_pEnemyMissileManagement->IsClear() && m_pEnemyBarrierManagement->IsClear() &&
 		m_pEnemyIceRainManagement->IsClear() && m_pEnemyStopManagement->IsClear() &&
-		m_pEnemyGrenadeManagement->IsClear()) {
+		m_pEnemyGrenadeManagement->IsClear() && m_pBossManagement->IsClear()) {
 		if (m_GameclearHitstop) {
 			m_StopFlame = HIT_STOP_TIME;
 			m_GameclearHitstop = false;
@@ -185,6 +189,7 @@ void StageMars::Update(void)
 	m_pEnemyIceRainManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyStopManagement->Update();
 	m_pEnemyGrenadeManagement->Update(m_pPlayer->GetPos());
+	m_pBossManagement->Update();
 
 	//ƒ{ƒ€
 	m_pBom->Update();
@@ -269,6 +274,7 @@ void StageMars::Draw(void) const
 	m_pEnemyIceRainManagement->Draw();
 	m_pEnemyStopManagement->Draw();
 	m_pEnemyGrenadeManagement->Draw();
+	m_pBossManagement->Draw();
 	//if (m_pBoss) {
 	//	m_pBoss->Draw();
 	//}

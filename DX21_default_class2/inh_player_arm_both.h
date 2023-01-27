@@ -66,6 +66,7 @@ private:
 	DrawObject* m_enemy_barrier_draw = nullptr;	//バリアの描画オブジェクト
 	DrawObject* m_enemy_stop_draw = nullptr;	//動きを止める敵の弾の描画オブジェクト
 	DrawObject* m_enemy_icerain_draw = nullptr;	//氷の敵の描画
+	DrawObject* m_enemy_grenade_draw = nullptr;	//グレネードの敵の描画
 	DrawObject* m_enemy_fire_draw = nullptr;	//炎の敵の描画
 	DrawObject* m_enemy_fireball_draw = nullptr;	//炎の敵の描画
 	DrawObject* m_enemy_acid_draw = nullptr;	//炎の敵の描画
@@ -202,6 +203,9 @@ public:
 
 	//氷の敵の腕の描画
 	void DrawSetIceRainE(DrawObject* pDraw) { m_enemy_icerain_draw = pDraw; }
+
+	//グレネードの敵の腕の描画
+	void DrawSetGrenadeE(DrawObject* pDraw) { m_enemy_grenade_draw = pDraw; }
 
 	//炎の敵の腕の描画
 	void DrawSetFireE(DrawObject* pDraw) { m_enemy_fire_draw = pDraw; }

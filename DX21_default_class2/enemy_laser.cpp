@@ -10,7 +10,7 @@
 //==========================
 //public
 const float EnemyLaser::SIZE_X = 50.0f;
-const float EnemyLaser::SIZE_Y = 60.0f;
+const float EnemyLaser::SIZE_Y = 70.0f;
 const float EnemyLaser::STOP_POS_Y = 100.0f;
 const float EnemyLaser::RANGE = 240.0f;
 //private

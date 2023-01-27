@@ -129,7 +129,9 @@ void StageVenus::Update(void)
 		}
 	}
 	//ÅŒã‚Ì—ñ‚Ì“G‚ð‘S‚Ä“|‚µ‚½‚ç
-	if (m_pEnemuPoorvisionManagement->IsClear() && m_pEnemyAcidManagement->IsClear() && m_pEnemySpeeddownManagement->IsClear() && m_pEnemyFireballManagement->IsClear() && m_pEnemyGatoring->IsClear()) {
+	if (m_pEnemuPoorvisionManagement->IsClear() && m_pEnemyAcidManagement->IsClear() && 
+		m_pEnemySpeeddownManagement->IsClear() && m_pEnemyFireballManagement->IsClear() && 
+		m_pEnemyGatoring->IsClear()) {
 		if (m_GameclearHitstop) {
 			m_StopFlame = HIT_STOP_TIME;
 			m_GameclearHitstop = false;
