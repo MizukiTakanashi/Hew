@@ -205,7 +205,7 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 		break;
 
 	case TYPE::TYPE_GRENADE:
-		GameObject::SetDrawob(*m_enemy_homing_draw);
+		GameObject::SetDrawob(*m_enemy_grenade_draw);
 		break;
 
 	case TYPE::TYPE_FIRE:
