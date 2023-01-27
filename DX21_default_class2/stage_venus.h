@@ -14,7 +14,7 @@
 #include "management_enemy_poorvision.h"
 #include "management_enemy_speeddown.h"
 #include "management_enemy_gatoring.h"
-
+#include "management_boss.h"
 class StageVenus : public InhStage
 {
 //ƒƒ“ƒo•Ï”
@@ -25,7 +25,7 @@ private:
 	EnemyPoorvisionManagement* m_pEnemuPoorvisionManagement = nullptr;
 	EnemySpeeddownManagement* m_pEnemySpeeddownManagement = nullptr;
 	EnemyGatoringManagement* m_pEnemyGatoring = nullptr;
-
+	BossManagement* m_pBossManagement = nullptr;
 	int a = 0;
 
 	bool m_poor_vision = false;

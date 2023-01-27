@@ -52,7 +52,7 @@ private:
 
 
 	//敵の配列
-	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][9] = {
+	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][15/*9*/] = {
 	//チュートリアル
 	{
 		D3DXVECTOR2(0.0f, 0.0f),
@@ -69,9 +69,25 @@ private:
 		D3DXVECTOR2(71.0f + (142 * 4), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142 * 3), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142 * 5), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 3), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 2), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 8), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 4), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 3), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 6), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142 * 5), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142 * 1), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142 * 6), -EnemyNormal::SIZE_Y / 2)
+
+		/*D3DXVECTOR2(71.0f + (142 * 4), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 8), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 4), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 3), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 5), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 5), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 1), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142 * 6), -EnemyNormal::SIZE_Y / 2)*/
 	},
 	//土星
 	{
@@ -88,7 +104,7 @@ private:
 
 	};
 
-	int m_SetEnemyTime[(int)STAGE::NUM][9] = {
+	int m_SetEnemyTime[(int)STAGE::NUM][15/*9*/] = {
 	{//チュートリアル
 		0, 0, 0, 0, 0, 0
 	},
@@ -98,7 +114,23 @@ private:
 	},
 
 	{//水星
-		60 * 10,
+		60 * 10 + 1,
+		60 * 25 ,
+		60 * 25 + 1,
+		60 * 40 + 3,
+		60 * 50,
+		60 * 55,
+		60 * 60 + 2,
+		60 * 70,
+		60 * 80,
+		60 * 105,
+		60 * 105 + 1,
+		60 * 120,
+		60 * 140,
+		60 * 160,
+		60 * 170 + 10
+
+		/*60 * 10,
 		60 * 25,
 		60 * 25 + 1,
 		60 * 80,
@@ -106,7 +138,7 @@ private:
 		60 * 105 + 1,
 		60 * 140,
 		60 * 160,
-		60 * 170,
+		60 * 170,*/
 	},
 	//土星
 	{

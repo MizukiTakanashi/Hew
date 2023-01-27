@@ -1,27 +1,27 @@
 //=======================================
-// “y¯‚ÌƒXƒe[ƒWŠÖŒW(cppƒtƒ@ƒCƒ‹)
-// ì¬“úF
-// ì¬ŽÒF‰¶“c—ms
+// åœŸæ˜Ÿã®ã‚¹ãƒ†ãƒ¼ã‚¸é–¢ä¿‚(cppãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š
+// ä½œæˆè€…ï¼šæ©ç”°æ´‹è¡Œ
 //=======================================
 #include "stage_saturn.h"
 #include "sound.h"
 
 //==========================
-// ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+// å¼•æ•°ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //==========================
 StageSaturn::StageSaturn(Score* pNumber):InhStage(pNumber)
 {
 	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\saturn.png");
 
 	//=======================
-	// “G
-	//ƒŒ[ƒU[‚Ì“G
+	// æ•µ
+	//ãƒ¬ãƒ¼ã‚¶ãƒ¼ã®æ•µ
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER].SetTextureName((char*)"data\\texture\\bullet_gass.png");
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER]);
 	m_pEnemyLaserManagement = new EnemyLaserManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER], 3);
 
-	//‚ß‚®‚Ý‚ñ
+	//ã‚ãã¿ã‚“
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_MEGUMIN].SetTextureName((char*)"data\\texture\\megumin.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_MEGUMIN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_MEGUMIN]);
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MEGUMIN].SetTextureName((char*)"data\\texture\\bullet_megumin.png");
@@ -29,41 +29,45 @@ StageSaturn::StageSaturn(Score* pNumber):InhStage(pNumber)
 	m_pEnemyMeguminManagement = new EnemyMeguminManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_MEGUMIN], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_MEGUMIN]);
 
-	//ƒKƒgƒŠƒ“ƒO
+	//ã‚¬ãƒˆãƒªãƒ³ã‚°
 	m_pEnemyGatoring = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 3);
 
-	//ƒ~ƒTƒCƒ‹
+	//ãƒŸã‚µã‚¤ãƒ«
 	m_pEnemyMissile = new EnemyMissileManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NORMAL],
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 3);
 
-	//“ÅÀ
+	//æ¯’æ²¼
 	m_pTexUseful[(int)TEXTURE_TYPE::POISON].SetTextureName((char*)"data\\texture\\poison.png");
 	m_pDrawObject[(int)DRAW_TYPE::POISON].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::POISON], 2.0f, 1.0, 1.0f, 3);
 	m_pPoisonField = new Management_PoisonField(m_pDrawObject[(int)DRAW_TYPE::POISON]);
 
-	//“G‚ÌŠÇ—
+	m_pBossManagement = new BossManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_MEGUMIN], m_pDrawObject[(int)DRAW_TYPE::BULLET_MEGUMIN], 1);
+
+	//æ•µã®ç®¡ç†
 	m_pAllEnemyManagement = new AllEnemyManagement;
 	m_pAllEnemyManagement->AddPointer(m_pEnemyLaserManagement);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyMeguminManagement);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyGatoring);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyMissile);
+	m_pAllEnemyManagement->AddPointer(m_pBossManagement);
 	
 	//========================================================
-	// ‘S‚Ä‚Ì“–‚½‚è”»’è
+	// å…¨ã¦ã®å½“ãŸã‚Šåˆ¤å®š
 	m_pColAll = new CollisionAll(CollisionAll::STAGE::SATURN, m_pPlayer, m_pPlayerLeft, m_pPlayerRight, m_pExplosionManagement,
 		m_pItemManagement, m_pScore, m_pBom);
 	m_pColAll->SetPoison(m_pPoisonField);
 
-	//“G‚Ìƒ|ƒCƒ“ƒ^‚ðƒZƒbƒg
+	//æ•µã®ãƒã‚¤ãƒ³ã‚¿ã‚’ã‚»ãƒƒãƒˆ
 	m_pColAll->AddEnemyPointer(m_pEnemyMeguminManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyLaserManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyGatoring);
 	m_pColAll->AddEnemyPointer(m_pEnemyMissile);
+	m_pColAll->AddEnemyPointer(m_pBossManagement);
 }
 
 //==========================
-// ƒfƒXƒgƒ‰ƒNƒ^
+// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //==========================
 StageSaturn::~StageSaturn()
 {
@@ -74,21 +78,22 @@ StageSaturn::~StageSaturn()
 	delete m_pEnemyMissile;
 	delete m_pEnemyGatoring;
 	delete m_pPoisonField;
+	delete m_pBossManagement;
 }
 
 //==========================
-// XVˆ—
+// æ›´æ–°å‡¦ç†
 //==========================
 void StageSaturn::Update(void)
 {
-	//ƒqƒbƒgƒXƒgƒbƒv
+	//ãƒ’ãƒƒãƒˆã‚¹ãƒˆãƒƒãƒ—
 	if (m_StopFlame > 0)
 	{
 		m_StopFlame--;
 
-		//‚ä‚Á‚­‚è‚É‚È‚é‚Ì‚Å‚ ‚ê‚Î...
+		//ã‚†ã£ãã‚Šã«ãªã‚‹ã®ã§ã‚ã‚Œã°...
 		if (m_HitStopSlow != -1) {
-			//ŽžŠÔ‚ª—ˆ‚½‚çˆ—‚ð‚©‚¯‚é
+			//æ™‚é–“ãŒæ¥ãŸã‚‰å‡¦ç†ã‚’ã‹ã‘ã‚‹
 			if (++m_HitStopSlow >= HIT_STOP_SLOW_INTERVAL) {
 				m_HitStopSlow = 0;
 			}
@@ -96,14 +101,14 @@ void StageSaturn::Update(void)
 				return;
 			}
 		}
-		//‚ä‚Á‚­‚è‚É‚È‚ç‚È‚¢‚Ì‚Å‚ ‚ê‚Î...
+		//ã‚†ã£ãã‚Šã«ãªã‚‰ãªã„ã®ã§ã‚ã‚Œã°...
 		else {
-			//ˆ—‚ð”ò‚Î‚·
+			//å‡¦ç†ã‚’é£›ã°ã™
 			return;
 		}
 	}
 
-	//ƒvƒŒƒCƒ„[‚ÌHP‚ª0‚É‚È‚Á‚½‚ç...
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HPãŒ0ã«ãªã£ãŸã‚‰...
 	if (m_pPlayerHP->GetHP0Flag()) {
 		if (m_GameoverHitstop) {
 			m_StopFlame = HIT_STOP_TIME;
@@ -119,8 +124,12 @@ void StageSaturn::Update(void)
 		}
 	}
 
-	//ÅŒã‚Ì—ñ‚Ì“G‚ð‘S‚Ä“|‚µ‚½‚ç
-	if (m_pEnemyLaserManagement->IsClear() && m_pEnemyMeguminManagement->IsClear()) {
+	//æœ€å¾Œã®åˆ—ã®æ•µã‚’å…¨ã¦å€’ã—ãŸã‚‰
+
+	if (m_pEnemyLaserManagement->IsClear() && m_pEnemyMeguminManagement->IsClear()
+		&& m_pBossManagement->IsClear()&&
+		m_pEnemyMissile->IsClear() && m_pEnemyGatoring->IsClear()) {
+
 		if (m_GameclearHitstop) {
 			m_StopFlame = HIT_STOP_TIME;
 			m_GameclearHitstop = false;
@@ -128,7 +137,7 @@ void StageSaturn::Update(void)
 		}
 		else {
 			if (m_StopFlame <= 0) {
-				//ƒŠƒUƒ‹ƒg‰æ–Ê‚És‚­
+				//ãƒªã‚¶ãƒ«ãƒˆç”»é¢ã«è¡Œã
 				SetStageClear(true);
 				Fade(SCENE::SCENE_RESULT, STAGE::STAGE_SATURN);
 				return;
@@ -136,59 +145,60 @@ void StageSaturn::Update(void)
 		}
 	}
 
-	//ƒ{ƒX‚ªŽ€‚ñ‚¾‚ç
+	//ãƒœã‚¹ãŒæ­»ã‚“ã ã‚‰
 	if (m_isBossDown)
 	{
 		SetStageClear(true);
 		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_SATURN);
 	}
 
-	//”wŒi
+	//èƒŒæ™¯
 	m_pBG->Update();
 	m_pBG_Moon->Update();
 
-	//˜r‚ÌØ‚è‘Ö‚¦
+	//è…•ã®åˆ‡ã‚Šæ›¿ãˆ
 	m_pPlayerArmChange->Change();
 
-	//ƒvƒŒƒCƒ„[
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
 	m_pPlayer->Update(m_pPlayerHP->IsPlayerInvincible());
 
 	m_pPlayerHP->Update();
 
-	//”š”­
+	//çˆ†ç™º
 	m_pExplosionManagement->Update();
 
-	//“G‚©‚ç—Ž‚¿‚éƒAƒCƒeƒ€
+	//æ•µã‹ã‚‰è½ã¡ã‚‹ã‚¢ã‚¤ãƒ†ãƒ 
 	m_pItemManagement->Update();
 
 	//=======================
-	// “G
+	// æ•µ
 	m_pEnemyLaserManagement->Update();
 	m_pEnemyMeguminManagement->Update();
 	m_pEnemyGatoring->Update();
+	m_pBossManagement->Update();
 	m_pEnemyMissile->Update(m_pPlayer->GetPos());
 
 	m_pPoisonField->Update();
-	//ƒ{ƒ€
+	//ãƒœãƒ 
 	m_pBom->Update();
 
 	//====================================
-	//ƒvƒŒƒCƒ„[‚ÌHP‚É‘Î‚·‚éˆ—
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HPã«å¯¾ã™ã‚‹å‡¦ç†
 	int attack_num = 0;
 
-	//ƒvƒŒƒCƒ„[‚Ì˜r
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•
 
-	//ƒz[ƒ~ƒ“ƒO’e—p
+	//ãƒ›ãƒ¼ãƒŸãƒ³ã‚°å¼¾ç”¨
 	D3DXVECTOR2 temp_pos = m_pAllEnemyManagement->GetCloltestEnemyPos(m_pPlayerLeft->GetPos());
 
-	//˜r‚ÌƒAƒbƒvƒf[ƒg
+	//è…•ã®ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆ
 	m_pPlayerLeft->ButtonPress();
 	m_pPlayerLeft->Update(m_pPlayer->GetPos(), temp_pos);
 	m_pPlayerRight->ButtonPress();
 	m_pPlayerRight->Update(m_pPlayer->GetPos(), temp_pos);
 	m_pPlayerCenter->ButtonPress();
 	m_pPlayerCenter->Update(m_pPlayer->GetPos(), temp_pos);
-	//‡‘Ì‚µ‚½Žž‚ÌƒqƒbƒgƒXƒgƒbƒv
+	//åˆä½“ã—ãŸæ™‚ã®ãƒ’ãƒƒãƒˆã‚¹ãƒˆãƒƒãƒ—
 	if (m_pPlayerLeft->IsHitStop()) {
 		m_StopFlame = HIT_STOP_UNION;
 		m_pPlayerLeft->SetHitStop(false);
@@ -198,40 +208,40 @@ void StageSaturn::Update(void)
 		m_pPlayerRight->SetHitStop(false);
 	}
 
-	//“G‚ÆƒvƒŒƒCƒ„[‚Ì“–‚½‚è”»’è
+	//æ•µã¨ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å½“ãŸã‚Šåˆ¤å®š
 	attack_num += m_pColAll->Collision();
 
-	//‰ñ•œ
+	//å›žå¾©
 	m_pColAll->HeelCollision();
 
-	//ƒvƒŒƒCƒ„[‚ÌHP‚ðUŒ‚”‚É‚æ‚Á‚ÄŒ¸‚ç‚·
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HPã‚’æ”»æ’ƒæ•°ã«ã‚ˆã£ã¦æ¸›ã‚‰ã™
 	if (attack_num != 0) {
 		m_pPlayerHP->ReduceHP((float)attack_num);
 	}
 
-	//ƒvƒŒƒCƒ„[‚ÌHP‚ª0‚É‚È‚Á‚½‚ç...
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HPãŒ0ã«ãªã£ãŸã‚‰...
 	if (m_pPlayerHP->GetHP0Flag()) {
 		SetStageClear(false);
 		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_SATURN);
 	}
 
-	//ÅŒã‚Ì—ñ‚Ì“G‚ð‘S‚Ä“|‚µ‚½‚ç
+	//æœ€å¾Œã®åˆ—ã®æ•µã‚’å…¨ã¦å€’ã—ãŸã‚‰
 	if (m_pEnemyGatoring->IsClear() && m_pEnemyMeguminManagement->IsClear()&& m_pEnemyMissile->IsClear()) {
-		//ƒŠƒUƒ‹ƒg‰æ–Ê‚És‚­
+		//ãƒªã‚¶ãƒ«ãƒˆç”»é¢ã«è¡Œã
 		SetStageClear(true);
 		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_SATURN);
 	}
 }
 
 //==========================
-// •`‰æˆ—
+// æç”»å‡¦ç†
 //==========================
 void StageSaturn::Draw(void) const
 {
 	m_pBG->DrawBG();
 	m_pBG_Moon->DrawSaturn();
 
-	//UI‚Ì•`‰æ
+	//UIã®æç”»
 	m_pFrame->Draw();
 	m_pPlayerHP->DrawHP();
 	m_pScore->DrawNumber();
@@ -240,18 +250,19 @@ void StageSaturn::Draw(void) const
 	m_pMultiply->Draw();
 	m_pStageSataurn->Draw();
 
-	//ƒvƒŒƒCƒ„[‚Ì˜r‚Ì•`‰æˆ—
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•ã®æç”»å‡¦ç†
 	m_pPlayer->Draw();
 	m_pPlayer->DrawBullet();
 	m_pPlayerLeft->ArmDraw();
 	m_pPlayerRight->ArmDraw();
 	m_pPlayerCenter->ArmDraw();
 
-	//“G‚Ì•`‰æ
+	//æ•µã®æç”»
 	m_pEnemyLaserManagement->Draw();
 	m_pEnemyMeguminManagement->Draw();
 	m_pEnemyGatoring->Draw();
 	m_pEnemyMissile->Draw();
+	m_pBossManagement->Draw();
 
 	m_pPoisonField->Draw();
 
@@ -259,7 +270,7 @@ void StageSaturn::Draw(void) const
 
 	m_pItemManagement->Draw();
 
-	//ƒ{ƒ€‚Ì•`‰æ
+	//ãƒœãƒ ã®æç”»
 	m_pBom->BomDraw();
 
 

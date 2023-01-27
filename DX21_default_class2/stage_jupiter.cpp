@@ -34,12 +34,15 @@ StageJupiter::StageJupiter(Score* pNumber) :InhStage(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_PUBLIC].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_PUBLIC]);
 	m_pEnemyPublic = new Management_EnemyPublic(m_pDrawObject[(int)DRAW_TYPE::ENEMY_PUBLIC]);
 
+	m_pBossManagement = new BossManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_LASER], m_pDrawObject[(int)DRAW_TYPE::BULLET_LASER], 1);
+
 	//“G‚ÌŠÇ—
 	m_pAllEnemyManagement = new AllEnemyManagement;
 	m_pAllEnemyManagement->AddPointer(m_pEnemyLaser);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyMissile);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyPublic);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyBarrier);
+	m_pAllEnemyManagement->AddPointer(m_pBossManagement);
 
 	//========================================================
 	// ‘S‚Ä‚Ì“–‚½‚è”»’è
@@ -51,6 +54,7 @@ StageJupiter::StageJupiter(Score* pNumber) :InhStage(pNumber)
 	m_pColAll->AddEnemyPointer(m_pEnemyMissile);
 	m_pColAll->AddEnemyPointer(m_pEnemyBarrier);
 	m_pColAll->AddEnemyPointer(m_pEnemyPublic);
+	m_pColAll->AddEnemyPointer(m_pBossManagement);
 }
 
 //==========================
@@ -65,6 +69,7 @@ StageJupiter::~StageJupiter()
 	delete m_pEnemyMissile;
 	delete m_pEnemyBarrier; 
 	delete m_pEnemyPublic;
+	delete m_pBossManagement;
 }
 
 //==========================
@@ -112,7 +117,7 @@ void StageJupiter::Update(void)
 
 	//ÅŒã‚Ì—ñ‚Ì“G‚ð‘S‚Ä“|‚µ‚½‚ç
 	if (m_pEnemyLaser->IsClear() && m_pEnemyPublic->IsClear() &&
-		m_pEnemyBarrier->IsClear() && m_pEnemyMissile->IsClear()) {
+		m_pEnemyBarrier->IsClear() && m_pEnemyMissile->IsClear() && m_pBossManagement->IsClear()) {
 		if (m_GameclearHitstop) {
 			m_StopFlame = HIT_STOP_TIME;
 			m_GameclearHitstop = false;
@@ -158,6 +163,7 @@ void StageJupiter::Update(void)
 	m_pEnemyLaser->Update();
 	m_pEnemyPublic->Update();
 	m_pEnemyBarrier->Update();
+	m_pBossManagement->Update();
 	m_pEnemyMissile->Update(m_pPlayer->GetPos());
 
 	//ƒ{ƒ€
@@ -215,7 +221,7 @@ void StageJupiter::Draw(void) const
 	m_pComboNum->SetNumber(m_pScore->GetComboNum());
 	m_pComboNum->DrawNumber();
 	m_pMultiply->Draw();
-	m_pStageMarcury->Draw();
+	m_pStageJupitor->Draw();
 
 	//ƒvƒŒƒCƒ„[‚Ì•`‰æˆ—
 	m_pPlayer->Draw();
@@ -229,6 +235,7 @@ void StageJupiter::Draw(void) const
 	m_pEnemyPublic->Draw();
 	m_pEnemyBarrier->Draw();
 	m_pEnemyMissile->Draw();
+	m_pBossManagement->Draw();
 
 	m_pExplosionManagement->Draw();
 
@@ -236,5 +243,4 @@ void StageJupiter::Draw(void) const
 
 	//ƒ{ƒ€‚Ì•`‰æ
 	m_pBom->BomDraw();
-
 }

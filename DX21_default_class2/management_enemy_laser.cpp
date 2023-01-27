@@ -9,7 +9,7 @@
 //==========================
 // 定数の初期化
 //==========================
-const int EnemyLaserManagement::ENEMY_NUM[(int)STAGE::NUM] = { 3, 0, 4, 4, 0, 6 };
+const int EnemyLaserManagement::ENEMY_NUM[(int)STAGE::NUM] = { 3, 0, 8, 9, 0, 6 };
 const float EnemyLaserManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyLaserManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyLaserManagement::EXIT_MOVE_SPEED_X = 2.5f;
@@ -22,8 +22,8 @@ EnemyLaserManagement::EnemyLaserManagement(DrawObject& pDrawObject1, DrawObject&
 	m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectLaser(pDrawObject2)
 {
 	m_stage_num = stage;
-	m_pEnemyLaser = new EnemyLaser[ENEMY_NUM[stage]];
-	m_pLaser = new Laser[ENEMY_NUM[stage]];
+	m_pEnemyLaser = new EnemyLaser[ENEMY_NUM[m_stage_num]];
+	m_pLaser = new Laser[ENEMY_NUM[m_stage_num]];
 
 	//===================
 	// 音
@@ -50,7 +50,8 @@ void EnemyLaserManagement::Update()
 	m_FlameNum++; //フレーム数を増加
 
 	//時間が来たら敵をセット
-	if (m_FlameNum == m_SetEnemyTime[m_stage_num][m_EnemyNum])
+	if (m_FlameNum == m_SetEnemyTime[m_stage_num][m_EnemyNum] &&
+		m_EnemyNum < ENEMY_NUM[m_stage_num])
 	{
 		//退出方向を決める
 		bool right = true;

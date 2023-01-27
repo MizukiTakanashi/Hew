@@ -29,7 +29,7 @@ Result::Result(bool isClear,  Score* pNumber, STAGE stagenum) :m_pScore(pNumber)
 	// 音
 
 	//BGM
-	m_BGM = LoadSound((char*)"data\\BGM\\silky_sky_away (online-audio-converter.com).wav");	//サウンドのロード
+	m_BGM = LoadSound((char*)"data\\BGM\\Result.wav");	//サウンドのロード
 	PlaySound(m_BGM, -1);
 	SetVolume(m_BGM, 0.05f);
 

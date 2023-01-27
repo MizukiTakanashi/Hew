@@ -56,6 +56,13 @@ CollisionAll::CollisionAll(STAGE stage, Player* pPlayer, inhPlayerArmBoth* pL, i
 
 		break;
 
+	//水星
+	case STAGE::MERCURY:
+		//プレイヤースピード低下音
+		m_SE_26 = LoadSound((char*)"data\\SE\\2_10.wav");
+
+		break;
+
 	//金星
 	case STAGE::VENUS:
 		//プレイヤースピード低下音
@@ -63,7 +70,7 @@ CollisionAll::CollisionAll(STAGE stage, Player* pPlayer, inhPlayerArmBoth* pL, i
 
 		break;
 
-		//火星
+	//木星
 	case STAGE::JUPITER:
 		//バリアが弾を跳ね返す音
 		m_SE_08 = LoadSound((char*)"data\\SE\\2_08.wav");
@@ -132,6 +139,7 @@ int CollisionAll::Collision(void)
 						{
 							if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
 								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
+								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::BOSS && 
 								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
 								if (m_stage == STAGE::MERCURY &&
 									m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {
@@ -196,6 +204,7 @@ int CollisionAll::Collision(void)
 				{
 					if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
 						m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
+						m_pEnemy[k]->GetType() != EnemyManagement::TYPE::BOSS && 
 						m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
 						if (m_stage == STAGE::MERCURY &&
 							m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {
@@ -248,6 +257,7 @@ int CollisionAll::Collision(void)
 						{
 							if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
 								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
+								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::BOSS && 
 								m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
 								if (m_stage == STAGE::MERCURY &&
 									m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {
@@ -346,6 +356,7 @@ int CollisionAll::Collision(void)
 								{
 									if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
 										m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
+										m_pEnemy[k]->GetType() != EnemyManagement::TYPE::BOSS && 
 										m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
 										if (m_stage == STAGE::MERCURY &&
 											m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {
@@ -437,6 +448,7 @@ int CollisionAll::Collision(void)
 							{
 								if (m_pEnemy[k]->GetType() != EnemyManagement::TYPE::SPEEDDOWN && 
 									m_pEnemy[k]->GetType() != EnemyManagement::TYPE::POORVISION && 
+									m_pEnemy[k]->GetType() != EnemyManagement::TYPE::BOSS && 
 									m_pEnemy[k]->GetType() != EnemyManagement::TYPE::MEGUMIN) {
 									if (m_stage == STAGE::MERCURY &&
 										m_pEnemy[k]->GetType() == EnemyManagement::TYPE::ICERAIN) {

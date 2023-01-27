@@ -44,7 +44,7 @@ int		TitleTextureNo;	//テクスチャ番号
 void	InitTitle(bool tutorial)
 {
 	TitleTextureNo = LoadTexture(g_TitleTextureName);				//テクスチャのロード
-	g_TitleSoundNo = LoadSound((char*)"data\\BGM\\sample000.wav");	//サウンドのロード
+	g_TitleSoundNo = LoadSound((char*)"data\\BGM\\Title.wav");	//サウンドのロード
 	
 	//決定音
 	g_SE = LoadSound((char*)"data\\SE\\2_01.wav");
