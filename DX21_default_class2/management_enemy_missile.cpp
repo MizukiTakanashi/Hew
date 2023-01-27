@@ -69,9 +69,11 @@ void EnemyMissileManagement::Update(const D3DXVECTOR2& PlayerPos)
 			D3DXVec2Normalize(&movTemp, &movTemp);
 			movTemp *= BULLET_SPEED;
 
+			float rotTemp = atan2(rotposTemp.y, rotposTemp.x) * (180 / M_PI) + 270.0f;
+
 
 			Bullet temp(m_pDrawObjectBullet, m_pEnemyMissile[i].GetPos(),
-				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), movTemp, 0.0f);
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y), movTemp, rotTemp);
 			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
 
 			EnemyManagement::IncreaseBulletNum(1);
@@ -90,6 +92,7 @@ void EnemyMissileManagement::Update(const D3DXVECTOR2& PlayerPos)
 
 	//今いる弾の処理
 	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {
+
 		//弾の更新処理
 		m_pBullet[i].Update();
 		

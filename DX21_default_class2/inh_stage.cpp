@@ -39,11 +39,11 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	//=======================
 	// 弾
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_RED].SetTextureName((char*)"data\\texture\\bullet_red.png");
-	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN].SetTextureName((char*)"data\\texture\\bullet_green.png");
+	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_PLAYER].SetTextureName((char*)"data\\texture\\bullet_player.png");
 	m_pTexUseful[(int)TEXTURE_TYPE::BOM].SetTextureName((char*)"data\\texture\\bakuhatu-illust21.png");
 	//緑の弾
-	m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1,
-		D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_PLAYER], 0.0f, 1.0f, 1.0f, 1,
+		D3DXCOLOR(1.0f, 1.0f, 0.0f, 1.0f));
 	//敵側の弾
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_RED]);
 	//ボム
@@ -135,29 +135,36 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pPlayerRight = new PlayerRight(m_pPlayer->GetPos(), m_pDrawObject[(int)DRAW_TYPE::NUMBER], D3DXVECTOR2(120.0f, 690.0f), D3DXVECTOR2(230.0f, 690.0f));
 
 	//合体できる敵の画像読み込み(敵の弾)
-	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_BULLET].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_CIRCLE_GREEN], 0.0f, 1.0f, 1.0f, 1, D3DXCOLOR(0.2f, 1.0f, 0.2f, 1.0f));
-	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER], 0.0f, 1.0f, 1.0f, 1, D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
-
+	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MISSILE].SetTextureName((char*)"data\\texture\\bullet_missile.png");
+	m_pDrawObject[(int)DRAW_TYPE::BULLET_MISSILE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MISSILE]);
+	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_GATORING].SetTextureName((char*)"data\\texture\\bullet_gatoring.png");
+	m_pDrawObject[(int)DRAW_TYPE::BULLET_GATORING].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_GATORING]);
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_BARRIER].SetTextureName((char*)"data\\texture\\bullet_barrier.png");
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_BARRIER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_BARRIER]);
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_ICE].SetTextureName((char*)"data\\texture\\bullet_ice.png");
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_ICE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_ICE]);
 
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_GATORING].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_GATORING], 0.0f, 1.0f, 1.0f, 1, D3DXCOLOR(1.0f, 1.0f, 0.0f, 1.0f));
+	m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_LASER], 0.0f, 1.0f, 1.0f, 1, D3DXCOLOR(1.0f, 1.0f, 0.0f, 1.0f));
+
 
 
 	//腕の画像セット（弾）
-	m_pPlayerLeft->DrawSetSurcleBullet(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_BULLET]);
+	m_pPlayerLeft->DrawSetSurcleBullet(&m_pDrawObject[(int)DRAW_TYPE::BULLET_MISSILE]);
+	m_pPlayerLeft->DrawSetGatoring(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_GATORING]);
 	m_pPlayerLeft->DrawSetLaser(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LASER]);
 	m_pPlayerLeft->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::BULLET_BARRIER]);
 	m_pPlayerLeft->DrawSetIceRain(&m_pDrawObject[(int)DRAW_TYPE::BULLET_ICE]);
 
 	
-	m_pPlayerRight->DrawSetSurcleBullet(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_BULLET]);
+	m_pPlayerRight->DrawSetSurcleBullet(&m_pDrawObject[(int)DRAW_TYPE::BULLET_MISSILE]);
+	m_pPlayerRight->DrawSetGatoring(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_GATORING]);
 	m_pPlayerRight->DrawSetLaser(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LASER]);
 	m_pPlayerRight->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::BULLET_BARRIER]);
 	m_pPlayerRight->DrawSetIceRain(&m_pDrawObject[(int)DRAW_TYPE::BULLET_ICE]);
 	
-	m_pPlayerCenter->DrawSetSurcleBullet(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_BULLET]);
+	m_pPlayerCenter->DrawSetSurcleBullet(&m_pDrawObject[(int)DRAW_TYPE::BULLET_MISSILE]);
+	m_pPlayerCenter->DrawSetGatoring(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_GATORING]);
 	m_pPlayerCenter->DrawSetLaser(&m_pDrawObject[(int)DRAW_TYPE::PLAYER_ARM_LASER]);
 	m_pPlayerCenter->DrawSetBarrier(&m_pDrawObject[(int)DRAW_TYPE::BULLET_BARRIER]);
 	m_pPlayerCenter->DrawSetIceRain(&m_pDrawObject[(int)DRAW_TYPE::BULLET_ICE]);

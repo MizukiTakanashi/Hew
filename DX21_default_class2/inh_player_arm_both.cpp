@@ -259,7 +259,7 @@ void inhPlayerArmBoth::SetType(TYPE type, bool newtype)
 			break;
 
 		case TYPE::TYPE_GATORING:
-			m_pEnemyItem = new PlayerArm3(*m_bullet_draw, m_right, (int)m_type);
+			m_pEnemyItem = new PlayerArm3(*m_bullet_gatoring_draw, m_right, (int)m_type);
 			break;
 
 		case TYPE::TYPE_BARRIAR:
