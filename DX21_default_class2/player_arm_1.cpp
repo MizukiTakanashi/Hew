@@ -87,7 +87,7 @@ void PlayerArm1::Update(const D3DXVECTOR2& arm_pos)
 				D3DXVec2Normalize(&movTemp, &movTemp);
 				movTemp *= BULLET_SPEED;
 
-				float rotTemp = atan2(rotposTemp.y, rotposTemp.x) * (180 / M_PI) + 180.0f;
+				rotTemp = atan2(rotposTemp.y, rotposTemp.x) * (180 / M_PI) + 270.0f;
 			}
 			
 			//íeÇçÏÇÈ

@@ -37,11 +37,11 @@ StageSaturn::StageSaturn(Score* pNumber):InhStage(pNumber)
 
 	//ガトリング
 	m_pEnemyGatoring = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING], 
-		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 3);
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_GATORING], 3);
 
 	//ミサイル
 	m_pEnemyMissile = new EnemyMissileManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NORMAL],
-		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 3);
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_MISSILE], 3);
 
 	//毒沼
 	m_pTexUseful[(int)TEXTURE_TYPE::POISON].SetTextureName((char*)"data\\texture\\poison.png");

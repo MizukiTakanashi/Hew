@@ -75,7 +75,7 @@ void EnemyGatoringManagement::Update()
 		if (m_pEnemyGatoring[i].GetFlagBulletMake() && EnemyManagement::GetBulletNum() < BULLET_NUM)
 		{
 			Bullet temp(m_pDrawObjectBullet, m_pEnemyGatoring[i].GetPos(),
-				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y),D3DXVECTOR2(0, 10.0f), 0.0f);
+				D3DXVECTOR2(BULLET_SIZE_X, BULLET_SIZE_Y),D3DXVECTOR2(0, 10.0f), 180.0f);
 						   // 弾の大きさ								弾を撃つ方向		
 			m_pBullet[EnemyManagement::GetBulletNum()] = temp;
 

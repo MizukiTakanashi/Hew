@@ -51,6 +51,7 @@ private:
 
 	//弾
 	DrawObject* m_bullet_draw = nullptr;		//弾の描画オブジェクト
+	DrawObject* m_bullet_gatoring_draw = nullptr;		//弾の描画オブジェクト
 	DrawObject* m_laser_draw = nullptr;			//レーザーの描画オブジェクト
 	DrawObject* m_barrier_draw = nullptr;		//バリアの描画オブジェクト
 	DrawObject* m_bullet_stop_draw = nullptr;	//動きを止める敵の弾の描画オブジェクト
@@ -161,6 +162,9 @@ public:
 	// 弾
 	//丸い弾の描画オブジェクトをセット
 	void DrawSetSurcleBullet(DrawObject* pDraw) { m_bullet_draw = pDraw; }
+
+	//丸い弾の描画オブジェクトをセット
+	void DrawSetGatoring(DrawObject* pDraw) { m_bullet_gatoring_draw = pDraw; }
 
 	//レーザーの描画オブジェクトをセット
 	void DrawSetLaser(DrawObject* pDraw) { m_laser_draw = pDraw; }

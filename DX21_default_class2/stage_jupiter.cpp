@@ -28,7 +28,7 @@ StageJupiter::StageJupiter(Score* pNumber) :InhStage(pNumber)
 
 	//ミサイル
 	m_pEnemyMissile = new EnemyMissileManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NORMAL],
-		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 5);
+		m_pDrawObject[(int)DRAW_TYPE::BULLET_MISSILE], 5);
 
 	//バリア
 	m_pEnemyBarrier = new EnemyBarrierManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_BARRIER],
