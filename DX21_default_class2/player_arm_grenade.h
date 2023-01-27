@@ -26,9 +26,9 @@ public:
 private:
 	//‚±‚±‚Å‰Šú‰»
 	static const int BULLET_NUM_MAX = 51;	//’e‚Ì§ŒÀ”@ÀÛ‚ÉŒ‚‚Ä‚é”‚Í‚±‚ê‚æ‚è‚P­‚È‚¢
-	static const int BULLET_SHOOT_MAX = 10;	//’e‚Ì“¯Å‘å”­Ë”
+	static const int BULLET_SHOOT_MAX = 30;	//’e‚Ì“¯Å‘å”­Ë”
 	static const int BULLET_BREAK_TIME = 1000;	//ƒz[ƒ~ƒ“ƒO’e‚ª‰ó‚ê‚éŠÔ
-	static const int BULLET_INTERVAL = 20;	//’e‚Ì”­ËŠÔŠu
+	static const int BULLET_INTERVAL = 50;	//’e‚Ì”­ËŠÔŠu
 	static const int EXPLOSION_WAIT_TIME = 0;	//”š”­‘Ò‚¿ŠÔ
 	static const int EXPLOSION_TIME = 100;		//”š”­ŠÔ
 
