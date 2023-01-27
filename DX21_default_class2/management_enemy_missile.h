@@ -79,6 +79,18 @@ private:
 		D3DXVECTOR2(71.0f + (142.0f * 0), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 3), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 5), -EnemyNormal::SIZE_Y / 2),
+
+		/*D3DXVECTOR2(71.0f + (142.0f * 0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 8), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2),*/
 	},
 	//ìyêØ
 	{
@@ -140,13 +152,25 @@ private:
 	},
 	//êÖêØ
 	{
+		60 * 60,
+		60 * 90,
+		60 * 110,
 		60 * 140,
+		60 * 140 + 1,
+		60 * 150,
+		60 * 150 + 1,
+		60 * 160,
+		60 * 170,
+		60 * 170 + 1,
+		60 * 170 + 2
+
+		/*60 * 140,
 		60 * 140 + 1,
 		60 * 150,
 		60 * 150 + 1,
 		60 * 170,
 		60 * 170 + 1,
-		60 * 170 + 2
+		60 * 170 + 2*/
 	},
 	//ìyêØ
 	{
