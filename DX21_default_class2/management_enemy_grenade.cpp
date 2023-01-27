@@ -15,7 +15,7 @@
 const D3DXVECTOR2 EnemyGrenadeManagement::OTHER_RANGE = D3DXVECTOR2(100.0f, 100.0f);
 
 //private
-const int EnemyGrenadeManagement::ENEMY_NUM[(int)STAGE::NUM] = { 0, 5, 0, 0, 0, 0 };
+const int EnemyGrenadeManagement::ENEMY_NUM[(int)STAGE::NUM] = { 0, 17, 0, 0, 0, 0 };
 const float EnemyGrenadeManagement::BULLET_SPEED = 5.0f;
 const D3DXVECTOR2 EnemyGrenadeManagement::BULLET_SIZE = D3DXVECTOR2(20.0f, 20.0f);
 const D3DXVECTOR2 EnemyGrenadeManagement::EXPLOSION_RANGE = D3DXVECTOR2(200.0f, 200.0f);

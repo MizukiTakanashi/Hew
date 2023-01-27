@@ -60,17 +60,37 @@ private:
 	int m_SE_12 = 0;				//íeî≠éÀâπ
 
 	//ìGÇÃîzóÒ
-	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][5] = {
+	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][17] = {
 		//åé
 		{
 			D3DXVECTOR2(0.0f, 0.0f),
 		},
 		//âŒêØ
 		{
+			// 25
+			D3DXVECTOR2(52.5f + (105 * 2), -EnemyGrenade::SIZE_Y / 2),
 			D3DXVECTOR2(52.5f + (105 * 4), -EnemyGrenade::SIZE_Y / 2),
 			D3DXVECTOR2(52.5f + (105 * 6), -EnemyGrenade::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 8), -EnemyGrenade::SIZE_Y / 2),
+			// 40
+			D3DXVECTOR2(52.5f + (105 * 10), -EnemyGrenade::SIZE_Y / 2),
+			// 80
+			D3DXVECTOR2(52.5f + (105 * 0), -EnemyGrenade::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 10), -EnemyGrenade::SIZE_Y / 2),
+			// 90
+			D3DXVECTOR2(52.5f + (105 * 3), -EnemyGrenade::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 7), -EnemyGrenade::SIZE_Y / 2),
+			// 100
 			D3DXVECTOR2(52.5f + (105 * 4), -EnemyGrenade::SIZE_Y / 2),
 			D3DXVECTOR2(52.5f + (105 * 6), -EnemyGrenade::SIZE_Y / 2),
+			// 115
+			D3DXVECTOR2(52.5f + (105 * 2), -EnemyGrenade::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 8), -EnemyGrenade::SIZE_Y / 2),
+			// 135
+			D3DXVECTOR2(52.5f + (105 * 0), -EnemyGrenade::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 10), -EnemyGrenade::SIZE_Y / 2),
+			// 145
+			D3DXVECTOR2(52.5f + (105 * 3), -EnemyGrenade::SIZE_Y / 2),
 			D3DXVECTOR2(52.5f + (105 * 8), -EnemyGrenade::SIZE_Y / 2)
 		},
 		//êÖêØ
@@ -91,7 +111,7 @@ private:
 		}
 	};
 
-	int m_SetEnemyTime[(int)STAGE::NUM][5] = {
+	int m_SetEnemyTime[(int)STAGE::NUM][17] = {
 		//åé
 		{
 			0, 0, 0, 0, 0
@@ -100,9 +120,21 @@ private:
 		{
 			60 * 25,
 			60 * 25 + 1,
+			60 * 25 + 2,
+			60 * 25 + 3,
+			60 * 40,
+			60 * 80,
+			60 * 80 + 1,
+			60 * 90,
+			60 * 90 + 1,
 			60 * 100,
 			60 * 100 + 1,
-			60 * 145
+			60 * 115,
+			60 * 115 + 1,
+			60 * 135,
+			60 * 135 + 1,
+			60 * 145,
+			60 * 145 + 1
 		},
 		//êÖêØ
 		{

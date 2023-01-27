@@ -8,7 +8,7 @@
 //==========================
 // ’è”‚Ì‰Šú‰»
 //==========================
-const int EnemyBarrierManagement::ENEMY_NUM[(int)STAGE::NUM] = { 0, 4, 0, 0, 0, 9 };
+const int EnemyBarrierManagement::ENEMY_NUM[(int)STAGE::NUM] = { 0, 15, 0, 0, 0, 9 };
 const D3DXVECTOR2 EnemyBarrierManagement::BARRIER_SIZE = D3DXVECTOR2(50.0f, 10.0f);
 const D3DXVECTOR2 EnemyBarrierManagement::INTERVAL_POS = D3DXVECTOR2(0.0f, 60.0f);
 
