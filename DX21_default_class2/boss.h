@@ -20,10 +20,10 @@ public:
 	static const float SIZE_Y;			//ƒTƒCƒYY
 	static const float STOP_POS_Y;		//“G‚ª~‚Ü‚éêŠ
 	static const float RANGE;			//“G‚ª“®‚­”ÍˆÍ
-	static const int HP_MAX = 50;		//“G‚ÌHPÅ‘å’l
+	static const int HP_MAX = 40;		//“G‚ÌHPÅ‘å’l
 private:
 	//‚±‚±‚Å‰Šú‰»
-	static const int BULLET_TIME = 90;	//’e‚Ì”­ËŠÔŠu
+	static const int BULLET_TIME = 120;	//’e‚Ì”­ËŠÔŠu
 	static const int INVINCIBLE_FLAME = 30;	//“G‚Ì–³“GŠÔ
 
 	//cpp‚Å‰Šú‰»

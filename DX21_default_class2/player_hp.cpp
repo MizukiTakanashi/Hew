@@ -92,6 +92,9 @@ void PlayerHP::Update(void)
 	//–³“GŽžŠÔŒ¸­
 	if (m_invincible > 0)
 	{
+		if (m_nodraw-- < -5) {
+			m_nodraw = NONE_DRAW_INTERVAL;
+		}
 		m_invincible--;
 	}
 

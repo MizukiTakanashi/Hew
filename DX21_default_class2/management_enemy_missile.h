@@ -63,12 +63,37 @@ private:
 	},
 	//âŒêØ
 	{
+		// 5
 		D3DXVECTOR2(52.5f + (105 * 8), -EnemyNormal::SIZE_Y / 2),
+		// 20
+		D3DXVECTOR2(52.5f + (105 * 0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 8), -EnemyNormal::SIZE_Y / 2),
+		// 50
+		D3DXVECTOR2(52.5f + (105 * 1), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 9), -EnemyNormal::SIZE_Y / 2),
+		// 60
 		D3DXVECTOR2(52.5f + (105 * 0), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(52.5f + (105 * 10), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 8), -EnemyNormal::SIZE_Y / 2),
+		// 80
 		D3DXVECTOR2(52.5f + (105 * 2), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(52.5f + (105 * 6), -EnemyNormal::SIZE_Y / 2)
+		D3DXVECTOR2(52.5f + (105 * 8), -EnemyNormal::SIZE_Y / 2),
+		// 105
+		D3DXVECTOR2(52.5f + (105 * 3), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 7), -EnemyNormal::SIZE_Y / 2),
+		// 115
+		D3DXVECTOR2(52.5f + (105 * 0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 10), -EnemyNormal::SIZE_Y / 2),
+		// 135
+		D3DXVECTOR2(52.5f + (105 * 3), -EnemyNormal::SIZE_Y / 2),
+		// 150
+		D3DXVECTOR2(52.5f + (105 * 2), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 6), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 9), -EnemyNormal::SIZE_Y / 2),
+		// 160
+		D3DXVECTOR2(52.5f + (105 * 0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 4), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 6), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(52.5f + (105 * 10), -EnemyNormal::SIZE_Y / 2)
 	},
 	//êÖêØ
 	{
@@ -145,7 +170,7 @@ private:
 		// 170
 		D3DXVECTOR2(71.0f + (142.0f * 0), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(71.0f + (142.0f * 8), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 8), -EnemyNormal::SIZE_Y / 2)
 	},
 	//ã‡êØ
 	{
@@ -183,11 +208,26 @@ private:
 	//âŒêØ
 	{
 		60 * 5,
+		60 * 20,
+		60 * 20 + 1,
+		60 * 50,
+		60 * 50 + 1,
 		60 * 60,
 		60 * 60 + 1,
 		60 * 80,
+		60 * 80 + 1,
+		60 * 105,
+		60 * 105 + 1,
+		60 * 115,
+		60 * 115 + 1,
+		60 * 165 + 1,
 		60 * 145,
-		60 * 160
+		60 * 145 + 1,
+		60 * 145 + 2,
+		60 * 160,
+		60 * 160 + 1,
+		60 * 160 + 2,
+		60 * 160 + 3
 	},
 	//êÖêØ
 	{

@@ -57,12 +57,12 @@ private:
 protected:
 	//ステージ
 	enum class STAGE :int {
-		TUTORIAL,
-		MARS,
-		MERCURY,
-		SATURN,
-		VENUS,
-		JUPITER,
+		TUTORIAL,	//チュートリアル
+		MARS,		//火星
+		MERCURY,	//水星
+		SATURN,		//土星
+		VENUS,		//金星
+		JUPITER,	//木星
 		NUM
 	};
 	int m_stage_num = 0;			//ステージ

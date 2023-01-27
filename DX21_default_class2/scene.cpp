@@ -223,9 +223,9 @@ void UninitScene(void)
 
 	case SCENE::SCENE_JUPITER:
 		//前のスコアよりも超えそうであれば...
-		if (pJupiter->GetScore() > g_Score[STAGE_MARS]) {
+		if (pJupiter->GetScore() > g_Score[STAGE_JUPITER]) {
 			//スコアを更新
-			g_Score[STAGE_MARS] = pJupiter->GetScore();
+			g_Score[STAGE_JUPITER] = pJupiter->GetScore();
 		}
 		delete pJupiter;
 		break;

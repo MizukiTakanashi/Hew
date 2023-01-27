@@ -27,7 +27,7 @@ PlayerArm2::PlayerArm2(DrawObject& bulletdraw, bool right, int type)
 
 	//ビーム音
 	m_SE_06 = LoadSound((char*)"data\\SE\\2_06.wav");
-	SetVolume(m_SE_06, 0.4f);
+	SetVolume(m_SE_06, 0.2f);
 
 	//ビーム発射音
 	m_SE_07 = LoadSound((char*)"data\\SE\\2_07.wav");

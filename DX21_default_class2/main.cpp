@@ -116,7 +116,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	// メッセージループ
 	while(1)
 	{
-		if(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+                                                                                                                                                                                                                                                                                                                                            		if(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
 			if(msg.message == WM_QUIT)
 			{// PostQuitMessage()が呼ばれたらループ終了

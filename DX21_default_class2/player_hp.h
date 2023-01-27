@@ -34,7 +34,8 @@ private:
 	static const float FIRE_REDUCE;		//炎状態の際のHPの減少具合
 
 	//ここで初期化
-	static const int INVINCIBLE__FRAME = 40;	//無敵時間
+	static const int INVINCIBLE__FRAME = 60 * 3;	//無敵時間
+	static const int NONE_DRAW_INTERVAL = 10;		//プレイヤーを消す
 	static const int FIRE_DAMAGE_SOUND_INTERVAL = 60 * 3;	//炎ダメージの音の間隔時間
 
 //メンバー変数
@@ -46,6 +47,8 @@ private:
 	ExplosionManagement* m_pExplosionManagement = nullptr; //爆発管理のポインタ
 
 	InhStage* m_pStage = nullptr;	//ヒットストップ用のステージのポインタ
+
+	int m_nodraw = NONE_DRAW_INTERVAL;	//プレイヤーを表示するか否か
 
 	bool m_fire = false;			//炎状態フラグ
 	int m_sound_interval = 60 * 1;	//炎状態の際の音の間隔	
@@ -82,6 +85,11 @@ public:
 	bool IsPlayerInvincible(void) { 
 		if (m_invincible <= 0) { return true; }
 		return false; 
+	}
+
+	bool IsDrawPlayer(void) { 
+		if (m_invincible > 0 && m_nodraw < 0) { return false; }
+		return true;
 	}
 
 	//炎状態をセットする

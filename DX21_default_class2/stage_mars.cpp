@@ -63,7 +63,7 @@ StageMars::StageMars(Score* pNumber):InhStage(pNumber)
 	m_pColAll1->AddEnemyPointer(m_pBossManagement);
 
 	//ƒMƒ~ƒbƒN
-	m_pTexUseful[(int)TEXTURE_TYPE::GIMMICK_MARS].SetTextureName((char*)"data\\texture\\mars.png");
+	m_pTexUseful[(int)TEXTURE_TYPE::GIMMICK_MARS].SetTextureName((char*)"data\\texture\\mars_gimmick.PNG");
 	m_pDrawObject[(int)DRAW_TYPE::GIMMICK_MARS].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::GIMMICK_MARS]);
 	m_pDrawObject[(int)DRAW_TYPE::GIMMICK_MARS].SetDrawColor(D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.5f));
 	m_pGimmick = new MarsGimmick(m_pDrawObject[(int)DRAW_TYPE::GIMMICK_MARS]);
@@ -262,11 +262,15 @@ void StageMars::Draw(void) const
 	m_pStageMars->Draw();
 
 	//ƒvƒŒƒCƒ„[‚Ì•`‰æˆ—
-	m_pPlayer->Draw();
+	if (m_pPlayerHP->IsDrawPlayer()) {
+		m_pPlayer->Draw();
+	}
 	m_pPlayer->DrawBullet();
-	m_pPlayerLeft->ArmDraw();
-	m_pPlayerRight->ArmDraw();
-	m_pPlayerCenter->ArmDraw();
+	if (m_pPlayerHP->IsDrawPlayer()) {
+		m_pPlayerLeft->ArmDraw();
+		m_pPlayerRight->ArmDraw();
+		m_pPlayerCenter->ArmDraw();
+	}
 
 	//“G‚Ì•`‰æ
 	m_pEnemyMissileManagement->Draw();
