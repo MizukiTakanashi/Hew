@@ -49,7 +49,7 @@ private:
 
 
 	//ìGÇÃà íuîzóÒ
-	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][18] = {
+	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][26] = {
 		//É`ÉÖÅ[ÉgÉäÉAÉã
 		{
 			D3DXVECTOR2(52.5f + (105 * 5), -EnemyGatoring::SIZE_Y / 2),
@@ -87,15 +87,27 @@ private:
 			// 40ïb
 			D3DXVECTOR2(71.0f + (142 * 2), -EnemyGatoring::SIZE_Y / 2),
 			D3DXVECTOR2(71.0f + (142 * 5), -EnemyGatoring::SIZE_Y / 2),
+			// 55ïb
+			D3DXVECTOR2(71.0f + (142 * 3), -EnemyGatoring::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142 * 5), -EnemyGatoring::SIZE_Y / 2),
 			// 60ïb
 			D3DXVECTOR2(71.0f + (142 * 2), -EnemyGatoring::SIZE_Y / 2),
 			D3DXVECTOR2(71.0f + (142 * 6), -EnemyGatoring::SIZE_Y / 2),
+			// 75
+			D3DXVECTOR2(71.0f + (142 * 2), -EnemyGatoring::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142 * 4), -EnemyGatoring::SIZE_Y / 2),
 			// 90ïb
 			D3DXVECTOR2(71.0f + (142 * 0), -EnemyGatoring::SIZE_Y / 2),
 			D3DXVECTOR2(71.0f + (142 * 8), -EnemyGatoring::SIZE_Y / 2),
 			// 110ïb
 			D3DXVECTOR2(71.0f + (142 * 1), -EnemyGatoring::SIZE_Y / 2),
 			D3DXVECTOR2(71.0f + (142 * 7), -EnemyGatoring::SIZE_Y / 2),
+			// 115
+			D3DXVECTOR2(71.0f + (142 * 3), -EnemyGatoring::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142 * 5), -EnemyGatoring::SIZE_Y / 2),
+			// 140
+			D3DXVECTOR2(71.0f + (142 * 2), -EnemyGatoring::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142 * 6), -EnemyGatoring::SIZE_Y / 2),
 			// 150ïb
 			D3DXVECTOR2(71.0f + (142 * 3), -EnemyGatoring::SIZE_Y / 2),
 			D3DXVECTOR2(71.0f + (142 * 5), -EnemyGatoring::SIZE_Y / 2),
@@ -104,7 +116,7 @@ private:
 			D3DXVECTOR2(71.0f + (142 * 8), -EnemyGatoring::SIZE_Y / 2),
 			// 170ïb
 			D3DXVECTOR2(71.0f + (142 * 2), -EnemyGatoring::SIZE_Y / 2),
-			D3DXVECTOR2(71.0f + (142 * 6), -EnemyGatoring::SIZE_Y / 2),
+			D3DXVECTOR2(71.0f + (142 * 6), -EnemyGatoring::SIZE_Y / 2)
 		},
 		//ã‡êØ
 		{
@@ -121,7 +133,7 @@ private:
 	};
 
 	//ìGÇèoÇ∑éûä‘
-	int m_SetEnemyTime[(int)STAGE::NUM][18] = {
+	int m_SetEnemyTime[(int)STAGE::NUM][26] = {
 		//É`ÉÖÅ[ÉgÉäÉAÉã
 		{
 			60 * 15,
@@ -155,18 +167,26 @@ private:
 			60 * 25 + 1,
 			60 * 40,
 			60 * 40 + 1,
+			60 * 55,
+			60 * 55 + 1,
 			60 * 60,
 			60 * 60 + 1,
+			60 * 75,
+			60 * 75 + 1,
 			60 * 90,
 			60 * 90 + 1,
 			60 * 110,
 			60 * 110 + 1,
+			60 * 115,
+			60 * 115 + 1,
+			60 * 140,
+			60 * 140 + 1,
 			60 * 150,
 			60 * 150 + 1,
 			60 * 155,
 			60 * 155 + 1,
 			60 * 170,
-			60 * 170 + 1,
+			60 * 170 + 1
 		},
 		//ã‡êØ
 		{
