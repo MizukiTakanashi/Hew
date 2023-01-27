@@ -52,7 +52,7 @@ private:
 	int m_EnemyItem_num = 0;				//ìGÇÃÉAÉCÉeÉÄÇÃêî
 
 	//ìGÇÃîzóÒ
-	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][15] = {
+	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][35] = {
 	//É`ÉÖÅ[ÉgÉäÉAÉã
 	{
 		D3DXVECTOR2(52.5f + (105 * 1), -EnemyNormal::SIZE_Y / 2),
@@ -83,18 +83,57 @@ private:
 	//ìyêØ
 	{
 		// 10ïb
-		D3DXVECTOR2(71.0f + (142.0f * 1), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2),
+		// 15
 		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyNormal::SIZE_Y / 2),
-		D3DXVECTOR2(71.0f + (142.0f * 8), -EnemyNormal::SIZE_Y / 2),
 		// 25ïb
 		D3DXVECTOR2(71.0f + (142.0f * 1), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 3), -EnemyNormal::SIZE_Y / 2),
+		// 30
+		D3DXVECTOR2(71.0f + (142.0f * 5), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 7), -EnemyNormal::SIZE_Y / 2),
-		// 45ïb
+		// 40
+		D3DXVECTOR2(71.0f + (142.0f * 1), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 3), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 7), -EnemyNormal::SIZE_Y / 2),
+		// 50
+		D3DXVECTOR2(71.0f + (142.0f * 3), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2),
+		// 55
+		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyNormal::SIZE_Y / 2),
+		// 65
+		D3DXVECTOR2(71.0f + (142.0f * 1), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 3), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 5), -EnemyNormal::SIZE_Y / 2),
+		// 85
+		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 7), -EnemyNormal::SIZE_Y / 2),
+		// 90
+		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2),
 		// 100ïb
 		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2),
+		// 105
+		D3DXVECTOR2(71.0f + (142.0f * 0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 8), -EnemyNormal::SIZE_Y / 2),
+		// 120
+		D3DXVECTOR2(71.0f + (142.0f * 1), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 7), -EnemyNormal::SIZE_Y / 2),
+		// 140
+		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyNormal::SIZE_Y / 2),
+		// 145
+		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2),
+		// 160
+		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2),
+		// 170
+		D3DXVECTOR2(71.0f + (142.0f * 0), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 4), -EnemyNormal::SIZE_Y / 2),
+		D3DXVECTOR2(71.0f + (142.0f * 8), -EnemyNormal::SIZE_Y / 2),
 	},
 	//ã‡êØ
 	{
@@ -120,7 +159,7 @@ private:
 	}
 	};
 
-	int m_SetEnemyTime[(int)STAGE::NUM][15] = {
+	int m_SetEnemyTime[(int)STAGE::NUM][35] = {
 	//É`ÉÖÅ[ÉgÉäÉAÉã
 	{
 		60 * 40,
@@ -152,13 +191,39 @@ private:
 	{
 		60 * 10,
 		60 * 10 + 1,
-		60 * 10 + 2,
+		60 * 15,
 		60 * 25,
 		60 * 25 + 1,
-		60 * 45,
-		60 * 45 + 1,
+		60 * 30,
+		60 * 30 + 1,
+		60 * 40,
+		60 * 40 + 1,
+		60 * 40 + 2,
+		60 * 50,
+		60 * 50 + 1,
+		60 * 55,
+		60 * 65,
+		60 * 65 + 1,
+		60 * 65 + 2,
+		60 * 85,
+		60 * 85 + 1,
+		60 * 90,
+		60 * 90 + 1,
 		60 * 100,
 		60 * 100 + 1,
+		60 * 105,
+		60 * 105 + 1,
+		60 * 120,
+		60 * 120 + 1,
+		60 * 140,
+		60 * 145,
+		60 * 145 + 1,
+		60 * 160,
+		60 * 160 + 1,
+		60 * 160 + 2,
+		60 * 170,
+		60 * 170 + 1,
+		60 * 170 + 2
 	},
 	//ã‡êØ
 	{
