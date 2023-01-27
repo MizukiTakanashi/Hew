@@ -13,7 +13,7 @@ const float BossManagement::EXIT_MOVE_SPEED_Y = 5.0f;
 // 引数付きコンストラクタ
 //=========================
 BossManagement::BossManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, int stage)
-	:EnemyManagement(EnemyManagement::TYPE::GATORING, ENEMY_NUM[stage], ATTACK, BULLET_ATTACK),
+	:EnemyManagement(EnemyManagement::TYPE::BOSS, ENEMY_NUM[stage], ATTACK, BULLET_ATTACK),
 	m_pDrawObjectEnemy(pDrawObject1), m_pDrawObjectBullet(pDrawObject2)
 {
 	m_stage_num = stage;
