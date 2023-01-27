@@ -259,11 +259,15 @@ void StageMercury::Draw(void) const
 	m_pStageMarcury->Draw();
 
 	//ƒvƒŒƒCƒ„[‚Ì•`‰æˆ—
-	m_pPlayer->Draw();
+	if (m_pPlayerHP->IsDrawPlayer()) {
+		m_pPlayer->Draw();
+	}
 	m_pPlayer->DrawBullet();
-	m_pPlayerLeft->ArmDraw();
-	m_pPlayerRight->ArmDraw();
-	m_pPlayerCenter->ArmDraw();
+	if (m_pPlayerHP->IsDrawPlayer()) {
+		m_pPlayerLeft->ArmDraw();
+		m_pPlayerRight->ArmDraw();
+		m_pPlayerCenter->ArmDraw();
+	}
 
 	//“G‚Ì•`‰æ
 	m_pEnemyLaser->Draw();

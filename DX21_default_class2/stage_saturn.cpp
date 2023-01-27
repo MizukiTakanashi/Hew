@@ -250,12 +250,16 @@ void StageSaturn::Draw(void) const
 	m_pMultiply->Draw();
 	m_pStageSataurn->Draw();
 
-	//プレイヤーの腕の描画処理
-	m_pPlayer->Draw();
+	//プレイヤーの描画処理
+	if (m_pPlayerHP->IsDrawPlayer()) {
+		m_pPlayer->Draw();
+	}
 	m_pPlayer->DrawBullet();
-	m_pPlayerLeft->ArmDraw();
-	m_pPlayerRight->ArmDraw();
-	m_pPlayerCenter->ArmDraw();
+	if (m_pPlayerHP->IsDrawPlayer()) {
+		m_pPlayerLeft->ArmDraw();
+		m_pPlayerRight->ArmDraw();
+		m_pPlayerCenter->ArmDraw();
+	}
 
 	//敵の描画
 	m_pEnemyLaserManagement->Draw();
