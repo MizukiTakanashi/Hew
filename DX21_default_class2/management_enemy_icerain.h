@@ -48,20 +48,40 @@ private:
 	int m_stage_num = 0;						//ステージ
 
 	//敵の位置配列
-	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][11] = {
+	D3DXVECTOR2 m_SetEnemy[(int)STAGE::NUM][17] = {
 		//チュートリアル
 		{
 			D3DXVECTOR2(0.0f, 0.0f),
 		},
 		//火星
 		{                              //マス目
+			// 5
 			D3DXVECTOR2(52.5f + (105 * 5), -EnemyIceRain::SIZE_Y / 2),
+			// 30
 			D3DXVECTOR2(52.5f + (105 * 3), -EnemyIceRain::SIZE_Y / 2),
 			D3DXVECTOR2(52.5f + (105 * 7), -EnemyIceRain::SIZE_Y / 2),
+			// 50
+			D3DXVECTOR2(52.5f + (105 * 3), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 7), -EnemyIceRain::SIZE_Y / 2),
+			// 65
+			D3DXVECTOR2(52.5f + (105 * 4), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 6), -EnemyIceRain::SIZE_Y / 2),
+			// 80
 			D3DXVECTOR2(52.5f + (105 * 5), -EnemyIceRain::SIZE_Y / 2),
+			// 90
 			D3DXVECTOR2(52.5f + (105 * 1), -EnemyIceRain::SIZE_Y / 2),
 			D3DXVECTOR2(52.5f + (105 * 9), -EnemyIceRain::SIZE_Y / 2),
-			D3DXVECTOR2(52.5f + (105 * 5), -EnemyIceRain::SIZE_Y / 2)
+			// 115
+			D3DXVECTOR2(52.5f + (105 * 4), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 6), -EnemyIceRain::SIZE_Y / 2),
+			// 125
+			D3DXVECTOR2(52.5f + (105 * 1), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 9), -EnemyIceRain::SIZE_Y / 2),
+			// 135
+			D3DXVECTOR2(52.5f + (105 * 5), -EnemyIceRain::SIZE_Y / 2),
+			// 170
+			D3DXVECTOR2(52.5f + (105 * 4), -EnemyIceRain::SIZE_Y / 2),
+			D3DXVECTOR2(52.5f + (105 * 6), -EnemyIceRain::SIZE_Y / 2)
 		},
 		//水星
 		{
@@ -92,7 +112,7 @@ private:
 	};
 
 	//敵を出す時間
-	int m_SetEnemyTime[(int)STAGE::NUM][11] = {
+	int m_SetEnemyTime[(int)STAGE::NUM][17] = {
 		//チュートリアル
 		{
 			0,
@@ -100,12 +120,22 @@ private:
 		//火星
 		{
 			60 * 5,
+			60 * 30,
+			60 * 30 + 1,
 			60 * 50,
 			60 * 50 + 1,
+			60 * 65,
+			60 * 65 + 1,
 			60 * 80,
+			60 * 90,
+			60 * 90 + 1,
+			60 * 115,
+			60 * 115 + 1,
 			60 * 125,
 			60 * 125 + 1,
 			60 * 135,
+			60 * 170,
+			60 * 170 + 1
 		},
 		//水星
 		{
