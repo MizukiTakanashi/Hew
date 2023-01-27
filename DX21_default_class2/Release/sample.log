@@ -1,11 +1,85 @@
-﻿  コード生成しています。
-  Previous IPDB not found, fall back to full compilation.
-C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\screen_out.cpp(45): warning C4172: ローカル変数またはテンポラリのアドレスを返します: result_pos
-C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy_barrier.h(108): warning C4172: ローカル変数またはテンポラリのアドレスを返します
-C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy_barrier.h(105): warning C4172: ローカル変数またはテンポラリのアドレスを返します
-C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy.h(125): warning C4172: ローカル変数またはテンポラリのアドレスを返します
-C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy.h(122): warning C4172: ローカル変数またはテンポラリのアドレスを返します
-C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\all_enemy_management.cpp(59): warning C4172: ローカル変数またはテンポラリのアドレスを返します: min_pos
-  All 845 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+﻿  all_enemy_management.cpp
+  game.cpp
+  player_hp.cpp
+  scene.cpp
+  stage_jupiter.cpp
+  stage_mars.cpp
+  stage_mercury.cpp
+  stage_saturn.cpp
+  text_management.cpp
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\game.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\stage_mercury.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_mercury.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\stage_saturn.cpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています all_enemy_management.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_player_arm_both.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています game.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_player_arm.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています game.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_player_arm_both.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_saturn.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_player_arm.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_saturn.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_item.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています game.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\item_p.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています game.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています game.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_item.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_saturn.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\item_p.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_saturn.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_saturn.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています game.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_player_arm_both.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています player_hp.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_player_arm.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています player_hp.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_saturn.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_player_arm_both.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_jupiter.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_player_arm.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_jupiter.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_item.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています player_hp.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\item_p.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています player_hp.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています player_hp.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_item.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_jupiter.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\item_p.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_jupiter.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_jupiter.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています player_hp.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_player_arm_both.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています scene.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy_laser.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_saturn.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_player_arm.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています scene.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\enemy_laser.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_saturn.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_jupiter.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy_laser.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています game.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\enemy_laser.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています game.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_player_arm_both.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_mercury.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_player_arm.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_mercury.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_item.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています scene.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\item_p.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています scene.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_player_arm_both.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_mars.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_player_arm.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_mars.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています scene.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_item.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_mercury.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\item_p.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_mercury.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています scene.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_mercury.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_item.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_mars.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\item_p.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_mars.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy_laser.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_jupiter.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\enemy_laser.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_jupiter.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_mars.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy_laser.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています player_hp.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\enemy_laser.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています player_hp.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy_laser.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_mercury.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_mercury.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_mars.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\enemy_laser.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_mercury.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\enemy_barrier.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_mars.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\enemy_barrier.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています stage_jupiter.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy_laser.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています scene.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\enemy_laser.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています scene.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\stage_mercury.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています scene.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\enemy_barrier.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています scene.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_player_arm_both.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています text_management.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_player_arm.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています text_management.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_item.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています text_management.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\item_p.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています text_management.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\inh_enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています text_management.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています text_management.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\management_enemy_laser.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています text_management.cpp)
+C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\enemy_laser.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。 (ソース ファイルをコンパイルしています text_management.cpp)
+  コード生成しています。
+  0 of 1045 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   コード生成が終了しました。
   sample.vcxproj -> C:\Users\mizuk\source\repos\MizukiTakanashi\Hew\DX21_default_class2\Release\sample.exe

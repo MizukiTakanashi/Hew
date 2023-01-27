@@ -30,7 +30,7 @@ StageJupiter::StageJupiter(Score* pNumber) :InhStage(pNumber)
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_BARRIER], 5);
 
 	//‰½‚à‚µ‚Ä‚±‚È‚¢“G
-	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_PUBLIC].SetTextureName((char*)"data\\texture\\laser.png");
+	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_PUBLIC].SetTextureName((char*)"data\\texture\\enemy_normal.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_PUBLIC].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_PUBLIC]);
 	m_pEnemyPublic = new Management_EnemyPublic(m_pDrawObject[(int)DRAW_TYPE::ENEMY_PUBLIC]);
 

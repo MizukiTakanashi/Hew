@@ -34,7 +34,7 @@ private:
 	static const float FIRE_REDUCE;		//炎状態の際のHPの減少具合
 
 	//ここで初期化
-	static const int INVINCIBLE__FRAME = 40;	//無敵時間
+	static const int INVINCIBLE__FRAME = 60 * 3;	//無敵時間
 	static const int FIRE_DAMAGE_SOUND_INTERVAL = 60 * 3;	//炎ダメージの音の間隔時間
 
 //メンバー変数
