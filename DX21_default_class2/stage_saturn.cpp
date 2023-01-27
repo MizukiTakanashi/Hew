@@ -120,7 +120,8 @@ void StageSaturn::Update(void)
 	}
 
 	//ÅŒã‚Ì—ñ‚Ì“G‚ð‘S‚Ä“|‚µ‚½‚ç
-	if (m_pEnemyLaserManagement->IsClear() && m_pEnemyMeguminManagement->IsClear()) {
+	if (m_pEnemyLaserManagement->IsClear() && m_pEnemyMeguminManagement->IsClear() &&
+		m_pEnemyMissile->IsClear() && m_pEnemyGatoring->IsClear()) {
 		if (m_GameclearHitstop) {
 			m_StopFlame = HIT_STOP_TIME;
 			m_GameclearHitstop = false;

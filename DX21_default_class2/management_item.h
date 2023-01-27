@@ -26,6 +26,7 @@ private:
 	DrawObject m_DOStop;
 	DrawObject m_DOHotairlaser;
 	DrawObject m_DOIcerain;
+	DrawObject m_DOGrenade;
 	DrawObject m_DOIce;
 	DrawObject m_DOPoisonlaser;
 	DrawObject m_DOFire;
@@ -78,6 +79,7 @@ public:
 	void SetDrawAcid(DrawObject& pd) { m_DOAcid = pd; }
 	void SetDrawHotairlaser(DrawObject& pd) { m_DOHotairlaser = pd; }
 	void SetDrawIcerain(DrawObject& pd) { m_DOIcerain = pd; }
+	void SetDrawGrenade(DrawObject& pd) { m_DOGrenade = pd; }
 	void SetDrawIce(DrawObject& pd) { m_DOIce = pd; }
 	void SetDrawPoisonlaser(DrawObject& pd) { m_DOPoisonlaser = pd; }
 	void SetDrawFire(DrawObject& pd) { m_DOFire = pd; }
