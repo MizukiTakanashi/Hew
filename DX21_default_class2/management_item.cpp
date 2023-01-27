@@ -70,10 +70,10 @@ void ItemManagement::SetItem(const D3DXVECTOR2& pos,int typeitem, bool ice)
 		m_pItem[m_ItemNum].SetDrawob(m_DOIcerain);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_GRENADE:
-		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
+		m_pItem[m_ItemNum].SetDrawob(m_DOGrenade);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_FIRE:
-		m_pItem[m_ItemNum].SetDrawob(m_DOPoisonlaser);
+		m_pItem[m_ItemNum].SetDrawob(m_DOFire);
 		break;
 	case (int)Item::Item_NUM::ENEMYITEM_ACID:
 		m_pItem[m_ItemNum].SetDrawob(m_DOAcid);

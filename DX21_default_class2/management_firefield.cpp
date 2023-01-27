@@ -44,7 +44,9 @@ void Management_FireField::Update()
 //==========================
 void Management_FireField::Draw(void) const
 {
+	SetBlendState(BLEND_MODE_ADD);
 	for (int i = 0; i < m_EnemyNum; i++) {
 		m_pFireField[i]->Draw();
 	}
+	SetBlendState(BLEND_MODE_ALPHABLEND);
 }

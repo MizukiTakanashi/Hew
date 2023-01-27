@@ -1,29 +1,29 @@
 //=======================================
-// ‹à¯‚ÌƒXƒe[ƒWŠÖŒW(cppƒtƒ@ƒCƒ‹)
-// ì¬“úF
-// ì¬ŽÒF‰¶“c—ms
+// é‡‘æ˜Ÿã®ã‚¹ãƒ†ãƒ¼ã‚¸é–¢ä¿‚(cppãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š
+// ä½œæˆè€…ï¼šæ©ç”°æ´‹è¡Œ
 //=======================================
 #include "stage_venus.h"
 #include "sound.h"
 
 //==========================
-// ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+// å¼•æ•°ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //==========================
 StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 {
-	//‰æ‘œ“Ç‚Ýž‚Ý
+	//ç”»åƒèª­ã¿è¾¼ã¿
 	m_pBG_Moon = new BGPlanet((char*)"data\\texture\\venus.png");
 
 	//=======================
-	// “G
-	//‰Î‹…‚Ì“G
+	// æ•µ
+	//ç«çƒã®æ•µ
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_FIREBALL].SetTextureName((char*)"data\\texture\\enemy_fireball.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_FIREBALL]);
 
 	m_pEnemyFireballManagement = new EnemyFireballManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_FIREBALL]);
 
-	//Ž_«‰J‚Ì“G
+	//é…¸æ€§é›¨ã®æ•µ
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ACID].SetTextureName((char*)"data\\texture\\enemy_acid.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_ACID].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_ACID]);
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_ACID].SetTextureName((char*)"data\\texture\\bullet_acid.png");
@@ -32,7 +32,7 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 	m_pEnemyAcidManagement = new EnemyAcidManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_ACID], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_ACID]);
 
-	//Ž‹ŠE‚ðˆ«‚­‚·‚é“G
+	//è¦–ç•Œã‚’æ‚ªãã™ã‚‹æ•µ
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_POOR].SetTextureName((char*)"data\\texture\\enemy_poorvision.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_POOR].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_POOR]);
 	m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MIST].SetTextureName((char*)"data\\texture\\bullet_mist.png");
@@ -41,7 +41,7 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 	m_pEnemuPoorvisionManagement = new EnemyPoorvisionManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_POOR], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_MIST]);
 
-	//ƒvƒŒƒCƒ„[‚ÌƒXƒs[ƒh‚ð’x‚­‚·‚é“G
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚¹ãƒ”ãƒ¼ãƒ‰ã‚’é…ãã™ã‚‹æ•µ
 	m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_SPEEDDOWN].SetTextureName((char*)"data\\texture\\enemy_speeddown.png");
 	m_pDrawObject[(int)DRAW_TYPE::ENEMY_SPEEDDOWN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ENEMY_SPEEDDOWN]);
 	m_pDrawObject[(int)DRAW_TYPE::BULLET_SPEEDDOWN].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::BULLET_MIST], 
@@ -50,18 +50,18 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 	m_pEnemySpeeddownManagement = new EnemySpeeddownManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_SPEEDDOWN], 
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_SPEEDDOWN]);
 
-	//ƒKƒgƒŠƒ“ƒO“G
+	//ã‚¬ãƒˆãƒªãƒ³ã‚°æ•µ
 	m_pEnemyGatoring = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING],
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 4);
 
 	m_pBossManagement = new BossManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL], m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL ], 1);
-	//“G‚ÌŠÇ—
+	//æ•µã®ç®¡ç†
 	//m_pAllEnemyManagement->AddPointer(m_pEnemyFireballManagement);
 	
-	//“–‚½‚è”»’è
+	//å½“ãŸã‚Šåˆ¤å®š
 	m_pColAll = new CollisionAll(CollisionAll::STAGE::VENUS, m_pPlayer, m_pPlayerLeft, m_pPlayerRight,
 		m_pExplosionManagement, m_pItemManagement, m_pScore, m_pBom);
-	//“G‚Ìƒ|ƒCƒ“ƒ^‚ðƒZƒbƒg
+	//æ•µã®ãƒã‚¤ãƒ³ã‚¿ã‚’ã‚»ãƒƒãƒˆ
 	m_pColAll->AddEnemyPointer(m_pEnemyFireballManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyAcidManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemuPoorvisionManagement);
@@ -76,7 +76,7 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 }
 
 //==========================
-// ƒfƒXƒgƒ‰ƒNƒ^
+// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //==========================
 StageVenus::~StageVenus()
 {
@@ -90,18 +90,18 @@ StageVenus::~StageVenus()
 }
 
 //==========================
-// XVˆ—
+// æ›´æ–°å‡¦ç†
 //==========================
 void StageVenus::Update(void)
 {
-	//ƒqƒbƒgƒXƒgƒbƒv
+	//ãƒ’ãƒƒãƒˆã‚¹ãƒˆãƒƒãƒ—
 	if (m_StopFlame > 0)
 	{
 		m_StopFlame--;
 
-		//‚ä‚Á‚­‚è‚É‚È‚é‚Ì‚Å‚ ‚ê‚Î...
+		//ã‚†ã£ãã‚Šã«ãªã‚‹ã®ã§ã‚ã‚Œã°...
 		if (m_HitStopSlow != -1) {
-			//ŽžŠÔ‚ª—ˆ‚½‚çˆ—‚ð‚©‚¯‚é
+			//æ™‚é–“ãŒæ¥ãŸã‚‰å‡¦ç†ã‚’ã‹ã‘ã‚‹
 			if (++m_HitStopSlow >= HIT_STOP_SLOW_INTERVAL) {
 				m_HitStopSlow = 0;
 			}
@@ -109,14 +109,14 @@ void StageVenus::Update(void)
 				return;
 			}
 		}
-		//‚ä‚Á‚­‚è‚É‚È‚ç‚È‚¢‚Ì‚Å‚ ‚ê‚Î...
+		//ã‚†ã£ãã‚Šã«ãªã‚‰ãªã„ã®ã§ã‚ã‚Œã°...
 		else {
-			//ˆ—‚ð”ò‚Î‚·
+			//å‡¦ç†ã‚’é£›ã°ã™
 			return;
 		}
 	}
 
-	//ƒvƒŒƒCƒ„[‚ÌHP‚ª0‚É‚È‚Á‚½‚ç...
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HPãŒ0ã«ãªã£ãŸã‚‰...
 	if (m_pPlayerHP->GetHP0Flag()) {
 		if (m_GameoverHitstop) {
 			m_StopFlame = HIT_STOP_TIME;
@@ -131,10 +131,12 @@ void StageVenus::Update(void)
 			}
 		}
 	}
-	//ÅŒã‚Ì—ñ‚Ì“G‚ð‘S‚Ä“|‚µ‚½‚ç
+	//æœ€å¾Œã®åˆ—ã®æ•µã‚’å…¨ã¦å€’ã—ãŸã‚‰
+
 	if (m_pEnemuPoorvisionManagement->IsClear() && m_pEnemyAcidManagement->IsClear() 
 		&& m_pEnemySpeeddownManagement->IsClear() && m_pEnemyFireballManagement->IsClear()
 		&& m_pEnemyGatoring->IsClear() && m_pBossManagement->IsClear()) {
+
 		if (m_GameclearHitstop) {
 			m_StopFlame = HIT_STOP_TIME;
 			m_GameclearHitstop = false;
@@ -142,7 +144,7 @@ void StageVenus::Update(void)
 		}
 		else {
 			if (m_StopFlame <= 0) {
-				//ƒŠƒUƒ‹ƒg‰æ–Ê‚És‚­
+				//ãƒªã‚¶ãƒ«ãƒˆç”»é¢ã«è¡Œã
 				SetStageClear(true);
 				Fade(SCENE::SCENE_RESULT, STAGE::STAGE_SATURN);
 				return;
@@ -150,57 +152,57 @@ void StageVenus::Update(void)
 		}
 	}
 
-	//ƒ{ƒX‚ªŽ€‚ñ‚¾‚ç
+	//ãƒœã‚¹ãŒæ­»ã‚“ã ã‚‰
 	if (m_isBossDown)
 	{
 		SetStageClear(true);
 		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_VENUS);
 	}
 
-	//”wŒi
+	//èƒŒæ™¯
 	m_pBG->Update();
 	m_pBG_Moon->Update();
 
-	//˜r‚ÌØ‚è‘Ö‚¦
+	//è…•ã®åˆ‡ã‚Šæ›¿ãˆ
 	m_pPlayerArmChange->Change();
 
-	//ƒvƒŒƒCƒ„[
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
 	m_pPlayer->Update(m_pPlayerHP->IsPlayerInvincible());
 	m_pPoorvision->Update(m_pPlayer->GetPos());
 
 	m_pPlayerHP->Update();
 
-	//”š”­
+	//çˆ†ç™º
 	m_pExplosionManagement->Update();
 
-	//“G‚©‚ç—Ž‚¿‚éƒAƒCƒeƒ€
+	//æ•µã‹ã‚‰è½ã¡ã‚‹ã‚¢ã‚¤ãƒ†ãƒ 
 	m_pItemManagement->Update();
 
 	//=======================
-	// “G
+	// æ•µ
 	m_pEnemyFireballManagement->Update(m_pPlayer->GetPos());
 	m_pEnemyAcidManagement->Update();
 	m_pEnemuPoorvisionManagement->Update();
 	m_pEnemySpeeddownManagement->Update();
 	m_pEnemyGatoring->Update();
 	m_pBossManagement->Update();
-	//ƒ{ƒ€
+	//ãƒœãƒ 
 	m_pBom->Update();
 
 	//====================================
-	//ƒvƒŒƒCƒ„[‚ÌHP‚É‘Î‚·‚éˆ—
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HPã«å¯¾ã™ã‚‹å‡¦ç†
 	int attack_num = 0;
 
-	//ƒvƒŒƒCƒ„[‚Ì˜r
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•
 
-	//˜r‚ÌƒAƒbƒvƒf[ƒg
+	//è…•ã®ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆ
 	m_pPlayerLeft->ButtonPress();
 	m_pPlayerLeft->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
 	m_pPlayerRight->ButtonPress();
 	m_pPlayerRight->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
 	m_pPlayerCenter->ButtonPress();
 	m_pPlayerCenter->Update(m_pPlayer->GetPos(), D3DXVECTOR2(0.0f, 0.0f));
-		//‡‘Ì‚µ‚½Žž‚ÌƒqƒbƒgƒXƒgƒbƒv
+		//åˆä½“ã—ãŸæ™‚ã®ãƒ’ãƒƒãƒˆã‚¹ãƒˆãƒƒãƒ—
 	if (m_pPlayerLeft->IsHitStop()) {
 		m_StopFlame = HIT_STOP_UNION;
 		m_pPlayerLeft->SetHitStop(false);
@@ -210,33 +212,33 @@ void StageVenus::Update(void)
 		m_pPlayerRight->SetHitStop(false);
 	}
 
-	//“G‚ÆƒvƒŒƒCƒ„[‚Ì“–‚½‚è”»’è
+	//æ•µã¨ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å½“ãŸã‚Šåˆ¤å®š
 	attack_num += m_pColAll->Collision();
 
-	//‰ñ•œ
+	//å›žå¾©
 	m_pColAll->HeelCollision();
 
-	//Ž‹ŠE‚ðˆ«‚­‚·‚é‚©
+	//è¦–ç•Œã‚’æ‚ªãã™ã‚‹ã‹
 	if (m_pColAll->IsPoorVision()) {
 		InhStage::SetPoorVision();
 		m_pColAll->SetPoorVision(false);
 	}
 
-	//ƒvƒŒƒCƒ„[‚ÌHP‚ðUŒ‚”‚É‚æ‚Á‚ÄŒ¸‚ç‚·
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HPã‚’æ”»æ’ƒæ•°ã«ã‚ˆã£ã¦æ¸›ã‚‰ã™
 	if (attack_num != 0) {
 		m_pPlayerHP->ReduceHP((float)attack_num);
 	}
 }
 
 //==========================
-// •`‰æˆ—
+// æç”»å‡¦ç†
 //==========================
 void StageVenus::Draw(void) const
 {
 	m_pBG->DrawBG();
 	m_pBG_Moon->DrawBG();
 
-	//UI‚Ì•`‰æ
+	//UIã®æç”»
 	m_pFrame->Draw();
 	m_pPlayerHP->DrawHP();
 	m_pScore->DrawNumber();
@@ -246,14 +248,14 @@ void StageVenus::Draw(void) const
 	m_pStageVenus->Draw();
 
 
-	//ƒvƒŒƒCƒ„[‚Ì˜r‚Ì•`‰æˆ—
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®è…•ã®æç”»å‡¦ç†
 	m_pPlayer->Draw();
 	m_pPlayer->DrawBullet();
 	m_pPlayerLeft->ArmDraw();
 	m_pPlayerRight->ArmDraw();
 	m_pPlayerCenter->ArmDraw();
 
-	//“G‚Ì•`‰æ
+	//æ•µã®æç”»
 	m_pEnemyFireballManagement->Draw();
 	m_pEnemyAcidManagement->Draw();
 	m_pEnemuPoorvisionManagement->Draw();
@@ -264,7 +266,7 @@ void StageVenus::Draw(void) const
 
 	m_pItemManagement->Draw();
 
-	//ƒ{ƒ€‚Ì•`‰æ
+	//ãƒœãƒ ã®æç”»
 	m_pBom->BomDraw();
 
 	m_pPoorvision->Draw();
