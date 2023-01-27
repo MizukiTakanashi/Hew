@@ -215,7 +215,7 @@ void StageJupiter::Draw(void) const
 	m_pComboNum->SetNumber(m_pScore->GetComboNum());
 	m_pComboNum->DrawNumber();
 	m_pMultiply->Draw();
-	m_pStageMarcury->Draw();
+	m_pStageJupitor->Draw();
 
 	//ƒvƒŒƒCƒ„[‚Ì•`‰æˆ—
 	m_pPlayer->Draw();
@@ -236,5 +236,4 @@ void StageJupiter::Draw(void) const
 
 	//ƒ{ƒ€‚Ì•`‰æ
 	m_pBom->BomDraw();
-
 }
