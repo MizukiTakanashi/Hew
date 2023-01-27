@@ -42,6 +42,7 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 	m_pEnemyMissile = new EnemyMissileManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NORMAL],
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 2);
 
+	m_pBossManagement = new BossManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIRE], m_pDrawObject[(int)DRAW_TYPE::BULLET_FIRE], 1);
 	//˜r
 	m_pPlayerLeft->DrawSetFireE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_FIRE]);
 	m_pPlayerLeft->DrawSetFire(&m_pDrawObject[(int)DRAW_TYPE::BULLET_FIRE]);
@@ -66,6 +67,7 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 	m_pAllEnemyManagement->AddPointer(m_pEnemyIce);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyFire);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyMissile);
+	m_pAllEnemyManagement->AddPointer(m_pBossManagement);
 
 	//========================================================
 	// ‘S‚Ä‚Ì“–‚½‚è”»’è
@@ -80,6 +82,7 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 	m_pColAll->AddEnemyPointer(m_pEnemyIce);
 	m_pColAll->AddEnemyPointer(m_pEnemyFire);
 	m_pColAll->AddEnemyPointer(m_pEnemyMissile);
+	m_pColAll->AddEnemyPointer(m_pBossManagement);
 }
 
 //==========================
@@ -96,6 +99,8 @@ StageMercury::~StageMercury()
 	delete m_pEnemyMissile;
 	delete m_pManagement_IceField;
 	delete m_pManagement_FireField;
+	delete m_pBossManagement;
+	;
 }
 
 //==========================
@@ -143,7 +148,7 @@ void StageMercury::Update(void)
 
 	//ÅŒã‚Ì—ñ‚Ì“G‚ð‘S‚Ä“|‚µ‚½‚ç
 	if (m_pEnemyLaser->IsClear() && m_pEnemyIce->IsClear() &&
-		m_pEnemyFire->IsClear() && m_pEnemyMissile->IsClear()) {
+		m_pEnemyFire->IsClear() && m_pEnemyMissile->IsClear() && m_pBossManagement->IsClear()) {
 		if (m_GameclearHitstop) {
 			m_StopFlame = HIT_STOP_TIME;
 			m_GameclearHitstop = false;
@@ -190,6 +195,7 @@ void StageMercury::Update(void)
 	m_pEnemyIce->Update();
 	m_pEnemyFire->Update();
 	m_pEnemyMissile->Update(m_pPlayer->GetPos());
+	m_pBossManagement->Update();
 
 	//ƒ{ƒ€
 	m_pBom->Update();
@@ -264,6 +270,7 @@ void StageMercury::Draw(void) const
 	m_pEnemyIce->Draw();
 	m_pEnemyFire->Draw();
 	m_pEnemyMissile->Draw();
+	m_pBossManagement->Draw();
 
 	m_pExplosionManagement->Draw();
 

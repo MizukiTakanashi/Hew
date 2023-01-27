@@ -15,7 +15,7 @@
 #include "management_enemy_missile.h"
 #include "management_enemy_barrier.h"
 #include "management_enemy_public.h"
-
+#include "management_boss.h"
 class StageJupiter : public InhStage
 {
 //ƒƒ“ƒo•Ï”
@@ -27,7 +27,7 @@ private:
 	EnemyBarrierManagement* m_pEnemyBarrier = nullptr;
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
 	CollisionAll* m_pColAll = nullptr;
-
+	BossManagement* m_pBossManagement = nullptr;
 
 //ƒƒ“ƒoŠÖ”
 public:
