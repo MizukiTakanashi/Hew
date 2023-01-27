@@ -11,8 +11,8 @@
 //==========================
 // 定数の初期化
 //==========================
-const float EnemyFireballManagement::BULLET_SIZE_X = 200.0f;
-const float EnemyFireballManagement::BULLET_SIZE_Y = 200.0f;
+const float EnemyFireballManagement::BULLET_SIZE_X = 150.0f;
+const float EnemyFireballManagement::BULLET_SIZE_Y = 150.0f;
 const float EnemyFireballManagement::BULLET_SPEED = 5.0f;
 
 //=========================

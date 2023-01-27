@@ -1,7 +1,7 @@
 //=======================================
-// ƒ~ƒTƒCƒ‹‚ÌŠÇ—ŠÖŒW(cppƒtƒ@ƒCƒ‹)
-// ì¬“úF
-// ì¬ÒF‰¶“c—ms
+// ãƒŸã‚µã‚¤ãƒ«ã®ç®¡ç†é–¢ä¿‚(cppãƒ•ã‚¡ã‚¤ãƒ«)
+// ä½œæˆæ—¥ï¼š
+// ä½œæˆè€…ï¼šæ©ç”°æ´‹è¡Œ
 //=======================================
 #include "management_enemy_missile.h"
 #define _USE_MATH_DEFINES
@@ -9,16 +9,16 @@
 #include "sound.h"
 
 //==========================
-// ’è”‚Ì‰Šú‰»
+// å®šæ•°ã®åˆæœŸåŒ–
 //==========================
-const int EnemyMissileManagement::ENEMY_NUM[(int)STAGE::NUM] = { 5, 6, 7, 2, 0, 15 };
+const int EnemyMissileManagement::ENEMY_NUM[(int)STAGE::NUM] = { 5, 6, 11, 35, 0, 15 };
 const D3DXVECTOR2 EnemyMissileManagement::SIZE = D3DXVECTOR2(65.0f, 60.0f);
 const float EnemyMissileManagement::BULLET_SIZE_X = 20.0f;
 const float EnemyMissileManagement::BULLET_SIZE_Y = 20.0f;
 const float EnemyMissileManagement::BULLET_SPEED = 5.0f;
 
 //=========================
-// ˆø”•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+// å¼•æ•°ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 //=========================
 EnemyMissileManagement::EnemyMissileManagement(DrawObject& pDrawObject1, DrawObject& pDrawObject2, int stage)
 	:EnemyManagement(EnemyManagement::TYPE::MISSILE, ENEMY_NUM[stage], ATTACK, BULLET_ATTACK),
@@ -33,11 +33,11 @@ EnemyMissileManagement::EnemyMissileManagement(DrawObject& pDrawObject1, DrawObj
 }
 
 //======================
-// XVˆ—
+// æ›´æ–°å‡¦ç†
 //======================
 void EnemyMissileManagement::Update(const D3DXVECTOR2& PlayerPos)
 {
-	m_FlameNum++; //ƒtƒŒ[ƒ€”‚ğ‘‰Á
+	m_FlameNum++; //ãƒ•ãƒ¬ãƒ¼ãƒ æ•°ã‚’å¢—åŠ 
 
 	int i = m_FlameNum;
 	if (m_FlameNum == m_SetEnemyTime[m_stage_num][m_EnemyNum] && 
@@ -56,14 +56,14 @@ void EnemyMissileManagement::Update(const D3DXVECTOR2& PlayerPos)
 		m_tutorial_clear = true;
 	}
 
-	//¡‚¢‚é“G‚Ìˆ—
+	//ä»Šã„ã‚‹æ•µã®å‡¦ç†
 	for (int i = 0; i < GetObjNum(); i++) {
 		m_tutorial_clear = false;
 		m_pEnemyMissile[i].Update();
 
-		//’e‚ğì‚é
+		//å¼¾ã‚’ä½œã‚‹
 		if (m_pEnemyMissile[i].GetFlagBulletMake()) {
-			//ƒvƒŒƒCƒ„[‚ÌŒã‚ğ’Ç‚¤‚æ‚¤‚É‚µ‚ÄA’e‚ğ¶¬
+			//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å¾Œã‚’è¿½ã†ã‚ˆã†ã«ã—ã¦ã€å¼¾ã‚’ç”Ÿæˆ
 			D3DXVECTOR2 movTemp = PlayerPos - m_pEnemyMissile[i].GetPos();
 			D3DXVECTOR2 rotposTemp = m_pEnemyMissile[i].GetPos() - PlayerPos;
 			D3DXVec2Normalize(&movTemp, &movTemp);
@@ -81,28 +81,28 @@ void EnemyMissileManagement::Update(const D3DXVECTOR2& PlayerPos)
 			PlaySound(m_SE_22, 0);
 		}
 
-		//‰æ–ÊŠO‚©‚ço‚½‚çÁ‚·
+		//ç”»é¢å¤–ã‹ã‚‰å‡ºãŸã‚‰æ¶ˆã™
 		if (m_pEnemyMissile[i].GetScreenOut()) {
 			DeleteObj(i);
 			break;
 		}
 	}
 
-	//¡‚¢‚é’e‚Ìˆ—
+	//ä»Šã„ã‚‹å¼¾ã®å‡¦ç†
 	for (int i = 0; i < EnemyManagement::GetBulletNum(); i++) {
-		//’e‚ÌXVˆ—
+		//å¼¾ã®æ›´æ–°å‡¦ç†
 		m_pBullet[i].Update();
 		
-		//‰æ–ÊŠO‚©‚ço‚½‚çAŠÔŒo‰ß‚µ‚½‚ç...
+		//ç”»é¢å¤–ã‹ã‚‰å‡ºãŸã‚‰ã€æ™‚é–“çµŒéã—ãŸã‚‰...
 		if (m_pBullet[i].GetScreenOut() || m_pBullet[i].GetTime() > BULLET_BREAK_TIME) {
-			//’e‚ğÁ‚·
+			//å¼¾ã‚’æ¶ˆã™
 			DeleteBullet(i);
 		}
 	}
 }
 
 //==========================
-// •`‰æˆ—
+// æç”»å‡¦ç†
 //==========================
 void EnemyMissileManagement::Draw(void)const
 {
@@ -116,30 +116,30 @@ void EnemyMissileManagement::Draw(void)const
 }
 
 //======================
-// “G‚ÌHP‚ğŒ¸‚ç‚·
+// æ•µã®HPã‚’æ¸›ã‚‰ã™
 //======================
 bool EnemyMissileManagement::ReduceHP(int index_num, int reduceHP)
 {
 	m_pEnemyMissile[index_num].ReduceHP(reduceHP);
 	if (m_pEnemyMissile[index_num].GetHP() <= 0)
-	{//HP‚ª‚OˆÈ‰º‚È‚ç“G‚ğÁ‚·
+	{//HPãŒï¼ä»¥ä¸‹ãªã‚‰æ•µã‚’æ¶ˆã™
 		return true;
 	}
 	return false;
 }
 
 //======================
-// “G‚ğÁ‚·
+// æ•µã‚’æ¶ˆã™
 //======================
 void EnemyMissileManagement::DeleteObj(int index_num)
 {
 	m_delete_enemy++;
-	//“G‚ğÁ‚·
+	//æ•µã‚’æ¶ˆã™
 	for (int i = index_num; i < EnemyManagement::GetObjNum() - 1; i++) {
 		m_pEnemyMissile[i] = m_pEnemyMissile[i + 1];
 	}
 
-	//Œp³Œ³‚Ì“G‚ğÁ‚·‚ğŒÄ‚Ô
+	//ç¶™æ‰¿å…ƒã®æ•µã‚’æ¶ˆã™ã‚’å‘¼ã¶
 	EnemyManagement::DeleteObj(index_num);
 
 	if (m_delete_enemy == ENEMY_NUM[m_stage_num]) {
@@ -148,7 +148,7 @@ void EnemyMissileManagement::DeleteObj(int index_num)
 }
 
 //======================
-// ’e‚ğÁ‚·
+// å¼¾ã‚’æ¶ˆã™
 //======================
 void EnemyMissileManagement::DeleteBullet(int index_num)
 {

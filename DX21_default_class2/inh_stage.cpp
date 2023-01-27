@@ -145,10 +145,12 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::ITEM_ICE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_ICE]);
 	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_POISONLASER].SetTextureName((char*)"data\\texture\\item_Poisonlaserlaser.png");
 	m_pDrawObject[(int)DRAW_TYPE::ITEM_POISONLASER].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_POISONLASER]);
-	//m_pTexUseful[(int)TEXTURE_TYPE::ITEM_FIRE].SetTextureName((char*)"data\\texture\\item_fireball.png");
-	//m_pDrawObject[(int)DRAW_TYPE::ITEM_FIRE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_FIRE]);
+	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_FIRE].SetTextureName((char*)"data\\texture\\item_fire.png");
+	m_pDrawObject[(int)DRAW_TYPE::ITEM_FIRE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_FIRE]);
 	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_FIREBALL].SetTextureName((char*)"data\\texture\\item_fireball.png");
 	m_pDrawObject[(int)DRAW_TYPE::ITEM_FIREBALL].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_FIREBALL]);
+	m_pTexUseful[(int)TEXTURE_TYPE::ITEM_GRENADE].SetTextureName((char*)"data\\texture\\item_grenade.png");
+	m_pDrawObject[(int)DRAW_TYPE::ITEM_GRENADE].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::ITEM_GRENADE]);
 	//画像セット
 	m_pItemManagement->SetDrawMissile(m_pDrawObject[(int)DRAW_TYPE::ITEM_MISSILE]);
 	m_pItemManagement->SetDrawLaser(m_pDrawObject[(int)DRAW_TYPE::ITEM_LASER]);
@@ -161,6 +163,8 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pItemManagement->SetDrawIce(m_pDrawObject[(int)DRAW_TYPE::ITEM_ICE]);
 	m_pItemManagement->SetDrawPoisonlaser(m_pDrawObject[(int)DRAW_TYPE::ITEM_POISONLASER]);
 	m_pItemManagement->SetDrawFireball(m_pDrawObject[(int)DRAW_TYPE::ITEM_FIREBALL]);
+	m_pItemManagement->SetDrawFire(m_pDrawObject[(int)DRAW_TYPE::ITEM_FIRE]);
+	m_pItemManagement->SetDrawGrenade(m_pDrawObject[(int)DRAW_TYPE::ITEM_GRENADE]);
 
 
 	//=======================
@@ -232,6 +236,7 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pPlayerLeft->DrawSetStopE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_STOP]);
 	m_pPlayerLeft->DrawSetAcidE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_ACID]);
 	m_pPlayerLeft->DrawSetFireballE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_FIREBALL]);
+	m_pPlayerLeft->DrawSetGrenadeE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_GRENADE]);
 
 
 	m_pPlayerRight->DrawSetHomingE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_MISSILE]);
@@ -242,6 +247,8 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pPlayerRight->DrawSetStopE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_STOP]);
 	m_pPlayerRight->DrawSetAcidE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_ACID]);
 	m_pPlayerRight->DrawSetFireballE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_FIREBALL]);
+	m_pPlayerRight->DrawSetGrenadeE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_GRENADE]);
+
 
 
 	m_pPlayerCenter->DrawSetHomingE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_MISSILE]);
@@ -252,6 +259,8 @@ InhStage::InhStage(Score* pNumber):m_pScore(pNumber)
 	m_pPlayerCenter->DrawSetStopE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_STOP]);
 	m_pPlayerCenter->DrawSetAcidE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_ACID]);
 	m_pPlayerCenter->DrawSetFireballE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_FIREBALL]);
+	m_pPlayerCenter->DrawSetGrenadeE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_GRENADE]);
+
 
 
 	//腕の交換
