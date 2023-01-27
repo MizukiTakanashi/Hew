@@ -26,6 +26,7 @@ private:
 
 	//cppで初期化
 	static const int ENEMY_NUM[(int)STAGE::NUM];	//敵を出現させる数W
+	static const D3DXVECTOR2 SIZE;			//サイズ
 	//弾
 	static const float BULLET_SIZE_X;		//サイズX
 	static const float BULLET_SIZE_Y;		//サイズY
@@ -94,7 +95,6 @@ private:
 		// 100秒
 		D3DXVECTOR2(71.0f + (142.0f * 2), -EnemyNormal::SIZE_Y / 2),
 		D3DXVECTOR2(71.0f + (142.0f * 6), -EnemyNormal::SIZE_Y / 2),
-		
 	},
 	//金星
 	{
