@@ -97,11 +97,11 @@ void	UpdateTitle()
 	}
 
 	//Aボタンを押したらステージ選択画面に行く
-	if (InputGetKeyDown(KK_A))
+	/*if (InputGetKeyDown(KK_A))
 	{
 		Fade(SCENE::SCENE_STAGE_SELECT, STAGE::STAGE_MERCURY);
 		PlaySound(g_SE, 0);
-	}
+	}*/
 
 	//Dボタンを押したらステージ選択画面に行く
 	if (InputGetKeyDown(KK_D) || GetLeftTriggerTriggered(0, 120))
@@ -111,11 +111,11 @@ void	UpdateTitle()
 	}
 
 	//Wボタンを押したらリザルト画面に行く
-	if (InputGetKeyDown(KK_S))
+	/*if (InputGetKeyDown(KK_S))
 	{
 		Fade(SCENE::SCENE_RESULT, STAGE::STAGE_MERCURY);
 		PlaySound(g_SE, 0);
-	}
+	}*/
 }
 
 //==========================

@@ -68,7 +68,7 @@ TitleScore::TitleScore(int score[])
 		D3DXVECTOR2(SCREEN_WIDTH, SCREEN_HEIGHT));
 
 	//最高スコアという表示
-	m_pTexUseful[(int)TEXTURE_TYPE::WORD].SetTextureName((char*)"data\\texture\\text_flame.png");
+	m_pTexUseful[(int)TEXTURE_TYPE::WORD].SetTextureName((char*)"data\\texture\\title_score_text.png");
 	m_pDrawObject[(int)DRAW_TYPE::WORD].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::WORD]);
 	m_pUI[(int)UI_TYPE::WORD] = new UI(m_pDrawObject[(int)DRAW_TYPE::WORD], D3DXVECTOR2(SCREEN_WIDTH / 2, WORD_POS_Y),
 		WORD_SIZE);
