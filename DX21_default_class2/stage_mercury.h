@@ -17,7 +17,7 @@
 #include "management_firefield.h"
 #include "management_icefield.h"
 #include "all_enemy_management.h"
-
+#include "management_boss.h"
 class StageMercury : public InhStage
 {	
 //メンバ変数
@@ -31,7 +31,7 @@ private:
 	Management_FireField* m_pManagement_FireField = nullptr;
 	AllEnemyManagement* m_pAllEnemyManagement = nullptr;
 	CollisionAll* m_pColAll = nullptr;
-
+	BossManagement* m_pBossManagement = nullptr;
 //メンバ関数
 public:
 	StageMercury(Score* pNumber);

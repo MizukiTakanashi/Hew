@@ -42,12 +42,15 @@ StageSaturn::StageSaturn(Score* pNumber):InhStage(pNumber)
 	m_pDrawObject[(int)DRAW_TYPE::POISON].SetDrawObject(m_pTexUseful[(int)TEXTURE_TYPE::POISON], 2.0f, 1.0, 1.0f, 3);
 	m_pPoisonField = new Management_PoisonField(m_pDrawObject[(int)DRAW_TYPE::POISON]);
 
+	m_pBossManagement = new BossManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_MEGUMIN], m_pDrawObject[(int)DRAW_TYPE::BULLET_MEGUMIN], 1);
+
 	//“G‚ÌŠÇ—
 	m_pAllEnemyManagement = new AllEnemyManagement;
 	m_pAllEnemyManagement->AddPointer(m_pEnemyLaserManagement);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyMeguminManagement);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyGatoring);
 	m_pAllEnemyManagement->AddPointer(m_pEnemyMissile);
+	m_pAllEnemyManagement->AddPointer(m_pBossManagement);
 	
 	//========================================================
 	// ‘S‚Ä‚Ì“–‚½‚è”»’è
@@ -60,6 +63,7 @@ StageSaturn::StageSaturn(Score* pNumber):InhStage(pNumber)
 	m_pColAll->AddEnemyPointer(m_pEnemyLaserManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyGatoring);
 	m_pColAll->AddEnemyPointer(m_pEnemyMissile);
+	m_pColAll->AddEnemyPointer(m_pBossManagement);
 }
 
 //==========================
@@ -74,6 +78,7 @@ StageSaturn::~StageSaturn()
 	delete m_pEnemyMissile;
 	delete m_pEnemyGatoring;
 	delete m_pPoisonField;
+	delete m_pBossManagement;
 }
 
 //==========================
@@ -120,7 +125,8 @@ void StageSaturn::Update(void)
 	}
 
 	//ÅŒã‚Ì—ñ‚Ì“G‚ð‘S‚Ä“|‚µ‚½‚ç
-	if (m_pEnemyLaserManagement->IsClear() && m_pEnemyMeguminManagement->IsClear()) {
+	if (m_pEnemyLaserManagement->IsClear() && m_pEnemyMeguminManagement->IsClear()
+		&& m_pBossManagement->IsClear()) {
 		if (m_GameclearHitstop) {
 			m_StopFlame = HIT_STOP_TIME;
 			m_GameclearHitstop = false;
@@ -166,6 +172,7 @@ void StageSaturn::Update(void)
 	m_pEnemyLaserManagement->Update();
 	m_pEnemyMeguminManagement->Update();
 	m_pEnemyGatoring->Update();
+	m_pBossManagement->Update();
 	m_pEnemyMissile->Update(m_pPlayer->GetPos());
 
 	m_pPoisonField->Update();
@@ -252,6 +259,7 @@ void StageSaturn::Draw(void) const
 	m_pEnemyMeguminManagement->Draw();
 	m_pEnemyGatoring->Draw();
 	m_pEnemyMissile->Draw();
+	m_pBossManagement->Draw();
 
 	m_pPoisonField->Draw();
 

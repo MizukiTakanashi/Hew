@@ -54,6 +54,7 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 	m_pEnemyGatoring = new EnemyGatoringManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_GATORING],
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 4);
 
+	m_pBossManagement = new BossManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL], m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIREBALL ], 1);
 	//“G‚ÌŠÇ—
 	//m_pAllEnemyManagement->AddPointer(m_pEnemyFireballManagement);
 	
@@ -66,6 +67,7 @@ StageVenus::StageVenus(Score* pNumber):InhStage(pNumber)
 	m_pColAll->AddEnemyPointer(m_pEnemuPoorvisionManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemySpeeddownManagement);
 	m_pColAll->AddEnemyPointer(m_pEnemyGatoring);
+	m_pColAll->AddEnemyPointer(m_pBossManagement);
 
 	m_pPlayerCenter->DrawSetAcid(&m_pDrawObject[(int)DRAW_TYPE::BULLET_ACID]);
 	m_pPlayerRight->DrawSetAcid(&m_pDrawObject[(int)DRAW_TYPE::BULLET_ACID]);
@@ -84,6 +86,7 @@ StageVenus::~StageVenus()
 	delete m_pEnemySpeeddownManagement;
 	delete m_pEnemyAcidManagement;
 	delete m_pEnemyGatoring;
+	delete m_pBossManagement;
 }
 
 //==========================
@@ -129,7 +132,9 @@ void StageVenus::Update(void)
 		}
 	}
 	//ÅŒã‚Ì—ñ‚Ì“G‚ð‘S‚Ä“|‚µ‚½‚ç
-	if (m_pEnemuPoorvisionManagement->IsClear() && m_pEnemyAcidManagement->IsClear() && m_pEnemySpeeddownManagement->IsClear() && m_pEnemyFireballManagement->IsClear() && m_pEnemyGatoring->IsClear()) {
+	if (m_pEnemuPoorvisionManagement->IsClear() && m_pEnemyAcidManagement->IsClear() 
+		&& m_pEnemySpeeddownManagement->IsClear() && m_pEnemyFireballManagement->IsClear()
+		&& m_pEnemyGatoring->IsClear() && m_pBossManagement->IsClear()) {
 		if (m_GameclearHitstop) {
 			m_StopFlame = HIT_STOP_TIME;
 			m_GameclearHitstop = false;
@@ -178,7 +183,7 @@ void StageVenus::Update(void)
 	m_pEnemuPoorvisionManagement->Update();
 	m_pEnemySpeeddownManagement->Update();
 	m_pEnemyGatoring->Update();
-
+	m_pBossManagement->Update();
 	//ƒ{ƒ€
 	m_pBom->Update();
 
@@ -254,7 +259,7 @@ void StageVenus::Draw(void) const
 	m_pEnemuPoorvisionManagement->Draw();
 	m_pEnemySpeeddownManagement->Draw();
 	m_pEnemyGatoring->Draw();
-
+	m_pBossManagement->Draw();
 	m_pExplosionManagement->Draw();
 
 	m_pItemManagement->Draw();
