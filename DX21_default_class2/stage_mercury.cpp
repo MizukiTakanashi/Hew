@@ -48,7 +48,7 @@ StageMercury::StageMercury(Score* pNumber):InhStage(pNumber)
 	m_pEnemyMissile = new EnemyMissileManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_NORMAL],
 		m_pDrawObject[(int)DRAW_TYPE::BULLET_ENEMY], 2);
 
-	m_pBossManagement = new BossManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIRE], m_pDrawObject[(int)DRAW_TYPE::BULLET_FIRE], 1);
+	m_pBossManagement = new BossManagement(m_pDrawObject[(int)DRAW_TYPE::ENEMY_FIRE], m_pDrawObject[(int)DRAW_TYPE::BULLET_FIRE], 2);
 	//˜r
 	m_pPlayerLeft->DrawSetFireE(&m_pDrawObject[(int)DRAW_TYPE::ITEM_FIRE]);
 	m_pPlayerLeft->DrawSetFire(&m_pDrawObject[(int)DRAW_TYPE::BULLET_FIRE]);
