@@ -157,9 +157,7 @@ void StageMars::Update(void)
 	}
 
 	//ÅŒã‚Ì—ñ‚Ì“G‚ð‘S‚Ä“|‚µ‚½‚ç
-	if (m_pEnemyMissileManagement->IsClear() && m_pEnemyBarrierManagement->IsClear() &&
-		m_pEnemyIceRainManagement->IsClear() && m_pEnemyStopManagement->IsClear() &&
-		m_pEnemyGrenadeManagement->IsClear() && m_pBossManagement->IsClear()) {
+	if ( m_pBossManagement->IsClear()) {
 		if (m_GameclearHitstop) {
 			m_StopFlame = HIT_STOP_TIME;
 			m_GameclearHitstop = false;
