@@ -153,8 +153,7 @@ void StageMercury::Update(void)
 	}
 
 	//ÅŒã‚Ì—ñ‚Ì“G‚ð‘S‚Ä“|‚µ‚½‚ç
-	if (m_pEnemyLaser->IsClear() && m_pEnemyIce->IsClear() &&
-		m_pEnemyFire->IsClear() && m_pEnemyMissile->IsClear() && m_pBossManagement->IsClear()) {
+	if ( m_pBossManagement->IsClear()) {
 		if (m_GameclearHitstop) {
 			m_StopFlame = HIT_STOP_TIME;
 			m_GameclearHitstop = false;

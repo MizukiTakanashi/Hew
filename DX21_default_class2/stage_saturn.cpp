@@ -132,9 +132,7 @@ void StageSaturn::Update(void)
 
 	//最後の列の敵を全て倒したら
 
-	if (m_pEnemyLaserManagement->IsClear() && m_pEnemyMeguminManagement->IsClear()
-		&& m_pBossManagement->IsClear()&&
-		m_pEnemyMissile->IsClear() && m_pEnemyGatoring->IsClear()) {
+	if ( m_pBossManagement->IsClear()) {
 
 		if (m_GameclearHitstop) {
 			m_StopFlame = HIT_STOP_TIME;

@@ -160,9 +160,7 @@ void StageVenus::Update(void)
 	}
 	//最後の列の敵を全て倒したら
 
-	if (m_pEnemuPoorvisionManagement->IsClear() && m_pEnemyAcidManagement->IsClear() 
-		&& m_pEnemySpeeddownManagement->IsClear() && m_pEnemyFireballManagement->IsClear()
-		&& m_pEnemyGatoring->IsClear() && m_pBossManagement->IsClear()) {
+	if ( m_pBossManagement->IsClear()) {
 
 		if (m_GameclearHitstop) {
 			m_StopFlame = HIT_STOP_TIME;
