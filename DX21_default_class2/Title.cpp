@@ -92,7 +92,7 @@ void	UpdateTitle()
 			Fade(SCENE::SCENE_STAGE_SELECT, STAGE::STAGE_MOON);
 		}
 		else {
-			Fade(SCENE::SCENE_GAME, STAGE::STAGE_MOON);
+			Fade(SCENE::SCENE_STAGE_SELECT, STAGE::STAGE_MOON);
 		}
 	}
 
